@@ -1,62 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="celestial">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AastroAstra — Vedic astrology, reimagined</title>
 <meta name="description" content="AastroAstra — precise Vedic kundali, KP system, numerology and match-making on your phone. Download the Android beta." />
+<meta name="theme-color" content="#FFFBF3" />
 <meta property="og:title" content="AastroAstra" />
 <meta property="og:description" content="Vedic astrology, reimagined. Download the Android beta." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --bg: #ffffff;
-    --fg: #000000;
-    --muted: #666666;
-    --line: #e6e6e6;
-    --radius: 0px;
+  /* ── App theme palettes (Celestial / Light / Dark), from AastroColors ── */
+  [data-theme="celestial"] {
+    --bg: #FFFBF3; --card: #FFFFFF; --line: #EDE2CE;
+    --fg: #2A2118; --fg2: #5A4D3E; --muted: #8A7A5E;
+    --tint: #F5B642; --on-accent: #08070B;
+    --grad: linear-gradient(120deg, #E5B838 0%, #F7C73E 30%, #D09224 66%, #C85822 100%);
+    --title-fill: transparent;
   }
+  [data-theme="light"] {
+    --bg: #FFFFFF; --card: #FFFFFF; --line: #E7E7E7;
+    --fg: #1A1A1A; --fg2: #4A4A4A; --muted: #8A8A8A;
+    --tint: #E5871A; --on-accent: #08070B;
+    --grad: none;                     /* light = flat accent */
+    --title-fill: #C85822;
+  }
+  [data-theme="dark"] {
+    --bg: #0A0A0A; --card: #141414; --line: #262626;
+    --fg: #F5F5F5; --fg2: #BFBFBF; --muted: #7A7A7A;
+    --tint: #F5B642; --on-accent: #08070B;
+    --grad: linear-gradient(120deg, #E5B838 0%, #F7C73E 30%, #D09224 66%, #C85822 100%);
+    --title-fill: transparent;
+  }
+
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
   html, body { height: 100%; }
   body {
     background: var(--bg);
     color: var(--fg);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
+    display: flex; align-items: stretch; justify-content: center;
     letter-spacing: -0.01em;
+    transition: background .25s ease, color .25s ease;
   }
   a { color: inherit; text-decoration: none; }
 
-  /* The whole page is one bordered grid frame (bento / "grid way"). */
   .frame {
-    width: 100%;
-    max-width: 1160px;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    border-left: 1px solid var(--line);
-    border-right: 1px solid var(--line);
+    width: 100%; max-width: 1160px; min-height: 100vh;
+    display: grid; grid-template-rows: auto 1fr auto;
+    border-left: 1px solid var(--line); border-right: 1px solid var(--line);
   }
 
   /* ── Header ── */
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 28px;
-    border-bottom: 1px solid var(--line);
+  header { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; border-bottom: 1px solid var(--line); }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.01em; font-size: 17px; }
+  .mark { width: 22px; height: 22px; }
+  .brand small { font-weight: 600; color: var(--muted); letter-spacing: 0.16em; font-size: 10px; text-transform: uppercase; }
+  .themes { display: flex; gap: 6px; border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+  .themes button {
+    width: 30px; height: 30px; border: none; background: transparent; color: var(--muted);
+    border-radius: 999px; cursor: pointer; font-size: 14px; line-height: 1;
+    display: inline-flex; align-items: center; justify-content: center; transition: all .15s ease;
   }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.02em; }
-  .mark { width: 20px; height: 20px; }
-  .brand small { font-weight: 500; color: var(--muted); letter-spacing: 0.16em; font-size: 11px; text-transform: uppercase; }
-  .badge-beta {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-    border: 1px solid var(--fg); padding: 5px 10px; border-radius: 999px;
-  }
+  .themes button[aria-pressed="true"] { background: var(--tint); color: var(--on-accent); }
 
   /* ── Hero grid ── */
   .hero { display: grid; grid-template-columns: 1.15fr 0.85fr; }
@@ -65,50 +73,39 @@
   .hero .right { display: flex; flex-direction: column; justify-content: center; }
 
   h1 {
-    font-size: clamp(44px, 7vw, 96px);
-    line-height: 0.98;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-family: 'Noto Serif', Georgia, serif;
+    font-size: clamp(44px, 7vw, 92px); line-height: 0.98; font-weight: 700; letter-spacing: -0.03em;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text;
+    color: var(--title-fill);
   }
-  .subtitle {
-    margin-top: 22px;
-    font-size: clamp(16px, 1.8vw, 20px);
-    line-height: 1.5;
-    color: var(--muted);
-    max-width: 30ch;
-  }
+  .subtitle { margin-top: 22px; font-size: clamp(16px, 1.8vw, 20px); line-height: 1.5; color: var(--fg2); max-width: 30ch; }
   .features { margin-top: 28px; display: grid; gap: 10px; }
-  .features span { font-size: 15px; color: var(--fg); display: flex; align-items: center; gap: 10px; }
-  .features span::before { content: ""; width: 6px; height: 6px; background: var(--fg); border-radius: 50%; display: inline-block; }
+  .features span { font-size: 15px; color: var(--fg); display: flex; align-items: center; gap: 12px; }
+  .features span::before { content: "✦"; color: var(--tint); font-size: 12px; }
 
   /* ── Download cell ── */
-  .dl-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .dl-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
   .btn-play {
-    margin-top: 16px;
-    display: inline-flex; align-items: center; gap: 14px;
-    background: var(--fg); color: var(--bg);
-    padding: 14px 22px; border-radius: 10px;
-    width: 100%; max-width: 320px;
-    transition: opacity .15s ease;
+    margin-top: 16px; display: inline-flex; align-items: center; gap: 14px;
+    background-color: var(--tint); background-image: var(--grad); color: var(--on-accent);
+    padding: 15px 22px; border-radius: 12px; width: 100%; max-width: 330px;
+    box-shadow: 0 10px 26px -12px var(--tint); transition: transform .15s ease, box-shadow .15s ease;
   }
-  .btn-play:hover { opacity: 0.85; }
+  .btn-play:hover { transform: translateY(-1px); box-shadow: 0 14px 32px -12px var(--tint); }
   .btn-play .g { width: 26px; height: 26px; flex: none; }
-  .btn-play .t small { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
-  .btn-play .t b { display: block; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+  .btn-play .t small { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; }
+  .btn-play .t b { display: block; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
   .meta { margin-top: 14px; font-size: 13px; color: var(--muted); }
   .meta b { color: var(--fg); font-weight: 600; }
-  .apk-direct { margin-top: 10px; font-size: 13px; }
-  .apk-direct a { border-bottom: 1px solid var(--line); padding-bottom: 1px; }
-  .apk-direct a:hover { border-color: var(--fg); }
+  .apk-direct { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .apk-direct a { color: var(--fg2); border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+  .apk-direct a:hover { border-color: var(--tint); color: var(--tint); }
 
   /* ── Footer ── */
-  footer {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--line);
-  }
+  footer { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
   footer > * { padding: 20px 28px; font-size: 13px; color: var(--muted); }
   footer > *:not(:last-child) { border-right: 1px solid var(--line); }
-  footer a:hover { color: var(--fg); }
+  footer a:hover { color: var(--tint); }
   .tm { text-align: right; }
 
   @media (max-width: 780px) {
@@ -125,14 +122,17 @@
   <main class="frame">
     <header>
       <div class="brand">
-        <!-- AastroAstra ✦ mark -->
-        <svg class="mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6L12 0z" fill="#000"/>
+        <svg class="mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6L12 0z" fill="var(--tint)"/>
         </svg>
         <span>AastroAstra</span>
         <small>Beta</small>
       </div>
-      <div class="badge-beta">Android</div>
+      <div class="themes" role="group" aria-label="Theme">
+        <button data-set="celestial" title="Celestial" aria-pressed="true">✦</button>
+        <button data-set="light" title="Light" aria-pressed="false">☀</button>
+        <button data-set="dark" title="Dark" aria-pressed="false">☾</button>
+      </div>
     </header>
 
     <section class="hero">
@@ -149,10 +149,10 @@
         <div class="dl-label">Download the beta</div>
         <a class="btn-play" id="dl" href="#" rel="noopener">
           <svg class="g" viewBox="0 0 512 512" aria-hidden="true">
-            <path d="M47 32c-9 5-15 15-15 28v392c0 13 6 23 15 28l224-224L47 32z" fill="#fff"/>
-            <path d="M336 176L83 33c-9-5-18-5-25-1l224 224 54-80z" fill="#fff" opacity="0.85"/>
-            <path d="M336 336l-54-80-224 224c7 4 16 4 25-1l253-143z" fill="#fff" opacity="0.85"/>
-            <path d="M336 176l-54 80 54 80 94-53c17-10 17-44 0-54l-94-53z" fill="#fff" opacity="0.6"/>
+            <path d="M47 32c-9 5-15 15-15 28v392c0 13 6 23 15 28l224-224L47 32z" fill="currentColor"/>
+            <path d="M336 176L83 33c-9-5-18-5-25-1l224 224 54-80z" fill="currentColor" opacity="0.82"/>
+            <path d="M336 336l-54-80-224 224c7 4 16 4 25-1l253-143z" fill="currentColor" opacity="0.82"/>
+            <path d="M336 176l-54 80 54 80 94-53c17-10 17-44 0-54l-94-53z" fill="currentColor" opacity="0.6"/>
           </svg>
           <div class="t">
             <small>Get the Android app</small>
@@ -172,15 +172,30 @@
   </main>
 
   <script>
-    // Stable public URLs on Supabase Storage (the "site" public bucket). The APK
-    // link is stable; releasing a new build overwrites the file + version.json,
-    // so this page always serves the latest without a redeploy.
+    // ── Theme (Celestial / Light / Dark) — matches the app; persisted ──
+    var META = { celestial: '#FFFBF3', light: '#FFFFFF', dark: '#0A0A0A' };
+    function setTheme(t) {
+      if (!META[t]) t = 'celestial';
+      document.documentElement.setAttribute('data-theme', t);
+      var m = document.querySelector('meta[name=theme-color]'); if (m) m.content = META[t];
+      var btns = document.querySelectorAll('.themes button');
+      for (var i = 0; i < btns.length; i++) btns[i].setAttribute('aria-pressed', btns[i].dataset.set === t);
+      try { localStorage.setItem('aa-theme', t); } catch (e) {}
+    }
+    (function () {
+      var saved; try { saved = localStorage.getItem('aa-theme'); } catch (e) {}
+      if (!saved) saved = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'celestial';
+      setTheme(saved);
+      var btns = document.querySelectorAll('.themes button');
+      for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function () { setTheme(this.dataset.set); });
+    })();
+
+    // ── Download link + live version from Supabase Storage ──
     var BASE = 'https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/';
     var APK = BASE + 'aastroastra-latest.apk';
     document.getElementById('dl').href = APK;
     document.getElementById('apk').href = APK;
     try { document.getElementById('yr').textContent = new Date().getFullYear(); } catch (e) {}
-    // Reflect the latest version/size published alongside the APK.
     fetch(BASE + 'version.json?t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (v) {
