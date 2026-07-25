@@ -46,6 +46,8 @@
   .hero .right { display:flex; align-items:center; justify-content:center; }
 
   h1 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-0.03em; font-size:clamp(46px,7vw,104px); line-height:0.98; color:var(--tint); }
+  /* Yellow theme: warm yellow->orange->gold gradient title (emotica.me palette) */
+  [data-theme="yellow-light"] h1, [data-theme="yellow-dark"] h1 { background:linear-gradient(100deg,#FACC15 0%,#FB923C 52%,#EAB308 100%); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
   .dl-label { margin-top:36px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
   .btn-play { margin-top:14px; display:inline-flex; align-items:center; gap:14px; background:var(--tint); color:var(--on-accent); padding:16px 24px; border-radius:12px; width:100%; max-width:340px; transition:transform .15s ease, filter .15s ease; }
   .btn-play:hover { transform:translateY(-1px); filter:brightness(1.05); }
