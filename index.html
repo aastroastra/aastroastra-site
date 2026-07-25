@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AastroAstra · for the one who believes</title>
+<link rel="icon" type="image/png" href="favicon.png" />
 <meta name="description" content="AastroAstra · highly personalised astrology notifications with an AI you can ask. Download the Android beta." />
 <meta name="theme-color" content="#FFFFFF" />
 <meta property="og:title" content="AastroAstra" />
@@ -13,10 +14,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
   /* Four solid themes: Yellow / B&W  ×  Light / Dark (inverts). No gradients. */
-  [data-theme="yellow-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:224,160,21; --pa:#F5B93A; }
-  [data-theme="mono-light"]   { --bg:#FFFFFF; --card:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; --on-accent:#FFFFFF; --cosmos:40,40,40;   --pa:#EDEDED; }
-  [data-theme="yellow-dark"]  { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; --on-accent:#0B0B0C; --cosmos:245,185,58; --pa:#F5B93A; }
-  [data-theme="mono-dark"]    { --bg:#0A0A0A; --card:#141414; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; --on-accent:#0A0A0A; --cosmos:235,235,235; --pa:#EDEDED; }
+  [data-theme="yellow-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:224,160,21; --pa:#F5B93A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
+  [data-theme="mono-light"]   { --bg:#FFFFFF; --card:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; --on-accent:#FFFFFF; --cosmos:40,40,40;   --pa:#EDEDED; --btn-bg:#0A0A0A; --btn-fg:#FFFFFF; }
+  [data-theme="yellow-dark"]  { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; --on-accent:#0B0B0C; --cosmos:245,185,58; --pa:#F5B93A; --btn-bg:#FAFAFA; --btn-fg:#0B0B0C; }
+  [data-theme="mono-dark"]    { --bg:#0A0A0A; --card:#141414; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; --on-accent:#0A0A0A; --cosmos:235,235,235; --pa:#EDEDED; --btn-bg:#FAFAFA; --btn-fg:#0A0A0A; }
 
   * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
   html, body, #root { height:100%; max-width:100%; }
@@ -28,7 +29,10 @@
 
   header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 30px; border-bottom:1px solid var(--line); }
   .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; }
-  .mark { width:22px; height:22px; }
+  .mark { width:28px; height:28px; object-fit:contain; }
+  /* Logo is gold; keep it gold in the yellow themes, force pure B&W in the mono themes */
+  [data-theme="mono-light"] .mark { filter:brightness(0); }
+  [data-theme="mono-dark"] .mark { filter:brightness(0) invert(1); }
   .brand small { font-weight:600; color:var(--muted); letter-spacing:.16em; font-size:10px; text-transform:uppercase; }
   .controls { display:flex; align-items:center; gap:10px; }
   .seg, .themes { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
@@ -49,7 +53,7 @@
   /* Yellow theme: warm yellow->orange->gold gradient title (emotica.me palette) */
   [data-theme="yellow-light"] h1, [data-theme="yellow-dark"] h1 { background:linear-gradient(100deg,#FACC15 0%,#FB923C 52%,#EAB308 100%); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
   .dl-label { margin-top:36px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
-  .btn-play { margin-top:14px; display:inline-flex; align-items:center; gap:14px; background:var(--tint); color:var(--on-accent); padding:16px 24px; border-radius:12px; width:100%; max-width:340px; transition:transform .15s ease, filter .15s ease; }
+  .btn-play { margin-top:14px; display:inline-flex; align-items:center; gap:14px; background:var(--btn-bg); color:var(--btn-fg); padding:16px 24px; border-radius:12px; width:100%; max-width:340px; transition:transform .15s ease, filter .15s ease; }
   .btn-play:hover { transform:translateY(-1px); filter:brightness(1.05); }
   .btn-play .g { width:26px; height:26px; flex:none; }
   .btn-play .t small { display:block; font-size:10px; letter-spacing:.14em; text-transform:uppercase; opacity:.8; }
@@ -258,7 +262,7 @@
         h('main', { className:'frame' },
           h('header', null,
             h('div', { className:'brand' },
-              h('svg', { className:'mark', viewBox:'0 0 24 24','aria-hidden':'true' }, h('path',{d:'M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6L12 0z',fill:'var(--tint)'})),
+              h('img', { className:'mark', src:'logo-mark.png', alt:'AastroAstra', width:28, height:28 }),
               h('span', null, 'AastroAstra'), h('small', null, 'Beta')
             ),
             h('div', { className:'controls' },
