@@ -15,11 +15,12 @@
 <style>
   /* Four solid themes: Yellow / B&W  ×  Light / Dark (inverts). No gradients. */
   [data-theme="yellow-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:55,55,55; --pa:#F5B93A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
+  [data-theme="white-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECECEC; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8C8C; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:55,55,55; --pa:#F5B93A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
   [data-theme="mono-light"]   { --bg:#FFFFFF; --card:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; --on-accent:#FFFFFF; --cosmos:40,40,40;   --pa:#EDEDED; --btn-bg:#0A0A0A; --btn-fg:#FFFFFF; }
   [data-theme="yellow-dark"]  { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; --on-accent:#0B0B0C; --cosmos:225,225,225; --pa:#F5B93A; --btn-bg:#FAFAFA; --btn-fg:#0B0B0C; }
   [data-theme="mono-dark"]    { --bg:#0A0A0A; --card:#141414; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; --on-accent:#0A0A0A; --cosmos:235,235,235; --pa:#EDEDED; --btn-bg:#FAFAFA; --btn-fg:#0A0A0A; }
   /* Tint fill: yellow->orange gradient for the yellow themes, solid for mono */
-  [data-theme="yellow-light"], [data-theme="yellow-dark"] { --tint-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 55%,#EAB308 100%); }
+  [data-theme="yellow-light"], [data-theme="yellow-dark"], [data-theme="white-light"] { --tint-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 55%,#EAB308 100%); }
   [data-theme="mono-light"], [data-theme="mono-dark"] { --tint-grad:var(--tint); }
 
   * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
@@ -32,10 +33,8 @@
 
   header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 30px; border-bottom:1px solid var(--line); }
   .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; }
-  .mark { width:28px; height:28px; object-fit:contain; }
-  /* Logo is gold; keep it gold in the yellow themes, force pure B&W in the mono themes */
-  [data-theme="mono-light"] .mark { filter:brightness(0); }
-  [data-theme="mono-dark"] .mark { filter:brightness(0) invert(1); }
+  /* Logo follows the theme: gold gradient (Yellow themes) or ink/white (B&W), via a mask */
+  .mark { width:28px; height:28px; display:inline-block; flex:none; background:var(--tint-grad); -webkit-mask:url(logo-mark.png) center/contain no-repeat; mask:url(logo-mark.png) center/contain no-repeat; }
   .brand small { font-weight:600; color:var(--muted); letter-spacing:.16em; font-size:10px; text-transform:uppercase; }
   .controls { display:flex; align-items:center; gap:10px; }
   .seg, .themes { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
@@ -85,6 +84,7 @@
   /* Phone palette follows the site theme (mirrors the 4 app themes) */
   [data-theme="mono-light"] .phone { --d-bg:#FFFFFF; --d-card:#FFFFFF; --d-c2:#F2F2F2; --d-line:#E6E6E6; --d-tp:#0A0A0A; --d-tm:#8A8A8A; --d-gold:#1A1A1A; --d-rose:#6E6E6E; --d-teal:#3A3A3A; --d-grad:#1A1A1A; --d-onaccent:#FFFFFF; --d-k:#1A1A1A; --d-kfg:#FFFFFF; }
   [data-theme="yellow-dark"] .phone { --d-bg:#0B0B0C; --d-card:#161616; --d-c2:#202020; --d-line:#2A2A2A; --d-tp:#F4F4F4; --d-tm:#9A9A9A; --d-gold:#F5B93A; --d-rose:#C97B6B; --d-teal:#00BFA5; --d-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 58%,#EAB308 100%); --d-onaccent:#3a2c05; --d-k:#F2911E; --d-kfg:#FFFFFF; }
+  [data-theme="white-light"] .phone { --d-bg:#FFFFFF; --d-card:#FFFFFF; --d-c2:#F4F4F4; --d-line:#ECECEC; --d-tp:#2A2118; --d-tm:#8A8A8A; --d-gold:#E0A015; --d-rose:#C97B6B; --d-teal:#00BFA5; --d-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 58%,#EAB308 100%); --d-onaccent:#3a2c05; --d-k:#F2911E; --d-kfg:#FFFFFF; }
   [data-theme="mono-dark"] .phone { --d-bg:#0A0A0A; --d-card:#161616; --d-c2:#1E1E1E; --d-line:#2A2A2A; --d-tp:#FAFAFA; --d-tm:#9A9A9A; --d-gold:#FAFAFA; --d-rose:#8A8A8A; --d-teal:#BFBFBF; --d-grad:#FAFAFA; --d-onaccent:#0A0A0A; --d-k:#FAFAFA; --d-kfg:#0A0A0A; }
   .phone:hover { transform:translateY(-5px); }
   .screen { position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden; background:var(--d-bg); color:var(--d-tp); display:flex; flex-direction:column; }
@@ -241,7 +241,7 @@
   }
   /* Intro splash: logo + typewriter wordmark, then the logo flies into the nav */
   #splash { position:fixed; inset:0; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; background:#FFFFFF; transition:opacity .5s ease; }
-  #splash .slogo { width:94px; height:94px; object-fit:contain; animation:splashIn 1s cubic-bezier(.2,.7,.2,1) both; will-change:transform; }
+  #splash .slogo { width:94px; height:94px; display:inline-block; background:var(--tint-grad); -webkit-mask:url(logo-mark.png) center/contain no-repeat; mask:url(logo-mark.png) center/contain no-repeat; animation:splashIn 1s cubic-bezier(.2,.7,.2,1) both; will-change:transform; }
   #splash .stype { font-family:'Noto Serif',Georgia,serif; font-size:27px; font-weight:700; letter-spacing:-.02em; color:#1A1A1A; min-height:34px; display:flex; align-items:center; border-right:2px solid currentColor; animation:caret .9s step-end infinite; }
   #splash.hide { opacity:0; pointer-events:none; }
   @keyframes splashIn { 0%{ opacity:0; transform:scale(.82); } 100%{ opacity:1; transform:scale(1); } }
@@ -249,17 +249,19 @@
 </style>
 </head>
 <body>
-  <div id="splash"><img class="slogo" src="logo-mark.png" alt="AastroAstra" /><span class="stype"></span></div>
+  <div id="splash"><span class="slogo"></span><span class="stype"></span></div>
   <script>
     (function(){
       var sp=document.getElementById('splash'); if(!sp) return;
       var im=sp.querySelector('.slogo'), txt=sp.querySelector('.stype');
       var t; try{ t=localStorage.getItem('aa-theme'); }catch(e){}
-      var dark = t==='yellow-dark' || t==='mono-dark' || (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+      var META={ 'yellow-light':1,'mono-light':1,'yellow-dark':1,'mono-dark':1 };
+      if(!META[t]) t=(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)?'yellow-dark':'yellow-light';
+      // Apply the theme early so the masked logo + surfaces resolve correctly (no flash).
+      document.documentElement.setAttribute('data-theme', t);
+      var dark = t==='yellow-dark' || t==='mono-dark';
       sp.style.background = dark ? '#0A0A0A' : '#FFFFFF';
       txt.style.color = dark ? '#FAFAFA' : '#1A1A1A';
-      if(t==='mono-light') im.style.filter='brightness(0)';
-      else if(t==='mono-dark' || (dark && t!=='yellow-dark')) im.style.filter='brightness(0) invert(1)';
       // Typewriter the wordmark, then fly the logo into the nav brand mark.
       var word='AastroAstra', i=0;
       var typer=setInterval(function(){ i++; txt.textContent=word.slice(0,i); if(i>=word.length){ clearInterval(typer); setTimeout(merge, 460); } }, 78);
@@ -563,8 +565,8 @@
       download:{en:'Download Beta',hi:'बीटा डाउनलोड'}, privacy:{en:'Privacy Policy',hi:'गोपनीयता नीति'}, terms:{en:'Terms of Use',hi:'उपयोग की शर्तें'},
       presskit:{en:'Press Kit',hi:'प्रेस किट'},
     };
-    var THEMES = [ ['yellow-light','cl','#E0A015','Yellow · Light'], ['mono-light','cl','#111111','B&W · Light'], ['yellow-dark','cd','#F5B93A','Yellow · Dark'], ['mono-dark','cd','#FFFFFF','B&W · Dark'] ];
-    var META = { 'yellow-light':'#FFFFFF','mono-light':'#FFFFFF','yellow-dark':'#0B0B0C','mono-dark':'#0A0A0A' };
+    var THEMES = [ ['yellow-light','cl','#E0A015','Yellow · Light'], ['white-light','cl','#EBCF8A','White · Light'], ['mono-light','cl','#111111','B&W · Light'], ['yellow-dark','cd','#F5B93A','Yellow · Dark'], ['mono-dark','cd','#FFFFFF','B&W · Dark'] ];
+    var META = { 'yellow-light':'#FFFFFF','white-light':'#FFFFFF','mono-light':'#FFFFFF','yellow-dark':'#0B0B0C','mono-dark':'#0A0A0A' };
 
     function App(){
       var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
@@ -588,7 +590,7 @@
         h('main', { className:'frame' },
           h('header', null,
             h('div', { className:'brand' },
-              h('img', { className:'mark', src:'logo-mark.png', alt:'AastroAstra', width:28, height:28 }),
+              h('span', { className:'mark', role:'img', 'aria-label':'AastroAstra' }),
               h('span', null, 'AastroAstra'), h('small', null, 'Beta')
             ),
             h('div', { className:'controls' },
