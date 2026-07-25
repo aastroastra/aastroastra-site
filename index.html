@@ -237,13 +237,13 @@
     function App(){
       var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
       var lS=useState('en'), lang=lS[0], setLang=lS[1];
-      var vS=useState({ver:'0.2.1',size:'5.8',apk:SUPA+'aastroastra-latest.apk'}), ver=vS[0], setVer=vS[1];
+      var vS=useState({ver:'0.2.1',size:'5.8',apk:SUPA+'aastroastra-latest.apk',updated:''}), ver=vS[0], setVer=vS[1];
       useEffect(function(){
         var saved; try{ saved=localStorage.getItem('aa-theme'); }catch(e){}
         if(!META[saved]) saved=(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)?'yellow-dark':'yellow-light';
         applyTheme(saved);
         try{ var lg=localStorage.getItem('aa-lang'); if(lg) setLang(lg); }catch(e){}
-        fetch(SUPA+'version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(v){ if(v) setVer({ver:v.version||'0.2.1',size:v.sizeMb||'5.8',apk:v.apk||(SUPA+'aastroastra-latest.apk')}); }).catch(function(){});
+        fetch(SUPA+'version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(v){ if(v) setVer({ver:v.version||'0.2.1',size:v.sizeMb||'5.8',apk:v.apk||(SUPA+'aastroastra-latest.apk'),updated:v.updated||v.date||''}); }).catch(function(){});
       }, []);
       function applyTheme(t){ if(!META[t]) t='yellow-light'; document.documentElement.setAttribute('data-theme',t); var mt=document.querySelector('meta[name=theme-color]'); if(mt) mt.content=META[t]; setTheme(t); try{ localStorage.setItem('aa-theme',t); }catch(e){} }
       function pickLang(l){ setLang(l); try{ localStorage.setItem('aa-lang',l); }catch(e){} }
@@ -277,6 +277,7 @@
                 h('div',{className:'t'}, h('small',null,COPY.getapp[lang]), h('b',null,COPY.download[lang]))
               ),
               h('div', { className:'meta' }, 'Version ', h('b',null,ver.ver), ' · Android APK · ', ver.size, ' MB'),
+              ver.updated ? h('div', { className:'meta' }, (lang==='hi'?'अंतिम अपडेट: ':'Last updated: '), h('b',null,ver.updated)) : null,
               h('div', { className:'apk-direct' }, 'Direct link: ', h('a',{href:ver.apk},'aastroastra-latest.apk'))
             ),
             h('div', { className:'right' }, h(Phone, { lang:lang }))
