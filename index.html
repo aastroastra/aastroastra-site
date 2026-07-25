@@ -3,208 +3,338 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AastroAstra — Vedic astrology, reimagined</title>
-<meta name="description" content="AastroAstra — precise Vedic kundali, KP system, numerology and match-making on your phone. Download the Android beta." />
+<title>AastroAstra — for the one who believes</title>
+<meta name="description" content="AastroAstra — a notification engine that reads your exact chart and numbers, timed to the minute, written for you by an LLM trained on your cosmos. Download the Android beta." />
 <meta name="theme-color" content="#FFFBF3" />
 <meta property="og:title" content="AastroAstra" />
-<meta property="og:description" content="Vedic astrology, reimagined. Download the Android beta." />
+<meta property="og:description" content="One who believes in Aastroastra. Highly personalised astrology notifications, timed to the minute." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
-  /* ── App theme palettes (Celestial / Light / Dark), from AastroColors ── */
   [data-theme="celestial"] {
-    --bg: #FFFBF3; --card: #FFFFFF; --line: #EDE2CE;
-    --fg: #2A2118; --fg2: #5A4D3E; --muted: #8A7A5E;
-    --tint: #F5B642; --on-accent: #08070B;
-    --grad: linear-gradient(120deg, #E5B838 0%, #F7C73E 30%, #D09224 66%, #C85822 100%);
-    --title-fill: transparent;
+    --bg:#FFFBF3; --card:#FFFFFF; --line:#EDE2CE; --fg:#2A2118; --fg2:#5A4D3E; --muted:#8A7A5E;
+    --tint:#F5B642; --on-accent:#08070B;
+    --grad:linear-gradient(120deg,#E5B838 0%,#F7C73E 30%,#D09224 66%,#C85822 100%);
+    --title-fill:transparent; --cosmos:245,182,66;
   }
   [data-theme="light"] {
-    --bg: #FFFFFF; --card: #FFFFFF; --line: #E7E7E7;
-    --fg: #1A1A1A; --fg2: #4A4A4A; --muted: #8A8A8A;
-    --tint: #E5871A; --on-accent: #08070B;
-    --grad: none;                     /* light = flat accent */
-    --title-fill: #C85822;
+    --bg:#FFFFFF; --card:#FFFFFF; --line:#E7E7E7; --fg:#1A1A1A; --fg2:#4A4A4A; --muted:#8A8A8A;
+    --tint:#E5871A; --on-accent:#08070B; --grad:none; --title-fill:#C85822; --cosmos:210,120,45;
   }
   [data-theme="dark"] {
-    --bg: #0A0A0A; --card: #141414; --line: #262626;
-    --fg: #F5F5F5; --fg2: #BFBFBF; --muted: #7A7A7A;
-    --tint: #F5B642; --on-accent: #08070B;
-    --grad: linear-gradient(120deg, #E5B838 0%, #F7C73E 30%, #D09224 66%, #C85822 100%);
-    --title-fill: transparent;
+    --bg:#0A0A0A; --card:#141414; --line:#262626; --fg:#F5F5F5; --fg2:#BFBFBF; --muted:#7A7A7A;
+    --tint:#F5B642; --on-accent:#08070B;
+    --grad:linear-gradient(120deg,#E5B838 0%,#F7C73E 30%,#D09224 66%,#C85822 100%);
+    --title-fill:transparent; --cosmos:245,182,66;
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-font-smoothing: antialiased; }
-  html, body { height: 100%; }
+  * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
+  html, body, #root { min-height:100%; }
   body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    display: flex; align-items: stretch; justify-content: center;
-    letter-spacing: -0.01em;
-    transition: background .25s ease, color .25s ease;
+    background:var(--bg); color:var(--fg);
+    font-family:'Inter','Noto Sans Devanagari',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    letter-spacing:-0.01em; transition:background .3s ease,color .3s ease; overflow-x:hidden;
   }
-  a { color: inherit; text-decoration: none; }
+  a { color:inherit; text-decoration:none; }
 
+  .cosmos { position:fixed; inset:0; width:100vw; height:100vh; z-index:0; pointer-events:none; opacity:.9; }
   .frame {
-    width: 100%; max-width: 1160px; min-height: 100vh;
-    display: grid; grid-template-rows: auto 1fr auto;
-    border-left: 1px solid var(--line); border-right: 1px solid var(--line);
+    position:relative; z-index:1; width:100%; max-width:1240px; min-height:100vh; margin:0 auto;
+    display:grid; grid-template-rows:auto 1fr auto;
+    border-left:1px solid var(--line); border-right:1px solid var(--line);
+    background:linear-gradient(to bottom, transparent, transparent);
   }
 
-  /* ── Header ── */
-  header { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; border-bottom: 1px solid var(--line); }
-  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.01em; font-size: 17px; }
-  .mark { width: 22px; height: 22px; }
-  .brand small { font-weight: 600; color: var(--muted); letter-spacing: 0.16em; font-size: 10px; text-transform: uppercase; }
-  .themes { display: flex; gap: 6px; border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
-  .themes button {
-    width: 30px; height: 30px; border: none; background: transparent; color: var(--muted);
-    border-radius: 999px; cursor: pointer; font-size: 14px; line-height: 1;
-    display: inline-flex; align-items: center; justify-content: center; transition: all .15s ease;
+  header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:20px 28px; border-bottom:1px solid var(--line); backdrop-filter:blur(2px); }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; }
+  .mark { width:22px; height:22px; }
+  .brand small { font-weight:600; color:var(--muted); letter-spacing:.16em; font-size:10px; text-transform:uppercase; }
+  .controls { display:flex; align-items:center; gap:10px; }
+  .seg { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
+  .seg button {
+    border:none; background:transparent; color:var(--muted); cursor:pointer; border-radius:999px;
+    font:inherit; font-size:12px; font-weight:600; padding:5px 11px; line-height:1;
+    display:inline-flex; align-items:center; justify-content:center; min-width:30px; height:30px; transition:all .15s ease;
   }
-  .themes button[aria-pressed="true"] { background: var(--tint); color: var(--on-accent); }
+  .seg button[aria-pressed="true"] { background:var(--tint); color:var(--on-accent); }
 
-  /* ── Hero grid ── */
-  .hero { display: grid; grid-template-columns: 1.15fr 0.85fr; }
-  .hero > div { padding: 56px 28px; }
-  .hero .left { border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
-  .hero .right { display: flex; flex-direction: column; justify-content: center; }
+  .hero { display:grid; grid-template-columns:1.05fr 0.95fr; }
+  .hero > div { padding:52px 28px; }
+  .hero .left { border-right:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; }
+  .hero .right { display:flex; align-items:center; justify-content:center; }
 
   h1 {
-    font-family: 'Noto Serif', Georgia, serif;
-    font-size: clamp(44px, 7vw, 92px); line-height: 0.98; font-weight: 700; letter-spacing: -0.03em;
-    background: var(--grad); -webkit-background-clip: text; background-clip: text;
-    color: var(--title-fill);
+    font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-0.03em;
+    font-size:clamp(38px,5.4vw,74px); line-height:1.0;
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:var(--title-fill);
   }
-  .subtitle { margin-top: 22px; font-size: clamp(16px, 1.8vw, 20px); line-height: 1.5; color: var(--fg2); max-width: 30ch; }
-  .features { margin-top: 28px; display: grid; gap: 10px; }
-  .features span { font-size: 15px; color: var(--fg); display: flex; align-items: center; gap: 12px; }
-  .features span::before { content: "✦"; color: var(--tint); font-size: 12px; }
+  .sub { margin-top:22px; font-size:clamp(15px,1.5vw,18px); line-height:1.55; color:var(--fg2); max-width:40ch; }
+  .philo { margin-top:16px; font-size:13.5px; line-height:1.6; color:var(--muted); max-width:44ch; border-left:2px solid var(--tint); padding-left:14px; }
+  .engine { margin-top:22px; display:flex; align-items:center; gap:10px; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em; }
+  .engine b { color:var(--tint); }
 
-  /* ── Download cell ── */
-  .dl-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .dl-label { margin-top:26px; font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); }
   .btn-play {
-    margin-top: 16px; display: inline-flex; align-items: center; gap: 14px;
-    background-color: var(--tint); background-image: var(--grad); color: var(--on-accent);
-    padding: 15px 22px; border-radius: 12px; width: 100%; max-width: 330px;
-    box-shadow: 0 10px 26px -12px var(--tint); transition: transform .15s ease, box-shadow .15s ease;
+    margin-top:14px; display:inline-flex; align-items:center; gap:14px;
+    background-color:var(--tint); background-image:var(--grad); color:var(--on-accent);
+    padding:15px 22px; border-radius:12px; width:100%; max-width:330px;
+    box-shadow:0 12px 30px -12px var(--tint); transition:transform .15s ease,box-shadow .15s ease;
   }
-  .btn-play:hover { transform: translateY(-1px); box-shadow: 0 14px 32px -12px var(--tint); }
-  .btn-play .g { width: 26px; height: 26px; flex: none; }
-  .btn-play .t small { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; }
-  .btn-play .t b { display: block; font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
-  .meta { margin-top: 14px; font-size: 13px; color: var(--muted); }
-  .meta b { color: var(--fg); font-weight: 600; }
-  .apk-direct { margin-top: 10px; font-size: 13px; color: var(--muted); }
-  .apk-direct a { color: var(--fg2); border-bottom: 1px solid var(--line); padding-bottom: 1px; }
-  .apk-direct a:hover { border-color: var(--tint); color: var(--tint); }
+  .btn-play:hover { transform:translateY(-1px); box-shadow:0 16px 36px -12px var(--tint); }
+  .btn-play .g { width:26px; height:26px; flex:none; }
+  .btn-play .t small { display:block; font-size:10px; letter-spacing:.14em; text-transform:uppercase; opacity:.75; }
+  .btn-play .t b { display:block; font-size:18px; font-weight:700; }
+  .meta { margin-top:12px; font-size:13px; color:var(--muted); }
+  .meta b { color:var(--fg); font-weight:600; }
+  .apk-direct { margin-top:8px; font-size:12.5px; color:var(--muted); }
+  .apk-direct a { color:var(--fg2); border-bottom:1px solid var(--line); }
+  .apk-direct a:hover { color:var(--tint); border-color:var(--tint); }
 
-  /* ── Footer ── */
-  footer { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
-  footer > * { padding: 20px 28px; font-size: 13px; color: var(--muted); }
-  footer > *:not(:last-child) { border-right: 1px solid var(--line); }
-  footer a:hover { color: var(--tint); }
-  .tm { text-align: right; }
+  /* ── Phone ── */
+  .phone {
+    position:relative; width:300px; height:600px; border-radius:42px; padding:12px;
+    background:linear-gradient(160deg,#26262b,#0d0d10); box-shadow:0 40px 90px -30px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.06) inset;
+  }
+  .screen { position:relative; width:100%; height:100%; border-radius:32px; overflow:hidden;
+    background:radial-gradient(120% 80% at 50% -10%, #241a10 0%, #0c0a08 55%, #050505 100%); color:#fff; }
+  .notch { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:110px; height:26px; background:#000; border-radius:0 0 16px 16px; z-index:3; }
+  .lock { padding:44px 18px 10px; text-align:center; }
+  .lock .clk { font-family:'Noto Serif',serif; font-size:52px; font-weight:600; letter-spacing:-.02em; line-height:1; }
+  .lock .dt { margin-top:4px; font-size:12.5px; color:rgba(255,255,255,.6); }
+  .stack { position:absolute; left:12px; right:12px; bottom:16px; display:flex; flex-direction:column; gap:9px; }
+  .ncard {
+    background:rgba(30,28,26,.72); backdrop-filter:blur(14px); border:1px solid rgba(245,182,66,.16);
+    border-radius:18px; padding:12px 13px; box-shadow:0 8px 22px -12px rgba(0,0,0,.7);
+    animation:rise .5s cubic-bezier(.2,.7,.2,1) both;
+  }
+  .ncard.fresh { border-color:rgba(245,182,66,.42); box-shadow:0 12px 30px -12px rgba(245,182,66,.35); }
+  .nrow { display:flex; align-items:center; gap:7px; font-size:11px; color:rgba(255,255,255,.6); }
+  .nicon { width:16px; height:16px; border-radius:5px; background:linear-gradient(140deg,#F7C73E,#C85822); color:#000; display:inline-flex; align-items:center; justify-content:center; font-size:10px; }
+  .napp { color:#fff; font-weight:600; }
+  .ncad { margin-left:auto; font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 7px; border-radius:999px; }
+  .cad-transit { background:rgba(245,182,66,.18); color:#F7C73E; }
+  .cad-weekly { background:rgba(120,170,255,.16); color:#8FB4FF; }
+  .cad-monthly { background:rgba(180,130,255,.16); color:#C6A2FF; }
+  .ntitle { margin-top:7px; font-size:13.5px; font-weight:700; color:#fff; }
+  .nbody { margin-top:3px; font-size:12.5px; line-height:1.45; color:rgba(255,255,255,.82); }
+  .nfor { margin-top:7px; font-size:10.5px; color:rgba(245,182,66,.75); }
+  @keyframes rise { from { opacity:0; transform:translateY(10px) scale(.98); } to { opacity:1; transform:none; } }
 
-  @media (max-width: 780px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero .left { border-right: none; border-bottom: 1px solid var(--line); }
-    .hero > div { padding: 40px 22px; }
-    footer { grid-template-columns: 1fr; }
-    footer > *:not(:last-child) { border-right: none; border-bottom: 1px solid var(--line); }
-    .tm { text-align: left; }
+  footer { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
+  footer > * { padding:18px 28px; font-size:13px; color:var(--muted); }
+  footer > *:not(:last-child) { border-right:1px solid var(--line); }
+  footer a:hover { color:var(--tint); }
+  .tm { text-align:right; }
+
+  @media (max-width:860px) {
+    .hero { grid-template-columns:1fr; }
+    .hero .left { border-right:none; border-bottom:1px solid var(--line); }
+    .hero > div { padding:40px 22px; }
+    .hero .right { padding-top:8px; }
+    footer { grid-template-columns:1fr; }
+    footer > *:not(:last-child) { border-right:none; border-bottom:1px solid var(--line); }
+    .tm { text-align:left; }
+    header { flex-wrap:wrap; }
   }
 </style>
 </head>
 <body>
-  <main class="frame">
-    <header>
-      <div class="brand">
-        <svg class="mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6L12 0z" fill="var(--tint)"/>
-        </svg>
-        <span>AastroAstra</span>
-        <small>Beta</small>
-      </div>
-      <div class="themes" role="group" aria-label="Theme">
-        <button data-set="celestial" title="Celestial" aria-pressed="true">✦</button>
-        <button data-set="light" title="Light" aria-pressed="false">☀</button>
-        <button data-set="dark" title="Dark" aria-pressed="false">☾</button>
-      </div>
-    </header>
+  <div id="root"></div>
 
-    <section class="hero">
-      <div class="left">
-        <h1>Vedic astrology,<br/>reimagined.</h1>
-        <p class="subtitle">Precise kundali, KP system, numerology and match-making — computed to the arc-second, on your phone.</p>
-        <div class="features">
-          <span>North &amp; South Indian charts</span>
-          <span>KP system &amp; Vimshottari dasha</span>
-          <span>Numerology &amp; compatibility</span>
-        </div>
-      </div>
-      <div class="right">
-        <div class="dl-label">Download the beta</div>
-        <a class="btn-play" id="dl" href="#" rel="noopener">
-          <svg class="g" viewBox="0 0 512 512" aria-hidden="true">
-            <path d="M47 32c-9 5-15 15-15 28v392c0 13 6 23 15 28l224-224L47 32z" fill="currentColor"/>
-            <path d="M336 176L83 33c-9-5-18-5-25-1l224 224 54-80z" fill="currentColor" opacity="0.82"/>
-            <path d="M336 336l-54-80-224 224c7 4 16 4 25-1l253-143z" fill="currentColor" opacity="0.82"/>
-            <path d="M336 176l-54 80 54 80 94-53c17-10 17-44 0-54l-94-53z" fill="currentColor" opacity="0.6"/>
-          </svg>
-          <div class="t">
-            <small>Get the Android app</small>
-            <b>Download Beta</b>
-          </div>
-        </a>
-        <div class="meta">Version <b id="ver">0.2.1</b> · Android APK · <span id="size">5.8</span> MB</div>
-        <div class="apk-direct">Direct link: <a id="apk" href="#">aastroastra-latest.apk</a></div>
-      </div>
-    </section>
-
-    <footer>
-      <a href="./privacy.html">Privacy Policy</a>
-      <a href="./terms.html">Terms of Use</a>
-      <div class="tm">AastroAstra™ · © <span id="yr">2026</span></div>
-    </footer>
-  </main>
-
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script>
-    // ── Theme (Celestial / Light / Dark) — matches the app; persisted ──
-    var META = { celestial: '#FFFBF3', light: '#FFFFFF', dark: '#0A0A0A' };
-    function setTheme(t) {
-      if (!META[t]) t = 'celestial';
-      document.documentElement.setAttribute('data-theme', t);
-      var m = document.querySelector('meta[name=theme-color]'); if (m) m.content = META[t];
-      var btns = document.querySelectorAll('.themes button');
-      for (var i = 0; i < btns.length; i++) btns[i].setAttribute('aria-pressed', btns[i].dataset.set === t);
-      try { localStorage.setItem('aa-theme', t); } catch (e) {}
-    }
-    (function () {
-      var saved; try { saved = localStorage.getItem('aa-theme'); } catch (e) {}
-      if (!saved) saved = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'celestial';
-      setTheme(saved);
-      var btns = document.querySelectorAll('.themes button');
-      for (var i = 0; i < btns.length; i++) btns[i].addEventListener('click', function () { setTheme(this.dataset.set); });
-    })();
+  (function () {
+    var h = React.createElement;
+    var useState = React.useState, useEffect = React.useEffect, useRef = React.useRef;
+    var SUPA = 'https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/';
 
-    // ── Download link + live version from Supabase Storage ──
-    var BASE = 'https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/';
-    var APK = BASE + 'aastroastra-latest.apk';
-    document.getElementById('dl').href = APK;
-    document.getElementById('apk').href = APK;
-    try { document.getElementById('yr').textContent = new Date().getFullYear(); } catch (e) {}
-    fetch(BASE + 'version.json?t=' + Date.now(), { cache: 'no-store' })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (v) {
-        if (!v) return;
-        if (v.version) document.getElementById('ver').textContent = v.version;
-        if (v.sizeMb) document.getElementById('size').textContent = v.sizeMb;
-        if (v.apk) { document.getElementById('dl').href = v.apk; document.getElementById('apk').href = v.apk; }
-      })
-      .catch(function () {});
+    var CAD = {
+      transit: { en:'Transit', hi:'गोचर' },
+      weekly:  { en:'Weekly',  hi:'साप्ताहिक' },
+      monthly: { en:'Monthly', hi:'मासिक' },
+    };
+    // transit / weekly / monthly × career / health / love — EN + simple HI
+    var NOTIFS = [
+      { cad:'transit', en:{t:'Career · a 3-hour window', b:'Moon enters your 10th house at 4:12 PM — the sharpest window today to pitch. Mercury backs your words.'},
+        hi:{t:'करियर · 3 घंटे का शुभ समय', b:'शाम 4:12 बजे चंद्रमा आपके दशम भाव में — आज विचार रखने का सबसे तेज़ समय। बुध आपकी बात का साथ देगा।'} },
+      { cad:'weekly',  en:{t:'Health · this week', b:'Mars trines your Ascendant — energy peaks Wed & Thu. Train hard then, and rest Sunday.'},
+        hi:{t:'स्वास्थ्य · इस सप्ताह', b:'मंगल आपके लग्न से त्रिकोण में — बुध व गुरुवार ऊर्जा चरम पर। तभी मेहनत करें, रविवार आराम।'} },
+      { cad:'monthly', en:{t:'Love · this month', b:'Venus lights your 7th house all month. The 14th–18th favour a heartfelt conversation.'},
+        hi:{t:'प्रेम · इस महीने', b:'पूरे महीने शुक्र आपके सप्तम भाव को रोशन करता है। 14–18 तारीख़ दिल की बात के लिए शुभ।'} },
+      { cad:'transit', en:{t:'Health · slow down tonight', b:'Saturn squares your Moon this evening — low energy 6–9 PM. Hydrate and sleep early.'},
+        hi:{t:'स्वास्थ्य · आज शाम संभलें', b:'आज शाम शनि आपके चंद्रमा से केंद्र में — 6–9 बजे ऊर्जा कम। पानी पिएँ, जल्दी सोएँ।'} },
+      { cad:'weekly',  en:{t:'Career · money talks land', b:'Jupiter aspects your 2nd house — a conversation about money goes well Thu–Fri.'},
+        hi:{t:'करियर · धन की बात बनेगी', b:'गुरु की दृष्टि आपके द्वितीय भाव पर — बुध–शुक्रवार पैसे की बात अच्छी रहेगी।'} },
+      { cad:'monthly', en:{t:'Career · recognition builds', b:'Your Sun dasha turns active — visibility grows after the 21st. Say yes to the spotlight.'},
+        hi:{t:'करियर · पहचान बढ़ेगी', b:'आपकी सूर्य दशा सक्रिय — 21 के बाद पहचान बढ़ती है। सामने आने का मौका लें।'} },
+      { cad:'transit', en:{t:'Love · a warm window', b:'Moon meets Venus in your 5th at 9 PM — a warm 2-hour window for romance.'},
+        hi:{t:'प्रेम · गर्म समय', b:'रात 9 बजे पंचम भाव में चंद्र-शुक्र मिलन — प्रेम के लिए 2 घंटे का सुंदर समय।'} },
+      { cad:'weekly',  en:{t:'Love · clear the air', b:'Mercury softens your words mid-week — the 12th is ideal to settle a misunderstanding.'},
+        hi:{t:'प्रेम · ग़लतफ़हमी दूर करें', b:'सप्ताह के मध्य बुध आपकी बात मीठी करेगा — 12 तारीख़ बात सुलझाने को उत्तम।'} },
+      { cad:'monthly', en:{t:'Health · vitality returns', b:'Sade Sati eases this month — energy comes back after the 9th. Rebuild your routine.'},
+        hi:{t:'स्वास्थ्य · ऊर्जा लौटेगी', b:'इस महीने साढ़े साती नरम पड़ती है — 9 के बाद ऊर्जा लौटेगी। दिनचर्या फिर बनाएँ।'} },
+    ];
+
+    // ── Cosmic canvas: stars + 13 planets on orbits exchanging signals, evolving with time ──
+    function Cosmos(props) {
+      var ref = useRef(null);
+      useEffect(function () {
+        var canvas = ref.current, ctx = canvas.getContext('2d');
+        var dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, Hh = 0, raf;
+        function resize(){ W = window.innerWidth; Hh = window.innerHeight; canvas.width = W*dpr; canvas.height = Hh*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+        resize(); window.addEventListener('resize', resize);
+        var stars = []; for (var i=0;i<120;i++) stars.push({ x:Math.random(), y:Math.random(), r:Math.random()*1.3+0.3, tw:Math.random()*6.28, sp:Math.random()*0.5+0.1 });
+        var N = 13, planets = []; for (var j=0;j<N;j++) planets.push({ base:Math.random()*6.28, rad:0.10+(j/N)*0.34, speed:(0.015+Math.random()*0.05)*(j%2?1:-1), sz:1.4+Math.random()*2.6 });
+        function tint(){ var v = getComputedStyle(document.documentElement).getPropertyValue('--cosmos').trim() || '245,182,66'; return v.split(',').map(Number); }
+        function frame(ts){
+          var t = ts/1000, c = tint(), r=c[0], g=c[1], b=c[2];
+          ctx.clearRect(0,0,W,Hh);
+          var cx = W>860 ? W*0.66 : W*0.5, cy = Hh*0.5, R = Math.min(W,Hh);
+          for (var s=0;s<stars.length;s++){ var st=stars[s], a=0.28+0.34*Math.sin(t*st.sp+st.tw); ctx.fillStyle='rgba('+r+','+g+','+b+','+(a*0.55)+')'; ctx.beginPath(); ctx.arc(st.x*W, st.y*Hh, st.r, 0, 6.28); ctx.fill(); }
+          var pts = []; for (var p=0;p<planets.length;p++){ var pl=planets[p], ang=pl.base+t*pl.speed; pts.push({ x:cx+Math.cos(ang)*pl.rad*R, y:cy+Math.sin(ang)*pl.rad*R*0.72, sz:pl.sz }); }
+          var maxD = R*0.26;
+          for (var m=0;m<pts.length;m++) for (var n=m+1;n<pts.length;n++){
+            var dx=pts[m].x-pts[n].x, dy=pts[m].y-pts[n].y, d=Math.hypot(dx,dy);
+            if (d<maxD){ var al=(1-d/maxD)*0.16; ctx.strokeStyle='rgba('+r+','+g+','+b+','+al+')'; ctx.lineWidth=0.6; ctx.beginPath(); ctx.moveTo(pts[m].x,pts[m].y); ctx.lineTo(pts[n].x,pts[n].y); ctx.stroke();
+              var u=(t*0.28+m*0.13)%1, sx=pts[m].x+(pts[n].x-pts[m].x)*u, sy=pts[m].y+(pts[n].y-pts[m].y)*u; ctx.fillStyle='rgba('+r+','+g+','+b+','+(al*2.6)+')'; ctx.beginPath(); ctx.arc(sx,sy,1.1,0,6.28); ctx.fill(); }
+          }
+          for (var q=0;q<pts.length;q++){ var pt=pts[q];
+            var gr=ctx.createRadialGradient(pt.x,pt.y,0,pt.x,pt.y,pt.sz*5); gr.addColorStop(0,'rgba('+r+','+g+','+b+',0.22)'); gr.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=gr; ctx.beginPath(); ctx.arc(pt.x,pt.y,pt.sz*5,0,6.28); ctx.fill();
+            ctx.fillStyle='rgba('+r+','+g+','+b+',0.92)'; ctx.beginPath(); ctx.arc(pt.x,pt.y,pt.sz,0,6.28); ctx.fill(); }
+          raf = requestAnimationFrame(frame);
+        }
+        raf = requestAnimationFrame(frame);
+        return function(){ cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
+      }, [props.theme]);
+      return h('canvas', { ref: ref, className: 'cosmos' });
+    }
+
+    function NotifCard(props){
+      var n = props.n, lang = props.lang, c = n[lang];
+      return h('div', { className: 'ncard' + (props.fresh ? ' fresh' : '') },
+        h('div', { className:'nrow' },
+          h('span', { className:'nicon' }, '✦'),
+          h('span', { className:'napp' }, 'AastroAstra'),
+          h('span', null, '·'),
+          h('span', null, lang==='hi' ? 'अभी' : 'now'),
+          h('span', { className:'ncad cad-'+n.cad }, CAD[n.cad][lang])
+        ),
+        h('div', { className:'ntitle' }, c.t),
+        h('div', { className:'nbody' }, c.b),
+        h('div', { className:'nfor' }, lang==='hi' ? 'राहुल के लिए · कर्क चंद्र · मूलांक 4' : 'for Rahul · Cancer Moon · Driver 4')
+      );
+    }
+
+    function Phone(props){
+      var lang = props.lang;
+      var idxState = useState(0), idx = idxState[0], setIdx = idxState[1];
+      useEffect(function(){ var id = setInterval(function(){ setIdx(function(i){ return (i+1)%NOTIFS.length; }); }, 3800); return function(){ clearInterval(id); }; }, []);
+      var cards = [0,1,2].map(function(k){ return NOTIFS[(idx+k)%NOTIFS.length]; });
+      return h('div', { className:'phone' },
+        h('div', { className:'notch' }),
+        h('div', { className:'screen' },
+          h('div', { className:'lock' },
+            h('div', { className:'clk' }, '9:41'),
+            h('div', { className:'dt' }, lang==='hi' ? 'सोमवार, 20 जुलाई' : 'Monday, 20 July')
+          ),
+          h('div', { className:'stack' },
+            cards.map(function(n,k){ return h(NotifCard, { key: idx+'-'+k, n:n, lang:lang, fresh:k===0 }); })
+          )
+        )
+      );
+    }
+
+    var COPY = {
+      sub: { en:'A notification engine tuned to your exact chart and numbers — every alert timed to the minute and written for you by an LLM trained on your cosmos.',
+             hi:'एक नोटिफ़िकेशन इंजन जो आपकी सटीक कुंडली और अंकों के अनुसार बना — हर सूचना मिनट तक सही समय पर, और आपके ब्रह्मांड पर प्रशिक्षित LLM द्वारा आपके लिए लिखी गई।' },
+      philo: { en:'Nine planets and the far ones trade signals across your sky. From your exact place and moment the math is precise — yet where it bends body and mind stays, beautifully, unpredictable. That edge is what we read.',
+               hi:'नौ ग्रह और दूर के ग्रह आपके आकाश में संकेतों का आदान-प्रदान करते हैं। आपके ठीक स्थान और क्षण से गणित सटीक है — फिर भी यह मन और शरीर को जहाँ मोड़ता है वह, ख़ूबसूरती से, अनिश्चित रहता है। वही किनारा हम पढ़ते हैं।' },
+      engine: { en:'Personalised by your numbers ✦ astrology ✦ LLM', hi:'आपके अंक ✦ ज्योतिष ✦ LLM से वैयक्तिक' },
+      dl: { en:'Download the beta', hi:'बीटा डाउनलोड करें' },
+      getapp: { en:'Get the Android app', hi:'एंड्रॉइड ऐप लें' },
+      download: { en:'Download Beta', hi:'बीटा डाउनलोड' },
+      privacy: { en:'Privacy Policy', hi:'गोपनीयता नीति' },
+      terms: { en:'Terms of Use', hi:'उपयोग की शर्तें' },
+    };
+
+    function App(){
+      var themeS = useState('celestial'), theme = themeS[0], setTheme = themeS[1];
+      var langS = useState('en'), lang = langS[0], setLang = langS[1];
+      var verS = useState({ ver:'0.2.1', size:'5.8', apk: SUPA+'aastroastra-latest.apk' }), ver = verS[0], setVer = verS[1];
+
+      useEffect(function(){
+        var saved; try { saved = localStorage.getItem('aa-theme'); } catch(e){}
+        if (!saved) saved = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'celestial';
+        applyTheme(saved);
+        try { var lg = localStorage.getItem('aa-lang'); if (lg) setLang(lg); } catch(e){}
+        fetch(SUPA+'version.json?t='+Date.now(), { cache:'no-store' }).then(function(r){ return r.ok?r.json():null; }).then(function(v){
+          if (v) setVer({ ver:v.version||'0.2.1', size:v.sizeMb||'5.8', apk:v.apk||(SUPA+'aastroastra-latest.apk') });
+        }).catch(function(){});
+      }, []);
+
+      function applyTheme(t){
+        document.documentElement.setAttribute('data-theme', t);
+        var meta = { celestial:'#FFFBF3', light:'#FFFFFF', dark:'#0A0A0A' };
+        var mt = document.querySelector('meta[name=theme-color]'); if (mt && meta[t]) mt.content = meta[t];
+        setTheme(t); try { localStorage.setItem('aa-theme', t); } catch(e){}
+      }
+      function pickLang(l){ setLang(l); try { localStorage.setItem('aa-lang', l); } catch(e){} }
+
+      var themeBtns = [['celestial','✦'],['light','☀'],['dark','☾']].map(function(x){
+        return h('button', { key:x[0], title:x[0], 'aria-pressed': theme===x[0], onClick:function(){ applyTheme(x[0]); } }, x[1]);
+      });
+      var langBtns = [['en','EN'],['hi','हिं']].map(function(x){
+        return h('button', { key:x[0], 'aria-pressed': lang===x[0], onClick:function(){ pickLang(x[0]); } }, x[1]);
+      });
+
+      return h(React.Fragment, null,
+        h(Cosmos, { theme: theme }),
+        h('main', { className:'frame' },
+          h('header', null,
+            h('div', { className:'brand' },
+              h('svg', { className:'mark', viewBox:'0 0 24 24', 'aria-hidden':'true' },
+                h('path', { d:'M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6L12 0z', fill:'var(--tint)' })),
+              h('span', null, 'AastroAstra'),
+              h('small', null, 'Beta')
+            ),
+            h('div', { className:'controls' },
+              h('div', { className:'seg', role:'group', 'aria-label':'Language' }, langBtns),
+              h('div', { className:'seg', role:'group', 'aria-label':'Theme' }, themeBtns)
+            )
+          ),
+          h('section', { className:'hero' },
+            h('div', { className:'left' },
+              h('h1', null, 'One who believes', h('br'), 'in Aastroastra.'),
+              h('p', { className:'sub' }, COPY.sub[lang]),
+              h('p', { className:'philo' }, COPY.philo[lang]),
+              h('div', { className:'engine' }, h('b', null, '✦'), COPY.engine[lang]),
+              h('div', { className:'dl-label' }, COPY.dl[lang]),
+              h('a', { className:'btn-play', href:ver.apk, rel:'noopener' },
+                h('svg', { className:'g', viewBox:'0 0 512 512', 'aria-hidden':'true' },
+                  h('path', { d:'M47 32c-9 5-15 15-15 28v392c0 13 6 23 15 28l224-224L47 32z', fill:'currentColor' }),
+                  h('path', { d:'M336 176L83 33c-9-5-18-5-25-1l224 224 54-80z', fill:'currentColor', opacity:'0.82' }),
+                  h('path', { d:'M336 336l-54-80-224 224c7 4 16 4 25-1l253-143z', fill:'currentColor', opacity:'0.82' }),
+                  h('path', { d:'M336 176l-54 80 54 80 94-53c17-10 17-44 0-54l-94-53z', fill:'currentColor', opacity:'0.6' })
+                ),
+                h('div', { className:'t' }, h('small', null, COPY.getapp[lang]), h('b', null, COPY.download[lang]))
+              ),
+              h('div', { className:'meta' }, 'Version ', h('b', null, ver.ver), ' · Android APK · ', ver.size, ' MB'),
+              h('div', { className:'apk-direct' }, 'Direct link: ', h('a', { href:ver.apk }, 'aastroastra-latest.apk'))
+            ),
+            h('div', { className:'right' }, h(Phone, { lang: lang }))
+          ),
+          h('footer', null,
+            h('a', { href:'./privacy.html' }, COPY.privacy[lang]),
+            h('a', { href:'./terms.html' }, COPY.terms[lang]),
+            h('div', { className:'tm' }, 'AastroAstra™ · © ' + (new Date().getFullYear()))
+          )
+        )
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+  })();
   </script>
 </body>
 </html>
