@@ -50,7 +50,18 @@
   .hero { display:grid; grid-template-columns:1fr 0.9fr; min-height:0; }
   .hero > div { padding:30px; min-height:0; }
   .hero .left { border-right:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; }
-  .hero .right { display:flex; align-items:center; justify-content:center; }
+  .hero .right { position:relative; display:flex; align-items:center; justify-content:center; }
+  /* Three AastroAstra engines, branded around the phone */
+  .engines { position:absolute; inset:0; pointer-events:none; z-index:2; }
+  .eng-cap { position:absolute; top:1%; left:50%; transform:translateX(-50%); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700; white-space:nowrap; }
+  .engine { position:absolute; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:9px 11px; max-width:178px; box-shadow:0 14px 34px -16px rgba(0,0,0,.34); }
+  .engine .en { font-size:11.5px; font-weight:800; color:var(--fg); display:flex; align-items:center; gap:5px; }
+  .engine .en .dot { width:6px; height:6px; border-radius:50%; background:var(--tint); flex:none; }
+  .engine .en .tm { font-size:8px; color:var(--muted); }
+  .engine .ed { margin-top:3px; font-size:10px; line-height:1.35; color:var(--muted); }
+  .engine.e0 { top:13%; left:0; }
+  .engine.e1 { top:47%; right:0; }
+  .engine.e2 { bottom:11%; left:2%; }
 
   h1 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-0.03em; font-size:clamp(46px,7vw,104px); line-height:0.98; color:var(--tint); }
   /* Yellow theme: warm yellow->orange->gold gradient title (emotica.me palette) */
@@ -103,6 +114,11 @@
   .dact .i { font-size:14px; }
   .dact.k { background:var(--d-k); color:var(--d-kfg); }
   .dact.m { background:var(--d-rose); }
+  .mm { margin-top:8px; background:var(--d-grad); color:var(--d-onaccent); border-radius:14px; padding:11px 13px; }
+  .mmrow { display:flex; align-items:center; gap:8px; font-weight:800; font-size:12.5px; }
+  .mmrow .i { font-size:14px; }
+  .mmrow .eng { margin-left:auto; font-size:8px; font-weight:800; letter-spacing:.12em; padding:2px 7px; border-radius:999px; background:rgba(0,0,0,.16); }
+  .mms { margin-top:3px; font-size:10px; opacity:.85; font-weight:600; }
   .slabel { margin-top:15px; font-size:8.5px; font-weight:800; letter-spacing:.16em; color:var(--d-tm); }
   .nums { display:flex; gap:7px; margin-top:9px; }
   .numbox { flex:1; background:var(--d-c2); border-radius:11px; padding:9px 4px; text-align:center; }
@@ -186,9 +202,27 @@
     .phone { width:248px; height:min(508px, calc(100vh - 120px)); border-radius:38px; padding:9px; }
     .phone .screen { border-radius:30px; }
   }
+  /* Intro splash: logo appears, then fades to reveal the site */
+  #splash { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; background:#FFFFFF; transition:opacity .55s ease; }
+  #splash img { width:104px; height:104px; object-fit:contain; animation:splashIn 1.15s cubic-bezier(.2,.7,.2,1) both; }
+  #splash.hide { opacity:0; pointer-events:none; }
+  @keyframes splashIn { 0%{ opacity:0; transform:scale(.82); } 45%{ opacity:1; transform:scale(1); } 100%{ opacity:1; transform:scale(1.02); } }
 </style>
 </head>
 <body>
+  <div id="splash"><img src="logo-mark.png" alt="AastroAstra" /></div>
+  <script>
+    (function(){
+      var sp=document.getElementById('splash'); if(!sp) return;
+      var t; try{ t=localStorage.getItem('aa-theme'); }catch(e){}
+      var dark = t==='yellow-dark' || t==='mono-dark' || (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+      sp.style.background = dark ? '#0A0A0A' : '#FFFFFF';
+      var im=sp.querySelector('img');
+      if(t==='mono-light') im.style.filter='brightness(0)';
+      else if(t==='mono-dark' || (dark && t!=='yellow-dark')) im.style.filter='brightness(0) invert(1)';
+      setTimeout(function(){ sp.classList.add('hide'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); }, 600); }, 1200);
+    })();
+  </script>
   <div id="root"></div>
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -268,6 +302,7 @@
       wk:{en:'Monday',hi:'सोमवार'},
       horoBody:{en:'The stars favour you today. Focus on what matters and speak your mind after noon.',hi:'आज सितारे आपके पक्ष में हैं। जो ज़रूरी है उस पर ध्यान दें, दोपहर बाद मन की बात कहें।'},
       single:{en:'Single Kundali',hi:'एकल कुंडली'}, match:{en:'Match Making',hi:'मिलान'},
+      multi:{en:'Multi-Match',hi:'मल्टी-मैच'}, multiS:{en:'Compare against your best possible matches',hi:'अपने सर्वोत्तम संभावित मैच से तुलना करें'},
       numHead:{en:'YOUR NUMEROLOGY',hi:'आपका अंक ज्योतिष'},
       numLine:{en:'Driver 1 — the pioneer and natural leader. Today favours bold, first moves.',hi:'मूलांक 1 — अग्रणी और स्वाभाविक नेता। आज साहसिक पहल शुभ।'},
       explore:{en:'EXPLORE MORE',hi:'और देखें'},
@@ -297,6 +332,22 @@
     function pickReply(text, lang){ var q=(text||'').toLowerCase(); for(var i=0;i<REPLIES.length;i++){ for(var j=0;j<REPLIES[i].k.length;j++){ if(q.indexOf(REPLIES[i].k[j])>=0) return REPLIES[i][lang]; } } return FALLBACK[lang]; }
     function rich(t){ var parts=t.split('**'); return parts.map(function(p,i){ return i%2? h('b',{key:i},p):p; }); }
 
+    // The three AastroAstra engines, branded around the phone
+    var ENGINES = [
+      { n:{en:'Notification Engine',hi:'नोटिफिकेशन इंजन'}, d:{en:'Alerts timed to your exact transits',hi:'आपके गोचर के अनुसार सूचनाएँ'} },
+      { n:{en:'Multi-Match Engine',hi:'मल्टी-मैच इंजन'}, d:{en:'Compare against your best matches',hi:'सर्वोत्तम मैच से तुलना'} },
+      { n:{en:'Prediction Engine',hi:'प्रेडिक्शन इंजन'}, d:{en:'Transit, weekly & monthly reads',hi:'गोचर, साप्ताहिक व मासिक फल'} },
+    ];
+    function Engines(props){
+      var lang=props.lang, T=function(o){ return o[lang]||o.en; };
+      return h('div', { className:'engines' },
+        h('div', { className:'eng-cap' }, lang==='hi'?'AastroAstra इंजन':'AastroAstra Engines'),
+        ENGINES.map(function(e,i){ return h('div',{ key:i, className:'engine e'+i },
+          h('div',{ className:'en' }, h('span',{className:'dot'}), T(e.n), h('sup',{className:'tm'},'™')),
+          h('div',{ className:'ed' }, T(e.d))
+        ); })
+      );
+    }
     function Phone(props){
       var lang=props.lang, T=function(o){ return o[lang]||o.en; };
       var oS=useState(false), open=oS[0], setOpen=oS[1];
@@ -337,6 +388,10 @@
             h('div', { className:'dacts' },
               h('div', { className:'dact k' }, h('span',{className:'i'},'▦'), T(DASH.single)),
               h('div', { className:'dact m' }, h('span',{className:'i'},'♥'), T(DASH.match))
+            ),
+            h('div', { className:'mm' },
+              h('div', { className:'mmrow' }, h('span',{className:'i'},'✶'), h('span',{className:'mt'}, T(DASH.multi)), h('span',{className:'eng'}, 'ENGINE')),
+              h('div', { className:'mms' }, T(DASH.multiS))
             ),
             h('div', { className:'slabel' }, T(DASH.numHead)),
             h('div', { className:'card' },
@@ -440,7 +495,7 @@
               ver.updated ? h('div', { className:'meta' }, (lang==='hi'?'अंतिम अपडेट: ':'Last updated: '), h('b',null,ver.updated)) : null,
               h('div', { className:'apk-direct' }, 'Direct link: ', h('a',{href:ver.apk},'aastroastra-latest.apk'))
             ),
-            h('div', { className:'right' }, h(Phone, { lang:lang }))
+            h('div', { className:'right' }, h(Phone, { lang:lang }), h(Engines, { lang:lang }))
           ),
           h('footer', null,
             h('a', { href:'./privacy.html' }, COPY.privacy[lang]),
