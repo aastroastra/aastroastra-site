@@ -14,9 +14,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
   /* Four solid themes: Yellow / B&W  ×  Light / Dark (inverts). No gradients. */
-  [data-theme="yellow-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:224,160,21; --pa:#F5B93A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
+  [data-theme="yellow-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:55,55,55; --pa:#F5B93A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
   [data-theme="mono-light"]   { --bg:#FFFFFF; --card:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; --on-accent:#FFFFFF; --cosmos:40,40,40;   --pa:#EDEDED; --btn-bg:#0A0A0A; --btn-fg:#FFFFFF; }
-  [data-theme="yellow-dark"]  { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; --on-accent:#0B0B0C; --cosmos:245,185,58; --pa:#F5B93A; --btn-bg:#FAFAFA; --btn-fg:#0B0B0C; }
+  [data-theme="yellow-dark"]  { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; --on-accent:#0B0B0C; --cosmos:225,225,225; --pa:#F5B93A; --btn-bg:#FAFAFA; --btn-fg:#0B0B0C; }
   [data-theme="mono-dark"]    { --bg:#0A0A0A; --card:#141414; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; --on-accent:#0A0A0A; --cosmos:235,235,235; --pa:#EDEDED; --btn-bg:#FAFAFA; --btn-fg:#0A0A0A; }
   /* Tint fill: yellow->orange gradient for the yellow themes, solid for mono */
   [data-theme="yellow-light"], [data-theme="yellow-dark"] { --tint-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 55%,#EAB308 100%); }
@@ -222,23 +222,35 @@
         var canvas=ref.current, ctx=canvas.getContext('2d'), dpr=Math.min(window.devicePixelRatio||1,2), W=0, Hh=0, raf;
         function resize(){ W=window.innerWidth; Hh=window.innerHeight; canvas.width=W*dpr; canvas.height=Hh*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
         resize(); window.addEventListener('resize', resize);
-        var stars=[]; for(var i=0;i<105;i++) stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.2+0.3,tw:Math.random()*6.28,sp:Math.random()*0.5+0.1});
-        var N=13, planets=[]; for(var j=0;j<N;j++) planets.push({base:Math.random()*6.28,rad:0.10+(j/N)*0.34,speed:(0.013+Math.random()*0.04)*(j%2?1:-1),sz:1.4+Math.random()*2.3});
-        function col(){ var v=getComputedStyle(document.documentElement).getPropertyValue('--cosmos').trim()||'224,160,21'; return v.split(',').map(Number); }
+        var mouse={x:-9999,y:-9999};
+        function onMove(e){ mouse.x=e.clientX; mouse.y=e.clientY; }
+        window.addEventListener('mousemove', onMove);
+        var stars=[]; for(var i=0;i<80;i++) stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.1+0.3,tw:Math.random()*6.28,sp:Math.random()*0.5+0.1});
+        // 8 planets on 8 concentric orbit rings (Mercury..Neptune), inner rings faster
+        var N=8, planets=[]; for(var j=0;j<N;j++) planets.push({ ring:0.12+j*0.093, base:Math.random()*6.28, speed:(0.06/(1+j*0.5))*(j%2?1:-1)*1.1, sz:1.6+(j<2?0.3:1.5)+Math.random()*1.3 });
+        var squash=0.8;
+        function col(){ var v=getComputedStyle(document.documentElement).getPropertyValue('--cosmos').trim()||'120,120,120'; return v.split(',').map(Number); }
         function frame(ts){
-          var t=ts/1000, c=col(), r=c[0], g=c[1], b=c[2]; ctx.clearRect(0,0,W,Hh);
-          var cx=W>900?W*0.68:W*0.5, cy=Hh*0.5, R=Math.min(W,Hh);
-          for(var s=0;s<stars.length;s++){ var st=stars[s], a=0.2+0.28*Math.sin(t*st.sp+st.tw); ctx.fillStyle='rgba('+r+','+g+','+b+','+(a*0.5)+')'; ctx.beginPath(); ctx.arc(st.x*W,st.y*Hh,st.r,0,6.28); ctx.fill(); }
-          var pts=[]; for(var p=0;p<planets.length;p++){ var pl=planets[p], ang=pl.base+t*pl.speed; pts.push({x:cx+Math.cos(ang)*pl.rad*R,y:cy+Math.sin(ang)*pl.rad*R*0.72,sz:pl.sz}); }
-          var maxD=R*0.24;
-          for(var m=0;m<pts.length;m++) for(var n=m+1;n<pts.length;n++){ var dx=pts[m].x-pts[n].x, dy=pts[m].y-pts[n].y, d=Math.hypot(dx,dy);
-            if(d<maxD){ var al=(1-d/maxD)*0.13; ctx.strokeStyle='rgba('+r+','+g+','+b+','+al+')'; ctx.lineWidth=0.6; ctx.beginPath(); ctx.moveTo(pts[m].x,pts[m].y); ctx.lineTo(pts[n].x,pts[n].y); ctx.stroke();
-              var u=(t*0.22+m*0.13)%1, sx=pts[m].x+(pts[n].x-pts[m].x)*u, sy=pts[m].y+(pts[n].y-pts[m].y)*u; ctx.fillStyle='rgba('+r+','+g+','+b+','+(al*2.6)+')'; ctx.beginPath(); ctx.arc(sx,sy,1.1,0,6.28); ctx.fill(); } }
-          for(var q=0;q<pts.length;q++){ ctx.fillStyle='rgba('+r+','+g+','+b+',0.82)'; ctx.beginPath(); ctx.arc(pts[q].x,pts[q].y,pts[q].sz,0,6.28); ctx.fill(); }
+          var t=ts/1000, c=col(), rgb=c[0]+','+c[1]+','+c[2]; ctx.clearRect(0,0,W,Hh);
+          var cx=W>900?W*0.72:W*0.5, cy=Hh*0.52, R=Math.min(W,Hh)*1.06;
+          // stars
+          for(var s=0;s<stars.length;s++){ var st=stars[s], a=0.16+0.22*Math.sin(t*st.sp+st.tw); ctx.fillStyle='rgba('+rgb+','+(a*0.5)+')'; ctx.beginPath(); ctx.arc(st.x*W,st.y*Hh,st.r,0,6.28); ctx.fill(); }
+          // orbit rings (locked, faint)
+          ctx.lineWidth=1;
+          for(var o=0;o<N;o++){ var rr=planets[o].ring*R; ctx.strokeStyle='rgba('+rgb+',0.06)'; ctx.beginPath(); ctx.ellipse(cx,cy,rr,rr*squash,0,0,6.28); ctx.stroke(); }
+          // sun (soft glow + disc)
+          var sunR=R*0.026, gr=ctx.createRadialGradient(cx,cy,0,cx,cy,sunR*3.4); gr.addColorStop(0,'rgba('+rgb+',0.30)'); gr.addColorStop(1,'rgba('+rgb+',0)'); ctx.fillStyle=gr; ctx.beginPath(); ctx.arc(cx,cy,sunR*3.4,0,6.28); ctx.fill();
+          ctx.fillStyle='rgba('+rgb+',0.42)'; ctx.beginPath(); ctx.arc(cx,cy,sunR,0,6.28); ctx.fill();
+          // planets — highlight on hover (global mouse position)
+          for(var p=0;p<N;p++){ var pl=planets[p], ang=pl.base+t*pl.speed, x=cx+Math.cos(ang)*pl.ring*R, y=cy+Math.sin(ang)*pl.ring*R*squash;
+            var dm=Math.hypot(x-mouse.x, y-mouse.y), hot=dm<30, sz=hot?pl.sz*2.1:pl.sz, a=hot?0.95:0.5;
+            if(hot){ ctx.strokeStyle='rgba('+rgb+',0.5)'; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(x,y,sz+6,0,6.28); ctx.stroke(); }
+            ctx.fillStyle='rgba('+rgb+','+a+')'; ctx.beginPath(); ctx.arc(x,y,sz,0,6.28); ctx.fill();
+          }
           raf=requestAnimationFrame(frame);
         }
         raf=requestAnimationFrame(frame);
-        return function(){ cancelAnimationFrame(raf); window.removeEventListener('resize', resize); };
+        return function(){ cancelAnimationFrame(raf); window.removeEventListener('resize', resize); window.removeEventListener('mousemove', onMove); };
       }, [props.theme]);
       return h('canvas', { ref:ref, className:'cosmos' });
     }
