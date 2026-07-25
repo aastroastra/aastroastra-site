@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="celestial">
+<html lang="en" data-theme="yellow-light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AastroAstra · for the one who believes</title>
-<meta name="description" content="AastroAstra · highly personalised astrology notifications, timed to the minute. Download the Android beta." />
+<meta name="description" content="AastroAstra · highly personalised astrology notifications with an AI you can ask. Download the Android beta." />
 <meta name="theme-color" content="#FFFFFF" />
 <meta property="og:title" content="AastroAstra" />
 <meta property="og:description" content="One who believes. Personalised astrology notifications for Android." />
@@ -12,38 +12,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet" />
 <style>
-  /* Solid palettes - white bg + celestial-orange accent (Android app reference) */
-  [data-theme="celestial"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#EDE6DA; --fg:#1A1A1A; --fg2:#57493B; --muted:#9A8E7C; --tint:#C85822; --on-accent:#FFFFFF; --cosmos:200,108,42; }
-  [data-theme="light"]     { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECECEC; --fg:#1A1A1A; --fg2:#4E4E4E; --muted:#8C8C8C; --tint:#C85822; --on-accent:#FFFFFF; --cosmos:200,108,42; }
-  [data-theme="dark"]      { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#E0781F; --on-accent:#0B0B0C; --cosmos:224,140,60; }
+  /* Four solid themes: Yellow / B&W  ×  Light / Dark (inverts). No gradients. */
+  [data-theme="yellow-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:224,160,21; --pa:#F5B93A; }
+  [data-theme="mono-light"]   { --bg:#FFFFFF; --card:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; --on-accent:#FFFFFF; --cosmos:40,40,40;   --pa:#EDEDED; }
+  [data-theme="yellow-dark"]  { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; --on-accent:#0B0B0C; --cosmos:245,185,58; --pa:#F5B93A; }
+  [data-theme="mono-dark"]    { --bg:#0A0A0A; --card:#141414; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; --on-accent:#0A0A0A; --cosmos:235,235,235; --pa:#EDEDED; }
 
   * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
   html, body, #root { height:100%; max-width:100%; }
-  body {
-    background:var(--bg); color:var(--fg); overflow:hidden;
-    font-family:'Inter','Noto Sans Devanagari',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-    letter-spacing:-0.01em; transition:background .3s ease,color .3s ease;
-  }
+  body { background:var(--bg); color:var(--fg); overflow:hidden; font-family:'Inter','Noto Sans Devanagari',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; letter-spacing:-0.01em; transition:background .3s ease,color .3s ease; }
   a { color:inherit; text-decoration:none; }
 
-  .cosmos { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.85; }
-  .frame {
-    position:relative; z-index:1; width:100%; max-width:1240px; height:100vh; margin:0 auto;
-    display:grid; grid-template-rows:auto 1fr auto;
-    border-left:1px solid var(--line); border-right:1px solid var(--line);
-  }
+  .cosmos { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.8; }
+  .frame { position:relative; z-index:1; width:100%; max-width:1240px; height:100vh; margin:0 auto; display:grid; grid-template-rows:auto 1fr auto; border-left:1px solid var(--line); border-right:1px solid var(--line); }
 
   header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 30px; border-bottom:1px solid var(--line); }
   .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; }
   .mark { width:22px; height:22px; }
   .brand small { font-weight:600; color:var(--muted); letter-spacing:.16em; font-size:10px; text-transform:uppercase; }
   .controls { display:flex; align-items:center; gap:10px; }
-  .seg { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
+  .seg, .themes { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
   .seg button { border:none; background:transparent; color:var(--muted); cursor:pointer; border-radius:999px; font:inherit; font-size:12px; font-weight:600; padding:5px 11px; min-width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; transition:all .15s ease; }
   .seg button[aria-pressed="true"] { background:var(--tint); color:var(--on-accent); }
+  .themes button { border:1.5px solid transparent; background:transparent; border-radius:999px; width:30px; height:30px; padding:0; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:border-color .15s ease; }
+  .themes button[aria-pressed="true"] { border-color:var(--tint); }
+  .chip { width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(140,140,140,.42); }
+  .chip.cl { background:#fff; } .chip.cd { background:#000; }
+  .chip i { width:8px; height:8px; border-radius:50%; }
 
   .hero { display:grid; grid-template-columns:1fr 0.9fr; min-height:0; }
-  .hero > div { padding:30px 30px; min-height:0; }
+  .hero > div { padding:30px; min-height:0; }
   .hero .left { border-right:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; }
   .hero .right { display:flex; align-items:center; justify-content:center; }
 
@@ -60,28 +58,44 @@
   .apk-direct a { color:var(--fg2); border-bottom:1px solid var(--line); }
   .apk-direct a:hover { color:var(--tint); border-color:var(--tint); }
 
-  /* ── Phone ── */
-  .phone { position:relative; width:300px; height:min(600px, calc(100vh - 150px)); border-radius:44px; padding:11px; background:#0c0c0f; box-shadow:0 40px 90px -34px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.05) inset; transition:transform .35s cubic-bezier(.2,.7,.2,1); }
-  .phone:hover { transform:translateY(-6px) rotate(-.6deg); }
+  /* Phone (no internal scroll, one featured notification) */
+  .phone { position:relative; width:302px; height:min(604px, calc(100vh - 150px)); border-radius:44px; padding:11px; background:#0c0c0f; box-shadow:0 40px 90px -34px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05) inset; transition:transform .35s cubic-bezier(.2,.7,.2,1); }
+  .phone:hover { transform:translateY(-5px); }
   .screen { position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden; background:#0b0906; color:#fff; display:flex; flex-direction:column; }
   .notch { position:absolute; top:9px; left:50%; transform:translateX(-50%); width:112px; height:26px; background:#000; border-radius:0 0 16px 16px; z-index:3; }
-  .lock { flex:none; padding:40px 18px 14px; text-align:center; }
-  .lock .clk { font-family:'Noto Serif',serif; font-size:58px; font-weight:600; letter-spacing:-.02em; line-height:1; }
+  .lock { flex:none; padding:38px 18px 8px; text-align:center; }
+  .lock .clk { font-family:'Noto Serif',serif; font-size:56px; font-weight:600; letter-spacing:-.02em; line-height:1; }
   .lock .dt { margin-top:5px; font-size:13px; color:rgba(255,255,255,.6); }
-  .feed { flex:1; min-height:0; overflow-y:auto; padding:2px 12px 16px; display:flex; flex-direction:column; gap:11px; scrollbar-width:none; -ms-overflow-style:none; scroll-behavior:auto; }
-  .feed::-webkit-scrollbar { display:none; }
-  .ncard { flex:none; background:rgba(26,24,22,.82); backdrop-filter:blur(12px); border:1px solid rgba(224,120,45,.20); border-radius:20px; padding:14px 15px; transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
-  .ncard:hover { transform:scale(1.025); border-color:rgba(224,120,45,.6); box-shadow:0 14px 32px -14px rgba(224,120,45,.5); }
+  .center { flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center; padding:8px 12px 16px; }
+
+  .ncard { position:relative; background:rgba(26,24,22,.9); border:1px solid rgba(245,185,58,.22); border-radius:22px; padding:15px 16px; animation:fade .5s ease both; }
+  .ncard::before, .ncard::after { content:""; position:absolute; left:8px; right:8px; height:16px; border-radius:16px; background:rgba(255,255,255,.05); z-index:-1; }
+  .ncard::before { top:-7px; left:14px; right:14px; }
+  .ncard::after { top:-13px; left:22px; right:22px; opacity:.6; }
   .nrow { display:flex; align-items:center; gap:8px; font-size:12px; color:rgba(255,255,255,.62); }
-  .nicon { width:18px; height:18px; border-radius:6px; background:#E0781F; color:#0b0b0c; display:inline-flex; align-items:center; justify-content:center; font-size:11px; }
+  .nicon { width:18px; height:18px; border-radius:6px; background:var(--pa); color:#111; display:inline-flex; align-items:center; justify-content:center; font-size:11px; }
   .napp { color:#fff; font-weight:600; }
-  .ncad { margin-left:auto; font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 8px; border-radius:999px; }
-  .cad-transit { background:rgba(224,120,45,.20); color:#F2A25A; }
-  .cad-weekly  { background:rgba(120,170,255,.18); color:#8FB4FF; }
-  .cad-monthly { background:rgba(180,130,255,.18); color:#C6A2FF; }
-  .ntitle { margin-top:9px; font-size:16px; font-weight:700; color:#fff; }
-  .nbody { margin-top:4px; font-size:14px; line-height:1.4; color:rgba(255,255,255,.86); }
-  .nfor { margin-top:9px; font-size:11px; color:rgba(224,120,45,.85); }
+  .ncad { margin-left:auto; font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 8px; border-radius:999px; background:rgba(245,185,58,.2); color:var(--pa); }
+  .ntitle { margin-top:10px; font-size:17px; font-weight:700; color:#fff; }
+  .nbody { margin-top:4px; font-size:14.5px; line-height:1.42; color:rgba(255,255,255,.88); }
+  .nfor { margin-top:9px; font-size:11px; color:var(--pa); }
+
+  .airow { margin-top:12px; display:flex; }
+  .aibtn { position:relative; display:inline-flex; align-items:center; gap:7px; background:var(--pa); color:#111; border:none; cursor:pointer; font:inherit; font-size:12.5px; font-weight:700; padding:8px 14px; border-radius:999px; }
+  .aibtn .st { font-size:12px; }
+  .aibtn.invite::after { content:""; position:absolute; inset:-5px; border-radius:999px; border:2px solid var(--pa); animation:ring 1.7s ease-out infinite; }
+  @keyframes ring { 0%{ transform:scale(.92); opacity:.7; } 100%{ transform:scale(1.55); opacity:0; } }
+
+  .aireply { margin-top:12px; display:flex; gap:9px; animation:fade .35s ease both; }
+  .aiav { flex:none; width:24px; height:24px; border-radius:50%; background:var(--pa); color:#111; display:inline-flex; align-items:center; justify-content:center; font-size:12px; }
+  .aibubble { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08); border-radius:6px 16px 16px 16px; padding:10px 13px; }
+  .aibubble .who { font-size:11px; font-weight:700; color:var(--pa); letter-spacing:.02em; }
+  .aibubble .msg { margin-top:3px; font-size:13.5px; line-height:1.45; color:rgba(255,255,255,.92); }
+  @keyframes fade { from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+
+  /* Mono themes → make the phone monochrome too */
+  [data-theme^="mono"] .ncad { background:rgba(255,255,255,.14); color:#eaeaea; }
+  [data-theme^="mono"] .ncard { border-color:rgba(255,255,255,.16); }
 
   footer { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
   footer > * { padding:16px 30px; font-size:13px; color:var(--muted); }
@@ -90,24 +104,21 @@
   .tm { text-align:right; }
 
   @media (max-width:900px) {
-    html, body, #root { height:auto; }
-    body { overflow:auto; }
+    html, body, #root { height:auto; } body { overflow:auto; }
     .frame { height:auto; min-height:100vh; }
     .hero { grid-template-columns:1fr; }
     .hero .left { border-right:none; border-bottom:1px solid var(--line); }
     .hero > div { padding:34px 20px; }
-    .hero .right { padding:22px 20px 40px; }
-    .phone { height:560px; }
+    .hero .right { padding:24px 20px 44px; }
+    .phone { height:600px; }
     footer { grid-template-columns:1fr; }
     footer > *:not(:last-child) { border-right:none; border-bottom:1px solid var(--line); }
     .tm { text-align:left; }
   }
   @media (max-width:560px) {
     header { flex-wrap:wrap; row-gap:12px; padding:16px 18px; }
-    .brand { flex:1 1 auto; }
-    .controls { width:100%; justify-content:space-between; }
-    .hero > div { padding:30px 18px; }
-    h1 { font-size:clamp(40px,13vw,72px); }
+    .brand { flex:1 1 auto; } .controls { width:100%; justify-content:space-between; }
+    .hero > div { padding:30px 18px; } h1 { font-size:clamp(40px,13vw,72px); }
   }
 </style>
 </head>
@@ -120,42 +131,48 @@
     var h = React.createElement;
     var useState = React.useState, useEffect = React.useEffect, useRef = React.useRef;
     var SUPA = 'https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/';
-
     var CAD = { transit:{en:'Transit',hi:'गोचर'}, weekly:{en:'Weekly',hi:'साप्ताहिक'}, monthly:{en:'Monthly',hi:'मासिक'} };
-    // Concise, precise. transit / weekly / monthly × career / health / love.
+
     var NOTIFS = [
-      { cad:'transit', en:{t:'Career', b:'Moon in your 10th at 4:12 PM. Pitch now.'}, hi:{t:'करियर', b:'शाम 4:12 बजे दशम भाव में चंद्र। अभी विचार रखें।'} },
-      { cad:'weekly',  en:{t:'Health', b:'Mars trines your Ascendant. Energy peaks Wed & Thu.'}, hi:{t:'स्वास्थ्य', b:'मंगल का त्रिकोण। बुध व गुरुवार ऊर्जा चरम पर।'} },
-      { cad:'monthly', en:{t:'Love', b:'Venus lights your 7th. The 14th to 18th favour love.'}, hi:{t:'प्रेम', b:'सप्तम में शुक्र। 14 से 18 प्रेम को शुभ।'} },
-      { cad:'transit', en:{t:'Health', b:'Saturn squares your Moon tonight. Rest by 9 PM.'}, hi:{t:'स्वास्थ्य', b:'आज रात शनि की दृष्टि। 9 बजे तक आराम करें।'} },
-      { cad:'weekly',  en:{t:'Career', b:'Jupiter aspects your 2nd. Money talks land Thursday.'}, hi:{t:'करियर', b:'गुरु की दृष्टि द्वितीय पर। गुरुवार धन की बात बनेगी।'} },
-      { cad:'monthly', en:{t:'Career', b:'Your Sun dasha turns active. Recognition after the 21st.'}, hi:{t:'करियर', b:'सूर्य दशा सक्रिय। 21 के बाद पहचान बढ़ेगी।'} },
-      { cad:'transit', en:{t:'Love', b:'Moon meets Venus at 9 PM. A warm window for love.'}, hi:{t:'प्रेम', b:'रात 9 बजे चंद्र और शुक्र। प्रेम का सुंदर समय।'} },
-      { cad:'weekly',  en:{t:'Love', b:'Mercury softens your words. Clear the air on the 12th.'}, hi:{t:'प्रेम', b:'बुध वाणी मीठी करेगा। 12 को बात सुलझाएँ।'} },
-      { cad:'monthly', en:{t:'Health', b:'Sade Sati eases. Vitality returns after the 9th.'}, hi:{t:'स्वास्थ्य', b:'साढ़े साती नरम। 9 के बाद ऊर्जा लौटेगी।'} },
+      { cad:'transit', en:{t:'Career', b:'Moon in your 10th at 4:12 PM. Pitch now.', ai:'Aim for 4:20 to 4:40 PM. Lead with the outcome, keep it under two minutes.'},
+        hi:{t:'करियर', b:'शाम 4:12 बजे दशम भाव में चंद्र। अभी विचार रखें।', ai:'4:20 से 4:40 का समय लें। पहले परिणाम बताएँ, दो मिनट में बात रखें।'} },
+      { cad:'weekly', en:{t:'Health', b:'Mars trines your Ascendant. Energy peaks Wed & Thu.', ai:'Do your hardest workout Wednesday. Keep Sunday light and sleep early.'},
+        hi:{t:'स्वास्थ्य', b:'मंगल का त्रिकोण। बुध व गुरुवार ऊर्जा चरम पर।', ai:'सबसे कठिन कसरत बुधवार को करें। रविवार हल्का रखें, जल्दी सोएँ।'} },
+      { cad:'monthly', en:{t:'Love', b:'Venus lights your 7th. The 14th to 18th favour love.', ai:'Plan the real talk on the 16th. Pick a calm evening, not a busy day.'},
+        hi:{t:'प्रेम', b:'सप्तम में शुक्र। 14 से 18 प्रेम को शुभ।', ai:'16 को दिल की बात रखें। व्यस्त दिन नहीं, शांत शाम चुनें।'} },
+      { cad:'transit', en:{t:'Health', b:'Saturn squares your Moon tonight. Rest by 9 PM.', ai:'Wind down by 8:30. Skip screens, hydrate, and sleep by 10.'},
+        hi:{t:'स्वास्थ्य', b:'आज रात शनि की दृष्टि। 9 बजे तक आराम करें।', ai:'8:30 तक शांत हो जाएँ। स्क्रीन छोड़ें, पानी पिएँ, 10 बजे सोएँ।'} },
+      { cad:'weekly', en:{t:'Career', b:'Jupiter aspects your 2nd. Money talks land Thursday.', ai:'Raise the number Thursday morning. Make one clear ask, not three.'},
+        hi:{t:'करियर', b:'गुरु की दृष्टि द्वितीय पर। गुरुवार धन की बात बनेगी।', ai:'गुरुवार सुबह बात रखें। एक साफ़ माँग रखें, तीन नहीं।'} },
+      { cad:'monthly', en:{t:'Career', b:'Your Sun dasha turns active. Recognition after the 21st.', ai:'Say yes to visibility after the 21st. Volunteer to present.'},
+        hi:{t:'करियर', b:'सूर्य दशा सक्रिय। 21 के बाद पहचान बढ़ेगी।', ai:'21 के बाद सामने आएँ। प्रस्तुति देने के लिए हाँ कहें।'} },
+      { cad:'transit', en:{t:'Love', b:'Moon meets Venus at 9 PM. A warm window for love.', ai:'Keep tonight light and warm. A short call beats a long text.'},
+        hi:{t:'प्रेम', b:'रात 9 बजे चंद्र और शुक्र। प्रेम का सुंदर समय।', ai:'आज रात हल्का और गर्म रखें। लंबे संदेश से छोटी कॉल बेहतर।'} },
+      { cad:'weekly', en:{t:'Love', b:'Mercury softens your words. Clear the air on the 12th.', ai:'Clear the misunderstanding on the 12th. Listen first, then speak.'},
+        hi:{t:'प्रेम', b:'बुध वाणी मीठी करेगा। 12 को बात सुलझाएँ।', ai:'12 को ग़लतफ़हमी सुलझाएँ। पहले सुनें, फिर कहें।'} },
+      { cad:'monthly', en:{t:'Health', b:'Sade Sati eases. Vitality returns after the 9th.', ai:'Rebuild your routine after the 9th. Start with sleep and water.'},
+        hi:{t:'स्वास्थ्य', b:'साढ़े साती नरम। 9 के बाद ऊर्जा लौटेगी।', ai:'9 के बाद दिनचर्या बनाएँ। नींद और पानी से शुरू करें।'} },
     ];
 
     function Cosmos(props){
       var ref = useRef(null);
       useEffect(function(){
-        var canvas = ref.current, ctx = canvas.getContext('2d');
-        var dpr = Math.min(window.devicePixelRatio||1,2), W=0, Hh=0, raf;
+        var canvas=ref.current, ctx=canvas.getContext('2d'), dpr=Math.min(window.devicePixelRatio||1,2), W=0, Hh=0, raf;
         function resize(){ W=window.innerWidth; Hh=window.innerHeight; canvas.width=W*dpr; canvas.height=Hh*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
         resize(); window.addEventListener('resize', resize);
-        var stars=[]; for(var i=0;i<110;i++) stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.2+0.3,tw:Math.random()*6.28,sp:Math.random()*0.5+0.1});
-        var N=13, planets=[]; for(var j=0;j<N;j++) planets.push({base:Math.random()*6.28,rad:0.10+(j/N)*0.34,speed:(0.014+Math.random()*0.045)*(j%2?1:-1),sz:1.4+Math.random()*2.4});
-        function col(){ var v=getComputedStyle(document.documentElement).getPropertyValue('--cosmos').trim()||'200,108,42'; return v.split(',').map(Number); }
+        var stars=[]; for(var i=0;i<105;i++) stars.push({x:Math.random(),y:Math.random(),r:Math.random()*1.2+0.3,tw:Math.random()*6.28,sp:Math.random()*0.5+0.1});
+        var N=13, planets=[]; for(var j=0;j<N;j++) planets.push({base:Math.random()*6.28,rad:0.10+(j/N)*0.34,speed:(0.013+Math.random()*0.04)*(j%2?1:-1),sz:1.4+Math.random()*2.3});
+        function col(){ var v=getComputedStyle(document.documentElement).getPropertyValue('--cosmos').trim()||'224,160,21'; return v.split(',').map(Number); }
         function frame(ts){
-          var t=ts/1000, c=col(), r=c[0], g=c[1], b=c[2];
-          ctx.clearRect(0,0,W,Hh);
+          var t=ts/1000, c=col(), r=c[0], g=c[1], b=c[2]; ctx.clearRect(0,0,W,Hh);
           var cx=W>900?W*0.68:W*0.5, cy=Hh*0.5, R=Math.min(W,Hh);
-          for(var s=0;s<stars.length;s++){ var st=stars[s], a=0.22+0.30*Math.sin(t*st.sp+st.tw); ctx.fillStyle='rgba('+r+','+g+','+b+','+(a*0.5)+')'; ctx.beginPath(); ctx.arc(st.x*W,st.y*Hh,st.r,0,6.28); ctx.fill(); }
-          var pts=[]; for(var p=0;p<planets.length;p++){ var pl=planets[p], ang=pl.base+t*pl.speed; pts.push({x:cx+Math.cos(ang)*pl.rad*R, y:cy+Math.sin(ang)*pl.rad*R*0.72, sz:pl.sz}); }
+          for(var s=0;s<stars.length;s++){ var st=stars[s], a=0.2+0.28*Math.sin(t*st.sp+st.tw); ctx.fillStyle='rgba('+r+','+g+','+b+','+(a*0.5)+')'; ctx.beginPath(); ctx.arc(st.x*W,st.y*Hh,st.r,0,6.28); ctx.fill(); }
+          var pts=[]; for(var p=0;p<planets.length;p++){ var pl=planets[p], ang=pl.base+t*pl.speed; pts.push({x:cx+Math.cos(ang)*pl.rad*R,y:cy+Math.sin(ang)*pl.rad*R*0.72,sz:pl.sz}); }
           var maxD=R*0.24;
           for(var m=0;m<pts.length;m++) for(var n=m+1;n<pts.length;n++){ var dx=pts[m].x-pts[n].x, dy=pts[m].y-pts[n].y, d=Math.hypot(dx,dy);
-            if(d<maxD){ var al=(1-d/maxD)*0.14; ctx.strokeStyle='rgba('+r+','+g+','+b+','+al+')'; ctx.lineWidth=0.6; ctx.beginPath(); ctx.moveTo(pts[m].x,pts[m].y); ctx.lineTo(pts[n].x,pts[n].y); ctx.stroke();
-              var u=(t*0.26+m*0.13)%1, sx=pts[m].x+(pts[n].x-pts[m].x)*u, sy=pts[m].y+(pts[n].y-pts[m].y)*u; ctx.fillStyle='rgba('+r+','+g+','+b+','+(al*2.6)+')'; ctx.beginPath(); ctx.arc(sx,sy,1.1,0,6.28); ctx.fill(); } }
-          for(var q=0;q<pts.length;q++){ ctx.fillStyle='rgba('+r+','+g+','+b+',0.85)'; ctx.beginPath(); ctx.arc(pts[q].x,pts[q].y,pts[q].sz,0,6.28); ctx.fill(); }
+            if(d<maxD){ var al=(1-d/maxD)*0.13; ctx.strokeStyle='rgba('+r+','+g+','+b+','+al+')'; ctx.lineWidth=0.6; ctx.beginPath(); ctx.moveTo(pts[m].x,pts[m].y); ctx.lineTo(pts[n].x,pts[n].y); ctx.stroke();
+              var u=(t*0.22+m*0.13)%1, sx=pts[m].x+(pts[n].x-pts[m].x)*u, sy=pts[m].y+(pts[n].y-pts[m].y)*u; ctx.fillStyle='rgba('+r+','+g+','+b+','+(al*2.6)+')'; ctx.beginPath(); ctx.arc(sx,sy,1.1,0,6.28); ctx.fill(); } }
+          for(var q=0;q<pts.length;q++){ ctx.fillStyle='rgba('+r+','+g+','+b+',0.82)'; ctx.beginPath(); ctx.arc(pts[q].x,pts[q].y,pts[q].sz,0,6.28); ctx.fill(); }
           raf=requestAnimationFrame(frame);
         }
         raf=requestAnimationFrame(frame);
@@ -164,72 +181,74 @@
       return h('canvas', { ref:ref, className:'cosmos' });
     }
 
-    function NotifCard(props){
-      var n=props.n, lang=props.lang, c=n[lang];
-      return h('div', { className:'ncard' },
-        h('div', { className:'nrow' },
-          h('span', { className:'nicon' }, '✦'),
-          h('span', { className:'napp' }, 'AastroAstra'),
-          h('span', null, '·'),
-          h('span', null, lang==='hi'?'अभी':'now'),
-          h('span', { className:'ncad cad-'+n.cad }, CAD[n.cad][lang])
-        ),
-        h('div', { className:'ntitle' }, c.t),
-        h('div', { className:'nbody' }, c.b),
-        h('div', { className:'nfor' }, lang==='hi'?'राहुल के लिए · कर्क चंद्र · मूलांक 4':'for Rahul · Cancer Moon · Driver 4')
-      );
-    }
-
     function Phone(props){
-      var lang=props.lang, feedRef=useRef(null);
+      var lang=props.lang;
+      var iS=useState(0), idx=iS[0], setIdx=iS[1];
+      var aS=useState(false), aiOpen=aS[0], setAiOpen=aS[1];
+      var hovRef=useRef(false), openRef=useRef(false);
+      useEffect(function(){ openRef.current = aiOpen; }, [aiOpen]);
       useEffect(function(){
-        var el=feedRef.current; if(!el) return; var raf, paused=false;
-        function enter(){ paused=true; } function leave(){ paused=false; }
-        el.addEventListener('mouseenter', enter); el.addEventListener('mouseleave', leave);
-        function step(){ if(!paused && el.scrollHeight>el.clientHeight){ el.scrollTop+=0.42; var half=el.scrollHeight/2; if(el.scrollTop>=half) el.scrollTop-=half; } raf=requestAnimationFrame(step); }
-        raf=requestAnimationFrame(step);
-        return function(){ cancelAnimationFrame(raf); el.removeEventListener('mouseenter',enter); el.removeEventListener('mouseleave',leave); };
+        // Slow, gentle cycle. Never while the AI reply is open or on hover.
+        var id=setInterval(function(){ if(!openRef.current && !hovRef.current){ setIdx(function(v){ return (v+1)%NOTIFS.length; }); } }, 6500);
+        return function(){ clearInterval(id); };
       }, []);
-      var loop = NOTIFS.concat(NOTIFS);
-      return h('div', { className:'phone' },
+      var n=NOTIFS[idx], c=n[lang], forLine = lang==='hi'?'राहुल के लिए · कर्क चंद्र · मूलांक 4':'for Rahul · Cancer Moon · Driver 4';
+      return h('div', { className:'phone', onMouseEnter:function(){hovRef.current=true;}, onMouseLeave:function(){hovRef.current=false;} },
         h('div', { className:'notch' }),
         h('div', { className:'screen' },
           h('div', { className:'lock' },
             h('div', { className:'clk' }, '9:41'),
             h('div', { className:'dt' }, lang==='hi'?'सोमवार, 20 जुलाई':'Monday, 20 July')
           ),
-          h('div', { className:'feed', ref:feedRef },
-            loop.map(function(n,k){ return h(NotifCard, { key:k, n:n, lang:lang }); })
+          h('div', { className:'center' },
+            h('div', { className:'ncard', key:idx },
+              h('div', { className:'nrow' },
+                h('span', { className:'nicon' }, '✦'), h('span', { className:'napp' }, 'AastroAstra'),
+                h('span', null, '·'), h('span', null, lang==='hi'?'अभी':'now'),
+                h('span', { className:'ncad' }, CAD[n.cad][lang])
+              ),
+              h('div', { className:'ntitle' }, c.t),
+              h('div', { className:'nbody' }, c.b),
+              h('div', { className:'nfor' }, forLine),
+              !aiOpen && h('div', { className:'airow' },
+                h('button', { className:'aibtn invite', onClick:function(){ setAiOpen(true); } },
+                  h('span', { className:'st' }, '✦'), lang==='hi'?'AI से पूछें':'Ask AI')
+              ),
+              aiOpen && h('div', { className:'aireply' },
+                h('span', { className:'aiav' }, '✦'),
+                h('div', { className:'aibubble' },
+                  h('div', { className:'who' }, lang==='hi'?'AastroAstra AI':'AastroAstra AI'),
+                  h('div', { className:'msg' }, c.ai)
+                )
+              )
+            )
           )
         )
       );
     }
 
     var COPY = {
-      dl:{en:'Download the beta',hi:'बीटा डाउनलोड करें'},
-      getapp:{en:'Get the Android app',hi:'एंड्रॉइड ऐप लें'},
-      download:{en:'Download Beta',hi:'बीटा डाउनलोड'},
-      privacy:{en:'Privacy Policy',hi:'गोपनीयता नीति'},
-      terms:{en:'Terms of Use',hi:'उपयोग की शर्तें'},
+      dl:{en:'Download the beta',hi:'बीटा डाउनलोड करें'}, getapp:{en:'Get the Android app',hi:'एंड्रॉइड ऐप लें'},
+      download:{en:'Download Beta',hi:'बीटा डाउनलोड'}, privacy:{en:'Privacy Policy',hi:'गोपनीयता नीति'}, terms:{en:'Terms of Use',hi:'उपयोग की शर्तें'},
     };
+    var THEMES = [ ['yellow-light','cl','#E0A015','Yellow · Light'], ['mono-light','cl','#111111','B&W · Light'], ['yellow-dark','cd','#F5B93A','Yellow · Dark'], ['mono-dark','cd','#FFFFFF','B&W · Dark'] ];
+    var META = { 'yellow-light':'#FFFFFF','mono-light':'#FFFFFF','yellow-dark':'#0B0B0C','mono-dark':'#0A0A0A' };
 
     function App(){
-      var themeS=useState('celestial'), theme=themeS[0], setTheme=themeS[1];
-      var langS=useState('en'), lang=langS[0], setLang=langS[1];
-      var verS=useState({ver:'0.2.1',size:'5.8',apk:SUPA+'aastroastra-latest.apk'}), ver=verS[0], setVer=verS[1];
-
+      var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
+      var lS=useState('en'), lang=lS[0], setLang=lS[1];
+      var vS=useState({ver:'0.2.1',size:'5.8',apk:SUPA+'aastroastra-latest.apk'}), ver=vS[0], setVer=vS[1];
       useEffect(function(){
         var saved; try{ saved=localStorage.getItem('aa-theme'); }catch(e){}
-        if(!saved) saved=(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'celestial';
+        if(!META[saved]) saved=(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)?'yellow-dark':'yellow-light';
         applyTheme(saved);
         try{ var lg=localStorage.getItem('aa-lang'); if(lg) setLang(lg); }catch(e){}
         fetch(SUPA+'version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(v){ if(v) setVer({ver:v.version||'0.2.1',size:v.sizeMb||'5.8',apk:v.apk||(SUPA+'aastroastra-latest.apk')}); }).catch(function(){});
       }, []);
-
-      function applyTheme(t){ document.documentElement.setAttribute('data-theme',t); var meta={celestial:'#FFFFFF',light:'#FFFFFF',dark:'#0B0B0C'}; var mt=document.querySelector('meta[name=theme-color]'); if(mt&&meta[t]) mt.content=meta[t]; setTheme(t); try{ localStorage.setItem('aa-theme',t); }catch(e){} }
+      function applyTheme(t){ if(!META[t]) t='yellow-light'; document.documentElement.setAttribute('data-theme',t); var mt=document.querySelector('meta[name=theme-color]'); if(mt) mt.content=META[t]; setTheme(t); try{ localStorage.setItem('aa-theme',t); }catch(e){} }
       function pickLang(l){ setLang(l); try{ localStorage.setItem('aa-lang',l); }catch(e){} }
 
-      var themeBtns=[['celestial','✦'],['light','☀'],['dark','☾']].map(function(x){ return h('button',{key:x[0],title:x[0],'aria-pressed':theme===x[0],onClick:function(){applyTheme(x[0]);}},x[1]); });
+      var themeBtns=THEMES.map(function(x){ return h('button',{key:x[0],title:x[3],'aria-pressed':theme===x[0],onClick:function(){applyTheme(x[0]);}}, h('span',{className:'chip '+x[1]}, h('i',{style:{background:x[2]}}))); });
       var langBtns=[['en','EN'],['hi','हिं']].map(function(x){ return h('button',{key:x[0],'aria-pressed':lang===x[0],onClick:function(){pickLang(x[0]);}},x[1]); });
 
       return h(React.Fragment, null,
@@ -238,12 +257,11 @@
           h('header', null,
             h('div', { className:'brand' },
               h('svg', { className:'mark', viewBox:'0 0 24 24','aria-hidden':'true' }, h('path',{d:'M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6L12 0z',fill:'var(--tint)'})),
-              h('span', null, 'AastroAstra'),
-              h('small', null, 'Beta')
+              h('span', null, 'AastroAstra'), h('small', null, 'Beta')
             ),
             h('div', { className:'controls' },
               h('div', { className:'seg', role:'group','aria-label':'Language' }, langBtns),
-              h('div', { className:'seg', role:'group','aria-label':'Theme' }, themeBtns)
+              h('div', { className:'themes', role:'group','aria-label':'Theme' }, themeBtns)
             )
           ),
           h('section', { className:'hero' },

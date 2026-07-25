@@ -1,71 +1,128 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="celestial">
+<html lang="en" data-theme="yellow-light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#FFFBF3" />
-<title>Privacy Policy — AastroAstra</title>
+<meta name="theme-color" content="#FFFFFF" />
+<title>Privacy Policy · AastroAstra</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@700&display=swap" rel="stylesheet" />
 <style>
-  [data-theme="celestial"] { --bg:#FFFBF3; --line:#EDE2CE; --fg:#2A2118; --fg2:#5A4D3E; --muted:#8A7A5E; --tint:#C85822; }
-  [data-theme="light"] { --bg:#FFFFFF; --line:#E7E7E7; --fg:#1A1A1A; --fg2:#333333; --muted:#8A8A8A; --tint:#C85822; }
-  [data-theme="dark"] { --bg:#0A0A0A; --line:#262626; --fg:#F5F5F5; --fg2:#CFCFCF; --muted:#7A7A7A; --tint:#F5B642; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--fg); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; letter-spacing: -0.01em; transition: background .25s ease, color .25s ease; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; border-left: 1px solid var(--line); border-right: 1px solid var(--line); min-height: 100vh; }
-  a { color: inherit; }
-  .back { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.16em; }
-  .back:hover { color: var(--tint); }
-  h1 { font-family: 'Noto Serif', Georgia, serif; font-size: 40px; font-weight: 700; letter-spacing: -0.03em; margin: 28px 0 6px; color: var(--tint); }
-  .updated { color: var(--muted); font-size: 13px; margin-bottom: 32px; }
-  h2 { font-size: 18px; font-weight: 600; margin: 30px 0 10px; color: var(--fg); }
-  p, li { font-size: 15px; line-height: 1.65; color: var(--fg2); }
-  ul { margin: 8px 0 8px 20px; }
-  hr { border: none; border-top: 1px solid var(--line); margin: 40px 0 20px; }
-  .tm { color: var(--muted); font-size: 13px; }
+  [data-theme="yellow-light"] { --bg:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; }
+  [data-theme="mono-light"]   { --bg:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; }
+  [data-theme="yellow-dark"]  { --bg:#0B0B0C; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; }
+  [data-theme="mono-dark"]    { --bg:#0A0A0A; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--fg); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; letter-spacing:-0.01em; transition:background .25s ease, color .25s ease; }
+  .wrap { max-width:760px; margin:0 auto; padding:56px 24px 96px; border-left:1px solid var(--line); border-right:1px solid var(--line); min-height:100vh; }
+  a { color:inherit; }
+  .top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .back { font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:0.16em; text-decoration:none; }
+  .back:hover { color:var(--tint); }
+  .themes { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
+  .chip { width:24px; height:24px; border-radius:999px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; display:inline-flex; align-items:center; justify-content:center; }
+  .chip i { width:13px; height:13px; border-radius:999px; display:block; }
+  .chip.active { border-color:var(--tint); }
+  .cl { background:#FFFFFF; } .cd { background:#0B0B0C; }
+  h1 { font-family:'Noto Serif',Georgia,serif; font-size:40px; font-weight:700; letter-spacing:-0.03em; margin:28px 0 6px; color:var(--tint); }
+  .updated { color:var(--muted); font-size:13px; margin-bottom:32px; }
+  .lead { font-size:16px; line-height:1.7; color:var(--fg2); margin-bottom:8px; }
+  h2 { font-size:18px; font-weight:600; margin:32px 0 10px; color:var(--fg); }
+  p, li { font-size:15px; line-height:1.68; color:var(--fg2); }
+  ul { margin:8px 0 8px 20px; }
+  li { margin:4px 0; }
+  b { color:var(--fg); font-weight:600; }
+  hr { border:none; border-top:1px solid var(--line); margin:40px 0 20px; }
+  .tm { color:var(--muted); font-size:13px; }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="./index.html">← AastroAstra</a>
+    <div class="top">
+      <a class="back" href="./index.html">&larr; AastroAstra</a>
+      <div class="themes" id="themes"></div>
+    </div>
     <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: July 2026</div>
+    <div class="updated">Last updated: 25 July 2026</div>
 
-    <p>AastroAstra (“we”, “us”) provides Vedic astrology, numerology and match-making tools. This policy explains what we collect and how we use it. By using the app you agree to this policy.</p>
+    <p class="lead">AastroAstra turns your birth details into a personal astrological picture: your kundali, numerology, panchang timings, and notifications timed to your chart. To do that, we handle some personal information. This page explains exactly what we collect, why, and the control you have over it. Plain language, no surprises.</p>
 
-    <h2>Information we collect</h2>
+    <h2>What we collect</h2>
     <ul>
-      <li><b>Birth details</b> you enter — name, date, time and place of birth — used to compute your charts and reports.</li>
-      <li><b>Account details</b> — such as phone number or email, when you sign in.</li>
-      <li><b>Usage &amp; device data</b> — basic diagnostics to keep the app reliable.</li>
+      <li><b>Birth details you enter</b>: your name, date of birth, time of birth, and place of birth. These are the inputs for every chart, numerology number, and reading in the app.</li>
+      <li><b>Approximate location</b>: when you allow it, we use your latitude and longitude to compute accurate planetary positions and panchang for where you are. You can decline; charts then use your entered birth place instead.</li>
+      <li><b>Account details</b>: a phone number or email if you sign in, so your saved profiles follow you across sessions and devices.</li>
+      <li><b>Basic app &amp; device data</b>: app version, device model, and crash diagnostics that keep the app stable. This is not used to identify you personally.</li>
     </ul>
 
     <h2>How we use it</h2>
     <ul>
-      <li>To generate your kundali, KP charts, numerology and match reports.</li>
-      <li>To sync your saved profiles across your sessions.</li>
-      <li>To improve the app’s accuracy and stability.</li>
+      <li>To generate your kundali, KP and Lal Kitab charts, Lo Shu grid, numerology numbers, and match reports.</li>
+      <li>To compute panchang, muhurta, and the timing behind your personalised notifications.</li>
+      <li>To write notifications and readings tailored to your chart. Your birth details are sent to our AI provider only to generate that text, they are not used to train third-party models.</li>
+      <li>To sync your saved profiles and keep the app working reliably.</li>
     </ul>
 
-    <h2>Third-party services</h2>
-    <p>Astrological calculations are performed via trusted computation APIs, and data is stored securely with our cloud provider. We do not sell your personal data.</p>
+    <h2>What we do not do</h2>
+    <ul>
+      <li>We do not sell your personal data.</li>
+      <li>We do not show third-party advertising built on your birth or location data.</li>
+      <li>We do not share your details with anyone except the trusted providers below, and only to run the service.</li>
+    </ul>
 
-    <h2>Data retention &amp; your choices</h2>
-    <p>You may delete your saved profiles at any time from within the app. Contact us to request deletion of your account data.</p>
+    <h2>Who processes your data</h2>
+    <p>We rely on a small set of vetted providers to run AastroAstra: a cloud platform that stores your profiles and reports securely, astrological computation services for chart maths, and an AI provider that writes your readings and notifications. They process data only on our instructions and only to deliver the feature you asked for.</p>
+
+    <h2>Where it is kept, and for how long</h2>
+    <p>Your profiles are stored securely with our cloud provider and kept while your account is active. Generated reports are cached so you do not wait for them twice; they refresh when you update your birth details. You can remove a saved profile from within the app at any time, and you can ask us to delete your account data entirely.</p>
+
+    <h2>Your choices</h2>
+    <ul>
+      <li>Delete any saved profile from inside the app.</li>
+      <li>Turn location permission on or off in your device settings at any time.</li>
+      <li>Turn notifications off from your device or the app.</li>
+      <li>Email us to access or delete the data tied to your account.</li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>AastroAstra is intended for adults. We do not knowingly collect data from children. If you believe a child has provided us data, contact us and we will remove it.</p>
+
+    <h2>Changes</h2>
+    <p>As the app grows we may update this policy. When we make a meaningful change we will update the date above and, where appropriate, note it in the app.</p>
 
     <h2>Contact</h2>
-    <p>Questions? Email <a href="mailto:aastroastra@gmail.com">aastroastra@gmail.com</a>.</p>
+    <p>Questions or requests? Email <a href="mailto:aastroastra@gmail.com">aastroastra@gmail.com</a>.</p>
 
     <hr />
-    <div class="tm">AastroAstra™ · © 2026</div>
+    <div class="tm">AastroAstra&trade; &middot; &copy; 2026</div>
   </div>
   <script>
     (function () {
-      var t; try { t = localStorage.getItem('aa-theme'); } catch (e) {}
-      if (!t) t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'celestial';
-      document.documentElement.setAttribute('data-theme', t);
-      var meta = { celestial: '#FFFBF3', light: '#FFFFFF', dark: '#0A0A0A' };
-      var m = document.querySelector('meta[name=theme-color]'); if (m && meta[t]) m.content = meta[t];
+      var META = { 'yellow-light':'#FFFFFF', 'mono-light':'#FFFFFF', 'yellow-dark':'#0B0B0C', 'mono-dark':'#0A0A0A' };
+      var THEMES = [
+        ['yellow-light','cl','#E0A015'],
+        ['mono-light','cl','#111111'],
+        ['yellow-dark','cd','#F5B93A'],
+        ['mono-dark','cd','#FFFFFF']
+      ];
+      var saved; try { saved = localStorage.getItem('aa-theme'); } catch (e) {}
+      if (!META[saved]) saved = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'yellow-dark' : 'yellow-light';
+      function apply(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        var m = document.querySelector('meta[name=theme-color]'); if (m && META[t]) m.content = META[t];
+        try { localStorage.setItem('aa-theme', t); } catch (e) {}
+        [].forEach.call(document.querySelectorAll('.chip'), function (c) {
+          c.classList.toggle('active', c.getAttribute('data-t') === t);
+        });
+      }
+      var host = document.getElementById('themes');
+      THEMES.forEach(function (th) {
+        var b = document.createElement('button');
+        b.className = 'chip ' + th[1]; b.setAttribute('data-t', th[0]); b.title = th[0];
+        var i = document.createElement('i'); i.style.background = th[2]; b.appendChild(i);
+        b.onclick = function () { apply(th[0]); };
+        host.appendChild(b);
+      });
+      apply(saved);
     })();
   </script>
 </body>

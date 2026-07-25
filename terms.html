@@ -1,69 +1,113 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="celestial">
+<html lang="en" data-theme="yellow-light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#FFFBF3" />
-<title>Terms of Use — AastroAstra</title>
+<meta name="theme-color" content="#FFFFFF" />
+<title>Terms of Use · AastroAstra</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@700&display=swap" rel="stylesheet" />
 <style>
-  [data-theme="celestial"] { --bg:#FFFBF3; --line:#EDE2CE; --fg:#2A2118; --fg2:#5A4D3E; --muted:#8A7A5E; --tint:#C85822; }
-  [data-theme="light"] { --bg:#FFFFFF; --line:#E7E7E7; --fg:#1A1A1A; --fg2:#333333; --muted:#8A8A8A; --tint:#C85822; }
-  [data-theme="dark"] { --bg:#0A0A0A; --line:#262626; --fg:#F5F5F5; --fg2:#CFCFCF; --muted:#7A7A7A; --tint:#F5B642; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--fg); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; letter-spacing: -0.01em; transition: background .25s ease, color .25s ease; }
-  .wrap { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; border-left: 1px solid var(--line); border-right: 1px solid var(--line); min-height: 100vh; }
-  a { color: inherit; }
-  .back { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.16em; }
-  .back:hover { color: var(--tint); }
-  h1 { font-family: 'Noto Serif', Georgia, serif; font-size: 40px; font-weight: 700; letter-spacing: -0.03em; margin: 28px 0 6px; color: var(--tint); }
-  .updated { color: var(--muted); font-size: 13px; margin-bottom: 32px; }
-  h2 { font-size: 18px; font-weight: 600; margin: 30px 0 10px; color: var(--fg); }
-  p, li { font-size: 15px; line-height: 1.65; color: var(--fg2); }
-  ul { margin: 8px 0 8px 20px; }
-  hr { border: none; border-top: 1px solid var(--line); margin: 40px 0 20px; }
-  .tm { color: var(--muted); font-size: 13px; }
+  [data-theme="yellow-light"] { --bg:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; }
+  [data-theme="mono-light"]   { --bg:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; }
+  [data-theme="yellow-dark"]  { --bg:#0B0B0C; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; }
+  [data-theme="mono-dark"]    { --bg:#0A0A0A; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--fg); font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; letter-spacing:-0.01em; transition:background .25s ease, color .25s ease; }
+  .wrap { max-width:760px; margin:0 auto; padding:56px 24px 96px; border-left:1px solid var(--line); border-right:1px solid var(--line); min-height:100vh; }
+  a { color:inherit; }
+  .top { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .back { font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:0.16em; text-decoration:none; }
+  .back:hover { color:var(--tint); }
+  .themes { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
+  .chip { width:24px; height:24px; border-radius:999px; border:1px solid var(--line); background:transparent; cursor:pointer; padding:0; display:inline-flex; align-items:center; justify-content:center; }
+  .chip i { width:13px; height:13px; border-radius:999px; display:block; }
+  .chip.active { border-color:var(--tint); }
+  .cl { background:#FFFFFF; } .cd { background:#0B0B0C; }
+  h1 { font-family:'Noto Serif',Georgia,serif; font-size:40px; font-weight:700; letter-spacing:-0.03em; margin:28px 0 6px; color:var(--tint); }
+  .updated { color:var(--muted); font-size:13px; margin-bottom:32px; }
+  .lead { font-size:16px; line-height:1.7; color:var(--fg2); margin-bottom:8px; }
+  h2 { font-size:18px; font-weight:600; margin:32px 0 10px; color:var(--fg); }
+  p, li { font-size:15px; line-height:1.68; color:var(--fg2); }
+  ul { margin:8px 0 8px 20px; }
+  li { margin:4px 0; }
+  b { color:var(--fg); font-weight:600; }
+  hr { border:none; border-top:1px solid var(--line); margin:40px 0 20px; }
+  .tm { color:var(--muted); font-size:13px; }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <a class="back" href="./index.html">← AastroAstra</a>
+    <div class="top">
+      <a class="back" href="./index.html">&larr; AastroAstra</a>
+      <div class="themes" id="themes"></div>
+    </div>
     <h1>Terms of Use</h1>
-    <div class="updated">Last updated: July 2026</div>
+    <div class="updated">Last updated: 25 July 2026</div>
 
-    <p>Welcome to AastroAstra. By downloading or using the app (including the beta build), you agree to these terms.</p>
+    <p class="lead">Welcome to AastroAstra. By downloading or using the app, including the beta build, you agree to these terms. They are meant to be short and fair, so please read them.</p>
 
-    <h2>The beta</h2>
-    <p>This is a pre-release beta distributed for testing. Features may change, and occasional issues are expected. Install it at your own discretion.</p>
+    <h2>About the beta</h2>
+    <p>This is a pre-release beta shared for testing. Features can change, readings are still being tuned, and occasional bugs are expected. Install it at your own discretion and please tell us what breaks, that feedback is the point of a beta.</p>
 
-    <h2>For guidance only</h2>
-    <p>AastroAstra provides astrological and numerological content based on traditional Vedic methods. It is offered for guidance and entertainment, and is not a substitute for professional medical, legal, financial or psychological advice.</p>
+    <h2>Guidance, not professional advice</h2>
+    <p>AastroAstra offers astrological and numerological content drawn from traditional Vedic methods, kundali, KP, Lal Kitab, Lo Shu, numerology, panchang, and match-making. It is provided for reflection, guidance, and entertainment. It is not a substitute for professional medical, legal, financial, or psychological advice, and you should not treat it as such. Decisions you make are your own.</p>
+
+    <h2>Your account and details</h2>
+    <p>You are responsible for the birth details and account information you enter and for keeping your access secure. Accurate birth details give accurate charts; incorrect inputs will produce incorrect readings.</p>
 
     <h2>Acceptable use</h2>
     <ul>
-      <li>Use the app for personal, lawful purposes only.</li>
-      <li>Do not attempt to reverse-engineer, resell, or misuse the service.</li>
+      <li>Use the app for your own personal, lawful purposes.</li>
+      <li>Do not reverse-engineer, copy, resell, or redistribute the app or its content.</li>
+      <li>Do not attempt to disrupt, overload, or gain unauthorised access to the service.</li>
     </ul>
 
-    <h2>Intellectual property</h2>
-    <p>The AastroAstra name, logo and app are trademarks of AastroAstra. All content and software are protected by applicable law.</p>
+    <h2>Notifications</h2>
+    <p>With your permission, AastroAstra sends notifications timed to your chart. You can turn these off at any time from your device or the app.</p>
 
-    <h2>Changes</h2>
-    <p>We may update these terms as the app evolves. Continued use means you accept the latest version.</p>
+    <h2>Intellectual property</h2>
+    <p>The AastroAstra name, logo, app, and generated readings are the property of AastroAstra and protected by applicable law. You get a personal, non-transferable licence to use the app; you do not gain ownership of the software or its content.</p>
+
+    <h2>Availability and changes</h2>
+    <p>We work to keep AastroAstra running, but we cannot promise the service will always be uninterrupted or error-free, especially during the beta. We may add, change, or remove features, and we may update these terms as the app evolves. Continued use after a change means you accept the updated terms.</p>
+
+    <h2>Limitation of liability</h2>
+    <p>To the extent permitted by law, AastroAstra is provided on an "as is" basis, and we are not liable for decisions made or losses incurred from relying on its content. Astrological readings are interpretive and not guaranteed to be accurate or predictive.</p>
 
     <h2>Contact</h2>
-    <p>Email <a href="mailto:aastroastra@gmail.com">aastroastra@gmail.com</a>.</p>
+    <p>Questions about these terms? Email <a href="mailto:aastroastra@gmail.com">aastroastra@gmail.com</a>.</p>
 
     <hr />
-    <div class="tm">AastroAstra™ · © 2026</div>
+    <div class="tm">AastroAstra&trade; &middot; &copy; 2026</div>
   </div>
   <script>
     (function () {
-      var t; try { t = localStorage.getItem('aa-theme'); } catch (e) {}
-      if (!t) t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'celestial';
-      document.documentElement.setAttribute('data-theme', t);
-      var meta = { celestial: '#FFFBF3', light: '#FFFFFF', dark: '#0A0A0A' };
-      var m = document.querySelector('meta[name=theme-color]'); if (m && meta[t]) m.content = meta[t];
+      var META = { 'yellow-light':'#FFFFFF', 'mono-light':'#FFFFFF', 'yellow-dark':'#0B0B0C', 'mono-dark':'#0A0A0A' };
+      var THEMES = [
+        ['yellow-light','cl','#E0A015'],
+        ['mono-light','cl','#111111'],
+        ['yellow-dark','cd','#F5B93A'],
+        ['mono-dark','cd','#FFFFFF']
+      ];
+      var saved; try { saved = localStorage.getItem('aa-theme'); } catch (e) {}
+      if (!META[saved]) saved = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'yellow-dark' : 'yellow-light';
+      function apply(t) {
+        document.documentElement.setAttribute('data-theme', t);
+        var m = document.querySelector('meta[name=theme-color]'); if (m && META[t]) m.content = META[t];
+        try { localStorage.setItem('aa-theme', t); } catch (e) {}
+        [].forEach.call(document.querySelectorAll('.chip'), function (c) {
+          c.classList.toggle('active', c.getAttribute('data-t') === t);
+        });
+      }
+      var host = document.getElementById('themes');
+      THEMES.forEach(function (th) {
+        var b = document.createElement('button');
+        b.className = 'chip ' + th[1]; b.setAttribute('data-t', th[0]); b.title = th[0];
+        var i = document.createElement('i'); i.style.background = th[2]; b.appendChild(i);
+        b.onclick = function () { apply(th[0]); };
+        host.appendChild(b);
+      });
+      apply(saved);
     })();
   </script>
 </body>
