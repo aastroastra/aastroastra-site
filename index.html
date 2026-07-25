@@ -78,7 +78,7 @@
   .apk-direct a:hover { color:var(--tint); border-color:var(--tint); }
 
   /* Phone: functional mock of the AastroAstra Android app (dashboard + chat sheet) */
-  .phone { position:relative; width:302px; height:min(604px, calc(100vh - 150px)); border-radius:44px; padding:11px; background:#0c0c0f; box-shadow:0 40px 90px -34px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05) inset; transition:transform .35s cubic-bezier(.2,.7,.2,1);
+  .phone { position:relative; width:302px; height:min(580px, calc(100vh - 214px)); border-radius:44px; padding:11px; background:#0c0c0f; box-shadow:0 40px 90px -34px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05) inset; transition:transform .35s cubic-bezier(.2,.7,.2,1);
     --d-bg:#FFFBF3; --d-card:#FFFFFF; --d-c2:#FBF4E6; --d-line:#EEE4D2; --d-tp:#2A2118; --d-tm:#8A7A5E; --d-gold:#E0A015; --d-rose:#C97B6B; --d-teal:#00BFA5;
     --d-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 58%,#EAB308 100%); --d-onaccent:#3a2c05; --d-k:#F2911E; --d-kfg:#FFFFFF; }
   /* Phone palette follows the site theme (mirrors the 4 app themes) */
@@ -88,6 +88,7 @@
   [data-theme="mono-dark"] .phone { --d-bg:#0A0A0A; --d-card:#161616; --d-c2:#1E1E1E; --d-line:#2A2A2A; --d-tp:#FAFAFA; --d-tm:#9A9A9A; --d-gold:#FAFAFA; --d-rose:#8A8A8A; --d-teal:#BFBFBF; --d-grad:#FAFAFA; --d-onaccent:#0A0A0A; --d-k:#FAFAFA; --d-kfg:#0A0A0A; }
   .phone:hover { transform:translateY(-5px); }
   .screen { position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden; background:var(--d-bg); color:var(--d-tp); display:flex; flex-direction:column; }
+  .ic { display:inline-block; vertical-align:middle; flex:none; }
   .notch { position:absolute; top:9px; left:50%; transform:translateX(-50%); width:108px; height:23px; background:#000; border-radius:0 0 15px 15px; z-index:6; }
 
   /* Dashboard */
@@ -211,25 +212,37 @@
   .mrow .score small { display:block; font-size:8px; color:var(--d-tm); font-weight:600; }
   .vbtn { margin-top:14px; width:100%; border:none; background:var(--d-teal); color:#fff; border-radius:12px; padding:11px; font:inherit; font-weight:800; font-size:12.5px; cursor:pointer; }
 
-  footer { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); }
-  footer > * { padding:16px 30px; font-size:13px; color:var(--muted); }
-  footer > *:not(:last-child) { border-right:1px solid var(--line); }
-  footer a:hover { color:var(--tint); }
-  .tm { text-align:right; }
+  footer { display:flex; flex-direction:column; border-top:1px solid var(--line); }
+  .foot-top { display:flex; justify-content:space-between; gap:28px; flex-wrap:wrap; padding:24px 30px; }
+  .foot-brand { max-width:300px; }
+  .fb-row { display:flex; align-items:flex-start; gap:9px; }
+  .fb-row .mark { width:26px; height:26px; }
+  .fb-name { font-family:'Noto Serif',serif; font-size:19px; font-weight:700; color:var(--fg); line-height:1; }
+  .tmk { font-size:10px; color:var(--muted); }
+  .fb-tag { margin-top:9px; font-size:13px; color:var(--fg2); }
+  .fb-sub { margin-top:3px; font-size:12px; color:var(--muted); }
+  .foot-cols { display:flex; gap:46px; }
+  .fcol { display:flex; flex-direction:column; gap:8px; }
+  .fcol b { font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:2px; }
+  .fcol a { font-size:13px; color:var(--fg2); }
+  .fcol a:hover { color:var(--tint); }
+  .foot-bar { display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding:13px 30px; border-top:1px solid var(--line); font-size:11.5px; color:var(--muted); }
+  .foot-tm { max-width:440px; text-align:right; }
 
   @media (max-width:900px) {
     html, body, #root { height:auto; } body { overflow:auto; }
     .frame { height:auto; min-height:100vh; }
     .hero { grid-template-columns:1fr; }
-    /* Mobile/stacked: center the title, subtitle and button */
+    /* Mobile/stacked: title + download + CTAs centred and visible first (with top space);
+       the phone mock sits below, revealed on scroll. */
     .hero .left { border-right:none; border-bottom:1px solid var(--line); align-items:center; text-align:center; }
     .dl-label, .meta, .apk-direct { text-align:center; }
     .btn-play { justify-content:center; }
-    .hero > div { padding:34px 20px; }
-    .hero .right { padding:24px 20px 44px; }
-    footer { grid-template-columns:1fr; }
-    footer > *:not(:last-child) { border-right:none; border-bottom:1px solid var(--line); }
-    .tm { text-align:left; }
+    .hero .left { padding:56px 22px 46px; }
+    .hero .right { padding:30px 20px 48px; }
+    .foot-top { flex-direction:column; gap:22px; }
+    .foot-bar { flex-direction:column; gap:6px; }
+    .foot-tm { text-align:left; max-width:none; }
   }
   @media (max-width:560px) {
     header { flex-wrap:wrap; row-gap:12px; padding:16px 18px; }
@@ -311,6 +324,27 @@
         hi:{t:'स्वास्थ्य', b:'साढ़े साती नरम। 9 के बाद ऊर्जा लौटेगी।', ai:'9 के बाद दिनचर्या बनाएँ। नींद और पानी से शुरू करें।'} },
     ];
 
+    // SF-style monochrome line icons (inherit currentColor). Replaces emojis in the mock.
+    function P(d){ return h('path',{ key:d.slice(0,7), d:d }); }
+    function C(cx,cy,r){ return h('circle',{ key:'c'+cx+'_'+cy, cx:cx, cy:cy, r:r }); }
+    var ICONS = {
+      gear:[ C(12,12,3), P('M19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.6 1.6 0 00-1.8-.3 1.6 1.6 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.6 1.6 0 00-1-1.5 1.6 1.6 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.6 1.6 0 00.3-1.8 1.6 1.6 0 00-1.5-1H3a2 2 0 010-4h.1a1.6 1.6 0 001.5-1 1.6 1.6 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.6 1.6 0 001.8.3H9a1.6 1.6 0 001-1.5V3a2 2 0 014 0v.1a1.6 1.6 0 001 1.5 1.6 1.6 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.6 1.6 0 00-.3 1.8V9a1.6 1.6 0 001.5 1H21a2 2 0 010 4h-.1a1.6 1.6 0 00-1.5 1z') ],
+      sun:[ C(12,12,4), P('M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4') ],
+      grid:[ P('M4 4h6v6H4z'), P('M14 4h6v6h-6z'), P('M14 14h6v6h-6z'), P('M4 14h6v6H4z') ],
+      heart:[ P('M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l1 1.1L12 21.2l7.8-7.8 1-1.1a5.5 5.5 0 000-7.8z') ],
+      sparkle:[ P('M12 2l1.9 6.5L20 10l-6.1 1.5L12 18l-1.9-6.5L4 10l6.1-1.5z') ],
+      book:[ P('M2 4h6a4 4 0 014 4v12a3 3 0 00-3-3H2z'), P('M22 4h-6a4 4 0 00-4 4v12a3 3 0 013-3h7z') ],
+      chat:[ P('M21 11.5a8.4 8.4 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.4 8.4 0 01-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.4 8.4 0 013.8-.9h.5a8.5 8.5 0 018 8z') ],
+      mic:[ P('M12 2a3 3 0 00-3 3v7a3 3 0 006 0V5a3 3 0 00-3-3z'), P('M19 10v2a7 7 0 01-14 0v-2M12 19v3M8 22h8') ],
+      send:[ P('M22 2L11 13'), P('M22 2l-7 20-4-9-9-4z') ],
+      person:[ C(12,8,4), P('M6 21v-1a5 5 0 015-5h2a5 5 0 015 5v1') ],
+    };
+    var FILLED = { sparkle:1 };
+    function ic(name, size){
+      return h('svg', { className:'ic', width:size||16, height:size||16, viewBox:'0 0 24 24',
+        fill: FILLED[name]?'currentColor':'none', stroke: FILLED[name]?'none':'currentColor',
+        strokeWidth:1.9, strokeLinecap:'round', strokeLinejoin:'round', 'aria-hidden':'true' }, ICONS[name]||[]);
+    }
     function Cosmos(props){
       var ref = useRef(null);
       useEffect(function(){
@@ -373,7 +407,7 @@
     var CHAT = {
       title:{en:'AastroAI',hi:'AastroAI'},
       sub:{en:'● Trained on classical Vedic texts',hi:'● शास्त्रीय वैदिक ग्रंथों पर प्रशिक्षित'},
-      talk:{en:'🔮 Talking about: You — Aries · Kritika',hi:'🔮 विषय: आप — मेष · कृत्तिका'},
+      talk:{en:'Talking about You · Aries · Kritika',hi:'विषय: आप · मेष · कृत्तिका'},
       change:{en:'Change ▾',hi:'बदलें ▾'},
       placeholder:{en:'Ask about your chart…',hi:'अपनी कुंडली पूछें…'},
       hello:{en:'Namaste ✦ I can read your chart — dasha, career, marriage timing, doshas. What’s on your mind?',hi:'नमस्ते ✦ मैं आपकी कुंडली पढ़ सकता हूँ — दशा, करियर, विवाह समय, दोष। क्या पूछना है?'},
@@ -422,9 +456,9 @@
       var res=[ [{en:'LAGNA',hi:'लग्न'},{en:'Aries',hi:'मेष'}], [{en:'MOON',hi:'चंद्र'},{en:'Cancer',hi:'कर्क'}], [{en:'NAKSHATRA',hi:'नक्षत्र'},{en:'Kritika',hi:'कृत्तिका'}], [{en:'DRIVER',hi:'मूलांक'},{en:'1',hi:'1'}] ];
       var status = step===1?(lang==='hi'?'सुन रहा हूँ…':'Listening…') : step===2?(lang==='hi'?'समझ रहा हूँ…':'Understanding…') : step===3?(lang==='hi'?'विवरण निकाल रहा हूँ…':'Extracting details…') : (lang==='hi'?'कुंडली तैयार ✓':'Chart ready ✓');
       return h('div', { className:'fbody' },
-        h('div',{className:'ftitle'}, '🎙 ', T(FLOW.kundali.title), h('span',{className:'fpill'}, lang==='hi'?'वॉइस AI':'VOICE AI')),
+        h('div',{className:'ftitle'}, ic('mic',15), ' ', T(FLOW.kundali.title), h('span',{className:'fpill'}, lang==='hi'?'वॉइस AI':'VOICE AI')),
         h('div',{className:'fsub'}, T(FLOW.kundali.sub)),
-        h('div',{className:'mic'+(step<4?' live':'')}, step<4?'🎙':'✓'),
+        h('div',{className:'mic'+(step<4?' live':'')}, step<4?ic('mic',22):'✓'),
         h('div',{className:'vstatus'}, status),
         step>=2 ? h('div',{className:'vtranscript'}, lang==='hi'?'“मेरा नाम राहुल है, जन्म 12 अगस्त 1996, सुबह 9:41, नई दिल्ली।”':'“My name is Rahul, born 12 August 1996 at 9:41 in the morning, in New Delhi.”') : null,
         step>=3 ? h('div',{className:'vfields'}, fields.map(function(f,i){ return h('div',{key:i,className:'vfield',style:{animationDelay:(i*0.22)+'s'}}, h('span',{className:'vl'},f[0]), h('span',{className:'vv'},f[1]), h('span',{className:'vok'},'✓')); })) : null,
@@ -436,9 +470,9 @@
       var lang=props.lang, T=function(o){ return o[lang]||o.en; };
       var people=[ [lang==='hi'?'राहुल':'Rahul', lang==='hi'?'मेष · कृत्तिका':'Aries · Kritika','🧑'], [lang==='hi'?'प्रिया':'Priya', lang==='hi'?'कर्क · पुष्य':'Cancer · Pushya','👩'] ];
       return h('div',{className:'fbody'},
-        h('div',{className:'ftitle'}, '♥ ', T(FLOW.match.title)),
+        h('div',{className:'ftitle'}, ic('heart',15), ' ', T(FLOW.match.title)),
         h('div',{className:'fsub'}, T(FLOW.match.sub)),
-        people.map(function(p,i){ return h('div',{key:i,className:'mrow'}, h('span',{className:'av'}, p[2]), h('div',null, h('div',{className:'nm'},p[0]), h('div',{className:'sub2'},p[1]))); }),
+        people.map(function(p,i){ return h('div',{key:i,className:'mrow'}, h('span',{className:'av'}, ic('person',16)), h('div',null, h('div',{className:'nm'},p[0]), h('div',{className:'sub2'},p[1]))); }),
         h('div',{className:'fresult',style:{gridTemplateColumns:'1fr'}}, h('div',{className:'fres'}, h('div',{className:'rl'}, lang==='hi'?'अष्टकूट गुण':'Ashtakoot Guna'), h('div',{className:'rv',style:{fontSize:'20px'}}, '28 / 36'))),
         h('div',{className:'mrow'}, h('div',null, h('div',{className:'nm'}, lang==='hi'?'निष्कर्ष':'Verdict'), h('div',{className:'sub2'}, lang==='hi'?'उत्तम मिलान · मांगलिक रद्द':'Excellent match · Manglik cancelled')), h('div',{className:'score'}, '✓')),
         h('button',{className:'vbtn', onClick:props.onDone}, lang==='hi'?'पूरी रिपोर्ट देखें':'See full report')
@@ -448,9 +482,9 @@
       var lang=props.lang, T=function(o){ return o[lang]||o.en; };
       var cands=[ [lang==='hi'?'प्रिया':'Priya', lang==='hi'?'कर्क · पुष्य':'Cancer · Pushya', 31], [lang==='hi'?'अंजलि':'Anjali', lang==='hi'?'वृश्चिक · अनुराधा':'Scorpio · Anuradha', 29], [lang==='hi'?'नेहा':'Neha', lang==='hi'?'मीन · रेवती':'Pisces · Revati', 27] ];
       return h('div',{className:'fbody'},
-        h('div',{className:'ftitle'}, '✶ ', T(FLOW.multi.title), h('span',{className:'fpill'}, 'ENGINE')),
+        h('div',{className:'ftitle'}, ic('sparkle',14), ' ', T(FLOW.multi.title), h('span',{className:'fpill'}, 'ENGINE')),
         h('div',{className:'fsub'}, T(FLOW.multi.sub)),
-        cands.map(function(c,i){ return h('div',{key:i,className:'mrow'}, h('span',{className:'av'}, '👩'), h('div',null, h('div',{className:'nm'}, (i+1)+'. '+c[0]), h('div',{className:'sub2'}, c[1])), h('div',{className:'score'}, c[2], h('small',null,'/ 36'))); }),
+        cands.map(function(c,i){ return h('div',{key:i,className:'mrow'}, h('span',{className:'av'}, ic('person',16)), h('div',null, h('div',{className:'nm'}, (i+1)+'. '+c[0]), h('div',{className:'sub2'}, c[1])), h('div',{className:'score'}, c[2], h('small',null,'/ 36'))); }),
         h('button',{className:'vbtn', onClick:props.onDone}, lang==='hi'?'सर्वोत्तम मैच खोलें':'Open best match')
       );
     }
@@ -481,23 +515,23 @@
                 h('div', { className:'ddate' }, T(DASH.date)),
                 h('div', { className:'drashi' }, h('span',{className:'dot'}), T(DASH.rashi))
               ),
-              h('div', { className:'dgear' }, '⚙')
+              h('div', { className:'dgear' }, ic('gear',15))
             ),
             h('div', { className:'card' },
-              h('div', { className:'clabel' }, h('span',null,'☀'), h('span',{className:'g'}, T(DASH.panch)), h('span',{className:'r'}, T(DASH.wk)+' ›')),
+              h('div', { className:'clabel' }, ic('sun',11), h('span',{className:'g'}, T(DASH.panch)), h('span',{className:'r'}, T(DASH.wk)+' ›')),
               h('div', { className:'pgrid' }, PANCH.map(function(p,i){ return h('div',{key:i}, h('div',{className:'pl'}, lang==='hi'?p[2]:p[0]), h('div',{className:'pv'}, lang==='hi'?p[3]:p[1])); })),
               h('div', { className:'psun' }, '↑ 05:38   ↓ 18:52')
             ),
             h('div', { className:'card' },
-              h('div', { className:'clabel' }, h('span',null,'☀'), h('span',{className:'g'}, T(DASH.horo)), h('span',{className:'r'}, (lang==='hi'?'मेष':'Aries')+' ›')),
+              h('div', { className:'clabel' }, ic('sun',11), h('span',{className:'g'}, T(DASH.horo)), h('span',{className:'r'}, (lang==='hi'?'मेष':'Aries')+' ›')),
               h('div', { className:'hbody' }, T(DASH.horoBody))
             ),
             h('div', { className:'dacts' },
-              h('div', { className:'dact k', onClick:function(){ setFlow('kundali'); } }, h('span',{className:'i'},'▦'), T(DASH.single)),
-              h('div', { className:'dact m', onClick:function(){ setFlow('match'); } }, h('span',{className:'i'},'♥'), T(DASH.match))
+              h('div', { className:'dact k', onClick:function(){ setFlow('kundali'); } }, h('span',{className:'i'}, ic('grid',15)), T(DASH.single)),
+              h('div', { className:'dact m', onClick:function(){ setFlow('match'); } }, h('span',{className:'i'}, ic('heart',15)), T(DASH.match))
             ),
             h('div', { className:'mm', onClick:function(){ setFlow('multi'); } },
-              h('div', { className:'mmrow' }, h('span',{className:'i'},'✶'), h('span',{className:'mt'}, T(DASH.multi)), h('span',{className:'eng'}, 'ENGINE')),
+              h('div', { className:'mmrow' }, h('span',{className:'i'}, ic('sparkle',14)), h('span',{className:'mt'}, T(DASH.multi)), h('span',{className:'eng'}, 'ENGINE')),
               h('div', { className:'mms' }, T(DASH.multiS))
             ),
             h('div', { className:'slabel' }, T(DASH.numHead)),
@@ -507,30 +541,30 @@
             ),
             h('div', { className:'slabel' }, T(DASH.explore)),
             h('div', { className:'dgrid' },
-              h('div', { className:'fcard' }, h('div',{className:'fi'},'📖'), h('div',{className:'ft'}, T(DASH.lal)), h('div',{className:'fs'}, T(DASH.lalS))),
-              h('div', { className:'fcard' }, h('div',{className:'fi'},'▦'), h('div',{className:'ft'}, T(DASH.kp)), h('div',{className:'fs'}, T(DASH.kpS)))
+              h('div', { className:'fcard' }, h('div',{className:'fi'}, ic('book',18)), h('div',{className:'ft'}, T(DASH.lal)), h('div',{className:'fs'}, T(DASH.lalS))),
+              h('div', { className:'fcard' }, h('div',{className:'fi'}, ic('grid',18)), h('div',{className:'ft'}, T(DASH.kp)), h('div',{className:'fs'}, T(DASH.kpS)))
             ),
             h('div', { className:'dbrand' },
-              h('div',{className:'bi'},'✦'),
+              h('div',{className:'bi'}, ic('sparkle',13)),
               h('div', null, h('div',{className:'bt'}, T(DASH.brand)), h('div',{className:'bs'}, T(DASH.brandS))),
               h('div',{className:'bc'},'›')
             )
           ),
           h('div', { className:'dnav' },
-            h('button', { className:'on' }, h('span',{className:'ni'},'✦'), T(DASH.navDash)),
-            h('button', { onClick:function(){ setOpen(true); } }, h('span',{className:'ni'},'◍'), T(DASH.navChat))
+            h('button', { className:'on' }, h('span',{className:'ni'}, ic('sparkle',14)), T(DASH.navDash)),
+            h('button', { onClick:function(){ setOpen(true); } }, h('span',{className:'ni'}, ic('chat',14)), T(DASH.navChat))
           ),
           h('div', { className:'dim'+((open||flow)?' on':''), onClick:function(){ setOpen(false); setFlow(null); } }),
           h('div', { className:'sheet'+(open?' on':'') },
             h('div', { className:'shandle' }),
             h('div', { className:'chead' },
               h('div', { className:'r1' },
-                h('span',null,'✦'), h('span',{className:'ct'}, T(CHAT.title)),
+                ic('sparkle',13), h('span',{className:'ct'}, T(CHAT.title)),
                 h('span',{className:'quota'}, '8/10'),
                 h('button',{className:'cx', onClick:function(){ setOpen(false); }}, '×')
               ),
               h('div', { className:'sub' }, T(CHAT.sub)),
-              h('div', { className:'kchip' }, h('span',null,T(CHAT.talk)), h('span',{className:'ch'}, T(CHAT.change)))
+              h('div', { className:'kchip' }, ic('sparkle',12), h('span',null,T(CHAT.talk)), h('span',{className:'ch'}, T(CHAT.change)))
             ),
             h('div', { className:'cmsgs' },
               msgs.map(function(m,i){ return h('div',{key:i, className:'bubble '+(m.who==='me'?'me':'ai')}, m.who==='ai'?rich(m.text):m.text); }),
@@ -542,7 +576,7 @@
             ),
             h('div', { className:'cinput' },
               h('input', { value:input, placeholder:T(CHAT.placeholder), onChange:function(e){ setInput(e.target.value); }, onKeyDown:function(e){ if(e.key==='Enter') send(input); } }),
-              h('button', { className:'send', onClick:function(){ send(input); } }, '➤')
+              h('button', { className:'send', onClick:function(){ send(input); } }, ic('send',15))
             )
           ),
           h('div', { className:'sheet'+(flow?' on':''), style:{ height:'92%' } },
@@ -617,10 +651,33 @@
             h('div', { className:'right' }, h(Phone, { lang:lang }), h(Engines, { lang:lang }))
           ),
           h('footer', null,
-            h('a', { href:'./privacy.html' }, COPY.privacy[lang]),
-            h('a', { href:'./terms.html' }, COPY.terms[lang]),
-            h('a', { href:'./presskit.zip', download:true }, COPY.presskit[lang]),
-            h('div', { className:'tm' }, 'AastroAstra™ · © ' + (new Date().getFullYear()))
+            h('div', { className:'foot-top' },
+              h('div', { className:'foot-brand' },
+                h('div', { className:'fb-row' }, h('span',{className:'mark'}), h('span',{className:'fb-name'}, 'AastroAstra'), h('span',{className:'tmk'}, '™')),
+                h('div', { className:'fb-tag' }, lang==='hi'?'विश्वास करने वाले के लिए।':'For the one who believes.'),
+                h('div', { className:'fb-sub' }, lang==='hi'?'व्यक्तिगत वैदिक ज्योतिष · अंग्रेज़ी और हिन्दी':'Personalised Vedic astrology · English & हिन्दी')
+              ),
+              h('div', { className:'foot-cols' },
+                h('div', { className:'fcol' },
+                  h('b', null, lang==='hi'?'ऐप':'App'),
+                  h('a', { href:ver.apk }, COPY.download[lang]),
+                  h('a', { href:'./presskit.zip', download:true }, COPY.presskit[lang])
+                ),
+                h('div', { className:'fcol' },
+                  h('b', null, lang==='hi'?'कानूनी':'Legal'),
+                  h('a', { href:'./privacy.html' }, COPY.privacy[lang]),
+                  h('a', { href:'./terms.html' }, COPY.terms[lang])
+                ),
+                h('div', { className:'fcol' },
+                  h('b', null, lang==='hi'?'संपर्क':'Contact'),
+                  h('a', { href:'mailto:aastroastra@gmail.com' }, 'aastroastra@gmail.com')
+                )
+              )
+            ),
+            h('div', { className:'foot-bar' },
+              h('span', null, '© ' + (new Date().getFullYear()) + ' AastroAstra™. ' + (lang==='hi'?'सर्वाधिकार सुरक्षित।':'All rights reserved.')),
+              h('span', { className:'foot-tm' }, lang==='hi'?'AastroAstra™, AA चिन्ह व तीनों इंजन AastroAstra के ट्रेडमार्क हैं।':'AastroAstra™, the AA mark and the three engines are trademarks of AastroAstra.')
+            )
           )
         )
       );
