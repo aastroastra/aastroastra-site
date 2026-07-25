@@ -33,7 +33,7 @@ VER=$(grep -E 'versionName *= *"' "$GRADLE" | head -1 | sed -E 's/.*"([^"]+)".*/
 CODE=$(grep -E 'versionCode *= *' "$GRADLE" | head -1 | sed -E 's/[^0-9]//g')
 SIZE=$(ls -la "$APK" | awk '{printf "%.1f", $5/1048576}')
 DATE=$(date +%Y-%m-%d)
-UPDATED=$(date "+%d %b %Y, %H:%M %Z")   # human-readable, shown on the site as "Last updated"
+UPDATED=$(date "+%d %b %Y, %I:%M %p %Z")   # human-readable 12-hour AM/PM, shown on the site as "Last updated"
 APK_URL="https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-latest.apk"
 
 echo "Publishing AastroAstra beta → version $VER (code $CODE) · ${SIZE} MB"

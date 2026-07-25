@@ -18,6 +18,9 @@
   [data-theme="mono-light"]   { --bg:#FFFFFF; --card:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; --on-accent:#FFFFFF; --cosmos:40,40,40;   --pa:#EDEDED; --btn-bg:#0A0A0A; --btn-fg:#FFFFFF; }
   [data-theme="yellow-dark"]  { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; --on-accent:#0B0B0C; --cosmos:245,185,58; --pa:#F5B93A; --btn-bg:#FAFAFA; --btn-fg:#0B0B0C; }
   [data-theme="mono-dark"]    { --bg:#0A0A0A; --card:#141414; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; --on-accent:#0A0A0A; --cosmos:235,235,235; --pa:#EDEDED; --btn-bg:#FAFAFA; --btn-fg:#0A0A0A; }
+  /* Tint fill: yellow->orange gradient for the yellow themes, solid for mono */
+  [data-theme="yellow-light"], [data-theme="yellow-dark"] { --tint-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 55%,#EAB308 100%); }
+  [data-theme="mono-light"], [data-theme="mono-dark"] { --tint-grad:var(--tint); }
 
   * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
   html, body, #root { height:100%; max-width:100%; }
@@ -37,7 +40,7 @@
   .controls { display:flex; align-items:center; gap:10px; }
   .seg, .themes { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
   .seg button { border:none; background:transparent; color:var(--muted); cursor:pointer; border-radius:999px; font:inherit; font-size:12px; font-weight:600; padding:5px 11px; min-width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; transition:all .15s ease; }
-  .seg button[aria-pressed="true"] { background:var(--tint); color:var(--on-accent); }
+  .seg button[aria-pressed="true"] { background:var(--tint-grad); color:var(--on-accent); }
   .themes button { border:1.5px solid transparent; background:transparent; border-radius:999px; width:30px; height:30px; padding:0; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:border-color .15s ease; }
   .themes button[aria-pressed="true"] { border-color:var(--tint); }
   .chip { width:18px; height:18px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(140,140,140,.42); }
@@ -64,44 +67,92 @@
   .apk-direct a { color:var(--fg2); border-bottom:1px solid var(--line); }
   .apk-direct a:hover { color:var(--tint); border-color:var(--tint); }
 
-  /* Phone (no internal scroll, one featured notification) */
-  .phone { position:relative; width:302px; height:min(604px, calc(100vh - 150px)); border-radius:44px; padding:11px; background:#0c0c0f; box-shadow:0 40px 90px -34px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05) inset; transition:transform .35s cubic-bezier(.2,.7,.2,1); }
+  /* Phone: functional mock of the AastroAstra Android app (dashboard + chat sheet) */
+  .phone { position:relative; width:302px; height:min(604px, calc(100vh - 150px)); border-radius:44px; padding:11px; background:#0c0c0f; box-shadow:0 40px 90px -34px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05) inset; transition:transform .35s cubic-bezier(.2,.7,.2,1);
+    --d-bg:#FFFBF3; --d-card:#FFFFFF; --d-c2:#FBF4E6; --d-line:#EEE4D2; --d-tp:#2A2118; --d-tm:#8A7A5E; --d-gold:#E0A015; --d-rose:#C97B6B; --d-teal:#00BFA5;
+    --d-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 58%,#EAB308 100%); }
   .phone:hover { transform:translateY(-5px); }
-  .screen { position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden; background:#0b0906; color:#fff; display:flex; flex-direction:column; }
-  .notch { position:absolute; top:9px; left:50%; transform:translateX(-50%); width:112px; height:26px; background:#000; border-radius:0 0 16px 16px; z-index:3; }
-  .lock { flex:none; padding:38px 18px 8px; text-align:center; }
-  .lock .clk { font-family:'Noto Serif',serif; font-size:56px; font-weight:600; letter-spacing:-.02em; line-height:1; }
-  .lock .dt { margin-top:5px; font-size:13px; color:rgba(255,255,255,.6); }
-  .center { flex:1; min-height:0; display:flex; flex-direction:column; justify-content:center; padding:8px 12px 16px; }
+  .screen { position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden; background:var(--d-bg); color:var(--d-tp); display:flex; flex-direction:column; }
+  .notch { position:absolute; top:9px; left:50%; transform:translateX(-50%); width:108px; height:23px; background:#000; border-radius:0 0 15px 15px; z-index:6; }
 
-  .ncard { position:relative; background:rgba(26,24,22,.9); border:1px solid rgba(245,185,58,.22); border-radius:22px; padding:15px 16px; animation:fade .5s ease both; }
-  .ncard::before, .ncard::after { content:""; position:absolute; left:8px; right:8px; height:16px; border-radius:16px; background:rgba(255,255,255,.05); z-index:-1; }
-  .ncard::before { top:-7px; left:14px; right:14px; }
-  .ncard::after { top:-13px; left:22px; right:22px; opacity:.6; }
-  .nrow { display:flex; align-items:center; gap:8px; font-size:12px; color:rgba(255,255,255,.62); }
-  .nicon { width:18px; height:18px; border-radius:6px; background:var(--pa); color:#111; display:inline-flex; align-items:center; justify-content:center; font-size:11px; }
-  .napp { color:#fff; font-weight:600; }
-  .ncad { margin-left:auto; font-size:9.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:2px 8px; border-radius:999px; background:rgba(245,185,58,.2); color:var(--pa); }
-  .ntitle { margin-top:10px; font-size:17px; font-weight:700; color:#fff; }
-  .nbody { margin-top:4px; font-size:14.5px; line-height:1.42; color:rgba(255,255,255,.88); }
-  .nfor { margin-top:9px; font-size:11px; color:var(--pa); }
+  /* Dashboard */
+  .dash { flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; padding:32px 13px 62px; scrollbar-width:none; transition:filter .3s ease; }
+  .dash::-webkit-scrollbar { display:none; }
+  .dash.blur { filter:blur(6px) brightness(.97); }
+  .dhead { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+  .dgreet { font-size:18px; font-weight:800; letter-spacing:-.01em; line-height:1.15; background:var(--d-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  .ddate { margin-top:3px; font-size:10.5px; color:var(--d-tm); }
+  .drashi { margin-top:5px; font-size:10.5px; color:#8B9DAF; display:flex; align-items:center; gap:5px; }
+  .drashi .dot { width:6px; height:6px; border-radius:50%; background:#8B9DAF; display:inline-block; }
+  .dgear { flex:none; width:33px; height:33px; border-radius:50%; background:var(--d-c2); color:var(--d-gold); display:flex; align-items:center; justify-content:center; font-size:15px; }
+  .card { background:var(--d-card); border:1px solid var(--d-line); border-radius:15px; padding:12px 13px; margin-top:11px; }
+  .clabel { display:flex; align-items:center; gap:6px; font-size:8.5px; font-weight:800; letter-spacing:.14em; }
+  .clabel .g { background:var(--d-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  .clabel .r { margin-left:auto; color:var(--d-gold); font-weight:700; font-size:9.5px; letter-spacing:.02em; }
+  .pgrid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-top:9px; }
+  .pgrid .pl { font-size:7px; letter-spacing:.05em; color:var(--d-tm); font-weight:700; }
+  .pgrid .pv { margin-top:2px; font-size:10.5px; font-weight:700; color:var(--d-gold); line-height:1.15; }
+  .psun { margin-top:8px; font-size:9.5px; color:var(--d-tm); }
+  .hbody { margin-top:7px; font-size:11px; line-height:1.5; color:var(--d-tp); }
+  .dacts { display:flex; gap:8px; margin-top:11px; }
+  .dact { flex:1; border-radius:14px; padding:12px 10px; color:#fff; display:flex; flex-direction:column; gap:5px; font-weight:800; font-size:11.5px; }
+  .dact .i { font-size:14px; }
+  .dact.k { background:var(--d-grad); color:#3a2c05; }
+  .dact.m { background:var(--d-rose); }
+  .slabel { margin-top:15px; font-size:8.5px; font-weight:800; letter-spacing:.16em; color:var(--d-tm); }
+  .nums { display:flex; gap:7px; margin-top:9px; }
+  .numbox { flex:1; background:var(--d-c2); border-radius:11px; padding:9px 4px; text-align:center; }
+  .numbox .n { font-size:21px; font-weight:800; color:var(--d-gold); line-height:1; }
+  .numbox .nl { margin-top:4px; font-size:7px; letter-spacing:.04em; color:var(--d-tm); font-weight:700; }
+  .numline { margin-top:10px; font-size:10.5px; line-height:1.5; color:var(--d-tp); }
+  .dgrid { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:9px; }
+  .fcard { background:var(--d-card); border:1px solid var(--d-line); border-radius:14px; padding:12px; }
+  .fcard .fi { font-size:19px; }
+  .fcard .ft { margin-top:7px; font-size:11.5px; font-weight:800; }
+  .fcard .fs { margin-top:2px; font-size:9.5px; color:var(--d-tm); }
+  .dbrand { display:flex; align-items:center; gap:10px; margin-top:11px; background:var(--d-card); border:1px solid var(--d-line); border-radius:14px; padding:11px 12px; }
+  .dbrand .bi { flex:none; width:29px; height:29px; border-radius:50%; background:var(--d-grad); color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; }
+  .dbrand .bt { font-size:12.5px; font-weight:800; background:var(--d-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  .dbrand .bs { font-size:9.5px; color:var(--d-tm); }
+  .dbrand .bc { margin-left:auto; color:var(--d-tm); font-size:16px; }
 
-  .airow { margin-top:12px; display:flex; }
-  .aibtn { position:relative; display:inline-flex; align-items:center; gap:7px; background:var(--pa); color:#111; border:none; cursor:pointer; font:inherit; font-size:12.5px; font-weight:700; padding:8px 14px; border-radius:999px; }
-  .aibtn .st { font-size:12px; }
-  .aibtn.invite::after { content:""; position:absolute; inset:-5px; border-radius:999px; border:2px solid var(--pa); animation:ring 1.7s ease-out infinite; }
-  @keyframes ring { 0%{ transform:scale(.92); opacity:.7; } 100%{ transform:scale(1.55); opacity:0; } }
+  /* Bottom nav */
+  .dnav { position:absolute; left:0; right:0; bottom:0; height:50px; background:var(--d-card); border-top:1px solid var(--d-line); display:flex; z-index:5; }
+  .dnav button { flex:1; border:none; background:transparent; cursor:pointer; font:inherit; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; color:var(--d-tm); font-size:9px; font-weight:700; }
+  .dnav button .ni { font-size:14px; }
+  .dnav button.on { color:var(--d-gold); }
 
-  .aireply { margin-top:12px; display:flex; gap:9px; animation:fade .35s ease both; }
-  .aiav { flex:none; width:24px; height:24px; border-radius:50%; background:var(--pa); color:#111; display:inline-flex; align-items:center; justify-content:center; font-size:12px; }
-  .aibubble { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.08); border-radius:6px 16px 16px 16px; padding:10px 13px; }
-  .aibubble .who { font-size:11px; font-weight:700; color:var(--pa); letter-spacing:.02em; }
-  .aibubble .msg { margin-top:3px; font-size:13.5px; line-height:1.45; color:rgba(255,255,255,.92); }
+  /* Chat bottom sheet */
+  .dim { position:absolute; inset:0; background:rgba(20,14,4,.30); opacity:0; pointer-events:none; transition:opacity .3s ease; z-index:7; }
+  .dim.on { opacity:1; pointer-events:auto; }
+  .sheet { position:absolute; left:0; right:0; bottom:0; height:90%; background:var(--d-bg); border-radius:22px 22px 34px 34px; box-shadow:0 -18px 40px -18px rgba(0,0,0,.35); transform:translateY(100%); transition:transform .34s cubic-bezier(.2,.75,.2,1); z-index:8; display:flex; flex-direction:column; overflow:hidden; }
+  .sheet.on { transform:translateY(0); }
+  .shandle { width:38px; height:4px; border-radius:2px; background:var(--d-line); margin:8px auto 4px; flex:none; }
+  .chead { padding:4px 14px 10px; border-bottom:1px solid var(--d-line); flex:none; }
+  .chead .r1 { display:flex; align-items:center; gap:7px; }
+  .chead .ct { font-size:14.5px; font-weight:800; background:var(--d-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  .chead .quota { margin-left:auto; font-size:9.5px; font-weight:800; color:#8B9DAF; background:var(--d-c2); border-radius:999px; padding:3px 9px; }
+  .chead .cx { width:24px; height:24px; border-radius:50%; border:none; background:var(--d-c2); color:var(--d-tm); font-size:15px; cursor:pointer; line-height:1; }
+  .chead .sub { margin-top:4px; font-size:9.5px; color:var(--d-teal); }
+  .kchip { margin-top:8px; background:var(--d-c2); border-radius:9px; padding:7px 9px; font-size:9.5px; color:var(--d-tm); display:flex; align-items:center; gap:5px; }
+  .kchip .ch { margin-left:auto; color:var(--d-gold); font-weight:700; }
+  .cmsgs { flex:1; min-height:0; overflow-y:auto; padding:12px 14px; display:flex; flex-direction:column; gap:9px; scrollbar-width:none; }
+  .cmsgs::-webkit-scrollbar { display:none; }
+  .bubble { max-width:82%; font-size:12px; line-height:1.5; padding:10px 12px; }
+  .bubble.ai { align-self:flex-start; background:var(--d-card); border:1px solid var(--d-line); border-left:3px solid var(--d-teal); border-radius:4px 14px 14px 14px; color:var(--d-tp); }
+  .bubble.ai b { color:var(--d-gold); font-weight:700; }
+  .bubble.me { align-self:flex-end; background:var(--d-grad); color:#3a2c05; font-weight:600; border-radius:14px 14px 4px 14px; }
+  .typing { align-self:flex-start; display:flex; gap:4px; padding:12px 13px; background:var(--d-card); border:1px solid var(--d-line); border-radius:4px 14px 14px 14px; }
+  .typing i { width:6px; height:6px; border-radius:50%; background:var(--d-tm); animation:blink 1.2s infinite; }
+  .typing i:nth-child(2){ animation-delay:.2s; } .typing i:nth-child(3){ animation-delay:.4s; }
+  @keyframes blink { 0%,60%,100%{ opacity:.3; } 30%{ opacity:1; } }
   @keyframes fade { from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
-
-  /* Mono themes → make the phone monochrome too */
-  [data-theme^="mono"] .ncad { background:rgba(255,255,255,.14); color:#eaeaea; }
-  [data-theme^="mono"] .ncard { border-color:rgba(255,255,255,.16); }
+  .cchips { display:flex; gap:6px; padding:8px 14px 4px; overflow-x:auto; flex:none; scrollbar-width:none; }
+  .cchips::-webkit-scrollbar { display:none; }
+  .cchips button { flex:none; white-space:nowrap; border:none; background:var(--d-c2); color:var(--d-tp); border-radius:999px; padding:7px 12px; font:inherit; font-size:10px; cursor:pointer; }
+  .cinput { display:flex; gap:8px; padding:8px 14px 14px; flex:none; align-items:center; }
+  .cinput input { flex:1; min-width:0; background:var(--d-c2); border:none; border-radius:999px; padding:11px 14px; font:inherit; font-size:11.5px; color:var(--d-tp); outline:none; }
+  .cinput .send { flex:none; width:38px; height:38px; border-radius:50%; border:none; background:var(--d-teal); color:#fff; font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
 
   footer { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
   footer > * { padding:16px 30px; font-size:13px; color:var(--muted); }
@@ -113,10 +164,12 @@
     html, body, #root { height:auto; } body { overflow:auto; }
     .frame { height:auto; min-height:100vh; }
     .hero { grid-template-columns:1fr; }
-    .hero .left { border-right:none; border-bottom:1px solid var(--line); }
+    /* Mobile/stacked: center the title, subtitle and button */
+    .hero .left { border-right:none; border-bottom:1px solid var(--line); align-items:center; text-align:center; }
+    .dl-label, .meta, .apk-direct { text-align:center; }
+    .btn-play { justify-content:center; }
     .hero > div { padding:34px 20px; }
     .hero .right { padding:24px 20px 44px; }
-    .phone { height:600px; }
     footer { grid-template-columns:1fr; }
     footer > *:not(:last-child) { border-right:none; border-bottom:1px solid var(--line); }
     .tm { text-align:left; }
@@ -124,7 +177,10 @@
   @media (max-width:560px) {
     header { flex-wrap:wrap; row-gap:12px; padding:16px 18px; }
     .brand { flex:1 1 auto; } .controls { width:100%; justify-content:space-between; }
-    .hero > div { padding:30px 18px; } h1 { font-size:clamp(40px,13vw,72px); }
+    .hero > div { padding:30px 18px; } h1 { font-size:clamp(38px,12vw,64px); }
+    /* Smaller phone on real mobile */
+    .phone { width:248px; height:min(508px, calc(100vh - 120px)); border-radius:38px; padding:9px; }
+    .phone .screen { border-radius:30px; }
   }
 </style>
 </head>
@@ -187,52 +243,133 @@
       return h('canvas', { ref:ref, className:'cosmos' });
     }
 
+    var DASH = {
+      greet:{en:'Namaste, Rahul ✦',hi:'नमस्ते, राहुल ✦'},
+      date:{en:'Monday, 20 July',hi:'सोमवार, 20 जुलाई'},
+      rashi:{en:'Aries · Kritika',hi:'मेष · कृत्तिका'},
+      panch:{en:'TODAY’S PANCHANG',hi:'आज का पंचांग'},
+      horo:{en:'TODAY’S HOROSCOPE',hi:'आज का राशिफल'},
+      wk:{en:'Monday',hi:'सोमवार'},
+      horoBody:{en:'The stars favour you today. Focus on what matters and speak your mind after noon.',hi:'आज सितारे आपके पक्ष में हैं। जो ज़रूरी है उस पर ध्यान दें, दोपहर बाद मन की बात कहें।'},
+      single:{en:'Single Kundali',hi:'एकल कुंडली'}, match:{en:'Match Making',hi:'मिलान'},
+      numHead:{en:'YOUR NUMEROLOGY',hi:'आपका अंक ज्योतिष'},
+      numLine:{en:'Driver 1 — the pioneer and natural leader. Today favours bold, first moves.',hi:'मूलांक 1 — अग्रणी और स्वाभाविक नेता। आज साहसिक पहल शुभ।'},
+      explore:{en:'EXPLORE MORE',hi:'और देखें'},
+      lal:{en:'Lal Kitab',hi:'लाल किताब'}, lalS:{en:'Remedies',hi:'उपाय'},
+      kp:{en:'KP System',hi:'केपी पद्धति'}, kpS:{en:'Cusps & sub-lords',hi:'कस्प व उपस्वामी'},
+      brand:{en:'AastroAstra',hi:'AastroAstra'}, brandS:{en:'Talk to our astrologers',hi:'हमारे ज्योतिषियों से बात करें'},
+      navDash:{en:'Dashboard',hi:'डैशबोर्ड'}, navChat:{en:'AI Chat',hi:'एआई चैट'},
+    };
+    var PANCH = [ ['TITHI','Shukla Tritiya','तिथि','शुक्ल तृतीया'], ['NAKSHATRA','Kritika','नक्षत्र','कृत्तिका'], ['YOGA','Shubha','योग','शुभ'], ['KARANA','Bava','करण','बव'] ];
+    var NUMB = [ ['1','DRIVER','मूलांक'], ['8','CONDUCTOR','भाग्यांक'], ['5','EXPRESSION','नामांक'] ];
+    var CHAT = {
+      title:{en:'AastroAI',hi:'AastroAI'},
+      sub:{en:'● Trained on classical Vedic texts',hi:'● शास्त्रीय वैदिक ग्रंथों पर प्रशिक्षित'},
+      talk:{en:'🔮 Talking about: You — Aries · Kritika',hi:'🔮 विषय: आप — मेष · कृत्तिका'},
+      change:{en:'Change ▾',hi:'बदलें ▾'},
+      placeholder:{en:'Ask about your chart…',hi:'अपनी कुंडली पूछें…'},
+      hello:{en:'Namaste ✦ I can read your chart — dasha, career, marriage timing, doshas. What’s on your mind?',hi:'नमस्ते ✦ मैं आपकी कुंडली पढ़ सकता हूँ — दशा, करियर, विवाह समय, दोष। क्या पूछना है?'},
+      chips:[ {en:'My Dasha period?',hi:'मेरी दशा?'}, {en:'Lucky career fields?',hi:'शुभ करियर?'}, {en:'Marriage timing?',hi:'विवाह समय?'}, {en:'Manglik status?',hi:'मांगलिक?'} ],
+    };
+    var REPLIES = [
+      { k:['dasha','दशा'], en:'You are in your **Jupiter Mahadasha** until 2028 — it favours learning, teaching and long journeys. The **Saturn antardasha** from March asks for patience: build slowly and it holds.', hi:'आप **गुरु महादशा** में हैं (2028 तक) — शिक्षा, अध्यापन व यात्रा शुभ। मार्च से **शनि अंतरदशा** धैर्य मांगती है।' },
+      { k:['career','job','work','करियर','नौकरी'], en:'With a strong **10th-house Sun**, leadership and public-facing work suit you — administration, law, or your own venture. A visible break comes after the 21st.', hi:'बलवान **दशम भाव सूर्य** से नेतृत्व व जनसंपर्क कार्य शुभ — प्रशासन, विधि या स्वयं का उद्यम। 21 के बाद पहचान।' },
+      { k:['marriage','married','wife','husband','विवाह','शादी'], en:'**Venus in the 7th** with Jupiter’s aspect points to marriage between **late 2026 and 2027**. The 14th–18th of favourable months are the warmest windows.', hi:'**सप्तम में शुक्र** व गुरु की दृष्टि विवाह **2026 अंत से 2027** दर्शाती है। शुभ मासों की 14–18 सर्वोत्तम।' },
+      { k:['manglik','mangal','मांगलिक','मंगल'], en:'A mild **Manglik yoga** from Mars in the 12th — it softens after 28 and is cancelled when matched with a Manglik partner. Nothing to worry about.', hi:'द्वादश मंगल से हल्का **मांगलिक योग** — 28 के बाद घटता है, मांगलिक साथी से रद्द। चिंता नहीं।' },
+    ];
+    var FALLBACK = { en:'Your chart shows a resilient, curious nature. Ask me about your **dasha**, **career**, **marriage timing** or **doshas** for a specific reading.', hi:'आपकी कुंडली दृढ़ व जिज्ञासु स्वभाव दिखाती है। **दशा**, **करियर**, **विवाह समय** या **दोष** पूछें।' };
+    function pickReply(text, lang){ var q=(text||'').toLowerCase(); for(var i=0;i<REPLIES.length;i++){ for(var j=0;j<REPLIES[i].k.length;j++){ if(q.indexOf(REPLIES[i].k[j])>=0) return REPLIES[i][lang]; } } return FALLBACK[lang]; }
+    function rich(t){ var parts=t.split('**'); return parts.map(function(p,i){ return i%2? h('b',{key:i},p):p; }); }
+
     function Phone(props){
-      var lang=props.lang;
-      var iS=useState(0), idx=iS[0], setIdx=iS[1];
-      var aS=useState(false), aiOpen=aS[0], setAiOpen=aS[1];
-      var hovRef=useRef(false), openRef=useRef(false);
-      useEffect(function(){ openRef.current = aiOpen; }, [aiOpen]);
-      useEffect(function(){
-        // Slow, gentle cycle. Never while the AI reply is open or on hover.
-        var id=setInterval(function(){ if(!openRef.current && !hovRef.current){ setIdx(function(v){ return (v+1)%NOTIFS.length; }); } }, 6500);
-        return function(){ clearInterval(id); };
-      }, []);
-      var n=NOTIFS[idx], c=n[lang], forLine = lang==='hi'?'राहुल के लिए · कर्क चंद्र · मूलांक 4':'for Rahul · Cancer Moon · Driver 4';
-      return h('div', { className:'phone', onMouseEnter:function(){hovRef.current=true;}, onMouseLeave:function(){hovRef.current=false;} },
+      var lang=props.lang, T=function(o){ return o[lang]||o.en; };
+      var oS=useState(false), open=oS[0], setOpen=oS[1];
+      var mS=useState([{who:'ai',text:CHAT.hello.en}]), msgs=mS[0], setMsgs=mS[1];
+      var tS=useState(false), typing=tS[0], setTyping=tS[1];
+      var iS=useState(''), input=iS[0], setInput=iS[1];
+      var endRef=useRef(null), timers=useRef([]);
+      useEffect(function(){ if(open && endRef.current && endRef.current.scrollIntoView){ var sc=endRef.current.parentNode; if(sc) sc.scrollTop=sc.scrollHeight; } }, [msgs, typing, open]);
+      useEffect(function(){ return function(){ timers.current.forEach(clearTimeout); }; }, []);
+      useEffect(function(){ setMsgs(function(m){ return (m.length===1 && m[0].who==='ai') ? [{who:'ai',text:CHAT.hello[lang]}] : m; }); }, [lang]);
+      function send(text){ text=(text||'').trim(); if(!text||typing) return; setInput('');
+        setMsgs(function(m){ return m.concat([{who:'me',text:text}]); }); setTyping(true);
+        var reply=pickReply(text, lang);
+        var id=setTimeout(function(){ setTyping(false); setMsgs(function(m){ return m.concat([{who:'ai',text:reply}]); }); }, 1150);
+        timers.current.push(id);
+      }
+      return h('div', { className:'phone' },
         h('div', { className:'notch' }),
         h('div', { className:'screen' },
-          h('div', { className:'lock' },
-            h('div', { className:'clk' }, '9:41'),
-            h('div', { className:'dt' }, lang==='hi'?'सोमवार, 20 जुलाई':'Monday, 20 July')
+          h('div', { className:'dash'+(open?' blur':'') },
+            h('div', { className:'dhead' },
+              h('div', null,
+                h('div', { className:'dgreet' }, T(DASH.greet)),
+                h('div', { className:'ddate' }, T(DASH.date)),
+                h('div', { className:'drashi' }, h('span',{className:'dot'}), T(DASH.rashi))
+              ),
+              h('div', { className:'dgear' }, '⚙')
+            ),
+            h('div', { className:'card' },
+              h('div', { className:'clabel' }, h('span',null,'☀'), h('span',{className:'g'}, T(DASH.panch)), h('span',{className:'r'}, T(DASH.wk)+' ›')),
+              h('div', { className:'pgrid' }, PANCH.map(function(p,i){ return h('div',{key:i}, h('div',{className:'pl'}, lang==='hi'?p[2]:p[0]), h('div',{className:'pv'}, lang==='hi'?p[3]:p[1])); })),
+              h('div', { className:'psun' }, '↑ 05:38   ↓ 18:52')
+            ),
+            h('div', { className:'card' },
+              h('div', { className:'clabel' }, h('span',null,'☀'), h('span',{className:'g'}, T(DASH.horo)), h('span',{className:'r'}, (lang==='hi'?'मेष':'Aries')+' ›')),
+              h('div', { className:'hbody' }, T(DASH.horoBody))
+            ),
+            h('div', { className:'dacts' },
+              h('div', { className:'dact k' }, h('span',{className:'i'},'▦'), T(DASH.single)),
+              h('div', { className:'dact m' }, h('span',{className:'i'},'♥'), T(DASH.match))
+            ),
+            h('div', { className:'slabel' }, T(DASH.numHead)),
+            h('div', { className:'card' },
+              h('div', { className:'nums' }, NUMB.map(function(x,i){ return h('div',{className:'numbox',key:i}, h('div',{className:'n'},x[0]), h('div',{className:'nl'}, lang==='hi'?x[2]:x[1])); })),
+              h('div', { className:'numline' }, T(DASH.numLine))
+            ),
+            h('div', { className:'slabel' }, T(DASH.explore)),
+            h('div', { className:'dgrid' },
+              h('div', { className:'fcard' }, h('div',{className:'fi'},'📖'), h('div',{className:'ft'}, T(DASH.lal)), h('div',{className:'fs'}, T(DASH.lalS))),
+              h('div', { className:'fcard' }, h('div',{className:'fi'},'▦'), h('div',{className:'ft'}, T(DASH.kp)), h('div',{className:'fs'}, T(DASH.kpS)))
+            ),
+            h('div', { className:'dbrand' },
+              h('div',{className:'bi'},'✦'),
+              h('div', null, h('div',{className:'bt'}, T(DASH.brand)), h('div',{className:'bs'}, T(DASH.brandS))),
+              h('div',{className:'bc'},'›')
+            )
           ),
-          h('div', { className:'center' },
-            h('div', { className:'ncard', key:idx },
-              h('div', { className:'nrow' },
-                h('span', { className:'nicon' }, '✦'), h('span', { className:'napp' }, 'AastroAstra'),
-                h('span', null, '·'), h('span', null, lang==='hi'?'अभी':'now'),
-                h('span', { className:'ncad' }, CAD[n.cad][lang])
+          h('div', { className:'dnav' },
+            h('button', { className:'on' }, h('span',{className:'ni'},'✦'), T(DASH.navDash)),
+            h('button', { onClick:function(){ setOpen(true); } }, h('span',{className:'ni'},'◍'), T(DASH.navChat))
+          ),
+          h('div', { className:'dim'+(open?' on':''), onClick:function(){ setOpen(false); } }),
+          h('div', { className:'sheet'+(open?' on':'') },
+            h('div', { className:'shandle' }),
+            h('div', { className:'chead' },
+              h('div', { className:'r1' },
+                h('span',null,'✦'), h('span',{className:'ct'}, T(CHAT.title)),
+                h('span',{className:'quota'}, '8/10'),
+                h('button',{className:'cx', onClick:function(){ setOpen(false); }}, '×')
               ),
-              h('div', { className:'ntitle' }, c.t),
-              h('div', { className:'nbody' }, c.b),
-              h('div', { className:'nfor' }, forLine),
-              !aiOpen && h('div', { className:'airow' },
-                h('button', { className:'aibtn invite', onClick:function(){ setAiOpen(true); } },
-                  h('span', { className:'st' }, '✦'), lang==='hi'?'AI से पूछें':'Ask AI')
-              ),
-              aiOpen && h('div', { className:'aireply' },
-                h('span', { className:'aiav' }, '✦'),
-                h('div', { className:'aibubble' },
-                  h('div', { className:'who' }, lang==='hi'?'AastroAstra AI':'AastroAstra AI'),
-                  h('div', { className:'msg' }, c.ai)
-                )
-              )
+              h('div', { className:'sub' }, T(CHAT.sub)),
+              h('div', { className:'kchip' }, h('span',null,T(CHAT.talk)), h('span',{className:'ch'}, T(CHAT.change)))
+            ),
+            h('div', { className:'cmsgs' },
+              msgs.map(function(m,i){ return h('div',{key:i, className:'bubble '+(m.who==='me'?'me':'ai')}, m.who==='ai'?rich(m.text):m.text); }),
+              typing ? h('div',{className:'typing'}, h('i'),h('i'),h('i')) : null,
+              h('div',{ref:endRef})
+            ),
+            h('div', { className:'cchips' },
+              CHAT.chips.map(function(ch,i){ return h('button',{key:i, onClick:function(){ send(T(ch)); }}, T(ch)); })
+            ),
+            h('div', { className:'cinput' },
+              h('input', { value:input, placeholder:T(CHAT.placeholder), onChange:function(e){ setInput(e.target.value); }, onKeyDown:function(e){ if(e.key==='Enter') send(input); } }),
+              h('button', { className:'send', onClick:function(){ send(input); } }, '➤')
             )
           )
         )
       );
     }
-
     var COPY = {
       dl:{en:'Download the beta',hi:'बीटा डाउनलोड करें'}, getapp:{en:'Get the Android app',hi:'एंड्रॉइड ऐप लें'},
       download:{en:'Download Beta',hi:'बीटा डाउनलोड'}, privacy:{en:'Privacy Policy',hi:'गोपनीयता नीति'}, terms:{en:'Terms of Use',hi:'उपयोग की शर्तें'},
