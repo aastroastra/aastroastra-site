@@ -112,10 +112,17 @@
   .dacts { display:flex; gap:8px; margin-top:11px; }
   .dact { flex:1; border-radius:14px; padding:12px 10px; color:#fff; display:flex; flex-direction:column; gap:5px; font-weight:800; font-size:11.5px; }
   .dact .i { font-size:14px; }
-  /* Feature boxes use fixed, solid, calm-vibrant accent colours (brand accents, all themes) */
-  .dact.k { background:#EF8E3C; color:#fff; }
-  .dact.m { background:#CE7E88; color:#fff; }
-  .mm { margin-top:8px; background:#E7A81B; color:#3A2C05; border-radius:14px; padding:11px 13px; cursor:pointer; }
+  /* Feature boxes: distinct calm solid accents in the YELLOW themes, white foreground */
+  .dact.k { background:#DF7D3C; color:#fff; }
+  .dact.m { background:#C67480; color:#fff; }
+  .mm { margin-top:8px; background:#6C7ABC; color:#fff; border-radius:14px; padding:11px 13px; cursor:pointer; }
+  /* B&W themes stay black & white — grayscale boxes, no colour */
+  [data-theme="mono-light"] .dact.k { background:#262626; color:#fff; }
+  [data-theme="mono-light"] .dact.m { background:#565656; color:#fff; }
+  [data-theme="mono-light"] .mm { background:#828282; color:#fff; }
+  [data-theme="mono-dark"] .dact.k { background:#FAFAFA; color:#0A0A0A; }
+  [data-theme="mono-dark"] .dact.m { background:#CFCFCF; color:#0A0A0A; }
+  [data-theme="mono-dark"] .mm { background:#9C9C9C; color:#0A0A0A; }
   .mmrow { display:flex; align-items:center; gap:8px; font-weight:800; font-size:12.5px; }
   .mmrow .i { font-size:14px; }
   .mmrow .eng { margin-left:auto; font-size:8px; font-weight:800; letter-spacing:.12em; padding:2px 7px; border-radius:999px; background:rgba(0,0,0,.16); }
@@ -182,7 +189,7 @@
   .ftitle { font-size:15px; font-weight:800; color:var(--d-tp); display:flex; align-items:center; gap:7px; }
   .fpill { font-size:8px; font-weight:800; letter-spacing:.1em; color:var(--d-teal); border:1px solid var(--d-teal); border-radius:999px; padding:2px 7px; }
   .fsub { margin-top:3px; font-size:10.5px; color:var(--d-tm); }
-  .mic { margin:20px auto 4px; width:72px; height:72px; border-radius:50%; background:var(--d-teal); color:#fff; display:flex; align-items:center; justify-content:center; font-size:28px; position:relative; }
+  .mic { margin:26px auto 18px; width:54px; height:54px; border-radius:50%; background:var(--d-teal); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; position:relative; }
   .mic.live::after { content:""; position:absolute; inset:-8px; border-radius:50%; border:2px solid var(--d-teal); animation:mring 1.6s ease-out infinite; }
   @keyframes mring { 0%{ transform:scale(.9); opacity:.7; } 100%{ transform:scale(1.5); opacity:0; } }
   .vstatus { text-align:center; font-size:11px; color:var(--d-teal); font-weight:700; margin-top:6px; }
@@ -232,25 +239,43 @@
     .phone { width:248px; height:min(508px, calc(100vh - 120px)); border-radius:38px; padding:9px; }
     .phone .screen { border-radius:30px; }
   }
-  /* Intro splash: logo appears, then fades to reveal the site */
-  #splash { position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; background:#FFFFFF; transition:opacity .55s ease; }
-  #splash img { width:104px; height:104px; object-fit:contain; animation:splashIn 1.15s cubic-bezier(.2,.7,.2,1) both; }
+  /* Intro splash: logo + typewriter wordmark, then the logo flies into the nav */
+  #splash { position:fixed; inset:0; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; background:#FFFFFF; transition:opacity .5s ease; }
+  #splash .slogo { width:94px; height:94px; object-fit:contain; animation:splashIn 1s cubic-bezier(.2,.7,.2,1) both; will-change:transform; }
+  #splash .stype { font-family:'Noto Serif',Georgia,serif; font-size:27px; font-weight:700; letter-spacing:-.02em; color:#1A1A1A; min-height:34px; display:flex; align-items:center; border-right:2px solid currentColor; animation:caret .9s step-end infinite; }
   #splash.hide { opacity:0; pointer-events:none; }
-  @keyframes splashIn { 0%{ opacity:0; transform:scale(.82); } 45%{ opacity:1; transform:scale(1); } 100%{ opacity:1; transform:scale(1.02); } }
+  @keyframes splashIn { 0%{ opacity:0; transform:scale(.82); } 100%{ opacity:1; transform:scale(1); } }
+  @keyframes caret { 0%,100%{ border-color:currentColor; } 50%{ border-color:transparent; } }
 </style>
 </head>
 <body>
-  <div id="splash"><img src="logo-mark.png" alt="AastroAstra" /></div>
+  <div id="splash"><img class="slogo" src="logo-mark.png" alt="AastroAstra" /><span class="stype"></span></div>
   <script>
     (function(){
       var sp=document.getElementById('splash'); if(!sp) return;
+      var im=sp.querySelector('.slogo'), txt=sp.querySelector('.stype');
       var t; try{ t=localStorage.getItem('aa-theme'); }catch(e){}
       var dark = t==='yellow-dark' || t==='mono-dark' || (!t && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
       sp.style.background = dark ? '#0A0A0A' : '#FFFFFF';
-      var im=sp.querySelector('img');
+      txt.style.color = dark ? '#FAFAFA' : '#1A1A1A';
       if(t==='mono-light') im.style.filter='brightness(0)';
       else if(t==='mono-dark' || (dark && t!=='yellow-dark')) im.style.filter='brightness(0) invert(1)';
-      setTimeout(function(){ sp.classList.add('hide'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); }, 600); }, 1200);
+      // Typewriter the wordmark, then fly the logo into the nav brand mark.
+      var word='AastroAstra', i=0;
+      var typer=setInterval(function(){ i++; txt.textContent=word.slice(0,i); if(i>=word.length){ clearInterval(typer); setTimeout(merge, 460); } }, 78);
+      function merge(){
+        txt.style.borderRight='none';
+        var target=document.querySelector('.brand .mark');
+        if(target){
+          var tr=target.getBoundingClientRect(), sr=im.getBoundingClientRect();
+          var dx=(tr.left+tr.width/2)-(sr.left+sr.width/2), dy=(tr.top+tr.height/2)-(sr.top+sr.height/2), sc=tr.width/sr.width;
+          txt.style.transition='opacity .3s ease'; txt.style.opacity='0';
+          im.style.animation='none';
+          im.style.transition='transform .72s cubic-bezier(.6,.05,.2,1)';
+          im.style.transform='translate('+dx+'px,'+dy+'px) scale('+sc+')';
+        }
+        setTimeout(function(){ sp.classList.add('hide'); setTimeout(function(){ if(sp.parentNode) sp.parentNode.removeChild(sp); }, 520); }, 660);
+      }
     })();
   </script>
   <div id="root"></div>
