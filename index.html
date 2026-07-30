@@ -173,11 +173,11 @@
 
   * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
   html, body, #root { height:100%; max-width:100%; }
-  body { background:var(--bg); color:var(--fg); overflow:hidden; font-family:'Inter','Noto Sans Devanagari',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; letter-spacing:-0.01em; transition:background .3s ease,color .3s ease; }
+  body { background:var(--bg); color:var(--fg); overflow-x:hidden; overflow-y:auto; font-family:'Inter','Noto Sans Devanagari',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; letter-spacing:-0.01em; transition:background .3s ease,color .3s ease; }
   a { color:inherit; text-decoration:none; }
 
   .cosmos { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.8; }
-  .frame { position:relative; z-index:1; width:100%; max-width:1240px; height:100vh; margin:0 auto; display:grid; grid-template-rows:auto 1fr auto; border-left:1px solid var(--line); border-right:1px solid var(--line); }
+  .frame { position:relative; z-index:1; width:100%; max-width:1240px; min-height:100vh; margin:0 auto; display:grid; grid-template-rows:auto auto auto auto; border-left:1px solid var(--line); border-right:1px solid var(--line); }
 
   header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 30px; border-bottom:1px solid var(--line); }
   .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; }
@@ -201,7 +201,7 @@
   .tp-menu button { display:flex; align-items:center; gap:10px; background:transparent; border:none; cursor:pointer; font:inherit; font-size:13px; font-weight:600; color:var(--fg); padding:9px 10px; border-radius:9px; text-align:left; width:100%; }
   .tp-menu button[aria-pressed="true"] { background:var(--card); border:1px solid var(--line); }
 
-  .hero { display:grid; grid-template-columns:1fr 0.9fr; min-height:0; }
+  .hero { display:grid; grid-template-columns:1fr 0.9fr; min-height:calc(100vh - 67px); }
   .hero > div { padding:30px; min-height:0; }
   .hero .left { border-right:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; }
   .hero .right { position:relative; display:flex; align-items:center; justify-content:center; }
@@ -427,6 +427,124 @@
   #splash.hide { opacity:0; pointer-events:none; }
   @keyframes splashIn { 0%{ opacity:0; transform:scale(.82); } 100%{ opacity:1; transform:scale(1); } }
   @keyframes caret { 0%,100%{ border-color:currentColor; } 50%{ border-color:transparent; } }
+
+  /* ============ Feature showcase — production-accurate phone mocks + descriptions ============ */
+  .showcase { border-top:1px solid var(--line); }
+  .sc-intro { text-align:center; padding:70px 24px 6px; }
+  .sc-intro .eyebrow { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:800; }
+  .sc-intro h2 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.02em; font-size:clamp(30px,4.6vw,52px); line-height:1.05; margin-top:12px; color:var(--fg); }
+  .sc-intro h2 .hl { background:var(--tint-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  .sc-intro p { max-width:600px; margin:15px auto 0; font-size:15px; line-height:1.6; color:var(--fg2); }
+
+  .feat { display:grid; grid-template-columns:0.95fr 1.05fr; align-items:center; gap:48px; padding:62px 44px; border-top:1px solid var(--line); }
+  .feat.rev .feat-copy { order:2; } .feat.rev .feat-phone { order:1; }
+  .feat-copy { max-width:470px; }
+  .feat-copy .eyebrow { display:inline-flex; align-items:center; gap:6px; font-size:10.5px; letter-spacing:.15em; text-transform:uppercase; color:var(--tint); font-weight:800; }
+  .feat-copy .eyebrow .tm { font-size:8px; color:var(--muted); }
+  .feat-copy h3 { font-family:'Noto Serif',serif; font-size:clamp(24px,3vw,37px); font-weight:700; letter-spacing:-.02em; margin-top:13px; color:var(--fg); line-height:1.1; }
+  .feat-copy > p { margin-top:13px; font-size:15px; line-height:1.65; color:var(--fg2); }
+  .feat-list { margin-top:20px; display:flex; flex-direction:column; gap:12px; }
+  .feat-list .fl { display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--fg2); line-height:1.45; }
+  .feat-list .fl .ck { flex:none; width:21px; height:21px; border-radius:50%; background:var(--tint-grad); color:var(--on-accent); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; margin-top:1px; }
+  .feat-phone { display:flex; justify-content:center; align-items:center; }
+
+  /* Generic feature-page scaffold (mirrors the app's screen chrome) */
+  .pg { flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; padding:34px 13px 22px; scrollbar-width:none; }
+  .pg::-webkit-scrollbar { display:none; }
+  .pgt { font-size:17px; font-weight:800; letter-spacing:-.01em; background:var(--d-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; display:inline-flex; align-items:center; gap:7px; }
+  .pgtag { font-size:8px; font-weight:800; letter-spacing:.12em; color:var(--d-teal); -webkit-text-fill-color:var(--d-teal); border:1px solid var(--d-teal); border-radius:999px; padding:2px 6px; }
+  .pgs { margin-top:3px; font-size:10.5px; color:var(--d-tm); }
+  .pglabel { margin-top:14px; font-size:8.5px; font-weight:800; letter-spacing:.14em; color:var(--d-tm); }
+
+  /* North Indian natal chart */
+  .natal { margin-top:12px; background:var(--d-card); border:1px solid var(--d-line); border-radius:15px; padding:10px; }
+  .natal svg { width:100%; height:auto; display:block; }
+  .natal .ln { stroke:var(--d-line); stroke-width:1; fill:none; }
+  .natal .hn { fill:var(--d-tm); font-size:6.5px; font-weight:700; }
+  .natal .pl { fill:var(--d-gold); font-size:9px; font-weight:800; }
+
+  /* Dasha timeline */
+  .dasha { margin-top:11px; background:var(--d-c2); border-radius:12px; padding:11px 12px; }
+  .dasha .dl { font-size:8px; font-weight:800; letter-spacing:.12em; color:var(--d-tm); }
+  .dasha .dv { margin-top:4px; font-size:12.5px; font-weight:800; color:var(--d-tp); }
+  .dasha .bar { margin-top:8px; height:6px; border-radius:999px; background:var(--d-line); overflow:hidden; }
+  .dasha .bar i { display:block; height:100%; border-radius:999px; background:var(--d-grad); }
+  .dasha .dr { margin-top:6px; font-size:9px; color:var(--d-tm); display:flex; justify-content:space-between; }
+
+  /* Label rows (planet-in-house, debts) */
+  .lrow { display:flex; align-items:center; gap:10px; background:var(--d-card); border:1px solid var(--d-line); border-radius:12px; padding:9px 11px; margin-top:8px; }
+  .lrow .lk { flex:none; width:30px; height:30px; border-radius:9px; background:var(--d-c2); color:var(--d-gold); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; }
+  .lrow .lt { font-size:11.5px; font-weight:700; color:var(--d-tp); }
+  .lrow .ls { font-size:9.5px; color:var(--d-tm); margin-top:1px; }
+
+  /* Prediction stars */
+  .stars { letter-spacing:1.5px; color:var(--d-gold); font-size:12px; }
+  .pseg { display:flex; gap:6px; margin-top:12px; background:var(--d-c2); border-radius:11px; padding:3px; }
+  .pseg span { flex:1; text-align:center; font-size:10px; font-weight:800; color:var(--d-tm); padding:7px 0; border-radius:9px; }
+  .pseg span.on { background:var(--d-card); color:var(--d-gold); box-shadow:0 2px 6px -2px rgba(0,0,0,.2); }
+  .crow { display:flex; align-items:center; margin-top:9px; }
+  .crow .cl { font-size:11.5px; font-weight:700; color:var(--d-tp); }
+  .crow .cs { margin-left:auto; }
+
+  /* Match — score ring + koota breakdown */
+  .ringrow { display:flex; align-items:center; gap:14px; margin-top:12px; background:var(--d-card); border:1px solid var(--d-line); border-radius:14px; padding:13px; }
+  .ringrow .ring { position:relative; width:64px; height:64px; flex:none; }
+  .ringrow .ring svg { width:64px; height:64px; }
+  .ringrow .ring .num { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ringrow .ring .num b { font-size:16px; font-weight:800; color:var(--d-tp); line-height:1; }
+  .ringrow .ring .num small { font-size:8px; color:var(--d-tm); }
+  .ringrow .rt b { font-size:12.5px; font-weight:800; color:var(--d-tp); }
+  .ringrow .rt div { font-size:10px; color:var(--d-tm); margin-top:3px; line-height:1.4; }
+  .koota { margin-top:11px; display:flex; flex-direction:column; gap:1px; background:var(--d-line); border:1px solid var(--d-line); border-radius:12px; overflow:hidden; }
+  .koota .kr { display:flex; align-items:center; background:var(--d-card); padding:8px 11px; }
+  .koota .kr .kn { font-size:10.5px; font-weight:700; color:var(--d-tp); }
+  .koota .kr .kv { margin-left:auto; font-size:10.5px; font-weight:800; color:var(--d-gold); }
+  .koota .kr.bad .kv { color:var(--d-rose); }
+  .chiprow { display:flex; gap:6px; flex-wrap:wrap; margin-top:10px; }
+  .tagpill { font-size:9.5px; font-weight:700; padding:5px 10px; border-radius:999px; background:var(--d-c2); color:var(--d-tp); display:inline-flex; align-items:center; gap:4px; }
+  .tagpill.ok { color:var(--d-teal); }
+
+  /* Panchang — sunrise arc + kaal grid */
+  .arc { margin-top:12px; background:var(--d-card); border:1px solid var(--d-line); border-radius:15px; padding:12px 12px 10px; }
+  .arc svg { width:100%; height:auto; display:block; }
+  .arc .ac { stroke:var(--d-line); stroke-width:2; fill:none; }
+  .arc .af { stroke:var(--d-gold); stroke-width:2.5; fill:none; stroke-linecap:round; }
+  .arc .lab { display:flex; justify-content:space-between; margin-top:4px; font-size:9px; color:var(--d-tm); }
+  .arc .lab b { color:var(--d-tp); display:block; font-size:11px; }
+  .chog { margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+  .chog .cg { background:var(--d-c2); border-radius:10px; padding:8px 10px; }
+  .chog .cg .cgn { font-size:10.5px; font-weight:700; color:var(--d-tp); }
+  .chog .cg .cgt { font-size:9px; color:var(--d-tm); margin-top:2px; }
+  .chog .cg.rk { background:rgba(201,123,107,.14); } .chog .cg.rk .cgn { color:var(--d-rose); }
+
+  /* Notification Engine — transit alert cards */
+  .nrow { background:var(--d-card); border:1px solid var(--d-line); border-radius:14px; padding:11px 12px; margin-top:9px; }
+  .nrow .ntop { display:flex; align-items:center; gap:7px; }
+  .nrow .ncat { font-size:8px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--d-onaccent); background:var(--d-grad); padding:3px 8px; border-radius:999px; }
+  .nrow .ntime { margin-left:auto; font-size:9px; color:var(--d-tm); font-weight:700; }
+  .nrow .nb { margin-top:7px; font-size:11px; line-height:1.5; color:var(--d-tp); }
+  .nrow .nai { margin-top:7px; display:flex; gap:6px; align-items:flex-start; background:var(--d-c2); border-radius:9px; padding:8px 9px; font-size:10px; line-height:1.45; color:var(--d-tm); }
+  .nrow .nai .ni { flex:none; color:var(--d-teal); margin-top:1px; }
+
+  /* Numerology — Lo Shu grid + number tiles */
+  .loshu { margin-top:12px; display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .loshu .lc { aspect-ratio:1; background:var(--d-c2); border-radius:11px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
+  .loshu .lc b { font-size:17px; font-weight:800; color:var(--d-gold); line-height:1; }
+  .loshu .lc small { font-size:8px; color:var(--d-tm); }
+  .loshu .lc.empty b { color:var(--d-line); }
+  .numrow4 { display:flex; gap:6px; margin-top:11px; }
+  .numrow4 .nb4 { flex:1; background:var(--d-c2); border-radius:10px; padding:9px 3px; text-align:center; }
+  .numrow4 .nb4 .n { font-size:18px; font-weight:800; color:var(--d-gold); line-height:1; }
+  .numrow4 .nb4 .nl { margin-top:4px; font-size:6.5px; letter-spacing:.03em; color:var(--d-tm); font-weight:700; }
+
+  @media (max-width:900px) {
+    .feat { grid-template-columns:1fr; gap:26px; padding:46px 22px; }
+    .feat.rev .feat-copy, .feat.rev .feat-phone { order:0; }
+    .feat-copy { max-width:none; text-align:center; margin:0 auto; }
+    .feat-copy .eyebrow { justify-content:center; }
+    .feat-list { text-align:left; max-width:340px; margin:20px auto 0; }
+    .sc-intro { padding:52px 22px 0; }
+  }
 </style>
 </head>
 <body>
@@ -770,6 +888,187 @@
     var THEMES = [ ['yellow-light','cl','#E0A015','Yellow · Light'], ['white-light','cl','#F0632E','White · Light'], ['mono-light','cl','#111111','B&W · Light'], ['yellow-dark','cd','#F5B93A','Yellow · Dark'], ['mono-dark','cd','#FFFFFF','B&W · Dark'] ];
     var META = { 'yellow-light':'#FFFFFF','white-light':'#FFFFFF','mono-light':'#FFFFFF','yellow-dark':'#0B0B0C','mono-dark':'#0A0A0A' };
 
+    // ============ Feature showcase — static, production-accurate mocks of the app's pages ============
+    function Mock(){ var kids=[].slice.call(arguments); return h('div',{className:'phone'}, h('div',{className:'notch'}), h('div',{className:'screen'}, kids)); }
+    function TL(o,lang){ return (o&&o[lang])||(o&&o.en)||''; }
+    function PgHead(title, sub, tag){ return h('div',{className:'pghead'}, h('div',{className:'pgt'}, title, tag?h('span',{className:'pgtag'},tag):null), sub?h('div',{className:'pgs'}, sub):null); }
+    function starRow(n){ var s=''; for(var i=0;i<5;i++) s+=(i<n?'★':'☆'); return h('span',{className:'stars'}, s); }
+
+    function Natal(lang){
+      // North Indian chart: outer square + both diagonals + inner diamond (edge midpoints).
+      var P=[ ['1','As',100,54],['2','Ju',52,28],['3','',26,54],['4','Mo',52,102],['5','Ke',26,150],['6','',52,176],
+              ['7','Ve',100,150],['8','Sa',150,176],['9','Me',176,150],['10','Su',150,102],['11','Ra',176,54],['12','Ma',150,28] ];
+      return h('div',{className:'natal'},
+        h('svg',{viewBox:'0 0 202 202'},
+          h('rect',{className:'ln',x:1,y:1,width:200,height:200}),
+          h('path',{className:'ln',d:'M1 1 L201 201 M201 1 L1 201'}),
+          h('path',{className:'ln',d:'M101 1 L201 101 L101 201 L1 101 Z'}),
+          P.map(function(p,i){ return h('g',{key:i},
+            h('text',{className:'hn',x:p[2],y:p[3]-5,textAnchor:'middle'}, p[0]),
+            p[1]?h('text',{className:'pl',x:p[2],y:p[3]+7,textAnchor:'middle'}, p[1]):null
+          ); })
+        )
+      );
+    }
+    function ChartScreen(lang){
+      var facts=[ [{en:'LAGNA',hi:'लग्न'},{en:'Aries',hi:'मेष'}], [{en:'MOON',hi:'चंद्र'},{en:'Cancer',hi:'कर्क'}], [{en:'NAKSHATRA',hi:'नक्षत्र'},{en:'Kritika',hi:'कृत्तिका'}] ];
+      var planets=[ ['Su',{en:'Sun',hi:'सूर्य'},{en:'10th house · Leo · dignified',hi:'दशम भाव · सिंह · बलवान'}],
+                    ['Mo',{en:'Moon',hi:'चंद्र'},{en:'4th house · Cancer · own sign',hi:'चतुर्थ भाव · कर्क · स्वग्रह'}],
+                    ['Ve',{en:'Venus',hi:'शुक्र'},{en:'7th house · Libra · own sign',hi:'सप्तम भाव · तुला · स्वग्रह'}] ];
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'राहुल की कुंडली':'Rahul’s Kundali', lang==='hi'?'लग्न मेष · उत्तर भारतीय':'Aries Ascendant · North Indian'),
+        Natal(lang),
+        h('div',{className:'fresult',style:{gridTemplateColumns:'1fr 1fr 1fr'}}, facts.map(function(f,i){ return h('div',{key:i,className:'fres'}, h('div',{className:'rl'}, TL(f[0],lang)), h('div',{className:'rv'}, TL(f[1],lang))); })),
+        h('div',{className:'dasha'},
+          h('div',{className:'dl'}, lang==='hi'?'सक्रिय महादशा':'ACTIVE MAHADASHA'),
+          h('div',{className:'dv'}, lang==='hi'?'गुरु महादशा':'Jupiter Mahadasha'),
+          h('div',{className:'bar'}, h('i',{style:{width:'64%'}})),
+          h('div',{className:'dr'}, h('span',null,'2012'), h('span',null, lang==='hi'?'2028 तक':'until 2028'))
+        ),
+        h('div',{className:'pglabel'}, lang==='hi'?'ग्रह स्थिति':'PLANETARY POSITIONS'),
+        planets.map(function(p,i){ return h('div',{key:i,className:'lrow'}, h('span',{className:'lk'},p[0]), h('div',null, h('div',{className:'lt'}, TL(p[1],lang)), h('div',{className:'ls'}, TL(p[2],lang)))); })
+      ));
+    }
+    function NumeroScreen(lang){
+      var grid=[4,9,2,3,5,7,8,1,6], present={1:2,3:1,4:1,5:1,6:1,8:1,9:1};
+      var nums=[ ['1',{en:'DRIVER',hi:'मूलांक'}], ['8',{en:'CONDUCTOR',hi:'भाग्यांक'}], ['6',{en:'KUA',hi:'कुआ'}], ['5',{en:'NAME',hi:'नामांक'}] ];
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'अंक ज्योतिष':'Numerology', lang==='hi'?'लो शु ग्रिड · नाम अंक':'Lo Shu grid · Name number', 'CHALDEAN'),
+        h('div',{className:'loshu'}, grid.map(function(n,i){ var c=present[n]; return h('div',{key:i,className:'lc'+(c?'':' empty')}, h('b',null, n), h('small',null, c?('×'+c):'—')); })),
+        h('div',{className:'pglabel'}, lang==='hi'?'आपके अंक':'YOUR NUMBERS'),
+        h('div',{className:'numrow4'}, nums.map(function(x,i){ return h('div',{key:i,className:'nb4'}, h('div',{className:'n'},x[0]), h('div',{className:'nl'}, TL(x[1],lang))); })),
+        h('div',{className:'card'}, h('div',{className:'numline'}, lang==='hi'?'मूलांक 1 — अग्रणी और स्वाभाविक नेता। नामांक 5 संचार और गति देता है। आज साहसिक पहल शुभ।':'Driver 1 — the pioneer and natural leader. Name number 5 adds communication and momentum. Bold first moves are favoured today.'))
+      ));
+    }
+    function PredictScreen(lang){
+      var cats=[ [{en:'Career',hi:'करियर'},4], [{en:'Health',hi:'स्वास्थ्य'},3], [{en:'Love',hi:'प्रेम'},5], [{en:'Finance',hi:'धन'},4] ];
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'प्रेडिक्शन':'Prediction', lang==='hi'?'गोचर आधारित दैनिक फल':'Transit-driven daily reading', 'ENGINE'),
+        h('div',{className:'pseg'}, [ {en:'Today',hi:'आज'},{en:'Week',hi:'सप्ताह'},{en:'Month',hi:'माह'} ].map(function(s,i){ return h('span',{key:i,className:i===0?'on':''}, TL(s,lang)); })),
+        h('div',{className:'card'},
+          h('div',{style:{display:'flex',alignItems:'center'}},
+            h('span',{style:{fontSize:'12px',fontWeight:800,color:'var(--d-tp)'}}, lang==='hi'?'समग्र':'Overall'),
+            h('span',{style:{marginLeft:'auto',display:'flex',alignItems:'center',gap:'6px'}}, starRow(4), h('b',{style:{color:'var(--d-gold)',fontSize:'12px'}},'4.0'))
+          ),
+          h('div',{style:{height:'1px',background:'var(--d-line)',margin:'10px 0'}}),
+          cats.map(function(c,i){ return h('div',{key:i,className:'crow'}, h('span',{className:'cl'}, TL(c[0],lang)), h('span',{className:'cs'}, starRow(c[1]))); })
+        ),
+        h('div',{className:'pglabel'}, lang==='hi'?'आज का सार':'TODAY’S READ'),
+        h('div',{className:'card'}, h('div',{className:'hbody'}, lang==='hi'?'शाम 4:20 बजे चंद्र दशम भाव में — करियर हेतु प्रबल समय। शुक्र सप्तम को प्रकाशित करता है, प्रेम शुभ। स्वास्थ्य में रात जल्दी विश्राम करें।':'The Moon enters your 10th at 4:20 PM — a strong window for career moves. Venus lights your 7th, so love is favoured. For health, wind down early tonight.'))
+      ));
+    }
+    function MatchScreen(lang){
+      var K=[ [{en:'Varna',hi:'वर्ण'},1,1],[{en:'Vashya',hi:'वश्य'},2,2],[{en:'Tara',hi:'तारा'},3,3],[{en:'Yoni',hi:'योनि'},3,4],
+              [{en:'Graha Maitri',hi:'ग्रह मैत्री'},5,5],[{en:'Gana',hi:'गण'},6,6],[{en:'Bhakoot',hi:'भकूट'},7,7],[{en:'Nadi',hi:'नाड़ी'},1,8] ];
+      var circ=2*Math.PI*26;
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'मिलान रिपोर्ट':'Match Report', lang==='hi'?'राहुल × प्रिया · अष्टकूट':'Rahul × Priya · Ashtakoot'),
+        h('div',{className:'ringrow'},
+          h('div',{className:'ring'},
+            h('svg',{viewBox:'0 0 64 64'},
+              h('circle',{cx:32,cy:32,r:26,fill:'none',stroke:'var(--d-line)',strokeWidth:6}),
+              h('circle',{cx:32,cy:32,r:26,fill:'none',stroke:'var(--d-gold)',strokeWidth:6,strokeLinecap:'round',strokeDasharray:circ,strokeDashoffset:circ*(1-28/36),transform:'rotate(-90 32 32)'})
+            ),
+            h('div',{className:'num'}, h('b',null,'28'), h('small',null,'/ 36'))
+          ),
+          h('div',{className:'rt'}, h('b',null, lang==='hi'?'उत्तम मिलान':'Excellent match'), h('div',null, lang==='hi'?'28 गुण मेल · विवाह हेतु शुभ':'28 gunas matched · favourable for marriage'))
+        ),
+        h('div',{className:'koota'}, K.map(function(k,i){ var bad=(k[1]/k[2])<0.5; return h('div',{key:i,className:'kr'+(bad?' bad':'')}, h('span',{className:'kn'}, TL(k[0],lang)), h('span',{className:'kv'}, k[1]+' / '+k[2])); })),
+        h('div',{className:'chiprow'},
+          h('span',{className:'tagpill ok'}, '✓ '+(lang==='hi'?'मांगलिक रद्द':'Manglik cancelled')),
+          h('span',{className:'tagpill'}, lang==='hi'?'नाड़ी दोष · उपाय सहित':'Nadi dosha · remedy given')
+        )
+      ));
+    }
+    function LalScreen(lang){
+      var rows=[ ['Su',{en:'Sun in the 10th',hi:'दशम में सूर्य'},{en:'Strong — honour through work',hi:'बलवान — कर्म से मान'}],
+                 ['Sa',{en:'Saturn in the 8th',hi:'अष्टम में शनि'},{en:'Debt of the self · remedy below',hi:'स्वयं का ऋण · उपाय नीचे'}],
+                 ['Ma',{en:'Mars in the 12th',hi:'द्वादश में मंगल'},{en:'Mild Manglik · softens after 28',hi:'हल्का मांगलिक · 28 बाद शांत'}] ];
+      var rem=[ [{en:'Offer water to the Sun at dawn',hi:'भोर में सूर्य को जल दें'},{en:'Daily · builds the 10th',hi:'रोज़ · दशम बल'}],
+                [{en:'Feed dogs on Saturdays',hi:'शनिवार कुत्तों को भोजन'},{en:'Weekly · eases Saturn',hi:'साप्ताहिक · शनि शांति'}] ];
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'लाल किताब':'Lal Kitab', lang==='hi'?'ऋण व सरल उपाय':'Debts & simple remedies'),
+        h('div',{className:'pglabel'}, lang==='hi'?'ग्रह ऋण':'PLANETARY DEBTS'),
+        rows.map(function(r,i){ return h('div',{key:i,className:'lrow'}, h('span',{className:'lk'},r[0]), h('div',null, h('div',{className:'lt'}, TL(r[1],lang)), h('div',{className:'ls'}, TL(r[2],lang)))); }),
+        h('div',{className:'pglabel'}, lang==='hi'?'उपाय':'REMEDIES'),
+        h('div',{className:'dgrid'}, rem.map(function(r,i){ return h('div',{key:i,className:'fcard'}, h('div',{className:'fi'}, ic('book',18)), h('div',{className:'ft'}, TL(r[0],lang)), h('div',{className:'fs'}, TL(r[1],lang))); }))
+      ));
+    }
+    function PanchangScreen(lang){
+      var g=[ ['TITHI',{en:'Shukla Tritiya',hi:'शुक्ल तृतीया'},'तिथि'], ['NAKSHATRA',{en:'Kritika',hi:'कृत्तिका'},'नक्षत्र'],
+              ['YOGA',{en:'Shubha',hi:'शुभ'},'योग'], ['KARANA',{en:'Bava',hi:'बव'},'करण'] ];
+      var chog=[ [{en:'Rahu Kaal',hi:'राहु काल'},'4:30–6:00 PM',true], [{en:'Abhijit',hi:'अभिजित'},'11:48–12:36',false],
+                 [{en:'Gulika',hi:'गुलिक'},'3:00–4:30 PM',false], [{en:'Amrit',hi:'अमृत'},'6:00–7:30 AM',false] ];
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'आज का पंचांग':'Today’s Panchang', lang==='hi'?'सोमवार, 20 जुलाई · नई दिल्ली':'Monday, 20 July · New Delhi'),
+        h('div',{className:'arc'},
+          h('svg',{viewBox:'0 0 200 96'},
+            h('path',{className:'ac',d:'M10 90 A90 90 0 0 1 190 90'}),
+            h('path',{className:'af',d:'M10 90 A90 90 0 0 1 128 22'}),
+            h('circle',{cx:128,cy:22,r:4,fill:'var(--d-gold)'})
+          ),
+          h('div',{className:'lab'}, h('span',null, h('b',null,'05:38'), lang==='hi'?'सूर्योदय':'Sunrise'), h('span',{style:{textAlign:'right'}}, h('b',null,'18:52'), lang==='hi'?'सूर्यास्त':'Sunset'))
+        ),
+        h('div',{className:'card'}, h('div',{className:'pgrid'}, g.map(function(p,i){ return h('div',{key:i}, h('div',{className:'pl'}, lang==='hi'?p[2]:p[0]), h('div',{className:'pv'}, TL(p[1],lang))); }))),
+        h('div',{className:'pglabel'}, lang==='hi'?'शुभ व अशुभ काल':'AUSPICIOUS & INAUSPICIOUS'),
+        h('div',{className:'chog'}, chog.map(function(c,i){ return h('div',{key:i,className:'cg'+(c[2]?' rk':'')}, h('div',{className:'cgn'}, TL(c[0],lang)), h('div',{className:'cgt'}, c[1])); }))
+      ));
+    }
+    function NotifScreen(lang){
+      var items=[NOTIFS[0],NOTIFS[2],NOTIFS[4]], times=['4:12 PM', lang==='hi'?'आज':'Today', lang==='hi'?'गुरु':'Thu'];
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'कॉस्मिक अलर्ट':'Cosmic Alerts', lang==='hi'?'आपके गोचर के अनुसार समयबद्ध':'Timed to your exact transits', 'ENGINE'),
+        items.map(function(n,i){ var d=n[lang]||n.en; return h('div',{key:i,className:'nrow'},
+          h('div',{className:'ntop'}, h('span',{className:'ncat'}, d.t), h('span',{className:'ntime'}, times[i])),
+          h('div',{className:'nb'}, d.b),
+          h('div',{className:'nai'}, h('span',{className:'ni'}, ic('sparkle',12)), h('span',null, d.ai))
+        ); })
+      ));
+    }
+
+    var FEATURES = [
+      { key:'chart', tag:{en:'Birth Chart',hi:'जन्म कुंडली'}, title:{en:'Your whole sky, read for you',hi:'आपका पूरा आकाश, आपके लिए पढ़ा गया'},
+        desc:{en:'Speak your birth details and AastroAI casts a precise North-Indian kundali — lagna, all nine planets by house and sign, and your running Vimshottari dasha.',hi:'अपनी जन्म जानकारी बोलें और AastroAI सटीक उत्तर-भारतीय कुंडली बनाता है — लग्न, नौ ग्रह भाव व राशि सहित, और चालू विंशोत्तरी दशा।'},
+        bullets:[ {en:'North & South Indian chart styles',hi:'उत्तर व दक्षिण भारतीय शैली'}, {en:'Planet-by-house with dignity',hi:'भाव अनुसार ग्रह बल'}, {en:'Live Mahadasha–Antardasha timeline',hi:'सक्रिय महादशा–अंतरदशा'} ], render:ChartScreen },
+      { key:'numero', tag:{en:'Numerology',hi:'अंक ज्योतिष'}, title:{en:'Numbers that map your life',hi:'आपके जीवन का अंक-नक्शा'},
+        desc:{en:'A full Lo Shu grid built from your date of birth, driver, conductor and Kua — plus a true Chaldean name number, not the usual Pythagorean shortcut.',hi:'आपकी जन्मतिथि, मूलांक, भाग्यांक व कुआ से बना पूर्ण लो शु ग्रिड — साथ ही असली कैल्डियन नाम अंक।'},
+        bullets:[ {en:'Lo Shu grid with repeats & gaps',hi:'लो शु ग्रिड — पुनरावृत्ति व रिक्त'}, {en:'Driver, Conductor, Kua & Name',hi:'मूलांक, भाग्यांक, कुआ व नामांक'}, {en:'Chaldean name system',hi:'कैल्डियन नाम पद्धति'} ], render:NumeroScreen, rev:true },
+      { key:'predict', tag:{en:'Prediction Engine',hi:'प्रेडिक्शन इंजन'}, tm:true, title:{en:'Today, this week, this month',hi:'आज, इस सप्ताह, इस माह'},
+        desc:{en:'Real transit maths turned into a readable rating — Career, Health, Love and Finance scored out of five, each with a plain-language reason.',hi:'वास्तविक गोचर गणित एक सरल रेटिंग में — करियर, स्वास्थ्य, प्रेम व धन, पाँच में से अंक और स्पष्ट कारण सहित।'},
+        bullets:[ {en:'Daily / weekly / monthly windows',hi:'दैनिक / साप्ताहिक / मासिक'}, {en:'Four life areas, star-rated',hi:'चार क्षेत्र, स्टार रेटिंग'}, {en:'Reasoned, never generic',hi:'कारण सहित, सामान्य नहीं'} ], render:PredictScreen },
+      { key:'match', tag:{en:'Match Making',hi:'मिलान'}, title:{en:'Ashtakoot, honestly scored',hi:'अष्टकूट, ईमानदार अंकन'},
+        desc:{en:'The classic 36-guna compatibility across all eight kootas, with Manglik and Nadi dosha checked and any cancellations explained — never hidden.',hi:'सभी आठ कूटों में शास्त्रीय 36-गुण मिलान, मांगलिक व नाड़ी दोष जाँच सहित और रद्दीकरण स्पष्ट रूप से।'},
+        bullets:[ {en:'All 8 kootas broken down',hi:'सभी 8 कूट विस्तार से'}, {en:'Manglik & Nadi dosha flags',hi:'मांगलिक व नाड़ी दोष'}, {en:'Cancellations shown, not hidden',hi:'रद्दीकरण छिपाया नहीं'} ], render:MatchScreen, rev:true },
+      { key:'lal', tag:{en:'Lal Kitab',hi:'लाल किताब'}, title:{en:'Debts, and simple remedies',hi:'ऋण, और सरल उपाय'},
+        desc:{en:'Your planetary debts in the Lal Kitab tradition, each paired with a practical, low-cost remedy you can actually do — no expensive rituals.',hi:'लाल किताब परंपरा में आपके ग्रह ऋण, हर एक के साथ व्यावहारिक व सरल उपाय — महंगे अनुष्ठान नहीं।'},
+        bullets:[ {en:'Planet-in-house debts',hi:'भाव अनुसार ग्रह ऋण'}, {en:'Everyday, low-cost remedies',hi:'रोज़मर्रा, सस्ते उपाय'}, {en:'Hindi & English',hi:'हिन्दी व अंग्रेज़ी'} ], render:LalScreen },
+      { key:'panchang', tag:{en:'Panchang',hi:'पंचांग'}, title:{en:'The day, timed to the minute',hi:'दिन, मिनट तक सटीक'},
+        desc:{en:'A full daily panchang for your city — tithi, nakshatra, yoga, karana, sunrise and sunset, plus Rahu Kaal and the auspicious windows to act in.',hi:'आपके शहर हेतु पूर्ण दैनिक पंचांग — तिथि, नक्षत्र, योग, करण, सूर्योदय-सूर्यास्त, राहु काल व शुभ मुहूर्त।'},
+        bullets:[ {en:'Location-accurate sunrise & sunset',hi:'स्थान अनुसार सूर्योदय-अस्त'}, {en:'Rahu Kaal, Gulika, Abhijit',hi:'राहु काल, गुलिक, अभिजित'}, {en:'Tithi, nakshatra, yoga, karana',hi:'तिथि, नक्षत्र, योग, करण'} ], render:PanchangScreen, rev:true },
+      { key:'notif', tag:{en:'Notification Engine',hi:'नोटिफिकेशन इंजन'}, tm:true, title:{en:'The sky texts you first',hi:'आकाश पहले संदेश भेजता है'},
+        desc:{en:'Instead of a generic daily push, AastroAstra scans your exact transits and alerts you at the moment that matters — with one clear thing to do about it.',hi:'सामान्य दैनिक सूचना के बजाय, AastroAstra आपके सटीक गोचर स्कैन करता है और सही क्षण पर सचेत करता है — एक स्पष्ट सुझाव सहित।'},
+        bullets:[ {en:'Transit, weekly & monthly alerts',hi:'गोचर, साप्ताहिक व मासिक'}, {en:'Timed to your chart, not the clock',hi:'आपकी कुंडली अनुसार, घड़ी नहीं'}, {en:'Actionable AI guidance',hi:'क्रियात्मक AI मार्गदर्शन'} ], render:NotifScreen },
+    ];
+    function Showcase(props){
+      var lang=props.lang, T=function(o){ return TL(o,lang); };
+      return h('section',{className:'showcase'},
+        h('div',{className:'sc-intro'},
+          h('div',{className:'eyebrow'}, lang==='hi'?'ऐप के भीतर':'Inside the app'),
+          h('h2',null, lang==='hi'?'हर विशेषता, ':'Every feature, ', h('span',{className:'hl'}, lang==='hi'?'आपकी कुंडली पर आधारित':'built on your chart')),
+          h('p',null, lang==='hi'?'हर स्क्रीन आपकी जन्म जानकारी से बनती है — कोई सामान्य राशिफल नहीं। नीचे असली ऐप स्क्रीन देखें।':'Every screen is generated from your own birth details — never a generic horoscope. These are the real app screens.')
+        ),
+        FEATURES.map(function(f){ return h('div',{key:f.key,className:'feat'+(f.rev?' rev':'')},
+          h('div',{className:'feat-copy'},
+            h('div',{className:'eyebrow'}, T(f.tag), f.tm?h('span',{className:'tm'},'™'):null),
+            h('h3',null, T(f.title)),
+            h('p',null, T(f.desc)),
+            h('div',{className:'feat-list'}, f.bullets.map(function(b,j){ return h('div',{key:j,className:'fl'}, h('span',{className:'ck'},'✓'), h('span',null, T(b))); }))
+          ),
+          h('div',{className:'feat-phone'}, f.render(lang))
+        ); })
+      );
+    }
+
     function App(){
       var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
       var lS=useState('en'), lang=lS[0], setLang=lS[1];
@@ -834,6 +1133,7 @@
             ),
             h('div', { className:'right' }, h(Phone, { lang:lang }), h(Engines, { lang:lang }))
           ),
+          h(Showcase, { lang:lang }),
           h('footer', null,
             // Desktop: compact single-line footer.
             h('div', { className:'foot-simple' },
