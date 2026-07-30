@@ -446,7 +446,12 @@
   .feat-list { margin-top:20px; display:flex; flex-direction:column; gap:12px; }
   .feat-list .fl { display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--fg2); line-height:1.45; }
   .feat-list .fl .ck { flex:none; width:21px; height:21px; border-radius:50%; background:var(--tint-grad); color:var(--on-accent); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; margin-top:1px; }
-  .feat-phone { display:flex; justify-content:center; align-items:center; }
+  .feat-phone { display:flex; justify-content:center; align-items:center; perspective:1500px; }
+  /* Scroll-linked 3D tilt: JS sets the transform per-frame from the phone's
+     position in the viewport (leans in at its own angle, settles upright at
+     centre, subtle parallax + scale). A tiny transition smooths frame gaps. */
+  .tilt { transform-style:preserve-3d; will-change:transform, opacity; transition:transform .1s linear, opacity .1s linear; }
+  @media (prefers-reduced-motion: reduce) { .tilt { transform:none !important; opacity:1 !important; } }
 
   /* Generic feature-page scaffold (mirrors the app's screen chrome) */
   .pg { flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; padding:34px 13px 22px; scrollbar-width:none; }
@@ -1049,21 +1054,59 @@
         desc:{en:'Instead of a generic daily push, AastroAstra scans your exact transits and alerts you at the moment that matters — with one clear thing to do about it.',hi:'सामान्य दैनिक सूचना के बजाय, AastroAstra आपके सटीक गोचर स्कैन करता है और सही क्षण पर सचेत करता है — एक स्पष्ट सुझाव सहित।'},
         bullets:[ {en:'Transit, weekly & monthly alerts',hi:'गोचर, साप्ताहिक व मासिक'}, {en:'Timed to your chart, not the clock',hi:'आपकी कुंडली अनुसार, घड़ी नहीं'}, {en:'Actionable AI guidance',hi:'क्रियात्मक AI मार्गदर्शन'} ], render:NotifScreen },
     ];
+    // Per-feature resting lean — alternating sides + varied pitch/roll so the
+    // scroll feels choreographed, not uniform. Index-matched to FEATURES.
+    var TILT = [
+      { ry:16,  rx:7,  rz:-2 },
+      { ry:-17, rx:6,  rz:2  },
+      { ry:13,  rx:-8, rz:3  },
+      { ry:-14, rx:8,  rz:-3 },
+      { ry:19,  rx:5,  rz:1  },
+      { ry:-15, rx:7,  rz:2  },
+      { ry:12,  rx:-6, rz:-2 },
+    ];
     function Showcase(props){
       var lang=props.lang, T=function(o){ return TL(o,lang); };
-      return h('section',{className:'showcase'},
+      var secRef=useRef(null);
+      useEffect(function(){
+        var sec=secRef.current; if(!sec) return;
+        if(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var tilts=[].slice.call(sec.querySelectorAll('.tilt'));
+        var raf=null;
+        function paint(){
+          raf=null; var vh=window.innerHeight||1;
+          for(var i=0;i<tilts.length;i++){
+            var el=tilts[i], r=el.getBoundingClientRect();
+            // t: 0 as the phone enters from the bottom → 1 as it exits the top.
+            var t=Math.max(0,Math.min(1,(vh - r.top)/(vh + r.height)));
+            var settle=1-Math.abs(t-0.5)*2;      // 0 at the edges, 1 dead-centre
+            var k=1-settle;                        // lean is strongest at the edges
+            var a=TILT[i%TILT.length];
+            var ty=(0.5-t)*46;                     // gentle vertical parallax
+            var sc=(0.93+0.07*settle).toFixed(3);
+            el.style.transform='translateY('+ty.toFixed(1)+'px) rotateX('+(a.rx*k).toFixed(2)+'deg) rotateY('+(a.ry*k).toFixed(2)+'deg) rotateZ('+(a.rz*k).toFixed(2)+'deg) scale('+sc+')';
+            el.style.opacity=(0.7+0.3*settle).toFixed(3);
+          }
+        }
+        function onScroll(){ if(!raf) raf=requestAnimationFrame(paint); }
+        paint();
+        window.addEventListener('scroll', onScroll, { passive:true });
+        window.addEventListener('resize', onScroll);
+        return function(){ window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); if(raf) cancelAnimationFrame(raf); };
+      }, []);
+      return h('section',{className:'showcase', ref:secRef},
         h('div',{className:'sc-intro'},
           h('div',{className:'eyebrow'}, lang==='hi'?'ऐप के भीतर':'Inside the app'),
           h('h2',null, lang==='hi'?'हर विशेषता, ':'Every feature, ', h('span',{className:'hl'}, lang==='hi'?'आपकी कुंडली पर आधारित':'built on your chart'))
         ),
-        FEATURES.map(function(f){ return h('div',{key:f.key,className:'feat'+(f.rev?' rev':'')},
+        FEATURES.map(function(f,i){ return h('div',{key:f.key,className:'feat'+(f.rev?' rev':'')},
           h('div',{className:'feat-copy'},
             h('div',{className:'eyebrow'}, T(f.tag), f.tm?h('span',{className:'tm'},'™'):null),
             h('h3',null, T(f.title)),
             h('p',null, T(f.desc)),
             h('div',{className:'feat-list'}, f.bullets.map(function(b,j){ return h('div',{key:j,className:'fl'}, h('span',{className:'ck'},'✓'), h('span',null, T(b))); }))
           ),
-          h('div',{className:'feat-phone'}, f.render(lang))
+          h('div',{className:'feat-phone'}, h('div',{className:'tilt','data-i':i}, f.render(lang)))
         ); })
       );
     }
