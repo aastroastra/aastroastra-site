@@ -1095,10 +1095,6 @@
         return function(){ window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); if(raf) cancelAnimationFrame(raf); };
       }, []);
       return h('section',{className:'showcase', ref:secRef},
-        h('div',{className:'sc-intro'},
-          h('div',{className:'eyebrow'}, lang==='hi'?'ऐप के भीतर':'Inside the app'),
-          h('h2',null, lang==='hi'?'हर विशेषता, ':'Every feature, ', h('span',{className:'hl'}, lang==='hi'?'आपकी कुंडली पर आधारित':'built on your chart'))
-        ),
         FEATURES.map(function(f,i){ return h('div',{key:f.key,className:'feat'+(f.rev?' rev':'')},
           h('div',{className:'feat-copy'},
             h('div',{className:'eyebrow'}, T(f.tag), f.tm?h('span',{className:'tm'},'™'):null),
