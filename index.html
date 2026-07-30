@@ -245,6 +245,52 @@
   [data-theme="yellow-dark"] .phone { --d-bg:#0B0B0C; --d-card:#161616; --d-c2:#202020; --d-line:#2A2A2A; --d-tp:#F4F4F4; --d-tm:#9A9A9A; --d-gold:#F5B93A; --d-rose:#C97B6B; --d-teal:#00BFA5; --d-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 58%,#EAB308 100%); --d-onaccent:#3a2c05; --d-k:#F2911E; --d-kfg:#FFFFFF; }
   [data-theme="white-light"] .phone { --d-bg:#FFFFFF; --d-card:#FFFFFF; --d-c2:#F6F1EC; --d-line:#ECECEC; --d-tp:#2A2118; --d-tm:#8A8A8A; --d-gold:#F0632E; --d-rose:#C97B6B; --d-teal:#00BFA5; --d-grad:linear-gradient(100deg,#FB8C3A 0%,#F0632E 58%,#E4551F 100%); --d-onaccent:#FFFFFF; --d-k:#F0632E; --d-kfg:#FFFFFF; }
   [data-theme="mono-dark"] .phone { --d-bg:#0A0A0A; --d-card:#161616; --d-c2:#1E1E1E; --d-line:#2A2A2A; --d-tp:#FAFAFA; --d-tm:#9A9A9A; --d-gold:#FAFAFA; --d-rose:#8A8A8A; --d-teal:#BFBFBF; --d-grad:#FAFAFA; --d-onaccent:#0A0A0A; --d-k:#FAFAFA; --d-kfg:#0A0A0A; }
+  /* Floating zoom-lens cards live in .feat-phone (outside .phone) — mirror the phone palette so they read in the app's colours. */
+  .feat-phone { --d-bg:#FFFBF3; --d-card:#FFFFFF; --d-c2:#FBF4E6; --d-line:#EEE4D2; --d-tp:#2A2118; --d-tm:#8A7A5E; --d-gold:#E0A015; --d-rose:#C97B6B; --d-teal:#00BFA5; --d-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 58%,#EAB308 100%); --d-onaccent:#3a2c05; --d-k:#F2911E; --d-kfg:#FFFFFF; }
+  [data-theme="mono-light"] .feat-phone { --d-bg:#FFFFFF; --d-card:#FFFFFF; --d-c2:#F2F2F2; --d-line:#E6E6E6; --d-tp:#0A0A0A; --d-tm:#8A8A8A; --d-gold:#1A1A1A; --d-rose:#6E6E6E; --d-teal:#3A3A3A; --d-grad:#1A1A1A; --d-onaccent:#FFFFFF; --d-k:#1A1A1A; --d-kfg:#FFFFFF; }
+  [data-theme="yellow-dark"] .feat-phone { --d-bg:#0B0B0C; --d-card:#161616; --d-c2:#202020; --d-line:#2A2A2A; --d-tp:#F4F4F4; --d-tm:#9A9A9A; --d-gold:#F5B93A; --d-rose:#C97B6B; --d-teal:#00BFA5; --d-grad:linear-gradient(100deg,#FACC15 0%,#FB923C 58%,#EAB308 100%); --d-onaccent:#3a2c05; --d-k:#F2911E; --d-kfg:#FFFFFF; }
+  [data-theme="white-light"] .feat-phone { --d-bg:#FFFFFF; --d-card:#FFFFFF; --d-c2:#F6F1EC; --d-line:#ECECEC; --d-tp:#2A2118; --d-tm:#8A8A8A; --d-gold:#F0632E; --d-rose:#C97B6B; --d-teal:#00BFA5; --d-grad:linear-gradient(100deg,#FB8C3A 0%,#F0632E 58%,#E4551F 100%); --d-onaccent:#FFFFFF; --d-k:#F0632E; --d-kfg:#FFFFFF; }
+  [data-theme="mono-dark"] .feat-phone { --d-bg:#0A0A0A; --d-card:#161616; --d-c2:#1E1E1E; --d-line:#2A2A2A; --d-tp:#FAFAFA; --d-tm:#9A9A9A; --d-gold:#FAFAFA; --d-rose:#8A8A8A; --d-teal:#BFBFBF; --d-grad:#FAFAFA; --d-onaccent:#0A0A0A; --d-k:#FAFAFA; --d-kfg:#0A0A0A; }
+
+  /* In-app top bar for feature screens (back chevron + centred brand mark) — mirrors the Android detail-screen chrome. */
+  .appbar { display:flex; align-items:center; height:22px; margin:-4px 0 6px; }
+  .appbar .abback { width:22px; font-size:19px; line-height:1; color:var(--d-tp); }
+  .appbar .abmark { width:18px; height:18px; margin:0 auto; background:var(--d-grad); -webkit-mask:url(logo-mark.png) center/contain no-repeat; mask:url(logo-mark.png) center/contain no-repeat; }
+  .appbar .absp { width:22px; }
+
+  /* Floating "zoom lens": a magnified close-up of one component, overlapping the phone (doesn't tilt with it). */
+  .zoomlens { position:absolute; z-index:6; background:var(--d-card); border:1px solid var(--d-line); border-radius:18px; box-shadow:0 34px 66px -26px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.03); padding:13px 14px 14px; animation:lensfloat 6s ease-in-out infinite; }
+  .zoomlens.zl-r  { right:-18px; bottom:9%;  width:65%; }
+  .zoomlens.zl-l  { left:-18px;  bottom:11%; width:62%; animation-delay:-2s; }
+  .zoomlens.zl-tr { right:-14px; top:8%;     width:60%; animation-delay:-3.5s; }
+  @keyframes lensfloat { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-7px); } }
+  .zoomlens .zcap { display:flex; align-items:center; gap:6px; font-size:8px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--d-tm); margin-bottom:10px; }
+  .zoomlens .zcap .lens { width:14px; height:14px; border-radius:50%; border:1.6px solid var(--d-gold); position:relative; flex:none; }
+  .zoomlens .zcap .lens::after { content:""; position:absolute; right:-3px; bottom:-3px; width:6px; height:1.6px; background:var(--d-gold); transform:rotate(45deg); border-radius:2px; }
+  /* Big score ring used inside a zoom lens */
+  .zring { display:flex; align-items:center; gap:14px; }
+  .zring .rw { position:relative; width:78px; height:78px; flex:none; }
+  .zring .rw svg { width:78px; height:78px; }
+  .zring .rw .n { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .zring .rw .n b { font-size:20px; font-weight:800; color:var(--d-tp); line-height:1; }
+  .zring .rw .n small { font-size:9px; color:var(--d-tm); }
+  .zring .rt b { font-size:13px; font-weight:800; color:var(--d-tp); }
+  .zring .rt div { font-size:11px; color:var(--d-tm); margin-top:3px; }
+  @media (max-width:640px) { .zoomlens { display:none; } }  /* keep phones clean on small screens */
+
+  /* Three-Engines highlight band */
+  .engines-band { border-top:1px solid var(--line); padding:70px 44px; }
+  .eb-head { text-align:center; margin:0 auto 34px; max-width:600px; }
+  .eb-head .eyebrow { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); font-weight:800; }
+  .eb-head h2 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.02em; font-size:clamp(28px,4vw,44px); line-height:1.06; margin-top:12px; color:var(--fg); }
+  .eb-head h2 .hl { background:var(--tint-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  .eb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:1000px; margin:0 auto; }
+  .eb-card { background:var(--card); border:1px solid var(--line); border-radius:18px; padding:24px 22px; }
+  .eb-card .ei { width:46px; height:46px; border-radius:13px; background:var(--tint-grad); color:var(--on-accent); display:flex; align-items:center; justify-content:center; }
+  .eb-card h3 { font-size:17px; font-weight:800; margin-top:16px; color:var(--fg); display:flex; align-items:baseline; gap:3px; }
+  .eb-card h3 .tm { font-size:9px; color:var(--muted); font-weight:700; }
+  .eb-card p { margin-top:8px; font-size:13.5px; line-height:1.6; color:var(--fg2); }
+  @media (max-width:900px) { .eb-grid { grid-template-columns:1fr; max-width:420px; } .engines-band { padding:46px 22px; } }
   .phone:hover { transform:translateY(-5px); }
   .screen { position:relative; width:100%; height:100%; border-radius:34px; overflow:hidden; background:var(--d-bg); color:var(--d-tp); display:flex; flex-direction:column; }
   .ic { display:inline-block; vertical-align:middle; flex:none; }
@@ -446,7 +492,12 @@
   .feat-list { margin-top:20px; display:flex; flex-direction:column; gap:12px; }
   .feat-list .fl { display:flex; gap:12px; align-items:flex-start; font-size:14px; color:var(--fg2); line-height:1.45; }
   .feat-list .fl .ck { flex:none; width:21px; height:21px; border-radius:50%; background:var(--tint-grad); color:var(--on-accent); display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; margin-top:1px; }
-  .feat-phone { display:flex; justify-content:center; align-items:center; perspective:1500px; }
+  .feat-phone { position:relative; display:flex; justify-content:center; align-items:center; perspective:1500px; }
+  /* Emphasis pills (Multi-Match) */
+  .emph { display:flex; gap:6px; margin-top:12px; }
+  .emph span { flex:1; text-align:center; font-size:8.5px; font-weight:800; letter-spacing:.03em; padding:7px 0; border-radius:9px; background:var(--d-c2); color:var(--d-tm); }
+  .emph span.on { background:var(--d-grad); color:var(--d-onaccent); }
+  /* Single-Kundali voice result tiles reuse .fresult/.fres from the hero flows */
   /* Scroll-linked 3D tilt: JS sets the transform per-frame from the phone's
      position in the viewport (leans in at its own angle, settles upright at
      centre, subtle parallax + scale). A tiny transition smooths frame gaps. */
@@ -896,25 +947,29 @@
     // ============ Feature showcase — static, production-accurate mocks of the app's pages ============
     function Mock(){ var kids=[].slice.call(arguments); return h('div',{className:'phone'}, h('div',{className:'notch'}), h('div',{className:'screen'}, kids)); }
     function TL(o,lang){ return (o&&o[lang])||(o&&o.en)||''; }
-    function PgHead(title, sub, tag){ return h('div',{className:'pghead'}, h('div',{className:'pgt'}, title, tag?h('span',{className:'pgtag'},tag):null), sub?h('div',{className:'pgs'}, sub):null); }
+    // Android detail-screen chrome: back chevron (top-left) + centred brand mark.
+    function AppBar(){ return h('div',{className:'appbar'}, h('span',{className:'abback'}, '‹'), h('span',{className:'abmark'}), h('span',{className:'absp'})); }
+    function PgHead(title, sub, tag){ return h(React.Fragment, null,
+      AppBar(),
+      h('div',{className:'pghead'}, h('div',{className:'pgt'}, title, tag?h('span',{className:'pgtag'},tag):null), sub?h('div',{className:'pgs'}, sub):null)
+    ); }
     function starRow(n){ var s=''; for(var i=0;i<5;i++) s+=(i<n?'★':'☆'); return h('span',{className:'stars'}, s); }
 
-    function Natal(lang){
-      // North Indian chart: outer square + both diagonals + inner diamond (edge midpoints).
+    // North Indian chart: outer square + both diagonals + inner diamond (edge midpoints).
+    function natalSvg(){
       var P=[ ['1','As',100,54],['2','Ju',52,28],['3','',26,54],['4','Mo',52,102],['5','Ke',26,150],['6','',52,176],
               ['7','Ve',100,150],['8','Sa',150,176],['9','Me',176,150],['10','Su',150,102],['11','Ra',176,54],['12','Ma',150,28] ];
-      return h('div',{className:'natal'},
-        h('svg',{viewBox:'0 0 202 202'},
-          h('rect',{className:'ln',x:1,y:1,width:200,height:200}),
-          h('path',{className:'ln',d:'M1 1 L201 201 M201 1 L1 201'}),
-          h('path',{className:'ln',d:'M101 1 L201 101 L101 201 L1 101 Z'}),
-          P.map(function(p,i){ return h('g',{key:i},
-            h('text',{className:'hn',x:p[2],y:p[3]-5,textAnchor:'middle'}, p[0]),
-            p[1]?h('text',{className:'pl',x:p[2],y:p[3]+7,textAnchor:'middle'}, p[1]):null
-          ); })
-        )
+      return h('svg',{viewBox:'0 0 202 202'},
+        h('rect',{className:'ln',x:1,y:1,width:200,height:200}),
+        h('path',{className:'ln',d:'M1 1 L201 201 M201 1 L1 201'}),
+        h('path',{className:'ln',d:'M101 1 L201 101 L101 201 L1 101 Z'}),
+        P.map(function(p,i){ return h('g',{key:i},
+          h('text',{className:'hn',x:p[2],y:p[3]-5,textAnchor:'middle'}, p[0]),
+          p[1]?h('text',{className:'pl',x:p[2],y:p[3]+7,textAnchor:'middle'}, p[1]):null
+        ); })
       );
     }
+    function Natal(lang){ return h('div',{className:'natal'}, natalSvg()); }
     function ChartScreen(lang){
       var facts=[ [{en:'LAGNA',hi:'लग्न'},{en:'Aries',hi:'मेष'}], [{en:'MOON',hi:'चंद्र'},{en:'Cancer',hi:'कर्क'}], [{en:'NAKSHATRA',hi:'नक्षत्र'},{en:'Kritika',hi:'कृत्तिका'}] ];
       var planets=[ ['Su',{en:'Sun',hi:'सूर्य'},{en:'10th house · Leo · dignified',hi:'दशम भाव · सिंह · बलवान'}],
@@ -1031,19 +1086,100 @@
       ));
     }
 
+    // Single Kundali — voice capture result (matches the hero's VoiceFlow, static).
+    function SingleScreen(lang){
+      var fields=[ ['NAME', lang==='hi'?'राहुल':'Rahul'], ['DOB', lang==='hi'?'12 अग 1996':'12 Aug 1996'], ['TIME','09:41 AM'], ['PLACE', lang==='hi'?'नई दिल्ली':'New Delhi'] ];
+      var res=[ [{en:'LAGNA',hi:'लग्न'},{en:'Aries',hi:'मेष'}], [{en:'MOON',hi:'चंद्र'},{en:'Cancer',hi:'कर्क'}], [{en:'NAKSHATRA',hi:'नक्षत्र'},{en:'Kritika',hi:'कृत्तिका'}], [{en:'DRIVER',hi:'मूलांक'},{en:'3',hi:'3'}] ];
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'एकल कुंडली':'Single Kundali', lang==='hi'?'बस बोलें — AastroAI बाकी भरेगा':'Just speak — AastroAI fills the rest', 'VOICE AI'),
+        h('div',{className:'mic live'}, ic('mic',22)),
+        h('div',{className:'vstatus'}, lang==='hi'?'कुंडली तैयार ✓':'Chart ready ✓'),
+        h('div',{className:'vtranscript'}, lang==='hi'?'“मेरा नाम राहुल है, जन्म 12 अगस्त 1996, सुबह 9:41, नई दिल्ली।”':'“My name is Rahul, born 12 August 1996 at 9:41 in the morning, in New Delhi.”'),
+        h('div',{className:'vfields'}, fields.map(function(f,i){ return h('div',{key:i,className:'vfield'}, h('span',{className:'vl'},f[0]), h('span',{className:'vv'},f[1]), h('span',{className:'vok'},'✓')); })),
+        h('div',{className:'fresult'}, res.map(function(r,i){ return h('div',{key:i,className:'fres'}, h('div',{className:'rl'}, TL(r[0],lang)), h('div',{className:'rv'}, TL(r[1],lang))); }))
+      ));
+    }
+    // Multi-Match — ranked candidate pool with emphasis re-weighting.
+    function MultiMatchScreen(lang){
+      var emph=[ {en:'Physical',hi:'शारीरिक'},{en:'Friendship',hi:'मैत्री'},{en:'Marriage',hi:'विवाह'} ];
+      var cands=[ [lang==='hi'?'प्रिया':'Priya', lang==='hi'?'कर्क · पुष्य':'Cancer · Pushya',31], [lang==='hi'?'अंजलि':'Anjali', lang==='hi'?'वृश्चिक · अनुराधा':'Scorpio · Anuradha',29], [lang==='hi'?'नेहा':'Neha', lang==='hi'?'मीन · रेवती':'Pisces · Revati',27] ];
+      return Mock(h('div',{className:'pg'},
+        PgHead(lang==='hi'?'मल्टी-मैच':'Multi-Match', lang==='hi'?'आपके सर्वोत्तम मैच, क्रमबद्ध':'Your best possible matches, ranked', 'ENGINE'),
+        h('div',{className:'emph'}, emph.map(function(e,i){ return h('span',{key:i,className:i===2?'on':''}, TL(e,lang)); })),
+        cands.map(function(c,i){ return h('div',{key:i,className:'mrow'}, h('span',{className:'av'}, ic('person',16)), h('div',null, h('div',{className:'nm'}, (i+1)+'. '+c[0]), h('div',{className:'sub2'}, c[1])), h('div',{className:'score'}, c[2], h('small',null,'/ 36'))); })
+      ));
+    }
+
+    // ---- Zoom lenses: magnified close-ups that float over the phone (chart zoom, component zoom) ----
+    function ZoomChart(lang){ return h('div',{className:'zoomlens zl-r'},
+      h('div',{className:'zcap'}, h('span',{className:'lens'}), lang==='hi'?'जन्म कुंडली':'Birth chart'),
+      h('div',{className:'natal',style:{border:'none',background:'transparent',padding:0,marginTop:0}}, natalSvg())
+    ); }
+    function ZoomLoshu(lang){ var grid=[4,9,2,3,5,7,8,1,6], present={1:2,3:1,4:1,5:1,6:1,8:1,9:1};
+      return h('div',{className:'zoomlens zl-l'},
+        h('div',{className:'zcap'}, h('span',{className:'lens'}), lang==='hi'?'लो शु ग्रिड':'Lo Shu grid'),
+        h('div',{className:'loshu',style:{marginTop:0}}, grid.map(function(n,i){ var c=present[n]; return h('div',{key:i,className:'lc'+(c?'':' empty')}, h('b',null,n), h('small',null, c?('×'+c):'—')); }))
+      );
+    }
+    function ZoomStars(lang){ var cats=[ [{en:'Career',hi:'करियर'},4], [{en:'Health',hi:'स्वास्थ्य'},3], [{en:'Love',hi:'प्रेम'},5], [{en:'Finance',hi:'धन'},4] ];
+      return h('div',{className:'zoomlens zl-r'},
+        h('div',{className:'zcap'}, h('span',{className:'lens'}), lang==='hi'?'दैनिक रेटिंग':'Daily rating'),
+        h('div',{style:{display:'flex',alignItems:'center',marginBottom:'8px'}}, h('span',{style:{fontSize:'12px',fontWeight:800,color:'var(--d-tp)'}}, lang==='hi'?'समग्र':'Overall'), h('span',{style:{marginLeft:'auto',display:'flex',alignItems:'center',gap:'6px'}}, starRow(4), h('b',{style:{color:'var(--d-gold)',fontSize:'12px'}},'4.0'))),
+        cats.map(function(c,i){ return h('div',{key:i,className:'crow'}, h('span',{className:'cl'}, TL(c[0],lang)), h('span',{className:'cs'}, starRow(c[1]))); })
+      );
+    }
+    function ZoomRing(lang){ var circ=2*Math.PI*30;
+      return h('div',{className:'zoomlens zl-l'},
+        h('div',{className:'zcap'}, h('span',{className:'lens'}), lang==='hi'?'अष्टकूट':'Ashtakoot'),
+        h('div',{className:'zring'},
+          h('div',{className:'rw'}, h('svg',{viewBox:'0 0 78 78'},
+            h('circle',{cx:39,cy:39,r:30,fill:'none',stroke:'var(--d-line)',strokeWidth:7}),
+            h('circle',{cx:39,cy:39,r:30,fill:'none',stroke:'var(--d-gold)',strokeWidth:7,strokeLinecap:'round',strokeDasharray:circ,strokeDashoffset:circ*(1-28/36),transform:'rotate(-90 39 39)'})
+          ), h('div',{className:'n'}, h('b',null,'28'), h('small',null,'/ 36'))),
+          h('div',{className:'rt'}, h('b',null, lang==='hi'?'उत्तम मिलान':'Excellent match'), h('div',null, lang==='hi'?'28 गुण · मांगलिक रद्द':'28 gunas · Manglik cancelled'))
+        )
+      );
+    }
+
+    // Three trademarked engines — the shared spine, as a highlight band.
+    function EnginesBand(props){
+      var lang=props.lang, T=function(o){ return TL(o,lang); };
+      var icons=['sparkle','heart','sun'];
+      var DESC=[ {en:'Push alerts fired at the exact minute a transit touches your chart — with one clear thing to do.',hi:'गोचर आपकी कुंडली को छूते ही सही क्षण पर सूचना — एक स्पष्ट सुझाव सहित।'},
+                 {en:'Rank a whole pool of prospects by real Ashtakoot compatibility and re-weight by what matters.',hi:'पूरे समूह को अष्टकूट मिलान पर क्रमबद्ध करें और प्राथमिकता अनुसार भार बदलें।'},
+                 {en:'Readable transit maths for today, this week and this month — Career, Health, Love, Finance.',hi:'आज, सप्ताह व माह हेतु सरल गोचर फल — करियर, स्वास्थ्य, प्रेम, धन।'} ];
+      return h('div',{className:'engines-band'},
+        h('div',{className:'eb-head'},
+          h('div',{className:'eyebrow'}, lang==='hi'?'तीन इंजन':'Three engines'),
+          h('h2',null, lang==='hi'?'एक ऐप, ':'One app, ', h('span',{className:'hl'}, lang==='hi'?'तीन इंजन':'three engines'))
+        ),
+        h('div',{className:'eb-grid'}, ENGINES.map(function(e,i){ return h('div',{key:i,className:'eb-card'},
+          h('div',{className:'ei'}, ic(icons[i],22)),
+          h('h3',null, T(e.n), h('span',{className:'tm'},'™')),
+          h('p',null, T(DESC[i]))
+        ); }))
+      );
+    }
+
     var FEATURES = [
+      { key:'single', tag:{en:'Single Kundali',hi:'एकल कुंडली'}, title:{en:'Just speak. Your chart appears.',hi:'बस बोलें। कुंडली बन जाए।'},
+        desc:{en:'Say your name, date, time and place out loud — AastroAI transcribes it, extracts every field and casts a full kundali in seconds. No forms to fill.',hi:'अपना नाम, तिथि, समय व स्थान बोलें — AastroAI सुनकर हर विवरण निकालता है और सेकंडों में पूरी कुंडली बनाता है। कोई फ़ॉर्म नहीं।'},
+        bullets:[ {en:'Speak or type',hi:'बोलें या लिखें'}, {en:'Fields auto-extracted',hi:'विवरण स्वतः निकले'}, {en:'Instant chart + numerology',hi:'तुरंत कुंडली व अंक'} ], render:SingleScreen },
       { key:'chart', tag:{en:'Birth Chart',hi:'जन्म कुंडली'}, title:{en:'Your whole sky, read for you',hi:'आपका पूरा आकाश, आपके लिए पढ़ा गया'},
-        desc:{en:'Speak your birth details and AastroAI casts a precise North-Indian kundali — lagna, all nine planets by house and sign, and your running Vimshottari dasha.',hi:'अपनी जन्म जानकारी बोलें और AastroAI सटीक उत्तर-भारतीय कुंडली बनाता है — लग्न, नौ ग्रह भाव व राशि सहित, और चालू विंशोत्तरी दशा।'},
-        bullets:[ {en:'North & South Indian chart styles',hi:'उत्तर व दक्षिण भारतीय शैली'}, {en:'Planet-by-house with dignity',hi:'भाव अनुसार ग्रह बल'}, {en:'Live Mahadasha–Antardasha timeline',hi:'सक्रिय महादशा–अंतरदशा'} ], render:ChartScreen },
+        desc:{en:'A precise North-Indian kundali — lagna, all nine planets by house and sign, and your running Vimshottari dasha, laid out just like the app.',hi:'सटीक उत्तर-भारतीय कुंडली — लग्न, नौ ग्रह भाव व राशि सहित, और चालू विंशोत्तरी दशा, बिल्कुल ऐप जैसी।'},
+        bullets:[ {en:'North & South Indian chart styles',hi:'उत्तर व दक्षिण भारतीय शैली'}, {en:'Planet-by-house with dignity',hi:'भाव अनुसार ग्रह बल'}, {en:'Live Mahadasha–Antardasha timeline',hi:'सक्रिय महादशा–अंतरदशा'} ], render:ChartScreen, zoom:ZoomChart, rev:true },
       { key:'numero', tag:{en:'Numerology',hi:'अंक ज्योतिष'}, title:{en:'Numbers that map your life',hi:'आपके जीवन का अंक-नक्शा'},
         desc:{en:'A full Lo Shu grid built from your date of birth, driver, conductor and Kua — plus a true Chaldean name number, not the usual Pythagorean shortcut.',hi:'आपकी जन्मतिथि, मूलांक, भाग्यांक व कुआ से बना पूर्ण लो शु ग्रिड — साथ ही असली कैल्डियन नाम अंक।'},
-        bullets:[ {en:'Lo Shu grid with repeats & gaps',hi:'लो शु ग्रिड — पुनरावृत्ति व रिक्त'}, {en:'Driver, Conductor, Kua & Name',hi:'मूलांक, भाग्यांक, कुआ व नामांक'}, {en:'Chaldean name system',hi:'कैल्डियन नाम पद्धति'} ], render:NumeroScreen, rev:true },
+        bullets:[ {en:'Lo Shu grid with repeats & gaps',hi:'लो शु ग्रिड — पुनरावृत्ति व रिक्त'}, {en:'Driver, Conductor, Kua & Name',hi:'मूलांक, भाग्यांक, कुआ व नामांक'}, {en:'Chaldean name system',hi:'कैल्डियन नाम पद्धति'} ], render:NumeroScreen, zoom:ZoomLoshu },
       { key:'predict', tag:{en:'Prediction Engine',hi:'प्रेडिक्शन इंजन'}, tm:true, title:{en:'Today, this week, this month',hi:'आज, इस सप्ताह, इस माह'},
         desc:{en:'Real transit maths turned into a readable rating — Career, Health, Love and Finance scored out of five, each with a plain-language reason.',hi:'वास्तविक गोचर गणित एक सरल रेटिंग में — करियर, स्वास्थ्य, प्रेम व धन, पाँच में से अंक और स्पष्ट कारण सहित।'},
-        bullets:[ {en:'Daily / weekly / monthly windows',hi:'दैनिक / साप्ताहिक / मासिक'}, {en:'Four life areas, star-rated',hi:'चार क्षेत्र, स्टार रेटिंग'}, {en:'Reasoned, never generic',hi:'कारण सहित, सामान्य नहीं'} ], render:PredictScreen },
+        bullets:[ {en:'Daily / weekly / monthly windows',hi:'दैनिक / साप्ताहिक / मासिक'}, {en:'Four life areas, star-rated',hi:'चार क्षेत्र, स्टार रेटिंग'}, {en:'Reasoned, never generic',hi:'कारण सहित, सामान्य नहीं'} ], render:PredictScreen, zoom:ZoomStars, rev:true },
       { key:'match', tag:{en:'Match Making',hi:'मिलान'}, title:{en:'Ashtakoot, honestly scored',hi:'अष्टकूट, ईमानदार अंकन'},
         desc:{en:'The classic 36-guna compatibility across all eight kootas, with Manglik and Nadi dosha checked and any cancellations explained — never hidden.',hi:'सभी आठ कूटों में शास्त्रीय 36-गुण मिलान, मांगलिक व नाड़ी दोष जाँच सहित और रद्दीकरण स्पष्ट रूप से।'},
-        bullets:[ {en:'All 8 kootas broken down',hi:'सभी 8 कूट विस्तार से'}, {en:'Manglik & Nadi dosha flags',hi:'मांगलिक व नाड़ी दोष'}, {en:'Cancellations shown, not hidden',hi:'रद्दीकरण छिपाया नहीं'} ], render:MatchScreen, rev:true },
+        bullets:[ {en:'All 8 kootas broken down',hi:'सभी 8 कूट विस्तार से'}, {en:'Manglik & Nadi dosha flags',hi:'मांगलिक व नाड़ी दोष'}, {en:'Cancellations shown, not hidden',hi:'रद्दीकरण छिपाया नहीं'} ], render:MatchScreen, zoom:ZoomRing },
+      { key:'multi', tag:{en:'Multi-Match Engine',hi:'मल्टी-मैच इंजन'}, tm:true, title:{en:'Not one match — your best match',hi:'एक नहीं — सर्वोत्तम मैच'},
+        desc:{en:'Rank a whole pool of prospects by real Ashtakoot compatibility, then re-weight the score for what matters to you — physical, friendship or marriage.',hi:'पूरे समूह को वास्तविक अष्टकूट मिलान पर क्रमबद्ध करें, फिर अपनी प्राथमिकता — शारीरिक, मैत्री या विवाह — अनुसार अंक का भार बदलें।'},
+        bullets:[ {en:'Ranked candidate pool',hi:'क्रमबद्ध उम्मीदवार समूह'}, {en:'Re-weight by emphasis',hi:'प्राथमिकता अनुसार भार'}, {en:'Best match surfaced first',hi:'सर्वोत्तम मैच सबसे ऊपर'} ], render:MultiMatchScreen, rev:true },
       { key:'lal', tag:{en:'Lal Kitab',hi:'लाल किताब'}, title:{en:'Debts, and simple remedies',hi:'ऋण, और सरल उपाय'},
         desc:{en:'Your planetary debts in the Lal Kitab tradition, each paired with a practical, low-cost remedy you can actually do — no expensive rituals.',hi:'लाल किताब परंपरा में आपके ग्रह ऋण, हर एक के साथ व्यावहारिक व सरल उपाय — महंगे अनुष्ठान नहीं।'},
         bullets:[ {en:'Planet-in-house debts',hi:'भाव अनुसार ग्रह ऋण'}, {en:'Everyday, low-cost remedies',hi:'रोज़मर्रा, सस्ते उपाय'}, {en:'Hindi & English',hi:'हिन्दी व अंग्रेज़ी'} ], render:LalScreen },
@@ -1102,8 +1238,9 @@
             h('p',null, T(f.desc)),
             h('div',{className:'feat-list'}, f.bullets.map(function(b,j){ return h('div',{key:j,className:'fl'}, h('span',{className:'ck'},'✓'), h('span',null, T(b))); }))
           ),
-          h('div',{className:'feat-phone'}, h('div',{className:'tilt','data-i':i}, f.render(lang)))
-        ); })
+          h('div',{className:'feat-phone'}, h('div',{className:'tilt','data-i':i}, f.render(lang)), f.zoom?f.zoom(lang):null)
+        ); }),
+        h(EnginesBand, { lang:lang })
       );
     }
 
