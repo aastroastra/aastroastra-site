@@ -276,6 +276,13 @@
   .zring .rw .n small { font-size:9px; color:var(--d-tm); }
   .zring .rt b { font-size:13px; font-weight:800; color:var(--d-tp); }
   .zring .rt div { font-size:11px; color:var(--d-tm); margin-top:3px; }
+  /* Best-match spotlight used inside the Multi-Match zoom lens */
+  .zmatch { display:flex; align-items:center; gap:11px; }
+  .zmatch .zrank { width:32px; height:32px; border-radius:9px; background:var(--d-grad); color:var(--d-onaccent); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:15px; flex:none; }
+  .zmatch .zname { font-size:14px; font-weight:800; color:var(--d-tp); }
+  .zmatch .zsub { font-size:10.5px; color:var(--d-tm); margin-top:2px; }
+  .zmatch .zsc { margin-left:auto; font-size:21px; font-weight:800; color:var(--d-teal); text-align:right; line-height:1; }
+  .zmatch .zsc small { display:block; font-size:9px; color:var(--d-tm); font-weight:600; }
   @media (max-width:640px) { .zoomlens { display:none; } }  /* keep phones clean on small screens */
 
   /* Three-Engines highlight band */
@@ -1141,6 +1148,15 @@
       );
     }
 
+    function ZoomMulti(lang){ return h('div',{className:'zoomlens zl-r'},
+      h('div',{className:'zcap'}, h('span',{className:'lens'}), lang==='hi'?'सर्वोत्तम मैच':'Best match'),
+      h('div',{className:'zmatch'},
+        h('div',{className:'zrank'},'1'),
+        h('div',null, h('div',{className:'zname'}, lang==='hi'?'प्रिया':'Priya'), h('div',{className:'zsub'}, lang==='hi'?'कर्क · पुष्य · मांगलिक रद्द':'Cancer · Pushya · Manglik cancelled')),
+        h('div',{className:'zsc'}, '31', h('small',null,'/ 36'))
+      )
+    ); }
+
     // Three trademarked engines — the shared spine, as a highlight band.
     function EnginesBand(props){
       var lang=props.lang, T=function(o){ return TL(o,lang); };
@@ -1162,6 +1178,9 @@
     }
 
     var FEATURES = [
+      { key:'multi', tag:{en:'Multi-Match Engine',hi:'मल्टी-मैच इंजन'}, tm:true, title:{en:'Not one match — your best match',hi:'एक नहीं — सर्वोत्तम मैच'},
+        desc:{en:'The engine that sets AastroAstra apart: rank a whole pool of prospects by real Ashtakoot compatibility, then re-weight the score for what matters to you — physical, friendship or marriage.',hi:'यही AastroAstra को अलग बनाता है: पूरे समूह को वास्तविक अष्टकूट मिलान पर क्रमबद्ध करें, फिर अपनी प्राथमिकता — शारीरिक, मैत्री या विवाह — अनुसार अंक का भार बदलें।'},
+        bullets:[ {en:'Ranked candidate pool',hi:'क्रमबद्ध उम्मीदवार समूह'}, {en:'Re-weight by emphasis',hi:'प्राथमिकता अनुसार भार'}, {en:'Best match surfaced first',hi:'सर्वोत्तम मैच सबसे ऊपर'} ], render:MultiMatchScreen, zoom:ZoomMulti },
       { key:'single', tag:{en:'Single Kundali',hi:'एकल कुंडली'}, title:{en:'Just speak. Your chart appears.',hi:'बस बोलें। कुंडली बन जाए।'},
         desc:{en:'Say your name, date, time and place out loud — AastroAI transcribes it, extracts every field and casts a full kundali in seconds. No forms to fill.',hi:'अपना नाम, तिथि, समय व स्थान बोलें — AastroAI सुनकर हर विवरण निकालता है और सेकंडों में पूरी कुंडली बनाता है। कोई फ़ॉर्म नहीं।'},
         bullets:[ {en:'Speak or type',hi:'बोलें या लिखें'}, {en:'Fields auto-extracted',hi:'विवरण स्वतः निकले'}, {en:'Instant chart + numerology',hi:'तुरंत कुंडली व अंक'} ], render:SingleScreen },
@@ -1177,9 +1196,6 @@
       { key:'match', tag:{en:'Match Making',hi:'मिलान'}, title:{en:'Ashtakoot, honestly scored',hi:'अष्टकूट, ईमानदार अंकन'},
         desc:{en:'The classic 36-guna compatibility across all eight kootas, with Manglik and Nadi dosha checked and any cancellations explained — never hidden.',hi:'सभी आठ कूटों में शास्त्रीय 36-गुण मिलान, मांगलिक व नाड़ी दोष जाँच सहित और रद्दीकरण स्पष्ट रूप से।'},
         bullets:[ {en:'All 8 kootas broken down',hi:'सभी 8 कूट विस्तार से'}, {en:'Manglik & Nadi dosha flags',hi:'मांगलिक व नाड़ी दोष'}, {en:'Cancellations shown, not hidden',hi:'रद्दीकरण छिपाया नहीं'} ], render:MatchScreen, zoom:ZoomRing },
-      { key:'multi', tag:{en:'Multi-Match Engine',hi:'मल्टी-मैच इंजन'}, tm:true, title:{en:'Not one match — your best match',hi:'एक नहीं — सर्वोत्तम मैच'},
-        desc:{en:'Rank a whole pool of prospects by real Ashtakoot compatibility, then re-weight the score for what matters to you — physical, friendship or marriage.',hi:'पूरे समूह को वास्तविक अष्टकूट मिलान पर क्रमबद्ध करें, फिर अपनी प्राथमिकता — शारीरिक, मैत्री या विवाह — अनुसार अंक का भार बदलें।'},
-        bullets:[ {en:'Ranked candidate pool',hi:'क्रमबद्ध उम्मीदवार समूह'}, {en:'Re-weight by emphasis',hi:'प्राथमिकता अनुसार भार'}, {en:'Best match surfaced first',hi:'सर्वोत्तम मैच सबसे ऊपर'} ], render:MultiMatchScreen, rev:true },
       { key:'lal', tag:{en:'Lal Kitab',hi:'लाल किताब'}, title:{en:'Debts, and simple remedies',hi:'ऋण, और सरल उपाय'},
         desc:{en:'Your planetary debts in the Lal Kitab tradition, each paired with a practical, low-cost remedy you can actually do — no expensive rituals.',hi:'लाल किताब परंपरा में आपके ग्रह ऋण, हर एक के साथ व्यावहारिक व सरल उपाय — महंगे अनुष्ठान नहीं।'},
         bullets:[ {en:'Planet-in-house debts',hi:'भाव अनुसार ग्रह ऋण'}, {en:'Everyday, low-cost remedies',hi:'रोज़मर्रा, सस्ते उपाय'}, {en:'Hindi & English',hi:'हिन्दी व अंग्रेज़ी'} ], render:LalScreen },
@@ -1231,7 +1247,7 @@
         return function(){ window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); if(raf) cancelAnimationFrame(raf); };
       }, []);
       return h('section',{className:'showcase', ref:secRef},
-        FEATURES.map(function(f,i){ return h('div',{key:f.key,className:'feat'+(f.rev?' rev':'')},
+        FEATURES.map(function(f,i){ return h('div',{key:f.key,className:'feat'+((i%2===1)?' rev':'')},
           h('div',{className:'feat-copy'},
             h('div',{className:'eyebrow'}, T(f.tag), f.tm?h('span',{className:'tm'},'™'):null),
             h('h3',null, T(f.title)),
