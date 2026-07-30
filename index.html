@@ -1054,8 +1054,7 @@
       return h('section',{className:'showcase'},
         h('div',{className:'sc-intro'},
           h('div',{className:'eyebrow'}, lang==='hi'?'ऐप के भीतर':'Inside the app'),
-          h('h2',null, lang==='hi'?'हर विशेषता, ':'Every feature, ', h('span',{className:'hl'}, lang==='hi'?'आपकी कुंडली पर आधारित':'built on your chart')),
-          h('p',null, lang==='hi'?'हर स्क्रीन आपकी जन्म जानकारी से बनती है — कोई सामान्य राशिफल नहीं। नीचे असली ऐप स्क्रीन देखें।':'Every screen is generated from your own birth details — never a generic horoscope. These are the real app screens.')
+          h('h2',null, lang==='hi'?'हर विशेषता, ':'Every feature, ', h('span',{className:'hl'}, lang==='hi'?'आपकी कुंडली पर आधारित':'built on your chart'))
         ),
         FEATURES.map(function(f){ return h('div',{key:f.key,className:'feat'+(f.rev?' rev':'')},
           h('div',{className:'feat-copy'},
