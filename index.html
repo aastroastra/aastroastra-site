@@ -177,7 +177,7 @@
   a { color:inherit; text-decoration:none; }
 
   .cosmos { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.8; }
-  .frame { position:relative; z-index:1; width:100%; max-width:1240px; min-height:100vh; margin:0 auto; display:grid; grid-template-rows:auto auto auto auto; border-left:1px solid var(--line); border-right:1px solid var(--line); }
+  .frame { position:relative; z-index:1; width:100%; max-width:1240px; min-height:100vh; margin:0 auto; display:grid; grid-template-rows:auto auto auto auto auto; border-left:1px solid var(--line); border-right:1px solid var(--line); }
 
   header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 30px; border-bottom:1px solid var(--line); }
   .brand { display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px; }
@@ -503,6 +503,56 @@
   #splash.hide { opacity:0; pointer-events:none; }
   @keyframes splashIn { 0%{ opacity:0; transform:scale(.82); } 100%{ opacity:1; transform:scale(1); } }
   @keyframes caret { 0%,100%{ border-color:currentColor; } 50%{ border-color:transparent; } }
+
+
+  /* ============ AastroAI — the deterministic core → AI layer story ============ */
+  .aai { border-top:1px solid var(--line); padding:66px 30px 74px; }
+  .aai-head { text-align:center; max-width:720px; margin:0 auto; }
+  .aai-head .eyebrow { font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--tint); font-weight:800; }
+  .aai-head h2 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.02em; font-size:clamp(27px,4.1vw,46px); line-height:1.06; margin-top:12px; color:var(--fg); }
+  .aai-head h2 .hl { background:var(--tint-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  .aai-head p { margin:14px auto 0; font-size:15px; line-height:1.65; color:var(--fg2); max-width:620px; }
+
+  /* The stack: deterministic core on top, AI layer below, joined by the trust rail. */
+  .aai-stack { max-width:660px; margin:38px auto 0; }
+  .aai-box { border:1px solid var(--line); border-radius:18px; background:var(--card); padding:20px 20px 18px; }
+  .aai-box.core { border-color:color-mix(in srgb, var(--tint) 42%, var(--line)); }
+  .aai-box h3 { font-size:11px; letter-spacing:.18em; text-transform:uppercase; font-weight:800; color:var(--fg); text-align:center; }
+  .aai-box .sub { margin-top:5px; font-size:12px; color:var(--muted); text-align:center; }
+  .aai-tags { margin-top:15px; display:flex; flex-wrap:wrap; gap:7px; justify-content:center; }
+  .aai-tags span { font-size:12px; line-height:1; padding:8px 11px; border-radius:999px; border:1px solid var(--line); color:var(--fg2); background:var(--bg); }
+  .aai-box.core .aai-tags span { border-color:color-mix(in srgb, var(--tint) 30%, var(--line)); color:var(--fg); }
+  .aai-rail { display:flex; flex-direction:column; align-items:center; gap:5px; padding:11px 0; }
+  .aai-rail i { display:block; width:1px; height:16px; background:var(--line); }
+  .aai-rail b { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--tint); font-weight:800; }
+  .aai-rail .arw { color:var(--muted); font-size:13px; line-height:1; }
+
+  /* "Why?" — the trace that a chat-only app cannot produce. */
+  .aai-why { max-width:660px; margin:34px auto 0; border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+  .aai-why .q { padding:15px 18px; border-bottom:1px solid var(--line); font-size:14.5px; color:var(--fg); background:var(--card); }
+  .aai-why .q b { color:var(--tint); }
+  .aai-trace { padding:6px 0; }
+  .aai-trace .row { display:flex; gap:12px; align-items:flex-start; padding:11px 18px; }
+  .aai-trace .row + .row { border-top:1px dashed var(--line); }
+  .aai-trace .k { flex:none; width:104px; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; font-weight:800; color:var(--muted); padding-top:2px; }
+  .aai-trace .v { font-size:13.5px; line-height:1.5; color:var(--fg2); }
+  .aai-trace .v em { font-style:normal; color:var(--fg); font-weight:700; }
+
+  /* Us vs a chatbot with a chart pasted in. */
+  .aai-cmp { max-width:660px; margin:30px auto 0; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .aai-cmp div { border:1px solid var(--line); border-radius:16px; padding:16px 16px 14px; background:var(--card); }
+  .aai-cmp div.ours { border-color:color-mix(in srgb, var(--tint) 42%, var(--line)); }
+  .aai-cmp h4 { font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; font-weight:800; color:var(--muted); }
+  .aai-cmp div.ours h4 { color:var(--tint); }
+  .aai-cmp ul { margin:11px 0 0; padding-left:16px; }
+  .aai-cmp li { font-size:13px; line-height:1.55; color:var(--fg2); margin-top:6px; }
+  .aai-foot { max-width:660px; margin:26px auto 0; font-size:12.5px; line-height:1.6; color:var(--muted); text-align:center; }
+  @media (max-width:640px) {
+    .aai { padding:52px 18px 58px; }
+    .aai-cmp { grid-template-columns:1fr; }
+    .aai-trace .row { flex-direction:column; gap:3px; }
+    .aai-trace .k { width:auto; }
+  }
 
   /* ============ Feature showcase — production-accurate phone mocks + descriptions ============ */
   .showcase { border-top:1px solid var(--line); }
@@ -1283,6 +1333,98 @@
       );
     }
 
+
+    /**
+     * AastroAI — the section that explains WHY our chat answers differently.
+     *
+     * The claim is architectural, not marketing: everything a reading rests on is
+     * computed deterministically (ephemeris → chart → dashas → yogas → strengths →
+     * transits → rules → scored events), and the model is only allowed to reason
+     * over, explain and translate that structure. So every sentence can be traced
+     * back to the numbers that produced it — which is exactly what "Why?" shows.
+     */
+    function AastroAI(props){
+      var lang = props.lang;
+      var T = {
+        eyebrow:{en:'AastroAI', hi:'AastroAI'},
+        h:{en:['Not ChatGPT with a ', 'kundali', ' pasted in.'], hi:['कुंडली चिपकाया हुआ ', 'ChatGPT', ' नहीं।']},
+        p:{en:'A Jyotish engine computes your chart the classical way, down to the degree. The model never guesses the astrology — it reads what the engine produced, and puts it in your language.',
+           hi:'ज्योतिष इंजन आपकी कुंडली शास्त्रीय रीति से, अंश तक गणना करता है। मॉडल ज्योतिष का अनुमान नहीं लगाता — वह इंजन के परिणाम को पढ़कर आपकी भाषा में रखता है।'},
+        core:{en:'Deterministic core', hi:'नियत गणना कोर'},
+        coreSub:{en:'Same inputs, same output — every time, on every device.', hi:'एक ही इनपुट, एक ही परिणाम — हर बार, हर डिवाइस पर।'},
+        coreTags:{en:['Astronomy','Chart calculation','Dasha calculation','Yoga detection','Strength calculation','Transit calculation','Rule evaluation','Event scoring'],
+                  hi:['खगोल गणना','कुंडली गणना','दशा गणना','योग पहचान','बल गणना','गोचर गणना','नियम मूल्यांकन','घटना स्कोरिंग']},
+        rail:{en:'Trusted structure', hi:'प्रामाणिक संरचना'},
+        ai:{en:'AI layer', hi:'AI परत'},
+        aiSub:{en:'Reads the structure. Never invents it.', hi:'संरचना पढ़ता है। गढ़ता नहीं।'},
+        aiTags:{en:['Reason','Synthesize','Explain','Converse','Personalize','Translate'],
+                hi:['तर्क','संश्लेषण','व्याख्या','संवाद','वैयक्तिकरण','अनुवाद']},
+        q:{en:'You asked: ', hi:'आपने पूछा: '},
+        qt:{en:'“Why do you say I may change jobs?”', hi:'“आप क्यों कह रहे हैं कि मेरी नौकरी बदल सकती है?”'},
+        trace:{
+          en:[['Dasha','Ketu–Rahu antardasha, <em>23 Nov 2025 – 12 Dec 2026</em>'],
+              ['Houses','Rahu in the <em>7th</em>; 10th lord <em>Venus exalted</em> in the 10th'],
+              ['Transit','Saturn aspecting the <em>10th</em> from 5 Mar'],
+              ['Rule','Dasha lord on the Rahu–Ketu axis + 10th activation → <em>role change window</em>'],
+              ['Score','<em>0.71</em> — strong, not certain'],
+              ['Answer','The model writes those five lines as one paragraph, in your language.']],
+          hi:[['दशा','केतु–राहु अंतर्दशा, <em>23 नव 2025 – 12 दिस 2026</em>'],
+              ['भाव','राहु <em>सप्तम</em> में; दशमेश <em>शुक्र उच्च</em> दशम में'],
+              ['गोचर','5 मार्च से शनि की दृष्टि <em>दशम</em> पर'],
+              ['नियम','दशा स्वामी राहु–केतु अक्ष पर + दशम सक्रिय → <em>भूमिका बदलने का समय</em>'],
+              ['स्कोर','<em>0.71</em> — प्रबल, निश्चित नहीं'],
+              ['उत्तर','मॉडल इन्हीं पाँच पंक्तियों को एक अनुच्छेद में, आपकी भाषा में लिखता है।']]
+        },
+        themTitle:{en:'A chatbot with a chart pasted in', hi:'चार्ट चिपकाया हुआ चैटबॉट'},
+        them:{en:['Re-derives the astrology in prose, differently each time','Cannot show which placement produced a claim','Confident about periods it never computed','Drifts as the conversation gets longer'],
+              hi:['हर बार ज्योतिष को शब्दों में फिर से गढ़ता है','कौन-सा योग किस कथन का आधार है, बता नहीं सकता','जो अवधि गणना ही नहीं की, उस पर भी दावा','बातचीत लंबी होते ही भटक जाता है']},
+        usTitle:{en:'AastroAI', hi:'AastroAI'},
+        us:{en:['The chart, dashas and yogas are computed once, exactly','Every claim carries the placement it came from','Periods come from the Vimshottari sequence, with dates','Ask “why?” and it shows the working'],
+            hi:['कुंडली, दशा और योग एक बार, सटीक गणना होते हैं','हर कथन के साथ उसका आधार जुड़ा रहता है','अवधि विम्शोत्तरी क्रम से, तिथियों सहित','“क्यों?” पूछिए — गणना दिखती है']},
+        foot:{en:'Same question, same chart, same answer — because the astrology is computed, not improvised.',
+              hi:'वही प्रश्न, वही कुंडली, वही उत्तर — क्योंकि ज्योतिष गणना से आता है, कल्पना से नहीं।'}
+      };
+      function tag(t){ return h('span',{key:t}, t); }
+      return h('section', { className:'aai', id:'aastroai' },
+        h('div', { className:'aai-head' },
+          h('div', { className:'eyebrow' }, T.eyebrow[lang]),
+          h('h2', null, T.h[lang][0], h('span',{className:'hl'}, T.h[lang][1]), T.h[lang][2]),
+          h('p', null, T.p[lang])
+        ),
+        h('div', { className:'aai-stack' },
+          h('div', { className:'aai-box core' },
+            h('h3', null, T.core[lang]),
+            h('div', { className:'sub' }, T.coreSub[lang]),
+            h('div', { className:'aai-tags' }, T.coreTags[lang].map(tag))
+          ),
+          h('div', { className:'aai-rail' }, h('i'), h('b', null, T.rail[lang]), h('span',{className:'arw'},'▼'), h('i')),
+          h('div', { className:'aai-box' },
+            h('h3', null, T.ai[lang]),
+            h('div', { className:'sub' }, T.aiSub[lang]),
+            h('div', { className:'aai-tags' }, T.aiTags[lang].map(tag))
+          )
+        ),
+        h('div', { className:'aai-why' },
+          h('div', { className:'q' }, T.q[lang], h('b', null, T.qt[lang])),
+          h('div', { className:'aai-trace' },
+            T.trace[lang].map(function(r,i){
+              return h('div', { className:'row', key:i },
+                h('div', { className:'k' }, r[0]),
+                h('div', { className:'v', dangerouslySetInnerHTML:{ __html:r[1] } })
+              );
+            })
+          )
+        ),
+        h('div', { className:'aai-cmp' },
+          h('div', null, h('h4', null, T.themTitle[lang]),
+            h('ul', null, T.them[lang].map(function(x,i){ return h('li',{key:i}, x); }))),
+          h('div', { className:'ours' }, h('h4', null, T.usTitle[lang]),
+            h('ul', null, T.us[lang].map(function(x,i){ return h('li',{key:i}, x); })))
+        ),
+        h('div', { className:'aai-foot' }, T.foot[lang])
+      );
+    }
+
     function App(){
       var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
       var lS=useState('en'), lang=lS[0], setLang=lS[1];
@@ -1385,6 +1527,7 @@
             ),
             h('div', { className:'right' }, h(Phone, { lang:lang }), h(Engines, { lang:lang }))
           ),
+          h(AastroAI, { lang:lang }),
           null, /* below-hero Showcase hidden for now — restore: h(Showcase, { lang:lang }) */
           h('footer', null,
             // Desktop: compact single-line footer.
