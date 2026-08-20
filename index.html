@@ -2345,7 +2345,7 @@
                     h('td', { className:'plat' }, 'iOS'),
                     h('td', null, verIos ? (verIos.version + (verIos.build ? (' ('+verIos.build+')') : '')) : ', '),
                     h('td', null, verIos ? (verIos.sizeMb + ' MB') : ', '),
-                    h('td', null, verIos ? (verIos.updated || ', ') : ', '),
+                    h('td', null, verIos ? stamp(verIos.updated) : ''),
                     h('td', null,
                       (verIos && verIos.install) ? h('a', { href:verIos.install, onClick:function(){ trackDownload('ios','ota'); } },
                         lang==='hi'?'OTA इंस्टॉल':'OTA install') : null,
