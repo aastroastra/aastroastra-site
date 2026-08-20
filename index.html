@@ -533,6 +533,41 @@
   .aai-verdicts span { font-size:13px; font-weight:700; padding:9px 15px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
   .aai-verdicts span.on { border-color:color-mix(in srgb, var(--tint) 55%, transparent); color:var(--tint); }
 
+  /* How the score is arrived at. The arithmetic is trivial; what needed
+     explaining is what the number DOES and where it comes from. */
+  .scr { margin:22px auto 0; border:1px solid var(--line); border-radius:20px; background:var(--card); padding:22px; }
+  .scr .h { font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:800; color:var(--muted); }
+  .scr-rows { margin-top:14px; }
+  .scr-row { display:flex; align-items:baseline; gap:14px; padding:9px 0; }
+  .scr-row + .scr-row { border-top:1px dashed var(--line); }
+  .scr-row .num { flex:none; width:74px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:clamp(16px,2.2vw,21px); font-weight:700; color:var(--tint); }
+  .scr-row .why { font-size:clamp(14px,1.8vw,17.5px); line-height:1.45; color:var(--fg2); }
+  .scr-row.total { border-top:1px solid var(--line); margin-top:4px; padding-top:14px; }
+  .scr-row.total .num { color:var(--fg); font-size:clamp(19px,2.8vw,26px); }
+  .scr-row.total .why { color:var(--fg); font-weight:700; }
+
+  /* The band ruler: what the number makes the app say. */
+  .band { margin-top:22px; }
+  .band-bar { position:relative; height:12px; border-radius:999px; overflow:hidden; display:flex; }
+  .band-bar i { display:block; height:100%; }
+  .band-bar i.b1 { width:45%; background:color-mix(in srgb, var(--muted) 28%, transparent); }
+  .band-bar i.b2 { width:25%; background:color-mix(in srgb, var(--tint) 38%, transparent); }
+  .band-bar i.b3 { width:30%; background:color-mix(in srgb, var(--tint) 85%, transparent); }
+  .band-marks { position:relative; height:34px; margin-top:6px; }
+  .band-marks span { position:absolute; transform:translateX(-50%); text-align:center; white-space:nowrap;
+    font-size:11.5px; font-weight:800; color:var(--fg); }
+  .band-marks span i { display:block; font-style:normal; font-size:15px; line-height:1; color:var(--tint); }
+  .band-legend { margin-top:4px; display:flex; justify-content:space-between; font-size:11px;
+    letter-spacing:.12em; text-transform:uppercase; font-weight:800; color:var(--muted); }
+  .scr-note { margin-top:18px; font-size:clamp(13px,1.6vw,15.5px); line-height:1.6; color:var(--muted); }
+  .scr-note b { color:var(--fg); font-weight:700; }
+  @media (max-width:640px){
+    .scr-row { flex-direction:column; gap:2px; }
+    .scr-row .num { width:auto; }
+    .band-legend { font-size:9.5px; letter-spacing:.06em; }
+  }
+
   .aai-notes { margin:22px auto 0; display:grid; gap:12px; }
   .aai-note { border:1px solid var(--line); border-left:3px solid color-mix(in srgb, var(--tint) 55%, transparent);
     border-radius:14px; padding:15px 18px; background:var(--card); }
@@ -1619,6 +1654,20 @@
               ['क्या कहता है','“ऐसा समय जब भूमिका या कार्यस्थल बदल सकता है”']]
         },
         gateVerdicts:{en:['Approve','Needs work','Reject'], hi:['स्वीकृत','सुधार चाहिए','अस्वीकृत']},
+        scrH:{en:'Where that 0.62 comes from', hi:'यह 0.62 कहाँ से आता है'},
+        scrRows:{
+          en:[['0.62','how strongly the text backs this claim on its own'],
+              ['+0.09','the 10th lord is exalted, one more thing agreeing'],
+              ['+0.05','and it sits in the 10th itself, one more again']],
+          hi:[['0.62','ग्रंथ अकेले इस कथन का कितना समर्थन करता है'],
+              ['+0.09','दशमेश उच्च का है, एक और बात जो सहमत है'],
+              ['+0.05','और वह दशम में ही बैठा है, एक और']]
+        },
+        scrTotal:{en:['0.76','so the app states it plainly, instead of leaning'],
+                  hi:['0.76','इसलिए ऐप झुकाव नहीं, सीधी बात कहता है']},
+        bands:{en:['Hedges','Leans','States plainly'], hi:['संकोच','झुकाव','सीधी बात']},
+        scrNote:{en:['Nothing here is computed. ','A person chose these numbers',', and an astrologer argues them down or up. That is what the review is for, and why every claim carries the version of the rules that produced it.'],
+                 hi:['यहाँ कुछ भी गणना से नहीं आता। ','ये अंक एक व्यक्ति ने तय किए हैं',', और ज्योतिषी उन्हें घटाते-बढ़ाते हैं। समीक्षा इसीलिए है, और इसीलिए हर कथन के साथ नियमों का संस्करण दर्ज रहता है।']},
         gateNotes:{
           en:[['“0.62 is too confident for a Ketu–Rahu axis without a supporting transit. Drop it to 0.55.”','the kind of note that changes a number'],
               ['“The Phaladeepika citation supports the 10th-house reading, not the timing. Cite ch. 46 alone.”','the kind of note that changes a source'],
@@ -1712,6 +1761,34 @@
               })
             )
           ),
+          h('div', { className:'scr arv' },
+            h('div', { className:'h' }, T.scrH[lang]),
+            h('div', { className:'scr-rows' },
+              T.scrRows[lang].map(function(r, i){
+                return h('div', { className:'scr-row', key:i },
+                  h('div', { className:'num' }, r[0]),
+                  h('div', { className:'why' }, r[1])
+                );
+              }),
+              h('div', { className:'scr-row total' },
+                h('div', { className:'num' }, T.scrTotal[lang][0]),
+                h('div', { className:'why' }, T.scrTotal[lang][1])
+              )
+            ),
+            h('div', { className:'band' },
+              h('div', { className:'band-bar' }, h('i', { className:'b1' }), h('i', { className:'b2' }), h('i', { className:'b3' })),
+              h('div', { className:'band-marks' },
+                h('span', { style:{ left:'62%' } }, h('i', null, '\u25B2'), '0.62'),
+                h('span', { style:{ left:'76%' } }, h('i', null, '\u25B2'), '0.76')
+              ),
+              h('div', { className:'band-legend' },
+                T.bands[lang].map(function(b, i){ return h('span', { key:i }, b); })
+              )
+            ),
+            h('div', { className:'scr-note' },
+              T.scrNote[lang][0], h('b', null, T.scrNote[lang][1]), T.scrNote[lang][2])
+          ),
+
           h('div', { className:'aai-notes arv' },
             T.gateNotes[lang].map(function(n,i){
               return h('div', { className:'aai-note', key:i },
