@@ -591,7 +591,8 @@
   /* Drawing: the strokes trace themselves once the block arrives. */
   .eng-art svg { width:100%; max-width:330px; height:auto; overflow:visible; }
   .trace { stroke-dasharray:1; stroke-dashoffset:1; }
-  html.js-reveal .eng-block.in .trace { animation:engDraw 1.6s cubic-bezier(.22,1,.36,1) forwards; }
+  html.js-reveal .eng-block.in .trace,
+  html.js-reveal .cnv-join.in .trace { animation:engDraw 1.6s cubic-bezier(.22,1,.36,1) forwards; }
   html:not(.js-reveal) .trace { stroke-dashoffset:0; }
   @keyframes engDraw { to { stroke-dashoffset:0; } }
   .eng-dot { opacity:0; }
@@ -1992,16 +1993,18 @@
         lines:{
           en:[['Kundali',GOLD,'Your <b>10th lord is exalted</b>, and the dasha opens a role-change window through 2026.'],
               ['Palm',ROSE,'A <b>deep fate line</b> from the base: work you choose, not work that happens to you.'],
-              ['Numbers',PURPLE,'<b>Bhagyank 8</b> favours structure and long arcs over quick moves.']],
+              ['Numbers',PURPLE,'<b>Bhagyank 8</b> favours structure and long arcs over quick moves.'],
+              ['Face','#5B8FD9','A <b>broad forehead</b> over a firm jaw: the tradition reads decisiveness, not caution.']],
           hi:[['कुंडली',GOLD,'आपका <b>दशमेश उच्च का</b> है, और दशा 2026 तक भूमिका बदलने का समय खोलती है।'],
               ['हथेली',ROSE,'आधार से उठती <b>गहरी भाग्य रेखा</b>: वह काम जो आप चुनते हैं, जो हो जाता है वह नहीं।'],
-              ['अंक',PURPLE,'<b>भाग्यांक 8</b> जल्दबाज़ी से नहीं, ढाँचे और लंबी राह से बनता है।']]
+              ['अंक',PURPLE,'<b>भाग्यांक 8</b> जल्दबाज़ी से नहीं, ढाँचे और लंबी राह से बनता है।'],
+              ['चेहरा','#5B8FD9','<b>चौड़ा ललाट</b> और दृढ़ जबड़ा: परंपरा इसे निर्णय-क्षमता पढ़ती है, संकोच नहीं।']]
         },
         outK:{en:'The answer', hi:'उत्तर'},
         outV:{en:'“Take it, and negotiate the start date past March.”',
               hi:'“ले लीजिए, और शुरुआत की तारीख़ मार्च के बाद तय कीजिए।”'},
-        foot:{en:'Three sources agreed, so the app said so plainly. When they disagree, it says that instead.',
-              hi:'तीनों स्रोत सहमत थे, इसलिए ऐप ने सीधे कहा। असहमत होने पर वह यही बात कहता है।'}
+        foot:{en:'All four agreed, so the app said so plainly. When they disagree, it says that instead.',
+              hi:'चारों स्रोत सहमत थे, इसलिए ऐप ने सीधे कहा। असहमत होने पर वह यही बात कहता है।'}
       };
 
       // Four stems curving into one. Drawn, not decorated: the convergence IS
