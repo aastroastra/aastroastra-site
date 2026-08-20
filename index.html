@@ -19,7 +19,7 @@
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
 <!-- Primary SEO -->
-<meta name="description" content="AI Vedic astrology for one who believes." />
+<meta name="description" content="Your real kundali, computed and explained. Ask why, and it shows its working." />
 <meta name="keywords" content="AastroAstra, Vedic astrology app, kundali, janam kundali, numerology, Lo Shu grid, kundali matching, horoscope, panchang, Lal Kitab, astrology AI chat, Android astrology app, Hindi astrology" />
 <meta name="author" content="AastroAstra" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -33,7 +33,7 @@
 <meta property="og:site_name" content="AastroAstra" />
 <meta property="og:url" content="https://www.aastroastra.com/" />
 <meta property="og:title" content="AastroAstra - One who believes" />
-<meta property="og:description" content="AI Vedic astrology for one who believes." />
+<meta property="og:description" content="Your real kundali, computed and explained. Ask why, and it shows its working." />
 <meta property="og:image" content="https://www.aastroastra.com/og-image.jpg" />
 <meta property="og:image:secure_url" content="https://www.aastroastra.com/og-image.jpg" />
 <meta property="og:image:type" content="image/jpeg" />
@@ -46,7 +46,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="AastroAstra - One who believes" />
-<meta name="twitter:description" content="AI Vedic astrology for one who believes." />
+<meta name="twitter:description" content="Your real kundali, computed and explained. Ask why, and it shows its working." />
 <meta name="twitter:image" content="https://www.aastroastra.com/og-image.jpg" />
 <meta name="twitter:image:alt" content="AastroAstra app dashboard preview" />
 
@@ -178,6 +178,8 @@
   .buildtable th:first-child, .buildtable td:first-child { width:22%; }
   .buildtable thead th { font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:700; background:var(--card); }
   .buildtable td { color:var(--fg); }
+  /* The date is the fact; the time is a footnote to it. */
+  .buildtable .t2 { display:block; margin-top:2px; font-size:11px; color:var(--muted); }
   .buildtable td.plat { font-weight:700; }
   .buildtable td a { color:var(--tint); text-decoration:none; font-weight:600; }
   .buildtable td a:hover { text-decoration:underline; }
@@ -959,6 +961,14 @@
           keepalive:true
         }).catch(function(){});
       } catch(e){}
+    }
+
+    /** "20 Aug 2026, 04:36 AM IST" renders as a date with the clock time under it. */
+    function stamp(value){
+      if (!value) return '';
+      var i = value.lastIndexOf(',');
+      if (i < 0) return value;
+      return [value.slice(0, i), h('span', { className:'t2', key:'t' }, value.slice(i + 1).trim())];
     }
 
     /** 772 stays 772; 1200 becomes 1.2k. Never rounds a small number up. */
@@ -2305,9 +2315,13 @@
                   h('div', { className:'n' }, human(stats.palm_readings)),
                   h('div', { className:'l' }, lang==='hi'?'हस्त पाठ':'Palm reads')
                 ) : null,
-                (stats.downloads_android + stats.downloads_ios) > 0 ? h('div', null,
-                  h('div', { className:'n' }, human(stats.downloads_android + stats.downloads_ios)),
-                  h('div', { className:'l' }, lang==='hi'?'डाउनलोड':'Downloads')
+                stats.downloads_android > 0 ? h('div', null,
+                  h('div', { className:'n' }, human(stats.downloads_android)),
+                  h('div', { className:'l' }, lang==='hi'?'एंड्रॉइड':'Android')
+                ) : null,
+                stats.downloads_ios > 0 ? h('div', null,
+                  h('div', { className:'n' }, human(stats.downloads_ios)),
+                  h('div', { className:'l' }, lang==='hi'?'iOS':'iOS')
                 ) : null
               ) : null,
               h('table', { className:'buildtable' },
@@ -2323,7 +2337,7 @@
                     h('td', { className:'plat' }, 'Android'),
                     h('td', null, ver.ver),
                     h('td', null, ver.size + ' MB'),
-                    h('td', null, ver.updated || ', '),
+                    h('td', null, stamp(ver.updated)),
                     h('td', null, h('a', { href:ver.apk, onClick:function(){ trackDownload('android','apk'); } },
                       lang==='hi'?'APK डाउनलोड':'Download APK'))
                   ),
