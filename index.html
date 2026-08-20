@@ -185,7 +185,7 @@
   .mark { width:28px; height:28px; display:inline-block; flex:none; background:var(--tint-grad); -webkit-mask:url(logo-mark.png) center/contain no-repeat; mask:url(logo-mark.png) center/contain no-repeat; }
   .brand small { font-weight:600; color:var(--muted); letter-spacing:.16em; font-size:10px; text-transform:uppercase; }
   .controls { display:flex; align-items:center; gap:10px; position:relative; }
-  .seg.themes { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
+  .seg, .themes { display:flex; gap:4px; border:1px solid var(--line); border-radius:999px; padding:4px; }
   .seg button { border:none; background:transparent; color:var(--muted); cursor:pointer; border-radius:999px; font:inherit; font-size:12px; font-weight:600; padding:5px 11px; min-width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; transition:all .15s ease; }
   .seg button[aria-pressed="true"] { background:var(--tint-grad); color:var(--on-accent); }
   .themes button { border:1.5px solid transparent; background:transparent; border-radius:999px; width:30px; height:30px; padding:0; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:border-color .15s ease; }
@@ -240,16 +240,16 @@
   /* Build-status table (Android + iOS, versions + direct links). table-layout:fixed
      + wrapping so it always fits the viewport (no horizontal page stretch on mobile). */
   .buildtable { width:100%; max-width:100%; table-layout:fixed; margin-top:18px; border-collapse:collapse; font-size:13px; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
-  .buildtable th.buildtable td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; word-break:break-word; }
+  .buildtable th, .buildtable td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; word-break:break-word; }
   /* Give the Platform column a touch less width; the rest share evenly. */
-  .buildtable th:first-child.buildtable td:first-child { width:22%; }
+  .buildtable th:first-child, .buildtable td:first-child { width:22%; }
   .buildtable thead th { font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); font-weight:700; background:var(--card); }
   .buildtable td { color:var(--fg); }
   .buildtable td.plat { font-weight:700; }
   .buildtable td a { color:var(--tint); text-decoration:none; font-weight:600; }
   .buildtable td a:hover { text-decoration:underline; }
   .buildtable tbody tr:last-child td { border-bottom:none; }
-  @media (max-width:640px){ .buildtable { font-size:11.5px; } .buildtable th.buildtable td { padding:7px 7px; } }
+  @media (max-width:640px){ .buildtable { font-size:11.5px; } .buildtable th, .buildtable td { padding:7px 7px; } }
   .meta { margin-top:14px; font-size:13px; color:var(--muted); }
   .meta b { color:var(--fg); font-weight:600; }
   .apk-direct { margin-top:8px; font-size:12.5px; color:var(--muted); }
@@ -417,7 +417,7 @@
   .cinput { display:flex; gap:8px; padding:8px 14px 14px; flex:none; align-items:center; }
   .cinput input { flex:1; min-width:0; background:var(--d-c2); border:none; border-radius:999px; padding:11px 14px; font:inherit; font-size:11.5px; color:var(--d-tp); outline:none; }
   .cinput .send { flex:none; width:38px; height:38px; border-radius:50%; border:none; background:var(--d-teal); color:#fff; font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
-  .dact.k.dact.m { cursor:pointer; }
+  .dact.k, .dact.m { cursor:pointer; }
 
   /* Action flows (Single Kundali voice capture, Match, Multi-Match) */
   .fbody { flex:1; min-height:0; overflow-y:auto; padding:12px 14px 16px; scrollbar-width:none; }
@@ -477,7 +477,7 @@
     /* Mobile: the first screen shows ONLY the title + download + version, centred and
        filling the viewport; the phone mock sits below, revealed on scroll (with a cue). */
     .hero .left { border-right:none; border-bottom:1px solid var(--line); align-items:center; text-align:center; justify-content:center; position:relative; min-height:calc(100vh - 66px); padding:40px 22px 70px; }
-    .dl-label.meta.apk-direct { text-align:center; }
+    .dl-label, .meta, .apk-direct { text-align:center; }
     .btn-play { justify-content:center; }
     .hero .right { padding:34px 20px 52px; }
     .scrollcue { display:flex; }
@@ -603,8 +603,73 @@
   html.js-reveal .rv { opacity:0; transform:translateY(22px); }
   html.js-reveal .rv.in { opacity:1; transform:none; }
   @media (prefers-reduced-motion: reduce) {
-    .rv.aai-step { opacity:1 !important; transform:none !important; }
+    .rv, .aai-step { opacity:1 !important; transform:none !important; }
     .aai-chain .spine { transform:scaleY(1) !important; }
+  }
+
+  /* ── Engines: numerology, palmistry, face. Each one is a big visual that
+        animates itself in, next to the arithmetic behind it. ── */
+  .eng { border-top:1px solid var(--line); padding:76px 30px 88px; }
+  .eng-head { text-align:center; max-width:820px; margin:0 auto; }
+  .eng-head .eyebrow { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--tint); font-weight:800; }
+  .eng-head h2 { margin-top:12px; font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.025em;
+    font-size:clamp(28px,4.8vw,54px); line-height:1.05; color:var(--fg); }
+  .eng-head p { margin:16px auto 0; max-width:600px; font-size:clamp(15px,1.7vw,18px); line-height:1.6; color:var(--fg2); }
+
+  .eng-block { max-width:1020px; margin:64px auto 0; display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; align-items:center; }
+  .eng-block.flip .eng-art { order:2; }
+  .eng-art { display:flex; align-items:center; justify-content:center; min-height:300px; }
+  .eng-copy .tag { font-size:11px; letter-spacing:.2em; text-transform:uppercase; font-weight:800; color:var(--tint); }
+  .eng-copy .tag.soon { color:var(--muted); }
+  .eng-copy h3 { margin-top:10px; font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.02em;
+    font-size:clamp(24px,3.6vw,40px); line-height:1.12; color:var(--fg); }
+  .eng-copy .sub { margin-top:12px; font-size:clamp(15px,1.8vw,19px); line-height:1.55; color:var(--fg2); }
+  .eng-calc { margin-top:22px; border:1px solid var(--line); border-radius:16px; background:var(--card); padding:16px 18px; }
+  .eng-calc .h { font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:800; color:var(--muted); }
+  .eng-calc .l { margin-top:9px; font-size:clamp(14px,1.7vw,17px); line-height:1.5; color:var(--fg2); }
+  .eng-calc .l b { color:var(--tint); font-weight:800; }
+  .eng-calc .l em { font-style:normal; color:var(--fg); font-weight:700; }
+  .eng-calc .l + .l { margin-top:6px; }
+
+  /* Legend for the palm marks: each line has its own colour and its own meaning. */
+  .eng-legend { margin-top:20px; display:grid; gap:9px; }
+  .eng-legend div { display:flex; align-items:baseline; gap:10px; font-size:clamp(13.5px,1.6vw,16px); line-height:1.45; color:var(--fg2); }
+  .eng-legend i { flex:none; width:11px; height:11px; border-radius:50%; transform:translateY(1px); }
+  .eng-legend b { color:var(--fg); font-weight:700; }
+
+  /* Drawing: the strokes trace themselves once the block arrives. */
+  .eng-art svg { width:100%; max-width:330px; height:auto; overflow:visible; }
+  .trace { stroke-dasharray:var(--len,400); stroke-dashoffset:var(--len,400); }
+  html.js-reveal .eng-block.in .trace { animation:engDraw 1.6s cubic-bezier(.22,1,.36,1) forwards; }
+  html:not(.js-reveal) .trace { stroke-dashoffset:0; }
+  @keyframes engDraw { to { stroke-dashoffset:0; } }
+  .eng-dot { opacity:0; }
+  html.js-reveal .eng-block.in .eng-dot { animation:engPop .5s ease forwards; }
+  html:not(.js-reveal) .eng-dot { opacity:1; }
+  @keyframes engPop { from { opacity:0; transform:scale(.4);} to { opacity:1; transform:scale(1);} }
+
+  /* Lo Shu: the birth digits drop into their cells. */
+  .loshu text.cell { opacity:0; }
+  html.js-reveal .eng-block.in .loshu text.cell { animation:engPop .55s ease forwards; }
+  html:not(.js-reveal) .loshu text.cell { opacity:1; }
+
+  /* The face scan sweep. */
+  .scanline { opacity:0; }
+  html.js-reveal .eng-block.in .scanline { animation:engScan 2.8s cubic-bezier(.5,0,.5,1) 0.5s infinite; }
+  @keyframes engScan {
+    0% { opacity:0; transform:translateY(0); }
+    12% { opacity:1; }
+    88% { opacity:1; }
+    100% { opacity:0; transform:translateY(180px); }
+  }
+
+  @media (max-width:860px){
+    .eng-block { grid-template-columns:1fr; gap:30px; margin-top:48px; }
+    .eng-block.flip .eng-art { order:0; }
+    .eng-art { min-height:0; }
+  }
+  @media (max-width:640px){
+    .eng { padding:56px 18px 62px; }
   }
 
   .aai-foot { max-width:820px; margin:46px auto 0; text-align:center;
@@ -743,7 +808,7 @@
 
   @media (max-width:900px) {
     .feat { grid-template-columns:1fr; gap:26px; padding:46px 22px; }
-    .feat.rev .feat-copy.feat.rev .feat-phone { order:0; }
+    .feat.rev .feat-copy, .feat.rev .feat-phone { order:0; }
     .feat-copy { max-width:none; text-align:center; margin:0 auto; }
     .feat-copy .eyebrow { justify-content:center; }
     .feat-list { text-align:left; max-width:340px; margin:20px auto 0; }
@@ -1418,7 +1483,7 @@
       // as it enters the viewport, rather than the whole slab appearing at once.
       useEffect(function(){
         var sec = secRef.current; if (!sec) return;
-        var items = [].slice.call(sec.querySelectorAll('.rv.aai-step.aai-chain'));
+        var items = [].slice.call(sec.querySelectorAll('.rv, .aai-step, .aai-chain'));
         if (!('IntersectionObserver' in window) ||
             (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
           items.forEach(function(el){ el.classList.add('in'); });
@@ -1593,6 +1658,240 @@
       );
     }
 
+
+    /**
+     * The three engines that are not the chart: numerology, palmistry, and the
+     * face reading that is still being built. Each gets its own visual, because
+     * "we compute it, then the AI explains it" is much easier to believe when
+     * you can watch the computing happen.
+     */
+    function EngineShowcase(props){
+      var lang = props.lang;
+      var secRef = useRef(null);
+      useEffect(function(){
+        var sec = secRef.current; if (!sec) return;
+        var items = [].slice.call(sec.querySelectorAll('.rv, .eng-block'));
+        if (!items.length) return;
+        function showAll(){ items.forEach(function(el){ el.classList.add('in'); }); }
+        if (!('IntersectionObserver' in window) ||
+            (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) { showAll(); return; }
+        document.documentElement.classList.add('js-reveal');
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+        items.forEach(function(el){ io.observe(el); });
+        var failsafe = setTimeout(showAll, 2000);
+        return function(){ io.disconnect(); clearTimeout(failsafe); };
+      }, []);
+
+      var T = {
+        eyebrow:{en:'The other engines', hi:'बाकी इंजन'},
+        h:{en:'Not everything is in the chart.', hi:'सब कुछ कुंडली में नहीं होता।'},
+        p:{en:'Your numbers, your palm and, soon, your face. Each one computed the same way the chart is, then explained in your language.',
+           hi:'आपके अंक, आपकी हथेली और जल्द ही आपका चेहरा। हर एक की गणना कुंडली की तरह ही होती है, फिर आपकी भाषा में समझाई जाती है।'},
+
+        numTag:{en:'Numerology', hi:'अंक ज्योतिष'},
+        numH:{en:'Your numbers are arithmetic, not opinion.', hi:'आपके अंक गणित हैं, राय नहीं।'},
+        numSub:{en:'The same date always gives the same numbers. What changes is how well it is explained.',
+                hi:'एक ही तारीख हमेशा वही अंक देती है। बदलता सिर्फ़ यह है कि उसे कितनी अच्छी तरह समझाया गया।'},
+        numCalcH:{en:'Worked through, for 23 April 1988', hi:'23 अप्रैल 1988 के लिए गणना'},
+        numCalc:{
+          en:[['Mulank','2 + 3 = <b>5</b>'],
+              ['Bhagyank','2+3+0+4+1+9+8+8 = 35 → 3+5 = <b>8</b>'],
+              ['Lo Shu grid','every digit takes its own cell. The empty cells matter as much as the full ones']],
+          hi:[['मूलांक','2 + 3 = <b>5</b>'],
+              ['भाग्यांक','2+3+0+4+1+9+8+8 = 35 → 3+5 = <b>8</b>'],
+              ['लो शु ग्रिड','हर अंक अपने खाने में। खाली खाने भी उतने ही मायने रखते हैं']]
+        },
+
+        palmTag:{en:'Palmistry', hi:'हस्तरेखा'},
+        palmH:{en:'Four lines, read against your chart.', hi:'चार रेखाएँ, आपकी कुंडली के साथ मिलाकर।'},
+        palmSub:{en:'The camera finds the lines and the mounts. The reading names what it actually saw, then checks it against your planets.',
+                 hi:'कैमरा रेखाएँ और पर्वत पहचानता है। पाठ वही बताता है जो वास्तव में दिखा, फिर उसे आपके ग्रहों से मिलाता है।'},
+        palmLegend:{
+          en:[['#E0736B','Heart line','love, attachment, how you hold on'],
+              ['#5B8FD9','Head line','how you think and decide'],
+              ['#4BA372','Life line','vitality and the shape of your years'],
+              ['#E0A33C','Fate line','work, direction, the pull of a path']],
+          hi:[['#E0736B','हृदय रेखा','प्रेम, लगाव, आप कैसे थामे रखते हैं'],
+              ['#5B8FD9','मस्तिष्क रेखा','आप कैसे सोचते और तय करते हैं'],
+              ['#4BA372','जीवन रेखा','ओज और आपके वर्षों का आकार'],
+              ['#E0A33C','भाग्य रेखा','काम, दिशा, राह का खिंचाव']]
+        },
+        palmCalcH:{en:'An example, end to end', hi:'एक उदाहरण, शुरू से अंत तक'},
+        palmCalc:{
+          en:[['Seen','<em>heart line</em> deep and long, <em>mount of Venus</em> full'],
+              ['Chart','<em>Venus exalted</em> in the 10th'],
+              ['Read','they agree: warmth that lasts, and it shows up in your work']],
+          hi:[['दिखा','<em>हृदय रेखा</em> गहरी और लंबी, <em>शुक्र पर्वत</em> भरा हुआ'],
+              ['कुंडली','<em>शुक्र उच्च का</em> दशम भाव में'],
+              ['पाठ','दोनों सहमत हैं: टिकाऊ गर्मजोशी, और वह आपके काम में दिखती है']]
+        },
+
+        faceTag:{en:'Face reading · in development', hi:'चेहरा पठन · निर्माणाधीन'},
+        faceH:{en:'The face the tradition reads.', hi:'वह चेहरा जिसे परंपरा पढ़ती है।'},
+        faceSub:{en:'Samudrika Shastra maps temperament to proportion. Your phone measures the proportions; the tradition supplies the meaning.',
+                 hi:'सामुद्रिक शास्त्र स्वभाव को अनुपात से जोड़ता है। आपका फ़ोन अनुपात नापता है; अर्थ परंपरा देती है।'},
+        faceCalcH:{en:'What gets measured', hi:'क्या नापा जाता है'},
+        faceCalc:{
+          en:[['Ratios','width to length, forehead to jaw, brow arch, eye spacing'],
+              ['Chart','your <em>lagna and its lord</em>, which Jyotish assigns appearance to'],
+              ['Never kept','the photograph is read once and discarded. Only the measurements remain']],
+          hi:[['अनुपात','चौड़ाई से लंबाई, ललाट से जबड़ा, भौंह का मोड़, आँखों का अंतर'],
+              ['कुंडली','आपका <em>लग्न और लग्नेश</em>, जिन्हें ज्योतिष रूप-रंग सौंपता है'],
+              ['सहेजा नहीं जाता','तस्वीर एक बार पढ़ी जाती है और मिटा दी जाती है। सिर्फ़ माप बचते हैं']]
+        }
+      };
+
+      function calc(rows){
+        return rows.map(function(r,i){
+          return h('div', { className:'l', key:i },
+            h('span', { style:{ color:'var(--muted)' } }, r[0] + ': '),
+            h('span', { dangerouslySetInnerHTML:{ __html:r[1] } })
+          );
+        });
+      }
+
+      // ── Numerology: the birth digits drop into the Lo Shu grid ──
+      var LOSHU = [[4,9,2],[3,5,7],[8,1,6]];
+      var PRESENT = { 2:1, 3:1, 4:1, 8:2, 9:1, 1:1 };   // digits of 23-04-1988
+      var loshu = h('svg', { viewBox:'0 0 240 240', className:'loshu', role:'img', 'aria-label':'Lo Shu grid' },
+        [0,1,2,3].map(function(i){
+          return h('line', { key:'v'+i, x1:20+i*66.6, y1:20, x2:20+i*66.6, y2:220,
+            stroke:'var(--line)', strokeWidth:1 });
+        }),
+        [0,1,2,3].map(function(i){
+          return h('line', { key:'h'+i, x1:20, y1:20+i*66.6, x2:220, y2:20+i*66.6,
+            stroke:'var(--line)', strokeWidth:1 });
+        }),
+        LOSHU.map(function(row,r){
+          return row.map(function(n,c){
+            var count = PRESENT[n] || 0;
+            var cx = 20 + c*66.6 + 33.3, cy = 20 + r*66.6 + 33.3;
+            return h('g', { key:'c'+r+c },
+              count ? h('rect', { x:22+c*66.6, y:22+r*66.6, width:62.6, height:62.6,
+                fill:'color-mix(in srgb, var(--tint) 10%, transparent)' }) : null,
+              h('text', { className:'cell', x:cx, y:cy+10,
+                textAnchor:'middle', fontSize:count?30:22, fontWeight:count?800:400,
+                fill:count?'var(--tint)':'var(--muted)',
+                style:{ animationDelay:(0.15 + (r*3+c)*0.07)+'s' } },
+                count ? String(n).repeat(count) : String(n))
+            );
+          });
+        })
+      );
+
+      // ── Palmistry: the hand, then each line traced in its own colour, with a
+      //    marker running along it ──
+      var PALM_LINES = [
+        { id:'ln-heart', d:'M64,152 C90,137 118,140 140,150', c:'#E0736B', len:82, delay:0.2 },
+        { id:'ln-head',  d:'M62,172 C92,163 118,170 136,181', c:'#5B8FD9', len:78, delay:0.5 },
+        { id:'ln-life',  d:'M72,146 C66,182 78,208 102,226',  c:'#4BA372', len:96, delay:0.8 },
+        { id:'ln-fate',  d:'M106,228 C103,192 105,166 108,142', c:'#E0A33C', len:88, delay:1.1 },
+      ];
+      var hand = h('svg', { viewBox:'0 0 200 260', role:'img', 'aria-label':'Palm with its four main lines' },
+        // Fingers and thumb, as capsules, then the palm.
+        [[58,52,18,74],[82,38,18,88],[106,46,18,80],[130,70,16,58]].map(function(f,i){
+          return h('rect', { key:'f'+i, x:f[0], y:f[1], width:f[2], height:f[3], rx:f[2]/2,
+            fill:'none', stroke:'var(--tint)', strokeOpacity:0.45, strokeWidth:2 });
+        }),
+        h('rect', { x:26, y:132, width:16, height:52, rx:8, transform:'rotate(-32 34 158)',
+          fill:'none', stroke:'var(--tint)', strokeOpacity:0.45, strokeWidth:2 }),
+        h('path', { d:'M54,120 L152,120 C156,168 148,214 116,234 C92,248 62,238 54,206 Z',
+          fill:'color-mix(in srgb, var(--tint) 6%, transparent)',
+          stroke:'var(--tint)', strokeOpacity:0.5, strokeWidth:2 }),
+        PALM_LINES.map(function(l){
+          return h('path', { key:l.id, id:l.id, className:'trace', d:l.d, fill:'none',
+            stroke:l.c, strokeWidth:3.4, strokeLinecap:'round',
+            style:{ '--len':l.len, animationDelay:l.delay+'s' } });
+        }),
+        // A mark travelling each line, so the eye is told where to look.
+        PALM_LINES.map(function(l){
+          return h('circle', { key:l.id+'-m', r:4.2, fill:l.c },
+            h('animateMotion', { dur:'3.4s', repeatCount:'indefinite', begin:l.delay+'s',
+              keyPoints:'0;1', keyTimes:'0;1', calcMode:'linear' },
+              h('mpath', { href:'#'+l.id })
+            )
+          );
+        })
+      );
+
+      // ── Face: the outline, the landmarks, and a scan sweeping down ──
+      var FACE_DOTS = [[78,96],[122,96],[78,110],[122,110],[100,132],[86,158],[114,158],[100,178],[62,120],[138,120]];
+      var face = h('svg', { viewBox:'0 0 200 240', role:'img', 'aria-label':'Face measurement' },
+        h('path', { className:'trace',
+          d:'M100,26 C138,26 156,58 156,104 C156,158 130,206 100,214 C70,206 44,158 44,104 C44,58 62,26 100,26 Z',
+          fill:'color-mix(in srgb, var(--tint) 5%, transparent)', stroke:'var(--tint)', strokeWidth:2.2,
+          style:{ '--len':520 } }),
+        // The two ratios the reading leans on hardest.
+        h('line', { className:'trace', x1:44, y1:104, x2:156, y2:104, stroke:'var(--tint)',
+          strokeOpacity:0.5, strokeWidth:1.4, strokeDasharray:'5 5', style:{ '--len':112, animationDelay:'0.9s' } }),
+        h('line', { className:'trace', x1:100, y1:26, x2:100, y2:214, stroke:'var(--tint)',
+          strokeOpacity:0.5, strokeWidth:1.4, strokeDasharray:'5 5', style:{ '--len':188, animationDelay:'1.1s' } }),
+        FACE_DOTS.map(function(d,i){
+          return h('circle', { key:'d'+i, className:'eng-dot', cx:d[0], cy:d[1], r:3.2, fill:'var(--tint)',
+            style:{ animationDelay:(1.3 + i*0.06)+'s', transformOrigin:d[0]+'px '+d[1]+'px' } });
+        }),
+        h('rect', { className:'scanline', x:36, y:22, width:128, height:3, rx:1.5,
+          fill:'var(--tint)', opacity:0.85 })
+      );
+
+      return h('section', { className:'eng', id:'engines', ref:secRef },
+        h('div', { className:'eng-head rv' },
+          h('div', { className:'eyebrow' }, T.eyebrow[lang]),
+          h('h2', null, T.h[lang]),
+          h('p', null, T.p[lang])
+        ),
+
+        h('div', { className:'eng-block' },
+          h('div', { className:'eng-art' }, loshu),
+          h('div', { className:'eng-copy' },
+            h('div', { className:'tag' }, T.numTag[lang]),
+            h('h3', null, T.numH[lang]),
+            h('div', { className:'sub' }, T.numSub[lang]),
+            h('div', { className:'eng-calc' },
+              h('div', { className:'h' }, T.numCalcH[lang]),
+              calc(T.numCalc[lang])
+            )
+          )
+        ),
+
+        h('div', { className:'eng-block flip' },
+          h('div', { className:'eng-art' }, hand),
+          h('div', { className:'eng-copy' },
+            h('div', { className:'tag' }, T.palmTag[lang]),
+            h('h3', null, T.palmH[lang]),
+            h('div', { className:'sub' }, T.palmSub[lang]),
+            h('div', { className:'eng-legend' },
+              T.palmLegend[lang].map(function(l,i){
+                return h('div', { key:i },
+                  h('i', { style:{ background:l[0] } }),
+                  h('span', null, h('b', null, l[1]), ': ' + l[2])
+                );
+              })
+            ),
+            h('div', { className:'eng-calc' },
+              h('div', { className:'h' }, T.palmCalcH[lang]),
+              calc(T.palmCalc[lang])
+            )
+          )
+        ),
+
+        h('div', { className:'eng-block' },
+          h('div', { className:'eng-art' }, face),
+          h('div', { className:'eng-copy' },
+            h('div', { className:'tag soon' }, T.faceTag[lang]),
+            h('h3', null, T.faceH[lang]),
+            h('div', { className:'sub' }, T.faceSub[lang]),
+            h('div', { className:'eng-calc' },
+              h('div', { className:'h' }, T.faceCalcH[lang]),
+              calc(T.faceCalc[lang])
+            )
+          )
+        )
+      );
+    }
+
     function App(){
       var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
       var lS=useState('en'), lang=lS[0], setLang=lS[1];
@@ -1696,6 +1995,7 @@
             h('div', { className:'right' }, h(Phone, { lang:lang }), h(Engines, { lang:lang }))
           ),
           h(AastroAI, { lang:lang }),
+          h(EngineShowcase, { lang:lang }),
           null, /* below-hero Showcase hidden for now, restore: h(Showcase, { lang:lang }) */
           h('footer', null,
             // Desktop: compact single-line footer.
