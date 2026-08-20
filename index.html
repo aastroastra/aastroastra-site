@@ -529,8 +529,26 @@
     border-radius:14px; padding:15px 18px; background:var(--card); }
   .aai-note .q { font-size:clamp(14px,1.7vw,17px); line-height:1.55; color:var(--fg); font-weight:500; }
   .aai-note .m { margin-top:7px; font-size:12px; color:var(--muted); }
-  .aai-status { margin:26px auto 0; text-align:center; font-size:13.5px; line-height:1.6; color:var(--muted); max-width:640px; }
+  /* The ruleset is not a finished object. Three states, then the version that
+     answered you, so "it changes" reads as discipline rather than drift. */
+  .aai-life { margin:34px auto 0; max-width:860px; }
+  .aai-life .lh { text-align:center; font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+    font-weight:800; color:var(--tint); }
+  .aai-steps3 { margin-top:18px; display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:12px; align-items:center; }
+  .aai-steps3 .st { border:1px solid var(--line); border-radius:16px; background:var(--card); padding:18px 14px; text-align:center; }
+  .aai-steps3 .st .k { font-size:clamp(15px,1.9vw,19px); font-weight:800; color:var(--fg); letter-spacing:-.01em; }
+  .aai-steps3 .st .v { margin-top:8px; font-size:clamp(12.5px,1.5vw,14.5px); line-height:1.45; color:var(--muted); }
+  .aai-steps3 .to { color:var(--muted); opacity:.5; font-size:17px; }
+  .aai-ver { margin-top:20px; text-align:center; }
+  .aai-ver code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px;
+    border:1px solid color-mix(in srgb, var(--tint) 45%, var(--line)); border-radius:999px;
+    padding:7px 14px; color:var(--tint); background:color-mix(in srgb, var(--tint) 7%, transparent); }
+  .aai-status { margin:20px auto 0; text-align:center; font-size:clamp(13px,1.6vw,15.5px); line-height:1.6; color:var(--muted); max-width:680px; }
   .aai-status b { color:var(--fg); font-weight:700; }
+  @media (max-width:700px){
+    .aai-steps3 { grid-template-columns:1fr; }
+    .aai-steps3 .to { transform:rotate(90deg); }
+  }
 
   .arv { transition:opacity .8s cubic-bezier(.16,1.3,1), transform .8s cubic-bezier(.16,1.3,1); }
   html.js-reveal .arv { opacity:0; transform:translateY(22px); }
@@ -659,6 +677,29 @@
     .cnv-line { flex-direction:column; gap:6px; padding:16px 18px; }
     .cnv-line .src { width:auto; padding-top:0; }
   }
+
+  /* ── Mobile, for everything added in this pass ── */
+  @media (max-width:760px){
+    .cnv-src { grid-template-columns:repeat(2,1fr); gap:12px; }
+    .cnv-item .box { padding:15px 10px; }
+    .cnv-join svg { height:52px; }
+    .cnv-ask span { border-radius:18px 18px 6px 18px; padding:13px 17px; }
+    .cnv-out { padding:18px; }
+    .eng-legend div { align-items:flex-start; }
+    .aai-rule .row .v code { word-break:break-all; }
+    .aai-verdicts { padding:14px 16px 16px; }
+    .aai-verdicts span { font-size:12px; padding:8px 12px; }
+  }
+  @media (max-width:430px){
+    .cnv-src { grid-template-columns:1fr; }
+    .cnv-item .arw { margin-top:6px; }
+    .cnv-join svg { height:40px; }
+    .eng-art svg { max-width:240px; }
+    .loshu { max-width:230px; }
+  }
+  /* Nothing added today may push the page sideways. */
+  .aai, .eng, .cnv { overflow-x:hidden; }
+  .aai-rule, .eng-calc, .cnv-ans { max-width:100%; }
 
   .aai-foot { max-width:820px; margin:46px auto 0; text-align:center;
     font-family:'Noto Serif',Georgia,serif; font-size:clamp(20px,3.2vw,32px); line-height:1.3; letter-spacing:-.02em; color:var(--fg); }
@@ -1554,8 +1595,17 @@
               ['“फलदीपिका का संदर्भ दशम भाव के लिए है, समय के लिए नहीं। केवल अ. 46 दें।”','ऐसी टिप्पणी जो ग्रंथ-संदर्भ बदल देती है'],
               ['“‘बदल सकता है’ कहें, ‘बदलेगा’ कभी नहीं। कुंडली अवसर दिखाती है, घटना नहीं।”','ऐसी टिप्पणी जो शब्द बदल देती है']]
         },
-        gateStatus:{en:['Where this stands today: ','14 rules written, every one carrying the text it came from',', with astrologer review underway. When a rule is rejected, it stops speaking.'],
-                    hi:['आज की स्थिति: ','14 नियम लिखे जा चुके हैं, हर एक अपने ग्रंथ-संदर्भ के साथ',', ज्योतिषी समीक्षा जारी है। नियम अस्वीकृत होते ही बोलना बंद कर देता है।']}
+        lifeH:{en:'A ruleset that keeps moving', hi:'एक ऐसा नियम-संग्रह जो चलता रहता है'},
+        life:{
+          en:[['Written','14 rules today, each one carrying the classical text it came from'],
+              ['Reviewed','an astrologer approves it, asks for a change, or rejects it outright'],
+              ['Versioned','the set gets a number, and every answer records which number replied']],
+          hi:[['लिखा गया','आज 14 नियम, हर एक अपने शास्त्रीय ग्रंथ-संदर्भ के साथ'],
+              ['समीक्षित','ज्योतिषी स्वीकारते हैं, बदलाव माँगते हैं, या अस्वीकार कर देते हैं'],
+              ['संस्करणित','संग्रह को एक अंक मिलता है, और हर उत्तर दर्ज करता है कि किसने जवाब दिया']]
+        },
+        gateStatus:{en:['Rules get added, re-scored and retired as the review goes on. ','Nothing is frozen',', and a reading from today can still be reproduced after the rules move on.'],
+                    hi:['समीक्षा के साथ नियम जुड़ते हैं, उनके अंक बदलते हैं, कुछ हट जाते हैं। ','कुछ भी स्थिर नहीं है',', और आज का पाठ नियम बदलने के बाद भी दोहराया जा सकता है।']}
       };
       return h('section', { className:'aai', id:'aastroai', ref:secRef },
         h('div', { className:'aai-head arv' },
@@ -1638,8 +1688,23 @@
               );
             })
           ),
-          h('div', { className:'aai-status arv' },
-            T.gateStatus[lang][0], h('b', null, T.gateStatus[lang][1]), T.gateStatus[lang][2])
+          h('div', { className:'aai-life arv' },
+            h('div', { className:'lh' }, T.lifeH[lang]),
+            h('div', { className:'aai-steps3' },
+              T.life[lang].map(function(st, i){
+                return [
+                  h('div', { className:'st', key:'s'+i },
+                    h('div', { className:'k' }, st[0]),
+                    h('div', { className:'v' }, st[1])
+                  ),
+                  i < 2 ? h('div', { className:'to', key:'a'+i }, '\u2192') : null
+                ];
+              })
+            ),
+            h('div', { className:'aai-ver' }, h('code', null, 'rules-0.1.0')),
+            h('div', { className:'aai-status' },
+              T.gateStatus[lang][0], h('b', null, T.gateStatus[lang][1]), T.gateStatus[lang][2])
+          )
         ),
 
         h('div', { className:'aai-foot arv' }, T.foot[lang][0], h('b', null, T.foot[lang][1]), T.foot[lang][2])
