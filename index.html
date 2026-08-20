@@ -572,7 +572,7 @@
 
   /* Drawing: the strokes trace themselves once the block arrives. */
   .eng-art svg { width:100%; max-width:330px; height:auto; overflow:visible; }
-  .trace { stroke-dasharray:var(--len,400); stroke-dashoffset:var(--len,400); }
+  .trace { stroke-dasharray:1; stroke-dashoffset:1; }
   html.js-reveal .eng-block.in .trace { animation:engDraw 1.6s cubic-bezier(.22,1,.36,1) forwards; }
   html:not(.js-reveal) .trace { stroke-dashoffset:0; }
   @keyframes engDraw { to { stroke-dashoffset:0; } }
@@ -615,16 +615,19 @@
   .cnv-head h2 span { background:var(--tint-grad); -webkit-background-clip:text; background-clip:text;
     color:transparent; -webkit-text-fill-color:transparent; }
 
-  /* The four sources. */
-  .cnv-src { max-width:960px; margin:52px auto 0; display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-  .cnv-src div { text-align:center; border:1px solid var(--line); border-radius:18px; background:var(--card); padding:20px 12px 18px; }
-  .cnv-src .n { font-size:clamp(13px,1.6vw,15px); font-weight:800; letter-spacing:.02em; }
-  .cnv-src .f { margin-top:7px; font-size:clamp(12px,1.4vw,14px); line-height:1.4; color:var(--muted); }
-  .cnv-src .soon { opacity:.55; }
+  /* The four sources: one rounded box each, its caption underneath in the open,
+     and an arrow pointing into the join. (`.cnv-src div` used to match the inner
+     divs too, which is why each box had a box inside it.) */
+  .cnv-src { max-width:960px; margin:52px auto 0; display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .cnv-item { text-align:center; }
+  .cnv-item .box { border:1px solid var(--line); border-radius:16px; background:var(--card);
+    padding:18px 12px; font-size:clamp(15px,1.9vw,19px); font-weight:800; letter-spacing:-.01em; }
+  .cnv-item .f { margin-top:10px; font-size:clamp(12.5px,1.5vw,14.5px); line-height:1.4; color:var(--muted); }
+  .cnv-item .arw { margin-top:10px; color:var(--muted); opacity:.55; font-size:15px; line-height:1; }
 
   /* The connectors and the hub. */
-  .cnv-join { max-width:960px; margin:0 auto; }
-  .cnv-join svg { display:block; width:100%; height:86px; overflow:visible; }
+  .cnv-join { max-width:960px; margin:6px auto 0; }
+  .cnv-join svg { display:block; width:100%; height:70px; overflow:visible; }
   .cnv-hub { max-width:960px; margin:0 auto; text-align:center; }
   .cnv-hub .pill { display:inline-block; border:1px solid color-mix(in srgb, var(--tint) 55%, var(--line));
     border-radius:999px; padding:13px 26px; background:color-mix(in srgb, var(--tint) 8%, transparent);
@@ -1672,8 +1675,8 @@
       var T = {
         eyebrow:{en:'The other engines', hi:'बाकी इंजन'},
         h:{en:'Not everything is in the chart.', hi:'सब कुछ कुंडली में नहीं होता।'},
-        p:{en:'Your numbers, your palm and, soon, your face. Each one computed the same way the chart is, then explained in your language.',
-           hi:'आपके अंक, आपकी हथेली और जल्द ही आपका चेहरा। हर एक की गणना कुंडली की तरह ही होती है, फिर आपकी भाषा में समझाई जाती है।'},
+        p:{en:'Your numbers, your palm and your face. Each one computed the same way the chart is, then explained in your language.',
+           hi:'आपके अंक, आपकी हथेली और आपका चेहरा। हर एक की गणना कुंडली की तरह ही होती है, फिर आपकी भाषा में समझाई जाती है।'},
 
         numTag:{en:'Numerology', hi:'अंक ज्योतिष'},
         numH:{en:'Your numbers are arithmetic, not opinion.', hi:'आपके अंक गणित हैं, राय नहीं।'},
@@ -1713,7 +1716,7 @@
               ['पाठ','दोनों सहमत हैं: टिकाऊ गर्मजोशी, और वह आपके काम में दिखती है']]
         },
 
-        faceTag:{en:'Face reading · in development', hi:'चेहरा पठन · निर्माणाधीन'},
+        faceTag:{en:'Face reading', hi:'चेहरा पठन'},
         faceH:{en:'The face the tradition reads.', hi:'वह चेहरा जिसे परंपरा पढ़ती है।'},
         faceSub:{en:'Samudrika Shastra maps temperament to proportion. Your phone measures the proportions; the tradition supplies the meaning.',
                  hi:'सामुद्रिक शास्त्र स्वभाव को अनुपात से जोड़ता है। आपका फ़ोन अनुपात नापता है; अर्थ परंपरा देती है।'},
@@ -1786,9 +1789,9 @@
           fill:'color-mix(in srgb, var(--tint) 6%, transparent)',
           stroke:'var(--tint)', strokeOpacity:0.5, strokeWidth:2 }),
         PALM_LINES.map(function(l){
-          return h('path', { key:l.id, id:l.id, className:'trace', d:l.d, fill:'none',
+          return h('path', { key:l.id, id:l.id, className:'trace', pathLength:1, d:l.d, fill:'none',
             stroke:l.c, strokeWidth:3.4, strokeLinecap:'round',
-            style:{ '--len':l.len, animationDelay:l.delay+'s' } });
+            style:{ animationDelay:l.delay+'s' } });
         }),
         // A mark travelling each line, so the eye is told where to look.
         PALM_LINES.map(function(l){
@@ -1804,15 +1807,15 @@
       // ── Face: the outline, the landmarks, and a scan sweeping down ──
       var FACE_DOTS = [[78,96],[122,96],[78,110],[122,110],[100,132],[86,158],[114,158],[100,178],[62,120],[138,120]];
       var face = h('svg', { viewBox:'0 0 200 240', role:'img', 'aria-label':'Face measurement' },
-        h('path', { className:'trace',
+        h('path', { className:'trace', pathLength:1,
           d:'M100,26 C138,26 156,58 156,104 C156,158 130,206 100,214 C70,206 44,158 44,104 C44,58 62,26 100,26 Z',
           fill:'color-mix(in srgb, var(--tint) 5%, transparent)', stroke:'var(--tint)', strokeWidth:2.2,
-          style:{ '--len':520 } }),
+          style:{} }),
         // The two ratios the reading leans on hardest.
-        h('line', { className:'trace', x1:44, y1:104, x2:156, y2:104, stroke:'var(--tint)',
-          strokeOpacity:0.5, strokeWidth:1.4, strokeDasharray:'5 5', style:{ '--len':112, animationDelay:'0.9s' } }),
-        h('line', { className:'trace', x1:100, y1:26, x2:100, y2:214, stroke:'var(--tint)',
-          strokeOpacity:0.5, strokeWidth:1.4, strokeDasharray:'5 5', style:{ '--len':188, animationDelay:'1.1s' } }),
+        h('line', { className:'trace', pathLength:1, x1:44, y1:104, x2:156, y2:104, stroke:'var(--tint)',
+          strokeOpacity:0.5, strokeWidth:1.4, strokeDasharray:'5 5', style:{ animationDelay:'0.9s' } }),
+        h('line', { className:'trace', pathLength:1, x1:100, y1:26, x2:100, y2:214, stroke:'var(--tint)',
+          strokeOpacity:0.5, strokeWidth:1.4, strokeDasharray:'5 5', style:{ animationDelay:'1.1s' } }),
         FACE_DOTS.map(function(d,i){
           return h('circle', { key:'d'+i, className:'eng-dot', cx:d[0], cy:d[1], r:3.2, fill:'var(--tint)',
             style:{ animationDelay:(1.3 + i*0.06)+'s', transformOrigin:d[0]+'px '+d[1]+'px' } });
@@ -1865,7 +1868,7 @@
         h('div', { className:'eng-block' },
           h('div', { className:'eng-art' }, face),
           h('div', { className:'eng-copy' },
-            h('div', { className:'tag soon' }, T.faceTag[lang]),
+            h('div', { className:'tag' }, T.faceTag[lang]),
             h('h3', null, T.faceH[lang]),
             h('div', { className:'sub' }, T.faceSub[lang]),
             h('div', { className:'eng-calc' },
@@ -1913,11 +1916,11 @@
           en:[['Kundali','14 cited rules',GOLD,false],
               ['Palm','4 lines, 8 mounts',ROSE,false],
               ['Numbers','Mulank, Bhagyank, Lo Shu',PURPLE,false],
-              ['Face','in development',MUTED,true]],
+              ['Face','proportion and element','#5B8FD9',false]],
           hi:[['कुंडली','14 प्रामाणिक नियम',GOLD,false],
               ['हथेली','4 रेखाएँ, 8 पर्वत',ROSE,false],
               ['अंक','मूलांक, भाग्यांक, लो शु',PURPLE,false],
-              ['चेहरा','निर्माणाधीन',MUTED,true]]
+              ['चेहरा','अनुपात और तत्व','#5B8FD9',false]]
         },
         hub:{en:'one person', hi:'एक व्यक्ति'},
         ask:{en:'“Should I take the offer?”', hi:'“क्या मुझे यह प्रस्ताव लेना चाहिए?”'},
@@ -1942,10 +1945,10 @@
         h('svg', { viewBox:'0 0 960 86', preserveAspectRatio:'none', 'aria-hidden':'true' },
           [120, 360, 600, 840].map(function(x, i){
             var col = [GOLD, ROSE, PURPLE, MUTED][i];
-            return h('path', { key:i, className:'trace',
+            return h('path', { key:i, className:'trace', pathLength:1,
               d:'M'+x+',0 C'+x+',46 480,30 480,86', fill:'none', stroke:col,
               strokeOpacity: i===3 ? 0.35 : 0.7, strokeWidth:2.4, strokeLinecap:'round',
-              style:{ '--len':200, animationDelay:(0.15 + i*0.12)+'s' } });
+              style:{ animationDelay:(0.15 + i*0.12)+'s' } });
           })
         )
       );
@@ -1958,9 +1961,10 @@
 
         h('div', { className:'cnv-src arv' },
           T.src[lang].map(function(sname, i){
-            return h('div', { key:i, className: sname[3] ? 'soon' : '' },
-              h('div', { className:'n', style:{ color:sname[2] } }, sname[0]),
-              h('div', { className:'f' }, sname[1])
+            return h('div', { key:i, className:'cnv-item' },
+              h('div', { className:'box', style:{ color:sname[2] } }, sname[0]),
+              h('div', { className:'f' }, sname[1]),
+              h('div', { className:'arw' }, '\u2193')
             );
           })
         ),
