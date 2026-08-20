@@ -575,6 +575,20 @@
   .aai-note .m { margin-top:7px; font-size:12px; color:var(--muted); }
   /* The ruleset is not a finished object. Three states, then the version that
      answered you, so "it changes" reads as discipline rather than drift. */
+  /* The two books the rules keep citing, and the men behind them. */
+  .books { margin:30px auto 0; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .book { border:1px solid var(--line); border-radius:20px; background:var(--card); padding:26px 24px; }
+  .book .cited { font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:800; color:var(--tint); }
+  .book .t { margin-top:12px; font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.025em;
+    font-size:clamp(26px,4vw,42px); line-height:1.02; color:var(--fg); }
+  .book .who { margin-top:12px; font-size:clamp(15px,1.9vw,19px); font-weight:800; color:var(--tint); letter-spacing:-.01em; }
+  .book .line { margin-top:9px; font-size:clamp(13.5px,1.7vw,16.5px); line-height:1.5; color:var(--fg2); }
+  .book .for { margin-top:14px; padding-top:14px; border-top:1px dashed var(--line);
+    font-size:clamp(13.5px,1.7vw,16.5px); line-height:1.5; color:var(--fg2); }
+  .book .for b { color:var(--fg); font-weight:700; }
+  .books-note { margin:16px auto 0; text-align:center; font-size:12.5px; line-height:1.6; color:var(--muted); max-width:660px; }
+  @media (max-width:760px){ .books { grid-template-columns:1fr; } }
+
   .aai-life { margin:34px auto 0; max-width:860px; }
   .aai-life .lh { text-align:center; font-size:11px; letter-spacing:.2em; text-transform:uppercase;
     font-weight:800; color:var(--tint); }
@@ -1676,6 +1690,27 @@
               ['“फलदीपिका का संदर्भ दशम भाव के लिए है, समय के लिए नहीं। केवल अ. 46 दें।”','ऐसी टिप्पणी जो ग्रंथ-संदर्भ बदल देती है'],
               ['“‘बदल सकता है’ कहें, ‘बदलेगा’ कभी नहीं। कुंडली अवसर दिखाती है, घटना नहीं।”','ऐसी टिप्पणी जो शब्द बदल देती है']]
         },
+        booksH:{en:'The two books the rules keep citing', hi:'वे दो ग्रंथ जिनका नियम बार-बार हवाला देते हैं'},
+        books:{
+          en:[
+            ['Cited in 10 rules', 'Brihat Parashara Hora Shastra', 'Maharishi Parashara',
+             'Grandson of Vasishtha, father of Vyasa, who compiled the Vedas.',
+             'The book that set the grammar: <b>houses, house lords, the Vimshottari dasha and the divisional charts</b>. Almost every rule in this engine reaches it eventually.'],
+            ['Cited in 10 rules', 'Phaladeepika', 'Mantreswara',
+             'A South Indian astrologer whose life is barely recorded, though his book never left the desk.',
+             'The lamp of results: twenty-eight chapters on <b>what a placement actually does</b>. Where Parashara defines, Mantreswara tells you what to expect.']
+          ],
+          hi:[
+            ['10 नियमों में उद्धृत', 'बृहत् पराशर होरा शास्त्र', 'महर्षि पराशर',
+             'वसिष्ठ के पौत्र, और वेदों का संकलन करने वाले व्यास के पिता।',
+             'वह ग्रंथ जिसने व्याकरण गढ़ा: <b>भाव, भावेश, विम्शोत्तरी दशा और वर्ग कुंडलियाँ</b>। इस इंजन का लगभग हर नियम अंततः यहीं पहुँचता है।'],
+            ['10 नियमों में उद्धृत', 'फलदीपिका', 'मंत्रेश्वर',
+             'दक्षिण भारत के ज्योतिषी, जिनका जीवन-वृत्त लगभग अज्ञात है, पर जिनकी पुस्तक कभी मेज़ से नहीं हटी।',
+             'फल का दीपक: अट्ठाईस अध्याय इस पर कि <b>कोई स्थिति करती क्या है</b>। पराशर परिभाषा देते हैं, मंत्रेश्वर परिणाम बताते हैं।']
+          ]
+        },
+        booksNote:{en:'Both are traditional attributions, and the manuscripts we read were copied and edited across centuries. Saravali carries four more rules.',
+                   hi:'दोनों पारंपरिक मान्यताएँ हैं, और जो पांडुलिपियाँ हम पढ़ते हैं वे सदियों में प्रतिलिपित और संपादित हुईं। सारावली चार और नियमों का आधार है।'},
         lifeH:{en:'A ruleset that keeps moving', hi:'एक ऐसा नियम-संग्रह जो चलता रहता है'},
         life:{
           en:[['Written','14 rules today, each one carrying the classical text it came from'],
@@ -1797,6 +1832,19 @@
               );
             })
           ),
+          h('div', { className:'books arv' },
+            T.books[lang].map(function(b, i){
+              return h('div', { className:'book', key:i },
+                h('div', { className:'cited' }, b[0]),
+                h('div', { className:'t' }, b[1]),
+                h('div', { className:'who' }, b[2]),
+                h('div', { className:'line' }, b[3]),
+                h('div', { className:'for', dangerouslySetInnerHTML:{ __html:b[4] } })
+              );
+            })
+          ),
+          h('div', { className:'books-note arv' }, T.booksNote[lang]),
+
           h('div', { className:'aai-life arv' },
             h('div', { className:'lh' }, T.lifeH[lang]),
             h('div', { className:'aai-steps3' },
