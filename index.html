@@ -518,17 +518,27 @@
   .aai-q .lab { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); font-weight:800; }
   .aai-q .txt { margin-top:12px; font-family:'Noto Serif',Georgia,serif; font-weight:700; font-size:clamp(26px,5vw,52px); line-height:1.12; letter-spacing:-.02em; color:var(--tint); }
 
-  /* The chain of proof: numbered steps on a spine. */
-  .aai-chain { max-width:720px; margin:44px auto 0; position:relative; }
-  .aai-chain::before { content:''; position:absolute; left:29px; top:26px; bottom:26px; width:2px;
-    background:linear-gradient(to bottom, color-mix(in srgb, var(--tint) 55%, transparent), color-mix(in srgb, var(--tint) 12%, transparent)); }
-  .aai-step { position:relative; display:flex; gap:20px; align-items:flex-start; padding:14px 0; }
-  .aai-step .n { flex:none; width:58px; height:58px; border-radius:50%; display:grid; place-items:center;
-    font-family:'Noto Serif',Georgia,serif; font-size:22px; font-weight:700; color:var(--tint);
-    background:var(--bg); border:2px solid color-mix(in srgb, var(--tint) 45%, var(--line)); position:relative; z-index:1; }
-  .aai-step .body { padding-top:5px; min-width:0; }
-  .aai-step .k { font-size:11px; letter-spacing:.2em; text-transform:uppercase; font-weight:800; color:var(--muted); }
-  .aai-step .v { margin-top:6px; font-size:clamp(19px,2.7vw,27px); line-height:1.3; font-weight:600; color:var(--fg2); letter-spacing:-.01em; }
+  /* The chain of proof — a keynote build: the spine draws itself, each step
+     rises in as it arrives, and the numeral fills when the step lands. */
+  .aai-chain { max-width:760px; margin:56px auto 0; position:relative; }
+  .aai-chain .spine { position:absolute; left:31px; top:34px; bottom:34px; width:2px;
+    background:linear-gradient(to bottom, color-mix(in srgb, var(--tint) 70%, transparent), color-mix(in srgb, var(--tint) 10%, transparent));
+    transform-origin:top; transition:transform 1.5s cubic-bezier(.16,1,.3,1); }
+  html.js-reveal .aai-chain .spine { transform:scaleY(0); }
+  .aai-chain.in .spine { transform:scaleY(1); }
+  .aai-step { position:relative; display:flex; gap:26px; align-items:flex-start; padding:22px 0;
+    transition:opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1); }
+  html.js-reveal .aai-step { opacity:0; transform:translateY(26px); }
+  .aai-step.in { opacity:1; transform:none; }
+  .aai-step .n { flex:none; width:64px; height:64px; border-radius:50%; display:grid; place-items:center;
+    font-family:'Noto Serif',Georgia,serif; font-size:23px; font-weight:700; color:var(--tint);
+    background:var(--bg); border:2px solid color-mix(in srgb, var(--tint) 30%, var(--line));
+    position:relative; z-index:1; transition:border-color .6s ease, box-shadow .6s ease, transform .6s cubic-bezier(.16,1,.3,1); }
+  .aai-step.in .n { border-color:color-mix(in srgb, var(--tint) 75%, transparent);
+    box-shadow:0 0 0 6px color-mix(in srgb, var(--tint) 8%, transparent); }
+  .aai-step .body { padding-top:8px; min-width:0; }
+  .aai-step .k { font-size:11px; letter-spacing:.22em; text-transform:uppercase; font-weight:800; color:var(--muted); }
+  .aai-step .v { margin-top:8px; font-size:clamp(20px,3vw,30px); line-height:1.28; font-weight:600; color:var(--fg2); letter-spacing:-.015em; }
   .aai-step .v em { font-style:normal; font-weight:800; color:var(--fg); }
   .aai-step .v b { font-style:normal; font-weight:800; color:var(--tint); }
 
@@ -558,6 +568,45 @@
   .aai-cmp div.ours .big { color:var(--fg); }
   .aai-cmp .sm { margin-top:10px; font-size:14px; line-height:1.55; color:var(--muted); }
 
+  /* The gate: who reads the rules before they speak. */
+  .aai-gate { max-width:860px; margin:72px auto 0; }
+  .aai-gate .lead { text-align:center; }
+  .aai-gate .lead .eyebrow { font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--tint); font-weight:800; }
+  .aai-gate .lead h3 { margin-top:12px; font-family:'Noto Serif',Georgia,serif; font-weight:700;
+    font-size:clamp(24px,4vw,40px); line-height:1.12; letter-spacing:-.02em; color:var(--fg); }
+  .aai-gate .lead p { margin:14px auto 0; max-width:620px; font-size:clamp(14px,1.6vw,17px); line-height:1.6; color:var(--fg2); }
+
+  .aai-rule { margin:36px auto 0; border:1px solid var(--line); border-radius:20px; background:var(--card); overflow:hidden; }
+  .aai-rule .rows { padding:6px 0; }
+  .aai-rule .row { display:flex; gap:16px; align-items:flex-start; padding:14px 22px; }
+  .aai-rule .row + .row { border-top:1px dashed var(--line); }
+  .aai-rule .row .k { flex:none; width:118px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+    font-weight:800; color:var(--muted); padding-top:4px; }
+  .aai-rule .row .v { font-size:clamp(15px,1.9vw,19px); line-height:1.45; color:var(--fg2); font-weight:500; }
+  .aai-rule .row .v em { font-style:normal; font-weight:800; color:var(--fg); }
+  .aai-rule .row .v b { font-style:normal; font-weight:800; color:var(--tint); }
+  .aai-rule .row .v code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.86em; color:var(--muted); }
+  .aai-verdicts { display:flex; flex-wrap:wrap; gap:9px; padding:16px 22px 20px; border-top:1px solid var(--line);
+    background:color-mix(in srgb, var(--tint) 4%, transparent); }
+  .aai-verdicts span { font-size:13px; font-weight:700; padding:9px 15px; border-radius:999px; border:1px solid var(--line); color:var(--muted); }
+  .aai-verdicts span.on { border-color:color-mix(in srgb, var(--tint) 55%, transparent); color:var(--tint); }
+
+  .aai-notes { margin:22px auto 0; display:grid; gap:12px; }
+  .aai-note { border:1px solid var(--line); border-left:3px solid color-mix(in srgb, var(--tint) 55%, transparent);
+    border-radius:14px; padding:15px 18px; background:var(--card); }
+  .aai-note .q { font-size:clamp(14px,1.7vw,17px); line-height:1.55; color:var(--fg); font-weight:500; }
+  .aai-note .m { margin-top:7px; font-size:12px; color:var(--muted); }
+  .aai-status { margin:26px auto 0; text-align:center; font-size:13.5px; line-height:1.6; color:var(--muted); max-width:640px; }
+  .aai-status b { color:var(--fg); font-weight:700; }
+
+  .rv { transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+  html.js-reveal .rv { opacity:0; transform:translateY(22px); }
+  html.js-reveal .rv.in { opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce) {
+    .rv, .aai-step { opacity:1 !important; transform:none !important; }
+    .aai-chain .spine { transform:scaleY(1) !important; }
+  }
+
   .aai-foot { max-width:820px; margin:46px auto 0; text-align:center;
     font-family:'Noto Serif',Georgia,serif; font-size:clamp(20px,3.2vw,32px); line-height:1.3; letter-spacing:-.02em; color:var(--fg); }
   .aai-foot b { background:var(--tint-grad); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
@@ -569,6 +618,8 @@
     .aai-step .n { width:44px; height:44px; font-size:17px; }
     .aai-verdict { flex-direction:column; align-items:flex-start; gap:14px; padding:22px 20px; }
     .aai-cmp { grid-template-columns:1fr; }
+    .aai-rule .row { flex-direction:column; gap:4px; }
+    .aai-rule .row .k { width:auto; padding-top:0; }
   }
 
   /* ============ Feature showcase — production-accurate phone mocks + descriptions ============ */
@@ -1362,6 +1413,36 @@
      */
     function AastroAI(props){
       var lang = props.lang;
+      var secRef = useRef(null);
+      // Keynote build: each element with .rv (and each step) arrives on its own
+      // as it enters the viewport, rather than the whole slab appearing at once.
+      useEffect(function(){
+        var sec = secRef.current; if (!sec) return;
+        var items = [].slice.call(sec.querySelectorAll('.rv, .aai-step, .aai-chain'));
+        if (!('IntersectionObserver' in window) ||
+            (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+          items.forEach(function(el){ el.classList.add('in'); });
+          return;
+        }
+        // Hiding is opt-in from here, so a scripting failure leaves the section
+        // merely un-animated rather than invisible.
+        document.documentElement.classList.add('js-reveal');
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if (!e.isIntersecting) return;
+            var el = e.target;
+            // Steps stagger off their own index so the chain builds downward.
+            var delay = el.classList.contains('aai-step') ? (parseInt(el.dataset.i || '0', 10) * 110) : 0;
+            setTimeout(function(){ el.classList.add('in'); }, delay);
+            io.unobserve(el);
+          });
+        }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+        items.forEach(function(el){ io.observe(el); });
+        var failsafe = setTimeout(function(){
+          items.forEach(function(el){ el.classList.add('in'); });
+        }, 4000);
+        return function(){ io.disconnect(); clearTimeout(failsafe); };
+      }, []);
       var T = {
         eyebrow:{en:'How AastroAI answers', hi:'AastroAI कैसे उत्तर देता है'},
         h:{en:['Not ChatGPT with a ','kundali',' pasted in.'], hi:['ChatGPT में ','कुंडली',' चिपकाना नहीं।']},
@@ -1393,23 +1474,52 @@
         usBig:{en:'Computes the astrology, then reads it aloud.', hi:'ज्योतिष की गणना करता है, फिर पढ़कर सुनाता है।'},
         usSm:{en:'Ask it why, and it shows these four lines.', hi:'“क्यों?” पूछिए — यही चार पंक्तियाँ दिखती हैं।'},
         foot:{en:['Same question, same chart, ','the same answer','.'],
-              hi:['वही प्रश्न, वही कुंडली, ','वही उत्तर','।']}
+              hi:['वही प्रश्न, वही कुंडली, ','वही उत्तर','।']},
+
+        gateEyebrow:{en:'The gate', hi:'कसौटी'},
+        gateH:{en:'A rule has to survive an astrologer.', hi:'हर नियम को ज्योतिषी की कसौटी से गुज़रना होता है।'},
+        gateP:{en:'Anyone can write a rule that sounds right. Ours are written down, cited, scored — and then handed to a practising astrologer to argue with.',
+               hi:'सही लगने वाला नियम कोई भी लिख सकता है। हमारे नियम लिखे जाते हैं, ग्रंथ से जोड़े जाते हैं, अंक पाते हैं — और फिर एक अभ्यासरत ज्योतिषी की कसौटी पर रखे जाते हैं।'},
+        gateRows:{
+          en:[['Rule','<code>rule.dasha_axis_plus_10th_activation</code>'],
+              ['Looks for','The running dasha lord sits on the <em>Rahu–Ketu axis</em>, and the <em>10th house</em> is activated'],
+              ['Source','<em>Brihat Parashara Hora Shastra</em> ch. 46 · <em>Phaladeepika</em> ch. 15'],
+              ['Score','<b>0.62</b> base &nbsp;+0.09 if the 10th lord is exalted &nbsp;+0.05 if it sits in the 10th'],
+              ['Says','“A window where your role or workplace can change”']],
+          hi:[['नियम','<code>rule.dasha_axis_plus_10th_activation</code>'],
+              ['क्या देखता है','चल रही दशा का स्वामी <em>राहु–केतु अक्ष</em> पर हो, और <em>दशम भाव</em> सक्रिय हो'],
+              ['ग्रंथ','<em>बृहत् पराशर होरा शास्त्र</em> अ. 46 · <em>फलदीपिका</em> अ. 15'],
+              ['अंक','<b>0.62</b> मूल &nbsp;+0.09 यदि दशमेश उच्च का &nbsp;+0.05 यदि वह दशम में'],
+              ['क्या कहता है','“ऐसा समय जब भूमिका या कार्यस्थल बदल सकता है”']]
+        },
+        gateVerdicts:{en:['Approve','Needs work','Reject'], hi:['स्वीकृत','सुधार चाहिए','अस्वीकृत']},
+        gateNotes:{
+          en:[['“0.62 is too confident for a Ketu–Rahu axis without a supporting transit. Drop it to 0.55.”','the kind of note that changes a number'],
+              ['“The Phaladeepika citation supports the 10th-house reading, not the timing. Cite ch. 46 alone.”','the kind of note that changes a source'],
+              ['“Say ‘can change’, never ‘will change’. The chart shows a window, not an event.”','the kind of note that changes the wording']],
+          hi:[['“बिना सहायक गोचर के केतु–राहु अक्ष पर 0.62 अधिक है। इसे 0.55 करें।”','ऐसी टिप्पणी जो अंक बदल देती है'],
+              ['“फलदीपिका का संदर्भ दशम भाव के लिए है, समय के लिए नहीं। केवल अ. 46 दें।”','ऐसी टिप्पणी जो ग्रंथ-संदर्भ बदल देती है'],
+              ['“‘बदल सकता है’ कहें, ‘बदलेगा’ कभी नहीं। कुंडली अवसर दिखाती है, घटना नहीं।”','ऐसी टिप्पणी जो शब्द बदल देती है']]
+        },
+        gateStatus:{en:['Where this stands today: ','14 rules written, every one carrying the text it came from',' — with astrologer review underway. When a rule is rejected, it stops speaking.'],
+                    hi:['आज की स्थिति: ','14 नियम लिखे जा चुके हैं, हर एक अपने ग्रंथ-संदर्भ के साथ',' — ज्योतिषी समीक्षा जारी है। नियम अस्वीकृत होते ही बोलना बंद कर देता है।']}
       };
-      return h('section', { className:'aai', id:'aastroai' },
-        h('div', { className:'aai-head' },
+      return h('section', { className:'aai', id:'aastroai', ref:secRef },
+        h('div', { className:'aai-head rv' },
           h('div', { className:'eyebrow' }, T.eyebrow[lang]),
           h('h2', null, T.h[lang][0], h('span',{className:'hl'}, T.h[lang][1]), T.h[lang][2]),
           h('p', null, T.p[lang])
         ),
 
-        h('div', { className:'aai-q' },
+        h('div', { className:'aai-q rv' },
           h('div', { className:'lab' }, T.qlab[lang]),
           h('div', { className:'txt' }, T.qt[lang])
         ),
 
         h('div', { className:'aai-chain' },
+          h('div', { className:'spine' }),
           T.steps[lang].map(function(step,i){
-            return h('div', { className:'aai-step', key:i },
+            return h('div', { className:'aai-step', key:i, 'data-i':i },
               h('div', { className:'n' }, String(i+1)),
               h('div', { className:'body' },
                 h('div', { className:'k' }, step[0]),
@@ -1419,7 +1529,7 @@
           })
         ),
 
-        h('div', { className:'aai-verdict' },
+        h('div', { className:'aai-verdict rv' },
           h('div', { className:'score' }, '0.71'),
           h('div', { className:'rt' },
             h('div', { className:'k' }, T.vk[lang]),
@@ -1428,12 +1538,12 @@
           )
         ),
 
-        h('div', { className:'aai-say' },
+        h('div', { className:'aai-say rv' },
           h('div', { className:'lab' }, T.saylab[lang]),
           h('div', { className:'quote' }, T.say[lang])
         ),
 
-        h('div', { className:'aai-cmp' },
+        h('div', { className:'aai-cmp rv' },
           h('div', null,
             h('h4', null, T.themTitle[lang]),
             h('div', { className:'big' }, T.themBig[lang]),
@@ -1446,7 +1556,40 @@
           )
         ),
 
-        h('div', { className:'aai-foot' }, T.foot[lang][0], h('b', null, T.foot[lang][1]), T.foot[lang][2])
+        h('div', { className:'aai-gate' },
+          h('div', { className:'lead rv' },
+            h('div', { className:'eyebrow' }, T.gateEyebrow[lang]),
+            h('h3', null, T.gateH[lang]),
+            h('p', null, T.gateP[lang])
+          ),
+          h('div', { className:'aai-rule rv' },
+            h('div', { className:'rows' },
+              T.gateRows[lang].map(function(r,i){
+                return h('div', { className:'row', key:i },
+                  h('div', { className:'k' }, r[0]),
+                  h('div', { className:'v', dangerouslySetInnerHTML:{ __html:r[1] } })
+                );
+              })
+            ),
+            h('div', { className:'aai-verdicts' },
+              T.gateVerdicts[lang].map(function(v,i){
+                return h('span', { key:i, className:i===1?'on':'' }, v);
+              })
+            )
+          ),
+          h('div', { className:'aai-notes rv' },
+            T.gateNotes[lang].map(function(n,i){
+              return h('div', { className:'aai-note', key:i },
+                h('div', { className:'q' }, n[0]),
+                h('div', { className:'m' }, n[1])
+              );
+            })
+          ),
+          h('div', { className:'aai-status rv' },
+            T.gateStatus[lang][0], h('b', null, T.gateStatus[lang][1]), T.gateStatus[lang][2])
+        ),
+
+        h('div', { className:'aai-foot rv' }, T.foot[lang][0], h('b', null, T.foot[lang][1]), T.foot[lang][2])
       );
     }
 
