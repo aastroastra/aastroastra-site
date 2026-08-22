@@ -56,6 +56,7 @@
       <li><b>Birth details you enter</b>: your name, date of birth, time of birth, and place of birth. These are the inputs for every chart, numerology number, and reading in the app.</li>
       <li><b>Approximate location</b>: when you allow it, we use your latitude and longitude to compute accurate planetary positions and panchang for where you are. You can decline; charts then use your entered birth place instead.</li>
       <li><b>Account details</b>: a phone number or email if you sign in, so your saved profiles follow you across sessions and devices.</li>
+      <li><b>Photos you choose to take or upload</b>: a photograph of your palm or your face, only when you start a palm or face reading and only after you agree to it on screen. See <a href="#photos">Palm and face readings</a> below, which sets out exactly what happens to the photo.</li>
       <li><b>Basic app &amp; device data</b>: app version, device model, and crash diagnostics that keep the app stable. This is not used to identify you personally.</li>
     </ul>
 
@@ -67,22 +68,36 @@
       <li>To sync your saved profiles and keep the app working reliably.</li>
     </ul>
 
+    <h2 id="photos">Palm and face readings</h2>
+    <p>These two features work from a photograph, so they get their own rules.</p>
+    <ul>
+      <li><b>The photo is not kept.</b> It is sent to our servers, passed to our AI vision provider to be read, and discarded. We do not save it to your account, and we do not store it in any file bucket. Nothing in the app can show you that photo again, because it no longer exists.</li>
+      <li><b>What we do keep</b> is the reading itself, and, for a face reading, the measurements taken from the photo: proportions such as the width of the face against its length. These are stored on your device and in your account so the reading can be shown again and can cite what it was based on.</li>
+      <li><b>Face measurements are biometric data</b>, and we treat them as such. They are used for one thing: producing your reading. They are never used to identify you, never used to recognise you in another photo, never used to find or compare you with another person, and never used for advertising.</li>
+      <li><b>You can delete a reading</b> from the reading itself. Deleting it removes the reading and the measurements from your device and from your account together. Deleting your account removes all of them.</li>
+      <li><b>It is for entertainment.</b> A palm or face reading is a traditional interpretation offered for reflection. It is not medical, psychological, legal or financial advice, and it is not a statement of fact about you.</li>
+      <li>We only ask for the camera or your photo library when you start one of these readings, and you can decline. The features simply do not run without a photo.</li>
+    </ul>
+
     <h2>What we do not do</h2>
     <ul>
       <li>We do not sell your personal data.</li>
       <li>We do not show third-party advertising built on your birth or location data.</li>
       <li>We do not share your details with anyone except the trusted providers below, and only to run the service.</li>
+      <li>We do not use your photo, or anything measured from it, to identify you or to match you with another person.</li>
+      <li>We do not let our providers train their models on your data.</li>
     </ul>
 
     <h2>Who processes your data</h2>
-    <p>We rely on a small set of vetted providers to run AastroAstra: a cloud platform that stores your profiles and reports securely, astrological computation services for chart maths, and an AI provider that writes your readings and notifications. They process data only on our instructions and only to deliver the feature you asked for.</p>
+    <p>We rely on a small set of vetted providers to run AastroAstra: Supabase, which stores your profiles and reports securely; astrological computation services for chart maths; and AI providers, currently Anthropic and Groq, which write your readings and notifications and which read the photo when you request a palm or face reading. They process data only on our instructions, only to deliver the feature you asked for, and they do not train their models on it.</p>
 
     <h2>Where it is kept, and for how long</h2>
-    <p>Your profiles are stored securely with our cloud provider and kept while your account is active. Generated reports are cached so you do not wait for them twice; they refresh when you update your birth details. You can remove a saved profile from within the app at any time, and you can ask us to delete your account data entirely.</p>
+    <p>Photographs used for a palm or face reading are not retained at all: they are discarded as soon as the reading is produced. Your profiles are stored securely with our cloud provider and kept while your account is active. Generated reports are cached so you do not wait for them twice; they refresh when you update your birth details. You can remove a saved profile from within the app at any time, and you can ask us to delete your account data entirely.</p>
 
     <h2>Your choices</h2>
     <ul>
       <li>Delete any saved profile from inside the app.</li>
+      <li>Delete any palm or face reading, and the measurements taken from it, from the reading itself.</li>
       <li>Turn location permission on or off in your device settings at any time.</li>
       <li>Turn notifications off from your device or the app.</li>
       <li>Email us to access or delete the data tied to your account.</li>
