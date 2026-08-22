@@ -715,7 +715,9 @@
   /* The exchange. */
   .cnv-chat { max-width:760px; margin:44px auto 0; }
   .cnv-ask { text-align:right; }
-  .cnv-ask span { display:inline-block; max-width:100%; background:var(--tint-grad); color:#1b1205;
+  /* White, not near-black. The bubble sits on a saturated tint gradient and
+     dark ink on it read as muddy rather than as a question being asked. */
+  .cnv-ask span { display:inline-block; max-width:100%; background:var(--tint-grad); color:#fff;
     border-radius:22px 22px 6px 22px; padding:16px 22px; font-weight:700;
     font-size:clamp(19px,2.9vw,30px); line-height:1.25; letter-spacing:-.01em; }
   .cnv-ans { margin-top:20px; border:1px solid var(--line); border-radius:22px; background:var(--card); overflow:hidden; }
