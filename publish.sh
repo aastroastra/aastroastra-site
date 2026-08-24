@@ -15,6 +15,7 @@ WS="/Users/tirupatibalan/Documents/AstroAstra/workspace"
 ANDROID="$WS/aastroastra-android"
 BACKEND="$WS/aastroastra-backend"   # supabase CLI is linked here
 BUCKET="ss:///site"
+SUPABASE_REST="https://gttszlununmqivrqevwv.supabase.co"
 
 # 1. Locate the APK.
 APK="${1:-}"
@@ -27,10 +28,23 @@ if [[ -z "$APK" ]]; then
 fi
 [[ -f "$APK" ]] || { echo "APK not found. Build the release APK first, or pass its path."; exit 1; }
 
-# 2. Read version from the Android build file.
+# 2. Read the version FROM THE APK, not from the working tree.
+#
+# It used to read app/build.gradle.kts. That is whatever the tree happens to say
+# right now, which is not necessarily what the APK being uploaded was built
+# from: publishing an older or stashed build then advertised a version the
+# binary does not carry, so the site claimed 0.4.6 while the download installed
+# as 0.4.5. aapt2 asks the artefact itself.
+AAPT=$(find "${ANDROID_HOME:-$HOME/Library/Android/sdk}/build-tools" -name aapt2 2>/dev/null | sort -r | head -1)
+if [[ -n "$AAPT" && -x "$AAPT" ]]; then
+  BADGING=$("$AAPT" dump badging "$APK" 2>/dev/null | head -1)
+  VER=$(echo "$BADGING"  | sed -nE "s/.*versionName='([^']+)'.*/\1/p")
+  CODE=$(echo "$BADGING" | sed -nE "s/.*versionCode='([0-9]+)'.*/\1/p")
+fi
+# Fall back to the build file only when aapt2 is unavailable.
 GRADLE="$ANDROID/app/build.gradle.kts"
-VER=$(grep -E 'versionName *= *"' "$GRADLE" | head -1 | sed -E 's/.*"([^"]+)".*/\1/')
-CODE=$(grep -E 'versionCode *= *' "$GRADLE" | head -1 | sed -E 's/[^0-9]//g')
+[[ -z "${VER:-}" ]]  && VER=$(grep -E 'versionName *= *"' "$GRADLE" | head -1 | sed -E 's/.*"([^"]+)".*/\1/')
+[[ -z "${CODE:-}" ]] && CODE=$(grep -E 'versionCode *= *' "$GRADLE" | head -1 | sed -E 's/[^0-9]//g')
 SIZE=$(ls -la "$APK" | awk '{printf "%.1f", $5/1048576}')
 DATE=$(date +%Y-%m-%d)
 UPDATED=$(date "+%d %b %Y, %I:%M %p %Z")   # human-readable 12-hour AM/PM, shown on the site as "Last updated"
@@ -54,6 +68,26 @@ JSON
 # 4. Upload APK + version.json to the public bucket (supabase CLI, linked
 #    project). `cp` won't overwrite, so remove the old objects first.
 cd "$BACKEND"
+
+# Refuse to touch the live objects if the APK cannot be stored.
+#
+# This script deletes before it uploads, because `cp` will not overwrite. That
+# is fine until the upload fails: an APK over the bucket's limit left the site
+# with NO download and NO version.json, a live outage caused by a publish. The
+# limit is checked first now, so a too-large build fails before anything is
+# removed.
+BUCKET_LIMIT=$(curl -s "$SUPABASE_REST/storage/v1/bucket/site" \
+  -H "apikey: ${SUPABASE_SERVICE_ROLE_KEY:-}" \
+  -H "Authorization: Bearer ${SUPABASE_SERVICE_ROLE_KEY:-}" 2>/dev/null \
+  | sed -nE 's/.*"file_size_limit":([0-9]+).*/\1/p')
+APK_BYTES=$(wc -c < "$APK" | tr -d ' ')
+if [[ -n "$BUCKET_LIMIT" && "$APK_BYTES" -gt "$BUCKET_LIMIT" ]]; then
+  echo "REFUSING: the APK is $APK_BYTES bytes and the bucket allows $BUCKET_LIMIT."
+  echo "Nothing was deleted; the current download is untouched."
+  echo "Raise the limit in Project Settings > Storage, or shrink the build."
+  exit 1
+fi
+
 supabase storage rm --experimental --yes "$BUCKET/aastroastra-latest.apk" >/dev/null 2>&1 || true
 supabase storage rm --experimental --yes "$BUCKET/version.json" >/dev/null 2>&1 || true
 supabase storage cp --experimental "$APK" "$BUCKET/aastroastra-latest.apk" \
