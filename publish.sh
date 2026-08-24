@@ -37,14 +37,27 @@ fi
 # as 0.4.5. aapt2 asks the artefact itself.
 AAPT=$(find "${ANDROID_HOME:-$HOME/Library/Android/sdk}/build-tools" -name aapt2 2>/dev/null | sort -r | head -1)
 if [[ -n "$AAPT" && -x "$AAPT" ]]; then
-  BADGING=$("$AAPT" dump badging "$APK" 2>/dev/null | head -1)
+  # No `| head -1` here: closing the pipe early gives aapt2 a SIGPIPE, and with
+  # `set -o pipefail` that fails the whole pipeline and `set -e` exits the
+  # script mid-publish, silently. Take the first line in the shell instead.
+  BADGING_ALL=$("$AAPT" dump badging "$APK" 2>/dev/null || true)
+  BADGING=${BADGING_ALL%%$'\n'*}
   VER=$(echo "$BADGING"  | sed -nE "s/.*versionName='([^']+)'.*/\1/p")
   CODE=$(echo "$BADGING" | sed -nE "s/.*versionCode='([0-9]+)'.*/\1/p")
 fi
 # Fall back to the build file only when aapt2 is unavailable.
+#
+# `if` rather than `[[ ... ]] && ...`: under `set -e` the && form exits the whole
+# script when the test is FALSE, because the compound returns 1. That is exactly
+# what happened the first time this ran, and it looked like the script producing
+# no output at all.
 GRADLE="$ANDROID/app/build.gradle.kts"
-[[ -z "${VER:-}" ]]  && VER=$(grep -E 'versionName *= *"' "$GRADLE" | head -1 | sed -E 's/.*"([^"]+)".*/\1/')
-[[ -z "${CODE:-}" ]] && CODE=$(grep -E 'versionCode *= *' "$GRADLE" | head -1 | sed -E 's/[^0-9]//g')
+if [[ -z "${VER:-}" ]]; then
+  VER=$(grep -E 'versionName *= *"' "$GRADLE" | head -1 | sed -E 's/.*"([^"]+)".*/\1/')
+fi
+if [[ -z "${CODE:-}" ]]; then
+  CODE=$(grep -E 'versionCode *= *' "$GRADLE" | head -1 | sed -E 's/[^0-9]//g')
+fi
 SIZE=$(ls -la "$APK" | awk '{printf "%.1f", $5/1048576}')
 DATE=$(date +%Y-%m-%d)
 UPDATED=$(date "+%d %b %Y, %I:%M %p %Z")   # human-readable 12-hour AM/PM, shown on the site as "Last updated"
