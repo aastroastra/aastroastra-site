@@ -2308,23 +2308,33 @@
               ),
               // Build-status table, Android + iOS versions, sizes, last-updated
               // + direct links (APK download / iOS OTA install / TestFlight beta).
+              // People per platform, and nothing else.
+              //
+              // This used to show a "people" total, a palm-reading count, and
+              // two DOWNLOAD counts labelled Android and iOS. The download
+              // numbers read as users to anyone looking, which was a claim we
+              // had not measured, and the palm count moved when one tester
+              // took several readings. Both are gone; `users_*` counts real
+              // people (completed onboarding, never an anonymous session).
               stats ? h('div', { className:'stats' },
-                h('div', null,
-                  h('div', { className:'n' }, human(stats.people)),
-                  h('div', { className:'l' }, lang==='hi'?'लोग':'People')
-                ),
-                stats.palm_readings > 0 ? h('div', null,
-                  h('div', { className:'n' }, human(stats.palm_readings)),
-                  h('div', { className:'l' }, lang==='hi'?'हस्त पाठ':'Palm reads')
-                ) : null,
-                stats.downloads_android > 0 ? h('div', null,
-                  h('div', { className:'n' }, human(stats.downloads_android)),
+                stats.users_android > 0 ? h('div', null,
+                  h('div', { className:'n' }, human(stats.users_android)),
                   h('div', { className:'l' }, lang==='hi'?'एंड्रॉइड':'Android')
                 ) : null,
-                stats.downloads_ios > 0 ? h('div', null,
-                  h('div', { className:'n' }, human(stats.downloads_ios)),
+                stats.users_ios > 0 ? h('div', null,
+                  h('div', { className:'n' }, human(stats.users_ios)),
                   h('div', { className:'l' }, lang==='hi'?'iOS':'iOS')
-                ) : null
+                ) : null,
+                // Fallback while the apps do not yet register a session row.
+                // `user_sessions.platform` is how a person is attributed to a
+                // platform, and nothing writes it today, so both counts are 0.
+                // Showing the (onboarding-gated, non-anonymous) total beats an
+                // empty row; it disappears on its own the moment either
+                // platform count becomes real.
+                (stats.users_android > 0 || stats.users_ios > 0) ? null : h('div', null,
+                  h('div', { className:'n' }, human(stats.people)),
+                  h('div', { className:'l' }, lang==='hi'?'लोग':'People')
+                )
               ) : null,
               h('table', { className:'buildtable' },
                 h('thead', null, h('tr', null,
