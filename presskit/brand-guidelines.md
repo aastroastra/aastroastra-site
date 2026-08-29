@@ -43,6 +43,22 @@ The mark is gold by default. On monochrome (B&W) surfaces it is rendered pure:
 
 AastroAstra's colour system has three layers: **brand accent**, **theme surfaces**, and **planetary accents**.
 
+### 3.0 Contrast rules
+
+Colour choices are checked, not judged. Every palette clears these bars on both
+platforms, asserted by a test on each side:
+
+| Pair | Bar | Why |
+|------|-----|-----|
+| Body and placeholder text on its surface | **4.5:1** | WCAG AA; "large" starts at 18.7pt bold, and the tiles label at 14 |
+| The label on an accent fill | **4.5:1** | derived from the fill's luminance, never chosen by hand |
+| A field or interactive border | **3.0:1** | WCAG 1.4.11 — a boundary a person aims at is a UI component |
+| A decorative card outline | **2.0:1** | has to be seen; does not have to shout |
+
+**Gold on a white card is 2.28:1.** It works as a fill behind dark ink and it does
+not work as an outline, an icon, or a selected-state marker carrying meaning on its
+own. Plan accordingly on the light themes.
+
 ### 3.1 Brand Accent — Gold
 
 The signature accent is **Gold**, most expressive as a **yellow → orange gradient** used on headings, primary actions, and the active state of controls.
@@ -112,6 +128,13 @@ Each graha has a fixed accent, used in charts, planet rows, and dasha timelines:
 
 ## 4. Typography
 
+> **⚠️ Unresolved as of 29 August 2026.** The table below describes the marketing
+> site and this press kit. Neither app uses it. iOS renders SF Rounded throughout;
+> Android renders Playfair Display for display type, Poppins for labels and Nunito
+> for body. Three type systems exist and no two agree — a decision is needed on
+> which one is the brand, after which the other two follow. Until then, treat this
+> section as aspirational rather than descriptive.
+
 | Role | Font | Notes |
 |------|------|-------|
 | **Display / Headings** | **Noto Serif** (700) | the title voice — "One who believes" |
@@ -139,7 +162,13 @@ The signature backdrop is a **locked orbital system** — faint concentric orbit
 The yellow→orange gradient is reserved for **the display title, primary CTAs, and selected control states**. Body surfaces stay flat. Never gradient large background areas.
 
 ### 5.3 Cards & pills
-- **Cards**: surface fill, 1px border in the theme border colour, 14–16px radius.
+- **Cards**: surface fill, 1px border in the theme border colour, **12px radius**.
+
+The corner scale is fixed and closed: **4 / 8 / 12 / 16 / 24 / pill**, and nothing
+between the steps. 12 is the default for a card, a button and a text field; 16 is
+for sheets and hero tiles; 24 for full-bleed panels. This used to read "14–16px",
+which matched neither the token (12) nor the apps (which drew both plus fifteen
+other values). Both apps now enforce the scale at build time.
 - **Primary button**: solid ink (black on light, white on dark) or the gold gradient for in-app CTAs.
 - **Pills / toggles**: neutral surface; **selected** state fills with the gold gradient (yellow themes) or solid tint (mono).
 
