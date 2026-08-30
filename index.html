@@ -172,6 +172,28 @@
   @media (max-width:640px){ .store-row { justify-content:center; } .store-badge { flex:1 1 196px; justify-content:center; } }
   /* Build-status table (Android + iOS, versions + direct links). table-layout:fixed
      + wrapping so it always fits the viewport (no horizontal page stretch on mobile). */
+  /* Collapsed by default: a first-time installer needs these steps, and
+     everybody else has already done it once. `<details>` because it costs no
+     JavaScript, keyboard-works for free, and prints open. */
+  .howto { margin-top:14px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--card); }
+  .howto + .howto { margin-top:8px; }
+  .howto > summary { list-style:none; cursor:pointer; padding:11px 13px; display:flex; align-items:center; gap:9px;
+                     font-size:12.5px; font-weight:700; color:var(--fg); user-select:none; }
+  .howto > summary::-webkit-details-marker { display:none; }
+  .howto > summary:hover { color:var(--tint); }
+  .howto > summary .chev { margin-left:auto; width:13px; height:13px; flex:none; color:var(--muted); transition:transform .18s ease; }
+  .howto[open] > summary .chev { transform:rotate(180deg); }
+  .howto > summary .os { width:15px; height:15px; flex:none; }
+  .howto .body { padding:2px 13px 13px; border-top:1px solid var(--line); }
+  .howto ol { margin:11px 0 0; padding-left:0; list-style:none; counter-reset:step; }
+  .howto li { counter-increment:step; position:relative; padding-left:27px; margin-bottom:9px; font-size:12.5px; line-height:1.55; color:var(--fg); }
+  .howto li::before { content:counter(step); position:absolute; left:0; top:1px; width:18px; height:18px; border-radius:50%;
+                      background:var(--tint); color:#fff; font-size:10.5px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .howto li b { font-weight:700; }
+  .howto .note { margin-top:11px; padding:9px 11px; border-radius:9px; background:var(--bg); border:1px solid var(--line);
+                 font-size:11.5px; line-height:1.55; color:var(--muted); }
+  .howto .note b { color:var(--fg); }
+
   .buildtable { width:100%; max-width:100%; table-layout:fixed; margin-top:18px; border-collapse:collapse; font-size:13px; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
   .buildtable th, .buildtable td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; word-break:break-word; }
   /* Give the Platform column a touch less width; the rest share evenly. */
@@ -1275,9 +1297,84 @@
       dl:{en:'Download the beta',hi:'बीटा डाउनलोड करें'}, getapp:{en:'Get the Android app',hi:'एंड्रॉइड ऐप लें'},
       download:{en:'Download Beta',hi:'बीटा डाउनलोड'}, privacy:{en:'Privacy Policy',hi:'गोपनीयता नीति'}, terms:{en:'Terms of Use',hi:'उपयोग की शर्तें'},
       presskit:{en:'Press Kit',hi:'प्रेस किट'},
+      howAndroid:{en:'How to install on Android',hi:'एंड्रॉइड पर कैसे इंस्टॉल करें'},
+      howIos:{en:'How to install on iPhone',hi:'आईफ़ोन पर कैसे इंस्टॉल करें'},
+    };
+
+    // Install steps. Collapsed in the hero so they cost no space until asked
+    // for. Deliberately plain: the two things that stop people are Android's
+    // unknown-sources block and Apple's per-device registration, and both are
+    // named rather than glossed over.
+    var HOWTO = {
+      android: {
+        en: [
+          'Tap <b>Google Play</b> above. Chrome warns that this file type can harm your device; that warning appears for every APK. Tap <b>Download anyway</b>.',
+          'Open the downloaded file. Android will say installs from this source are blocked.',
+          'Tap <b>Settings</b> in that dialog, then turn on <b>Allow from this source</b>.',
+          'Go back and tap <b>Install</b>, then <b>Open</b>.',
+          'If Play Protect warns about an unrecognised app, choose <b>Install anyway</b>. The build is unsigned by Google because it never went through the Play Store.',
+        ],
+        hi: [
+          'ऊपर <b>Google Play</b> पर टैप करें. Chrome चेतावनी देगा कि यह फ़ाइल नुकसान पहुँचा सकती है; यह हर APK पर आती है. <b>फिर भी डाउनलोड करें</b> चुनें.',
+          'डाउनलोड की गई फ़ाइल खोलें. Android कहेगा कि इस स्रोत से इंस्टॉल ब्लॉक है.',
+          'उसी डायलॉग में <b>Settings</b> पर टैप करें, फिर <b>इस स्रोत से अनुमति दें</b> चालू करें.',
+          'वापस जाकर <b>Install</b>, फिर <b>Open</b> दबाएँ.',
+          'Play Protect चेतावनी दे तो <b>फिर भी इंस्टॉल करें</b> चुनें. यह बिल्ड Play Store से नहीं आया, इसलिए Google ने इसे साइन नहीं किया.',
+        ],
+        noteEn: '<b>Upgrading?</b> Install straight over the old build; the app id is the same, so your data survives. If Android refuses with <b>App not installed</b>, uninstall the previous build first: that means the signing key changed.',
+        noteHi: '<b>अपडेट कर रहे हैं?</b> पुराने बिल्ड के ऊपर ही इंस्टॉल करें, ऐप आईडी वही है इसलिए आपका डेटा बचा रहेगा. अगर <b>App not installed</b> आए तो पहले पुराना बिल्ड हटाएँ: इसका मतलब साइनिंग की बदल गई है.',
+      },
+      ios: {
+        en: [
+          'Apple only lets a test build run on phones registered to our developer account in advance, so this is a two-step handshake.',
+          'On the iPhone, open <b>udid.tech</b> in <b>Safari</b>, tap <b>Get UDID</b>, allow the profile download, then Settings shows <b>Profile Downloaded</b>. Install it and Safari reopens with a 40-character id.',
+          'Send us that id. We register it and produce a build that will run on your phone. Allow a few hours.',
+          'Open the install link we send <b>on the iPhone, in Safari</b>, not on a Mac and not in another browser. Tap <b>Install</b> and wait for the icon.',
+          'First launch only: Settings, then General, then <b>VPN &amp; Device Management</b>, tap our profile and choose <b>Trust</b>.',
+        ],
+        hi: [
+          'Apple टेस्ट बिल्ड सिर्फ़ उन्हीं फ़ोन पर चलने देता है जो पहले से हमारे डेवलपर अकाउंट में दर्ज हों, इसलिए यह दो चरणों में होता है.',
+          'आईफ़ोन पर <b>Safari</b> में <b>udid.tech</b> खोलें, <b>Get UDID</b> दबाएँ, प्रोफ़ाइल डाउनलोड की अनुमति दें, फिर Settings में <b>Profile Downloaded</b> दिखेगा. उसे इंस्टॉल करें और Safari में 40 अक्षरों की आईडी आएगी.',
+          'वह आईडी हमें भेजें. हम उसे दर्ज करके आपके फ़ोन के लिए बिल्ड बनाएँगे. कुछ घंटे लग सकते हैं.',
+          'हमारा भेजा इंस्टॉल लिंक <b>आईफ़ोन पर, Safari में</b> ही खोलें, Mac या किसी और ब्राउज़र में नहीं. <b>Install</b> दबाकर आइकन का इंतज़ार करें.',
+          'सिर्फ़ पहली बार: Settings, फिर General, फिर <b>VPN &amp; Device Management</b> में हमारी प्रोफ़ाइल पर <b>Trust</b> चुनें.',
+        ],
+        noteEn: '<b>On TestFlight instead?</b> Ignore all of the above. You get an email invitation, install TestFlight from the App Store, and updates arrive on their own.',
+        noteHi: '<b>TestFlight मिल गया है?</b> तो ऊपर का कुछ न करें. ईमेल से न्योता आएगा, App Store से TestFlight इंस्टॉल करें, अपडेट अपने आप आते रहेंगे.',
+      },
     };
     var THEMES = [ ['yellow-light','cl','#E0A015','Yellow · Light'], ['white-light','cl','#F0632E','White · Light'], ['mono-light','cl','#111111','B&W · Light'], ['yellow-dark','cd','#F5B93A','Yellow · Dark'], ['mono-dark','cd','#FFFFFF','B&W · Dark'] ];
     var META = { 'yellow-light':'#FFFFFF','white-light':'#FFFFFF','mono-light':'#FFFFFF','yellow-dark':'#0B0B0C','mono-dark':'#0A0A0A' };
+
+    // A collapsed install guide. `<details>` rather than state: no JavaScript
+    // to get wrong, keyboard and screen readers work without help, and it
+    // prints expanded.
+    function HowTo(props){
+      var d = HOWTO[props.os], lang = props.lang;
+      var steps = d[lang] || d.en;
+      var note = lang === 'hi' ? d.noteHi : d.noteEn;
+      var icon = props.os === 'android'
+        ? h('svg',{className:'os',viewBox:'0 0 512 512','aria-hidden':'true'},
+            h('path',{d:'M47 32c-9 5-15 15-15 28v392c0 13 6 23 15 28l224-224L47 32z',fill:'#00c3ff'}),
+            h('path',{d:'M336 176L83 33c-9-5-18-5-25-1l224 224 54-80z',fill:'#00e676'}),
+            h('path',{d:'M336 336l-54-80-224 224c7 4 16 4 25-1l253-143z',fill:'#ff3d47'}),
+            h('path',{d:'M336 176l-54 80 54 80 94-53c17-10 17-44 0-54l-94-53z',fill:'#ffc400'}))
+        : h('svg',{className:'os',viewBox:'0 0 384 512','aria-hidden':'true',fill:'currentColor'},
+            h('path',{d:'M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z'}));
+      return h('details', { className:'howto' },
+        h('summary', null,
+          icon,
+          h('span', null, props.title),
+          h('svg',{className:'chev',viewBox:'0 0 24 24',fill:'none',stroke:'currentColor',strokeWidth:2,strokeLinecap:'round',strokeLinejoin:'round','aria-hidden':'true'}, h('path',{d:'M6 9l6 6 6-6'}))
+        ),
+        h('div', { className:'body' },
+          h('ol', null, steps.map(function(t,i){
+            return h('li', { key:i, dangerouslySetInnerHTML:{ __html:t } });
+          })),
+          h('div', { className:'note', dangerouslySetInnerHTML:{ __html:note } })
+        )
+      );
+    }
 
     // ============ Feature showcase, static, production-accurate mocks of the app's pages ============
     function Mock(){ var kids=[].slice.call(arguments); return h('div',{className:'phone'}, h('div',{className:'notch'}), h('div',{className:'screen'}, kids)); }
@@ -2316,24 +2413,32 @@
               // had not measured, and the palm count moved when one tester
               // took several readings. Both are gone; `users_*` counts real
               // people (completed onboarding, never an anonymous session).
+              // Per platform, BOTH shown together once either has anybody, so
+              // the split is readable rather than one lonely number. A zero
+              // next to a real count is information; a hidden platform is not.
+              //
+              // Every number here excludes guests, checked server-side against
+              // `auth.users.is_anonymous` (migration 053) rather than trusted
+              // from the app. That mattered: the total this used to fall back
+              // to was seven completed onboardings, and all seven were
+              // anonymous accounts left behind by the old `0000` bypass.
               stats ? h('div', { className:'stats' },
-                stats.users_android > 0 ? h('div', null,
-                  h('div', { className:'n' }, human(stats.users_android)),
-                  h('div', { className:'l' }, lang==='hi'?'एंड्रॉइड':'Android')
-                ) : null,
-                stats.users_ios > 0 ? h('div', null,
-                  h('div', { className:'n' }, human(stats.users_ios)),
-                  h('div', { className:'l' }, lang==='hi'?'iOS':'iOS')
-                ) : null,
-                // Fallback while the apps do not yet register a session row.
-                // `user_sessions.platform` is how a person is attributed to a
-                // platform, and nothing writes it today, so both counts are 0.
-                // Showing the (onboarding-gated, non-anonymous) total beats an
-                // empty row; it disappears on its own the moment either
-                // platform count becomes real.
-                (stats.users_android > 0 || stats.users_ios > 0) ? null : h('div', null,
-                  h('div', { className:'n' }, human(stats.people)),
-                  h('div', { className:'l' }, lang==='hi'?'लोग':'People')
+                (stats.users_android > 0 || stats.users_ios > 0) ? h(React.Fragment, null,
+                  h('div', null,
+                    h('div', { className:'n' }, human(stats.users_android)),
+                    h('div', { className:'l' }, lang==='hi'?'एंड्रॉइड':'Android')
+                  ),
+                  h('div', null,
+                    h('div', { className:'n' }, human(stats.users_ios)),
+                    h('div', { className:'l' }, 'iOS')
+                  )
+                ) : (
+                  // Until a device registers a session there is nothing to
+                  // split, so the honest fallback is the account total.
+                  stats.people > 0 ? h('div', null,
+                    h('div', { className:'n' }, human(stats.people)),
+                    h('div', { className:'l' }, lang==='hi'?'लोग':'People')
+                  ) : null
                 )
               ) : null,
               h('table', { className:'buildtable' },
@@ -2367,6 +2472,11 @@
                   )
                 )
               ),
+              // Collapsed, directly under the build table, because that is
+              // where somebody who just tapped a download and hit Android's
+              // "blocked" dialog looks next.
+              h(HowTo, { os:'android', lang:lang, title:COPY.howAndroid[lang] }),
+              h(HowTo, { os:'ios', lang:lang, title:COPY.howIos[lang] }),
               null /* scrollcue removed, nothing below the hero for now */
             ),
             h('div', { className:'right' }, h(Phone, { lang:lang }), h(Engines, { lang:lang }))
