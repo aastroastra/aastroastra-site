@@ -190,9 +190,12 @@
   .howto li::before { content:counter(step); position:absolute; left:0; top:1px; width:18px; height:18px; border-radius:50%;
                       background:var(--tint); color:#fff; font-size:10.5px; font-weight:700; display:flex; align-items:center; justify-content:center; }
   .howto li b { font-weight:700; }
+  .howto a { color:var(--tint); font-weight:700; text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--tint) 40%, transparent); }
+  .howto a:hover { border-bottom-color:var(--tint); }
   .howto .note { margin-top:11px; padding:9px 11px; border-radius:9px; background:var(--bg); border:1px solid var(--line);
                  font-size:11.5px; line-height:1.55; color:var(--muted); }
   .howto .note b { color:var(--fg); }
+  .howto .note a { color:var(--tint); }
 
   .buildtable { width:100%; max-width:100%; table-layout:fixed; margin-top:18px; border-collapse:collapse; font-size:13px; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
   .buildtable th, .buildtable td { text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; overflow-wrap:anywhere; word-break:break-word; }
@@ -1327,20 +1330,20 @@
       ios: {
         en: [
           'Apple only lets a test build run on phones registered to our developer account in advance, so this is a two-step handshake.',
-          'On the iPhone, open <b>udid.tech</b> in <b>Safari</b>, tap <b>Get UDID</b>, allow the profile download, then Settings shows <b>Profile Downloaded</b>. Install it and Safari reopens with a 40-character id.',
+          'On the iPhone, open <a href="https://udid.tech" target="_blank" rel="noopener">udid.tech</a> in <b>Safari</b>, tap <b>Get UDID</b>, allow the profile download, then Settings shows <b>Profile Downloaded</b>. Install it and Safari reopens with a 40-character id.',
           'Send us that id. We register it and produce a build that will run on your phone. Allow a few hours.',
           'Open the install link we send <b>on the iPhone, in Safari</b>, not on a Mac and not in another browser. Tap <b>Install</b> and wait for the icon.',
           'First launch only: Settings, then General, then <b>VPN &amp; Device Management</b>, tap our profile and choose <b>Trust</b>.',
         ],
         hi: [
           'Apple टेस्ट बिल्ड सिर्फ़ उन्हीं फ़ोन पर चलने देता है जो पहले से हमारे डेवलपर अकाउंट में दर्ज हों, इसलिए यह दो चरणों में होता है.',
-          'आईफ़ोन पर <b>Safari</b> में <b>udid.tech</b> खोलें, <b>Get UDID</b> दबाएँ, प्रोफ़ाइल डाउनलोड की अनुमति दें, फिर Settings में <b>Profile Downloaded</b> दिखेगा. उसे इंस्टॉल करें और Safari में 40 अक्षरों की आईडी आएगी.',
+          'आईफ़ोन पर <b>Safari</b> में <a href="https://udid.tech" target="_blank" rel="noopener">udid.tech</a> खोलें, <b>Get UDID</b> दबाएँ, प्रोफ़ाइल डाउनलोड की अनुमति दें, फिर Settings में <b>Profile Downloaded</b> दिखेगा. उसे इंस्टॉल करें और Safari में 40 अक्षरों की आईडी आएगी.',
           'वह आईडी हमें भेजें. हम उसे दर्ज करके आपके फ़ोन के लिए बिल्ड बनाएँगे. कुछ घंटे लग सकते हैं.',
           'हमारा भेजा इंस्टॉल लिंक <b>आईफ़ोन पर, Safari में</b> ही खोलें, Mac या किसी और ब्राउज़र में नहीं. <b>Install</b> दबाकर आइकन का इंतज़ार करें.',
           'सिर्फ़ पहली बार: Settings, फिर General, फिर <b>VPN &amp; Device Management</b> में हमारी प्रोफ़ाइल पर <b>Trust</b> चुनें.',
         ],
-        noteEn: '<b>On TestFlight instead?</b> Ignore all of the above. You get an email invitation, install TestFlight from the App Store, and updates arrive on their own.',
-        noteHi: '<b>TestFlight मिल गया है?</b> तो ऊपर का कुछ न करें. ईमेल से न्योता आएगा, App Store से TestFlight इंस्टॉल करें, अपडेट अपने आप आते रहेंगे.',
+        noteEn: '<b>On TestFlight instead?</b> Ignore all of the above. You get an email invitation, install <a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener">TestFlight</a> from the App Store, and updates arrive on their own.',
+        noteHi: '<b>TestFlight मिल गया है?</b> तो ऊपर का कुछ न करें. ईमेल से न्योता आएगा, App Store से <a href="https://apps.apple.com/app/testflight/id899247664" target="_blank" rel="noopener">TestFlight</a> इंस्टॉल करें, अपडेट अपने आप आते रहेंगे.',
       },
     };
     var THEMES = [ ['yellow-light','cl','#E0A015','Yellow · Light'], ['white-light','cl','#F0632E','White · Light'], ['mono-light','cl','#111111','B&W · Light'], ['yellow-dark','cd','#F5B93A','Yellow · Dark'], ['mono-dark','cd','#FFFFFF','B&W · Dark'] ];
