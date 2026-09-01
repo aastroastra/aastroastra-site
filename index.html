@@ -2331,7 +2331,7 @@
     function App(){
       var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
       var lS=useState('en'), lang=lS[0], setLang=lS[1];
-      var vS=useState({ver:'0.2.1',size:'5.8',apk:SUPA+'aastroastra-latest.apk',updated:''}), ver=vS[0], setVer=vS[1];
+      var vS=useState({ver:'0.2.1',build:null,size:'5.8',apk:SUPA+'aastroastra-latest.apk',updated:''}), ver=vS[0], setVer=vS[1];
       // iOS build info (null until version-ios.json is published by publish-ios.sh).
       var viS=useState(null), verIos=viS[0], setVerIos=viS[1];
       var stS=useState(null), stats=stS[0], setStats=stS[1];
@@ -2340,7 +2340,7 @@
         if(!META[saved]) saved=(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)?'yellow-dark':'yellow-light';
         applyTheme(saved);
         try{ var lg=localStorage.getItem('aa-lang'); if(lg) setLang(lg); }catch(e){}
-        fetch(SUPA+'version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(v){ if(v) setVer({ver:v.version||'0.2.1',size:v.sizeMb||'5.8',apk:v.apk||(SUPA+'aastroastra-latest.apk'),updated:v.updated||v.date||''}); }).catch(function(){});
+        fetch(SUPA+'version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(v){ if(v) setVer({ver:v.version||'0.2.1',build:v.versionCode||null,size:v.sizeMb||'5.8',apk:v.apk||(SUPA+'aastroastra-latest.apk'),updated:v.updated||v.date||''}); }).catch(function(){});
         fetch(SUPA+'version-ios.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(v){ if(v) setVerIos(v); }).catch(function(){});
         // Real counts from the database. If the call fails the strip simply
         // never appears, which is better than showing a zero we can't stand behind.
@@ -2455,7 +2455,9 @@
                 h('tbody', null,
                   h('tr', null,
                     h('td', { className:'plat' }, 'Android'),
-                    h('td', null, ver.ver),
+                    // Version and build, the same shape as the iOS row below.
+                    // The build number is what a tester quotes in a bug report.
+                    h('td', null, ver.ver + (ver.build ? (' ('+ver.build+')') : '')),
                     h('td', null, ver.size + ' MB'),
                     h('td', null, stamp(ver.updated)),
                     h('td', null, h('a', { href:ver.apk, onClick:function(){ trackDownload('android','apk'); } },
@@ -2463,8 +2465,8 @@
                   ),
                   h('tr', null,
                     h('td', { className:'plat' }, 'iOS'),
-                    h('td', null, verIos ? (verIos.version + (verIos.build ? (' ('+verIos.build+')') : '')) : ', '),
-                    h('td', null, verIos ? (verIos.sizeMb + ' MB') : ', '),
+                    h('td', null, verIos ? (verIos.version + (verIos.build ? (' ('+verIos.build+')') : '')) : '-'),
+                    h('td', null, verIos ? (verIos.sizeMb + ' MB') : '-'),
                     h('td', null, verIos ? stamp(verIos.updated) : ''),
                     h('td', null,
                       (verIos && verIos.install) ? h('a', { href:verIos.install, onClick:function(){ trackDownload('ios','ota'); } },
