@@ -1,0 +1,50 @@
+# Secret scanning config, consumed by .github/workflows/secret-scan.yml.
+#
+# Supabase issues two keys per project and gitleaks' stock `jwt` rule cannot
+# tell them apart:
+#
+#   anon          public by design. It is compiled into every mobile build and
+#                 served in the marketing site's JavaScript, and every table it
+#                 can reach is RLS-locked. Allowlisted below.
+#   service_role  bypasses every RLS policy. It must never leave a secret
+#                 store. The dedicated rule below matches only this one.
+#
+# The markers are the base64 of `"role":"service_role"` and `"role":"anon"`
+# inside the JWT payload. Supabase payloads have a fixed shape and a fixed-width
+# project ref, so the base64 alignment is stable and these substrings appear
+# literally. Verified against real tokens of both classes before this shipped.
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "supabase-service-role-key"
+description = "Supabase service_role key, bypasses every RLS policy"
+regex = '''eyJ[A-Za-z0-9_-]*InNlcnZpY2Vfcm9sZSI[A-Za-z0-9_-]*'''
+keywords = ["InNlcnZpY2Vfcm9sZSI"]
+
+[allowlist]
+description = "Supabase anon keys are public by design and RLS-locked"
+regexTarget = "match"
+regexes = ['''eyJ[A-Za-z0-9_-]*cm9sZSI6ImFub24i[A-Za-z0-9_-]*''']
+paths = [
+  # Build output and dependency trees. Never committed, but `gitleaks dir`
+  # walks them on a developer machine.
+  '''(^|/)\.next/''',
+  '''(^|/)node_modules/''',
+  '''(^|/)Pods/''',
+  '''(^|/)build/''',
+  '''(^|/)DerivedData/''',
+  # Local-only secret stores. All three are gitignored and untracked; they hold
+  # real keys on a developer machine and must never be committed. Listed here so
+  # a local run reports the things that matter instead of these.
+  '''(^|/)\.env(\.[a-z]+)?$''',
+  '''(^|/)keystore\.properties$''',
+  '''(^|/)local\.properties$''',
+  '''(^|/)Config/Secrets\.xcconfig$''',
+  # Deliberate non-secrets: a forged token asserting an invalid signature is
+  # rejected, and a placeholder in a request-shape assertion.
+  '''(^|/)tests/auth_verify_test\.ts$''',
+  '''(^|/)supabase/functions/_shared/notification-authoring\.test\.ts$''',
+  '''(^|/)AastroastraTests/Astrology/AstrologyAPIProviderTests\.swift$''',
+]
