@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status · AastroAstra</title>
+<meta name="description" content="Live status of AastroAstra's services.">
+<link rel="icon" href="./favicon.png">
+<style>
+  :root{
+    --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --muted:#8C8676;
+    --tint:#E0A015; --up:#177245; --up-bg:#E8F3EB; --slow:#9A6206; --slow-bg:#FBF0DF;
+    --down:#A81E22; --down-bg:#FBEAE8; --off:#8C8676; --off-bg:#F4F2ED;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:400 16px/1.55 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  header{border-bottom:1px solid var(--line);padding:20px 0}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{font-weight:700;letter-spacing:-.01em;text-decoration:none;font-size:17px}
+  .brand span{color:var(--tint)}
+  .back{font-size:14px;color:var(--muted);text-decoration:none}
+  .back:hover{color:var(--fg)}
+
+  .banner{padding:44px 0 30px;border-bottom:1px solid var(--line)}
+  .dot{width:11px;height:11px;border-radius:50%;display:inline-block;margin-right:10px;
+    vertical-align:middle;position:relative;top:-1px}
+  h1{font-size:clamp(24px,4.5vw,32px);margin:0 0 8px;letter-spacing:-.02em;font-weight:700}
+  .sub{color:var(--muted);font-size:14.5px;margin:0}
+
+  .group{margin-top:30px}
+  .group h2{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 10px;font-weight:600}
+  .row{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);
+    border-radius:10px;margin-bottom:8px;background:var(--card)}
+  .row .name{font-weight:600;font-size:15px}
+  .row .why{color:var(--muted);font-size:13px;margin-top:2px}
+  .row .mid{flex:1;min-width:0}
+  .pill{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 9px;border-radius:5px;white-space:nowrap}
+  .lat{font:400 12px ui-monospace,monospace;color:var(--muted);
+    font-variant-numeric:tabular-nums;min-width:52px;text-align:right}
+  .up{background:var(--up-bg);color:var(--up)} .degraded{background:var(--slow-bg);color:var(--slow)}
+  .down{background:var(--down-bg);color:var(--down)} .off{background:var(--off-bg);color:var(--off)}
+  .d-up{background:var(--up)} .d-degraded{background:var(--slow)}
+  .d-down{background:var(--down)} .d-off{background:var(--off)}
+
+  .note{border:1px solid var(--line);background:#FBFAF6;border-radius:10px;padding:15px 18px;
+    margin:26px 0;font-size:14px;color:var(--muted)}
+  .note b{color:var(--fg)}
+  footer{border-top:1px solid var(--line);margin-top:44px;padding:22px 0 60px;
+    font-size:13.5px;color:var(--muted)}
+  footer a{margin-right:16px;text-decoration:none}
+  footer a:hover{color:var(--fg)}
+  .skeleton{height:56px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;
+    background:linear-gradient(90deg,#FAF8F3,#F2EFE7,#FAF8F3);background-size:200% 100%;
+    animation:sh 1.2s linear infinite}
+  @keyframes sh{to{background-position:-200% 0}}
+  @media (prefers-reduced-motion:reduce){.skeleton{animation:none}}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <a class="brand" href="./">Aastro<span>Astra</span></a>
+  <a class="back" href="./">Back to site</a>
+</div></header>
+
+<div class="banner"><div class="wrap">
+  <h1 id="headline"><span class="dot d-off" id="dot"></span>Checking…</h1>
+  <p class="sub" id="checked">Reading the latest health check.</p>
+</div></div>
+
+<div class="wrap">
+  <div id="groups">
+    <div class="group"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
+  </div>
+
+  <div class="note">
+    <b>How this page works.</b> Every service is checked every five minutes by a job on our own
+    servers, and this page reads the result of that check. It never runs a check itself, so opening
+    it costs our providers nothing.
+    <br><br>
+    <b>Off</b> means a feature has not launched yet, not that it is broken.
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <a href="./">Home</a>
+  <a href="./privacy.html">Privacy</a>
+  <a href="./terms.html">Terms</a>
+  <span>AastroAstra™</span>
+</div></footer>
+
+<script>
+(function () {
+  // Read through our own function, never a vendor. The page has no keys and
+  // learns nothing an operator would not put on a public page.
+  var ENDPOINT = "https://gttszlununmqivrqevwv.supabase.co/functions/v1/status";
+  var WORD = { up: "Operational", degraded: "Slow", down: "Down", off: "Not launched" };
+  var HEAD = {
+    up: "All systems operational",
+    degraded: "Some services are slow",
+    down: "We have a problem",
+    off: "Checking…"
+  };
+
+  function ago(iso) {
+    if (!iso) return "not checked yet";
+    var s = Math.max(0, Math.round((Date.now() - new Date(iso).getTime()) / 1000));
+    if (s < 90) return s + " seconds ago";
+    var m = Math.round(s / 60);
+    if (m < 90) return m + " minute" + (m === 1 ? "" : "s") + " ago";
+    return Math.round(m / 60) + " hours ago";
+  }
+
+  function render(d) {
+    var overall = d.overall || "off";
+    document.getElementById("dot").className = "dot d-" + overall;
+    document.getElementById("headline").innerHTML =
+      '<span class="dot d-' + overall + '"></span>' + (HEAD[overall] || HEAD.off);
+    document.getElementById("checked").textContent =
+      "Last checked " + ago(d.checked_at) + ". Rechecked every five minutes.";
+
+    var groups = {}, order = [];
+    (d.services || []).forEach(function (s) {
+      if (!groups[s.group_name]) { groups[s.group_name] = []; order.push(s.group_name); }
+      groups[s.group_name].push(s);
+    });
+
+    var html = order.map(function (g) {
+      return '<div class="group"><h2>' + g + "</h2>" + groups[g].map(function (s) {
+        var lat = s.state === "up" || s.state === "degraded" ? (s.latency_ms ? s.latency_ms + " ms" : "") : "";
+        return '<div class="row">' +
+          '<span class="dot d-' + s.state + '"></span>' +
+          '<div class="mid"><div class="name">' + s.label + "</div>" +
+          '<div class="why">' + (s.blurb || "") + "</div></div>" +
+          '<span class="lat">' + lat + "</span>" +
+          '<span class="pill ' + s.state + '">' + (WORD[s.state] || s.state) + "</span>" +
+          "</div>";
+      }).join("") + "</div>";
+    }).join("");
+
+    document.getElementById("groups").innerHTML = html ||
+      '<div class="note">No check has run yet. Try again in a few minutes.</div>';
+  }
+
+  function load() {
+    fetch(ENDPOINT, { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(render)
+      .catch(function () {
+        document.getElementById("headline").innerHTML =
+          '<span class="dot d-down"></span>Cannot reach the status service';
+        document.getElementById("checked").textContent =
+          "If the rest of the site works, this page is the only thing affected.";
+        document.getElementById("groups").innerHTML = "";
+      });
+  }
+
+  load();
+  setInterval(load, 60000);
+})();
+</script>
+</body>
+</html>
