@@ -10,7 +10,7 @@
   :root{
     --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --muted:#8C8676;
     --tint:#E0A015; --up:#177245; --up-bg:#E8F3EB; --slow:#9A6206; --slow-bg:#FBF0DF;
-    --down:#A81E22; --down-bg:#FBEAE8; --off:#8C8676; --off-bg:#F4F2ED;
+    --down:#9A3412; --down-bg:#FBEDE6; --off:#8C8676; --off-bg:#F4F2ED;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--fg);
@@ -101,12 +101,21 @@
   // learns nothing an operator would not put on a public page.
   var ENDPOINT = "https://gttszlununmqivrqevwv.supabase.co/functions/v1/status";
   var WORD = { up: "Operational", degraded: "Slow", down: "Down", off: "Not launched" };
-  var HEAD = {
-    up: "All systems operational",
-    degraded: "Some services are slow",
-    down: "We have a problem",
-    off: "Checking…"
-  };
+  // Say which service, not "we have a problem".
+  // A visitor cannot act on a vague apology; they can act on "sign-in by SMS is
+  // unavailable" because they know whether they were about to sign in.
+  function headline(d) {
+    var state = d.overall;
+    if (state === "up") return "All systems normal";
+    var hit = (d.services || []).filter(function (x) { return x.state === state; });
+    var names = hit.map(function (x) { return x.label; });
+    if (!names.length) return "Checking\u2026";
+    var verb = state === "degraded" ? " is running slowly" : " is unavailable";
+    if (names.length === 1) return names[0] + verb;
+    if (names.length === 2) return names[0] + " and " + names[1] +
+      (state === "degraded" ? " are running slowly" : " are unavailable");
+    return names.length + (state === "degraded" ? " services are running slowly" : " services are unavailable");
+  }
 
   function ago(iso) {
     if (!iso) return "not checked yet";
@@ -121,9 +130,14 @@
     var overall = d.overall || "off";
     document.getElementById("dot").className = "dot d-" + overall;
     document.getElementById("headline").innerHTML =
-      '<span class="dot d-' + overall + '"></span>' + (HEAD[overall] || HEAD.off);
+      '<span class="dot d-' + overall + '"></span>' + headline(d);
+    var live = (d.services || []).filter(function (x) { return x.state === "up"; }).length;
+    var counted = (d.services || []).filter(function (x) { return x.state !== "off"; }).length;
     document.getElementById("checked").textContent =
-      "Last checked " + ago(d.checked_at) + ". Rechecked every five minutes.";
+      (d.overall === "up"
+        ? "Last checked " + ago(d.checked_at) + "."
+        : live + " of " + counted + " services are working normally. Last checked " + ago(d.checked_at) + ".") +
+      " Rechecked every five minutes.";
 
     var groups = {}, order = [];
     (d.services || []).forEach(function (s) {

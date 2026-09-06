@@ -147,8 +147,8 @@
   .status-pill.up .sp-dot{background:#177245}
   .status-pill.degraded .sp-dot{background:#B8860B}
   .status-pill.degraded{color:#9A6206;border-color:#EBD9A8}
-  .status-pill.down .sp-dot{background:#A81E22}
-  .status-pill.down{color:#A81E22;border-color:#F0C9C7}
+  .status-pill.down .sp-dot{background:#C2410C}
+  .status-pill.down{color:#9A3412;border-color:#EBCFC0}
   @media (max-width:760px){ .status-pill{align-self:center} }
   .hero { display:grid; grid-template-columns:1fr 0.9fr; min-height:calc(100vh - 67px); }
   .hero > div { padding:30px; min-height:0; }
@@ -2354,25 +2354,47 @@
      * status indicator is worse than none on a landing page.
      */
     function StatusPill(props) {
-      var st = useState(null), state = st[0], setState = st[1];
+      var st = useState(null), data = st[0], setData = st[1];
       useEffect(function () {
         var alive = true;
         fetch('https://gttszlununmqivrqevwv.supabase.co/functions/v1/status', { cache:'no-store' })
           .then(function (r) { return r.json(); })
-          .then(function (d) { if (alive && d && d.overall) setState(d.overall); })
+          .then(function (d) { if (alive && d && d.overall) setData(d); })
           .catch(function () { /* stay hidden */ });
         return function () { alive = false; };
       }, []);
-      if (!state) return null;
+      if (!data) return null;
+
       var hi = props.lang === 'hi';
-      var WORD = {
-        up:        hi ? 'सभी सेवाएँ चालू' : 'All systems operational',
-        degraded:  hi ? 'कुछ सेवाएँ धीमी'  : 'Some services are slow',
-        down:      hi ? 'एक सेवा बंद है'   : 'We have a problem',
-        off:       hi ? 'स्थिति'           : 'Status'
-      };
-      return h('a', { className:'status-pill ' + state, href:'./status.html' },
-        h('span', { className:'sp-dot' }), WORD[state] || WORD.off);
+      var state = data.overall;
+
+      // Name the thing that is actually wrong.
+      //
+      // The first version said "We have a problem", which is alarming on a page
+      // whose job is to get someone to download an app, and tells them nothing:
+      // they cannot judge whether it affects them. One unavailable service, named,
+      // is calmer AND more useful than a vague apology. `off` never counts: a
+      // feature that has not launched is not an outage.
+      var hit = (data.services || []).filter(function (x) { return x.state === state; });
+      var names = hit.map(function (x) { return x.label; });
+      var msg;
+      if (state === 'up') {
+        msg = hi ? 'सभी सेवाएँ सामान्य' : 'All systems normal';
+      } else if (names.length === 1) {
+        msg = state === 'degraded'
+          ? (hi ? names[0] + ' धीमा है'      : names[0] + ' is slow')
+          : (hi ? names[0] + ' अभी बंद है'   : names[0] + ' is unavailable');
+      } else if (names.length > 1) {
+        msg = state === 'degraded'
+          ? (hi ? names.length + ' सेवाएँ धीमी' : names.length + ' services are slow')
+          : (hi ? names.length + ' सेवाएँ बंद'  : names.length + ' services unavailable');
+      } else {
+        msg = hi ? 'स्थिति' : 'Status';
+      }
+
+      return h('a', { className:'status-pill ' + state, href:'./status.html',
+                      title: hi ? 'पूरी स्थिति देखें' : 'See full status' },
+        h('span', { className:'sp-dot' }), msg);
     }
 
     function App(){
