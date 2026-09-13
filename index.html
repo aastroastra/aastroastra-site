@@ -204,7 +204,7 @@
   .howto ol { margin:11px 0 0; padding-left:0; list-style:none; counter-reset:step; }
   .howto li { counter-increment:step; position:relative; padding-left:27px; margin-bottom:9px; font-size:12.5px; line-height:1.55; color:var(--fg); }
   .howto li::before { content:counter(step); position:absolute; left:0; top:1px; width:18px; height:18px; border-radius:50%;
-                      background:var(--tint); color:#fff; font-size:10.5px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+                      background:var(--tint); color:var(--on-accent); font-size:10.5px; font-weight:700; display:flex; align-items:center; justify-content:center; }
   .howto li b { font-weight:700; }
   .howto a { color:var(--tint); font-weight:700; text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--tint) 40%, transparent); }
   .howto a:hover { border-bottom-color:var(--tint); }
@@ -782,9 +782,14 @@
   /* The exchange. */
   .cnv-chat { max-width:760px; margin:44px auto 0; }
   .cnv-ask { text-align:right; }
-  /* White, not near-black. The bubble sits on a saturated tint gradient and
-     dark ink on it read as muddy rather than as a question being asked. */
-  .cnv-ask span { display:inline-block; max-width:100%; background:var(--tint-grad); color:#fff;
+  /* The label is DERIVED from the fill, never fixed.
+     This was `color:#fff`, chosen because white reads better than dark ink on
+     the saturated yellow gradient. True for that theme and invisible in the
+     mono ones, where `--tint-grad` is `var(--tint)` and the tint is #FAFAFA:
+     white text on a white bubble. `--on-accent` is the token that answers this
+     per theme, and every other tint-filled element on this page already uses
+     it. */
+  .cnv-ask span { display:inline-block; max-width:100%; background:var(--tint-grad); color:var(--on-accent);
     border-radius:22px 22px 6px 22px; padding:16px 22px; font-weight:700;
     font-size:clamp(19px,2.9vw,30px); line-height:1.25; letter-spacing:-.01em; }
   .cnv-ans { margin-top:20px; border:1px solid var(--line); border-radius:22px; background:var(--card); overflow:hidden; }
