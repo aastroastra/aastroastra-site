@@ -433,7 +433,7 @@
   .vbtn { margin-top:14px; width:100%; border:none; background:var(--d-teal); color:#fff; border-radius:12px; padding:11px; font:inherit; font-weight:800; font-size:12.5px; cursor:pointer; }
 
   footer { border-top:1px solid var(--line); }
-  .foot-simple { display:grid; grid-template-columns:repeat(4,1fr); }
+  .foot-simple { display:grid; grid-template-columns:repeat(5,1fr); }
   .foot-simple > * { padding:12px 30px; font-size:12.5px; color:var(--muted); display:flex; align-items:center; }
   .foot-simple > *:not(:last-child) { border-right:1px solid var(--line); }
   .foot-simple a:hover { color:var(--tint); }
@@ -455,6 +455,31 @@
   .fcol a:hover { color:var(--tint); }
   .foot-bar { display:flex; flex-direction:column; gap:6px; padding:16px 22px; border-top:1px solid var(--line); font-size:11.5px; color:var(--muted); }
 
+  /* ── The wordmark band ──────────────────────────────────────────────────
+     The footer ended on a 12px trademark line, which is a quiet way to end a
+     page that spends the rest of its height being loud. The name is set as SVG
+     rather than CSS text so it fits the width exactly at every viewport:
+     `textLength` pins the advance width to the viewBox, so it can never wrap,
+     never overflow, and never need a breakpoint. */
+  .foot-word { padding:clamp(26px,5vw,64px) clamp(16px,4vw,40px) clamp(10px,2vw,18px); }
+  .foot-word svg { display:block; width:100%; height:auto; overflow:visible; }
+  .foot-word text {
+    font-family:'Noto Serif',Georgia,serif; font-weight:700;
+    fill:var(--tint); letter-spacing:-.012em;
+  }
+  /* The mark sits just under the letters, at the size of a lowercase x, so the
+     wordmark reads as one lockup rather than a logo parked beside a title. */
+  .foot-word .fw-sub {
+    text-align:center; margin-top:clamp(6px,1.2vw,14px);
+    font-size:clamp(10px,1.05vw,13px); letter-spacing:.34em; text-transform:uppercase;
+    color:var(--muted);
+  }
+  .foot-legal {
+    border-top:1px solid var(--line); padding:15px clamp(16px,4vw,30px);
+    display:flex; flex-wrap:wrap; gap:6px 18px; justify-content:center; text-align:center;
+    font-size:11.5px; color:var(--muted);
+  }
+
   @media (max-width:900px) {
     html, body, #root { height:auto; } body { overflow-y:auto; overflow-x:hidden; }
     .frame { height:auto; min-height:100vh; }
@@ -469,6 +494,7 @@
     /* Footer: hide the compact desktop bar, show the full branded footer */
     .foot-simple { display:none; }
     .foot-big { display:block; }
+    .foot-big .foot-bar { display:none; }
   }
   @media (max-width:560px) {
     header { flex-wrap:wrap; row-gap:12px; padding:16px 18px; }
@@ -1316,6 +1342,7 @@
       dl:{en:'Download the beta',hi:'बीटा डाउनलोड करें'}, getapp:{en:'Get the Android app',hi:'एंड्रॉइड ऐप लें'},
       download:{en:'Download Beta',hi:'बीटा डाउनलोड'}, privacy:{en:'Privacy Policy',hi:'गोपनीयता नीति'}, terms:{en:'Terms of Use',hi:'उपयोग की शर्तें'},
       presskit:{en:'Press Kit',hi:'प्रेस किट'}, status:{en:'Status',hi:'स्थिति'},
+      deleteAcct:{en:'Delete account',hi:'खाता हटाएँ'},
       howAndroid:{en:'How to install on Android',hi:'एंड्रॉइड पर कैसे इंस्टॉल करें'},
       howIos:{en:'How to install on iPhone',hi:'आईफ़ोन पर कैसे इंस्टॉल करें'},
     };
@@ -2567,9 +2594,9 @@
             h('div', { className:'foot-simple' },
               h('a', { href:'./privacy.html' }, COPY.privacy[lang]),
               h('a', { href:'./terms.html' }, COPY.terms[lang]),
+              h('a', { href:'./delete-account.html' }, COPY.deleteAcct[lang]),
               h('a', { href:'./presskit.zip', download:true }, COPY.presskit[lang]),
-              h('a', { href:'./status.html' }, COPY.status[lang]),
-              h('div', { className:'tm' }, 'AastroAstra™ · © ' + (new Date().getFullYear()))
+              h('a', { href:'./status.html' }, COPY.status[lang])
             ),
             // Mobile: full branded footer.
             h('div', { className:'foot-big' },
@@ -2589,6 +2616,7 @@
                     h('b', null, lang==='hi'?'कानूनी':'Legal'),
                     h('a', { href:'./privacy.html' }, COPY.privacy[lang]),
                     h('a', { href:'./terms.html' }, COPY.terms[lang]),
+                    h('a', { href:'./delete-account.html' }, COPY.deleteAcct[lang]),
                     h('a', { href:'./status.html' }, COPY.status[lang])
                   ),
                   h('div', { className:'fcol' },
@@ -2601,6 +2629,21 @@
                 h('span', null, '© ' + (new Date().getFullYear()) + ' AastroAstra™. ' + (lang==='hi'?'सर्वाधिकार सुरक्षित।':'All rights reserved.')),
                 h('span', { className:'foot-tm' }, lang==='hi'?'AastroAstra™, AA चिन्ह व तीनों इंजन AastroAstra के ट्रेडमार्क हैं।':'AastroAstra™, the AA mark and the three engines are trademarks of AastroAstra.')
               )
+            ),
+            // The name, at the size the name deserves. textLength pins the
+            // advance width to the viewBox so it fits exactly at any viewport.
+            h('div', { className:'foot-word' },
+              h('svg', { viewBox:'0 0 1000 150', role:'img', 'aria-label':'AastroAstra' },
+                h('text', {
+                  x:500, y:120, textAnchor:'middle', fontSize:150,
+                  textLength:980, lengthAdjust:'spacingAndGlyphs'
+                }, 'AastroAstra')
+              ),
+              h('div', { className:'fw-sub' }, lang==='hi'?'विश्वास करने वाले के लिए':'For the one who believes')
+            ),
+            h('div', { className:'foot-legal' },
+              h('span', null, '© ' + (new Date().getFullYear()) + ' AastroAstra™. ' + (lang==='hi'?'सर्वाधिकार सुरक्षित।':'All rights reserved.')),
+              h('span', null, lang==='hi'?'AastroAstra™ व AA चिन्ह AastroAstra के ट्रेडमार्क हैं।':'AastroAstra™ and the AA mark are trademarks of AastroAstra.')
             )
           )
         )
