@@ -563,6 +563,12 @@
   .aai-verdict .rt .v { margin-top:6px; font-size:clamp(19px,2.7vw,26px); font-weight:800; line-height:1.25; color:var(--fg); letter-spacing:-.01em; }
   .aai-verdict .rt .s { margin-top:5px; font-size:14px; color:var(--muted); }
 
+  /* The verdict shows a BAND, the same three words the app shows, never a
+     figure. The old rule was a big gradient number; this is a pill, because a
+     phrase set at 78px reads as a headline rather than as a verdict. */
+  .aai-verdict .band-chip { flex:none; align-self:center; border-radius:999px; padding:10px 18px;
+    background:var(--tint-grad); color:var(--on-accent); font-size:clamp(14px,1.9vw,17px);
+    font-weight:800; letter-spacing:-.01em; line-height:1.2; text-align:center; max-width:220px; }
   /* Only now does the model speak. */
   .aai-say { max-width:720px; margin:22px auto 0; text-align:center; }
   .aai-say .lab { font-size:11px; letter-spacing:.2em; text-transform:uppercase; font-weight:800; color:var(--muted); }
@@ -978,6 +984,22 @@
     .feat-list { text-align:left; max-width:340px; margin:20px auto 0; }
     .sc-intro { padding:52px 22px 0; }
   }
+  /* Closing call to action. Centred, because it is the end of the page and
+     there is nothing beside it to align to. */
+  .getit { border-top:1px solid var(--line); }
+  .getit-in { max-width:1180px; margin:0 auto; padding:clamp(40px,6vw,72px) 20px clamp(36px,5vw,64px); text-align:center; }
+  .getit h2 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.02em;
+    font-size:clamp(24px,3.4vw,38px); line-height:1.08; margin:0; color:var(--fg); }
+  .getit p { color:var(--fg2); font-size:15.5px; line-height:1.6; margin:12px 0 0; }
+  .getit .store-row { justify-content:center; margin-top:24px; }
+  .getit .store-alt { text-align:center; }
+  /* The direct-APK line under the badges. Deliberately quiet: the store is the
+     route we want people on, and this is the one that still works in the hour
+     or so Play takes to let a new tester through. */
+  .store-alt { margin-top:12px; font-size:12.5px; color:var(--muted); }
+  .store-alt a { color:var(--fg2); text-decoration:underline; text-underline-offset:3px; }
+  .store-alt a:hover { color:var(--tint); }
+
   /* ── Platforms: one app, two design languages ───────────────────────────
      The section makes its own argument. Pick Apple and the chrome becomes a
      sliding iOS pill with soft radii and sentence-case labels; pick Android
@@ -1890,8 +1912,12 @@
         },
         vk:{en:'Confidence', hi:'विश्वास'},
         vv:{en:'Role-change window', hi:'भूमिका बदलने का समय'},
-        vs:{en:'Strong. Not certain, and the app never rounds this up.',
-            hi:'प्रबल, निश्चित नहीं। ऐप इसे कभी बढ़ाकर नहीं कहता।'},
+        /* "never rounds this up" answered a number that is no longer shown.
+           The app states a band and stops, which is the stronger claim anyway:
+           a percentage is the most checkable thing on a screen and these inputs
+           cannot support one. */
+        vs:{en:'One of three bands, never a percentage. The rules behind it are cited and reviewed.',
+            hi:'तीन में से एक श्रेणी, प्रतिशत कभी नहीं। इसके पीछे के नियम ग्रंथ से जुड़े और समीक्षित हैं।'},
         saylab:{en:'Only now does the AI speak', hi:'अब जाकर AI बोलता है'},
         say:{en:'“A window where your role or workplace can change. Strongest through 2026.”',
              hi:'“ऐसा समय जब भूमिका या कार्यस्थल बदल सकता है, 2026 में सबसे प्रबल।”'},
@@ -1912,34 +1938,22 @@
           en:[['Rule','<code>rule.dasha_axis_plus_10th_activation</code>'],
               ['Looks for','The running dasha lord sits on the <em>Rahu–Ketu axis</em>, and the <em>10th house</em> is activated'],
               ['Source','<em>Brihat Parashara Hora Shastra</em> ch. 46 · <em>Phaladeepika</em> ch. 15'],
-              ['Score','<b>0.62</b> base &nbsp;+0.09 if the 10th lord is exalted &nbsp;+0.05 if it sits in the 10th'],
               ['Says','“A window where your role or workplace can change”']],
           hi:[['नियम','<code>rule.dasha_axis_plus_10th_activation</code>'],
               ['क्या देखता है','चल रही दशा का स्वामी <em>राहु–केतु अक्ष</em> पर हो, और <em>दशम भाव</em> सक्रिय हो'],
               ['ग्रंथ','<em>बृहत् पराशर होरा शास्त्र</em> अ. 46 · <em>फलदीपिका</em> अ. 15'],
-              ['अंक','<b>0.62</b> मूल &nbsp;+0.09 यदि दशमेश उच्च का &nbsp;+0.05 यदि वह दशम में'],
               ['क्या कहता है','“ऐसा समय जब भूमिका या कार्यस्थल बदल सकता है”']]
         },
         gateVerdicts:{en:['Approve','Needs work','Reject'], hi:['स्वीकृत','सुधार चाहिए','अस्वीकृत']},
-        scrH:{en:'Where that 0.62 comes from', hi:'यह 0.62 कहाँ से आता है'},
-        scrRows:{
-          en:[['0.62','how strongly the text backs this claim on its own'],
-              ['+0.09','the 10th lord is exalted, one more thing agreeing'],
-              ['+0.05','and it sits in the 10th itself, one more again']],
-          hi:[['0.62','ग्रंथ अकेले इस कथन का कितना समर्थन करता है'],
-              ['+0.09','दशमेश उच्च का है, एक और बात जो सहमत है'],
-              ['+0.05','और वह दशम में ही बैठा है, एक और']]
-        },
-        scrTotal:{en:['0.76','so the app states it plainly, instead of leaning'],
-                  hi:['0.76','इसलिए ऐप झुकाव नहीं, सीधी बात कहता है']},
-        bands:{en:['Hedges','Leans','States plainly'], hi:['संकोच','झुकाव','सीधी बात']},
-        scrNote:{en:['Nothing here is computed. ','A person chose these numbers',', and an astrologer argues them down or up. That is what the review is for, and why every claim carries the version of the rules that produced it.'],
-                 hi:['यहाँ कुछ भी गणना से नहीं आता। ','ये अंक एक व्यक्ति ने तय किए हैं',', और ज्योतिषी उन्हें घटाते-बढ़ाते हैं। समीक्षा इसीलिए है, और इसीलिए हर कथन के साथ नियमों का संस्करण दर्ज रहता है।']},
+        /* scrH / scrRows / scrTotal / scrNote lived here and are gone with the
+           block that rendered them. Deleted rather than commented out: the
+           whole point is that these figures are not public, and a number in
+           the source of a page anyone can View Source on is still published. */
         gateNotes:{
-          en:[['“0.62 is too confident for a Ketu–Rahu axis without a supporting transit. Drop it to 0.55.”','the kind of note that changes a number'],
+          en:[['“This is too confident for a Ketu–Rahu axis with no supporting transit. Carry it lower.”','the kind of note that changes a weight'],
               ['“The Phaladeepika citation supports the 10th-house reading, not the timing. Cite ch. 46 alone.”','the kind of note that changes a source'],
               ['“Say ‘can change’, never ‘will change’. The chart shows a window, not an event.”','the kind of note that changes the wording']],
-          hi:[['“बिना सहायक गोचर के केतु–राहु अक्ष पर 0.62 अधिक है। इसे 0.55 करें।”','ऐसी टिप्पणी जो अंक बदल देती है'],
+          hi:[['“बिना सहायक गोचर के केतु–राहु अक्ष पर यह अधिक है। इसका भार घटाएँ।”','ऐसी टिप्पणी जो भार बदल देती है'],
               ['“फलदीपिका का संदर्भ दशम भाव के लिए है, समय के लिए नहीं। केवल अ. 46 दें।”','ऐसी टिप्पणी जो ग्रंथ-संदर्भ बदल देती है'],
               ['“‘बदल सकता है’ कहें, ‘बदलेगा’ कभी नहीं। कुंडली अवसर दिखाती है, घटना नहीं।”','ऐसी टिप्पणी जो शब्द बदल देती है']]
         },
@@ -2002,7 +2016,9 @@
         ),
 
         h('div', { className:'aai-verdict arv' },
-          h('div', { className:'score' }, '0.71'),
+          /* The band the app itself would show for this answer, worded exactly
+             as `chat_band_grounded` words it. It used to be a bare number. */
+          h('div', { className:'band-chip' }, lang==='hi' ? 'आपकी कुंडली पर आधारित' : 'Based on your chart'),
           h('div', { className:'rt' },
             h('div', { className:'k' }, T.vk[lang]),
             h('div', { className:'v' }, T.vv[lang]),
@@ -2049,34 +2065,24 @@
               })
             )
           ),
-          h('div', { className:'scr arv' },
-            h('div', { className:'h' }, T.scrH[lang]),
-            h('div', { className:'scr-rows' },
-              T.scrRows[lang].map(function(r, i){
-                return h('div', { className:'scr-row', key:i },
-                  h('div', { className:'num' }, r[0]),
-                  h('div', { className:'why' }, r[1])
-                );
-              }),
-              h('div', { className:'scr-row total' },
-                h('div', { className:'num' }, T.scrTotal[lang][0]),
-                h('div', { className:'why' }, T.scrTotal[lang][1])
-              )
-            ),
-            h('div', { className:'band' },
-              h('div', { className:'band-bar' }, h('i', { className:'b1' }), h('i', { className:'b2' }), h('i', { className:'b3' })),
-              h('div', { className:'band-marks' },
-                h('span', { style:{ left:'62%' } }, h('i', null, '\u25B2'), '0.62'),
-                h('span', { style:{ left:'76%' } }, h('i', null, '\u25B2'), '0.76')
-              ),
-              h('div', { className:'band-legend' },
-                T.bands[lang].map(function(b, i){ return h('span', { key:i }, b); })
-              )
-            ),
-            h('div', { className:'scr-note' },
-              T.scrNote[lang][0], h('b', null, T.scrNote[lang][1]), T.scrNote[lang][2])
-          ),
+          /* The score arithmetic used to live here: a "where that number comes
+             from" heading, the per-signal rows, a total and a band bar with two
+             numeric marks on it. It is gone from the public page on purpose.
 
+             The app never shows a number. It shows one of three bands, "Based
+             on your chart", "Partly based on your chart", "General guidance",
+             and the reasoning contract is explicit that a percentage is the
+             most checkable thing on a screen and these inputs cannot support
+             one. A marketing page that prints the weights is making exactly
+             the claim the product refuses to make, and inviting anyone to hold
+             us to a precision we do not have. The figures are not in this file
+             at all, comments included, because View Source publishes a comment
+             just as surely as it publishes a heading.
+
+             The scoring itself is unchanged and still runs; it is simply not
+             the public's to audit while it is being tuned. The copy that
+             remains says the rules are scored and reviewed, which is true and
+             does not put a figure on it. */
           h('div', { className:'aai-notes arv' },
             T.gateNotes[lang].map(function(n,i){
               return h('div', { className:'aai-note', key:i },
@@ -2653,6 +2659,52 @@
       );
     }
 
+    /* The Play open-testing join page. NOT a market:// or /store/apps/details
+       link: until the open test is promoted to production, the store listing
+       is not public and a normal store URL 404s for anyone who has not already
+       joined. This page is the one that works for a stranger. */
+    var PLAY_TESTING = 'https://play.google.com/apps/testing/com.avdstudiox.android';
+
+    /* One row, rendered in the hero and again above the footer.
+       Somebody who has just read to the bottom of the page has decided; making
+       them scroll back to the top to act on it is the whole reason this exists
+       twice. Shared rather than copied, so the links cannot drift apart. */
+    function StoreRow(props){
+      var lang = props.lang, ver = props.ver, verIos = props.verIos, where = props.where || 'hero';
+      var iosHref = (verIos && verIos.install) || 'https://testflight.apple.com/join/HZXJ4Dav';
+      return h(React.Fragment, null,
+        h('div', { className:'store-row' },
+          h('a', { className:'store-badge', href:PLAY_TESTING, target:'_blank', rel:'noopener',
+                   onClick:function(){ trackDownload('android','play-testing-'+where); },
+                   'aria-label':(lang==='hi'?'गूगल प्ले पर ओपन टेस्टिंग जॉइन करें':'Join the open test on Google Play') },
+            h('span', { className:'soon' }, lang==='hi'?'ओपन टेस्ट':'Open test'),
+            h('svg',{className:'ico',viewBox:'0 0 512 512','aria-hidden':'true'},
+              h('path',{d:'M47 32c-9 5-15 15-15 28v392c0 13 6 23 15 28l224-224L47 32z',fill:'#00c3ff'}),
+              h('path',{d:'M336 176L83 33c-9-5-18-5-25-1l224 224 54-80z',fill:'#00e676'}),
+              h('path',{d:'M336 336l-54-80-224 224c7 4 16 4 25-1l253-143z',fill:'#ff3d47'}),
+              h('path',{d:'M336 176l-54 80 54 80 94-53c17-10 17-44 0-54l-94-53z',fill:'#ffc400'})),
+            h('div',{className:'txt'}, h('small',null, lang==='hi'?'डाउनलोड करें':'GET IT ON'), h('b',null,'Google Play'))
+          ),
+          h('a', { className:'store-badge', href:iosHref, target:'_blank', rel:'noopener',
+                   onClick:function(){ trackDownload('ios', ((verIos && verIos.install) ? 'ota-' : 'testflight-')+where); },
+                   'aria-label':(lang==='hi'?'iOS ऐप इंस्टॉल करें':'Install the iOS app') },
+            h('svg',{className:'ico',viewBox:'0 0 384 512','aria-hidden':'true',fill:'#fff'},
+              h('path',{d:'M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z'})),
+            h('div',{className:'txt'}, h('small',null, lang==='hi'?'डाउनलोड करें':'GET IT ON'),
+              h('b',null,(verIos && verIos.install)?(lang==='hi'?'iOS ऐप':'iOS App'):'TestFlight'))
+          )
+        ),
+        /* The APK stays. Joining an open test needs a Google account and a
+           Play propagation wait of an hour or so; the direct file works now,
+           and it is what every existing tester already has a link to. */
+        h('div', { className:'store-alt' },
+          h('a', { href:ver.apk, onClick:function(){ trackDownload('android','apk-'+where); } },
+            lang==='hi' ? 'या APK सीधे डाउनलोड करें' : 'or download the APK directly'),
+          h('span', null, ' · ' + ver.ver + (ver.build ? (' (' + ver.build + ')') : '') + ' · ' + ver.size + ' MB')
+        )
+      );
+    }
+
     function App(){
       var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
       var lS=useState('en'), lang=lS[0], setLang=lS[1];
@@ -2712,28 +2764,7 @@
               h(StatusPill, { lang:lang }),
               h('h1', null, 'One who', h('br'), 'believes'),
               h('div', { className:'dl-label' }, COPY.dl[lang]),
-              h('div', { className:'store-row' },
-                // Google Play, official 4-colour badge, links to the beta APK.
-                h('a', { className:'store-badge', href:ver.apk, rel:'noopener',
-                         onClick:function(){ trackDownload('android','apk'); },
-                         'aria-label':(lang==='hi'?'एंड्रॉइड बीटा डाउनलोड करें':'Download the Android beta') },
-                  h('svg',{className:'ico',viewBox:'0 0 512 512','aria-hidden':'true'},
-                    h('path',{d:'M47 32c-9 5-15 15-15 28v392c0 13 6 23 15 28l224-224L47 32z',fill:'#00c3ff'}),
-                    h('path',{d:'M336 176L83 33c-9-5-18-5-25-1l224 224 54-80z',fill:'#00e676'}),
-                    h('path',{d:'M336 336l-54-80-224 224c7 4 16 4 25-1l253-143z',fill:'#ff3d47'}),
-                    h('path',{d:'M336 176l-54 80 54 80 94-53c17-10 17-44 0-54l-94-53z',fill:'#ffc400'})),
-                  h('div',{className:'txt'}, h('small',null, lang==='hi'?'डाउनलोड करें':'GET IT ON'), h('b',null,'Google Play'))
-                ),
-                // iOS, ad-hoc OTA install when published (version-ios.json),
-                // else the TestFlight beta.
-                h('a', { className:'store-badge', href:((verIos && verIos.install) || 'https://testflight.apple.com/join/HZXJ4Dav'), target:'_blank', rel:'noopener',
-                         onClick:function(){ trackDownload('ios', (verIos && verIos.install) ? 'ota' : 'testflight'); },
-                         'aria-label':(lang==='hi'?'iOS ऐप इंस्टॉल करें':'Install the iOS app') },
-                  h('svg',{className:'ico',viewBox:'0 0 384 512','aria-hidden':'true',fill:'#fff'},
-                    h('path',{d:'M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z'})),
-                  h('div',{className:'txt'}, h('small',null, lang==='hi'?'डाउनलोड करें':'GET IT ON'), h('b',null,(verIos && verIos.install)?(lang==='hi'?'iOS ऐप':'iOS App'):'TestFlight'))
-                )
-              ),
+              h(StoreRow, { lang:lang, ver:ver, verIos:verIos, where:'hero' }),
               // Build-status table, Android + iOS versions, sizes, last-updated
               // + direct links (APK download / iOS OTA install / TestFlight beta).
               // People per platform, and nothing else.
@@ -2818,6 +2849,18 @@
           h(EngineShowcase, { lang:lang }),
           h(Convergence, { lang:lang }),
           h(Platforms, { lang:lang }),
+          // The same two badges again, at the end of the page.
+          // Everything above this point is the argument; this is where somebody
+          // who read it all can act without scrolling back to the top.
+          h('section', { className:'getit' },
+            h('div', { className:'getit-in' },
+              h('h2', null, lang==='hi' ? 'आज ही शुरू करें' : 'Start today'),
+              h('p', null, lang==='hi'
+                ? 'एंड्रॉइड पर ओपन टेस्टिंग खुली है। iOS TestFlight पर उपलब्ध है।'
+                : 'Open testing is live on Android. iOS is on TestFlight.'),
+              h(StoreRow, { lang:lang, ver:ver, verIos:verIos, where:'footer' })
+            )
+          ),
           null, /* below-hero Showcase hidden for now, restore: h(Showcase, { lang:lang }) */
           h('footer', null,
             // Desktop: compact single-line footer.
