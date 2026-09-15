@@ -984,6 +984,63 @@
     .feat-list { text-align:left; max-width:340px; margin:20px auto 0; }
     .sc-intro { padding:52px 22px 0; }
   }
+  /* ── Multi-Match ────────────────────────────────────────────────────────
+     The section leads with the comparison that makes the argument, because the
+     argument is counter-intuitive: the higher score loses. Everything after it
+     is the method that produces that answer.
+
+     The four steps are numbered and the numbers mean something. Reduce, score,
+     rank, partition is the order the engine actually runs in, and a later step
+     cannot happen before an earlier one, which is the only thing that earns a
+     numbered list. */
+  /* `.mmsec`, not `.mm`: `.mm` is taken, by the Multi-Match card inside the
+     hero phone mock, and it carries a solid #6C7ABC fill. A section reusing
+     that name inherited the purple and the white text that goes with it. */
+  .mmsec { border-top:1px solid var(--line); }
+  .mm-in { max-width:1180px; margin:0 auto; padding:clamp(56px,8vw,110px) 20px clamp(40px,6vw,80px); }
+  .mm-eyebrow { font-size:11px; letter-spacing:2.4px; text-transform:uppercase; color:var(--tint); font-weight:700; }
+  .mm-in h2 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.02em;
+    font-size:clamp(28px,4.2vw,46px); line-height:1.06; margin:12px 0 0; color:var(--fg); max-width:18ch; }
+  .mm-lede { color:var(--fg2); font-size:clamp(15px,1.5vw,17px); line-height:1.6; max-width:58ch; margin:14px 0 0; }
+
+  /* The comparison. Two cards and a verdict line under them. */
+  .mm-vs { margin:38px 0 0; display:grid; grid-template-columns:1fr auto 1fr; gap:clamp(12px,2.5vw,26px);
+    align-items:stretch; max-width:760px; }
+  @media (max-width:640px){ .mm-vs { grid-template-columns:1fr; } }
+  .mm-card { border:1px solid var(--line); border-radius:18px; padding:22px 20px; background:var(--card); }
+  .mm-card.wins { border-color:var(--tint); }
+  .mm-guna { font-family:'Noto Serif',Georgia,serif; font-size:clamp(34px,5.5vw,52px); font-weight:700;
+    line-height:.95; letter-spacing:-.03em; color:var(--fg); }
+  .mm-guna span { font-size:.42em; font-weight:600; color:var(--muted); letter-spacing:0; }
+  .mm-flags { margin-top:14px; display:flex; flex-direction:column; gap:7px; }
+  .mm-flag { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--fg2); line-height:1.35; }
+  .mm-flag i { width:7px; height:7px; border-radius:50%; flex:none; background:var(--muted); }
+  .mm-flag.bad i { background:var(--tint); box-shadow:0 0 0 3px var(--line); }
+  .mm-mid { display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;
+    letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); }
+  .mm-verdict { margin:18px 0 0; max-width:760px; font-size:clamp(15px,1.7vw,18px); line-height:1.55; color:var(--fg); }
+  .mm-verdict b { color:var(--tint); }
+
+  /* The method. */
+  .mm-steps { margin:46px 0 0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(14px,2vw,22px); }
+  @media (max-width:900px){ .mm-steps { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (max-width:520px){ .mm-steps { grid-template-columns:1fr; } }
+  .mm-step .n { font-size:11px; font-weight:800; letter-spacing:1.6px; color:var(--tint); }
+  .mm-step h3 { font-size:17px; font-weight:700; margin:8px 0 0; color:var(--fg); letter-spacing:-.01em; }
+  .mm-step p { font-size:14px; line-height:1.55; color:var(--fg2); margin:7px 0 0; }
+  .mm-step { border-top:2px solid var(--line); padding-top:14px; }
+  .mm-step:first-child { border-top-color:var(--tint); }
+
+  /* What you can lean the ranking towards. */
+  .mm-emph { margin:44px 0 0; }
+  .mm-emph .lab { font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:700; color:var(--muted); }
+  .mm-emph-row { margin-top:14px; display:flex; flex-wrap:wrap; gap:9px; }
+  .mm-chip { border:1px solid var(--line); border-radius:12px; padding:10px 14px; background:transparent; }
+  .mm-chip b { display:block; font-size:14px; color:var(--fg); font-weight:700; }
+  .mm-chip span { display:block; font-size:12px; color:var(--muted); margin-top:3px; }
+  .mm-note { margin:26px 0 0; font-size:13px; color:var(--muted); line-height:1.6; max-width:62ch; }
+
+
   /* Closing call to action. Centred, because it is the end of the page and
      there is nothing beside it to align to. */
   .getit { border-top:1px solid var(--line); }
@@ -2579,6 +2636,94 @@
         ] },
     ];
 
+    /* ── Multi-Match ───────────────────────────────────────────────────────
+       One-to-one match answers "how compatible are A and B". This answers "of
+       these, who, and why", which is a different question and needs a different
+       score.
+
+       Every number and rule below is from `docs/multi-match-engine.md` and
+       `MultiMatchEngine.kt`, not invented for the page: the koota weights
+       (Nadi 3.0, Bhakoot 2.5), the dosha gates, the four emphases and which
+       kootas each one raises, and the Recommended / With caution partition. */
+    function MultiMatch(props){
+      var lang = props.lang;
+      function t(en, hi){ return lang==='hi' ? hi : en; }
+
+      var steps = [
+        [t('Reduce','संक्षेप'),
+         t('Every saved chart becomes the same short feature set, so the comparison is like for like.',
+           'हर सहेजी कुंडली एक ही संक्षिप्त रूप में आती है, ताकि तुलना समान आधार पर हो।')],
+        [t('Score','अंकन'),
+         t('The eight kootas, weighted the way an astrologer reads them, then multiplied by the dosha gates. Manglik parity, the numerology vibe and 7th-house dignity join in.',
+           'आठ कूट, वैसे ही भारित जैसे ज्योतिषी पढ़ते हैं, फिर दोष-द्वारों से गुणा। मांगलिक समता, अंक-मेल और सप्तम भाव की स्थिति भी जुड़ती है।')],
+        [t('Rank','क्रम'),
+         t('Sorted by that score. Ties break on the critical kootas first, then Manglik, then the numerology, then the nearer favourable dasha.',
+           'उसी अंक से क्रम। बराबरी पर पहले महत्वपूर्ण कूट, फिर मांगलिक, फिर अंक-मेल, फिर निकटतम अनुकूल दशा।')],
+        [t('Partition','विभाजन'),
+         t('Recommended and With caution are separate lists, each ranked inside itself, so a flagged match can never sit above a clean one.',
+           'संस्तुत और सावधानी सहित, दो अलग सूचियाँ, हर एक अपने भीतर क्रमबद्ध, ताकि चिह्नित मिलान कभी साफ़ मिलान से ऊपर न आए।')],
+      ];
+
+      var emph = [
+        [t('Balanced','संतुलित'),   t('the astrologer’s own weighting','ज्योतिषी का अपना भार')],
+        [t('Physical','शारीरिक'),   t('raises Yoni','योनि कूट बढ़ता है')],
+        [t('Friendship','मैत्री'),  t('raises Graha Maitri and Gana','ग्रह मैत्री और गण बढ़ते हैं')],
+        [t('Marriage','विवाह'),     t('raises Bhakoot and Vashya','भकूट और वश्य बढ़ते हैं')],
+      ];
+
+      return h('section', { className:'mmsec', id:'multi-match' },
+        h('div', { className:'mm-in' },
+          h('div', { className:'mm-eyebrow' }, t('Multi-Match','मल्टी-मैच')),
+          h('h2', null, t('Who, of all of them, and why',
+                          'इन सबमें कौन, और क्यों')),
+          h('p', { className:'mm-lede' }, t(
+            'Matching two people answers one question. Multi-Match answers the one people actually have: of everyone on the list, who fits best, and what is the catch.',
+            'दो लोगों का मिलान एक सवाल का जवाब देता है। मल्टी-मैच उस सवाल का जवाब देता है जो असल में पूछा जाता है: पूरी सूची में सबसे उपयुक्त कौन, और अड़चन क्या है।')),
+
+          /* The comparison first. It is counter-intuitive, and it is the whole
+             reason the engine exists. */
+          h('div', { className:'mm-vs' },
+            h('div', { className:'mm-card' },
+              h('div', { className:'mm-guna' }, '30', h('span', null, ' / 36')),
+              h('div', { className:'mm-flags' },
+                h('div', { className:'mm-flag bad' }, h('i'), t('Nadi dosha, not cancelled','नाड़ी दोष, रद्द नहीं')),
+                h('div', { className:'mm-flag' }, h('i'), t('Manglik status differs','मांगलिक स्थिति भिन्न')))
+            ),
+            h('div', { className:'mm-mid' }, t('vs','बनाम')),
+            h('div', { className:'mm-card wins' },
+              h('div', { className:'mm-guna' }, '26', h('span', null, ' / 36')),
+              h('div', { className:'mm-flags' },
+                h('div', { className:'mm-flag' }, h('i'), t('Every dosha cancelled','हर दोष रद्द')),
+                h('div', { className:'mm-flag' }, h('i'), t('Manglik parity on both sides','दोनों ओर मांगलिक समता')))
+            )
+          ),
+          h('p', { className:'mm-verdict' }, t(
+            'The 26 ranks higher, and it should. ', 'यहाँ 26 ऊपर आता है, और सही आता है। '),
+            h('b', null, t('A raw guna total is a poor ranker.','कोरा गुण-योग अच्छा मापदंड नहीं।')),
+            t(' Nadi governs health and progeny, so an uncancelled Nadi dosha outweighs four extra points somewhere gentler.',
+              ' नाड़ी स्वास्थ्य और संतान का विषय है, इसलिए रद्द न हुआ नाड़ी दोष किसी हल्के कूट के चार अतिरिक्त अंकों पर भारी पड़ता है।')),
+
+          h('div', { className:'mm-steps' }, steps.map(function(st, i){
+            return h('div', { className:'mm-step', key:i },
+              h('div', { className:'n' }, '0' + (i+1)),
+              h('h3', null, st[0]),
+              h('p', null, st[1]));
+          })),
+
+          h('div', { className:'mm-emph' },
+            h('div', { className:'lab' }, t('Lean it towards what matters to you','जो आपके लिए ज़रूरी है, उस ओर झुकाइए')),
+            h('div', { className:'mm-emph-row' }, emph.map(function(e, i){
+              return h('div', { className:'mm-chip', key:i }, h('b', null, e[0]), h('span', null, e[1]));
+            }))
+          ),
+
+          h('p', { className:'mm-note' }, t(
+            'Pick more than one and the ranking favours all of their kootas at once. The maths is deterministic and runs the same way every time, so the same pool in the same order gives the same answer, and a pair once scored is not scored again.',
+            'एक से अधिक चुनिए और क्रम उन सभी कूटों को एक साथ महत्व देता है। गणित निर्धारित है और हर बार एक ही तरह चलता है, इसलिए वही समूह वही उत्तर देता है, और एक बार आँका गया जोड़ा दोबारा नहीं आँका जाता।'))
+        )
+      );
+    }
+
     function Platforms(props){
       var lang = props.lang;
       var st = React.useState(1); var pi = st[0], setPi = st[1];          // Android first: it is the one with shots
@@ -2856,6 +3001,7 @@
           h(AastroAI, { lang:lang }),
           h(EngineShowcase, { lang:lang }),
           h(Convergence, { lang:lang }),
+          h(MultiMatch, { lang:lang }),
           h(Platforms, { lang:lang }),
           // The same two badges again, at the end of the page.
           // Everything above this point is the argument; this is where somebody
