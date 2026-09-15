@@ -978,6 +978,99 @@
     .feat-list { text-align:left; max-width:340px; margin:20px auto 0; }
     .sc-intro { padding:52px 22px 0; }
   }
+  /* ── Platforms: one app, two design languages ───────────────────────────
+     The section makes its own argument. Pick Apple and the chrome becomes a
+     sliding iOS pill with soft radii and sentence-case labels; pick Android
+     and it becomes a Material tab row with an underline indicator and an
+     uppercase, letter-spaced label. Saying "we build natively for both" while
+     rendering one generic tab control for both would be the weaker claim.
+
+     The screenshot is a SPLIT, light on the left and dark on the right with a
+     handle between them, because the point is that it is one screen obeying
+     two themes and not two different pictures. A crossfade hides exactly the
+     thing worth showing. */
+  .plat-wrap { max-width:1180px; margin:0 auto; padding:clamp(56px,8vw,110px) 20px clamp(24px,4vw,48px); }
+  .plat-eyebrow { font-size:11px; letter-spacing:2.4px; text-transform:uppercase; color:var(--tint); font-weight:700; }
+  .plat-wrap h2 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-.02em;
+    font-size:clamp(28px,4.2vw,46px); line-height:1.06; margin:12px 0 0; color:var(--fg); max-width:16ch; }
+  .plat-lede { color:var(--fg2); font-size:clamp(15px,1.5vw,17px); line-height:1.6; max-width:56ch; margin:14px 0 0; }
+
+  .plat-switch { display:inline-flex; position:relative; margin:30px 0 0; }
+  /* Apple: a track with a sliding thumb. */
+  /* The track is `--line`, the token the site already uses for a hairline
+     surface. An earlier version derived it with color-mix(); that renders as
+     nothing at all in some browsers, and a segmented control with an invisible
+     track is just two words floating on the page. */
+  .plat-switch.ios { background:var(--line); border-radius:999px; padding:3px; gap:0; }
+  .plat-switch.ios .ps-btn { border-radius:999px; padding:8px 20px; font-size:14px; font-weight:600; letter-spacing:-.01em; }
+  .plat-switch.ios .ps-thumb { position:absolute; top:3px; bottom:3px; border-radius:999px; background:var(--card);
+    box-shadow:0 1px 3px rgba(0,0,0,.16); transition:left .28s cubic-bezier(.32,.72,0,1), width .28s cubic-bezier(.32,.72,0,1); }
+  /* Android: a tab row with an underline indicator. */
+  .plat-switch.md { border-bottom:1px solid var(--line); gap:4px; border-radius:0; padding:0; }
+  .plat-switch.md .ps-btn { border-radius:8px 8px 0 0; padding:12px 18px; font-size:12px; font-weight:700;
+    letter-spacing:1.2px; text-transform:uppercase; }
+  .plat-switch.md .ps-thumb { position:absolute; bottom:-1px; height:3px; border-radius:3px 3px 0 0; background:var(--tint);
+    transition:left .25s cubic-bezier(.2,0,0,1), width .25s cubic-bezier(.2,0,0,1); }
+  .ps-btn { position:relative; z-index:1; border:0; background:none; cursor:pointer; color:var(--muted);
+    font-family:inherit; transition:color .2s ease; }
+  .ps-btn[aria-selected="true"] { color:var(--fg); }
+
+  .plat-devices { display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 0; }
+  .pd-chip { display:inline-flex; align-items:center; gap:7px; border-radius:999px; padding:7px 13px;
+    font-size:12.5px; font-weight:600; color:var(--fg2);
+    border:1px solid var(--line); background:transparent; }
+  .pd-chip.live { border-color:transparent; color:var(--on-accent); background:var(--tint-grad); }
+  .pd-dot { width:6px; height:6px; border-radius:50%; background:var(--muted); }
+  .pd-chip.live .pd-dot { background:var(--on-accent); }
+  .pd-soon { font-size:10px; letter-spacing:.8px; text-transform:uppercase; color:var(--muted); font-weight:700; opacity:.9; }
+
+  .plat-stage { display:grid; grid-template-columns:minmax(0,440px) minmax(0,1fr); gap:clamp(28px,5vw,64px);
+    align-items:center; margin:40px 0 0; }
+  @media (max-width:780px){ .plat-stage { grid-template-columns:1fr; gap:30px; } }
+
+  /* Two devices, not one with a wipe.
+     The first attempt split a single frame, light on the left and dark on the
+     right with a draggable handle. Right in principle, wrong in practice: a
+     split only reads if both halves are the same screen at the same scroll
+     offset, and captures taken in two sessions never are. The halves did not
+     line up and it looked like a rendering bug. Two frames make the same point,
+     need no alignment at all, and show both themes without asking anyone to
+     drag something first. */
+  .pf-duo { position:relative; display:flex; justify-content:center; align-items:flex-start;
+    gap:clamp(12px,2.4vw,26px); padding:6px 0 34px; }
+  .pf { position:relative; width:min(47%,200px); aspect-ratio:1080/2400; flex:0 0 auto;
+    background:#0A0A0A; padding:7px; box-shadow:0 26px 60px rgba(0,0,0,.30), 0 2px 8px rgba(0,0,0,.20);
+    transition:border-radius .3s ease, transform .35s cubic-bezier(.2,0,0,1); }
+  .pf.ios { border-radius:34px; }
+  .pf.md  { border-radius:22px; }
+  /* Level, not staggered. A stagger looked better as an idea than on screen:
+     the two captions sat at different heights and the pair read as careless
+     rather than dynamic. Sharing a baseline is what makes them comparable,
+     which is the entire point of showing two. */
+  .pf-screen { position:relative; width:100%; height:100%; overflow:hidden; background:#fff;
+    transition:border-radius .3s ease; }
+  .pf.ios .pf-screen { border-radius:28px; }
+  .pf.md  .pf-screen { border-radius:16px; }
+  .pf-shot { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    object-position:top center; display:block; }
+  .pf-tag { position:absolute; left:50%; transform:translateX(-50%); bottom:-24px; font-size:10px;
+    font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+
+  .plat-copy .pc-mode { display:inline-flex; gap:14px; font-size:11px; letter-spacing:1.4px; text-transform:uppercase;
+    font-weight:700; color:var(--muted); margin-bottom:16px; }
+  .plat-copy .pc-mode b { color:var(--fg); font-weight:700; }
+  .plat-copy h3 { font-family:'Noto Serif',Georgia,serif; font-size:clamp(23px,2.8vw,32px); font-weight:700;
+    letter-spacing:-.02em; line-height:1.1; margin:0; color:var(--fg); }
+  .plat-copy p { color:var(--fg2); font-size:15.5px; line-height:1.65; margin:12px 0 0; max-width:44ch; }
+  .pc-rail { display:flex; gap:8px; margin:26px 0 0; flex-wrap:wrap; }
+  .pc-rail button { border:1px solid var(--line); background:transparent; color:var(--fg2); border-radius:10px;
+    padding:8px 13px; font-size:12.5px; font-weight:600; cursor:pointer; font-family:inherit; transition:all .18s ease; }
+  .pc-rail button[aria-pressed="true"] { border-color:transparent; color:var(--on-accent); background:var(--tint-grad); }
+  .pc-note { margin:26px 0 0; font-size:12.5px; color:var(--muted); line-height:1.6; max-width:46ch; }
+
+  .plat-empty { border:1px dashed var(--line); border-radius:18px; padding:34px 26px; text-align:center;
+    color:var(--muted); font-size:14px; line-height:1.6; }
+  .plat-empty b { color:var(--fg2); display:block; font-size:15px; margin-bottom:6px; }
 </style>
 </head>
 <body>
@@ -2429,6 +2522,137 @@
         h('span', { className:'sp-dot' }), msg);
     }
 
+    /* ── Platforms ─────────────────────────────────────────────────────────
+       Two axes and a promise. The switch picks the PLATFORM and restyles the
+       section's own chrome to that platform's design language, which is the
+       argument the copy is making. The frame shows one screen split between
+       the light and dark themes, because "it respects your theme" is a claim
+       you can show rather than assert.
+
+       SHOTS is the whole content model: adding the iPad, the watch or the Mac
+       later is a row here plus files, not a rewrite. That is why `devices`
+       carries the ones that are not built yet, marked, instead of pretending
+       the phone is the whole story. */
+    var PLATFORMS = [
+      { id:'ios', label:{en:'Apple', hi:'ऐपल'}, ui:'ios',
+        devices:[
+          { k:'iPhone', live:true },
+          { k:'iPad', live:false }, { k:'Apple Watch', live:false }, { k:'Mac', live:false },
+        ],
+        note:{ en:'Built to Apple’s Human Interface Guidelines. System type, native sheets and the gestures your thumb already knows.',
+               hi:'ऐपल की ह्यूमन इंटरफ़ेस गाइडलाइंस के अनुसार बना। सिस्टम टाइप, नेटिव शीट और वही जेस्चर जो आपकी उंगली पहले से जानती है।' },
+        shots:[] },
+      { id:'android', label:{en:'Android', hi:'एंड्रॉइड'}, ui:'md',
+        devices:[
+          { k:'Phone', live:true },
+          { k:'Tablet', live:false }, { k:'Wear OS', live:false }, { k:'Desktop', live:false },
+        ],
+        note:{ en:'Built on Material 3. Your wallpaper’s colours, your text size, your dark mode. The app follows the phone, not the other way round.',
+               hi:'मटीरियल 3 पर बना। आपके वॉलपेपर के रंग, आपका टेक्स्ट साइज़, आपका डार्क मोड। ऐप फ़ोन के पीछे चलता है, उल्टा नहीं।' },
+        shots:[
+          { k:'dashboard',  t:{en:'The day, before you ask',        hi:'दिन, पूछने से पहले'},
+                            d:{en:'Panchang, your rashi and the one thing worth knowing this morning, on the first screen.',
+                               hi:'पंचांग, आपकी राशि और आज सुबह जानने लायक एक बात, पहली ही स्क्रीन पर।'} },
+          { k:'kundali',    t:{en:'North and South, your call',     hi:'उत्तर या दक्षिण, आपकी पसंद'},
+                            d:{en:'The same chart in either style, with D1, D9, Chalit and Chandra a tap apart.',
+                               hi:'वही कुंडली दोनों शैलियों में, D1, D9, चलित और चंद्र एक टैप दूर।'} },
+          { k:'planets',    t:{en:'Every degree, shown',            hi:'हर अंश, सामने'},
+                            d:{en:'Sign, lord, degree and house for all nine grahas. Nothing rounded away to look tidy.',
+                               hi:'नौ ग्रहों के लिए राशि, स्वामी, अंश और भाव। सुंदर दिखने के लिए कुछ भी छिपाया नहीं।'} },
+          { k:'numerology', t:{en:'Your Lo Shu, filled in',         hi:'आपका लो शू, भरा हुआ'},
+                            d:{en:'The grid, the numbers you carry and the ones you are missing, computed on the device.',
+                               hi:'ग्रिड, आपके पास मौजूद अंक और जो नहीं हैं, सब डिवाइस पर ही गणना।'} },
+          { k:'palmistry',  t:{en:'Your palm, read on device',      hi:'आपकी हथेली, डिवाइस पर पढ़ी'},
+                            d:{en:'Point the camera. The lines are found and read locally; the photo never has to leave.',
+                               hi:'कैमरा दिखाइए। रेखाएँ यहीं पहचानी और पढ़ी जाती हैं; तस्वीर को कहीं जाना नहीं पड़ता।'} },
+        ] },
+    ];
+
+    function Platforms(props){
+      var lang = props.lang;
+      var st = React.useState(1); var pi = st[0], setPi = st[1];          // Android first: it is the one with shots
+      var ss = React.useState(0); var si = ss[0], setSi = ss[1];
+      var thumb = React.useState({left:0,width:0}); var tb = thumb[0], setTb = thumb[1];
+      var rowRef = React.useRef(null);
+
+      var P = PLATFORMS[pi];
+      var shots = P.shots;
+      var shot = shots[Math.min(si, Math.max(0, shots.length-1))];
+
+      // Park the indicator under the selected tab, and keep it there on resize.
+      React.useEffect(function(){
+        function place(){
+          var row = rowRef.current; if(!row) return;
+          var btn = row.querySelectorAll('.ps-btn')[pi]; if(!btn) return;
+          setTb({ left: btn.offsetLeft, width: btn.offsetWidth });
+        }
+        place();
+        window.addEventListener('resize', place);
+        return function(){ window.removeEventListener('resize', place); };
+      }, [pi, lang]);
+
+      var base = './shots/' + P.id + '/';
+
+      return h('section', { className:'plat-wrap', id:'platforms' },
+        h('div', { className:'plat-eyebrow' }, lang==='hi' ? 'प्लेटफ़ॉर्म' : 'Platforms'),
+        h('h2', null, lang==='hi' ? 'एक ऐप। दो डिज़ाइन भाषाएँ।' : 'One app. Two design languages.'),
+        h('p', { className:'plat-lede' }, lang==='hi'
+          ? 'रैपर में लिपटी वेबसाइट नहीं। दोनों तरफ़ नेटिव कोड, ताकि ऐप वैसे ही चले जैसे आपका फ़ोन पहले से चलता है।'
+          : 'Not a web page in a wrapper. Native on each side, so the app behaves the way your device already does.'),
+
+        h('div', { className:'plat-switch ' + P.ui, ref:rowRef, role:'tablist' },
+          h('span', { className:'ps-thumb', style:{ left:tb.left+'px', width:tb.width+'px' } }),
+          PLATFORMS.map(function(x, i){
+            return h('button', { key:x.id, className:'ps-btn', role:'tab', 'aria-selected': i===pi,
+              onClick:function(){ setPi(i); setSi(0); } }, x.label[lang] || x.label.en);
+          })
+        ),
+
+        h('div', { className:'plat-devices' }, P.devices.map(function(d){
+          return h('span', { key:d.k, className:'pd-chip' + (d.live?' live':'') },
+            h('span', { className:'pd-dot' }), d.k,
+            d.live ? null : h('span', { className:'pd-soon' }, lang==='hi' ? 'जल्द' : 'Soon'));
+        })),
+
+        shots.length === 0
+          ? h('div', { className:'plat-stage' },
+              h('div', { className:'plat-empty' },
+                h('b', null, lang==='hi' ? 'स्क्रीनशॉट जल्द' : 'Screens coming shortly'),
+                lang==='hi'
+                  ? 'iOS बिल्ड TestFlight और इसी पेज पर उपलब्ध है। यहाँ की तस्वीरें अभी तैयार की जा रही हैं।'
+                  : 'The iOS build is live on TestFlight and on this page. These shots are being captured.'),
+              h('div', { className:'plat-copy' },
+                h('h3', null, lang==='hi' ? 'ऐपल की भाषा में' : 'In Apple’s own language'),
+                h('p', null, P.note[lang] || P.note.en))
+            )
+          : h('div', { className:'plat-stage' },
+              h('div', { className:'pf-duo' },
+                ['light','dark'].map(function(mode, mi){
+                  return h('div', { key:mode, className:'pf ' + P.ui + ' ' + (mi ? 'b' : 'a') },
+                    h('div', { className:'pf-screen' },
+                      h('img', { className:'pf-shot', src:base+shot.k+'-'+mode+'.webp',
+                        alt:(shot.t[lang]||shot.t.en)+', '+mode, loading:'lazy', decoding:'async' })),
+                    h('span', { className:'pf-tag' },
+                      mode==='light' ? (lang==='hi'?'लाइट':'Light') : (lang==='hi'?'डार्क':'Dark')));
+                })
+              ),
+              h('div', { className:'plat-copy' },
+                h('div', { className:'pc-mode' },
+                  h('b', null, lang==='hi' ? 'लाइट' : 'Light'), '·',
+                  h('b', null, lang==='hi' ? 'डार्क' : 'Dark'),
+                  h('span', null, lang==='hi' ? 'एक ही स्क्रीन' : 'one screen')),
+                h('h3', null, shot.t[lang] || shot.t.en),
+                h('p', null, shot.d[lang] || shot.d.en),
+                h('div', { className:'pc-rail' }, shots.map(function(x, i){
+                  return h('button', { key:x.k, 'aria-pressed': i===si, onClick:function(){ setSi(i); } },
+                    x.t[lang] ? (x.t[lang].split(',')[0]) : x.t.en.split(',')[0]);
+                })),
+                h('p', { className:'pc-note' }, P.note[lang] || P.note.en)
+              )
+            )
+      );
+    }
+
     function App(){
       var tS=useState('yellow-light'), theme=tS[0], setTheme=tS[1];
       var lS=useState('en'), lang=lS[0], setLang=lS[1];
@@ -2593,6 +2817,7 @@
           h(AastroAI, { lang:lang }),
           h(EngineShowcase, { lang:lang }),
           h(Convergence, { lang:lang }),
+          h(Platforms, { lang:lang }),
           null, /* below-hero Showcase hidden for now, restore: h(Showcase, { lang:lang }) */
           h('footer', null,
             // Desktop: compact single-line footer.
