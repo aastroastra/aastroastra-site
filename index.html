@@ -1078,9 +1078,9 @@
   .pf-tag { position:absolute; left:50%; transform:translateX(-50%); bottom:-24px; font-size:10px;
     font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
 
-  .plat-copy .pc-mode { display:inline-flex; gap:14px; font-size:11px; letter-spacing:1.4px; text-transform:uppercase;
-    font-weight:700; color:var(--muted); margin-bottom:16px; }
-  .plat-copy .pc-mode b { color:var(--fg); font-weight:700; }
+  .plat-copy .pc-mode { display:inline-flex; font-size:11px; letter-spacing:2.4px; text-transform:uppercase;
+    font-weight:700; color:var(--tint); margin-bottom:14px; }
+  .plat-copy .pc-mode b { color:inherit; font-weight:700; }
   .plat-copy h3 { font-family:'Noto Serif',Georgia,serif; font-size:clamp(23px,2.8vw,32px); font-weight:700;
     letter-spacing:-.02em; line-height:1.1; margin:0; color:var(--fg); }
   .plat-copy p { color:var(--fg2); font-size:15.5px; line-height:1.65; margin:12px 0 0; max-width:44ch; }
@@ -2556,21 +2556,26 @@
         note:{ en:'Built on Material 3. Your wallpaper’s colours, your text size, your dark mode. The app follows the phone, not the other way round.',
                hi:'मटीरियल 3 पर बना। आपके वॉलपेपर के रंग, आपका टेक्स्ट साइज़, आपका डार्क मोड। ऐप फ़ोन के पीछे चलता है, उल्टा नहीं।' },
         shots:[
-          { k:'dashboard',  t:{en:'The day, before you ask',        hi:'दिन, पूछने से पहले'},
-                            d:{en:'Panchang, your rashi and the one thing worth knowing this morning, on the first screen.',
-                               hi:'पंचांग, आपकी राशि और आज सुबह जानने लायक एक बात, पहली ही स्क्रीन पर।'} },
-          { k:'kundali',    t:{en:'North and South, your call',     hi:'उत्तर या दक्षिण, आपकी पसंद'},
-                            d:{en:'The same chart in either style, with D1, D9, Chalit and Chandra a tap apart.',
-                               hi:'वही कुंडली दोनों शैलियों में, D1, D9, चलित और चंद्र एक टैप दूर।'} },
-          { k:'planets',    t:{en:'Every degree, shown',            hi:'हर अंश, सामने'},
-                            d:{en:'Sign, lord, degree and house for all nine grahas. Nothing rounded away to look tidy.',
-                               hi:'नौ ग्रहों के लिए राशि, स्वामी, अंश और भाव। सुंदर दिखने के लिए कुछ भी छिपाया नहीं।'} },
-          { k:'numerology', t:{en:'Your Lo Shu, filled in',         hi:'आपका लो शू, भरा हुआ'},
-                            d:{en:'The grid, the numbers you carry and the ones you are missing, computed on the device.',
-                               hi:'ग्रिड, आपके पास मौजूद अंक और जो नहीं हैं, सब डिवाइस पर ही गणना।'} },
-          { k:'palmistry',  t:{en:'Your palm, read on device',      hi:'आपकी हथेली, डिवाइस पर पढ़ी'},
-                            d:{en:'Point the camera. The lines are found and read locally; the photo never has to leave.',
-                               hi:'कैमरा दिखाइए। रेखाएँ यहीं पहचानी और पढ़ी जाती हैं; तस्वीर को कहीं जाना नहीं पड़ता।'} },
+          { k:'astrology',  tag:{en:'Astrology', hi:'ज्योतिष'},
+                            t:{en:'Your chart, in either style',  hi:'आपकी कुंडली, दोनों शैलियों में'},
+                            d:{en:'North Indian or South Indian, with D1, D9, Chalit and Chandra a tap apart. Every degree shown, nothing rounded away to look tidy.',
+                               hi:'उत्तर भारतीय या दक्षिण भारतीय, D1, D9, चलित और चंद्र एक टैप दूर। हर अंश सामने, सुंदर दिखने के लिए कुछ छिपाया नहीं।'} },
+          { k:'numerology', tag:{en:'Numerology', hi:'अंक ज्योतिष'},
+                            t:{en:'Your Lo Shu, filled in',       hi:'आपका लो शू, भरा हुआ'},
+                            d:{en:'The grid, the numbers you carry and the ones you are missing, with driver, conductor and Kua. Computed on the device.',
+                               hi:'ग्रिड, आपके पास मौजूद अंक और जो नहीं हैं, ड्राइवर, कंडक्टर और कुआ सहित। सब डिवाइस पर ही।'} },
+          { k:'palmistry',  tag:{en:'Palmistry', hi:'हस्तरेखा'},
+                            t:{en:'Your palm, read on device',    hi:'आपकी हथेली, डिवाइस पर पढ़ी'},
+                            d:{en:'Point the camera at your hand. The lines and mounts are found and read locally, and the photo never has to leave.',
+                               hi:'कैमरा अपनी हथेली पर रखिए। रेखाएँ और पर्वत यहीं पहचाने और पढ़े जाते हैं; तस्वीर को कहीं जाना नहीं पड़ता।'} },
+          { k:'face',       tag:{en:'Face reading', hi:'मुख सामुद्रिक'},
+                            t:{en:'Mukha Samudrika, alongside',   hi:'मुख सामुद्रिक, साथ-साथ'},
+                            d:{en:'What your features say, read next to your kundali rather than instead of it. One clear photo is enough.',
+                               hi:'आपके नैन-नक्श क्या कहते हैं, कुंडली के साथ पढ़ा गया, उसकी जगह नहीं। एक साफ़ तस्वीर काफ़ी है।'} },
+          { k:'aastroai',   tag:{en:'AastroAI', hi:'AastroAI'},
+                            t:{en:'Ask it about your own chart',  hi:'अपनी ही कुंडली के बारे में पूछिए'},
+                            d:{en:'Dasha timing, marriage, career. The device computes the astrology and the model only says it well, in English or Hindi.',
+                               hi:'दशा का समय, विवाह, करियर। ज्योतिष की गणना डिवाइस करता है, मॉडल केवल उसे ठीक से कहता है, अंग्रेज़ी या हिन्दी में।'} },
         ] },
     ];
 
@@ -2643,15 +2648,18 @@
                 })
               ),
               h('div', { className:'plat-copy' },
+                /* The feature, not the two themes. The eyebrow used to read
+                   "LIGHT · DARK · ONE SCREEN", which made the theme the subject
+                   of a section whose subject is what the app does. The phones
+                   still carry a light and a dark caption, quietly, because the
+                   theming is worth seeing and not worth announcing. */
                 h('div', { className:'pc-mode' },
-                  h('b', null, lang==='hi' ? 'लाइट' : 'Light'), '·',
-                  h('b', null, lang==='hi' ? 'डार्क' : 'Dark'),
-                  h('span', null, lang==='hi' ? 'एक ही स्क्रीन' : 'one screen')),
+                  h('b', null, (shot.tag && (shot.tag[lang] || shot.tag.en)) || '')),
                 h('h3', null, shot.t[lang] || shot.t.en),
                 h('p', null, shot.d[lang] || shot.d.en),
                 h('div', { className:'pc-rail' }, shots.map(function(x, i){
                   return h('button', { key:x.k, 'aria-pressed': i===si, onClick:function(){ setSi(i); } },
-                    x.t[lang] ? (x.t[lang].split(',')[0]) : x.t.en.split(',')[0]);
+                    (x.tag && (x.tag[lang] || x.tag.en)) || x.t.en);
                 })),
                 h('p', { className:'pc-note' }, P.note[lang] || P.note.en)
               )
