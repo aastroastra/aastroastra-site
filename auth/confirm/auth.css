@@ -1,0 +1,10 @@
+:root { color-scheme: dark; font: 17px/1.6 system-ui, sans-serif; background: #08070b; color: #f5f0e8; }
+body { margin: 0; display: grid; place-items: center; min-height: 100svh; }
+main { max-width: 420px; padding: 32px 24px; }
+h1 { line-height: 1.2; font-size: 32px; }
+.brand, a { color: #f4a261; }
+.brand { font-weight: 700; letter-spacing: .04em; }
+.button { display: block; padding: 14px 20px; margin: 28px 0; border-radius: 12px; background: #f4a261; color: #08070b; text-decoration: none; text-align: center; font-weight: 700; }
+[hidden] { display: none; }
+.hint { color: #b7b0bb; font-size: 15px; }
+a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }

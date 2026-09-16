@@ -1,0 +1,8 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.avdstudiox.android",
+    "sha256_cert_fingerprints": ["A1:CC:19:EE:D6:25:6C:74:E2:54:7F:A3:96:BC:1C:13:7F:16:1D:4F:03:60:0D:68:7E:27:38:6B:96:CF:6D:93"]
+  }
+}]
