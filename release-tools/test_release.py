@@ -19,6 +19,27 @@ def record():
         'changes':[{'sha':'b'*40,'subject':'<script>alert("x")</script>'}], 'downloads':[]}
 
 class ManifestTests(unittest.TestCase):
+    def test_manifest_is_not_published_until_every_asset_upload_finishes(self):
+        import runner
+        with tempfile.TemporaryDirectory() as tmp:
+            out=Path(tmp);state=out/'release.json';state.write_text(json.dumps(record()))
+            for fail_assets in (False,True):
+                calls=[]
+                def command(args,**kwargs):
+                    calls.append(args)
+                    if args[1:3]==['release','upload'] and str(state) not in args and fail_assets:
+                        raise subprocess.CalledProcessError(1,args)
+                    return subprocess.CompletedProcess(args,0)
+                with patch.object(runner,'OUT',out),patch.object(runner,'STATE',state),patch.object(runner.subprocess,'run',side_effect=command):
+                    if fail_assets:
+                        with self.assertRaises(subprocess.CalledProcessError):runner.publish()
+                    else:runner.publish()
+                uploads=[a for a in calls if a[1:3]==['release','upload']]
+                self.assertEqual(len(uploads),1 if fail_assets else 2)
+                self.assertNotIn(str(state),uploads[0])
+                self.assertIn(str(out/'release-report.zip'),uploads[0])
+                if not fail_assets:self.assertEqual(uploads[1][-1],str(state))
+
     def test_git_and_github_dates_sort_by_actual_time_across_timezones(self):
         earlier={'id':'earlier','date':'2026-09-18T00:15:00+05:30'}
         later={'id':'later','date':'2026-09-17T21:00:00Z'}

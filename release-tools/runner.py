@@ -197,8 +197,10 @@ def publish():
         subprocess.run(['gh','release','edit',tag,'--repo',repo,'--notes-file',str(notes),'--latest=false'],check=True)
     files=[str(STATE),str(OUT/'release-report.zip')]+[str(OUT/'installers'/x['name']) for x in data['downloads']]
     if data.get('bundle') and data['status']=='passed':files.append(str(OUT/'bundles'/data['bundle']['name']))
-    # Upload metadata last, so the collector never sees a new manifest with old evidence.
-    subprocess.run(['gh','release','upload',tag,'--repo',repo,'--clobber',*files[1:],files[0]],check=True)
+    # gh uploads multiple arguments concurrently. Finish all assets in one call
+    # before making the new manifest visible to the collector.
+    subprocess.run(['gh','release','upload',tag,'--repo',repo,'--clobber',*files[1:]],check=True)
+    subprocess.run(['gh','release','upload',tag,'--repo',repo,'--clobber',files[0]],check=True)
 
 def validate():
     try:
