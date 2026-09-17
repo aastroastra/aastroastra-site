@@ -19,8 +19,8 @@ concurrency:
 
 jobs:
   release:
-    uses: aastroastra/aastroastra-site/.github/workflows/project-release.yml@17a1bc0be9132c0dc80a06ca9f6f4e61b5c2143e
+    uses: aastroastra/aastroastra-site/.github/workflows/project-release.yml@bff31f5704e44198b4a0a8bc9efc581d0bad64fa
     with:
       platform: site
       tag: ${{ inputs.tag || github.ref_name }}
-      toolkit_ref: 17a1bc0be9132c0dc80a06ca9f6f4e61b5c2143e
+      toolkit_ref: bff31f5704e44198b4a0a8bc9efc581d0bad64fa
