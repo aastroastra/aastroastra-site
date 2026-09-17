@@ -4,6 +4,7 @@ from pathlib import Path
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 import urllib.request
 import zipfile
 from core import extract_report, manifest, render_report, sha256, slug, validate_manifest, release_order
@@ -76,6 +77,15 @@ class ArchiveTests(unittest.TestCase):
         self.assertIsNone(new.get_header('Authorization'))
 
 class MirrorTests(unittest.TestCase):
+    def test_missing_android_renderer_still_retains_an_honest_failure_report(self):
+        import runner
+        with tempfile.TemporaryDirectory() as tmp:
+            out=Path(tmp);state=out/'release.json';state.write_text(json.dumps(record()))
+            with patch.object(runner,'ROOT',out),patch.object(runner,'OUT',out),patch.object(runner,'STATE',state),patch.object(runner.subprocess,'run',return_value=type('Result',(),{'returncode':2})()):
+                runner.finalize()
+            data=json.loads(state.read_text());self.assertEqual(data['status'],'failed');self.assertEqual(data['downloads'],[])
+            self.assertTrue((out/'release-report.zip').exists());self.assertNotIn('href="android/index.html"',(out/'report/index.html').read_text())
+
     def test_failed_report_is_retained_and_unchanged_run_is_idempotent(self):
         with tempfile.TemporaryDirectory() as tmp:
             tmp=Path(tmp);data=record();data['status']='failed';data['checks'][0]['status']='failed'

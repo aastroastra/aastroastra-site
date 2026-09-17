@@ -160,7 +160,10 @@ def finalize():
         if (source/'web').exists():shutil.rmtree(source/'web')
         command=[sys.executable,'scripts/regression/build_report.py',str(source)]
         code=subprocess.run(command).returncode
-        if code: raise RuntimeError('Android report renderer failed')
+        if code:
+            data['status']='failed'
+            data['checks'].append({'name':'Android detail report','status':'failed','required':True,
+                'summary':'The screen report renderer failed. Structured results are retained; inspect the private Actions log.'})
         detail=report/'android';detail.mkdir(exist_ok=True)
         for name in ('index.html','web','ui-regression.json','endpoint-latency.json'):
             p=source/name
@@ -174,7 +177,7 @@ def finalize():
         if data['status']=='passed':data['downloads'].append({'kind':path.suffix[1:],'name':path.name,'size':path.stat().st_size,'sha256':sha256(path)})
     if platform in ('android','ios') and data['status']=='passed' and not data['downloads']:
         data['status']='incomplete';data['checks'].append({'name':'Install artifact','status':'not_run','summary':'No signed installer retained','required':True})
-    render_report(data,report/'index.html',platform=='android')
+    render_report(data,report/'index.html',(report/'android/index.html').exists())
     (report/'release.json').write_text(json.dumps(data,indent=2))
     with zipfile.ZipFile(OUT/'release-report.zip','w',zipfile.ZIP_DEFLATED) as z:
         for p in report.rglob('*'):
