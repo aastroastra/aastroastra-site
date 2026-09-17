@@ -28,8 +28,8 @@
   --fast: #5E9A73; --mid: #C0912F; --slow: #C06656;
 }
 * { box-sizing: border-box; }
-body { background: var(--ground); color: var(--ink); font: 16px/1.55 "Source Sans 3", system-ui, sans-serif; margin: 0; }
-.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; display: grid; gap: 44px; }
+body { background: var(--ground); color: var(--ink); font: 16px/1.55 "Source Sans 3", system-ui, sans-serif; margin: 0; overflow-wrap: anywhere; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 72px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; }
 h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 600; text-wrap: balance; margin: 0; }
 h1 { font-size: clamp(30px, 5vw, 44px); line-height: 1.1; }
 h2 { font-size: 24px; margin-bottom: 14px; }

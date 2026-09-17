@@ -1943,7 +1943,7 @@
       "passed": 30,
       "total": 30
     },
-    "report_sha256": "6bd8e3bc56ca14760936e25241ea17d6668d9a9e54f18efca47786da15d7d7e6",
+    "report_sha256": "984f0310d09a481670aea45d961cae4d4f2ff73a7124ea311a5ae0d5bb598c52",
     "website": {
       "url": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-197-34962c6f23e6b215.apk",
       "sha256": "34962c6f23e6b2150826294f1fc949e3088502609040328d3b82a9d2bc71aaa1",
@@ -1958,8 +1958,9 @@
         "sha256": "34962c6f23e6b2150826294f1fc949e3088502609040328d3b82a9d2bc71aaa1"
       }
     },
+    "report_renderer_sha": "264779d7a693a9f520493560e6b729ddada037a1",
     "report_url": "/release/reports/android-v1.0.9-f22d3793d0/",
-    "manifest_sha256": "558994916d90509f49a431a74716adae7150364ddb91309b1ceb84840613b36a",
+    "manifest_sha256": "c81987eb4a299898d86adaecbae024a32e73f016164512eed47bc16fd7334b87",
     "source_release": "https://github.com/aastroastra/aastroastra-android/releases/tag/v1.0.9",
     "published_at": "2026-09-17T22:53:15Z"
   },
