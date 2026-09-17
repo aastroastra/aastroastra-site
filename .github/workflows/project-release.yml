@@ -1,0 +1,166 @@
+name: Reusable release validation
+
+on:
+  workflow_call:
+    inputs:
+      platform:
+        required: true
+        type: string
+      tag:
+        required: true
+        type: string
+      toolkit_ref:
+        description: Immutable commit of the public release toolkit
+        required: true
+        type: string
+    secrets:
+      ANDROID_KEYSTORE_BASE64:
+        required: false
+      ANDROID_KEYSTORE_PASSWORD:
+        required: false
+      ANDROID_KEY_ALIAS:
+        required: false
+      ANDROID_KEY_PASSWORD:
+        required: false
+      QA_PHONE:
+        required: false
+      QA_OTP:
+        required: false
+      QA_API_PHONE:
+        required: false
+      QA_API_OTP:
+        required: false
+      APPLE_CERTIFICATE_P12_BASE64:
+        required: false
+      APPLE_CERTIFICATE_PASSWORD:
+        required: false
+      APPLE_ADHOC_PROFILE_BASE64:
+        required: false
+      APPLE_TEAM_ID:
+        required: false
+      SUPABASE_HOST:
+        required: false
+      SUPABASE_ANON_KEY:
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ${{ inputs.platform == 'ios' && 'macos-latest' || 'ubuntu-24.04' }}
+    timeout-minutes: 90
+    env:
+      RELEASE_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      RELEASE_PLATFORM: ${{ inputs.platform }}
+      RELEASE_TAG: ${{ inputs.tag }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: aastroastra/aastroastra-site
+          ref: ${{ inputs.toolkit_ref }}
+          path: .release-toolkit
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Report dependencies
+        run: python -m pip install Pillow==11.3.0 PyYAML==6.0.2
+      - name: Record tagged source
+        id: prepare
+        run: python .release-toolkit/release-tools/runner.py prepare --platform "$RELEASE_PLATFORM" --tag "$RELEASE_TAG"
+      - uses: actions/setup-node@v4
+        if: inputs.platform != 'ios' && inputs.platform != 'android'
+        with:
+          node-version: '22'
+      - uses: denoland/setup-deno@v2
+        if: inputs.platform == 'backend'
+        with:
+          deno-version: '2.7.14'
+      - uses: actions/setup-java@v4
+        if: inputs.platform == 'android'
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+        if: inputs.platform == 'android'
+      - name: Android SDK and emulator acceleration
+        if: inputs.platform == 'android'
+        run: |
+          sdkmanager 'platforms;android-36' 'build-tools;36.0.0'
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Select newest Xcode
+        if: inputs.platform == 'ios'
+        run: |
+          python - <<'PY'
+          import glob, re, subprocess
+          paths=glob.glob('/Applications/Xcode*.app')
+          paths.sort(key=lambda p: tuple(map(int,re.findall(r'\d+',p))) or (0,))
+          subprocess.run(['sudo','xcode-select','-s',paths[-1]],check=True)
+          subprocess.run(['xcodebuild','-version'],check=True)
+          PY
+      - name: Run platform checks and build signed installers
+        continue-on-error: true
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          APPLE_CERTIFICATE_P12_BASE64: ${{ secrets.APPLE_CERTIFICATE_P12_BASE64 }}
+          APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+          APPLE_ADHOC_PROFILE_BASE64: ${{ secrets.APPLE_ADHOC_PROFILE_BASE64 }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          SUPABASE_HOST: ${{ secrets.SUPABASE_HOST }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: python .release-toolkit/release-tools/runner.py validate
+      - name: Android screen regression on the signed APK
+        if: inputs.platform == 'android' && steps.prepare.outcome == 'success'
+        continue-on-error: true
+        uses: reactivecircus/android-emulator-runner@v2
+        env:
+          QA_PHONE: ${{ secrets.QA_PHONE }}
+          QA_OTP: ${{ secrets.QA_OTP }}
+          QA_API_PHONE: ${{ secrets.QA_API_PHONE }}
+          QA_API_OTP: ${{ secrets.QA_API_OTP }}
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
+          script: python .release-toolkit/release-tools/runner.py android-ui
+      - name: Render HTML and seal release evidence
+        if: always() && steps.prepare.outcome == 'success'
+        id: report
+        env:
+          QA_PHONE: ${{ secrets.QA_PHONE }}
+          QA_OTP: ${{ secrets.QA_OTP }}
+          QA_API_PHONE: ${{ secrets.QA_API_PHONE }}
+          QA_API_OTP: ${{ secrets.QA_API_OTP }}
+        run: python .release-toolkit/release-tools/runner.py finalize
+      - name: Retain report, private logs and symbols
+        if: always() && steps.prepare.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ inputs.platform }}-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 90
+          include-hidden-files: true
+          path: |
+            .release-output/
+            app/build/outputs/bundle/release/*.aab
+            app/build/outputs/mapping/release/mapping.txt
+            app/build/reports/tests/
+            app/build/reports/lint-results-release.html
+      - name: Retain public-safe report on the source GitHub Release
+        if: always() && steps.report.outcome == 'success'
+        run: python .release-toolkit/release-tools/runner.py publish
+      - name: Enforce regression result
+        if: always() && steps.report.outcome == 'success'
+        run: python .release-toolkit/release-tools/runner.py gate

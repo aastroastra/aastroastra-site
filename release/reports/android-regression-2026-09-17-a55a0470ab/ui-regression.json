@@ -1,0 +1,281 @@
+{
+  "started_utc": "2026-09-17T18:23:21+00:00",
+  "device": "emulator-5560",
+  "package": "com.avdstudiox.android",
+  "version": "versionCode=196 minSdk=24 targetSdk=36 versionName=1.0.8",
+  "steps": [
+    {
+      "area": "Onboarding",
+      "step": "cold start to splash",
+      "ok": true,
+      "seconds": 26.1,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Onboarding",
+      "step": "language picker",
+      "ok": true,
+      "seconds": 3.9,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Onboarding",
+      "step": "send OTP",
+      "ok": true,
+      "seconds": 8.1,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Onboarding",
+      "step": "verify OTP and sign in",
+      "ok": true,
+      "seconds": 18.8,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Onboarding",
+      "step": "numerology shown in the form (driver)",
+      "ok": true,
+      "seconds": 4.4,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Onboarding",
+      "step": "place search Mumbai (geocode)",
+      "ok": true,
+      "seconds": 8.1,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Onboarding",
+      "step": "numerology insights",
+      "ok": true,
+      "seconds": 7.8,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Numerology",
+      "step": "birth number 6 (15 Aug)",
+      "ok": true,
+      "seconds": 4.2,
+      "note": "",
+      "screenshot": "shots/08-numerology-birth-number-6-(15-aug).png"
+    },
+    {
+      "area": "Onboarding",
+      "step": "mini kundali chart",
+      "ok": false,
+      "seconds": 3.8,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Onboarding",
+      "step": "enter the app to dashboard",
+      "ok": true,
+      "seconds": 19.2,
+      "note": "Authentication and personal intake screenshots omitted from the public archive."
+    },
+    {
+      "area": "Dashboard",
+      "step": "greeting uses the name",
+      "ok": false,
+      "seconds": null,
+      "note": "Namaste, Cosmic Explorer \u2726",
+      "screenshot": "shots/11-dashboard-greeting-uses-the-name.png"
+    },
+    {
+      "area": "Dashboard",
+      "step": "panchang loaded",
+      "ok": true,
+      "seconds": 3.7,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section MULTI-MATCH",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section TODAY'S HOROSCOPE",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/14-dashboard-section-today's-horoscope.png"
+    },
+    {
+      "area": "Dashboard",
+      "step": "section YOUR NUMEROLOGY",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section PALMISTRY",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section FACE READING",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section EXPLORE MORE",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (today)",
+      "ok": true,
+      "seconds": 7.2,
+      "note": "Personal life may feel easier when you stop trying to carry every practical conc",
+      "screenshot": "shots/19-horoscope-daily-horoscope-(today).png"
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (tomorrow)",
+      "ok": true,
+      "seconds": 13.2,
+      "note": "Closeness may feel easier to express today when you stop expecting one conversat",
+      "screenshot": "shots/20-horoscope-daily-horoscope-(tomorrow).png"
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (yesterday)",
+      "ok": true,
+      "seconds": 12.2,
+      "note": "Personal life may feel easier when you stop trying to carry every practical conc",
+      "screenshot": "shots/21-horoscope-daily-horoscope-(yesterday).png"
+    },
+    {
+      "area": "Kundali",
+      "step": "details page (signs)",
+      "ok": true,
+      "seconds": 17.5,
+      "note": "",
+      "screenshot": "shots/22-kundali-details-page-(signs).png"
+    },
+    {
+      "area": "Kundali",
+      "step": "chart drawn",
+      "ok": true,
+      "seconds": 3.0,
+      "note": "",
+      "screenshot": "shots/23-kundali-chart-drawn.png"
+    },
+    {
+      "area": "AI assistant",
+      "step": "explain this section answer",
+      "ok": true,
+      "seconds": 19.3,
+      "note": "Your Sun sign is just the rashi the Sun was sitting in when you were born, Ananya: Cancer, ruled by ",
+      "screenshot": "shots/24-ai-assistant-explain-this-section-answer.png"
+    },
+    {
+      "area": "Kundali",
+      "step": "details page scrolled",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/25-kundali-details-page-scrolled.png"
+    },
+    {
+      "area": "Match",
+      "step": "match input",
+      "ok": true,
+      "seconds": 3.6,
+      "note": "",
+      "screenshot": "shots/26-match-match-input.png"
+    },
+    {
+      "area": "Match",
+      "step": "match details (guna score)",
+      "ok": true,
+      "seconds": 13.7,
+      "note": "29/36",
+      "screenshot": "shots/27-match-match-details-(guna-score).png"
+    },
+    {
+      "area": "Match",
+      "step": "numerology vibe",
+      "ok": true,
+      "seconds": 3.7,
+      "note": "",
+      "screenshot": "shots/28-match-numerology-vibe.png"
+    },
+    {
+      "area": "Match",
+      "step": "8-koota analysis",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/29-match-8-koota-analysis.png"
+    },
+    {
+      "area": "Multi-Match",
+      "step": "multi-match input",
+      "ok": true,
+      "seconds": 3.4,
+      "note": "",
+      "screenshot": "shots/30-multi-match-multi-match-input.png"
+    },
+    {
+      "area": "Multi-Match",
+      "step": "ranked results",
+      "ok": true,
+      "seconds": 16.6,
+      "note": "24/36 Guna, 17/36 Guna",
+      "screenshot": "shots/31-multi-match-ranked-results.png"
+    },
+    {
+      "area": "Multi-Match",
+      "step": "AI verdict text",
+      "ok": true,
+      "seconds": 3.1,
+      "note": "Ananya and Tiru, 24 of 36 with strong Bhakoot is a very good match; only Varna harmony run",
+      "screenshot": "shots/32-multi-match-ai-verdict-text.png"
+    },
+    {
+      "area": "Palm reading",
+      "step": "reading shown",
+      "ok": true,
+      "seconds": 36.0,
+      "note": "Ananya, this is a warm, well-fleshed right palm with a long curving Heart Line, a clear sloping Head",
+      "screenshot": "shots/33-palm-reading-reading-shown.png"
+    },
+    {
+      "area": "Face reading",
+      "step": "reading shown",
+      "ok": false,
+      "seconds": 4.8,
+      "note": "Attempt to invoke virtual method 'java.lang.Class java.lang.Object.getClass()' on a null object refe",
+      "screenshot": "shots/34-face-reading-reading-shown.png"
+    },
+    {
+      "area": "Chat",
+      "step": "reply to a typed question",
+      "ok": true,
+      "seconds": 14.4,
+      "note": "Career is in a good phase, Ananya. Your tenth house of work is ruled by the Moon, exalted in Rohini,",
+      "screenshot": "shots/35-chat-reply-to-a-typed-question.png"
+    },
+    {
+      "area": "App",
+      "step": "no app crash in logcat",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    }
+  ],
+  "note": "The palm step was re-run after fixing the script entry point; everything else is from one continuous run."
+}

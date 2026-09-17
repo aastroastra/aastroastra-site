@@ -1,0 +1,71 @@
+[
+  {
+    "severity": "high",
+    "status": "Open",
+    "title": "Face reading fails on every photo, and shows the raw Java error",
+    "detail": "On the release build, picking any photo ends with \"Attempt to invoke virtual method 'java.lang.Class java.lang.Object.getClass()' on a null object reference\" on screen. Reproduced with two different images, including a real photograph, so it is not about the picture. The face model and its library are inside the APK. Two things to fix: whatever returns null in the measuring step, and the screen, which prints an exception message instead of a sentence a person can act on.",
+    "where": "FaceLandmarkDetector.geometry via FaceReadingViewModel.analyze, which falls back to e.message for anything that is not a DetectionError"
+  },
+  {
+    "severity": "high",
+    "status": "Fixed and verified in this run",
+    "title": "Chat and Explain broke on any answer citing a source without a verse",
+    "detail": "The server sends \"verse\": null for chapter-only sources, the app declared it as a non-null string, and the chat decoder did not coerce nulls. Chat silently fell back to the offline answer (\"I couldn't reach the server\") and Explain printed the serialization error. One shared, null-tolerant decoder now serves buffered, streamed and explain replies. After the fix, chat answered in 14.4 s and Explain in 19.3 s.",
+    "where": "ChatWireJson in ChatWireModels.kt, commit e47920a, with two regression tests"
+  },
+  {
+    "severity": "medium",
+    "status": "Open",
+    "title": "The onboarding Mini Kundali says \"Chart not ready yet\" even with a birth place",
+    "detail": "Mumbai was searched, picked and saved, and the same chart draws correctly on the Kundali page a minute later. The onboarding screen fetches the real chart once, in a LaunchedEffect when it opens, and shows the placeholder for the rest of the session if that one attempt does not finish. The screen needs a retry, or to wait for the fetch it started.",
+    "where": "MiniKundaliScreen.kt:125 calls loadAccuratePlanets(); it returns early and never runs again"
+  },
+  {
+    "severity": "medium",
+    "status": "Fixed in this run",
+    "title": "Match verdict lines were English-only, in every language",
+    "detail": "The three numerology vibe verdicts under the match percentage were hardcoded English inside MatchNumerology, so Hindi, Marathi, Gujarati and Tamil users read them in English. They now carry all five languages, and the em dashes in them are gone (workspace rule).",
+    "where": "MatchNumerology.verdictLore"
+  },
+  {
+    "severity": "low",
+    "status": "Open",
+    "title": "The dashboard greets \"Cosmic Explorer\" instead of the name",
+    "detail": "The name is saved and used elsewhere (the palm screen, the kundali list, the readings themselves), but the greeting stays on the placeholder for the whole session after onboarding.",
+    "where": "HomeScreen greeting"
+  },
+  {
+    "severity": "low",
+    "status": "Open",
+    "title": "Sunrise and sunset are not zero-padded",
+    "detail": "The panchang strip shows \"6:6:55\" and \"18:24:5\". Both need padding, and seconds are noise on a dashboard strip.",
+    "where": "Dashboard panchang strip"
+  },
+  {
+    "severity": "low",
+    "status": "Open",
+    "title": "A price is shown in a build where nothing can be bought",
+    "detail": "The numerology insights screen shows \"\u20b9499 FREE\" next to Export report as PDF. Paid features are switched off in this build, so a struck-out price promises a comparison that does not exist here.",
+    "where": "NumerologyInsightsScreen export row"
+  },
+  {
+    "severity": "low",
+    "status": "Open",
+    "title": "The Multi-Match consent line only responds on the switch itself",
+    "detail": "Tapping the sentence \"I have consent to compare these people's charts\" does nothing; only the switch at the right edge works. A label should toggle its own control, and the tap target is otherwise small.",
+    "where": "MultiMatchScreen consent row"
+  },
+  {
+    "severity": "info",
+    "status": "Open, needs backend",
+    "title": "Prediction reports exist only in English and Hindi",
+    "detail": "The prediction function authors its report as {en, hi}. Marathi, Gujarati and Tamil users get the English text even though the rest of the app now speaks their language. The app sends the right language code; the backend has to author the other three.",
+    "where": "supabase/functions/_shared/prediction-authoring.ts"
+  },
+  {
+    "severity": "info",
+    "status": "Environment, not the app",
+    "title": "Emulator timings are not device timings",
+    "detail": "The Mac ran two emulators and other builds throughout, and its disk was full at one point, which froze the emulator twice. Screen timings here are usable for comparison between screens, not as what a phone does. The backend timings are unaffected: they are direct HTTPS calls."
+  }
+]

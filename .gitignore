@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.release-output/
+.release-toolkit/
+_site/
+_release-data/
+.venv/
+.DS_Store

@@ -1,0 +1,277 @@
+{
+  "started_utc": "2026-09-17T14:40:17+00:00",
+  "project": "gttszlununmqivrqevwv",
+  "results": [
+    {
+      "feature": "Onboarding",
+      "call": "auth OTP send (test number)",
+      "function": "auth/v1/otp",
+      "status": 200,
+      "ms": 1012,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "auth OTP verify",
+      "function": "auth/v1/verify",
+      "status": 200,
+      "ms": 626,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "geocode Mumbai",
+      "function": "geocode",
+      "status": 200,
+      "ms": 799,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "planets (cold)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 2585,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "planets (warm)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1224,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "major_vdasha",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1640,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "general_ascendant_report",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 796,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Dashboard",
+      "call": "banners",
+      "function": "banners",
+      "status": 200,
+      "ms": 1401,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Dashboard",
+      "call": "advanced_panchang (today)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1303,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Horoscope",
+      "call": "sun_sign_prediction/daily/leo",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 521,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Horoscope",
+      "call": "horoscope_prediction/weekly/leo",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 617,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Horoscope",
+      "call": "horoscope_prediction/monthly/leo",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 502,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Horoscope",
+      "call": "sun_sign_prediction/daily/leo (hi)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 504,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "horo_chart/chalit",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1342,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "sarvashtak",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 767,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "kp_planets",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1629,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "kp_house_cusps",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1108,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "advanced_panchang",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 999,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "sadhesati_current_status",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 401,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "general_house_report/moon",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1056,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "numero_table",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1669,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Match",
+      "call": "match_ashtakoot_points",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1028,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Match",
+      "call": "match_manglik_report",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 833,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Multi-Match",
+      "call": "match_ashtakoot_points (2nd)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 801,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Prediction",
+      "call": "prediction weekly",
+      "function": "prediction",
+      "status": 200,
+      "ms": 20794,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Chat",
+      "call": "ai-chat (buffered reply)",
+      "function": "ai-chat",
+      "status": 200,
+      "ms": 11506,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Chat",
+      "call": "ai-chat-stream (streamed reply)",
+      "function": "ai-chat-stream",
+      "status": 200,
+      "ms": 10128,
+      "ok": true,
+      "note": "",
+      "first_token_ms": 3996
+    },
+    {
+      "feature": "AI assistant",
+      "call": "ai-chat intent=explain",
+      "function": "ai-chat",
+      "status": 200,
+      "ms": 10131,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Palm reading",
+      "call": "palmistry (vision)",
+      "function": "palmistry",
+      "status": 200,
+      "ms": 25846,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Face reading",
+      "call": "face-reading (vision)",
+      "function": "face-reading",
+      "status": 200,
+      "ms": 25583,
+      "ok": true,
+      "note": ""
+    }
+  ]
+}

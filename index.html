@@ -2987,7 +2987,8 @@
               h('a', { href:'./terms.html' }, COPY.terms[lang]),
               h('a', { href:'./delete-account.html' }, COPY.deleteAcct[lang]),
               h('a', { href:'./presskit.zip', download:true }, COPY.presskit[lang]),
-              h('a', { href:'./status.html' }, COPY.status[lang])
+              h('a', { href:'./status.html' }, COPY.status[lang]),
+              h('a', { href:'./release/' }, lang==='hi'?'रिलीज़ और रिपोर्ट':'Releases and reports')
             ),
             // Mobile: full branded footer.
             h('div', { className:'foot-big' },
@@ -3001,6 +3002,7 @@
                   h('div', { className:'fcol' },
                     h('b', null, lang==='hi'?'ऐप':'App'),
                     h('a', { href:ver.apk }, COPY.download[lang]),
+                    h('a', { href:'./release/' }, lang==='hi'?'रिलीज़ और रिपोर्ट':'Releases and reports'),
                     h('a', { href:'./presskit.zip', download:true }, COPY.presskit[lang])
                   ),
                   h('div', { className:'fcol' },

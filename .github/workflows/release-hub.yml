@@ -1,0 +1,80 @@
+name: Publish release history
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: release-hub
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify release hub and existing site contracts
+        run: |
+          python -m unittest discover -s release-tools -p 'test_*.py'
+          python -m unittest discover -s . -p 'test_publish_storage.py'
+          node --test test_auth_link.mjs
+      - name: Restore permanent report history
+        run: |
+          if git show-ref --verify --quiet refs/remotes/origin/release-data; then
+            git worktree add _release-data origin/release-data
+          else
+            mkdir _release-data
+            git -C _release-data init -b release-data
+          fi
+      - name: Sync tagged releases from every platform
+        id: sync
+        continue-on-error: true
+        env:
+          RELEASE_SOURCE_TOKEN: ${{ secrets.RELEASE_SOURCE_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: python release-tools/sync_releases.py --data _release-data
+      - name: Persist verified reports and metadata
+        run: |
+          git -C _release-data config user.name 'github-actions[bot]'
+          git -C _release-data config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C _release-data add records.json sync.json
+          if [ -d _release-data/reports ]; then git -C _release-data add reports; fi
+          if ! git -C _release-data diff --cached --quiet; then
+            git -C _release-data commit -m 'Update verified release evidence'
+            git fetch ./_release-data HEAD
+            git push origin FETCH_HEAD:refs/heads/release-data
+          fi
+      - name: Build public website
+        run: python release-tools/build_site.py --data _release-data --out _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy website and release archive
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Surface partial sync failures
+        if: steps.sync.outcome == 'failure'
+        run: |
+          echo '::error::One or more sources could not sync. The website was deployed with all retained valid records. Check release/sync status and RELEASE_SOURCE_TOKEN access.'
+          exit 1
