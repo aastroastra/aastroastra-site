@@ -1,0 +1,277 @@
+{
+  "started_utc": "2026-09-17T21:37:40+00:00",
+  "project": "gttszlununmqivrqevwv",
+  "results": [
+    {
+      "feature": "Onboarding",
+      "call": "auth OTP send (test number)",
+      "function": "auth/v1/otp",
+      "status": 200,
+      "ms": 1123,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "auth OTP verify",
+      "function": "auth/v1/verify",
+      "status": 200,
+      "ms": 692,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "geocode Mumbai",
+      "function": "geocode",
+      "status": 200,
+      "ms": 1051,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "planets (cold)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1361,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "planets (warm)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1364,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "major_vdasha",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 740,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Onboarding",
+      "call": "general_ascendant_report",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 961,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Dashboard",
+      "call": "banners",
+      "function": "banners",
+      "status": 200,
+      "ms": 1421,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Dashboard",
+      "call": "advanced_panchang (today)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 531,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Horoscope",
+      "call": "sun_sign_prediction/daily/leo",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 522,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Horoscope",
+      "call": "horoscope_prediction/weekly/leo",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 759,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Horoscope",
+      "call": "horoscope_prediction/monthly/leo",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 523,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Horoscope",
+      "call": "sun_sign_prediction/daily/leo (hi)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 502,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "horo_chart/chalit",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 468,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "sarvashtak",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 568,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "kp_planets",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 1014,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "kp_house_cusps",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 513,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "advanced_panchang",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 553,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "sadhesati_current_status",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 413,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "general_house_report/moon",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 546,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Kundali",
+      "call": "numero_table",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 765,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Match",
+      "call": "match_ashtakoot_points",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 576,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Match",
+      "call": "match_manglik_report",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 812,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Multi-Match",
+      "call": "match_ashtakoot_points (2nd)",
+      "function": "astrology-proxy",
+      "status": 200,
+      "ms": 700,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Prediction",
+      "call": "prediction weekly",
+      "function": "prediction",
+      "status": 200,
+      "ms": 693,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Chat",
+      "call": "ai-chat (buffered reply)",
+      "function": "ai-chat",
+      "status": 200,
+      "ms": 11226,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Chat",
+      "call": "ai-chat-stream (streamed reply)",
+      "function": "ai-chat-stream",
+      "status": 200,
+      "ms": 12897,
+      "ok": true,
+      "note": "",
+      "first_token_ms": 3667
+    },
+    {
+      "feature": "AI assistant",
+      "call": "ai-chat intent=explain",
+      "function": "ai-chat",
+      "status": 200,
+      "ms": 10186,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Palm reading",
+      "call": "palmistry (vision)",
+      "function": "palmistry",
+      "status": 200,
+      "ms": 26353,
+      "ok": true,
+      "note": ""
+    },
+    {
+      "feature": "Face reading",
+      "call": "face-reading (vision)",
+      "function": "face-reading",
+      "status": 429,
+      "ms": 1070,
+      "ok": false,
+      "note": "RATE_LIMITED: Daily limit of 1 face readings reached. Upgrade for more."
+    }
+  ]
+}

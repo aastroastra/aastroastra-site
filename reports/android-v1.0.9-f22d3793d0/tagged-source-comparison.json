@@ -1,0 +1,33 @@
+{
+  "explanation": "The tested artifacts were built immediately before committing the final fix. Rebuilding the committed tag changes only embedded Git revision metadata (and bundle signatures covering it). Every other archive entry is byte-identical. The published APK and retained AAB are the exact tested candidate pair.",
+  "source_sha": "0a414e806d68afa3755bbfcc01fc3bb40e7af5f8",
+  "artifacts": [
+    {
+      "kind": "apk",
+      "tested_sha256": "34962c6f23e6b2150826294f1fc949e3088502609040328d3b82a9d2bc71aaa1",
+      "tagged_rebuild_sha256": "365ee3c88d40f4fa460cfb32aa0dfa77eaa7c13d1f002d7bdcd327d4acbfa3d6",
+      "entry_count": 578,
+      "differing_entries": [
+        "META-INF/version-control-info.textproto"
+      ],
+      "tested_git_metadata": "repositories {\n  system: GIT\n  local_root_path: \"$PROJECT_DIR\"\n  revision: \"4297a321aa3f0a80a449cdf2724c0bdee9fe14ed\"\n}\n",
+      "tagged_git_metadata": "repositories {\n  system: GIT\n  local_root_path: \"$PROJECT_DIR\"\n  revision: \"0a414e806d68afa3755bbfcc01fc3bb40e7af5f8\"\n}\n",
+      "all_other_entries_identical": true
+    },
+    {
+      "kind": "aab",
+      "tested_sha256": "3ac67b06077c5cf0a7cd33938707a355a09edc5ec52f733df8bee22898743122",
+      "tagged_rebuild_sha256": "1649b3f9c428a0083e83b46b7bcb77a8f64ef90ec5f89730784e278353890544",
+      "entry_count": 588,
+      "differing_entries": [
+        "base/root/META-INF/version-control-info.textproto",
+        "META-INF/AASTROAS.SF",
+        "META-INF/AASTROAS.RSA",
+        "META-INF/MANIFEST.MF"
+      ],
+      "tested_git_metadata": "repositories {\n  system: GIT\n  local_root_path: \"$PROJECT_DIR\"\n  revision: \"4297a321aa3f0a80a449cdf2724c0bdee9fe14ed\"\n}\n",
+      "tagged_git_metadata": "repositories {\n  system: GIT\n  local_root_path: \"$PROJECT_DIR\"\n  revision: \"0a414e806d68afa3755bbfcc01fc3bb40e7af5f8\"\n}\n",
+      "all_other_entries_identical": true
+    }
+  ]
+}

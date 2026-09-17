@@ -1,0 +1,310 @@
+{
+  "started_utc": "2026-09-17T22:14:17+00:00",
+  "device": "emulator-5560",
+  "package": "com.avdstudiox.android",
+  "version": "1.0.9 (197)",
+  "package_version": "versionCode=197 minSdk=24 targetSdk=36 versionName=1.0.9",
+  "steps": [
+    {
+      "area": "Onboarding",
+      "step": "cold start to splash",
+      "ok": true,
+      "seconds": 3.0,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "language picker",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "send OTP",
+      "ok": true,
+      "seconds": 4.8,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "verify OTP and sign in",
+      "ok": true,
+      "seconds": 5.1,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "numerology shown in the form (driver)",
+      "ok": true,
+      "seconds": 2.4,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "place search Mumbai (geocode)",
+      "ok": true,
+      "seconds": 2.5,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "numerology insights",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Numerology",
+      "step": "birth number 6 (15 Aug)",
+      "ok": true,
+      "seconds": 2.1,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "mini kundali chart",
+      "ok": true,
+      "seconds": 6.4,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "enter the app to dashboard",
+      "ok": true,
+      "seconds": 7.6,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "greeting uses the name",
+      "ok": true,
+      "seconds": null,
+      "note": "Namaste, Ananya \u2726"
+    },
+    {
+      "area": "Dashboard",
+      "step": "panchang loaded",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section MULTI-MATCH",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section TODAY'S HOROSCOPE",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section YOUR NUMEROLOGY",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section PALMISTRY",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section FACE READING",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section EXPLORE MORE",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (today)",
+      "ok": true,
+      "seconds": 4.3,
+      "note": "Personal life may feel easier when you stop trying to carry every practical conc"
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (tomorrow)",
+      "ok": true,
+      "seconds": 2.2,
+      "note": "Closeness may feel easier to express today when you stop expecting one conversat"
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (yesterday)",
+      "ok": true,
+      "seconds": 2.2,
+      "note": "Personal life may feel easier when you stop trying to carry every practical conc"
+    },
+    {
+      "area": "Kundali",
+      "step": "details page (signs)",
+      "ok": true,
+      "seconds": 8.6,
+      "note": ""
+    },
+    {
+      "area": "Kundali",
+      "step": "chart drawn",
+      "ok": true,
+      "seconds": 2.1,
+      "note": ""
+    },
+    {
+      "area": "AI assistant",
+      "step": "explain this section answer",
+      "ok": true,
+      "seconds": 20.7,
+      "note": "Your Sun sign is just the rashi the Sun was sitting in when you were born, and it describes the core"
+    },
+    {
+      "area": "Kundali",
+      "step": "details page scrolled",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Match",
+      "step": "match input",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Match",
+      "step": "numerology vibe",
+      "ok": true,
+      "seconds": 2.1,
+      "note": ""
+    },
+    {
+      "area": "Match",
+      "step": "match details (guna score)",
+      "ok": true,
+      "seconds": 11.9,
+      "note": "29/36"
+    },
+    {
+      "area": "Match",
+      "step": "8-koota analysis",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Multi-Match",
+      "step": "multi-match input",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Multi-Match",
+      "step": "ranked results",
+      "ok": false,
+      "seconds": 123.8,
+      "note": ""
+    },
+    {
+      "area": "Multi-Match",
+      "step": "verdict text",
+      "ok": false,
+      "seconds": null,
+      "note": "Ranked results were not shown"
+    },
+    {
+      "area": "Palm reading",
+      "step": "reading shown",
+      "ok": true,
+      "seconds": 32.5,
+      "note": "Ananya, this is a warm, well-filled hand: a long curving Heart Line, a clear Head Line sloping gentl"
+    },
+    {
+      "area": "Face reading",
+      "step": "reading shown",
+      "ok": true,
+      "seconds": 32.6,
+      "note": "Ananya's face reads long and air-toned: a thinking, planning temperament with strong cheekbone prese"
+    },
+    {
+      "area": "Chat",
+      "step": "reply to a typed question",
+      "ok": true,
+      "seconds": 13.4,
+      "note": "Ananya, your career is on solid ground this year. The lord of your 10th house is exalted, so the wor"
+    },
+    {
+      "area": "Group chat",
+      "step": "shared people picker opens",
+      "ok": true,
+      "seconds": 2.4,
+      "note": ""
+    },
+    {
+      "area": "Group chat",
+      "step": "Ananya available in the shared catalog",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Group chat",
+      "step": "Rohan available in the shared catalog",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Group chat",
+      "step": "Priya available in the shared catalog",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Group chat",
+      "step": "all three selected people retained",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Group chat",
+      "step": "family suggestions use selected names",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Group chat",
+      "step": "reply with three-person context",
+      "ok": true,
+      "seconds": 21.0,
+      "note": "All three of you stand firm in work, and that is the shared ground to build on. Ananya's tenth house"
+    },
+    {
+      "area": "App",
+      "step": "no app crash in logcat",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    }
+  ]
+}

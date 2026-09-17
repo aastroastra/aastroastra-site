@@ -1,6 +1,1970 @@
 [
   {
     "schema": 1,
+    "id": "android:v1.0.9",
+    "platform": "android",
+    "repo": "aastroastra/aastroastra-android",
+    "tag": "v1.0.9",
+    "sha": "0a414e806d68afa3755bbfcc01fc3bb40e7af5f8",
+    "previous_tag": null,
+    "version": "1.0.9",
+    "build": "197",
+    "date": "2026-09-18T04:07:37+05:30",
+    "kind": "tag",
+    "status": "passed",
+    "deployment": "website",
+    "changes": [
+      {
+        "sha": "0a414e806d68afa3755bbfcc01fc3bb40e7af5f8",
+        "subject": "fix: retain first Multi-Match ranking across unrelated preference writes"
+      },
+      {
+        "sha": "4297a321aa3f0a80a449cdf2724c0bdee9fe14ed",
+        "subject": "Scroll through complete onboarding reports before continuing"
+      },
+      {
+        "sha": "269c5b1dd45021f6204bf1f6fc1e6cac62459165",
+        "subject": "Reach Multi-Match actions below the dashboard navigation cutoff"
+      },
+      {
+        "sha": "55cbe8d8152e192ee8a63372d11f99fb7d9b3083",
+        "subject": "Verify rendered charts and scroll release regression controls into view"
+      },
+      {
+        "sha": "7ca3b0de775d1f15e114fb4143385e0fa7db7b97",
+        "subject": "Make emulator OTP entry reliable and stop after incomplete onboarding"
+      },
+      {
+        "sha": "a65f67a135cde8551c8a7bf522d95716611ecc82",
+        "subject": "Automate tagged regression reports and promote the verified bundle to Play"
+      },
+      {
+        "sha": "569c338b9d5c6290b363fdc854fe3ba238c70d93",
+        "subject": "Fix release face detection and persist selected birth coordinates in build 197"
+      },
+      {
+        "sha": "1f255e6f223d3c7f1e7f6cfe451c2efa373be345",
+        "subject": "Unify Kundali selection and add grounded multi-person AstroAI conversations"
+      },
+      {
+        "sha": "4b5017c8a527dbb99157370a76b83573a44f7ccd",
+        "subject": "test: an Android mini regression that drives the release build end to end"
+      },
+      {
+        "sha": "e47920a5e2aae35dd1ad14738650063654b5d316",
+        "subject": "fix: chat replies no longer fail on sources cited without a verse"
+      },
+      {
+        "sha": "a5a6dfecceeb9cc5ffcb82b22dd7c2d90073a58e",
+        "subject": "fix: name Play releases \"versionName (versionCode)\""
+      },
+      {
+        "sha": "197e22061383643dd2432d0aa69454959509c595",
+        "subject": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+      },
+      {
+        "sha": "11c0d6102e4306bbd650aa86ba5b6ff272b3bd2e",
+        "subject": "fix: preserve Android birth date and time contracts across locales"
+      },
+      {
+        "sha": "3dd27a267addb12613d8b5ad9bd0731efa78e75e",
+        "subject": "fix: complete Android locale resources and enforce release lint"
+      },
+      {
+        "sha": "fe76fedc6b266c4e3d69607462bc480a8a3b9b8b",
+        "subject": "fix: support older Android APIs and notification permission changes"
+      },
+      {
+        "sha": "8a018f10d6cff879586452422cb91d5071d9162e",
+        "subject": "feat: prepare free-core Android release"
+      },
+      {
+        "sha": "24ce62b61dcba6e069c02114165f1fa0ffe67e6c",
+        "subject": "chore: versionCode 194, versionName 1.0.7"
+      },
+      {
+        "sha": "d7533f31be4c297fcaf7de2a94b26d62a005bb18",
+        "subject": "fix(android): add request identities and safe chat and vision transport"
+      },
+      {
+        "sha": "265a5d4743e041bd36f33aa9e69407a39e932f8b",
+        "subject": "chore: versionCode 193, versionName 1.0.6"
+      },
+      {
+        "sha": "eb0d341034cb04a8c1601b0f8ff2a406a0802c57",
+        "subject": "fix(add-kundali): the form opens at full height, not the half stop"
+      },
+      {
+        "sha": "4332434f47f519d8016fc88cc28e011e4237381c",
+        "subject": "fix(multi-match): your own chart is a chart, so it appears in both pickers"
+      },
+      {
+        "sha": "fe3f0894975b0ebfc50e4d1cc8cd1410f9356c61",
+        "subject": "feat(icon): the launcher mark goes orange on white, and a little heavier"
+      },
+      {
+        "sha": "e8104c2ff54b644e9a9709e84597cd5c8b08a500",
+        "subject": "fix(auth,match,ui): stop losing the profile under a second user id"
+      },
+      {
+        "sha": "85276f7314c5c24078a57406b85c65cbe0e642cd",
+        "subject": "fix(ui): the back arrow, the keyboard, the CTA label and three faint things"
+      },
+      {
+        "sha": "8d78699c7948e634463f552c029b973a1b02b54c",
+        "subject": "docs(store): the App access block Play review needs"
+      },
+      {
+        "sha": "a01d5bbf63b7ffb18aba9c6769a472d2a5391ee6",
+        "subject": "fix(otp): six boxes of equal width, at any width"
+      },
+      {
+        "sha": "dec37746e50b4737f1552722c075c9cf0abc55cd",
+        "subject": "chore: versionCode 190"
+      },
+      {
+        "sha": "27b63964b07b6aa4dc8951d5afe93aff42070462",
+        "subject": "chore: versionCode 189, versionName 1.0.4"
+      },
+      {
+        "sha": "d7df16d17a051dc4835e99dc863b528749e5ddf0",
+        "subject": "fix(numerology,wallet): make the cells that carry meaning visible"
+      },
+      {
+        "sha": "c150e974de5dd316208e2c8d517314dfadb1bebe",
+        "subject": "fix(nav): give every reachable screen a way back, and open the real numerology"
+      },
+      {
+        "sha": "687fac2e14ae814d1df328fb1504f3571f449c32",
+        "subject": "perf(astrology): keep a chart on the device instead of asking twice"
+      },
+      {
+        "sha": "00659879b3b44d3d15c71d59123047ea0700ceb3",
+        "subject": "feat(intake): birth place gets a screen, and the intro gets iOS's words"
+      },
+      {
+        "sha": "bd603f8ee91f223c84991a2d8e79bdce092a792f",
+        "subject": "feat(store): compose the Play frames, and say when two of them may ship"
+      },
+      {
+        "sha": "b26bf0081d44878c823c03f8c6814d2f81d89fce",
+        "subject": "chore: versionCode 188, and the screenshot composer"
+      },
+      {
+        "sha": "3ec34c731a0811202eabfe00f96d97cd2c9cc866",
+        "subject": "fix(onboarding): stop asking for a number we already verified"
+      },
+      {
+        "sha": "b1512ff5f13dad2e97295580284f6864e06e64aa",
+        "subject": "fix(l10n): stop offering four languages the app cannot speak"
+      },
+      {
+        "sha": "a1838771ccbfac13a3e4d462d7af4334e885ff09",
+        "subject": "chore: versionCode 187"
+      },
+      {
+        "sha": "bfe8ae5c6cf99dcf5e1709a8d3d100da40e49a03",
+        "subject": "feat(onboarding): the intake screen explains itself, and stops being a form"
+      },
+      {
+        "sha": "61377b5209158f1fba2f1d1a1fc0207e55174543",
+        "subject": "feat(intake): a typewriter and a rail, both of which know when to stop moving"
+      },
+      {
+        "sha": "07070ad26c0d2b439218349828761eb7898ce27c",
+        "subject": "refactor(intake): the birth fields become a component, persistence stays outside"
+      },
+      {
+        "sha": "334d8ef1aa97f96c7dc50d2b558d66af4d6dd8e5",
+        "subject": "build: ship native debug symbols in the bundle"
+      },
+      {
+        "sha": "f21a86bbe2fd21173a99b844611a77381485be06",
+        "subject": "fix(manifest): drop the foreground service types we cannot demonstrate"
+      },
+      {
+        "sha": "fc99a4ee6bef7f85375ece33a0f51bce45770b51",
+        "subject": "feat(billing): the plan comes from the server, not a literal"
+      },
+      {
+        "sha": "bd9ef0784be66f8239f1c58274e884951a897f28",
+        "subject": "fix(auth): six-digit phone OTP, or nobody can sign in"
+      },
+      {
+        "sha": "1fa1b369f3a35f19d579b5ddbd6d90fae97d7e1f",
+        "subject": "docs(store): Hindi listing copy, and stop claiming Bengali"
+      },
+      {
+        "sha": "0a10f7cdec4546387ef4af88b146af2922ec6bde",
+        "subject": "fix(billing): the entitlement id never matched, so nobody could buy Pro"
+      },
+      {
+        "sha": "603acba5a8c9db48f2883edf8c1dea796a256087",
+        "subject": "fix(billing): RevenueCat 9.29.1 for Play Billing 8, and rename the package"
+      },
+      {
+        "sha": "4a93013ee5fd0cba68cab1ab1b2e3bc29b12f589",
+        "subject": "fix(ui): drop the logo watermark, and align the consent checkbox"
+      },
+      {
+        "sha": "a790fad6ca554cade5d9367dd4c7c9392d4dbd13",
+        "subject": "chore(store): build the developer-verification APK from a script"
+      },
+      {
+        "sha": "1d2d009ec5f6c1a897927b32f947beec760bd7c8",
+        "subject": "chore(store): pin com.aastroastra.android rather than defaulting to it"
+      },
+      {
+        "sha": "3b2f814a202dcc03a6980690add4ea0fc0743b32",
+        "subject": "ci(play): release pipeline, gated and manual by default"
+      },
+      {
+        "sha": "ffb84b9dfe2e989c9f582cb319386773e33666c3",
+        "subject": "fix(store): refuse an ambiguous screenshot set instead of uploading a guess"
+      },
+      {
+        "sha": "00ac4ecc8949c2992dbe1eb37aecf3ed36f57a9a",
+        "subject": "feat(store): publish the listing from a script, and colour the screenshots"
+      },
+      {
+        "sha": "a4ae980eddd2871a9ddf77ce7ba39a5eee9fd64e",
+        "subject": "fix(explain): quieter ask button on the identity tiles"
+      },
+      {
+        "sha": "17ede73fe3f906b4a9b83534548b4c462cd4e9da",
+        "subject": "docs(store): screenshot strategy, and six composed frames"
+      },
+      {
+        "sha": "fc34b79a839b7802146aae88b266e2e01deb62ba",
+        "subject": "feat(match): tap a koota gauge for a reading, attached to the gauge"
+      },
+      {
+        "sha": "1cede934ff0242f5dd74c1fa86347744be30847b",
+        "subject": "chore: bump Android to 1.0.1 (181)"
+      },
+      {
+        "sha": "2477b6fecb91569af920b217c88bc2994f8d94ba",
+        "subject": "refactor(match): two hand-rolled card shells onto AastroCard"
+      },
+      {
+        "sha": "9443ffa4a14992ae28b88160787c389706bd9f4f",
+        "subject": "feat(kundali): tell a person their gana, not just a match one"
+      },
+      {
+        "sha": "24b0079e71fb578b1da999b85c29b5bb602f5493",
+        "subject": "fix(match): the score ring can be red now, and the number fits"
+      },
+      {
+        "sha": "6a6b6a2f6d7ebef58a9dc7d8d83b575eb0912b7c",
+        "subject": "refactor(kundali): promote the four-box hero into the component library"
+      },
+      {
+        "sha": "c471cbad1ad7cfd4f5251a9825801f0eb42d32b8",
+        "subject": "feat(release): the site beta keeps 0000, Play demands real SMS"
+      },
+      {
+        "sha": "eda49b00ff7b280fe0aa9150ee8677fc74a65b98",
+        "subject": "docs(store): rebuild the Play graphics in the brand gold"
+      },
+      {
+        "sha": "6dc660741147fd006ca9b38c6581dcbbd86168c4",
+        "subject": "docs(store): Play listing copy, graphics and a release checklist"
+      },
+      {
+        "sha": "0b8f46c814c2da53c12939020640dcf85600381b",
+        "subject": "feat(config): gate Remedies and Call behind app_config, fetched at splash"
+      },
+      {
+        "sha": "694da9a184642e4d6679914d801e5375da5b8185",
+        "subject": "fix(icons): brand the launcher icon and stop the mask clipping it"
+      },
+      {
+        "sha": "3acc2f1d5dc42bf0c1f38faba0af74d719110f4b",
+        "subject": "fix(release): make the release build shippable on Play"
+      },
+      {
+        "sha": "7d30f57b08ee09f081cd2d862d2385848b4c6093",
+        "subject": "chore: bump Android to 0.7.5 (179) for the booking-confirmation release"
+      },
+      {
+        "sha": "038ef057a87f56fe90d8c96d4e9400812174a5a8",
+        "subject": "Booking: confirm what you are agreeing to before it is booked"
+      },
+      {
+        "sha": "c7268b74952d28d065e33c0b8f64674d0f29844b",
+        "subject": "fix(wallet, astrologer): Android half of tonight's findings"
+      },
+      {
+        "sha": "e895ed4c54b32795ef284ea372d3074d3f8b82f0",
+        "subject": "feat(orders): Android parity for orders, payments and the balance"
+      },
+      {
+        "sha": "a67d4c9395ef31ec70dc5acd3f1a299014c8cda6",
+        "subject": "chore: 0.7.2 (176), carrying shake-to-report"
+      },
+      {
+        "sha": "1f81e0569c4a0c00196e0179ee971d992a10207e",
+        "subject": "feat(bugreport): shake to report a bug, Android"
+      },
+      {
+        "sha": "87bca0e76b6ab6d295b8f8a75f015501c41213f5",
+        "subject": "feat(remedies): show people what they bought, Android twin"
+      },
+      {
+        "sha": "360f1e369308c6331caa5a6239f2fb60124e1c88",
+        "subject": "chore: bump to 0.7.0 (174), which the parity commit was meant to carry"
+      },
+      {
+        "sha": "4aac60fbe4e5af8a5d75365278eeb239b80eb382",
+        "subject": "feat(remedies): Android parity for the reason engine, hero and free practice"
+      },
+      {
+        "sha": "177cb663937abb46afbb35d2cf12505d3f04d4da",
+        "subject": "feat(reports): offer the gemstone report, which works and was hidden"
+      },
+      {
+        "sha": "0868bf79e04478e8cce18d78f2c955e0dec6d30a",
+        "subject": "perf(readings): upload palm and face at 1024, not 1280"
+      },
+      {
+        "sha": "90f00b16b7817584abc141a64dad912ad9617c25",
+        "subject": "chore: bump to 0.6.7 (171) for the streaming release"
+      },
+      {
+        "sha": "a3b8321dd7ba1ac437ccbc9e0675e27b5c0c2f0e",
+        "subject": "feat(chat): stream the answer on Android"
+      },
+      {
+        "sha": "035876d39dff5d853a5ebca78ae692244528d1be",
+        "subject": "feat(remedies): a remedy can be bought on Android too"
+      },
+      {
+        "sha": "31946dcf7b5b146c0909359ef787931485de1708",
+        "subject": "feat(remedies): featured row and pull to refresh"
+      },
+      {
+        "sha": "f12a81caade5d2e408ef4e4c932e114103172f87",
+        "subject": "feat(remedies): banners, a shimmer, a real catalogue, and a low balance you can fix"
+      },
+      {
+        "sha": "367c6fbe1f0db5a887883de236009da3b23e05af",
+        "subject": "fix(ui): the leaf keeps its green, one cross instead of four boxes, lighter cards"
+      },
+      {
+        "sha": "b72a4046cf84a439bdb3de69270bcde54c5dfd68",
+        "subject": "feat(remedies): catalogue carousel, gradient cards, and real astrologer calls"
+      },
+      {
+        "sha": "aafeeae09ff81634f84bed437631f7e47dbf184e",
+        "subject": "chore(android): 0.6.1 (165)"
+      },
+      {
+        "sha": "fb7a2500a7c2027a38c876eed10d65bb25fd5a9a",
+        "subject": "feat(remedies): four services and a Call tab, mirroring iOS"
+      },
+      {
+        "sha": "7c9232217ac74db7f7b7c2aaca8b127525fa7ded",
+        "subject": "fix(chart): drop the cache poisoned by Devanagari planet names"
+      },
+      {
+        "sha": "5eae57c0d7c93b3609f9a86317406fef90f604e2",
+        "subject": "fix(chat): a picked person can no longer reach the server as an absence"
+      },
+      {
+        "sha": "be328560d85c0d06a54108ed6e75e2223944ad10",
+        "subject": "fix(remedies): a seeded practitioner rendered as a real one"
+      },
+      {
+        "sha": "a469b2d80cc1bf7021442aca97ea9a86c9971b5a",
+        "subject": "fix(numerology): the Lo Shu plane names were English for every reader"
+      },
+      {
+        "sha": "20928239a06b421a35d08f38f9292f5bb410e09a",
+        "subject": "chore: 0.5.6 (160)"
+      },
+      {
+        "sha": "8f6e303ec9ce2616c0c331bf1a776c58616ca876",
+        "subject": "feat(numerology): show the mobile-number reading for the person on screen"
+      },
+      {
+        "sha": "e742765d1e9d0453c1b8c379a9ba4a0b6c15bbe6",
+        "subject": "chore: 0.5.5 (159) for the numerology sections"
+      },
+      {
+        "sha": "fc5f56ef5e206bc60e55f8be958b5f99505bd020",
+        "subject": "feat(numerology): put the driver/conductor work on the Android screen"
+      },
+      {
+        "sha": "0b5a0c13b40fe4511abe3a2cfa2099e8fb637aca",
+        "subject": "feat(numerology): mirror the driver/conductor engine to Android"
+      },
+      {
+        "sha": "b9e3ca190b0923f07d9757f58d12a080c41842b0",
+        "subject": "chore(ci): scan every push for committed credentials"
+      },
+      {
+        "sha": "27d2d939581252a9e012bb7aa7f4b0d92d022ec9",
+        "subject": "fix(horoscope): the dashboard was showing invented text, not a horoscope"
+      },
+      {
+        "sha": "68731f7bcffc9b9eb6e3f1699ae3fa957dd03ff0",
+        "subject": "chore: 0.5.3 (157)"
+      },
+      {
+        "sha": "bb4f4fe180599f977ded4105a0b40875db34dd65",
+        "subject": "feat: Android rings from a push, keeps your saved charts, and offers the wallet"
+      },
+      {
+        "sha": "aeb07f1922d26c46ee534752db32cc217efa6df3",
+        "subject": "chore(android): bump to 0.5.2 (156) for the incoming-call path"
+      },
+      {
+        "sha": "06ecbe8c1963b3d4e905fc0edbc0e3bd5c503e29",
+        "subject": "feat(call): Android rings for an incoming consultation, aligned with iOS"
+      },
+      {
+        "sha": "09e48ecec4060e4d04b3dd9a3575635249c0e515",
+        "subject": "chore(android): bump to 0.5.1 (155) for email sign-in"
+      },
+      {
+        "sha": "3fbb1ddd538e685d870257993cc334a208c0af83",
+        "subject": "feat(auth): email sign-in on Android, and a back button that clears the draft"
+      },
+      {
+        "sha": "525bf4ad050b4f88fc5ea1ae962bb16028cb757d",
+        "subject": "feat(android): calling ships in the release build, 0.5.0 (154)"
+      },
+      {
+        "sha": "1c248eeb912bdffd397bb91975d1f74bca94624b",
+        "subject": "chore(android): bump to 0.4.32 (153) for the wallet"
+      },
+      {
+        "sha": "5de0a3135e0e0c6b8823491a6b44df3e84b0ea7e",
+        "subject": "feat(wallet): the wallet on Android"
+      },
+      {
+        "sha": "3e4281041ec64def9aa7da978f76824062f32dbd",
+        "subject": "feat(auth): Android recognises a returning account"
+      },
+      {
+        "sha": "0b947015b33f64c7beb0ae90a2d274b5d0d02c43",
+        "subject": "chore(android): bump to 0.4.31 (152)"
+      },
+      {
+        "sha": "0202819c4b36f150134aaacf21ef5fa0767347e7",
+        "subject": "feat(session): register the device, so a person has a platform"
+      },
+      {
+        "sha": "b63d579ed1595b09218df09d4896bab462a4a7dd",
+        "subject": "feat(chat): the grounding sheet, Android twin of step 4 (CMP-O42); 0.4.30 (151)"
+      },
+      {
+        "sha": "5aeca95beba8e5d3021723b2c30527a9795dee7a",
+        "subject": "chore(android): bump to 0.4.29 (150)"
+      },
+      {
+        "sha": "f26dbaa22a81988bf2ace23091c5d8db5fcd7269",
+        "subject": "feat(chat): the grounding cell under an answer, Android twin of step 3 (CMP-M21)"
+      },
+      {
+        "sha": "d14790db9753df7eb0ed87ace55d2ea9f936a0b7",
+        "subject": "feat(chat): show the grounding chip on every answer, Android twin of step 2"
+      },
+      {
+        "sha": "cd41e4bbcc9f7587342ad957757c73f94205102d",
+        "subject": "test(android): a real instrumented test, and fix the generated one"
+      },
+      {
+        "sha": "76de40eea966074459db1e1c880d6c1e229fad70",
+        "subject": "feat(chat): derive an answer's grounding band, step 1 of the confidence plan"
+      },
+      {
+        "sha": "66cd38722252eb0735584c7bf147d4c687f66b4f",
+        "subject": "fix(chat): no em dash in an assistant answer; bump to 0.4.28 (149)"
+      },
+      {
+        "sha": "2e3f6d8fa4fd680d931bc818d31ff8e16d1d14c8",
+        "subject": "chore(android): bump to 0.4.27 (148)"
+      },
+      {
+        "sha": "dfc9d4eb9a0e1df7062dbd1799d951b18ce43976",
+        "subject": "fix(voice): two date-parser bugs the iOS tests found, mirrored here"
+      },
+      {
+        "sha": "d9b74b0704d71f811aa40d726cb904aae2060d72",
+        "subject": "chore(android): bump to 0.4.26 (147)"
+      },
+      {
+        "sha": "0e34be828db53c7fd022a633985238ccfe676d0e",
+        "subject": "feat(a11y): Material's 48dp floor at the base, and charts TalkBack can read"
+      },
+      {
+        "sha": "c7c72b0133b301b07c971a23f2e29f724f78240d",
+        "subject": "chore(android): bump to 0.4.25 (146)"
+      },
+      {
+        "sha": "fb39e0338e60eb92938908b18d2f13e353793b24",
+        "subject": "fix(design): derive the accent label, close every contrast failure, merge the palettes"
+      },
+      {
+        "sha": "620682aae0ddf2b94e575798761a3be32f9242da",
+        "subject": "test(markdown): the same hostile answers, against the Kotlin twin"
+      },
+      {
+        "sha": "47733d76d2520dc2923e33a904f8830df8683946",
+        "subject": "chore(android): bump to 0.4.24 (145)"
+      },
+      {
+        "sha": "6c7abb18f369ab713af049f0201b6335a1d7ef5d",
+        "subject": "feat(astrologer): show what has been billed, labelled billed-not-paid"
+      },
+      {
+        "sha": "094e43c1700956b4eb7666c3fefd3b8dfbc08dc4",
+        "subject": "chore(android): bump to 0.4.23 (144)"
+      },
+      {
+        "sha": "9abcd7b0d7756cb01a1fe16c7337f4f1838b05d2",
+        "subject": "feat(call): make calling reachable on Android, and compile the code that never was"
+      },
+      {
+        "sha": "778beb92b9cc3b096193624d0de4fc87c47617e0",
+        "subject": "chore: bump Android to 0.4.22 (143)"
+      },
+      {
+        "sha": "12e1661383a4aa321569d0fe7ded4fb94d93e903",
+        "subject": "chore: bump Android to 0.4.21 (142)"
+      },
+      {
+        "sha": "b3d7685f96e352d5013d5f57d4dfc2253002f362",
+        "subject": "fix(chat): stop claiming answers come from classical texts"
+      },
+      {
+        "sha": "26254d2e24394428cc4a093d71cfa87f36c031ea",
+        "subject": "chore: bump Android to 0.4.20 (141)"
+      },
+      {
+        "sha": "3b1cec9bd007ba57f0cda5b1c3c57f8b9e03e36c",
+        "subject": "fix(kundali): never draw a chart that was derived from a name"
+      },
+      {
+        "sha": "508e06735736720149521fff99cb01fdd9e7d4c7",
+        "subject": "chore: bump Android to 0.4.19 (140)"
+      },
+      {
+        "sha": "28f71584b4e7363e0bc439c372db05a096023acb",
+        "subject": "fix(chat): the account holder's thread now follows WHO the default is"
+      },
+      {
+        "sha": "66b5ff68cbe0e989695f3087a8fa21fe5e94a38c",
+        "subject": "fix(chat): the offline fallback now says it is the offline fallback"
+      },
+      {
+        "sha": "96972185059cfc1b0e60a14a1f0dd1eb024bdf48",
+        "subject": "chore: bump Android to 0.4.18 (139)"
+      },
+      {
+        "sha": "d04ad748da3a58f7127c6061b08a6d0aaeda189d",
+        "subject": "fix(chat): follow the server's daily cap instead of a per-plan guess"
+      },
+      {
+        "sha": "2377688262aaa70cce0bb15e80f98ed0353dcafd",
+        "subject": "chore: bump Android to 0.4.17 (138)"
+      },
+      {
+        "sha": "4e58027bfe79bbb1ab8bdb13aa6ca1dedc85dd80",
+        "subject": "fix(android): offline city fallback for birthplace \u2014 never 'Network unavailable'"
+      },
+      {
+        "sha": "eb36fbcafacbbb65bc23426eaf7b001985517a9f",
+        "subject": "chore: bump Android to 0.4.16 (137)"
+      },
+      {
+        "sha": "af38187ad29d041ee0ba2dc91194b811c76e5782",
+        "subject": "feat(astrologer): the astrologer console on Android"
+      },
+      {
+        "sha": "a5de4487376af79d30b9098f1848c8e0c8cbfef9",
+        "subject": "chore: bump Android to 0.4.15 (136)"
+      },
+      {
+        "sha": "20290d110c2ba5d94a2154483d9dc6a87a5489c3",
+        "subject": "fix(chat): turn autocorrect off in the composer"
+      },
+      {
+        "sha": "b572cac4446a317e1ffb33e55246c054e035da43",
+        "subject": "chore: bump Android to 0.4.14 (135)"
+      },
+      {
+        "sha": "515684903db92ac71699c625994a0c310afc1c88",
+        "subject": "fix(remedies): every category listed the same astrologers"
+      },
+      {
+        "sha": "8dde1e8c62a331a993cb1e0fff60a658aaadb85a",
+        "subject": "release: Android 0.4.13 (134)"
+      },
+      {
+        "sha": "485cee9b77a3c7ecf68fd8ac319bc0dd51dd0e07",
+        "subject": "fix(chat): send the real app language, not just hi or en"
+      },
+      {
+        "sha": "5ed180f3e4efc23620f4791b40d6014314c9f4e3",
+        "subject": "release: Android 0.4.12 (133)"
+      },
+      {
+        "sha": "de53865cb7cd8933e0ac9450c0eaef79d242cc28",
+        "subject": "release: Android 0.4.11 (132)"
+      },
+      {
+        "sha": "1116b263e29af51730defce2f1ab6beec357d042",
+        "subject": "refactor(theme): every Android colour now comes from the palette"
+      },
+      {
+        "sha": "37771a2a97bcd9f40d0c2e506369e6064d073efc",
+        "subject": "release: Android 0.4.10 (131)"
+      },
+      {
+        "sha": "9cc852d7e9d675e7ecda94620819d0ae5245031b",
+        "subject": "feat(flags): daily-nakshatra-prediction and sun-sign-facets"
+      },
+      {
+        "sha": "f841c1d6b61b534846c4905b39e97416f80198a6",
+        "subject": "release: Android 0.4.9 (130)"
+      },
+      {
+        "sha": "d31ef991bb3219fed4d7cb3bc088c11d6a445eaa",
+        "subject": "fix(l10n): localise onboarding form labels, placeholders and validation errors"
+      },
+      {
+        "sha": "be5693435b38558499ab7e8c632569afe1a4848f",
+        "subject": "feat(l10n): Tamil, 1318 strings"
+      },
+      {
+        "sha": "9815e09d91d327305dc2d3642ce3c704cfab577a",
+        "subject": "feat(l10n): complete Marathi and Gujarati, 100% on both platforms"
+      },
+      {
+        "sha": "c5ecdf63bb7adddbf19fbfc126085c578db74d35",
+        "subject": "feat(l10n): Marathi and Gujarati on Android, and the bug that hid them"
+      },
+      {
+        "sha": "97aceed7ce1cab6c5d635f3d371873277818734f",
+        "subject": "fix(brand): one spelling of the product name"
+      },
+      {
+        "sha": "c5494ac780d6b19faf37242877155ffa70e895dc",
+        "subject": "feat(l10n): complete Hindi, 1316/1316"
+      },
+      {
+        "sha": "7f1340d0df52daf6f65b6976e782a3701c1b9419",
+        "subject": "chore(release): 0.4.7 (128)"
+      },
+      {
+        "sha": "b26a468996746eadca9dbfe15984e7a99ff2481e",
+        "subject": "style(reasoning): drop the em dashes from ClaimGroundingTest"
+      },
+      {
+        "sha": "51b4ac0f575c340c21c8dc392d3c6100a0e58a93",
+        "subject": "test(reasoning): check claim translations across the whole map, not one chart"
+      },
+      {
+        "sha": "3ae558828a3966c216265707cc1b8016d1a0753d",
+        "subject": "build: put the call feature behind -PwithAgora, default off"
+      },
+      {
+        "sha": "f8ce67e1e48424deb510f244106eadaa0db4b4d5",
+        "subject": "fix(home,chat): match the header icon tints, and name the user in the picker"
+      },
+      {
+        "sha": "9c4a1d0ea272e4a6fc87aa83d8af438440f587a7",
+        "subject": "chore: keep the version at 0.4.5, since 0.4.6 was never released"
+      },
+      {
+        "sha": "e631e73fccd07838af8c9c9151a787e3d6c2c546",
+        "subject": "feat(reasoning): Sade Sati and Mangal Dosha rules, a parity test, and arm64 only"
+      },
+      {
+        "sha": "35ca0c1c7b0ce457210cf96219199f9b61338e66",
+        "subject": "feat(chat): render the answer's caveat quietly beneath it, Android"
+      },
+      {
+        "sha": "2d70827c17aabe832348cc4760813b6308936f20",
+        "subject": "feat(remedies): real astrologers and AastroAI listings on Android"
+      },
+      {
+        "sha": "ed26616f40d6795dfbce250ed06db87c15861123",
+        "subject": "feat(call): consultation lifecycle client, the iOS twin"
+      },
+      {
+        "sha": "975ed24980366ea81e0852be25e3d3c81dbe5d67",
+        "subject": "feat(call): Android live video, both modes"
+      },
+      {
+        "sha": "b6658e7cf79e496a80626437324742d0318d633a",
+        "subject": "feat(call): add the Agora SDK, pinned and stripped, plus the token client"
+      },
+      {
+        "sha": "3fbd5d6bd4c478f201f23182d4c3d07195dfc5e7",
+        "subject": "chore: bump to 0.4.5 (126) for the leaf tab icon"
+      },
+      {
+        "sha": "07b5a8a602882b6ea557a554141f44aeba711b73",
+        "subject": "fix(nav): use the iOS leaf.fill symbol for Remedies instead of an emoji"
+      },
+      {
+        "sha": "285b12700e1d825ac580d8b2e6f3a82822675c25",
+        "subject": "fix(face): declare the face cache dir so Take photo works"
+      },
+      {
+        "sha": "fb81ac9fb5900cb19272fd753b7e603a2f904b19",
+        "subject": "chore: bump to 0.4.3 (124) for the Remedies + rectification build"
+      },
+      {
+        "sha": "436e8e0631a71091113dee8f56590af3ebf242b2",
+        "subject": "feat(remedies): diagnosis banner, seeded consultations, rectification, Hindi"
+      },
+      {
+        "sha": "d575af494a79de6c94e786f1292637f3a91b6831",
+        "subject": "fix(remedies): tiles collapse on choosing, astrologers become a card grid"
+      },
+      {
+        "sha": "25a106188add1d494dc20b1b52d0469b440bfe8c",
+        "subject": "feat(remedies): the marketplace tab, phase 1"
+      },
+      {
+        "sha": "5d1747bc636c2806d2d2241e8386b32895f1cf6a",
+        "subject": "chore(android): 0.4.2 (123)"
+      },
+      {
+        "sha": "d0f92d71f569cb00a12a9de209fa45099fda974e",
+        "subject": "feat(analytics): count what fails, and why"
+      },
+      {
+        "sha": "2c6aee1ff698b2b841f0f0f91ab1898fb6f86b94",
+        "subject": "chore(android): 0.4.1 (122)"
+      },
+      {
+        "sha": "a65be8a179fa4c802c90b4c0edaf791c9fb3d96b",
+        "subject": "style(brand): the assistant wears the app's mark in chat"
+      },
+      {
+        "sha": "230fc8a0c894cb4e1f9c560bf3071b8f1257e05c",
+        "subject": "chore(android): 0.4.0 (121)"
+      },
+      {
+        "sha": "87063d37cdffdd438e88e63ed21eaf7f23ad212e",
+        "subject": "fix(face,match): downscale the capture, and match chat's LLM timeout"
+      },
+      {
+        "sha": "056dc007e14dfec7d8249f4c9f47a3ca706bd95b",
+        "subject": "chore(android): 0.3.9 (120)"
+      },
+      {
+        "sha": "37c289cba3458ae88a80064bdea8ce5162227837",
+        "subject": "feat(face): F5 Android - the dashboard card and the saved list"
+      },
+      {
+        "sha": "1144c15e8bc060dd2f82b99153fe68b328bc762f",
+        "subject": "chore(android): 0.3.8 (119)"
+      },
+      {
+        "sha": "041c652893fc74727d13bbe246d56b2787efe8ff",
+        "subject": "feat(chat): the iOS mirror - markdown, practicals, mantras, share"
+      },
+      {
+        "sha": "f41bce40e684871b056fc65ee0ded6f5d295cada",
+        "subject": "feat(face): F7 Android - delete a reading, here and in the account"
+      },
+      {
+        "sha": "8a93e2ede1351a5c7f823a7cce4d8386a4bcca63",
+        "subject": "chore(android): 0.3.7 (118)"
+      },
+      {
+        "sha": "ea665977c9d248ae0c73be091a1284165d1e2a6c",
+        "subject": "fix(android): the saved-chart list gets a pencil, like iOS"
+      },
+      {
+        "sha": "ca5f44c1759a1a0f4c0748f3dc8e5ebd9f4c637f",
+        "subject": "chore(android): 0.3.6 (117)"
+      },
+      {
+        "sha": "5b371862297babd2a66a7e33c1a900a10429b4f2",
+        "subject": "feat(face): F6 Android - the face reading joins the dossier"
+      },
+      {
+        "sha": "a295fd9b9aa6eb146f969d4b24be09f78f5afea8",
+        "subject": "fix(android): stop shipping emulator-only ABIs in the release APK"
+      },
+      {
+        "sha": "4699cc0a12faf2f60a1eae337bf4e7414c151061",
+        "subject": "feat(face): F4 Android - detector, consent, capture, reading"
+      },
+      {
+        "sha": "b0edc224cd35eddb8dad3d22fbef0f4aa74936bf",
+        "subject": "feat(face): F2 Android - the shape classifier, matching iOS exactly"
+      },
+      {
+        "sha": "929f676fc12cc7d9dfe4327dae61bf38d2fe6ddd",
+        "subject": "style(android): Pro card drops the price, gains a premium badge"
+      },
+      {
+        "sha": "d798814bf4f9db10f963b6b8fad62d8830893c31",
+        "subject": "chore(android): 0.3.4 (115)"
+      },
+      {
+        "sha": "ac99a2554ec956df59714ca67b86a10532f8fce8",
+        "subject": "feat(horoscope): summarise every life area, then tab into each one"
+      },
+      {
+        "sha": "fe233c52773bf9410777a526555f2f8b55348eac",
+        "subject": "chore(android): 0.3.3 (114)"
+      },
+      {
+        "sha": "265539899b8eff8e2e572c7ab32da996605056cf",
+        "subject": "fix(auth): stop minting an anonymous account on every launch"
+      },
+      {
+        "sha": "480d06e36df03d4bd0f054d2f7c504f1965ebb5b",
+        "subject": "style(strings): no em dashes, in either language"
+      },
+      {
+        "sha": "7491e09738c61638345d3f9cceea4a62f1802338",
+        "subject": "feat(horoscope): pick the astrology out of the prose"
+      },
+      {
+        "sha": "cae36939cbf0a73b80d42f44edcfe5b0084952ab",
+        "subject": "style(dashboard): the two lines people actually read, at a size they can"
+      },
+      {
+        "sha": "7e2230acd2341a4edb189525305ff8314ea3fca8",
+        "subject": "feat(brand): brand glyph as a vector drawable"
+      },
+      {
+        "sha": "68ae9b35d18c98b185ad804d0958d318bdf8c5ee",
+        "subject": "chore(android): 0.3.2 (113)"
+      },
+      {
+        "sha": "2dc272cfabec65646ac1bef73ca83165fd704214",
+        "subject": "feat(settings): help, sharing, and a subscription block that names its price"
+      },
+      {
+        "sha": "1894878b9be0564d3b9fb0981fcb7295f0a9583d",
+        "subject": "feat(chat): send reasoning-engine claims with every turn (P2)"
+      },
+      {
+        "sha": "b26cbb591531372c80fd3a589da025a50cbbf199",
+        "subject": "feat(astrology): daily transit feed for the reasoning engine"
+      },
+      {
+        "sha": "1c3db6cd7fd15e7774daa8b3f7d2d66ac1e5d8f4",
+        "subject": "feat(reasoning): deterministic Jyotish claim engine (P1)"
+      },
+      {
+        "sha": "4df0a3c9f0b813ffd69f0195064c2d15d5367867",
+        "subject": "chore(android): 0.3.1 (112) \u2014 chat keyboard, palm error strings, digest cache key"
+      },
+      {
+        "sha": "bdcf8a9bd44618f4f4f1521c6a63ac56eaa20575",
+        "subject": "fix(android): dismiss the chat keyboard, localise palm errors, language-key the digest"
+      },
+      {
+        "sha": "a5f20f3732402eb122912f80337bcbf03a6f1f58",
+        "subject": "chore(android): 0.3.0 (111) \u2014 voice prefill on the Add-Kundali sheet"
+      },
+      {
+        "sha": "503502ba9dd05f116e799870405cfd9f751da0d1",
+        "subject": "feat(android): speak your birth details and the Add-Kundali form fills itself"
+      },
+      {
+        "sha": "7f68ddf3a3fda1549712b647ce397f1cff508694",
+        "subject": "chore(android): 0.2.99 (110) \u2014 section legends, palm card, chart pickers"
+      },
+      {
+        "sha": "e3ac0f0f85de5807ee2951322f7e316884bc98b2",
+        "subject": "feat(android): section legends, palm card redesign, chart picker on 3 screens"
+      },
+      {
+        "sha": "e9186248ae7d1d046559919380705aca7ed251f0",
+        "subject": "chore(android): 0.2.98 (109) \u2014 dossier + chat history"
+      },
+      {
+        "sha": "e4e77c8c5dff90098fe883cb8586624576d77d05",
+        "subject": "feat(android): numerology + palm in the chat dossier, and chat history that reopens"
+      },
+      {
+        "sha": "c36265e359dbf40155848b41757f3c93e947dc7a",
+        "subject": "chore(android): 0.2.97 (108) \u2014 Pro paywall + Default kundali row"
+      },
+      {
+        "sha": "3680f06287cad1b95222dd042fcbc7efe95c99f5",
+        "subject": "feat(android): iOS-parity upgrade screen + Default kundali row in Settings"
+      },
+      {
+        "sha": "e6570957ab0f177056e546334210df3cb81624c0",
+        "subject": "chore(android): 0.2.96 (107) \u2014 notification inbox + grouped switches"
+      },
+      {
+        "sha": "3b9705563606f6ceeb702fb7e2bf11e99fe2bc42",
+        "subject": "fix(android): stop showing a sample inbox; group the notification switches"
+      },
+      {
+        "sha": "9b37f173385999417274ff35e6128119e23ab305",
+        "subject": "chore(android): bump to 0.2.95 (code 106) for the beta release"
+      },
+      {
+        "sha": "9c5c332c083db007644d7b60f7171deb698adebd",
+        "subject": "feat(android): D1/D9 varga codes on chart labels"
+      },
+      {
+        "sha": "797fcb8d4e8171d8e0a45ef04888e163dae2b66c",
+        "subject": "feat(hindi): transliterate person names to Devanagari (HS10, v0.2.94)"
+      },
+      {
+        "sha": "65cbe098b2e8907244ad8f26861b955277781b36",
+        "subject": "feat(hindi): localize panchang/planet/sign/status/KP values + chat digest (v0.2.93)"
+      },
+      {
+        "sha": "6bebd7dd29d5c1e3ae5562c4846c58e0bd9fcd05",
+        "subject": "feat(numerology): Lucky Elements from AstrologyAPI numero_table (v0.2.92)"
+      },
+      {
+        "sha": "3099d8166826ccac632fbba0a0bb699af23074d7",
+        "subject": "fix(hindi): send language on Sade Sati + Lal Kitab calls (v0.2.91)"
+      },
+      {
+        "sha": "802ee97970de670c06756f3336c7f70cfbdf0e58",
+        "subject": "feat: Hindi QA sweep + dashboard size-modes + Multi-Match real results (v0.2.81\u2192v0.2.90)"
+      },
+      {
+        "sha": "c012d0e098d9c3e35622fb9d3601924955728158",
+        "subject": "feat(dashboard): Multi-Match defaults to FULL (leaderboard is the hero) (v0.2.80)"
+      },
+      {
+        "sha": "bd82211e4c7fd0574ab946786e27059a41c2f931",
+        "subject": "feat(multi-match): seeker \"Change\" always available \u2014 pick You from any kundali (v0.2.79)"
+      },
+      {
+        "sha": "b2575c962dbd0be5f8ea5a24a5fbda851efb59bd",
+        "subject": "feat(dashboard): rectangle-default layout + real Multi-Match leaderboard in FULL (v0.2.78)"
+      },
+      {
+        "sha": "521fdf9d46afb0d5243fa13415c793790ea7095d",
+        "subject": "feat(dashboard): intuitive Multi-Match banner \u2014 mini ranked leaderboard (v0.2.77)"
+      },
+      {
+        "sha": "fd270312dc10e5be42eca684b4610d141b159078",
+        "subject": "perf(kundali): cache generated chart detail on-device \u2014 instant reopen (v0.2.76)"
+      },
+      {
+        "sha": "e8cd6acf8b2294fcf256ad419d9e812d2a87da2b",
+        "subject": "chore(dashboard): arrange-mode hint mentions resizing (discoverability) (v0.2.75)"
+      },
+      {
+        "sha": "90f36872e1f490e6ebe435c7215ee661f36f73c1",
+        "subject": "fix(reports): default to AastroAstra HTML report \u2014 fixes wrong name + vendor brand (v0.2.74)"
+      },
+      {
+        "sha": "38e6c90697fc7174949b164d107fb9e2b097a985",
+        "subject": "feat(dashboard): per-section size switcher + richer widgets (v0.2.73)"
+      },
+      {
+        "sha": "fb739892a829a16acfe9a9291f0e7f61dbda5730",
+        "subject": "feat(dashboard): cosmic Multi-Match hero with live top-match teaser (v0.2.72)"
+      },
+      {
+        "sha": "3c0c58f8539765edf2182634ac02ba4904c3833f",
+        "subject": "feat: night-sky-blue chat icon + compact panchang/horoscope boxes (v0.2.71)"
+      },
+      {
+        "sha": "a347a210a005eef4d0bb7c93db4c02ef4802ec00",
+        "subject": "feat(palmistry): per-person chart + instant pending save + deferred gen (v0.2.70)"
+      },
+      {
+        "sha": "edb8f0d36e5aba9232653f4a1673f3879327335e",
+        "subject": "fix: smooth drag + restore section titles + Hindi horoscope (v0.2.69)"
+      },
+      {
+        "sha": "20d549e9ff2e172d648b977d801d98b80f094475",
+        "subject": "fix(palmistry): cleaner dashboard card footer \u2014 button + text link (v0.2.68)"
+      },
+      {
+        "sha": "41507ea52c559cfa9dda0f7ba9bcaca5ee9e3030",
+        "subject": "fix(palmistry): downsample gallery/camera photos before decode (v0.2.67)"
+      },
+      {
+        "sha": "6c9e36779e834a18d472a2332b146f54437e2e9b",
+        "subject": "feat(palmistry): rich dashboard card for a scanned palm (v0.2.66)"
+      },
+      {
+        "sha": "d912383853d2c5bed4fb9b4505ba8f1dd872e750",
+        "subject": "feat: palmistry name-only new-person, choose/segment colors, Match label (v0.2.65)"
+      },
+      {
+        "sha": "f7400178127e3b884b04f73d0939787e5b55331a",
+        "subject": "feat: iOS-style dashboard drag + palmistry capture polish (v0.2.64)"
+      },
+      {
+        "sha": "d49f7a3ca3706a1ec9bd5a0b09673197c0688a67",
+        "subject": "feat(palmistry): pick whose palm (choose person / someone new) before scanning (v0.2.63)"
+      },
+      {
+        "sha": "57f7442d68a9fb8100e6961fd764d47c9c74b63e",
+        "subject": "feat: dashboard drag-to-reorder (long-press \u2192 arrange) (v0.2.62)"
+      },
+      {
+        "sha": "932d180293883ef0c8e00c987dfc5693d369d48f",
+        "subject": "feat: numerology planet colours + explain, horoscope polish, detail endpoints, Lal Kitab coords (v0.2.59\u20130.2.61)"
+      },
+      {
+        "sha": "c04385d7f85b3a476a0b5951363a6dea6446f554",
+        "subject": "feat: configurable icon colour (Meaning|Tint) + ink titles + detail zodiac (v0.2.58)"
+      },
+      {
+        "sha": "1551a172f7c8cf0c906d1fde28fe31ee7ce905f1",
+        "subject": "feat: dashboard design-system wave \u2014 AastroIcon palette, horoscope periods, panchang graph (v0.2.57)"
+      },
+      {
+        "sha": "5d0aa7e9b3e1760f4ce800f54c5fd06338b201fc",
+        "subject": "chore: v0.2.42 (code 53) \u2014 published beta"
+      },
+      {
+        "sha": "559beb60c8e79b3793d5f1570af16636a4a4f85f",
+        "subject": "feat(choose-kundali): consistent \"Add new kundali\" across Match + Chat pickers"
+      },
+      {
+        "sha": "f7b495c20de2f05ee58e2bbfe93189b4e24c034e",
+        "subject": "feat: v0.2.41 \u2014 2-line horoscope, Multi-Match add-kundali, flags on for beta"
+      },
+      {
+        "sha": "fc86384fa192d8abaa0013fb79eb9c94b7d970bf",
+        "subject": "feat(dashboard+palmistry): shimmer, vibrant palm section, working reading, polish"
+      },
+      {
+        "sha": "825b7f4678c150cf5498074a2788d2605db06564",
+        "subject": "fix(dashboard): keep panchang as its full strip (not compacted like horoscope)"
+      },
+      {
+        "sha": "1a1be886a6272d2cb90f841722012f1f8f5a1932",
+        "subject": "feat(palmistry): photo-capture MVP client (B4-B5) + Explore entry + debug flags"
+      },
+      {
+        "sha": "b9c58abca0138a4c4cab605566ff36804104c899",
+        "subject": "feat(dashboard): modular banner layout behind dashboardBannersEnabled (A2-A4)"
+      },
+      {
+        "sha": "3b1e3d18117859846603d2d969828cc2d11dfbe3",
+        "subject": "feat: dashboard banner foundation + palmistry/banners flags (+ bundled session WIP)"
+      },
+      {
+        "sha": "aba71b053da60a6e039a88a400582fd9d38d2058",
+        "subject": "feat: clickable South chart (tap\u2192highlight+haptic+chat) + shimmer + scroll fix (v0.2.35)"
+      },
+      {
+        "sha": "2cd048061c104984e17bf46f006374df7ab881af",
+        "subject": "feat: white chart with tinted depth + Lal Kitab section chat icons (v0.2.34)"
+      },
+      {
+        "sha": "8277a313e98825187e2c57ebd4ca92370d52bd18",
+        "subject": "feat: KP as a chart chip + soft-fill chip selection + sign-card ask-AI (v0.2.33)"
+      },
+      {
+        "sha": "e8c99b8e67b73111f7ed7a96697c94308e28b861",
+        "subject": "feat: chart-corner KP switch, Settings (you) card, explain smooth-scroll (v0.2.32)"
+      },
+      {
+        "sha": "bb818cfe7b8a32e6ca05a2cb41b1e385b7914ecd",
+        "subject": "feat: Multi-Match \"You vs\" redesign + Saved Profiles Add/View fixes (v0.2.31)"
+      },
+      {
+        "sha": "720b7926213c1cd7cfe30f079c6d56118afda14c",
+        "subject": "fix: point Privacy/Terms links to https www custom domain (v0.2.30)"
+      },
+      {
+        "sha": "e28d1bb55fc7a7cbddd753ec25348ef296c24ade",
+        "subject": "feat: onboarding report buttons + self-kundali in Single page (v0.2.29)"
+      },
+      {
+        "sha": "0db63f931968f63bdae0246a737cb8f3755bf0c1",
+        "subject": "fix(reports): FileProvider path for api_reports + shorten Pro label (v0.2.28)"
+      },
+      {
+        "sha": "0969dc1f2b4cc9e951fcc0ce929083021fe4f231",
+        "subject": "feat(match): AstrologyAPI Match Making PDF report (v0.2.27)"
+      },
+      {
+        "sha": "025028bcde1f2f4db37dd723c8e0c40537a45212",
+        "subject": "feat(reports): AstrologyAPI PDF report generator sheet (v0.2.26)"
+      },
+      {
+        "sha": "e8931aa7bee80a1bb9ff03f2de67a70f71854a68",
+        "subject": "feat(settings,chat): settings polish + nav fixes (v0.2.25)"
+      },
+      {
+        "sha": "0c628f209ae006c0bd7aece2c96767861006ed53",
+        "subject": "feat(numerology,horoscope): reusable ChartSelector to view saved-person data (v0.2.24)"
+      },
+      {
+        "sha": "1fff4e49dd6e5c6145f1612d5acb5f8f5d06df90",
+        "subject": "fix(ui): lal kitab alignment, paywall/notifications nav, add-kundali opaque rows (v0.2.23)"
+      },
+      {
+        "sha": "98c18feb92a482b3d71b09535ddbfdcdc6efdb60",
+        "subject": "fix(ui): bottom sheets stay opaque; pin \"You\" chart in Single Kundali (v0.2.22)"
+      },
+      {
+        "sha": "e3340545d9ee515bcb3ab8604b6045bf85d5d81a",
+        "subject": "feat(ui): appearance controls, dark tab bar, single white, panchang polish (v0.2.21)"
+      },
+      {
+        "sha": "0c4ce019229e1e8e8ffbe729516c170b5e384610",
+        "subject": "feat(ui): branded icon, logo watermark, panchang gradient, attached match buttons (v0.2.20)"
+      },
+      {
+        "sha": "85fe2ccfd8fe60d71c0c219be8c510a4c008acd6",
+        "subject": "fix(ui): Prediction nav bar + segment labels + B&W text visibility (v0.2.19)"
+      },
+      {
+        "sha": "49083020ad1a5446e34c9686c1e18b8cf09fbeb3",
+        "subject": "feat: match redesign, centralized Add-Kundali sheet, chat upgrades (v0.2.18)"
+      },
+      {
+        "sha": "81b85feb62f8b24ae217dcd1d29f72ae866102a9",
+        "subject": "docs: add full project README (onboarding, config keys, Amplitude feature flags)"
+      },
+      {
+        "sha": "6df5ae771b38989e050331398180f4626022516e",
+        "subject": "i18n(hi) phase 2 complete: Profile, Kundali (free/paid), Onboarding \u2014 app now 100% localised"
+      },
+      {
+        "sha": "eeca0028af2ffd4f5e9e8b3826b2c47f8d4b2ae0",
+        "subject": "feat(theme): White\u00b7Light orange accent + nav bar visibility; i18n phase 2 (chat/match/paywall/etc.)"
+      },
+      {
+        "sha": "ac54c536f9c6673b7edfa1f8a8ed114625bcac19",
+        "subject": "i18n(hi) phase 2: localise Home, Numerology, Notifications hardcoded strings"
+      },
+      {
+        "sha": "8dbe37592bd890144c3890f6720586d8f1143200",
+        "subject": "i18n(hi): translate the 227 previously-untranslated keys (full Hindi for all keyed strings)"
+      },
+      {
+        "sha": "06c741bd0db22a7d5731361417c12ca52b15982e",
+        "subject": "fix(kundali): tab text visible in B&W themes + full Hindi localisation of the detail page"
+      },
+      {
+        "sha": "81d705038b231ef8abfd2d70e50037e5b80ce0ac",
+        "subject": "feat(theme): five themes matching the site \u2014 Yellow/White/B&W \u00d7 Light/Dark"
+      },
+      {
+        "sha": "0b0ab714dcd4f4d62757fd43093aa88961a17ddc",
+        "subject": "feat(kundali): Paramparik vs KP system toggle on the chart"
+      },
+      {
+        "sha": "f95013383287b2763bcd53289f2ef7180deb9e76",
+        "subject": "feat(dashboard): Your Numerology section + Explore more with standalone KP System"
+      },
+      {
+        "sha": "8617b2ed40332fab31d53966c1c7acc4cd1260d1",
+        "subject": "feat(report): feed KP System (planets + cusps + significators) into the PDF"
+      },
+      {
+        "sha": "6565c250efe328afd787a92de492cd9b711ad556",
+        "subject": "feat(kundali): full KP System section (Planets / Cusps / Signification)"
+      },
+      {
+        "sha": "c8d26280bbdd051a320127825dcf53c4ebe00620",
+        "subject": "chore(report): bump template cache to v5 (localised cover dates)"
+      },
+      {
+        "sha": "573f7a78d502ca234dfcd837ceb7b5c7a8e58f09",
+        "subject": "feat(report): feed full chart data into the PDF payload"
+      },
+      {
+        "sha": "04c694426c642ebc93fc1ae519d4cd9ac7cf32b9",
+        "subject": "feat(kundali): fuller API coverage, Sade Sati report, richer predictions"
+      },
+      {
+        "sha": "4bc5cc97256ca973aa46f22e2a20674a513a1012",
+        "subject": "fix(brand): fixed top brand bar \u2014 content scrolls under, no interference"
+      },
+      {
+        "sha": "084ecc482a0a9a5e15b1655bacddf674ac4d1884",
+        "subject": "feat(brand): visible theme-tinted logo mark in the top header of every screen"
+      },
+      {
+        "sha": "27dae90ec2c4d3bba959905a12872eeae7a0e437",
+        "subject": "fix(horoscope): visible badge + no blank flash on date change"
+      },
+      {
+        "sha": "2a5e4e20164d0a4e1ac5e76c7c4fb42a79d6636e",
+        "subject": "feat(brand): faint theme-tinted logo watermark on every screen + tinted splash"
+      },
+      {
+        "sha": "5cdb6ace7f9d7367f01c73f146301439f084844f",
+        "subject": "refactor(brand): theme-tinted mark integrated into onboarding header"
+      },
+      {
+        "sha": "cdbf554235a8f9ffb8adb9465d274a70aa36daaf",
+        "subject": "feat(brand): AstroAstra logo on splash + subtle brand mark on every screen"
+      },
+      {
+        "sha": "b82a860997cdb9d87a9722949474284d14c097eb",
+        "subject": "feat(match): show full API detail \u2014 decimals, koota attributes, per-person Manglik"
+      },
+      {
+        "sha": "be731cac8ebf12659a08319018835531b42d6a63",
+        "subject": "fix(chart): outer planets were dropped by a name-case mismatch"
+      },
+      {
+        "sha": "8bffc908819f55fce771226ff2cf9ab1913f1520",
+        "subject": "feat(pdf): redesigned white+gold report (charts, match, sticky export)"
+      },
+      {
+        "sha": "624eb629e8256c9686fa7d1c549a6c08dfbeb061",
+        "subject": "feat(match): real Ashtakoot report, fully unlocked, no paywall"
+      },
+      {
+        "sha": "834e9fa7602fce1318f77a22824a25c6780fb88f",
+        "subject": "feat(chart): add outer planets (Uranus/Neptune/Pluto) support"
+      },
+      {
+        "sha": "f8ed7175838491aa7972426d12b8bf31410610da",
+        "subject": "fix(prediction report): fill in planet + dasha predictions"
+      },
+      {
+        "sha": "bd64828c5204639755ed44342982dac8726a537d",
+        "subject": "fix(numerology): dark ink for number badges on light chips"
+      },
+      {
+        "sha": "22086bd00f717bfd09dcc13c33776df4e5bf1b97",
+        "subject": "fix(chat): drop the 'educational/entertainment purposes' disclaimer line"
+      },
+      {
+        "sha": "e368ca766ea04f34428ccc66cb1f8688ad56f517",
+        "subject": "fix(dark mode): visible bottom nav + text-input fields"
+      },
+      {
+        "sha": "36b738c2dc26fc9176d5590026256a13c89f4844",
+        "subject": "fix(theme): brighten AastroTextField labels (textSecondary)"
+      },
+      {
+        "sha": "d2ec20dea45387d84a32918a0c89d0c37662e58c",
+        "subject": "build: wire release signing from gitignored keystore.properties"
+      },
+      {
+        "sha": "2b39568467cc98106989a6bd05e4c72707967cd0",
+        "subject": "fix(dark mode): unreadable text on highlighted cards"
+      },
+      {
+        "sha": "109bd1abfcb7bf2f50f567ce43317cc9acd825cd",
+        "subject": "fix(theme): dark-mode visibility \u2014 text fields, nav tab, chat kundali picker"
+      },
+      {
+        "sha": "7346944d003d467db465ee89d4e4c1460bff1738",
+        "subject": "refactor: separate 'You' from the default kundali (fix profile confusion)"
+      },
+      {
+        "sha": "d96f445e078448082d136f3803a0eeba10a74948",
+        "subject": "feat: sticky Export-report-as-PDF bar on Kundali & Numerology"
+      },
+      {
+        "sha": "ab1e17f176c91b06e388b963adfef09c3ae14868",
+        "subject": "feat: default kundali (drives dashboard/chat/explore) + chat limit & contrast fixes"
+      },
+      {
+        "sha": "e8d62267f6c68a3a9d34d422257087126c6f78a0",
+        "subject": "feat: chat rich formatting + Hindi + 300 limit; solid tint + bordered strips"
+      },
+      {
+        "sha": "1668320f2497e74e2ad68075a45608249bde07d4",
+        "subject": "fix: dashboard shows only the settings gear (removed the zodiac avatar)"
+      },
+      {
+        "sha": "a9b05629d47e592dd5c16652f309b5a4053e0ed2",
+        "subject": "fix: plain back arrow (no circle) + proper status-bar margins"
+      },
+      {
+        "sha": "b67d358bfbb89908be862272fe3251d2ae28c075",
+        "subject": "feat: settings work \u2014 gear icon, merged Edit Profile+Birth Details, Language"
+      },
+      {
+        "sha": "2aca8bd12f2406116500ccc058e4beb8a1734bf2",
+        "subject": "feat: Generate Kundali opens the full detail page (not inline on the form)"
+      },
+      {
+        "sha": "2dd2481cb593ec50dcc5bbd0e5604e8c731f2f8c",
+        "subject": "feat: chat kundali selector \u2014 pick which saved chart to discuss"
+      },
+      {
+        "sha": "a9801de860d1165f1ae65f845ceccfa94fc31ae9",
+        "subject": "fix: refresh chart-derived output on detail change + reuse PDF per kundali"
+      },
+      {
+        "sha": "840523a6fd3100dc05e2cc98d5b86dab80bd18d3",
+        "subject": "feat: birth-place search via Nominatim (geocode fn) with geo_details fallback"
+      },
+      {
+        "sha": "02132d18a6123dd9e3053dbd5881c5e62d9b2825",
+        "subject": "fix: persist session \u2014 jump to dashboard on relaunch + reachable Settings/Sign Out"
+      },
+      {
+        "sha": "f93c43d2bbe087638a7c5e3956b9c92213d3bc06",
+        "subject": "feat: theme system \u2014 Celestial/Light/Dark + configurable tint, all screens on tokens"
+      },
+      {
+        "sha": "21f0f82832b5924a2c164cf46cf8d1a60b548b86",
+        "subject": "feat: chat offline fallback gives the real running dasha"
+      },
+      {
+        "sha": "cd5e191fd6f07eb012c1fe1283071b49afef02f8",
+        "subject": "feat: PDF report export (client) \u2014 sheet + FileProvider, wired on kundali & match"
+      },
+      {
+        "sha": "5b542a4d7283a4ef5ce76b1547db9180e1226ba4",
+        "subject": "feat: horoscope date strip, kundali auto-save, flagged country picker, Chogadiya, chart-aware chat fallback"
+      },
+      {
+        "sha": "dff41a6a28e8fd4c0a008bd5c60b81ef3cf26a63",
+        "subject": "feat(kundali): reusable full kundali detail + per-person view in match (P3b)"
+      },
+      {
+        "sha": "3edb647b65cd857328dd3a434f58d76ff056897c",
+        "subject": "feat(dashboard+kundali): redesigned dashboard, reusable LalKitabSection, Lal Kitab in kundali detail"
+      },
+      {
+        "sha": "1fe4bda3e9c95e96b263cd8738cef4930c8623fe",
+        "subject": "fix(horoscope): derive rashi from saved intake so it loads after adding details"
+      },
+      {
+        "sha": "2458a456fb5d90c5bb375344069f0263519c8ae4",
+        "subject": "feat(birth-details): reusable birth-details sheet + app-wide \"add details\" actions"
+      },
+      {
+        "sha": "b0e1221c484d02a5c6a5619df95e5bd2356165d7",
+        "subject": "fix(chat): degrade to local fallback on server error, never leak raw errors"
+      },
+      {
+        "sha": "9f5e0821c6455c9696c7c599e0eeafc081480a38",
+        "subject": "test(chat): edge-case coverage for chart digest + birth-time parsing"
+      },
+      {
+        "sha": "95d09d37249cf543e4d62201df188ea87bbd55e4",
+        "subject": "feat(chat): answer from the user's full kundali via Claude"
+      },
+      {
+        "sha": "8420dbb6e48697a978fb7b377914cfac8485376e",
+        "subject": "fix(lalkitab): parse the real vendor field names so it isn't empty (#9)"
+      },
+      {
+        "sha": "6a91781496fd367a05a0d3ef6966c7f617f005fc",
+        "subject": "feat(chat): configurable limit + chart-aware, enriched fallback (#11)"
+      },
+      {
+        "sha": "136888540351eace9ec65977dda6ae5aae17a6d3",
+        "subject": "fix(home): dashboard numbers use real numerology, matching onboarding (#10)"
+      },
+      {
+        "sha": "36ce432f4b2717082205bb08e6bae644c6235343",
+        "subject": "feat(match): choose both people + numerology vibe + onboarding pickers (#7,#8)"
+      },
+      {
+        "sha": "5e93597accdbe78f6a8e639b9fda8b753db6323d",
+        "subject": "feat(kundali): cache saved-kundali chart for instant/offline reopen"
+      },
+      {
+        "sha": "b2e8d283687986a0ac86628b4daa16c2402e362c",
+        "subject": "feat(notifications): local daily-horoscope reminder + post to channels"
+      },
+      {
+        "sha": "fdb53a5750f6b9c25f396e6951ec70a378d2e3f6",
+        "subject": "test(coverage): Lal Kitab VM + parsers, numerology engine helpers"
+      },
+      {
+        "sha": "70cc7485bb30d6aa006e42beccbc2a70aaad76df",
+        "subject": "chore(release): bump version to 0.2.1 (versionCode 12) for QA"
+      },
+      {
+        "sha": "11dd8a4670ad8aee4d52b0a001ebca717bef5177",
+        "subject": "refactor(numerology): dashboard reuses the EXACT onboarding reveal component"
+      },
+      {
+        "sha": "13cc5c36eb642207146e84e66585d5e142f92382",
+        "subject": "fix(lalkitab): remove PRO/lock badge on remedies \u2014 all planets open freely"
+      },
+      {
+        "sha": "b00aa3e4a4f6bd39955414e19b15ae2792b3a158",
+        "subject": "chore(release): bump version to 0.2.0 (versionCode 11) for QA"
+      },
+      {
+        "sha": "ba7844d42bcbadc84869fd515cd59d0dc9e6e40a",
+        "subject": "feat(horoscope): vertical date rail + big-font reading"
+      },
+      {
+        "sha": "f7bac0f78a2529a07db2b52989d163d3d337d640",
+        "subject": "feat(lalkitab): inline birth-city picker when the intake has no city"
+      },
+      {
+        "sha": "7f1839d86ae4c059099326e7ae3128eb46fd5e0b",
+        "subject": "style(numerology): match dashboard screen to onboarding theme + add theme toggle"
+      },
+      {
+        "sha": "ba00e2b253b590d1e4570da18df51887c74b819f",
+        "subject": "chore(release): bump version to 0.1.9 (versionCode 10) for QA"
+      },
+      {
+        "sha": "66119a6f95bf1c1249495a667a5889dc08b54b03",
+        "subject": "fix(onboarding): disabled REVEAL button no longer bleeds the gender picker through"
+      },
+      {
+        "sha": "78350739e50958df89863a18e534e48a51f7a474",
+        "subject": "chore(release): bump version to 0.1.8 (versionCode 9) for QA"
+      },
+      {
+        "sha": "739c5ef9a0ed30d8474091973816d1e5471f5b07",
+        "subject": "fix(onboarding): Skip to Astrology only needs a DOB, not a name"
+      },
+      {
+        "sha": "c558cdf1c41b1dc0cf76357154e6a23520c419e3",
+        "subject": "chore(release): bump version to 0.1.7 (versionCode 8) for QA"
+      },
+      {
+        "sha": "eaaacb8d2fed651f27cfd684fe293e9cd9715a39",
+        "subject": "feat(lalkitab): implement Lal Kitab feature (debts, remedies, chart)"
+      },
+      {
+        "sha": "6cf7de2921a0e0e4081b8178cac1bb334bc1732a",
+        "subject": "chore(release): bump version to 0.1.6 (versionCode 7) for QA"
+      },
+      {
+        "sha": "255c161c2b455f4d559d620dce4b8312f2c978d5",
+        "subject": "feat(match): redesign match input as a light flight-booking flow"
+      },
+      {
+        "sha": "a334311dd80606ac684db2cd8fd2cd84f17dcb1f",
+        "subject": "feat(panchang): tap the home strip to open a full Panchang detail screen"
+      },
+      {
+        "sha": "625ce3a426df7f2939aff679bcbe5e8335026f80",
+        "subject": "fix(numerology): read birth data from onboarding intake (DataStore)"
+      },
+      {
+        "sha": "30567eea9decd79d7b0e35d985e0ccf1e228c740",
+        "subject": "chore(release): bump version to 0.1.5 (versionCode 6) for QA"
+      },
+      {
+        "sha": "be770601c096b8330178d4188928fca92b649e16",
+        "subject": "fix(numerology): dashboard Numerology uses the same engine as onboarding"
+      },
+      {
+        "sha": "d0432fb9fd7b444b3e504bc236352c5d4cd2ce20",
+        "subject": "feat(home): daily Panchang strip + move AI Chat to its own tab"
+      },
+      {
+        "sha": "3a75633fda117b9c0ef0da3934b845ce84b57cfb",
+        "subject": "chore(release): bump version to 0.1.3 (versionCode 4) for QA"
+      },
+      {
+        "sha": "ba078c02f1bd8c17191b4067d508582bd33040c9",
+        "subject": "fix(numerology): Kua uses classic Indian formula (no century adjustment)"
+      },
+      {
+        "sha": "8b708e99b573ba0ea21ef5d6fe47a23c71859a1c",
+        "subject": "fix(numerology): correct Kua Eight Mansions constants (were off by one)"
+      },
+      {
+        "sha": "93e50b8bb474c2158ee8c2dd6a70c45d6f19de29",
+        "subject": "chore(release): bump version to 0.1.2 (versionCode 3) for QA"
+      },
+      {
+        "sha": "a2cd37c101994dc46de03b3e13d9771c2ace4c42",
+        "subject": "fix(numerology): Lo Shu grid = DOB + Driver + Conductor + Kua, added on top"
+      },
+      {
+        "sha": "ce7a6ea94571cc03111422c37b1dee08dda0bd6a",
+        "subject": "chore(release): bump version to 0.1.1 (versionCode 2) for QA distribution"
+      },
+      {
+        "sha": "9529aa03c316105e9fc5e2cfdd02e669bc1177dc",
+        "subject": "fix(onboarding): default genderEnum to Male so Kua number always shows"
+      },
+      {
+        "sha": "bd4398cd576682845dadeedf9f5513f0b0a392d5",
+        "subject": "fix(numerology): compute onboarding Name Number with Chaldean, not Pythagorean"
+      },
+      {
+        "sha": "2a35229af837c7c527bccf756de8d00964019369",
+        "subject": "fix(location): resolve birth city via backend geo_details, not on-device Geocoder"
+      },
+      {
+        "sha": "6c70ae7c77917444cd80f68c0b8ff9906b272f5a",
+        "subject": "feat(numerology): show name-derived Lo Shu digit in brackets"
+      },
+      {
+        "sha": "dea80f3ec3415b5803e5b3eeda4580e3608fc835",
+        "subject": "fix(numerology): use Chaldean for name numbers (per review)"
+      },
+      {
+        "sha": "379557b6839ac7c8c58f9818b4dda8879b69ec8b",
+        "subject": "fix(numerology): correct Lo Shu planes (rows + columns of the grid)"
+      },
+      {
+        "sha": "47ce7668c3ebf9b03e02439087c74dcb0801566b",
+        "subject": "fix(kundali): Vimshottari table froze on heuristic (unkeyed remember)"
+      },
+      {
+        "sha": "e76815f6c1471ee89544ec30122eaafebee8d77c",
+        "subject": "fix(astrology): guarantee a session before proxy calls (kills heuristic dasha)"
+      },
+      {
+        "sha": "5b2e43509fc198e4d645d1bfde20145f1813b9fc",
+        "subject": "fix(kundali): full-date dasha parsing + timestamp-based active period"
+      },
+      {
+        "sha": "ddf459c90b5842b0fed73496ed4d4c49a9460617",
+        "subject": "fix(kundali): badge estimated data + fix full-Kundali dasha date parsing"
+      },
+      {
+        "sha": "0d6268be5cc4863aee81908e8931ad76a4316a6a",
+        "subject": "fix(kundali): correct Vimshottari active period + reliable API dasha"
+      },
+      {
+        "sha": "48fe334d7eda77d67a0aee18f5374b2c359095d0",
+        "subject": "test(viewmodels): behavioural API-link tests for chat/match/kundali + registry"
+      },
+      {
+        "sha": "363afb1cac346ef70516edf4ca688fa0713062ff",
+        "subject": "docs(parity): personality endpoint live \u2014 22/22 data paths real"
+      },
+      {
+        "sha": "8eb214863383d713ba04da323f9446b5790adf30",
+        "subject": "test(astrology): API-link contract + response-DTO tests; add status report"
+      },
+      {
+        "sha": "46c39fb5f01426dbba6565a421a97587ddeada44",
+        "subject": "fix(onboarding): OTP screen stuck on Verify (blocking anon sign-in)"
+      },
+      {
+        "sha": "66eaa0378a640a2e71dbf9535d7b10c134b6f584",
+        "subject": "fix(onboarding): stop Tell-Us-About-You screen flicker/recompose loop"
+      },
+      {
+        "sha": "321f32d67d4a01a1bc63b60ebf8c00890a841c06",
+        "subject": "feat(home): strip astrology dashboard cards for rework"
+      },
+      {
+        "sha": "ca6fd6a7769abb87239ea790c0c01941835bc533",
+        "subject": "feat(home): remove the \"Ask your AI Astrologer\" card from the dashboard"
+      },
+      {
+        "sha": "9d7c8a43529ee27c09972e7fd92e255c7c47f493",
+        "subject": "feat(kundali): real composite planet strengths (was random)"
+      },
+      {
+        "sha": "5a8bdaf34bbb00aa8324d3a86c83047b38360490",
+        "subject": "feat(kundali): real Yogas detected from placements (was random)"
+      },
+      {
+        "sha": "e7f388c9861621e4351d692b6c52f3165e306314",
+        "subject": "feat(kundali): real personality report + mapper/DTO test suite"
+      },
+      {
+        "sha": "7af655383773e7688cfcf6773914bd5d1851b2f7",
+        "subject": "feat(kundali): real KP + Ashtakvarga charts via proxy"
+      },
+      {
+        "sha": "8510b8a5143426160d3cca3e9966aa5f0a72afd0",
+        "subject": "feat(kundali): real Bhava Chalit chart via proxy"
+      },
+      {
+        "sha": "a6081444c8c3b1233060ebee11f18b4432968dd6",
+        "subject": "fix(auth): establish anonymous Supabase session on dev-bypass login"
+      },
+      {
+        "sha": "67bc8080cdea88d35b8eff2fb8cb9e0904ae7bff",
+        "subject": "fix(kundali): real Navamsa, Chandra & Transit divisional charts"
+      },
+      {
+        "sha": "c87eca124a63a89d7ba7d5e9a783de1a18890285",
+        "subject": "fix(kundali): real Current Transit + Doshas from live planet data"
+      },
+      {
+        "sha": "030c679928b9ac0ee21fd3ab66e1b5cfcb5d6e1f",
+        "subject": "fix(dashboard): hide bottom tab bar; real lucky elements from moon sign"
+      },
+      {
+        "sha": "e1e64ceed8295d1800fc01178c9b000fc84f3d0f",
+        "subject": "refactor(astrology): route chart/geo through backend proxy, drop in-APK key"
+      },
+      {
+        "sha": "725f5060ee07864abe391f505096dfbe4732892f",
+        "subject": "feat(horoscope): wire daily horoscope to backend, drop fabricated data"
+      },
+      {
+        "sha": "89a86d49a51b3789205ff24df9b19244f945af4c",
+        "subject": "feat(astrology): connect AstrologyAPI for real chart data + fixes"
+      },
+      {
+        "sha": "4481552fed5959f8a60b6f31e3d9bd4c4f619395",
+        "subject": "feat(onboarding): theme + flow polish pass on the v2 PR"
+      },
+      {
+        "sha": "5ebb2fbefbbb8f8dbc50b929d4569577559fe7dc",
+        "subject": "docs(parity): mark P10 Kundali + Prediction Table shipped"
+      },
+      {
+        "sha": "e687563d804acf048fccec45a6202ba870cd5e97",
+        "subject": "feat(dashboard): P10 \u2014 Kundali full + Prediction Table + Add-Kundali page"
+      },
+      {
+        "sha": "2dfd3155f1183691a6f3e51b2bd4b4a1dea84e95",
+        "subject": "docs(parity): mark P9 Daily Horoscope shipped"
+      },
+      {
+        "sha": "79278c58487ef78d99e8450856260c5458f64df6",
+        "subject": "feat(dashboard): P9 \u2014 Daily Horoscope screen"
+      },
+      {
+        "sha": "4b2377d24913175c241455c9306c4aa084435157",
+        "subject": "docs(parity): add V2_STATUS \u2014 live checklist of done/pending work"
+      },
+      {
+        "sha": "36108a344f58fe2a9d84adf02caa7722d4a0d25f",
+        "subject": "feat(dashboard): Phase 8 \u2014 feature-box grid on Home (7 boxes)"
+      },
+      {
+        "sha": "6d67c4e3873cba808da1f05eb06207f4de9b1ab3",
+        "subject": "chore(onboarding): renumber progress bars for the v2 flow"
+      },
+      {
+        "sha": "5a56ef5bfc46eca3da507699c09485e69621c18d",
+        "subject": "feat(onboarding): Phase 4 \u2014 sticky CTA bar on Birth Details"
+      },
+      {
+        "sha": "79f283182ec8869d42084ff54aeebef198f5324d",
+        "subject": "feat(kundali): Phase 7 \u2014 Dasha expands inline with chevron + animation"
+      },
+      {
+        "sha": "e36928eae4f0aed82943899d5f54e18cef1f402b",
+        "subject": "feat(kundali): Phase 6 \u2014 Planetary Strength \u2192 Planetary Details (drop bars)"
+      },
+      {
+        "sha": "29fee43df5ec0b7956bd58e17989953ab02098cd",
+        "subject": "feat(kundali): Phase 5 \u2014 add Transit + KP chart types"
+      },
+      {
+        "sha": "7a8fedad1f0ee09ae8f9ace14dd1308d25d0df3a",
+        "subject": "feat(onboarding): Phase 3 \u2014 Birth Details rework (dual CTAs + TOB/POB)"
+      },
+      {
+        "sha": "365ff4013c069b8705ed0f7afe2803adfcc877ff",
+        "subject": "feat(onboarding): Phase 2 \u2014 Welcome intro screen (step 1)"
+      },
+      {
+        "sha": "7a57c3bf02884353b58c2d701dbdc6588558cf36",
+        "subject": "feat(onboarding): Phase 1 \u2014 flow re-order + screen removals"
+      },
+      {
+        "sha": "af674ee11af050821b2119e6a27d7ceae5da3a4f",
+        "subject": "baseline: carry in-progress chart-component extraction onto v2 branch"
+      },
+      {
+        "sha": "32986653b3effe58e7fa7f6d7b43c795db35bb93",
+        "subject": "feat(onboarding): wire shared components into onboarding screens (Phase 10 Track A)"
+      },
+      {
+        "sha": "e11c7cbfe7640974f72e416bd767d0da5e80941d",
+        "subject": "feat(auth): Phase 7 \u2014 real Supabase phone OTP behind BuildConfig flag"
+      },
+      {
+        "sha": "dca6f77eb5d7854a625937a6e317ac08facbc507",
+        "subject": "docs(parity): add in-repo parity plans for cross-platform context"
+      },
+      {
+        "sha": "64580c07d4f5ea0b81e7bdbd1e9f971f33c00584",
+        "subject": "refactor(components): Phase 9 \u2014 tier hygiene to match iOS placement"
+      },
+      {
+        "sha": "6f8e77e5946abb05fe86d6000d34ae65cc3f1d0c",
+        "subject": "feat(onboarding): Phase 6 \u2014 FinishScreen (\"Welcome to AastroAstra\")"
+      },
+      {
+        "sha": "503916dbd26dfbaeed0c4c3cdb2f940eaf30295a",
+        "subject": "feat(theme): Phase 5 \u2014 AastroTokens namespace expansion (iOS parity)"
+      },
+      {
+        "sha": "fb37ff31e69a5dfd937a91bb7919d7fc4dc6c9db",
+        "subject": "feat(components): Phase 4 \u2014 3 missing molecules mirroring iOS"
+      },
+      {
+        "sha": "04a22ae916d18b76ac4a96976b225c79fcb4c83f",
+        "subject": "feat(components): Phase 3 \u2014 5 missing atoms mirroring iOS"
+      },
+      {
+        "sha": "54648ead43cec3bcd3110cc778139802c28c6f8c",
+        "subject": "feat(numerology): Phase 2 \u2014 LoShuDigitMeaning + tap-to-explain sheet"
+      },
+      {
+        "sha": "5942eec30032feb41384ea855f755c41beed8dcb",
+        "subject": "feat(numerology): Phase 1 \u2014 engine API completion for iOS parity"
+      },
+      {
+        "sha": "e8adc0a700dca5809cb388de46373732253f656c",
+        "subject": "refactor(onboarding): migrate LanguageSelectionScreen to LanguagePicker"
+      },
+      {
+        "sha": "22239fa33bf7d1be94d1f3fe6879bbde91b6d2f1",
+        "subject": "feat(onboarding): Phase B \u2014 PhoneEntry + OTPVerify screens (dev bypass)"
+      },
+      {
+        "sha": "8bef94301e4d483bef4d791ec415c95c316d14c3",
+        "subject": "feat(components): Phase A \u2014 8 onboarding components mirroring iOS"
+      },
+      {
+        "sha": "d333c21bff3ee0ba96010c21d2e11cabfd2f9586",
+        "subject": "refactor(onboarding): apply reviewer-bot fixes to v1.2.1 screens"
+      },
+      {
+        "sha": "cf69b4706e2d7a4849078703e55ffd518f403b70",
+        "subject": "feat(backend): Phase 7 \u2014 push gender + numerology_profile JSONB to Supabase"
+      },
+      {
+        "sha": "be66e2b8147471c66be59f9cb2bcb811637b8bc5",
+        "subject": "feat(onboarding): Phase 5 \u2014 Gender step + v1.2.1 Lo Shu + Kua tile"
+      },
+      {
+        "sha": "0fdc05c68c27c28adc8ba777b4d2711b40ddfa7a",
+        "subject": "feat(components): Phase 4 onboarding-specific molecules + organisms"
+      },
+      {
+        "sha": "f079a4b66b15dbb7a416a5300facacdd592af99f",
+        "subject": "feat(components): Phase 3 atoms \u2014 8 components mirroring iOS Atoms/"
+      },
+      {
+        "sha": "1fa993ba2ba93f5a326cbf4e94321c508d543e01",
+        "subject": "feat(l10n): 117 v1.2.1 keys (en + hi) + NumerologyContent helper"
+      },
+      {
+        "sha": "93e2cd3b0b9d2c5e2f580be85c964a80500af37c",
+        "subject": "feat(theme): add AastroTokens facade for iOS-aligned naming"
+      },
+      {
+        "sha": "a9b0de8798225e6f19ab59d8f32cf321ea81816f",
+        "subject": "fix(theme): warm-gold tint + pure-white light surfaces (v1.2.1)"
+      },
+      {
+        "sha": "24f88ce8ba9ba8a95444d3d60608aaf7da573ed8",
+        "subject": "test(numerology): golden vectors + Kua + Lo Shu v1.2.1 + aggregator"
+      },
+      {
+        "sha": "f36f682a0277cab5ff44f19389143ea7558f0474",
+        "subject": "feat(numerology): engine v1.2.1 \u2014 gridDigit, kuaNumber, presence-only Lo Shu, profile()"
+      },
+      {
+        "sha": "104e3069a729e61ddd45b16cd5f05acfcfc71c53",
+        "subject": "feat(numerology): NumerologyProfile + Input + LoShuGrid + MobileNumberReading"
+      },
+      {
+        "sha": "a32e25b40072050480abca724df91251f5f6e93b",
+        "subject": "feat(numerology): Gender enum + KuaDirections helper (v1.2.1)"
+      },
+      {
+        "sha": "5bc0df664fe227799ac1109a40ea183fe34027a0",
+        "subject": "feat: Onboarding redesign + theme system + Mini Kundali expansion"
+      },
+      {
+        "sha": "a0e2f50a7f1473215936d20a847d797ed14fcccd",
+        "subject": "docs: enforce component-library reuse \u2014 mirror iOS, never inline"
+      },
+      {
+        "sha": "4ce824d4929b564f3008901bf79969c17db73983",
+        "subject": "feat: Phase 2.2 \u2014 Pull-to-refresh on Home screen"
+      },
+      {
+        "sha": "788e192eb2affff07877dd2af53de4c4c3bbdb69",
+        "subject": "feat: Phase 1.8 \u2014 Notifications with channels, preferences, and inbox"
+      },
+      {
+        "sha": "be529ea6f5b5c1aeb7125e41f8b653a78d721175",
+        "subject": "feat: Phase 1.6 \u2014 Numerology Engine (on-device) + ViewModel wiring"
+      },
+      {
+        "sha": "4e0159dd13b963fe9289b1c84a9dff9783f0eda4",
+        "subject": "feat: Phase 1.7 \u2014 Profile & Settings wired to ViewModel + Supabase"
+      },
+      {
+        "sha": "49ee09ee3697929a7d5c6bbf16afbdba9ad93008",
+        "subject": "feat: Phase 1.5 \u2014 Monetization with RevenueCat integration"
+      },
+      {
+        "sha": "1e3a0e9283cc30a96c54ee29ba79473b41f35661",
+        "subject": "feat: Phase 1.4 \u2014 AI Chat wired to ViewModel + Supabase RAG"
+      },
+      {
+        "sha": "8e6b33fb7c8281dee4f9cbd68c6c0c73ece5aa5b",
+        "subject": "feat: Phase 1.3 \u2014 Match Making wired to ViewModel + Supabase"
+      },
+      {
+        "sha": "0622fd943d999cfb3b9d3a9c1cca0f5fb56ec108",
+        "subject": "feat: Phase 1.2 \u2014 Kundali screens wired to ViewModel + Supabase"
+      },
+      {
+        "sha": "7dc2061d1679557a0d0a8a3de31b23067086252e",
+        "subject": "feat: Phase 1.1 \u2014 Home screen wired to ViewModel + Supabase"
+      },
+      {
+        "sha": "97edbea0dfbba69c305518ab88589b396b9403c8",
+        "subject": "fix: Gradle version fixes, Supabase config, Google OAuth setup"
+      },
+      {
+        "sha": "2f64178ae7ede032ba3875957262f20bc5391d18",
+        "subject": "feat: Phase 1 \u2014 Auth + Onboarding with Supabase"
+      },
+      {
+        "sha": "a5f9190926eadab9ed8e91b60e0d0f47c70d60b1",
+        "subject": "docs: Update CLAUDE.md \u2014 RevenueCat replaces Razorpay for billing"
+      },
+      {
+        "sha": "3f3dbca80fa130d10c9c84054feaf529cf6fb884",
+        "subject": "feat: Phase 0.1 \u2014 Production architecture setup"
+      },
+      {
+        "sha": "565159564f4e77fe2edc061cb9030237b7203ab6",
+        "subject": "docs: Update CLAUDE.md with production architecture standards"
+      },
+      {
+        "sha": "994e10c7e01594ddc411b5a6b22ce58ea9089a6b",
+        "subject": "feat: Add all app screens, components, and CLAUDE.md config"
+      },
+      {
+        "sha": "526504de3663e864da03c6a9c100547d07023b37",
+        "subject": "Initial Android project setup with Jetpack Compose"
+      },
+      {
+        "sha": "660ac81530504fa5e4c021a69e6e1115b3bd98c4",
+        "subject": "first commit"
+      }
+    ],
+    "checks": [
+      {
+        "name": "Localization",
+        "status": "passed",
+        "required": true,
+        "seconds": 0.1,
+        "summary": "Completed successfully"
+      },
+      {
+        "name": "HTML report contracts",
+        "status": "passed",
+        "required": true,
+        "seconds": 0.3,
+        "summary": "Completed successfully"
+      },
+      {
+        "name": "Unit tests and release lint",
+        "status": "passed",
+        "required": true,
+        "seconds": 1.6,
+        "summary": "896/896 unit tests passed, with no failures or skips. Release lint: zero errors and 464 warnings."
+      },
+      {
+        "name": "Signed release APK",
+        "status": "passed",
+        "required": true,
+        "seconds": 1.4,
+        "summary": "APK and AAB built together from the tagged source. Release flags disable debug, OTP bypass and paid features; arm64-v8a and armeabi-v7a are included, with no Agora native libraries."
+      },
+      {
+        "name": "APK signature",
+        "status": "passed",
+        "required": true,
+        "seconds": 0.6,
+        "summary": "Completed successfully"
+      },
+      {
+        "name": "Tagged source and tested artifact comparison",
+        "status": "passed",
+        "required": true,
+        "summary": "The final tagged rebuild differs only in embedded Git revision metadata and signatures covering it. Every other archive entry is byte-identical. Publication retains the exact tested APK and AAB; tagged-source-comparison.json records both hashes and revisions."
+      },
+      {
+        "name": "Install exact release APK",
+        "status": "passed",
+        "required": true,
+        "summary": "ADB installed the signed APK on emulator-5560; its hash is checked against the tested candidate."
+      },
+      {
+        "name": "Android end-to-end",
+        "status": "passed",
+        "required": true,
+        "summary": "43/43 installed-app steps passed. Detailed screen results and timings are retained."
+      },
+      {
+        "name": "Backend endpoint probes",
+        "status": "passed",
+        "required": true,
+        "summary": "30/30 live calls passed, including new palm and face readings. The earlier QA quota response is retained separately."
+      },
+      {
+        "name": "Execution environment",
+        "status": "passed",
+        "required": false,
+        "summary": "Local macOS build and ARM64 API 34 emulator. Private GitHub Actions were blocked before any steps by account billing. This is local validation, not a passing CI run."
+      }
+    ],
+    "downloads": [
+      {
+        "kind": "apk",
+        "name": "aastroastra.apk",
+        "size": 27552012,
+        "sha256": "34962c6f23e6b2150826294f1fc949e3088502609040328d3b82a9d2bc71aaa1",
+        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-android-v1.0.9-f22d3793d0/aastroastra-android-v1.0.9-59a048df95-34962c6f23e6b215.apk"
+      }
+    ],
+    "run_url": "https://github.com/aastroastra/aastroastra-android/actions/runs/35283917014",
+    "run_number": null,
+    "run_attempt": "1",
+    "unit_tests": {
+      "total": 896,
+      "passed": 896,
+      "failed": 0,
+      "skipped": 0
+    },
+    "note": "Published on the website. All recorded checks ran locally on the exact signed APK; private GitHub Actions could not start because of account billing. Google Play production is not submitted because its publishing credential is unavailable.",
+    "execution": "local",
+    "bundle": {
+      "name": "aastroastra.aab",
+      "size": 27320243,
+      "sha256": "3ac67b06077c5cf0a7cd33938707a355a09edc5ec52f733df8bee22898743122"
+    },
+    "ui": {
+      "passed": 43,
+      "total": 43
+    },
+    "endpoints": {
+      "passed": 30,
+      "total": 30
+    },
+    "report_sha256": "6bd8e3bc56ca14760936e25241ea17d6668d9a9e54f18efca47786da15d7d7e6",
+    "website": {
+      "url": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-197-34962c6f23e6b215.apk",
+      "sha256": "34962c6f23e6b2150826294f1fc949e3088502609040328d3b82a9d2bc71aaa1",
+      "verified_at": "2026-09-17T22:53:13.760147+00:00",
+      "metadata": {
+        "version": "1.0.9",
+        "versionCode": 197,
+        "sizeMb": "26.3",
+        "date": "2026-09-18",
+        "updated": "18 Sep 2026, 04:22 AM IST",
+        "apk": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-197-34962c6f23e6b215.apk",
+        "sha256": "34962c6f23e6b2150826294f1fc949e3088502609040328d3b82a9d2bc71aaa1"
+      }
+    },
+    "report_url": "/release/reports/android-v1.0.9-f22d3793d0/",
+    "manifest_sha256": "558994916d90509f49a431a74716adae7150364ddb91309b1ceb84840613b36a",
+    "source_release": "https://github.com/aastroastra/aastroastra-android/releases/tag/v1.0.9",
+    "published_at": "2026-09-17T22:53:15Z"
+  },
+  {
+    "schema": 1,
     "id": "site:release-2026.09.18",
     "platform": "site",
     "repo": "aastroastra/aastroastra-site",

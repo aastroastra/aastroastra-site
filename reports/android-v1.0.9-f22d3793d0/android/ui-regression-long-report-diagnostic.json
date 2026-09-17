@@ -1,0 +1,93 @@
+{
+  "started_utc": "2026-09-17T22:08:47+00:00",
+  "device": "emulator-5560",
+  "package": "com.avdstudiox.android",
+  "version": "1.0.9 (197)",
+  "package_version": "versionCode=197 minSdk=24 targetSdk=36 versionName=1.0.9",
+  "steps": [
+    {
+      "area": "Onboarding",
+      "step": "cold start to splash",
+      "ok": true,
+      "seconds": 3.1,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "language picker",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "send OTP",
+      "ok": true,
+      "seconds": 4.7,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "verify OTP and sign in",
+      "ok": true,
+      "seconds": 5.1,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "numerology shown in the form (driver)",
+      "ok": true,
+      "seconds": 2.3,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "place search Mumbai (geocode)",
+      "ok": true,
+      "seconds": 2.5,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "numerology insights",
+      "ok": true,
+      "seconds": 2.3,
+      "note": ""
+    },
+    {
+      "area": "Numerology",
+      "step": "birth number 6 (15 Aug)",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "mini kundali chart",
+      "ok": true,
+      "seconds": 6.3,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "unexpected failure",
+      "ok": false,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "run stopped",
+      "ok": false,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "App",
+      "step": "no app crash in logcat",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    }
+  ]
+}

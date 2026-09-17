@@ -1,0 +1,337 @@
+{
+  "started_utc": "2026-09-17T22:38:13+00:00",
+  "device": "emulator-5560",
+  "package": "com.avdstudiox.android",
+  "version": "1.0.9 (197)",
+  "package_version": "versionCode=197 minSdk=24 targetSdk=36 versionName=1.0.9",
+  "steps": [
+    {
+      "area": "Onboarding",
+      "step": "cold start to splash",
+      "ok": true,
+      "seconds": 4.2,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "language picker",
+      "ok": true,
+      "seconds": 2.5,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "send OTP",
+      "ok": true,
+      "seconds": 4.9,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "verify OTP and sign in",
+      "ok": true,
+      "seconds": 5.2,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "numerology shown in the form (driver)",
+      "ok": true,
+      "seconds": 2.5,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "place search Mumbai (geocode)",
+      "ok": true,
+      "seconds": 5.7,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "numerology insights",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Numerology",
+      "step": "birth number 6 (15 Aug)",
+      "ok": true,
+      "seconds": 2.2,
+      "note": "",
+      "screenshot": "shots/08-numerology-birth-number-6-(15-aug).png"
+    },
+    {
+      "area": "Onboarding",
+      "step": "mini kundali chart",
+      "ok": true,
+      "seconds": 6.4,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "enter the app to dashboard",
+      "ok": true,
+      "seconds": 7.8,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "greeting uses the name",
+      "ok": true,
+      "seconds": null,
+      "note": "Namaste, Ananya \u2726",
+      "screenshot": "shots/11-dashboard-greeting-uses-the-name.png"
+    },
+    {
+      "area": "Dashboard",
+      "step": "panchang loaded",
+      "ok": true,
+      "seconds": 2.2,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section MULTI-MATCH",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section TODAY'S HOROSCOPE",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/14-dashboard-section-today's-horoscope.png"
+    },
+    {
+      "area": "Dashboard",
+      "step": "section YOUR NUMEROLOGY",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section PALMISTRY",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section FACE READING",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Dashboard",
+      "step": "section EXPLORE MORE",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (today)",
+      "ok": true,
+      "seconds": 4.3,
+      "note": "Personal life may feel easier when you stop trying to carry every practical conc",
+      "screenshot": "shots/19-horoscope-daily-horoscope-(today).png"
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (tomorrow)",
+      "ok": true,
+      "seconds": 6.0,
+      "note": "Closeness may feel easier to express today when you stop expecting one conversat",
+      "screenshot": "shots/20-horoscope-daily-horoscope-(tomorrow).png"
+    },
+    {
+      "area": "Horoscope",
+      "step": "daily horoscope (yesterday)",
+      "ok": true,
+      "seconds": 6.0,
+      "note": "Personal life may feel easier when you stop trying to carry every practical conc",
+      "screenshot": "shots/21-horoscope-daily-horoscope-(yesterday).png"
+    },
+    {
+      "area": "Kundali",
+      "step": "details page (signs)",
+      "ok": true,
+      "seconds": 47.8,
+      "note": "",
+      "screenshot": "shots/22-kundali-details-page-(signs).png"
+    },
+    {
+      "area": "Kundali",
+      "step": "chart drawn",
+      "ok": true,
+      "seconds": 2.2,
+      "note": "",
+      "screenshot": "shots/23-kundali-chart-drawn.png"
+    },
+    {
+      "area": "AI assistant",
+      "step": "explain this section answer",
+      "ok": true,
+      "seconds": 21.1,
+      "note": "Ananya, your sun sign is simply the rashi the Sun was sitting in when you were born: Cancer, the Moo",
+      "screenshot": "shots/24-ai-assistant-explain-this-section-answer.png"
+    },
+    {
+      "area": "Kundali",
+      "step": "details page scrolled",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/25-kundali-details-page-scrolled.png"
+    },
+    {
+      "area": "Match",
+      "step": "match input",
+      "ok": true,
+      "seconds": 2.3,
+      "note": "",
+      "screenshot": "shots/26-match-match-input.png"
+    },
+    {
+      "area": "Match",
+      "step": "numerology vibe",
+      "ok": true,
+      "seconds": 2.2,
+      "note": "",
+      "screenshot": "shots/27-match-numerology-vibe.png"
+    },
+    {
+      "area": "Match",
+      "step": "match details (guna score)",
+      "ok": true,
+      "seconds": 12.0,
+      "note": "29/36",
+      "screenshot": "shots/28-match-match-details-(guna-score).png"
+    },
+    {
+      "area": "Match",
+      "step": "8-koota analysis",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/29-match-8-koota-analysis.png"
+    },
+    {
+      "area": "Multi-Match",
+      "step": "multi-match input",
+      "ok": true,
+      "seconds": 2.3,
+      "note": "",
+      "screenshot": "shots/30-multi-match-multi-match-input.png"
+    },
+    {
+      "area": "Multi-Match",
+      "step": "ranked results",
+      "ok": true,
+      "seconds": 15.5,
+      "note": "24/36 Guna, 24/36 Guna, 17/36 Guna",
+      "screenshot": "shots/31-multi-match-ranked-results.png"
+    },
+    {
+      "area": "Multi-Match",
+      "step": "verdict text",
+      "ok": true,
+      "seconds": 2.2,
+      "note": "Ananya and Rohan, 24 of 36 with Bhakoot strong makes this a very good match; only Varna la",
+      "screenshot": "shots/32-multi-match-verdict-text.png"
+    },
+    {
+      "area": "Palm reading",
+      "step": "reading shown",
+      "ok": true,
+      "seconds": 28.7,
+      "note": "Ananya, this is a warm, well-filled palm with a long curving Heart Line and a deep, clear Life Line ",
+      "screenshot": "shots/33-palm-reading-reading-shown.png"
+    },
+    {
+      "area": "Face reading",
+      "step": "reading shown",
+      "ok": true,
+      "seconds": 28.8,
+      "note": "Ananya's face reads long and air-toned: a thinking, planning temperament with high cheekbones that g",
+      "screenshot": "shots/34-face-reading-reading-shown.png"
+    },
+    {
+      "area": "Chat",
+      "step": "reply to a typed question",
+      "ok": true,
+      "seconds": 13.5,
+      "note": "Ananya, your career is on firm ground this year. The lord of your 10th house, the Moon, sits exalted",
+      "screenshot": "shots/35-chat-reply-to-a-typed-question.png"
+    },
+    {
+      "area": "Group chat",
+      "step": "shared people picker opens",
+      "ok": true,
+      "seconds": 2.4,
+      "note": "",
+      "screenshot": "shots/36-group-chat-shared-people-picker-opens.png"
+    },
+    {
+      "area": "Group chat",
+      "step": "Ananya available in the shared catalog",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/37-group-chat-ananya-available-in-the-shared-catalo.png"
+    },
+    {
+      "area": "Group chat",
+      "step": "Rohan available in the shared catalog",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/38-group-chat-rohan-available-in-the-shared-catalog.png"
+    },
+    {
+      "area": "Group chat",
+      "step": "Priya available in the shared catalog",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/39-group-chat-priya-available-in-the-shared-catalog.png"
+    },
+    {
+      "area": "Group chat",
+      "step": "all three selected people retained",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/40-group-chat-all-three-selected-people-retained.png"
+    },
+    {
+      "area": "Group chat",
+      "step": "family suggestions use selected names",
+      "ok": true,
+      "seconds": null,
+      "note": "",
+      "screenshot": "shots/41-group-chat-family-suggestions-use-selected-names.png"
+    },
+    {
+      "area": "Group chat",
+      "step": "reply with three-person context",
+      "ok": true,
+      "seconds": 21.0,
+      "note": "All three of you are standing on firm professional ground, which means the support here isn't about ",
+      "screenshot": "shots/42-group-chat-reply-with-three-person-context.png"
+    },
+    {
+      "area": "App",
+      "step": "no app crash in logcat",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    }
+  ]
+}

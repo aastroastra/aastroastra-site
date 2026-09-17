@@ -1,0 +1,51 @@
+{
+  "started_utc": "2026-09-17T21:38:24+00:00",
+  "device": "emulator-5560",
+  "package": "com.avdstudiox.android",
+  "version": "1.0.9 (197)",
+  "package_version": "versionCode=197 minSdk=24 targetSdk=36 versionName=1.0.9",
+  "steps": [
+    {
+      "area": "Onboarding",
+      "step": "cold start to splash",
+      "ok": true,
+      "seconds": 29.6,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "language picker",
+      "ok": true,
+      "seconds": 8.0,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "send OTP",
+      "ok": true,
+      "seconds": 26.6,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "verify OTP and sign in",
+      "ok": false,
+      "seconds": 124.6,
+      "note": ""
+    },
+    {
+      "area": "Onboarding",
+      "step": "run stopped",
+      "ok": false,
+      "seconds": null,
+      "note": ""
+    },
+    {
+      "area": "App",
+      "step": "no app crash in logcat",
+      "ok": true,
+      "seconds": null,
+      "note": ""
+    }
+  ]
+}
