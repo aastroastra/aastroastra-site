@@ -109,3 +109,18 @@ python3 -m http.server 8765 --directory _site
 To add another product, extend the platform/repository registry and its check
 runner, add a pinned tag workflow in that repository, grant the central read
 credential access, and add its filter to the release page.
+
+### QA account quotas
+
+The Android screen driver and API probes use separate existing Supabase test
+phone accounts. A successful live face reading consumes the normal daily
+allowance. Repeated releases within one UTC day can therefore return HTTP 429;
+that remains a failed regression, never an automatic pass or retry that hides
+the response. Ensure the dedicated test fixtures have allowance before running
+another complete suite. The workflow does not reset customer usage or grant
+itself a production service-role credential.
+
+A local fallback can publish evidence while private Actions billing is blocked,
+but its release manifest and HTML checks must explicitly identify local
+execution and retain the blocked Actions URL. The original quota/timing or
+emulator failures must remain recorded when a fresh run resolves them.
