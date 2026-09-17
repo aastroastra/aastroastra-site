@@ -6,7 +6,7 @@ import tempfile
 import unittest
 import urllib.request
 import zipfile
-from core import extract_report, manifest, render_report, sha256, slug, validate_manifest
+from core import extract_report, manifest, render_report, sha256, slug, validate_manifest, release_order
 from github_api import SafeRedirect
 from sync_releases import process
 from build_site import build
@@ -18,6 +18,11 @@ def record():
         'changes':[{'sha':'b'*40,'subject':'<script>alert("x")</script>'}], 'downloads':[]}
 
 class ManifestTests(unittest.TestCase):
+    def test_git_and_github_dates_sort_by_actual_time_across_timezones(self):
+        earlier={'id':'earlier','date':'2026-09-18T00:15:00+05:30'}
+        later={'id':'later','date':'2026-09-17T21:00:00Z'}
+        self.assertGreater(release_order(later),release_order(earlier))
+
     def test_mismatched_source_and_failed_evidence_cannot_pass(self):
         data=record();validate_manifest(data,sha='a'*40)
         for key,value in [('sha','b'*40),('repo','aastroastra/aastroastra-ios'),('tag','v2')]:

@@ -13,6 +13,11 @@ import zipfile
 PLATFORMS = {"android": "Android", "ios": "iOS", "backend": "Backend", "admin": "Admin", "web": "Web", "site": "Website"}
 REPOS = {p: "aastroastra/aastroastra-" + p for p in PLATFORMS}
 
+def release_order(record):
+    date=dt.datetime.fromisoformat((record.get('published_at') or record['date']).replace('Z','+00:00'))
+    if date.tzinfo is None:date=date.replace(tzinfo=dt.timezone.utc)
+    return date.timestamp(),record['id']
+
 def git(root, *args):
     return subprocess.check_output(["git", "-C", str(root), *args], text=True).strip()
 

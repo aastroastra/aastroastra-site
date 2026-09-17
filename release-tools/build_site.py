@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import shutil
 from sync_releases import atomic_json
+from core import release_order
 
 def build(root,data,out):
     root,data,out=map(Path,(root,data,out))
@@ -20,7 +21,7 @@ def build(root,data,out):
     records=json.loads((data/'records.json').read_text()) if (data/'records.json').exists() else []
     entries={r['id']:r for r in rows}
     entries.update({r['id']:r for r in records})
-    entries=sorted(entries.values(),key=lambda r:(r.get('published_at') or r['date'],r['id']),reverse=True)
+    entries=sorted(entries.values(),key=release_order,reverse=True)
     status=json.loads((data/'sync.json').read_text()) if (data/'sync.json').exists() else {}
     atomic_json(out/'release/releases.json',{'schema':1,'updated':dt.datetime.now(dt.timezone.utc).isoformat(),'sync':status,'releases':entries})
     if (data/'reports').exists():shutil.copytree(data/'reports',out/'release/reports',dirs_exist_ok=True)

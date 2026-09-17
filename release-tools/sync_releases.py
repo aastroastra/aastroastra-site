@@ -11,7 +11,7 @@ import shutil
 import tempfile
 import urllib.error
 from urllib.parse import quote
-from core import REPOS, extract_report, sha256, slug, validate_manifest
+from core import REPOS, extract_report, sha256, slug, validate_manifest, release_order
 from github_api import GitHub
 
 SITE_REPO=REPOS['site']
@@ -118,7 +118,7 @@ def sync(source,public,destination):
         except Exception as error:
             # Keep all other repositories and their previous valid records available.
             errors.append(platform+': '+type(error).__name__)
-    rows=sorted(existing.values(),key=lambda r:(r.get('published_at') or r['date'],r['id']),reverse=True)
+    rows=sorted(existing.values(),key=release_order,reverse=True)
     prior_status=json.loads((destination/'sync.json').read_text()) if (destination/'sync.json').exists() else None
     atomic_json(index,rows)
     # Avoid a history commit on every scheduled heartbeat when no evidence changed.
