@@ -41,6 +41,7 @@ function entry(row){
   title.append(el('span',row.version?'v'+row.version+(row.build?' · Build '+row.build:''):row.tag||'Source update'));
   head.append(title,el('span',label(row),'badge '+row.status));body.append(head);
   const source=el('div',undefined,'source');if(row.tag)source.append(el('span',row.tag));
+  if(row.run_number)source.append(el('span','Workflow run #'+row.run_number));
   if(row.sha)source.append(link(row.sha.slice(0,8),'https://github.com/'+row.repo+'/commit/'+row.sha));
   if(row.deployment==='not_recorded'&&row.kind!=='source-history')source.append(el('span','Store/deployment status not recorded'));
   if(row.deployment==='website')source.append(el('span','Published on the website'));
