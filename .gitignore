@@ -6,3 +6,5 @@ _site/
 _release-data/
 .venv/
 .DS_Store
+!release/index.html
+!release/reports/**/index.html

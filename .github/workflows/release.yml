@@ -1,0 +1,26 @@
+name: Tagged release and regression report
+
+on:
+  push:
+    tags: ['v*', 'release-*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing v* or release-* tag to validate and publish
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tagged-release-${{ inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    uses: aastroastra/aastroastra-site/.github/workflows/project-release.yml@4edb82b3074e5e5ed4dea88d37ab85c2897db540
+    with:
+      platform: site
+      tag: ${{ inputs.tag || github.ref_name }}
+      toolkit_ref: 4edb82b3074e5e5ed4dea88d37ab85c2897db540
