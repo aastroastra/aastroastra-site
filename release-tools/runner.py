@@ -74,6 +74,11 @@ def android_build():
             if 'PHONE_OTP_BYPASS = false' not in bc or 'DEBUG = false' not in bc: raise RuntimeError('Release build is debug/bypassed')
             (OUT/'installers').mkdir(exist_ok=True)
             shutil.copy2(apk,OUT/'installers/aastroastra.apk')
+            bundle=ROOT/'app/build/outputs/bundle/release/app-release.aab'
+            if not bundle.exists():raise RuntimeError('Signed release bundle was not produced')
+            (OUT/'bundles').mkdir(exist_ok=True)
+            shutil.copy2(bundle,OUT/'bundles/aastroastra.aab')
+            data=load();data['bundle']={'name':'aastroastra.aab','size':bundle.stat().st_size,'sha256':sha256(bundle)};save(data)
     finally:
         keyfile.unlink(missing_ok=True);props.unlink(missing_ok=True)
 
@@ -188,6 +193,7 @@ def publish():
     else:
         subprocess.run(['gh','release','edit',tag,'--repo',repo,'--notes-file',str(notes),'--latest=false'],check=True)
     files=[str(STATE),str(OUT/'release-report.zip')]+[str(OUT/'installers'/x['name']) for x in data['downloads']]
+    if data.get('bundle') and data['status']=='passed':files.append(str(OUT/'bundles'/data['bundle']['name']))
     # Upload metadata last, so the collector never sees a new manifest with old evidence.
     subprocess.run(['gh','release','upload',tag,'--repo',repo,'--clobber',*files[1:],files[0]],check=True)
 

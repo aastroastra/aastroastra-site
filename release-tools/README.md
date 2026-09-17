@@ -16,6 +16,15 @@ The workflow retains:
 - Validated signed APK/IPA downloads, only when required checks pass.
 - Private Actions logs, Android mapping/AAB and Xcode results for 90 days.
 
+Passing Android releases also retain `aastroastra.aab` on the private source
+GitHub Release and its hash in `release.json`. The manual `play-release.yml`
+downloads that exact bundle and uses `store/promote-release.py` to verify its
+hash, build, source tag and passing checks before opening a Play edit. It can
+target internal, alpha or production, with draft/completed and dry-run options.
+It preserves the existing store listing and existing reviews. Successful
+submissions retain `play-submission.json`; the hub attaches its status to the
+matching build. Submitted does not mean that store review has completed.
+
 Failed or interrupted validation is reported as failed or incomplete. The
 report is published before the final job gate returns failure. A missing
 signing secret never becomes a passing release. Store submission is separate

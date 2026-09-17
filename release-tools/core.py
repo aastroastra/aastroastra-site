@@ -84,6 +84,9 @@ def validate_manifest(data, repo=None, tag=None, sha=None):
         if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*',item['name']) or item["kind"] not in ("apk", "ipa"): raise ValueError("Invalid download")
         if not isinstance(item.get('size'),int) or item['size']<=0:raise ValueError('Download size required')
         if not re.fullmatch(r"[a-f0-9]{64}", item.get("sha256", "")): raise ValueError("Download checksum required")
+    if data.get('bundle'):
+        item=data['bundle']
+        if item.get('name')!='aastroastra.aab' or not re.fullmatch(r'[a-f0-9]{64}',item.get('sha256','')) or not isinstance(item.get('size'),int) or item['size']<=0:raise ValueError('Invalid Android bundle evidence')
     return data
 
 def extract_report(archive, destination):

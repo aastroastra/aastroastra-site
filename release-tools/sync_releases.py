@@ -57,9 +57,17 @@ def process(source,public,repo,release,existing,destination):
         sha=source.tag_sha(repo,release['tag_name'])
         validate_manifest(data,repo,release['tag_name'],sha)
         signature=sha256(tmp/'release.json')
+        receipt=None;receipt_hash=None
+        if repo==REPOS['android'] and 'play-submission.json' in assets:
+            source.download(repo,assets['play-submission.json'],tmp/'play-submission.json',20_000)
+            receipt=json.loads((tmp/'play-submission.json').read_text())
+            if (receipt.get('package')!='com.avdstudiox.android' or receipt.get('sha')!=sha or str(receipt.get('build'))!=str(data.get('build'))
+                or receipt.get('bundle_sha256')!=data.get('bundle',{}).get('sha256') or receipt.get('status')!='submitted'
+                or receipt.get('track') not in ('production','internal','alpha')):raise ValueError('Invalid Play submission receipt')
+            receipt_hash=sha256(tmp/'play-submission.json')
         old=existing.get(data['id'])
         report_dir=destination/'reports'/slug(data['id'])
-        if old and old.get('manifest_sha256')==signature and (report_dir/'index.html').exists():return old
+        if old and old.get('manifest_sha256')==signature and old.get('receipt_sha256')==receipt_hash and (report_dir/'index.html').exists():return old
         source.download(repo,assets['release-report.zip'],tmp/'report.zip',80_000_000)
         if sha256(tmp/'report.zip')!=data.get('report_sha256'):raise ValueError('Report checksum mismatch')
         extract_report(tmp/'report.zip',tmp/'report')
@@ -75,6 +83,10 @@ def process(source,public,repo,release,existing,destination):
             if sha256(path)!=download['sha256']:raise ValueError('Source installer checksum mismatch')
             files[download['name']]=path
         data['downloads']=public_downloads(public,data,files)
+        if receipt:
+            data['distribution']={'play':receipt}
+            data['receipt_sha256']=receipt_hash
+            shutil.copy2(tmp/'play-submission.json',tmp/'report/play-submission.json')
         if data['platform']=='ios' and data['downloads']:
             ipa=next(d for d in data['downloads'] if d['kind']=='ipa')
             profile=data['ios_distribution']

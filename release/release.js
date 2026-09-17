@@ -44,7 +44,7 @@ function entry(row){
   if(row.sha)source.append(link(row.sha.slice(0,8),'https://github.com/'+row.repo+'/commit/'+row.sha));
   if(row.deployment==='not_recorded'&&row.kind!=='source-history')source.append(el('span','Store/deployment status not recorded'));
   if(row.deployment==='website')source.append(el('span','Published on the website'));
-  if(row.distribution?.play)source.append(el('span','Google Play: '+row.distribution.play.status));
+  if(row.distribution?.play)source.append(el('span','Google Play '+row.distribution.play.track+': submitted (review/publication may be pending)'));
   body.append(source);
   if(row.note)body.append(el('p',row.note,'muted'));
   if(row.checks?.length||row.ui||row.endpoints){const metrics=el('div',undefined,'metrics');
