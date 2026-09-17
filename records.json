@@ -1,1 +1,375 @@
-[]
+[
+  {
+    "schema": 1,
+    "id": "site:release-2026.09.18",
+    "platform": "site",
+    "repo": "aastroastra/aastroastra-site",
+    "tag": "release-2026.09.18",
+    "sha": "f3e60a719ec6ddcd16b944135ef53b5d08141c67",
+    "previous_tag": null,
+    "version": null,
+    "build": null,
+    "date": "2026-09-18T02:32:14+05:30",
+    "kind": "tag",
+    "status": "passed",
+    "deployment": "not_recorded",
+    "changes": [
+      {
+        "sha": "f3e60a719ec6ddcd16b944135ef53b5d08141c67",
+        "subject": "Enable website tag validation and retain HTML entry points"
+      },
+      {
+        "sha": "4edb82b3074e5e5ed4dea88d37ab85c2897db540",
+        "subject": "Add public release history with tag regression reports and retained app downloads"
+      },
+      {
+        "sha": "972f3d2a1f86ec4793e3662cc82c80718f97018f",
+        "subject": "fix: verify APK bytes before publishing download metadata"
+      },
+      {
+        "sha": "954f599a61835546eb073dcdd808cb025f30f329",
+        "subject": "fix: add branded Android email sign-in link handoff"
+      },
+      {
+        "sha": "dfd087c4ee49298be09494cf8e8d89557dc0f14b",
+        "subject": "refactor(site): Multi-Match says less and shows more"
+      },
+      {
+        "sha": "f4feb191f89c010a93d823f2eca0cd7caa4d0e3a",
+        "subject": "feat(site): a Multi-Match section that leads with the counter-intuitive part"
+      },
+      {
+        "sha": "2a93f81592710252039b1abb80f9886f8cacf23d",
+        "subject": "feat(site): the platforms rail names the five features, not the two themes"
+      },
+      {
+        "sha": "6004178838fcfa5649f43dbd1806a7eb81c5cba6",
+        "subject": "feat(site): open-testing badges at both ends, and no score in public"
+      },
+      {
+        "sha": "b9da5f82d0ce121598e524eee5fddf98f36e404b",
+        "subject": "feat(site): a platforms section that argues its own case"
+      },
+      {
+        "sha": "b5e8c66cd9651af03c41146304dacfc5c5e8291a",
+        "subject": "fix(site): the label on a tint fill is derived, never fixed"
+      },
+      {
+        "sha": "19610464d25c934acd02294d26b290c5aa5ab30e",
+        "subject": "feat(site): end the page on the name, and surface account deletion"
+      },
+      {
+        "sha": "0585f802e10e332d9420274048ad87542723808a",
+        "subject": "feat(site): a delete-account page, because Play requires one"
+      },
+      {
+        "sha": "a905f67c77da9644143fc4ccf00995d176b06a36",
+        "subject": "fix(site): name the service instead of announcing a problem"
+      },
+      {
+        "sha": "bdf4fd429e343fe8afa318937101029f710347ec",
+        "subject": "feat(site): a public status page, in the footer and live in the hero"
+      },
+      {
+        "sha": "e942b6f7114a593b795a2ae39f2e67b74cbf058c",
+        "subject": "chore(ci): scan every push for committed credentials"
+      },
+      {
+        "sha": "9fc3218ff756bef8e4545cb2910d545d03c8155d",
+        "subject": "feat(site): show the build number for Android too, and fix the empty iOS cells"
+      },
+      {
+        "sha": "cc7d94dd4f00794e6b5eed5ea2597b1e28234dcc",
+        "subject": "fix(site): udid.tech and TestFlight are links, not bold text"
+      },
+      {
+        "sha": "44a139766276f657718a0d7313ca9e201707b832",
+        "subject": "feat(site): per-platform counts that exclude guests, and a collapsed install guide"
+      },
+      {
+        "sha": "b2ff4fd7274e17e3383dc800a6f9a14969d47401",
+        "subject": "fix(site): show people per platform, not download taps and palm readings"
+      },
+      {
+        "sha": "1ef9e57220e949704cd09a02106d98d2b33dced1",
+        "subject": "docs(brand): reconcile the guideline with what the apps actually are"
+      },
+      {
+        "sha": "d51af2be9c9b0a70a85aa08191269b58e99129fd",
+        "subject": "fix(publish): two bugs in yesterday's hardening, both silent"
+      },
+      {
+        "sha": "8f8b6428bf778e498f63b64a120f24c1d1c6beb7",
+        "subject": "fix(publish): never delete the live download before knowing the new one fits"
+      },
+      {
+        "sha": "47732af06fa8961dd9cb5799abfaf30898b4bfba",
+        "subject": "docs: readings can be taken for another person, with their permission"
+      },
+      {
+        "sha": "ff21e3ace0c7d47f0e59ff53ba298a0a12fc0227",
+        "subject": "style(site): white text in the question bubble"
+      },
+      {
+        "sha": "40770fca16e07cdd785b1bcdbc20a3d05ef9e6b3",
+        "subject": "docs: privacy and terms cover palm and face readings"
+      },
+      {
+        "sha": "ad428216d0241debb64311c23bdd151b38c65388",
+        "subject": "fix(site): the iOS row gets the same quiet timestamp"
+      },
+      {
+        "sha": "3cc101c2651889fc1c80330b973d644d26162690",
+        "subject": "fix(site): a share subtitle that says something new, split downloads, quieter timestamps"
+      },
+      {
+        "sha": "57171936fa992e248dfc1ce1a6c9a94ee9930218",
+        "subject": "feat(site): the two books the rules keep citing, and the men behind them"
+      },
+      {
+        "sha": "26777bde4a6a66ee839cdc08eb69badec44b38f3",
+        "subject": "feat(site): explain where the score comes from, including that nobody computed it"
+      },
+      {
+        "sha": "a388e8bdf6445ba692cdd876d892a87de97018c4",
+        "subject": "feat(site): live counts, and start counting downloads"
+      },
+      {
+        "sha": "38fa9dc4b6246f94e7aa9f53ed21d196ff768f17",
+        "subject": "fix(site): connectors now draw, and the face speaks in the example"
+      },
+      {
+        "sha": "349654c846d1c01ae5c35cf5f995174d4cd53c26",
+        "subject": "feat(site): show the ruleset as something that keeps moving, and a mobile pass"
+      },
+      {
+        "sha": "0f1b587ba33238619aee77931d69c24d659b726d",
+        "subject": "fix(site): source boxes, connector drawing, and face presented as shipped"
+      },
+      {
+        "sha": "d4c18120728ccbd4330ebe12aa9b1a333ec88465",
+        "subject": "feat(site): four readings, one answer"
+      },
+      {
+        "sha": "6959933e32eeb8290bbc86ea677e761aa2c8a274",
+        "subject": "fix(site): restore the commas my em-dash pass ate, and add the engine sections"
+      },
+      {
+        "sha": "4f2f70f4edc1f7e295f96e375bf5028a1957d440",
+        "subject": "fix(site): the timeline steps were invisible, and drop every em dash"
+      },
+      {
+        "sha": "e80950d81b5d5966e4af11539fea57d8197c1abb",
+        "subject": "feat(site): keynote build for the reasoning timeline, and the gate that governs it"
+      },
+      {
+        "sha": "535b414080b572edb762000dcc0c55af4450396e",
+        "subject": "redesign(site): AstroAI section \u2014 the question, then the proof"
+      },
+      {
+        "sha": "1d706800ec322ea4f70abae84e0f357d92ffaf59",
+        "subject": "feat(site): AastroAI section \u2014 deterministic core \u2192 AI layer"
+      },
+      {
+        "sha": "3fc67932cce657495ccd643117ac696d9098713d",
+        "subject": "site: fix build-status table stretching the page on mobile"
+      },
+      {
+        "sha": "1a83287fba35aa4ba152591e552f0e6e3415fb4d",
+        "subject": "site: build-status table (Android + iOS) with direct links incl. TestFlight"
+      },
+      {
+        "sha": "a3841c5c82d659d4a304d536a64ce4fb1385007d",
+        "subject": "site: read version-ios.json \u2014 iOS install badge + 'Last updated' line"
+      },
+      {
+        "sha": "af0820253316ed55747008878bd6d17bc9f1762d",
+        "subject": "site: iOS badge \u2192 live TestFlight link, remove Coming-soon pill"
+      },
+      {
+        "sha": "4e4a75776200050f55a589741eb190231cd137e4",
+        "subject": "chore: re-trigger Pages deploy (previous build jammed on GitHub side)"
+      },
+      {
+        "sha": "41df3ac7f2f5a44393a5ea8773a0d43cfe85fad2",
+        "subject": "site: proper Google Play + App Store badges; hero-only landing"
+      },
+      {
+        "sha": "61f0c55dc016a44b0b7bd2e8357da6faecfca1b5",
+        "subject": "feat(site): lead the showcase with Multi-Match + a Best-match zoom lens"
+      },
+      {
+        "sha": "1dc18b83177ca2bd3dd48c32915ec12ff5e406fc",
+        "subject": "feat(site): richer showcase \u2014 Android chrome, zoom lenses, Single/Multi-Match, engines band"
+      },
+      {
+        "sha": "e209c9712bb19e1c454c98f06f26600778de87b0",
+        "subject": "chore(site): remove the \"Every feature, built on your chart\" showcase heading"
+      },
+      {
+        "sha": "8aba5055f8b0226e43fdb13cb26e8522f2616cd3",
+        "subject": "feat(site): scroll-linked 3D tilt on the feature phone mocks"
+      },
+      {
+        "sha": "b1731a0c4ddb958603f6743788872748836e106f",
+        "subject": "chore(site): drop the showcase intro subline"
+      },
+      {
+        "sha": "312122890126a5d1bd7fcbafb90003ae2900020f",
+        "subject": "feat(site): feature showcase \u2014 7 production-accurate phone mocks + descriptions"
+      },
+      {
+        "sha": "7af4c47e819675487d158773802e23d184f61816",
+        "subject": "feat(site): Gen-Z share copy \u2014 \"AI pocket astrologer \ud83d\udd2e\""
+      },
+      {
+        "sha": "ae0d72b8d29399afb55366621e5629a703b72e35",
+        "subject": "feat(site): sharper share preview \u2014 \"One who believes\" title + USP description"
+      },
+      {
+        "sha": "de3603a1ba26edbd167f4cabdccabd696b728e96",
+        "subject": "Create CNAME"
+      },
+      {
+        "sha": "8baf19b579025f9eacf681a24e1922e4b5ea5985",
+        "subject": "Delete CNAME"
+      },
+      {
+        "sha": "516d19197283e7bbe10f16bff8c7b08d1ee2e5d6",
+        "subject": "fix(site): square 64x64 favicon (was 64x59 non-square \u2192 didn't render in tab)"
+      },
+      {
+        "sha": "6632ebd3712d3a138c57f0839b46564095d5fce0",
+        "subject": "feat(site): Google Analytics (G-PPKDQYT74D) + Search Console meta-tag verification"
+      },
+      {
+        "sha": "112ca60bc8c60a0ed66d66a9125ca37d921c5691",
+        "subject": "feat(site): FAQ JSON-LD + Google Search Console verification file"
+      },
+      {
+        "sha": "2ad552a57648ec8a0b0bddb55964f3977b45a58e",
+        "subject": "feat(site): custom-domain HTTPS, social share preview + full SEO/LLM meta"
+      },
+      {
+        "sha": "c30637f93d51ee7a6c62fb60f3d36c629029c66b",
+        "subject": "Update CNAME"
+      },
+      {
+        "sha": "1596b7d8fbd52e534666a4198be93c7358678ab4",
+        "subject": "Create CNAME"
+      },
+      {
+        "sha": "31489a025227b05a2f529764479beae8c84fc42e",
+        "subject": "site: White \u00b7 Light theme now uses a Harvest-style orange accent"
+      },
+      {
+        "sha": "08a22c32476595a4d4af202931492b7b4808005c",
+        "subject": "site: responsive footer (compact links desktop / full brand footer mobile), mobile hero + theme picker"
+      },
+      {
+        "sha": "72ae7eb6ed8dc277fba01d02ea04d9cd532be10e",
+        "subject": "site: SF-style monochrome icons (no emojis), bigger branded footer, mobile hero spacing"
+      },
+      {
+        "sha": "847a05fff50b5b4611ec17f8db9cf75734046c81",
+        "subject": "site: logo follows the theme (gold gradient / ink-white via mask); add 5th theme White \u00b7 Light"
+      },
+      {
+        "sha": "f27fee76bb4800a79568af7f5e8e086c9cde5a7a",
+        "subject": "site: typewriter splash that flies into the nav; smaller voice mic; theme-aware accent boxes"
+      },
+      {
+        "sha": "923792335cdf48ae4a3faf0ef0f8bf7fd61ff9ba",
+        "subject": "site: clickable mock flows (voice-AI Kundali capture, Match, Multi-Match) + solid accent boxes"
+      },
+      {
+        "sha": "f06776c42df98b30fcc5cc87537d6bb246fe893f",
+        "subject": "site: intro logo splash, Multi-Match button, three branded AastroAstra engines around the phone"
+      },
+      {
+        "sha": "67bc048a06f8229c03209335b390adad90efd1c4",
+        "subject": "site: press kit + design system, theme-aware phone mock, solid-orange Kundali button, footer Press Kit link"
+      },
+      {
+        "sha": "cabfdb106de25c578c06863bb54093e2e1551e9c",
+        "subject": "site: locked solar-system background (orbit rings + sun + planets), hover-highlight, theme-matched"
+      },
+      {
+        "sha": "139cc2eed3d8532719bf44bf92e24c9353de42fb",
+        "subject": "site: functional dashboard + chat bottom-sheet phone mock; tint gradient; mobile centering; AM/PM time"
+      },
+      {
+        "sha": "8f18f1f78605b07e4acfd3076ba9b3d627e93a0d",
+        "subject": "site: updated AA monogram logo + solid ink download button"
+      },
+      {
+        "sha": "d115aa3024d3faa4e483e6c4c3dea8b3a8089875",
+        "subject": "site: warm yellow->orange->gold gradient title for the yellow themes (emotica.me palette)"
+      },
+      {
+        "sha": "df8f3e9c77b5b5a9f652cd34b7e0ef03ded7c1d8",
+        "subject": "site: show \"Last updated\" date+time from version.json; publish.sh writes updated timestamp"
+      },
+      {
+        "sha": "8b03646137987bc695e89f5a6ca005b317cd3cb3",
+        "subject": "site: 4-theme landing (yellow/mono \u00d7 light/dark) with AI-notification demo; rewrite privacy & terms"
+      },
+      {
+        "sha": "d4769a52b3e48dbf7027bca0a4b63649cded0bf3",
+        "subject": "Hero: solid celestial-orange on white, trimmed copy, no-scroll, smooth phone feed"
+      },
+      {
+        "sha": "4c165d28db4976bb202b3000bf8be19a3862da92",
+        "subject": "Redesign hero: living cosmos + notification-engine demo, EN/HI, themed"
+      },
+      {
+        "sha": "6adeae4cd8d110ac3f885097cf9f9c41c9ac8099",
+        "subject": "Theme the site to match the app \u2014 Celestial / Light / Dark"
+      },
+      {
+        "sha": "1e09eb2a6c9dad7c448a2b4c1f1c34bb2d332408",
+        "subject": "Add publish.sh \u2014 upload latest release APK + version.json to Supabase Storage"
+      },
+      {
+        "sha": "2fbf6d89bce8269aad2b541690fd0fdb5a006d8a",
+        "subject": "Add index.html (was excluded by global gitignore)"
+      },
+      {
+        "sha": "13ac7554f0d2420ee3410f98e4bc35b01ddd7a10",
+        "subject": "AastroAstra landing site (static, B&W)"
+      }
+    ],
+    "checks": [
+      {
+        "name": "Release publishing contracts",
+        "status": "passed",
+        "required": true,
+        "seconds": 0.3,
+        "summary": "Completed successfully"
+      },
+      {
+        "name": "APK publisher contracts",
+        "status": "passed",
+        "required": true,
+        "seconds": 0.1,
+        "summary": "Completed successfully"
+      },
+      {
+        "name": "Authentication links",
+        "status": "passed",
+        "required": true,
+        "seconds": 0.2,
+        "summary": "Completed successfully"
+      }
+    ],
+    "downloads": [],
+    "run_url": "https://github.com/aastroastra/aastroastra-site/actions/runs/35274490867",
+    "run_number": "1",
+    "run_attempt": "1",
+    "report_sha256": "35d36ded0a437d91415e19e6c766c40878a8c2bb6ec543d62670b67e6dbda6d5",
+    "report_url": "/release/reports/site-release-2026.09.18-95f4cd9345/",
+    "manifest_sha256": "3282334a21062a24dcfd3faf02ea10b7a1fb4b1f2d5dd181e7d049becf4502bb",
+    "source_release": "https://github.com/aastroastra/aastroastra-site/releases/tag/release-2026.09.18",
+    "published_at": "2026-09-17T21:03:56Z"
+  }
+]
