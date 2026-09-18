@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" data-theme="yellow-dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Private AastroAstra investor presentation.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <title>Private deck · AastroAstra</title>
+  <link rel="canonical" href="https://www.aastroastra.com/deck/">
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site-theme.css">
+  <link rel="stylesheet" href="deck.css">
+  <meta name="theme-color" content="#0B0B0C">
+  <script src="/site-theme.js"></script>
+  <script src="deck.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#presentation">Skip to presentation</a>
+  <section class="gate" id="gate" aria-labelledby="gate-title">
+    <div class="gate-orbit orbit-one" aria-hidden="true"></div>
+    <div class="gate-orbit orbit-two" aria-hidden="true"></div>
+    <div class="gate-card">
+      <a class="deck-brand" href="/" aria-label="AastroAstra home"><span class="site-mark" aria-hidden="true"></span><span>AastroAstra</span></a>
+      <p class="kicker">PRIVATE INVESTOR MATERIAL</p>
+      <h1 id="gate-title">The personal guidance<br>operating system.</h1>
+      <p class="gate-copy">Enter the deck passcode to continue.</p>
+      <form id="unlock-form">
+        <label for="passcode">Passcode</label>
+        <div class="password-row">
+          <input id="passcode" name="passcode" type="password" inputmode="numeric" autocomplete="current-password" required aria-describedby="gate-status">
+          <button type="submit">Open deck <span aria-hidden="true">→</span></button>
+        </div>
+        <p id="gate-status" class="gate-status" role="status" aria-live="polite"></p>
+      </form>
+      <p class="gate-note">Confidential · September 2026</p>
+    </div>
+  </section>
+
+  <div class="deck-shell" id="deck-shell" hidden>
+    <header class="deck-header">
+      <a class="deck-brand" href="#slide-1"><span class="site-mark" aria-hidden="true"></span><span>AastroAstra</span></a>
+      <div class="deck-header-actions">
+        <div class="site-themes" role="group" aria-label="Theme">
+          <button type="button" data-site-theme="yellow-light" title="Yellow light" aria-label="Yellow light"><span class="site-chip" aria-hidden="true"><i></i></span></button>
+          <button type="button" data-site-theme="yellow-dark" title="Yellow dark" aria-label="Yellow dark"><span class="site-chip" aria-hidden="true"><i></i></span></button>
+          <button type="button" data-site-theme="mono-dark" title="Black and white" aria-label="Black and white"><span class="site-chip" aria-hidden="true"><i></i></span></button>
+        </div>
+        <button class="icon-button" id="fullscreen" type="button" title="Full screen" aria-label="Toggle full screen">⛶</button>
+        <button class="lock-button" id="lock" type="button">Lock</button>
+      </div>
+    </header>
+    <main id="presentation" class="presentation" tabindex="-1" aria-label="AastroAstra investor deck"></main>
+    <div class="deck-progress" aria-hidden="true"><span id="progress"></span></div>
+    <nav class="deck-nav" aria-label="Slide navigation">
+      <button id="previous" type="button" aria-label="Previous slide">←</button>
+      <span><b id="current-slide">01</b> / <span id="total-slides">00</span></span>
+      <button id="next" type="button" aria-label="Next slide">→</button>
+    </nav>
+  </div>
+
+  <noscript><p class="noscript">JavaScript is required to decrypt this private presentation.</p></noscript>
+</body>
+</html>

@@ -8,3 +8,4 @@ _release-data/
 .DS_Store
 !release/index.html
 !release/reports/**/index.html
+!deck/index.html
