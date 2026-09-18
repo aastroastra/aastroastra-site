@@ -1,15 +1,16 @@
 import { createCipheriv, pbkdf2Sync, randomBytes } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const [input, output] = process.argv.slice(2);
+const [input, output, keyEnvelope] = process.argv.slice(2);
 const password = process.env.DECK_PASSWORD;
 if (!input || !output || !password) {
-  console.error('Usage: DECK_PASSWORD=... node deck/encrypt-deck.mjs input.html deck/deck.enc');
+  console.error('Usage: DECK_PASSWORD=... node deck/encrypt-deck.mjs input deck.enc [key-source.enc]');
   process.exit(2);
 }
 
-const iterations = 310000;
-const salt = randomBytes(16);
+const keySource = keyEnvelope ? JSON.parse(readFileSync(keyEnvelope, 'utf8')) : undefined;
+const iterations = keySource?.iterations ?? 310000;
+const salt = keySource ? Buffer.from(keySource.salt, 'base64') : randomBytes(16);
 const iv = randomBytes(12);
 const key = pbkdf2Sync(password, salt, iterations, 32, 'sha256');
 const cipher = createCipheriv('aes-256-gcm', key, iv);

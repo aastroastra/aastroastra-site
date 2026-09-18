@@ -28,15 +28,17 @@ already-unlocked browser remain operational risks.
 - `deck.css`: responsive slide, chart, product and print styles.
 - `deck.js`: unlock, decrypt, navigation, progress and keyboard behavior.
 - `deck.enc`: encrypted presentation body.
-- `encrypt-deck.mjs`: local maintenance utility. It accepts an input HTML file,
-  output path and `DECK_PASSWORD` environment variable.
+- `deck.pdf.enc`: encrypted, presentation-sized PDF download.
+- `encrypt-deck.mjs`: local maintenance utility. It accepts an input file,
+  output path and `DECK_PASSWORD` environment variable. An optional third path
+  reuses another envelope's KDF parameters for files unlocked by the same key.
 
 ## Validation
 
 Check that the wrong password never reveals content, the correct password
 unlocks once per browser session, refresh keeps the unlocked session, direct
 source contains no deck copy or passcode, and relocking clears the derived key.
-Exercise arrow keys, page controls, links, theme changes and print. Review at
+Exercise arrow keys, page controls, links, theme changes, PDF download and print. Review at
 320, 390, 768, 1440 and 1920 pixel widths. Run the existing site contract tests,
 secret scan and HTML/link checks before pushing.
 
@@ -49,6 +51,7 @@ Prepare the replacement body outside Git, then run:
 
 ```bash
 DECK_PASSWORD='...' node deck/encrypt-deck.mjs /path/to/body.html deck/deck.enc
+DECK_PASSWORD='...' node deck/encrypt-deck.mjs /path/to/deck.pdf deck/deck.pdf.enc deck/deck.enc
 ```
 
 Never add the plaintext body or password to the repository.

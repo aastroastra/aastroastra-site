@@ -9,6 +9,7 @@
   const status = document.querySelector('#gate-status');
   const presentation = document.querySelector('#presentation');
   let envelope;
+  let activeKey;
   let slides = [];
   let current = 0;
 
@@ -50,7 +51,18 @@
     return new TextDecoder().decode(plain);
   };
 
-  const showDeck = markup => {
+  const decryptFile = async (path, key) => {
+    const response = await fetch(path, { cache: 'no-store' });
+    if (!response.ok) throw new Error('The protected download is temporarily unavailable.');
+    const data = await response.json();
+    if (data.version !== 1 || data.cipher !== 'AES-256-GCM') throw new Error('Unsupported protected download.');
+    return crypto.subtle.decrypt(
+      { name: 'AES-GCM', iv: decode(data.iv) }, key, decode(data.ciphertext)
+    );
+  };
+
+  const showDeck = (markup, key) => {
+    activeKey = key;
     presentation.innerHTML = markup;
     gate.hidden = true;
     shell.hidden = false;
@@ -61,7 +73,7 @@
 
   const unlockWithKey = async key => {
     const markup = await decrypt(key);
-    showDeck(markup);
+    showDeck(markup, key);
   };
 
   const restore = async () => {
@@ -88,7 +100,7 @@
       const markup = await decrypt(key);
       try { sessionStorage.setItem(keyStore, stored); } catch (_) { /* Current view still works. */ }
       passcode.value = '';
-      showDeck(markup);
+      showDeck(markup, key);
     } catch (_) {
       status.dataset.tone = 'error';
       status.textContent = 'That passcode did not open the deck.';
@@ -158,9 +170,33 @@
     } catch (_) { /* Full screen is optional. */ }
   });
 
+  document.querySelector('#download-pdf').addEventListener('click', async event => {
+    const button = event.currentTarget;
+    if (!activeKey || button.getAttribute('aria-busy') === 'true') return;
+    button.setAttribute('aria-busy', 'true');
+    const label = button.textContent;
+    button.textContent = 'Preparing…';
+    try {
+      const plain = await decryptFile('deck.pdf.enc', activeKey);
+      const url = URL.createObjectURL(new Blob([plain], { type: 'application/pdf' }));
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'AastroAstra-Investor-Deck-September-2026.pdf';
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch (_) {
+      button.textContent = 'Try again';
+      setTimeout(() => { button.textContent = label; }, 1800);
+    } finally {
+      button.removeAttribute('aria-busy');
+      if (button.textContent !== 'Try again') button.textContent = label;
+    }
+  });
+
   document.querySelector('#lock').addEventListener('click', () => {
     try { sessionStorage.removeItem(keyStore); } catch (_) { /* Ignore unavailable storage. */ }
     presentation.replaceChildren();
+    activeKey = undefined;
     shell.hidden = true;
     gate.hidden = false;
     document.body.classList.remove('deck-open');
