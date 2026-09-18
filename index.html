@@ -1110,7 +1110,7 @@
      drag something first. */
   .pf-duo { position:relative; display:flex; justify-content:center; align-items:flex-start;
     gap:clamp(12px,2.4vw,26px); padding:6px 0 34px; }
-  .pf { position:relative; width:min(47%,200px); aspect-ratio:1080/2400; flex:0 0 auto;
+  .pf { position:relative; width:min(47%,200px); flex:0 0 auto;
     background:#0A0A0A; padding:7px; box-shadow:0 26px 60px rgba(0,0,0,.30), 0 2px 8px rgba(0,0,0,.20);
     transition:border-radius .3s ease, transform .35s cubic-bezier(.2,0,0,1); }
   .pf.ios { border-radius:34px; }
@@ -1119,11 +1119,11 @@
      the two captions sat at different heights and the pair read as careless
      rather than dynamic. Sharing a baseline is what makes them comparable,
      which is the entire point of showing two. */
-  .pf-screen { position:relative; width:100%; height:100%; overflow:hidden; background:#fff;
+  .pf-screen { position:relative; width:100%; aspect-ratio:var(--shot-ratio,540/1200); overflow:hidden; background:#fff;
     transition:border-radius .3s ease; }
   .pf.ios .pf-screen { border-radius:28px; }
   .pf.md  .pf-screen { border-radius:16px; }
-  .pf-shot { position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  .pf-shot { position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
     object-position:top center; display:block; }
   .pf-tag { position:absolute; left:50%; transform:translateX(-50%); bottom:-24px; font-size:10px;
     font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
@@ -2622,15 +2622,15 @@
                             t:{en:'Mukha Samudrika, alongside',   hi:'मुख सामुद्रिक, साथ-साथ'},
                             d:{en:'What your features say, read next to your kundali rather than instead of it. One clear photo is enough.',
                                hi:'आपके नैन-नक्श क्या कहते हैं, कुंडली के साथ पढ़ा गया, उसकी जगह नहीं। एक साफ़ तस्वीर काफ़ी है।'} },
-          { k:'match',      tag:{en:'Match', hi:'मिलान'},
+          { k:'match',      ratio:'720/1480', tag:{en:'Match', hi:'मिलान'},
                             t:{en:'Two charts. A clearer picture.', hi:'दो कुंडलियाँ। साफ़ समझ।'},
                             d:{en:'Choose two saved Kundalis to see their Ashtakoot score and numerology together. Hold any Ashtakoot point for an AI explanation grounded in that pair’s results.',
                                hi:'दो सहेजी गई कुंडलियाँ चुनें और अष्टकूट गुण व अंक ज्योतिष साथ देखें। किसी अष्टकूट बिंदु को दबाकर रखें, AI उसी जोड़ी के परिणाम समझाएगा।'} },
-          { k:'multi-match', tag:{en:'Multi-Match', hi:'मल्टी-मैच'},
+          { k:'multi-match', ratio:'720/1480', tag:{en:'Multi-Match', hi:'मल्टी-मैच'},
                             t:{en:'Compare several. See what matters.', hi:'कई मिलान। ज़रूरी बातें सामने।'},
                             d:{en:'Select several saved Kundalis and compare them with yours in one ranked view. See the key result first, then open Details for the full explanation.',
                                hi:'कई सहेजी गई कुंडलियाँ चुनें और अपनी कुंडली से उनका मिलान एक सूची में देखें। पहले मुख्य नतीजा पढ़ें, फिर पूरी व्याख्या के लिए विवरण खोलें।'} },
-          { k:'aastroai',   tag:{en:'AastroAI', hi:'AastroAI'},
+          { k:'aastroai',   ratio:'720/1480', tag:{en:'AastroAI', hi:'AastroAI'},
                             t:{en:'More than one chart. One conversation.', hi:'कई कुंडलियाँ। एक बातचीत।'},
                             d:{en:'Select one person or several in AastroAI. Ask about family, relationships or shared plans, with questions suggested for the people you choose. Your saved Kundalis provide the context.',
                                hi:'AastroAI में एक या कई लोग चुनें। परिवार, रिश्तों या साझा योजनाओं पर पूछें। चुने गए लोगों के अनुसार सुझाए गए प्रश्न बदलते हैं और उनकी सहेजी कुंडलियाँ बातचीत का संदर्भ बनती हैं।'} },
@@ -2756,7 +2756,7 @@
           : h('div', { className:'plat-stage' },
               h('div', { className:'pf-duo' },
                 ['light','dark'].map(function(mode, mi){
-                  return h('div', { key:mode, className:'pf ' + P.ui + ' ' + (mi ? 'b' : 'a') },
+                  return h('div', { key:mode, className:'pf ' + P.ui + ' ' + (mi ? 'b' : 'a'), style:{'--shot-ratio':shot.ratio || '540/1200'} },
                     h('div', { className:'pf-screen' },
                       h('img', { className:'pf-shot', src:base+shot.k+'-'+mode+'.webp',
                         alt:(shot.t[lang]||shot.t.en)+', '+mode, loading:'lazy', decoding:'async' })),
