@@ -1,0 +1,8 @@
+{
+  "package": "com.avdstudiox.android",
+  "device": "emulator-5560",
+  "version": "1.0.10",
+  "build": 198,
+  "sha256": "b980c070f9cd6fe88120521bc3930875c76207ea774a7a5d51830401552d06e4",
+  "matches_release_candidate": true
+}

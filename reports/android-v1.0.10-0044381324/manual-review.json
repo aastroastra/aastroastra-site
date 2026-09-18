@@ -1,0 +1,42 @@
+[
+  {
+    "check": "Settings capsule in light/dark and Hindi at 360dp",
+    "ok": true,
+    "evidence": "review/settings-hindi-dark-360dp.png"
+  },
+  {
+    "check": "Panchang Chogadiya spacing in narrow Hindi layout",
+    "ok": true,
+    "evidence": "review/panchang-hindi-dark-360dp.png"
+  },
+  {
+    "check": "Notification vector icons and dark-theme contrast",
+    "ok": true,
+    "evidence": "review/notification-settings-dark.png"
+  },
+  {
+    "check": "Orange chat bubble uses white text",
+    "ok": true,
+    "evidence": "review/chat-orange-white-text.png"
+  },
+  {
+    "check": "Dosha and Yoga sources collapsed by default and expand on tap",
+    "ok": true,
+    "evidence": "review/chat-references-expanded.png"
+  },
+  {
+    "check": "Sarvam MP3 playback inside app and immediate Stop",
+    "ok": true,
+    "evidence": "voice-device.json"
+  },
+  {
+    "check": "Saved face-reading card has balanced vertical padding and medium actions",
+    "ok": true,
+    "evidence": "review/face-saved-card-light.png"
+  },
+  {
+    "check": "Final build 198 grounding reference strip is vertically centered",
+    "ok": true,
+    "evidence": "review/chat-reference-strip-final.png"
+  }
+]

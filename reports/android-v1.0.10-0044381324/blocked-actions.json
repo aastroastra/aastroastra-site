@@ -1,0 +1,95 @@
+[
+  {
+    "url": "https://github.com/aastroastra/aastroastra-android/actions/runs/35296467153",
+    "jobs": [
+      {
+        "name": "gitleaks",
+        "steps_started": 0,
+        "annotations": [
+          {
+            "path": ".github",
+            "blob_href": "https://github.com/aastroastra/aastroastra-android/blob/62d110554ca94582ac1352972f48cd0e9cb7ff90/.github",
+            "start_line": 1,
+            "start_column": null,
+            "end_line": 1,
+            "end_column": null,
+            "annotation_level": "failure",
+            "title": "",
+            "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+            "raw_details": ""
+          },
+          {
+            "path": ".github",
+            "blob_href": "https://github.com/aastroastra/aastroastra-android/blob/62d110554ca94582ac1352972f48cd0e9cb7ff90/.github",
+            "start_line": 1,
+            "start_column": null,
+            "end_line": 1,
+            "end_column": null,
+            "annotation_level": "notice",
+            "title": "",
+            "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+            "raw_details": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/aastroastra/aastroastra-android/actions/runs/35296467048",
+    "jobs": [
+      {
+        "name": "chat-unit-tests",
+        "steps_started": 0,
+        "annotations": [
+          {
+            "path": ".github",
+            "blob_href": "https://github.com/aastroastra/aastroastra-android/blob/62d110554ca94582ac1352972f48cd0e9cb7ff90/.github",
+            "start_line": 1,
+            "start_column": null,
+            "end_line": 1,
+            "end_column": null,
+            "annotation_level": "failure",
+            "title": "",
+            "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+            "raw_details": ""
+          },
+          {
+            "path": ".github",
+            "blob_href": "https://github.com/aastroastra/aastroastra-android/blob/62d110554ca94582ac1352972f48cd0e9cb7ff90/.github",
+            "start_line": 1,
+            "start_column": null,
+            "end_line": 1,
+            "end_column": null,
+            "annotation_level": "notice",
+            "title": "",
+            "message": "\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"",
+            "raw_details": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "url": "https://github.com/aastroastra/aastroastra-android/actions/runs/35297669525",
+    "jobs": [
+      {
+        "name": "release / release",
+        "steps_started": 0,
+        "annotations": [
+          {
+            "path": ".github",
+            "blob_href": "https://github.com/aastroastra/aastroastra-android/blob/62d110554ca94582ac1352972f48cd0e9cb7ff90/.github",
+            "start_line": 1,
+            "start_column": null,
+            "end_line": 1,
+            "end_column": null,
+            "annotation_level": "failure",
+            "title": "",
+            "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+            "raw_details": ""
+          }
+        ]
+      }
+    ]
+  }
+]

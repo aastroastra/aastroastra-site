@@ -1,0 +1,19 @@
+{
+  "source_commit": "62d110554ca94582ac1352972f48cd0e9cb7ff90",
+  "artifacts": [
+    {
+      "type": "apk",
+      "source_commit": "62d110554ca94582ac1352972f48cd0e9cb7ff90",
+      "size": 27568648,
+      "sha256": "b980c070f9cd6fe88120521bc3930875c76207ea774a7a5d51830401552d06e4"
+    },
+    {
+      "type": "aab",
+      "source_commit": "62d110554ca94582ac1352972f48cd0e9cb7ff90",
+      "size": 27367331,
+      "sha256": "311bcea1776bf506edb5cf7aaccabe045ee0dd0a87b5408bc1b5b91eb23bd41a"
+    }
+  ],
+  "debug": false,
+  "phone_otp_bypass": false
+}

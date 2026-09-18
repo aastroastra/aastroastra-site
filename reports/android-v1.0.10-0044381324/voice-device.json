@@ -1,0 +1,5 @@
+{
+  "sarvam_mp3_playback": true,
+  "app_owns_media_player": true,
+  "stop_released_player": true
+}

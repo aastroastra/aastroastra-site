@@ -1,0 +1,18 @@
+[
+  {
+    "fixture": "API QA",
+    "date": "2026-09-18",
+    "face_count_before": 0,
+    "face_count_prepared": 0,
+    "global_limits_changed": false,
+    "pending_work": 0
+  },
+  {
+    "fixture": "UI QA",
+    "date": "2026-09-18",
+    "face_count_before": 0,
+    "face_count_prepared": 0,
+    "global_limits_changed": false,
+    "pending_work": 0
+  }
+]

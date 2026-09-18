@@ -1,0 +1,165 @@
+{
+  "schema": 1,
+  "id": "android:v1.0.10",
+  "platform": "android",
+  "repo": "aastroastra/aastroastra-android",
+  "tag": "v1.0.10",
+  "sha": "62d110554ca94582ac1352972f48cd0e9cb7ff90",
+  "previous_tag": "v1.0.9",
+  "version": "1.0.10",
+  "build": "198",
+  "date": "2026-09-18T07:12:39+05:30",
+  "kind": "tag",
+  "status": "passed",
+  "deployment": "website",
+  "changes": [
+    {
+      "sha": "62d110554ca94582ac1352972f48cd0e9cb7ff90",
+      "subject": "fix(chat): balance spacing in the grounding reference strip"
+    },
+    {
+      "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+      "subject": "fix(android): polish reading screens and add Sarvam voice for build 198"
+    },
+    {
+      "sha": "264779d7a693a9f520493560e6b729ddada037a1",
+      "subject": "fix: keep regression reports within mobile screen width"
+    },
+    {
+      "sha": "805fdc3d5affc8f099c5e64a9fd211326c63a81a",
+      "subject": "ci: pin release publisher with sequential metadata upload"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Localization",
+      "status": "passed",
+      "required": true,
+      "summary": "All 1,793 required resources verified in Hindi, Marathi, Gujarati and Tamil."
+    },
+    {
+      "name": "HTML report contracts",
+      "status": "passed",
+      "required": true,
+      "summary": "5 report and driver contract tests passed."
+    },
+    {
+      "name": "Unit tests and release lint",
+      "status": "passed",
+      "required": true,
+      "summary": "910 unit tests passed; release lint has zero errors and 466 warnings."
+    },
+    {
+      "name": "Signed release APK",
+      "status": "passed",
+      "required": true,
+      "summary": "Signed APK and AAB built with production OTP, paid features and Agora disabled."
+    },
+    {
+      "name": "APK signature",
+      "status": "passed",
+      "required": true,
+      "summary": "apksigner verified the signed APK."
+    },
+    {
+      "name": "AAB validation",
+      "status": "passed",
+      "required": true,
+      "summary": "bundletool validated the bundle and jarsigner verified its signature."
+    },
+    {
+      "name": "Secret scan",
+      "status": "passed",
+      "required": true,
+      "summary": "Gitleaks scanned the release changes locally and found no leaks."
+    },
+    {
+      "name": "Source and artifact identity",
+      "status": "passed",
+      "required": true,
+      "summary": "Both installers embed the tagged source commit. Build 198 was read from the installed APK."
+    },
+    {
+      "name": "Install exact release APK",
+      "status": "passed",
+      "required": true,
+      "summary": "Installed and pulled the signed release APK; SHA-256 matches the published candidate."
+    },
+    {
+      "name": "Android end-to-end",
+      "status": "passed",
+      "required": true,
+      "summary": "44/44 installed-app checks passed, including Match long-press, multi-person chat and vision readings."
+    },
+    {
+      "name": "Backend endpoint probes",
+      "status": "passed",
+      "required": true,
+      "summary": "30/30 authenticated live backend calls passed."
+    },
+    {
+      "name": "Sarvam live audio",
+      "status": "passed",
+      "required": true,
+      "summary": "Authenticated Hindi and Marathi synthesis returned valid MP3 audio. Unit tests cover all five app language mappings."
+    },
+    {
+      "name": "Focused UI and speech review",
+      "status": "passed",
+      "required": true,
+      "summary": "8/8 focused checks passed; retained review evidence."
+    },
+    {
+      "name": "Execution environment",
+      "status": "passed",
+      "required": false,
+      "summary": "Local macOS build and ARM64 Android 14 emulator. This report records local validation; GitHub Actions results are reported separately."
+    }
+  ],
+  "downloads": [
+    {
+      "kind": "apk",
+      "name": "aastroastra.apk",
+      "size": 27568648,
+      "sha256": "b980c070f9cd6fe88120521bc3930875c76207ea774a7a5d51830401552d06e4"
+    }
+  ],
+  "run_url": "https://github.com/aastroastra/aastroastra-android/actions/runs/35297669525",
+  "run_number": null,
+  "run_attempt": "1",
+  "unit_tests": {
+    "total": 910,
+    "passed": 910,
+    "failed": 0,
+    "skipped": 0
+  },
+  "execution": "local",
+  "note": "Published on the website. All recorded checks ran locally on the exact signed APK; private GitHub Actions could not start because of account billing. Google Play production is not submitted because its publishing credential is unavailable.",
+  "bundle": {
+    "name": "aastroastra.aab",
+    "size": 27367331,
+    "sha256": "311bcea1776bf506edb5cf7aaccabe045ee0dd0a87b5408bc1b5b91eb23bd41a"
+  },
+  "ui": {
+    "passed": 44,
+    "total": 44
+  },
+  "endpoints": {
+    "passed": 30,
+    "total": 30
+  },
+  "website": {
+    "url": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-198-b980c070f9cd6fe8.apk",
+    "sha256": "b980c070f9cd6fe88120521bc3930875c76207ea774a7a5d51830401552d06e4",
+    "verified_at": "2026-09-18T02:01:45.974934+00:00",
+    "metadata": {
+      "version": "1.0.10",
+      "versionCode": 198,
+      "sizeMb": "26.3",
+      "date": "2026-09-18",
+      "updated": "18 Sep 2026, 07:31 AM IST",
+      "apk": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-198-b980c070f9cd6fe8.apk",
+      "sha256": "b980c070f9cd6fe88120521bc3930875c76207ea774a7a5d51830401552d06e4"
+    }
+  }
+}
