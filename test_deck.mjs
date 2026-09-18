@@ -54,7 +54,7 @@ test('password decrypts a complete, sourced 14-slide presentation', { skip: !pro
   const html = plain.toString('utf8');
   assert.equal((html.match(/<section class="slide"/g) || []).length, 14);
   assert.equal((html.match(/https:\/\//g) || []).length, 10);
-  assert.equal(createHash('sha256').update(plain).digest('hex'), '6fae99590974f0220d89b70bd41b4e7dd01fadaa8a7bc808d42dc16e3ac212dc');
+  assert.equal(createHash('sha256').update(plain).digest('hex'), '0d57e2aa44e0c3696b6ad618cbb5d0d3b8523caf9f3a2f3ce2534f6e45198f54');
 });
 
 test('password decrypts the PDF download', { skip: !process.env.DECK_PASSWORD }, () => {
