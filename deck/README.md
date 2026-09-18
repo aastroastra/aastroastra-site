@@ -26,7 +26,8 @@ already-unlocked browser remain operational risks.
 
 - `index.html`: password gate and empty presentation shell.
 - `deck.css`: responsive slide, chart, product and print styles.
-- `deck.js`: unlock, decrypt, navigation, progress and keyboard behavior.
+- `deck.js`: unlock, decrypt, navigation, progress, keyboard behavior and
+  optional autoplay.
 - `deck.enc`: encrypted presentation body.
 - `deck.pdf.enc`: encrypted, presentation-sized PDF download.
 - `encrypt-deck.mjs`: local maintenance utility. It accepts an input file,
@@ -38,7 +39,7 @@ already-unlocked browser remain operational risks.
 Check that the wrong password never reveals content, the correct password
 unlocks once per browser session, refresh keeps the unlocked session, direct
 source contains no deck copy or passcode, and relocking clears the derived key.
-Exercise arrow keys, page controls, links, theme changes, PDF download and print. Review at
+Exercise arrow keys, page controls, links, theme changes, autoplay, PDF download and print. Review at
 320, 390, 768, 1440 and 1920 pixel widths. Run the existing site contract tests,
 secret scan and HTML/link checks before pushing.
 

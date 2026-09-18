@@ -12,6 +12,7 @@
   let activeKey;
   let slides = [];
   let current = 0;
+  let autoplayTimer;
 
   const decode = value => Uint8Array.from(atob(value), character => character.charCodeAt(0));
   const loadEnvelope = async () => {
@@ -116,6 +117,20 @@
     slides[current].scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   };
 
+  const autoplayButton = document.querySelector('#autoplay');
+  const stopAutoplay = () => {
+    clearInterval(autoplayTimer);
+    autoplayTimer = undefined;
+    autoplayButton.setAttribute('aria-pressed', 'false');
+    autoplayButton.textContent = 'Play';
+  };
+  const startAutoplay = () => {
+    clearInterval(autoplayTimer);
+    autoplayButton.setAttribute('aria-pressed', 'true');
+    autoplayButton.textContent = 'Pause';
+    autoplayTimer = setInterval(() => go(current === slides.length - 1 ? 0 : current + 1), 6500);
+  };
+
   const renderPosition = index => {
     current = index;
     document.querySelector('#current-slide').textContent = String(index + 1).padStart(2, '0');
@@ -131,10 +146,14 @@
       slide.dataset.index = index;
       slide.querySelector('.slide-num')?.setAttribute('aria-hidden', 'true');
     });
+    slides[0]?.classList.add('is-active');
     renderPosition(0);
     const observer = new IntersectionObserver(entries => {
       const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (visible) renderPosition(Number(visible.target.dataset.index));
+      if (visible) {
+        visible.target.classList.add('is-active');
+        renderPosition(Number(visible.target.dataset.index));
+      }
     }, { root: presentation, threshold: [.1, .35, .65] });
     slides.forEach(slide => observer.observe(slide));
     let frame;
@@ -152,6 +171,11 @@
     document.querySelector('#previous').onclick = () => go(current - 1);
     document.querySelector('#next').onclick = () => go(current + 1);
   }
+
+  autoplayButton.addEventListener('click', () => {
+    if (autoplayButton.getAttribute('aria-pressed') === 'true') stopAutoplay();
+    else startAutoplay();
+  });
 
   document.addEventListener('keydown', event => {
     if (shell.hidden || /^(INPUT|TEXTAREA|SELECT)$/.test(event.target.tagName)) return;
@@ -194,6 +218,7 @@
   });
 
   document.querySelector('#lock').addEventListener('click', () => {
+    stopAutoplay();
     try { sessionStorage.removeItem(keyStore); } catch (_) { /* Ignore unavailable storage. */ }
     presentation.replaceChildren();
     activeKey = undefined;
