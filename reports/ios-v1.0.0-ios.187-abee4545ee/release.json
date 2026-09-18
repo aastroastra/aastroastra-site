@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "id": "ios:v1.0.0-ios.187",
+  "platform": "ios",
+  "repo": "aastroastra/aastroastra-ios",
+  "tag": "v1.0.0-ios.187",
+  "sha": "567026a3e65d5a720a14a24b8be98f903b3f9498",
+  "previous_tag": null,
+  "version": "1.0.0",
+  "build": "187",
+  "date": "2026-09-18T18:26:54+05:30",
+  "kind": "tag",
+  "status": "passed",
+  "deployment": "website",
+  "changes": [
+    {
+      "sha": "567026a3e65d5a720a14a24b8be98f903b3f9498",
+      "subject": "fix: unify iOS six-digit OTP entry for build 187"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Local authentication tests",
+      "status": "passed",
+      "required": true,
+      "summary": "65 tests passed (78 parameterized executions); no failures or skips. Covers phone/email, returning accounts, incomplete and oversized OTPs, six-digit codes and leading zeroes."
+    },
+    {
+      "name": "Local iPhone SE OTP screen",
+      "status": "passed",
+      "required": true,
+      "summary": "1 UI test passed on iOS 26.3.1. Four digits keep Verify disabled; six visible digits fit the screen. Screenshots inspected locally. Synthetic invalid code; no SMS or account created."
+    },
+    {
+      "name": "Theme and localized OTP copy",
+      "status": "passed",
+      "required": true,
+      "summary": "Shared theme checks passed; all 12 locales use six-digit SMS copy and 000000 development hints."
+    },
+    {
+      "name": "Local diff and secret review",
+      "status": "passed",
+      "required": true,
+      "summary": "git diff --check and staged gitleaks passed. Applicable iOS review patterns manually audited; no critical or major findings."
+    },
+    {
+      "name": "Signed Release IPA",
+      "status": "passed",
+      "required": true,
+      "summary": "Release archive/export and downloaded IPA verified: build 187, com.celerstudio.astroastra, valid Apple signature, DEBUG auth decorator absent. Development distribution for 59 registered devices; profile expires 2027-09-05T15:53:56Z."
+    },
+    {
+      "name": "Website publication",
+      "status": "passed",
+      "required": true,
+      "summary": "Existing publish-ios.sh completed. Live version JSON, OTA manifest and downloaded IPA agree on the release; installer checksum retained."
+    },
+    {
+      "name": "Private GitHub Actions",
+      "status": "incomplete",
+      "required": false,
+      "summary": "Tag run 35347423019 and main test/secret-scan jobs never started: GitHub account payment/spending-limit restriction. No remote CI pass claimed. https://github.com/aastroastra/aastroastra-ios/actions/runs/35347423019"
+    },
+    {
+      "name": "Validation scope",
+      "status": "incomplete",
+      "required": false,
+      "summary": "Focused local OTP regression only. No real-device SMS/email-provider exercise or full-app regression in this run. Website OTA for registered devices; no TestFlight/App Store submission."
+    }
+  ],
+  "downloads": [
+    {
+      "kind": "ipa",
+      "name": "aastroastra.ipa",
+      "sha256": "b058f28f8c2ed4431093fb738b55cea9669f99315ce9db4bb00fc9e53b436170",
+      "size": 22797946
+    }
+  ],
+  "run_url": null,
+  "run_number": null,
+  "run_attempt": null,
+  "validation_scope": "Focused local authentication regression, not full application regression",
+  "changes_base_sha": "12953c617f0b1335a1840cf2f2ca2c31e0e36e7a",
+  "ios_distribution": {
+    "method": "development",
+    "bundle_id": "com.celerstudio.astroastra",
+    "profile_expires": "2027-09-05T15:53:56Z"
+  }
+}
