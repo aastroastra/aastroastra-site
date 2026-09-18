@@ -1,18 +1,25 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="yellow-light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="AastroAstra release history, app downloads and regression reports across Android, iOS, backend and web.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'">
   <title>Releases · AastroAstra</title>
   <link rel="canonical" href="https://www.aastroastra.com/release/">
   <link rel="icon" href="/favicon.png">
   <link rel="stylesheet" href="release.css">
   <script src="release.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#FFFFFF">
+  <script src="/site-theme.js"></script>
+  <link rel="stylesheet" href="/site-theme.css">
 </head>
 <body>
-  <header class="top"><a href="/" class="brand"><img src="/logo-mark.png" width="32" height="32" alt="">AastroAstra</a><a href="/">Back to the app <span aria-hidden="true">↗</span></a></header>
+<div class="site-frame">
+  <header class="site-header"><a href="/" class="site-brand"><span class="site-mark" aria-hidden="true"></span>AastroAstra</a><div class="site-controls"><nav class="site-nav" aria-label="Main"><a href="/">Home</a><a href="/credits/">Credits preview</a></nav><div class="site-themes" role="group" aria-label="Theme"><button type="button" data-site-theme="yellow-light" title="Yellow · Light" aria-label="Yellow · Light" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button><button type="button" data-site-theme="white-light" title="White · Light" aria-label="White · Light" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button><button type="button" data-site-theme="mono-light" title="B&W · Light" aria-label="B&W · Light" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button><button type="button" data-site-theme="yellow-dark" title="Yellow · Dark" aria-label="Yellow · Dark" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button><button type="button" data-site-theme="mono-dark" title="B&W · Dark" aria-label="B&W · Dark" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button></div><label class="site-theme-mobile"><span class="sr-only">Theme</span><select class="site-theme-select" data-site-theme-select><option value="yellow-light">Yellow · Light</option><option value="white-light">White · Light</option><option value="mono-light">B&W · Light</option><option value="yellow-dark">Yellow · Dark</option><option value="mono-dark">B&W · Dark</option></select></label></div></header>
   <main>
     <div class="intro"><div><p class="eyebrow"><span class="dot"></span> THE RELEASE LOG</p><h1>Every build.<br><span>Its story and proof.</span></h1><p class="lead">What changed, what was checked, and what you can install. One place for every part of AastroAstra.</p></div><div class="intro-note"><span class="small-label">BUILT FROM THE WORK</span><p>Changes come from Git history.<br>Reports come from release checks.</p><p id="updated" class="muted">Loading release history…</p></div></div>
     <section aria-labelledby="downloads-heading"><div class="section-top"><h2 id="downloads-heading">Get the apps</h2><span class="muted">Latest retained downloads</span></div><div id="downloads" class="downloads"><div class="download-card skeleton">Loading Android…</div><div class="download-card skeleton">Loading iOS…</div></div></section>
@@ -24,5 +31,6 @@
   </main>
   <footer><a class="brand" href="/">AastroAstra</a><p>Real changes. Visible results.</p><a href="/privacy.html">Privacy</a></footer>
   <noscript><p class="notice">JavaScript is needed to filter the history. <a href="releases.json">Read the complete release data</a>.</p></noscript>
+</div>
 </body>
 </html>
