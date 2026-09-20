@@ -1,6 +1,60 @@
 [
   {
     "schema": 1,
+    "id": "android:published:206",
+    "platform": "android",
+    "repo": "aastroastra/aastroastra-android",
+    "sha": null,
+    "tag": null,
+    "version": "1.0.12",
+    "build": "206",
+    "date": "2026-09-20",
+    "kind": "published-build",
+    "status": "not_recorded",
+    "deployment": "website",
+    "changes": [],
+    "checks": [],
+    "downloads": [
+      {
+        "kind": "apk",
+        "name": "aastroastra.apk",
+        "sha256": "9ea6da401bb5d33b1e9044f71a92c496c6a562d9fb608c1421969617e0d2a36d",
+        "size": 22939350,
+        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-android-published-206-06620ad755/aastroastra-android-published-206-86ba064646-9ea6da401bb5d33b.apk"
+      }
+    ],
+    "note": "Imported from the existing public download. The original source SHA and regression result for these exact bytes were not recorded."
+  },
+  {
+    "schema": 1,
+    "id": "ios:published:187",
+    "platform": "ios",
+    "repo": "aastroastra/aastroastra-ios",
+    "sha": null,
+    "tag": null,
+    "version": "1.0.0",
+    "build": "187",
+    "date": "2026-09-18",
+    "kind": "published-build",
+    "status": "not_recorded",
+    "deployment": "website",
+    "changes": [],
+    "checks": [],
+    "downloads": [
+      {
+        "kind": "ipa",
+        "name": "aastroastra.ipa",
+        "sha256": "b058f28f8c2ed4431093fb738b55cea9669f99315ce9db4bb00fc9e53b436170",
+        "size": 22797946,
+        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-ios-published-187-2edf951228/aastroastra-ios-published-187-7bddf34d38-b058f28f8c2ed443.ipa"
+      }
+    ],
+    "note": "Imported from the existing public download. The original source SHA and regression result for these exact bytes were not recorded.",
+    "testflight": "https://testflight.apple.com/join/HZXJ4Dav",
+    "install_url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fwww.aastroastra.com%2Frelease%2Freports%2Fios-published-187-2edf951228%2Fmanifest.plist"
+  },
+  {
+    "schema": 1,
     "id": "android:regression:2026-09-17",
     "platform": "android",
     "repo": "aastroastra/aastroastra-android",
