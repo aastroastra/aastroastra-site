@@ -1,0 +1,188 @@
+{
+  "schema": 1,
+  "id": "android:v1.0.12",
+  "platform": "android",
+  "repo": "aastroastra/aastroastra-android",
+  "tag": "v1.0.12",
+  "sha": "e9cb51aa927419054a4b7c4544f6a9c85dc64d0c",
+  "previous_tag": "v1.0.10",
+  "version": "1.0.12",
+  "build": "206",
+  "date": "2026-09-20T14:51:56+05:30",
+  "kind": "tag",
+  "status": "failed",
+  "deployment": "not_recorded",
+  "changes": [
+    {
+      "sha": "e9cb51aa927419054a4b7c4544f6a9c85dc64d0c",
+      "subject": "chore(android): prepare version 1.0.12 build 206"
+    },
+    {
+      "sha": "9a7e6b0a823be604efaa9f939d01a5d125b8aacc",
+      "subject": "feat(credits): expose digital wallet safely"
+    },
+    {
+      "sha": "335202b360a435f3b1c4258162b4ac0f3f523df4",
+      "subject": "docs(credits): describe native wallet recovery"
+    },
+    {
+      "sha": "73d5d3910e71eedb8e3a41cc22fa5125446ec702",
+      "subject": "feat(credits): say why the credit service refused, in the user's language"
+    },
+    {
+      "sha": "f122f0ae9e6e5e29786b40c604a01ce4d9df464f",
+      "subject": "chore(android): prepare version 1.0.12 build 205"
+    },
+    {
+      "sha": "963eb5f18be333dfae3954a037cb356226c71a31",
+      "subject": "test(credits): stub the operation store in KundaliCreditFlowTest"
+    },
+    {
+      "sha": "cb0c8f945349282603ac819f2650b8125524708e",
+      "subject": "feat(l10n): translate the credit wallet into the seven new languages"
+    },
+    {
+      "sha": "f7597f3b342ca1d1a136cc688bd6765a883bebb5",
+      "subject": "feat(credits): digital credits for Kundali generation on Android"
+    },
+    {
+      "sha": "20aefa10970bd606f5b330bfcb8370a9ac039829",
+      "subject": "chore(android): prepare version 1.0.12 build 204"
+    },
+    {
+      "sha": "a32cd93b6ac77e063242103dde1dbd20203d644b",
+      "subject": "feat(l10n): translate the My Profile page into the seven new languages"
+    },
+    {
+      "sha": "1dca190ab46b195b5e494e935eab3015db40d8a6",
+      "subject": "feat(l10n): add Bengali, Punjabi, Kannada, Malayalam, Odia, Spanish, Chinese"
+    },
+    {
+      "sha": "bd49c1092da78c5bb9045597cbff19d8331b5ea8",
+      "subject": "fix(profile): keep the account name, standard header, site build 203"
+    },
+    {
+      "sha": "bde718f0e0bc39b38a5cda5e9e2e863f6c58a020",
+      "subject": "chore(android): prepare version 1.0.12 build 201"
+    },
+    {
+      "sha": "1ce305850c41f18ea9cbb5972a3ebfa1e3da9ef6",
+      "subject": "feat: separate account profile from saved kundalis in Settings"
+    },
+    {
+      "sha": "73e49b85ee15970926d108ebc4f9167a5eb48326",
+      "subject": "fix: restore returning email users and support OTP autofill"
+    },
+    {
+      "sha": "54348945a69400ef11ff250d9e1f114bdbada1f0",
+      "subject": "chore(android): prepare version 1.0.11 build 199"
+    },
+    {
+      "sha": "d4a8eb4b6a46733264c6d3a443f9f9597810ee26",
+      "subject": "feat(chat): add focused chart starters and compact answer controls"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Localization",
+      "status": "passed",
+      "required": true,
+      "summary": "All 1,867 required resources are present in each of 11 non-English locale sets."
+    },
+    {
+      "name": "HTML report contracts",
+      "status": "passed",
+      "required": true,
+      "summary": "Five report and driver contract tests passed."
+    },
+    {
+      "name": "Unit tests and release lint",
+      "status": "passed",
+      "required": true,
+      "summary": "965/965 unit tests passed with no failures, errors or skips. Release lint reported zero errors and 515 warnings."
+    },
+    {
+      "name": "Signed release APK",
+      "status": "passed",
+      "required": true,
+      "summary": "APK and AAB were built from tagged source e9cb51a. Debug, OTP bypass and paid feature enforcement are false. Agora is absent."
+    },
+    {
+      "name": "APK signature",
+      "status": "passed",
+      "required": true,
+      "summary": "APK v2 signature verified with the existing AastroAstra release certificate."
+    },
+    {
+      "name": "AAB validation",
+      "status": "passed",
+      "required": true,
+      "summary": "Bundletool 1.18.3 validated the signed bundle. It contains arm64-v8a and armeabi-v7a and embeds the tagged source revision."
+    },
+    {
+      "name": "Install exact release APK",
+      "status": "passed",
+      "required": true,
+      "summary": "The signed APK installed and launched on an Android 14 ARM64 emulator. The pulled installed APK SHA-256 matches the published candidate."
+    },
+    {
+      "name": "Return-user authentication routing",
+      "status": "passed",
+      "required": true,
+      "summary": "An existing QA account returned directly to the dashboard after six-digit OTP verification."
+    },
+    {
+      "name": "Credit wallet installed-app smoke",
+      "status": "passed",
+      "required": true,
+      "summary": "Settings opened Digital Credits with 50 available, a +50 Bonus ledger entry, and no Services balance or top-up controls."
+    },
+    {
+      "name": "Android end-to-end",
+      "status": "failed",
+      "required": true,
+      "summary": "40/45 automated steps passed, plus the manual credit wallet check. Missing Panchang and Horoscope content follows the live AstrologyAPI subscription failures; the driver also expected a card that was absent."
+    },
+    {
+      "name": "Backend endpoint probes",
+      "status": "failed",
+      "required": true,
+      "summary": "26/30 live calls passed. Four vendor-backed calls returned HTTP 500 because the upstream AstrologyAPI key reports an expired subscription."
+    },
+    {
+      "name": "Website APK publication",
+      "status": "passed",
+      "required": true,
+      "summary": "The immutable public APK and stable website download were uploaded and verified byte for byte."
+    },
+    {
+      "name": "GitHub Actions execution",
+      "status": "failed",
+      "required": false,
+      "summary": "Private tag jobs were blocked before steps by the GitHub account payment or spending-limit restriction. Local evidence is retained and is not presented as passing CI."
+    }
+  ],
+  "downloads": [],
+  "run_url": null,
+  "run_number": null,
+  "run_attempt": "1",
+  "unit_tests": {
+    "total": 965,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "bundle": {
+    "name": "aastroastra.aab",
+    "size": 27794113,
+    "sha256": "bb7fa0bfc552c3b7ee93ebc935c657aa71a73c57449ff2d807039a6303ea102d"
+  },
+  "ui": {
+    "passed": 41,
+    "total": 46
+  },
+  "endpoints": {
+    "passed": 26,
+    "total": 30
+  }
+}
