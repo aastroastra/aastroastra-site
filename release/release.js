@@ -26,10 +26,10 @@ function latest(){
     if(row){
       top.append(el('span',label(row),'badge '+row.status));const title=el('h3','v'+row.version);title.append(el('small','Build '+row.build));card.append(title);
       card.append(el('p','Published '+formatDate(row.published_at||row.date,{dateStyle:'medium'})+(platform==='ios'?' · Direct install requires a registered device.':'')));
-      if(row.status!=='passed')card.append(el('p','A regression result for these exact published bytes is not recorded.'));
+      if(row.status!=='passed')card.append(el('p',row.validation_summary||'A regression result for these exact published bytes is not recorded.'));
       else card.append(el('p','Release checks passed. Open the report for scope and results.'));
       const buttons=el('div',undefined,'buttons');downloadLinks(row,buttons);card.append(buttons);
-      if(row.report_url)card.append(link('View regression report →',row.report_url,'muted'));
+      if(row.report_url)card.append(link(row.report_label||'View regression report →',row.report_url,'muted'));
     }else{card.append(el('h3','No retained installer'),el('p','The next validated release will appear here.'));}
     target.append(card);
   }
@@ -53,7 +53,7 @@ function entry(row){
     for(const [key,name] of [['ui','app steps'],['endpoints','endpoint probes'],['unit_tests','unit tests']])if(row[key])metrics.append(el('span',row[key].passed+'/'+row[key].total+' '+name));body.append(metrics);}
   const changes=row.changes||[];body.append(changeList(changes.slice(0,4),row.repo));
   if(changes.length>4){const details=el('details');details.append(el('summary','Show '+(changes.length-4)+' more changes'),changeList(changes.slice(4),row.repo));body.append(details);}
-  const buttons=el('div',undefined,'buttons');if(row.report_url)buttons.append(link('Open regression report ↗',row.report_url,'button'));
+  const buttons=el('div',undefined,'buttons');if(row.report_url)buttons.append(link(row.report_label||'Open regression report ↗',row.report_url,'button'));
   downloadLinks(row,buttons);if(row.run_url)buttons.append(link('GitHub Actions ↗',row.run_url));
   if(row.source_release)buttons.append(link('Source release ↗',row.source_release));body.append(buttons);article.append(body);return article;
 }

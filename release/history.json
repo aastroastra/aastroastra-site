@@ -1,6 +1,41 @@
 [
   {
     "schema": 1,
+    "id": "android:published:208",
+    "platform": "android",
+    "repo": "aastroastra/aastroastra-android",
+    "sha": "852c0c5612479e71cf9372065662b04306c99c4b",
+    "tag": "v1.0.14",
+    "version": "1.0.14",
+    "build": "208",
+    "date": "2026-09-20",
+    "kind": "published-build",
+    "status": "not_recorded",
+    "deployment": "website",
+    "changes": [
+      {"sha": "3db4ef9", "subject": "Amplitude credit mode switch: hide credit UI and skip new credit requests when off."},
+      {"sha": "3db4ef9", "subject": "Hide the daily quota badge in credit mode; restore it in subscription mode."},
+      {"sha": "3db4ef9", "subject": "Responsive refill preview grid: 100, 500 and 1,000 credits."}
+    ],
+    "checks": [],
+    "downloads": [
+      {
+        "kind": "apk",
+        "name": "aastroastra.apk",
+        "sha256": "2d359c03a674329fa19bda8fb9ba345ca9a6fe15d36e0b0de62ca1aaa405f700",
+        "size": 22967814,
+        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-android-published-208-7b5308fd9b/aastroastra-android-published-208-824b2546d7-2d359c03a674329f.apk"
+      }
+    ],
+    "note": "Credit mode flag and refill grid shipped. No Amplitude deployment key in this build; credit mode remains the default. Purchases and deductions remain off.",
+    "source_release": "https://github.com/aastroastra/aastroastra-android/releases/tag/v1.0.14",
+    "report_url": "/release/reports/android-build-208-credits/",
+    "report_label": "Build notes & checks",
+    "validation_summary": "17 focused unit tests and local build checks passed. Full installed-app regression was not rerun.",
+    "unit_tests": {"passed": 17, "total": 17}
+  },
+  {
+    "schema": 1,
     "id": "android:published:207",
     "platform": "android",
     "repo": "aastroastra/aastroastra-android",

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" data-theme="yellow-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Android 208 · Credits update · AastroAstra</title>
+  <link rel="stylesheet" href="/site-theme.css">
+  <link rel="icon" href="/favicon.png">
+  <script src="/site-theme.js"></script>
+  <style>
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.65}
+    main{max-width:1000px;margin:auto;padding:48px 24px 80px}h1,h2{font-family:var(--font-heading);line-height:1.2}h1{font-size:clamp(32px,5vw,56px)}h2{margin-top:36px}.eyebrow{color:var(--tint);font-weight:700;letter-spacing:.1em;font-size:12px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}.card strong{font-size:28px;display:block}a{color:var(--fg);text-underline-offset:4px}.muted{color:var(--muted)}code{overflow-wrap:anywhere}li{margin-bottom:10px}nav{display:flex;gap:24px;flex-wrap:wrap}table{width:100%;border-collapse:collapse}td,th{text-align:left;vertical-align:top;padding:14px;border-bottom:1px solid var(--line)}.table{overflow:auto}footer{padding-top:32px;border-top:1px solid var(--line);margin-top:36px}
+  </style>
+</head>
+<body><div class="site-frame">
+  <header class="site-header"><a class="site-brand" href="/"><span class="site-mark" aria-hidden="true"></span>AastroAstra</a><nav aria-label="Main"><a href="/release/">Releases</a><a href="/credits/#implementation">Credit system status</a></nav></header>
+  <main>
+    <p class="eyebrow">ANDROID · 1.0.14 · 20 SEPTEMBER 2026</p>
+    <h1>Credit mode, with a clear switch.</h1>
+    <p class="muted">Published website build notes and scoped local validation. This is not a complete installed-app regression pass or a Google Play submission.</p>
+    <div class="cards"><div class="card"><strong>208</strong>Android build</div><div class="card"><strong>17 passed</strong>Focused unit tests</div><div class="card"><strong>50 credits</strong>Welcome balance, deductions off</div></div>
+    <h2>What changed</h2>
+    <ul>
+      <li>The Amplitude flag <code>digital-credits-enabled</code> controls the Android credit experience.</li>
+      <li>Credit mode shows the wallet capsule in AstroAI and section assistants, and hides the daily <code>100/100</code> badge.</li>
+      <li>The shared Settings and chat wallet uses a responsive refill grid: 100 / ₹100, 500 / ₹500, 1,000 / ₹1,000. Purchase actions remain disabled.</li>
+      <li>Off mode hides credit UI, skips new credit balance/quote/reservation calls and restores existing subscription rules. Already reserved operations remain recoverable.</li>
+    </ul>
+    <h2>How it gets enabled</h2>
+    <p>Create the named flag with <code>on</code> and <code>off</code> variants in the Amplitude Experiment Android client deployment. Provide the client deployment key to the Android build, then install that configured build. Flags refresh on foreground and authentication changes.</p>
+    <p><strong>Build 208 has no deployment key configured.</strong> It defaults to credit mode; remote switching requires a new configured build. The flag does not enable paid checkout or change server billing policy.</p>
+    <p><a href="/credits/#implementation">Full setup, mode table and remaining payment gates →</a></p>
+    <h2>What was checked</h2>
+    <div class="table"><table><thead><tr><th>Check</th><th>Result and scope</th></tr></thead><tbody>
+      <tr><td>17 unit tests</td><td>Passed: flag variants, disabled wallet reads, credit transport, package values, Kundali generation without new credit quotes, and existing-operation recovery after switching off.</td></tr>
+      <tr><td>Compilation and lint</td><td>Passed locally. The first lint run hit an internal analysis error; the rerun passed. Release builds also run their required vital lint checks.</td></tr>
+      <tr><td>Localization and design tokens</td><td>Passed: 1,875 required resources across 11 non-English locale sets; shared color/component validation.</td></tr>
+      <tr><td>APK and AAB</td><td>Signed release artifacts, with normal OTP verification enabled. Published APK bytes are checksum-verified by the website publisher.</td></tr>
+      <tr><td>Full device and live regression</td><td>Not rerun for build 208. Prior emulator instability and upstream AstrologyAPI subscription errors remain unresolved evidence, not passing checks.</td></tr>
+    </tbody></table></div>
+    <h2>Source and downloads</h2>
+    <p><a href="https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-208-2d359c03a674329f.apk">Download signed build 208 APK</a> · 22,967,814 bytes</p>
+    <p class="muted">APK SHA-256: <code>2d359c03a674329fa19bda8fb9ba345ca9a6fe15d36e0b0de62ca1aaa405f700</code><br>AAB SHA-256: <code>ab5118e22c475d3a3be7c2114a91349aa13131c5ba320501c7747c26eccfc22b</code></p>
+    <p><a href="https://github.com/aastroastra/aastroastra-android/commit/3db4ef9">Feature implementation: 3db4ef9</a> · <a href="https://github.com/aastroastra/aastroastra-android/releases/tag/v1.0.14">Tagged source release: v1.0.14</a></p>
+    <p><a href="/release/">Get the published APK and view release history →</a></p>
+    <footer class="muted">Calls and physical remedies remain separate. AI debit settlement, verified store grants, refunds and reconciliation must be ready before real monetization.</footer>
+  </main>
+</div></body></html>

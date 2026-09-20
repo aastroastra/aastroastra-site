@@ -1,6 +1,20 @@
 # AastroAstra credits: product and implementation plan
 
-Design proposal, 18 September 2026. No live billing changes. The companion `/credits/` page is a simulated product walkthrough. All prices below are proposals, not current offers or verified supplier costs.
+Updated 20 September 2026 for Android 1.0.14 build 208. No live billing changes. The companion `/credits/` page separates current implementation from its simulated walkthrough. Action prices below are proposals, not current offers or verified supplier costs.
+
+## Implemented in Android build 208
+
+- Server balance and history open from Settings, AstroAI and section assistants.
+- Shared refill preview grid: 100 credits / INR 100, 500 / INR 500 and 1,000 / INR 1,000. No active checkout.
+- Amplitude Experiment flag `digital-credits-enabled`: on shows credits and hides the daily quota badge; off hides credits, skips new balance/quote/reservation requests and restores the existing subscription experience.
+- Pending Kundali operations remain recoverable after switching off.
+- Missing flag/key preserves credit beta mode. Build 208 has no deployment key, so remote control needs a configured build. Supply `amplitudeDeploymentKey` as a Gradle property, `AMPLITUDE_DEPLOYMENT_KEY` in the build environment, or `amplitude.deployment.key` in gitignored `keystore.properties`.
+- Create on/off variants in the Amplitude Android client deployment. Values refresh on foreground/auth changes; failed refreshes retain the previous mode.
+- Balance remains 50 because prices/enforcement are off. AI debits and real refills are pending. Server subscription and abuse limits still apply.
+- Current release policy disables subscription checkout too; the mode flag does not override payment readiness.
+- Before server charging launches, evaluate the same mode server-side for the authenticated account. Never trust a client flag to waive a charge.
+
+[Build notes and checks](/release/reports/android-build-208-credits/) · [Release history](/release/).
 
 ## Product decision
 
@@ -8,7 +22,7 @@ Use credit packages instead of a subscription-led paywall for new customers. Tar
 
 Charge for a completed, requested service. Viewing owned charts, reading previous answers, opening a saved report, selecting people and deterministic calculations on owned data remain free. Every new billable AI operation needs a server quote and an eligible balance. Included AI work, such as bounded read-aloud, still requires a server allowance tied to the original paid or promotional operation. A balance check alone is insufficient: reserve credits atomically before starting paid work and capture only when its usable result is durably available.
 
-The paywall shows 100 credits / INR 100, 300 / INR 300, and 1,000 / INR 1,000 as target Indian package prices. No invented discounts or auto-renewal. Final storefront prices, tax presentation and local-currency equivalents come from store product metadata. If a store price point differs, adjust the offered credit quantity or explicitly show the actual conversion; never claim a false 1:1 checkout rate. Any future bonus is a separately labeled promotional lot.
+The paywall shows 100 credits / INR 100, 500 / INR 500, and 1,000 / INR 1,000 as target Indian package prices. No invented discounts or auto-renewal. Final storefront prices, tax presentation and local-currency equivalents come from store product metadata. If a store price point differs, adjust the offered credit quantity or explicitly show the actual conversion; never claim a false 1:1 checkout rate. Any future bonus is a separately labeled promotional lot.
 
 ## One unit, explicit eligibility
 
