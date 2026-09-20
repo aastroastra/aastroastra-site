@@ -1,6 +1,32 @@
 [
   {
     "schema": 1,
+    "id": "android:published:207",
+    "platform": "android",
+    "repo": "aastroastra/aastroastra-android",
+    "sha": null,
+    "tag": null,
+    "version": "1.0.13",
+    "build": "207",
+    "date": "2026-09-20",
+    "kind": "published-build",
+    "status": "not_recorded",
+    "deployment": "website",
+    "changes": [],
+    "checks": [],
+    "downloads": [
+      {
+        "kind": "apk",
+        "name": "aastroastra.apk",
+        "sha256": "d5d27d9cb65920f0968ba422b5a7aba6da617d28f19385de57f265100f79b294",
+        "size": 22953162,
+        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-android-published-207-6bcfe4b636/aastroastra-android-published-207-73f39298cc-d5d27d9cb65920f0.apk"
+      }
+    ],
+    "note": "Imported from the existing public download. The original source SHA and regression result for these exact bytes were not recorded."
+  },
+  {
+    "schema": 1,
     "id": "android:published:206",
     "platform": "android",
     "repo": "aastroastra/aastroastra-android",
