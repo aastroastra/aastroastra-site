@@ -9,8 +9,11 @@
     'mono-dark': '#0A0A0A'
   };
   const valid = theme => Object.hasOwn(colors, theme);
+  // A page may name its own light default in <html data-theme>; the kit page
+  // opens in White · Light. Every page still shares one stored preference.
+  const preset = document.documentElement.dataset.theme;
   const fallback = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches
-    ? 'yellow-dark' : 'yellow-light';
+    ? 'yellow-dark' : (valid(preset) ? preset : 'yellow-light');
   let theme;
   try { theme = localStorage.getItem('aa-theme'); } catch (_) { /* Storage is optional. */ }
   function apply(value, persist = false) {

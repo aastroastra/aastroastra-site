@@ -1,4 +1,6 @@
-/* Play Store kit page. Colours, type and chrome come from ../site-theme.css. */
+/* Play Store kit page. Colours, type and chrome come from ../site-theme.css.
+   This page keeps the accent flat: one calm colour, no gradient fills. */
+html[data-theme]{--tint-grad:var(--tint)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 var(--font-body)}
 a{color:inherit;text-decoration:none}
@@ -24,12 +26,12 @@ h1 mark{background:var(--accent-soft);color:inherit;padding:0 .18em;border-radiu
 .tabs{display:flex;flex-wrap:wrap;gap:2px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--soft)}
 .tabs button{border:0;background:transparent;color:var(--fg2);padding:9px 16px;min-height:40px;border-radius:999px;cursor:pointer;font-weight:500;font-size:14px;white-space:nowrap}
 .tabs button:hover{color:var(--fg)}
-.tabs button[aria-selected="true"]{background:var(--btn-bg);color:var(--btn-fg);font-weight:600}
+.tabs button[aria-selected="true"]{background:var(--tint);color:var(--on-accent);font-weight:600}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
 .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 18px;border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:600;background:var(--card);color:var(--fg);cursor:pointer}
 .button:hover{background:var(--soft);text-decoration:none}
-.button.primary{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
-.button.primary:hover{background:var(--tint-grad);border-color:var(--tint);color:var(--on-accent)}
+.button.primary{background:var(--tint);color:var(--on-accent);border-color:var(--tint)}
+.button.primary:hover{filter:brightness(.92)}
 .button.small{min-height:36px;padding:6px 12px;font-size:12px;border-radius:10px}
 .offline .actions{display:none}
 .locale-note{margin:6px 0 0;color:var(--muted);font-size:12px;min-height:18px}
@@ -45,13 +47,13 @@ h2{font-size:24px;letter-spacing:-.02em;margin:0}
 .feature h3{font-family:var(--font-heading);font-size:22px;margin:0 0 8px}
 .feature p{margin:0 0 18px;color:var(--fg2)}
 
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
-.shot{display:flex;flex-direction:column;gap:10px;padding:12px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.shot{display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
 .shot img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);background:#B4770E}
-.shot h4{margin:0;font-size:13px;font-weight:600;line-height:1.4}
-.shot p{margin:0;color:var(--muted);font-size:11px;line-height:1.45}
+.shot h4{margin:0;font-size:16px;font-weight:600;line-height:1.4}
+.shot p{margin:0;color:var(--fg2);font-size:13px;line-height:1.5}
 .shot .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
-.shot .index{font:600 11px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
+.shot .index{font:600 12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--muted)}
 .tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--status-warn);background:var(--soft)}
 .tag.localized{color:var(--status-good)}
 
@@ -85,8 +87,10 @@ footer p{margin-right:auto}
   .tabs{border-radius:14px}
   .tabs button{padding:8px 12px;font-size:13px}
   .feature{grid-template-columns:1fr;padding:16px}
+  .gallery{grid-template-columns:1fr;gap:16px}
   .copy-card pre{max-height:300px}
   footer{flex-wrap:wrap;gap:14px}
   footer p{margin:0;width:100%}
 }
+@media(min-width:761px) and (max-width:1000px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:no-preference){.button,.tabs button{transition:background .15s,color .15s}}
