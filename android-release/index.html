@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="yellow-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="description" content="Preview and download the AastroAstra Google Play listing kit: feature graphic, phone screenshots and store descriptions in every language the app ships.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'">
+  <title>Play Store kit · AastroAstra</title>
+  <link rel="canonical" href="https://www.aastroastra.com/android-release/">
+  <link rel="icon" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#FFFFFF">
+  <script src="../site-theme.js"></script>
+  <link rel="stylesheet" href="../site-theme.css">
+  <link rel="stylesheet" href="kit.css">
+  <script src="kit-data.js"></script>
+  <script src="kit.js" defer></script>
+</head>
+<body>
+<div class="site-frame">
+  <header class="site-header"><a href="../" class="site-brand"><span class="site-mark" aria-hidden="true"></span>AastroAstra</a><div class="site-controls"><nav class="site-nav" aria-label="Main"><a href="../">Home</a><a href="../release/">Releases</a><span class="site-nav-current">Android · Play Store kit</span></nav><div class="site-themes" role="group" aria-label="Theme"><button type="button" data-site-theme="yellow-light" title="Yellow · Light" aria-label="Yellow · Light" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button><button type="button" data-site-theme="white-light" title="White · Light" aria-label="White · Light" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button><button type="button" data-site-theme="mono-light" title="B&W · Light" aria-label="B&W · Light" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button><button type="button" data-site-theme="yellow-dark" title="Yellow · Dark" aria-label="Yellow · Dark" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button><button type="button" data-site-theme="mono-dark" title="B&W · Dark" aria-label="B&W · Dark" aria-pressed="false"><span class="site-chip" aria-hidden="true"><i></i></span></button></div><label class="site-theme-mobile"><span class="sr-only">Theme</span><select class="site-theme-select" data-site-theme-select><option value="yellow-light">Yellow · Light</option><option value="white-light">White · Light</option><option value="mono-light">B&W · Light</option><option value="yellow-dark">Yellow · Dark</option><option value="mono-dark">B&W · Dark</option></select></label></div></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow"><span class="dot"></span> <span id="version-line">Android kit</span></p>
+      <h1>Your <mark>Play Store kit.</mark></h1>
+      <p class="lead" id="lead">Preview and download the feature graphic, phone screenshots and store descriptions for every language the app ships.</p>
+    </section>
+
+    <div class="toolbar">
+      <div class="tabs" role="tablist" aria-label="Language" id="tabs"></div>
+      <div class="actions">
+        <a id="language-zip" class="button primary" download href="#">Download ZIP ↓</a>
+        <a id="all-zip" class="button" download href="aastroastra-play-store-all.zip">All languages ↓</a>
+      </div>
+    </div>
+    <p id="locale-note" class="locale-note" aria-live="polite"></p>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <div id="resources" role="tabpanel"></div>
+
+    <section class="build" aria-labelledby="build-heading">
+      <div class="section-top"><h2 id="build-heading">The build behind this listing</h2></div>
+      <div class="build-card">
+        <div>
+          <p class="small-label">ANDROID</p>
+          <h3 id="build-version">…</h3>
+          <p class="muted">Package <code id="build-package"></code>. Screenshots are composed from reviewed device captures; a language whose phone still shows the English screen is marked on its gallery.</p>
+        </div>
+        <div class="buttons">
+          <a class="button" href="../release/">Release history</a>
+          <a class="button" href="1.0.14/metadata.json" id="metadata-link">metadata.json</a>
+        </div>
+      </div>
+      <p class="fine">Play Console limits enforced at build time: app name 30, short description 80, full description 4000, release notes 500 characters; feature graphic 1024 × 500, phone screenshots 1080 × 1920, all 24-bit PNG without alpha. Odia ships in the kit for the website and press, but Google Play has no Odia listing language yet.</p>
+    </section>
+  </main>
+  <footer><a class="brand" href="../">AastroAstra</a><p>Built from <code>aastroastra-android/store</code> by <code>build-play-kit.py</code>.</p><a href="../privacy.html">Privacy</a></footer>
+  <noscript><p class="notice">JavaScript renders the previews. Without it, download <a href="aastroastra-play-store-all.zip">the complete kit</a>.</p></noscript>
+</div>
+</body>
+</html>

@@ -9,3 +9,4 @@ _release-data/
 !release/index.html
 !release/reports/**/index.html
 !deck/index.html
+!android-release/index.html
