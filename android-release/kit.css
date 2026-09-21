@@ -49,7 +49,7 @@ h2{font-size:24px;letter-spacing:-.02em;margin:0}
 
 .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
 .shot{display:flex;flex-direction:column;gap:12px;padding:16px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
-.shot img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);background:#B4770E}
+.shot img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line);background:var(--soft)}
 .shot h4{margin:0;font-size:16px;font-weight:600;line-height:1.4}
 .shot p{margin:0;color:var(--fg2);font-size:13px;line-height:1.5}
 .shot .row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
@@ -68,7 +68,7 @@ h2{font-size:24px;letter-spacing:-.02em;margin:0}
 .copy-card .row{display:flex;gap:8px;flex-wrap:wrap}
 
 .icon{display:flex;align-items:center;gap:24px;padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--card)}
-.icon img{width:96px;height:96px;border-radius:22px;border:1px solid var(--line)}
+.icon img{width:112px;height:112px;border-radius:26px;border:1px solid var(--line)}
 
 .build{margin-top:60px}
 .build-card{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:26px 28px;border:1px solid var(--line);border-radius:16px;background:var(--soft)}

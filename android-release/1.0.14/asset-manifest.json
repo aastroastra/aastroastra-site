@@ -5,597 +5,2977 @@
     {
       "width": 512,
       "height": 512,
-      "bytes": 40927,
-      "sha256": "243d65c0a98c09928664997708e9373811df4c9f0931e0b929f2f11769731d50",
-      "file": "icon-512.png"
+      "bytes": 36817,
+      "sha256": "8372be95b244d3789b751e34f53c2f9755cf38ed15a60c167244aa05909da3d4",
+      "file": "yellow-light/icon-512.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 67601,
-      "sha256": "569536b89883d9a56ff78e97c91432bb464f014389b8bd9b58e588d05c457956",
-      "file": "en-IN/feature-graphic.png"
+      "bytes": 50187,
+      "sha256": "a7f8f9ffc42b4f4bbb92136ee6e82b82c4ce27601b9c1ae7e8dce2dc9600693b",
+      "file": "yellow-light/en-IN/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 237902,
-      "sha256": "1fddeb4d77f0b3f8aed12061008d6838392682fa9760dc180e7adf4ac73e3804",
-      "file": "en-IN/01-dashboard.png"
+      "bytes": 172443,
+      "sha256": "1f8a6de33b479061d25889be2c1a2200f2cfc4fe027e442e0641720107de6f65",
+      "file": "yellow-light/en-IN/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 274798,
-      "sha256": "cd1dc52938db50f12bd3358feb89a6478375751ab37326cd908acd6c8709d663",
-      "file": "en-IN/02-kundali.png"
+      "bytes": 208454,
+      "sha256": "c54f6b03583c607359ba57b650ab26c64d2caf42835fb8c889836f55b6b00cf8",
+      "file": "yellow-light/en-IN/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 212028,
-      "sha256": "45c3f97a247dc1afbe1d17b32187e980193e28f4aac660870bca3e3f52a2cf6e",
-      "file": "en-IN/03-chat.png"
+      "bytes": 146938,
+      "sha256": "41ced2d11ac654a41a048375eaedb0b5db7cb10b680c7084439172135c0aed7f",
+      "file": "yellow-light/en-IN/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 246498,
-      "sha256": "39e574d3fa6793a4f3af3ecbcbd8d8f2ef7160e15ebdfdf64b38e734f5a38826",
-      "file": "en-IN/04-multimatch.png"
+      "bytes": 182623,
+      "sha256": "94fb520f3b2c085567de552bbbb4d18ca257fd6a41e3bc3ec801f9cb4260b739",
+      "file": "yellow-light/en-IN/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 266893,
-      "sha256": "c1f0d19e9a441dc528f9442ba983afe7bce8fd54e28d44fe54a9af9065325f42",
-      "file": "en-IN/05-numerology.png"
+      "bytes": 200812,
+      "sha256": "04eb46f6d5153a09f7bc2802b5559dbdcd3a36dba917c9a421d79048ac0072a2",
+      "file": "yellow-light/en-IN/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 224576,
-      "sha256": "6461b015c356ea8063d6f9a38b2682935086f9ba329ff65e14890da72f0e938f",
-      "file": "en-IN/06-panchang.png"
-    },
-    {
-      "width": 1024,
-      "height": 500,
-      "bytes": 64608,
-      "sha256": "5784c292909235888bde4be3b495962f17d5cc62a8994289675349efff5539c0",
-      "file": "hi-IN/feature-graphic.png"
-    },
-    {
-      "width": 1080,
-      "height": 1920,
-      "bytes": 234900,
-      "sha256": "8884b5cb364e0d4ca05de586875cbe5cb4b47d8ad40d684f7e9f6eb7e07e5b7d",
-      "file": "hi-IN/01-dashboard.png"
-    },
-    {
-      "width": 1080,
-      "height": 1920,
-      "bytes": 262438,
-      "sha256": "c053d4fd2051fc77dd760364a7c346aab350c59c2e51d328a542df193e336440",
-      "file": "hi-IN/02-kundali.png"
-    },
-    {
-      "width": 1080,
-      "height": 1920,
-      "bytes": 208899,
-      "sha256": "e56f38ab4c8e063937c71cb80b8182c2e4ef0cfbe89db673044bddb10275750b",
-      "file": "hi-IN/03-chat.png"
-    },
-    {
-      "width": 1080,
-      "height": 1920,
-      "bytes": 234861,
-      "sha256": "8a2fcc1c80947c921e5f0e74d73c63d5631cd1581d47460c06db4f7dccf64794",
-      "file": "hi-IN/04-multimatch.png"
-    },
-    {
-      "width": 1080,
-      "height": 1920,
-      "bytes": 255123,
-      "sha256": "6d19dffd7b4e2ab84c13af44da4b806d4e80eafa9d437657f9fe327505cdc697",
-      "file": "hi-IN/05-numerology.png"
-    },
-    {
-      "width": 1080,
-      "height": 1920,
-      "bytes": 218136,
-      "sha256": "fccf653b6698f6dff5840b703105e8b6b81df59a0abff40107bb0830ce2f687e",
-      "file": "hi-IN/06-panchang.png"
+      "bytes": 160349,
+      "sha256": "ac6cb60bf37d24402db89ece87cdf383c06ebec5a3056ef97cd40c0466487576",
+      "file": "yellow-light/en-IN/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 64184,
-      "sha256": "0fa35ad53be146de646cba9533bbbf44929691299ba74fadea56eb269836399e",
-      "file": "mr-IN/feature-graphic.png"
+      "bytes": 47201,
+      "sha256": "cec9222d31211f6453068046226db11d0b000f8de874fb41b9dc3aec02af26a2",
+      "file": "yellow-light/hi-IN/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 235219,
-      "sha256": "6be662de8bba2c9a09fbbd7a771a98236e9b856740d461d34e149137a655869e",
-      "file": "mr-IN/01-dashboard.png"
+      "bytes": 171034,
+      "sha256": "9ecd0f84f0d31ccfb44c58bcb45cfa36bd97aee47961f1e125e4788400190df6",
+      "file": "yellow-light/hi-IN/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 264826,
-      "sha256": "1beefa79024ffd5d3fedc58b40b1bc433ff1a22d6c6582fc35c4daee11016477",
-      "file": "mr-IN/02-kundali.png"
+      "bytes": 200827,
+      "sha256": "e2bac2d786ec4173f9035cc119281cd135312d503b30c41ac54f5dd6cd7bc37e",
+      "file": "yellow-light/hi-IN/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 208328,
-      "sha256": "fd63d549ca15207d3b62c29736ec39456fbe6255ccb719bfa5d2944741ecd207",
-      "file": "mr-IN/03-chat.png"
+      "bytes": 150074,
+      "sha256": "080e103fe7634b9ef1e58b5550a08e71fa3ad738e1c9105467b774ef34cdb495",
+      "file": "yellow-light/hi-IN/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 236026,
-      "sha256": "013e0afa434076d72af20042dddec4c652238259c9f8dee8cdcf85d503aeec35",
-      "file": "mr-IN/04-multimatch.png"
+      "bytes": 169896,
+      "sha256": "a971099100a8b186bd8cad148cd3fa7d0667cb13cfd3b4f40c81f39a3fd9cc29",
+      "file": "yellow-light/hi-IN/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 253900,
-      "sha256": "9f46a4ad88d46f438e54a4a7d81a9c2b9a6145bc89002fc7b64fdaf86d8152fc",
-      "file": "mr-IN/05-numerology.png"
+      "bytes": 190341,
+      "sha256": "8b7066237cbcc645aceb4d1b3fb0eb46a40f0483715c834977c1bbce8880091f",
+      "file": "yellow-light/hi-IN/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 218505,
-      "sha256": "97660dfd70686751fac2c4599ba145028ff4a0f0907fb119ae5fc0dcc0bfc86f",
-      "file": "mr-IN/06-panchang.png"
+      "bytes": 155155,
+      "sha256": "4e33e206c4f172f2efabc839109ec51e53c1f8ea159f6739b353125dbeb27cac",
+      "file": "yellow-light/hi-IN/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 64554,
-      "sha256": "97afebf79225e71d8cc03a6513cdcceb92962b63c13128f5cbefe21344b839b6",
-      "file": "gu/feature-graphic.png"
+      "bytes": 46723,
+      "sha256": "9d6f24b2632853dde018d03fad999cce4c82e7f30299b09cf9bf7418dfe7b573",
+      "file": "yellow-light/mr-IN/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 238103,
-      "sha256": "f48599aba3fcc4654d5bcd11f76e6c8700599fe6f6bdf0873b24c31ea7da5007",
-      "file": "gu/01-dashboard.png"
+      "bytes": 170293,
+      "sha256": "7de9f87bbc25c7bfe9de3038a9cf674d866b665681ad89009accf54a20d4114b",
+      "file": "yellow-light/mr-IN/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 266021,
-      "sha256": "82877f1fa891d20a7f2d2dc408c96c30e3c113c050bda47db3528a3741dea46f",
-      "file": "gu/02-kundali.png"
+      "bytes": 202706,
+      "sha256": "81ea5eef6caef6c5d9d9d3485da371d0d7bd9040d66f43f4de2664059a6db0e2",
+      "file": "yellow-light/mr-IN/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 208897,
-      "sha256": "19214f18037bde0571b34feeaaeabc048c8c7e6d7ac4bab05d1af39e9fc5fd5e",
-      "file": "gu/03-chat.png"
+      "bytes": 149212,
+      "sha256": "d2816cb39e1877021a0883e0d5c93e4f86ec5d4fe4c4eeb80bd8762dcbcf38af",
+      "file": "yellow-light/mr-IN/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 234536,
-      "sha256": "a8eb7129e790a27c5daed5635aba43e2369cf483d73856d8084f03c1c7b0675f",
-      "file": "gu/04-multimatch.png"
+      "bytes": 172009,
+      "sha256": "55da4c5347f6992afa5c29aae064a971c6edfd1bd019a75e4315ba5891318ef1",
+      "file": "yellow-light/mr-IN/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 255801,
-      "sha256": "c043f7a1eedf7f9f6bf821a952526f94ccbc3974477370446685579d54975551",
-      "file": "gu/05-numerology.png"
+      "bytes": 188494,
+      "sha256": "cb59907e25e2b1c37e4864b313ccb188810427de6fdd6988d9b22571b86c631a",
+      "file": "yellow-light/mr-IN/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 219972,
-      "sha256": "a0573134a1572a57751c3ef578963b38d0181c7b01a075273dbfdafe7c395ead",
-      "file": "gu/06-panchang.png"
+      "bytes": 157158,
+      "sha256": "9bdf564d02cd66e574be6c004b019c0847cec0a2a78cb1230a9b53d057df1bdc",
+      "file": "yellow-light/mr-IN/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 66395,
-      "sha256": "93b514fa6a36690f97cb61398a4a1312579927ad7cf03ab9cc191a6942d7ca54",
-      "file": "ta-IN/feature-graphic.png"
+      "bytes": 47137,
+      "sha256": "5484810512f6872cd963cc7cf453024c93f4e9963240ea0a8143e242a7df2e43",
+      "file": "yellow-light/gu/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 244681,
-      "sha256": "f4f7a5a689ac316e87a905a6042907d20a4b338f5f9244bc0fe32795d0168f29",
-      "file": "ta-IN/01-dashboard.png"
+      "bytes": 173264,
+      "sha256": "30ec7cccff6dba0e62db3bb4b91575fd25494258e81a8e63ac00a3a7d4f510d8",
+      "file": "yellow-light/gu/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 278580,
-      "sha256": "40465e996163dffe52e2e75850fad1c2f54b9828bd60849422a2285ebfcf5ec2",
-      "file": "ta-IN/02-kundali.png"
+      "bytes": 204434,
+      "sha256": "b14a98e039bd217df40d60d7919bc2214cfda8112dbeb10ed93b0b67a243f81c",
+      "file": "yellow-light/gu/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 225178,
-      "sha256": "4f3c0ea089621a8fd14662c1c8a3e3ba081995aafaa2a03ebf48e2c46ada9c6a",
-      "file": "ta-IN/03-chat.png"
+      "bytes": 149539,
+      "sha256": "5d98019ffaf15b24352af8a6c4f5f2882b124b21b17e5a320552f47f25f80f51",
+      "file": "yellow-light/gu/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 265868,
-      "sha256": "68507b45b119586f5236c2ffbe44bef1e813e8759f5632faeffcd063cf1cd4e1",
-      "file": "ta-IN/04-multimatch.png"
+      "bytes": 169395,
+      "sha256": "5d0a7935426a5971143cef026c1f5e83b362e8abc8bcb2e80dafc7b68ba7f860",
+      "file": "yellow-light/gu/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 265612,
-      "sha256": "3244642a3f6e45ce6bd6e0ef6ade454df26abb1148cafffa9837683cd9f4c4c0",
-      "file": "ta-IN/05-numerology.png"
+      "bytes": 190801,
+      "sha256": "b524f79ede05cd0149c6b9ed6cf51b604bfb6abbb47f19baadbd26c2bec94157",
+      "file": "yellow-light/gu/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 228941,
-      "sha256": "16c80029ea182056559f0a34f7efd31f59271432c37058d7c51dda1bc86f7df6",
-      "file": "ta-IN/06-panchang.png"
+      "bytes": 158836,
+      "sha256": "44c8386879cedfa08136cabb8aaa34ecf9c69ba3c2ae9353ce804c9cd640ba19",
+      "file": "yellow-light/gu/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 66253,
-      "sha256": "ff71956ef4cee74102404904eb207ee30e16fdbcb2219bb079e4b1744fcde395",
-      "file": "bn-BD/feature-graphic.png"
+      "bytes": 48210,
+      "sha256": "deeaf1591b9f6dbea916b2d7558e5416e2f20fc2229d390e2e4c646310702f1e",
+      "file": "yellow-light/ta-IN/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 239182,
-      "sha256": "0439c3435b22657f7327cece40cc29b67a89ed1ba0eb3be240c62a44de3cfee5",
-      "file": "bn-BD/01-dashboard.png"
+      "bytes": 176584,
+      "sha256": "f664b7bb28c8dab89c6bdd4b29f218b4dc9d49ddb529d17348ec22ab86e3fd83",
+      "file": "yellow-light/ta-IN/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 271287,
-      "sha256": "ab3e9110fa8247a70931479230a64cb49056ef05ac8dbab01008c4ae08543a16",
-      "file": "bn-BD/02-kundali.png"
+      "bytes": 210325,
+      "sha256": "1635ce622dea9ee3fec6fed622d7c6980e7ee8e851ed548e2f3c594e26249d62",
+      "file": "yellow-light/ta-IN/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 219027,
-      "sha256": "5db9584140e07b6e732a7b37ccbd565f5147d2df0c77c87c6875012d2868f20f",
-      "file": "bn-BD/03-chat.png"
+      "bytes": 157198,
+      "sha256": "39d5e200e0aa0a472a63acc7c755e6e7f8758def8a246fadfaa8227aae5efbc4",
+      "file": "yellow-light/ta-IN/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 236952,
-      "sha256": "a977829e85054f780e93c1c349303a02a36a41652a7de2364b381bd50d4e0313",
-      "file": "bn-BD/04-multimatch.png"
+      "bytes": 199533,
+      "sha256": "42b6d9ff1c537e6de584fdd883041340d7c421fd48164d1b3a2d984abbb726ee",
+      "file": "yellow-light/ta-IN/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 262567,
-      "sha256": "bc662a95893f51877e80b92a60f430d08747565556529e4e068b5280c08211a1",
-      "file": "bn-BD/05-numerology.png"
+      "bytes": 201251,
+      "sha256": "cc89f9e77e11e226abf0d6906ca529a9bc1d9bb589702e77a87f838b369432e7",
+      "file": "yellow-light/ta-IN/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 224162,
-      "sha256": "990daf5cb81606750bdb052a05513ac1a9c51663fe93bb3f3b490e2351199874",
-      "file": "bn-BD/06-panchang.png"
+      "bytes": 167445,
+      "sha256": "c5e3ec5b152b6f7827e2a4d4821066d373f76064a1d90f11782ac9fe7356422b",
+      "file": "yellow-light/ta-IN/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 64367,
-      "sha256": "5901b29f57a48504c8bb074e181e435fb1ce9858cf4b9102619dae6ab2459d2a",
-      "file": "pa/feature-graphic.png"
+      "bytes": 48738,
+      "sha256": "6654be0a0062fc69c9aa5f71d3b6f205ed451058aae9ca55bac2456fcd455eaf",
+      "file": "yellow-light/bn-BD/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 230968,
-      "sha256": "e761470596c79bc91fc94dc3cd9aa63e7de787372313d50e19dd0a7164001d7a",
-      "file": "pa/01-dashboard.png"
+      "bytes": 175264,
+      "sha256": "e904bffaef2682b90b8c14ee688c891e070a7c30412a85dcf2f674b2b3fb9828",
+      "file": "yellow-light/bn-BD/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 261416,
-      "sha256": "6d3a878d616ea3c5f61c27e6a40dec0aacbca8efd4b38fa59b00caf5a15b55dc",
-      "file": "pa/02-kundali.png"
+      "bytes": 209526,
+      "sha256": "bbc767b5373e4fbe33abb3a63a4dca865962615decf22bf146f2aeb3551ecb4a",
+      "file": "yellow-light/bn-BD/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 204386,
-      "sha256": "564f1d937cc4b75962b1a02d4c8678843ff5f108e0e36e40306335e66d8d0a22",
-      "file": "pa/03-chat.png"
+      "bytes": 158494,
+      "sha256": "eb6168cbffb48d0ffd94989b8b358723b0906f6f30fc678c59e0a84535f6fd79",
+      "file": "yellow-light/bn-BD/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 230646,
-      "sha256": "d89f1255aa5d015aa43982a96d77f239228752366a95c47edafd1930692e5dc0",
-      "file": "pa/04-multimatch.png"
+      "bytes": 170417,
+      "sha256": "5a0ec9f5d28df6203e14cec71ecb22c666dd2755b6bae5ac05f328eb1829fdd4",
+      "file": "yellow-light/bn-BD/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 255797,
-      "sha256": "6ad1fc0df88e6c65667524f9b7b3e1ff75c2c1c31756f9d0125a8bebb9b7d9ab",
-      "file": "pa/05-numerology.png"
+      "bytes": 199320,
+      "sha256": "6085f2e21f3e0cb205aa1bcfd570368b3a6662e280aeee6bdf7936e7e6a09add",
+      "file": "yellow-light/bn-BD/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 216311,
-      "sha256": "65f0d3a0cd01404f3029e9581901d1dc04f28fa86cce9a5fa67973a13cddba11",
-      "file": "pa/06-panchang.png"
+      "bytes": 163662,
+      "sha256": "beed5216b1cb6b6f6ef9f619d3bb4cfaa8b1be46ca42cc31046a77c2bf0465f1",
+      "file": "yellow-light/bn-BD/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 67930,
-      "sha256": "b86fe785de6bae315e7521e1becdf5883f3bcd89c07286d129940e9e62793b15",
-      "file": "kn-IN/feature-graphic.png"
+      "bytes": 46808,
+      "sha256": "49126f78e8fba326f3c430def86f0ac1dc0244706bd752e4c89ceec8531a4791",
+      "file": "yellow-light/pa/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 250529,
-      "sha256": "77d17ef65d1604586266f460426188195bcf193cbedb8231e48bfb6cf836c1c2",
-      "file": "kn-IN/01-dashboard.png"
+      "bytes": 169108,
+      "sha256": "134362ac88931269adf19a7d892e6ddd74ba1fe6af12f6d6a3990264f7a3a6c7",
+      "file": "yellow-light/pa/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 285371,
-      "sha256": "453abb074794f8d72847e7a70cf534e31d77ae10f6513dcd50646ab2b59b310c",
-      "file": "kn-IN/02-kundali.png"
+      "bytes": 201491,
+      "sha256": "0c30dd031f4dde6c14a64af68e8ecce434005797efba4f444b68d5b86004ee0b",
+      "file": "yellow-light/pa/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 222993,
-      "sha256": "5e2cfabc439412da97647df393df4e81d69de551af4c60c56d2e56a7453c5039",
-      "file": "kn-IN/03-chat.png"
+      "bytes": 147783,
+      "sha256": "7974a1890c1413961dc8a4927cd0e22e76c00c46a20cc33a431cfd177989a468",
+      "file": "yellow-light/pa/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 258340,
-      "sha256": "7183c6242cd467658314530741d1b865f1a8ad9a7d38a761d6f1197fa7e93e4a",
-      "file": "kn-IN/04-multimatch.png"
+      "bytes": 167136,
+      "sha256": "0b81f04d765505ed2f0511101bc202f06a826395571176d2c0b0af4183b3ca3f",
+      "file": "yellow-light/pa/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 275096,
-      "sha256": "3dc05e24b68cd0dad3977667ce4e461faf0db407f1e55e9064eba90299b06c3c",
-      "file": "kn-IN/05-numerology.png"
+      "bytes": 192418,
+      "sha256": "be2f950d7294ff90ff37da9dbea7b53e7790915cc578a4db21427276a2e6a62a",
+      "file": "yellow-light/pa/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 224961,
-      "sha256": "81f97afdfdfb1b994991a1e0574c5ed6bac7101eacf767089f4201e3536f642f",
-      "file": "kn-IN/06-panchang.png"
+      "bytes": 156319,
+      "sha256": "6cc7cd507ef12ba2974a22ab037a94341cfd351dee2e3c42430e7dcbce259f9c",
+      "file": "yellow-light/pa/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 67830,
-      "sha256": "59dec614e946af515e8988817eb4ab01b174fe3c201d86c613d9dec92713ef5d",
-      "file": "ml-IN/feature-graphic.png"
+      "bytes": 49590,
+      "sha256": "a5615a0990a57ade8a4e528ac074faf75001483368435248d30d186920d785eb",
+      "file": "yellow-light/kn-IN/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 253471,
-      "sha256": "3970d852a02198c082af9aab3725b2d7f8b95e4f6214d3514c7e8427702f7384",
-      "file": "ml-IN/01-dashboard.png"
+      "bytes": 188909,
+      "sha256": "7e471b4645ae4eff92528cb147dc2dca2d4fbaee8c67c316a872c4b5abb1c976",
+      "file": "yellow-light/kn-IN/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 285481,
-      "sha256": "c06370f5b28a8cf5d788bb3afc1d8ed09ebcbcfb814a42cfe4f7fab32685fbc9",
-      "file": "ml-IN/02-kundali.png"
+      "bytes": 221710,
+      "sha256": "88fcb61697c4523273516356ba2e0183a269dd1a82cb8ceae1cb4e3727fb107e",
+      "file": "yellow-light/kn-IN/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 237660,
-      "sha256": "cb805a83852fd99f70af9ccb76573a044f08e41bdc08bd6b855e0d907f94e138",
-      "file": "ml-IN/03-chat.png"
+      "bytes": 163293,
+      "sha256": "cf5c174d7022d9cb25c2e2cd594855fe9de2f90d88e4014c26fb267f6282f040",
+      "file": "yellow-light/kn-IN/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 269621,
-      "sha256": "147a93483d4ee84909615e853419d86e9494f4c2125cc6099000acddb17bb114",
-      "file": "ml-IN/04-multimatch.png"
+      "bytes": 196627,
+      "sha256": "122e5d9a38df34b080fa410d97c91f0cedcae2ff0e6f74509043981f595554f2",
+      "file": "yellow-light/kn-IN/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 276517,
-      "sha256": "d48fce8a06e9cf5964900ad03a63e04664766b7fe8dd5a0587efbb32fcc7c828",
-      "file": "ml-IN/05-numerology.png"
+      "bytes": 210692,
+      "sha256": "5d9bc1a2b418fe4db79770e070db8e9d83a6ae0a356a29b85ae8cf925510dbd9",
+      "file": "yellow-light/kn-IN/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 236237,
-      "sha256": "4c41e6323565fa0011733b2e9465a3d8a691761a2f52bae965f3a55e288e3b70",
-      "file": "ml-IN/06-panchang.png"
+      "bytes": 166175,
+      "sha256": "02ce3f71b5cc4b89cd4ab62ed656ac72da924f0ab91b933130d827e51153d3ee",
+      "file": "yellow-light/kn-IN/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 67788,
-      "sha256": "3abc19349938214c64084f2840bb91878b64c947e497be65ded603089147c8b1",
-      "file": "or/feature-graphic.png"
+      "bytes": 50326,
+      "sha256": "f69ba8867e7f3779dff485c72daeee48eb10e5d9d91f8b94568cc86ccb1af477",
+      "file": "yellow-light/ml-IN/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 253806,
-      "sha256": "5a106a66e54656f55e7eac7cbc4122a5b71ed0e98c69cf9f3617d174cbb28abb",
-      "file": "or/01-dashboard.png"
+      "bytes": 187335,
+      "sha256": "ec516c68f60d570ec037f896159c99f00307d4e25c34f510e868f14626a9525d",
+      "file": "yellow-light/ml-IN/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 279912,
-      "sha256": "af3d0ad955bed683dde2fdb2035b4dcb018ae29a1430afa926d1ac48107d0965",
-      "file": "or/02-kundali.png"
+      "bytes": 223655,
+      "sha256": "ae587c5b7c3f4d39f69b385ee29a530268ab82642e1cb940aba7464f9baef5f1",
+      "file": "yellow-light/ml-IN/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 233559,
-      "sha256": "9558c96e354a5a714a750015b24d63a5790a81d5038821a0840413190a067e34",
-      "file": "or/03-chat.png"
+      "bytes": 171728,
+      "sha256": "aa8837413cf213d9cef047c181d1c73a80139375015edd178e2c2c6815dbecba",
+      "file": "yellow-light/ml-IN/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 251049,
-      "sha256": "0ca4e7be0f8f0606781d6271bc1e5848b449da458d85f3017f209a1ae14b7554",
-      "file": "or/04-multimatch.png"
+      "bytes": 202096,
+      "sha256": "cf741452b28a360cd2b7c587be0e4bdc840f0d30ab3aa6a4f66012e461850775",
+      "file": "yellow-light/ml-IN/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 267278,
-      "sha256": "08517c192a9f28bbaaa449a6709bc86203c6785166439a98809f865036bb51e0",
-      "file": "or/05-numerology.png"
+      "bytes": 211328,
+      "sha256": "b39616206174800962b9bd8fb658cae85c0d31fd3c9d53e06d5905702bed858f",
+      "file": "yellow-light/ml-IN/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 224029,
-      "sha256": "1efaee22ab080efcf86cf2100946bf620aa7750d8cbcf881582d45a38360c1ca",
-      "file": "or/06-panchang.png"
+      "bytes": 174858,
+      "sha256": "bed56a862d87d09e11b2032c142fdc379d94df6106f71a3e10f700e8f2dd0712",
+      "file": "yellow-light/ml-IN/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 68443,
-      "sha256": "2601658cea12bcb9c1c14d8ea1a6dff9349e203024fe2db9c30e63e00288dbcb",
-      "file": "es-ES/feature-graphic.png"
+      "bytes": 50026,
+      "sha256": "8299956bed0a689d1d46bb9f61b990fc7ab91af366d87fe4de441774ba9469ff",
+      "file": "yellow-light/or/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 238562,
-      "sha256": "badc0076d8b24a6f5a85b58185c1a55a0276181a803b387f0724a313f827e055",
-      "file": "es-ES/01-dashboard.png"
+      "bytes": 186410,
+      "sha256": "8ec8985aaaaa4277fb9757a49fffb738dedcb3d65b3fb6bd41d67c45676024b7",
+      "file": "yellow-light/or/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 268891,
-      "sha256": "0223ca049f969ef99ed5241805c99b0db1dd373a879312ced304b7d42358fd32",
-      "file": "es-ES/02-kundali.png"
+      "bytes": 217112,
+      "sha256": "9f900e7b73a60b750529f0b7a60e64a8b4e4c3298df818915389fbe7c804a3aa",
+      "file": "yellow-light/or/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 210570,
-      "sha256": "5d3ef5402a48459c22b9ab542be9b4d62c675eb6da5270942cdebdeb0ba014e9",
-      "file": "es-ES/03-chat.png"
+      "bytes": 170947,
+      "sha256": "8a5a1902023f5fd8e9c84aa4d9050c3165b452fceb0632f812c938a2d0cef477",
+      "file": "yellow-light/or/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 247819,
-      "sha256": "3377c973040d32188779c8d78b4cb64268a2b7b2380359cd3fc1d289ca7983a7",
-      "file": "es-ES/04-multimatch.png"
+      "bytes": 186049,
+      "sha256": "5a1084af69207ce187552b168011fad427aff54ac4884bd7e8ce76b7f11d6c5d",
+      "file": "yellow-light/or/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 269799,
-      "sha256": "7e62201357668ae999f71e4294323efed930db348385aa68bf6970254f1f167b",
-      "file": "es-ES/05-numerology.png"
+      "bytes": 202656,
+      "sha256": "ccbbd1e2c5dbad77e2d52474f42ea139401dadbdb23f1353053cb424dd15054b",
+      "file": "yellow-light/or/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 221341,
-      "sha256": "b51b4e4ed489bdc70b0af941cb4750b3d9624da4b0531a1348cc92905953b6b5",
-      "file": "es-ES/06-panchang.png"
+      "bytes": 163693,
+      "sha256": "63e3f267618070e1e0fe1d2c413976165d4b7f5b5e36ef3fe660e78127cab224",
+      "file": "yellow-light/or/06-panchang.png"
     },
     {
       "width": 1024,
       "height": 500,
-      "bytes": 65146,
-      "sha256": "a980823ad708ca923cae514c94631f543cb467894501e34ac3abd15e2181eb6a",
-      "file": "zh-CN/feature-graphic.png"
+      "bytes": 50050,
+      "sha256": "20fe829212e2174b96fa71e10510eab07796aa5a651df674ec4cf8f87b8e15f9",
+      "file": "yellow-light/es-ES/feature-graphic.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 236196,
-      "sha256": "ee2b054744497260cbf63ccf0db9a41248e68ba19431ee1bad87dfa58c7f25b9",
-      "file": "zh-CN/01-dashboard.png"
+      "bytes": 169903,
+      "sha256": "f7e2ac2bd360341bca2a20df56759324789514715e172c486824a4cc494a52f8",
+      "file": "yellow-light/es-ES/01-dashboard.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 265653,
-      "sha256": "5fd68d7f9c3cea4b10defc551f4731c8af02df8c0a2f2135ac63c34ccfba9b6d",
-      "file": "zh-CN/02-kundali.png"
+      "bytes": 207556,
+      "sha256": "472e127c310163b96a546d4972f95052b7eb68470e45ee8f268dd330dd362721",
+      "file": "yellow-light/es-ES/02-kundali.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 208467,
-      "sha256": "27b9c0728239b399936b3ede70acdf49449067598388f5e852af5c346a4621d9",
-      "file": "zh-CN/03-chat.png"
+      "bytes": 147921,
+      "sha256": "9af572535a46d9b06526e7388308f9a0c6760ca1749055a228ed369cc384fec8",
+      "file": "yellow-light/es-ES/03-chat.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 243238,
-      "sha256": "eac4b1aea1c9f34b38d22b6792a708b85f57a06db15b0b970d46e229577e1056",
-      "file": "zh-CN/04-multimatch.png"
+      "bytes": 181782,
+      "sha256": "b68352360cf3e03a0663554ed72c07c5421d12ccc1d05916e7f6fcadcf26434d",
+      "file": "yellow-light/es-ES/04-multimatch.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 264977,
-      "sha256": "9540e3c111debd7ede6a7a01ef86fd10aaf6698e11f869b001059f3454df9f6f",
-      "file": "zh-CN/05-numerology.png"
+      "bytes": 198985,
+      "sha256": "7cf53f5a9fce735a93497473c7e0ee6210d0862855f3f18ac9188b960d491e0b",
+      "file": "yellow-light/es-ES/05-numerology.png"
     },
     {
       "width": 1080,
       "height": 1920,
-      "bytes": 223769,
-      "sha256": "b58275121c4acdfff02034e2218c5fac0a854d76c8df6b1eb5e657e53f5dc7b2",
-      "file": "zh-CN/06-panchang.png"
+      "bytes": 157910,
+      "sha256": "1da5ae6a945086f8efd4526582a26f45839403bfcca51520f64e3c1e896d8540",
+      "file": "yellow-light/es-ES/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 47627,
+      "sha256": "094c2b64a8f7554041bc4111d81f5c473f962d888c7b5f7e6debe014d3efdc83",
+      "file": "yellow-light/zh-CN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172676,
+      "sha256": "17a130e16cc48a6f780ce8b872f942821e03dfaff76f092e457eb63c85f975ca",
+      "file": "yellow-light/zh-CN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 204187,
+      "sha256": "721f29a9bf6ea8789adc04caf7f4419e97617ad1c84404b678f3123fc9b3228c",
+      "file": "yellow-light/zh-CN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 145854,
+      "sha256": "a4177b3d8204f0803524299cbfdfa4576dd60354b3ad0a394989e8f60f6b327f",
+      "file": "yellow-light/zh-CN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 177813,
+      "sha256": "698a3cbee27f4202e9d6e0495c2bdb261ddc5fa3e21db4f99efdbfc85779df0d",
+      "file": "yellow-light/zh-CN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198499,
+      "sha256": "f43ad3088b16e199ed96f237a86182735d1ae755b7f2303d2d8c4b1c422d96e4",
+      "file": "yellow-light/zh-CN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 160783,
+      "sha256": "043e0e3e56e601f0d40b704a3855fe4c4d48cbc1af06a9cb72b2677a1d9afeaa",
+      "file": "yellow-light/zh-CN/06-panchang.png"
+    },
+    {
+      "width": 512,
+      "height": 512,
+      "bytes": 36654,
+      "sha256": "c8e901a888f29feeb39c8f196f4caf3a81f39ee1aad17cddc8cd370d1bd51ff5",
+      "file": "white-light/icon-512.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50425,
+      "sha256": "63324fb6214174bff4c7a0c6fdfb1b5617c71d78f34f9bf699b51e8b8f25db0a",
+      "file": "white-light/en-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172459,
+      "sha256": "dba7b83b33116653e4093df9bda96998fffa2302587c4835ae9ad533c41167ea",
+      "file": "white-light/en-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 208031,
+      "sha256": "c715f9f5bab0ebf7fe8c54a549d958ef5a2b44a243209b6a8e5f4a2dacfe853f",
+      "file": "white-light/en-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 146908,
+      "sha256": "5e5d3c496988459e9c38e47fabfa4f81b7d64b2d72f325773183db80f06eed11",
+      "file": "white-light/en-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 182617,
+      "sha256": "6e27fe719ceca3d6cd1f608033ea9bce6a9acae84395f327eff21430a3b3a4db",
+      "file": "white-light/en-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200901,
+      "sha256": "76dd281824c8c95bde3d15331b0031b67ac5cf207c46815e0d413ebdfa6e2a94",
+      "file": "white-light/en-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 160302,
+      "sha256": "5b101468609dc004cbce2da8c89147564724b342bcfeabf0f222cb5ba4751795",
+      "file": "white-light/en-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 47324,
+      "sha256": "37713e395b9639f88ae477d44b50182edb259163bf6dac5aff391df0b9026d56",
+      "file": "white-light/hi-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171042,
+      "sha256": "f4c3682b66a91faaf97975d8d0bfe0ee9c27ab6641b7988d2ac69757320651d8",
+      "file": "white-light/hi-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200387,
+      "sha256": "d7f41ba48de2223825fdd32de0fb26becd52a4e50441f6ee0c397609be310705",
+      "file": "white-light/hi-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 150035,
+      "sha256": "861cfd48e41295f7380584268bbec2095d4aed4a6e842837f4c257704fae22ee",
+      "file": "white-light/hi-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169886,
+      "sha256": "6ce302ae36b2fd36d1ca400d5b2cbe71a82f1064e237790063a5644e3d2e2b4c",
+      "file": "white-light/hi-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 190421,
+      "sha256": "2ff5ce7cab6a4dca18be09d473db9b0451371f40b5f8d8981dc358bdffd07f65",
+      "file": "white-light/hi-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155101,
+      "sha256": "5248451b6434bc5c1620325b0588b6b92b972f4f742c8d6438a8b9e9ec38c4c7",
+      "file": "white-light/hi-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 46742,
+      "sha256": "d0c38474084167405d1a4759d708fbbc030645ce7ecab9d60ad931060fd3f851",
+      "file": "white-light/mr-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170307,
+      "sha256": "ae3229e130ebcba7f010e7d7d83d001a41d08a498d616dd1f4700cd556de967d",
+      "file": "white-light/mr-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202264,
+      "sha256": "e234627d3d243f7c7e88b7bddce77d5339eac578cbcaa2fdbb3da9a0744964b4",
+      "file": "white-light/mr-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 149177,
+      "sha256": "411f83414badcd93bcb0375deeddcbb9bb767c6f365a456d1663f4733a0a4e9c",
+      "file": "white-light/mr-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171997,
+      "sha256": "70383862bd031dec2b89f7c2d0fbfda787895ed797cee3035a0b535c69dbe01a",
+      "file": "white-light/mr-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 188586,
+      "sha256": "a6f623850b4a0044b80834bdec1097729369b91c782a2ba56db8352a6e9f3ac9",
+      "file": "white-light/mr-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 157107,
+      "sha256": "6f62a84bcaeeb0c08b4c5b639f05af3b101799374d4411fe56fb0beb9f461af8",
+      "file": "white-light/mr-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 47249,
+      "sha256": "e52a75a46b521ec3051f38bf6e68b684767100efe6539071e7f284403701f3f5",
+      "file": "white-light/gu/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 173273,
+      "sha256": "8d8235248dde4ef30ad3c908f76645855d869aadf6c83862c829c93cd3bb6df5",
+      "file": "white-light/gu/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 203969,
+      "sha256": "cc096f76993f3eb30549193b294f9532b86a7cc6647144de963f555d28252573",
+      "file": "white-light/gu/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 149506,
+      "sha256": "b902a9221e1d19c1a3a7338f5e5d87bd2e76e8477332ecf578389463a1fe8ee6",
+      "file": "white-light/gu/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169386,
+      "sha256": "8becca2cf205f323d433e0385c48635ee52a733da5a8c7febbb5a8de3979c26d",
+      "file": "white-light/gu/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 190893,
+      "sha256": "0f3dcf805c8a46722b44bb5cd8a003e6d32430315cd2e74e9dfca3f42e703db3",
+      "file": "white-light/gu/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 158791,
+      "sha256": "8b8e5785efbb11c53964aceb601243b78acef49de9d0b517c126e2279e7c6803",
+      "file": "white-light/gu/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 48276,
+      "sha256": "3bda52cec7e04e1f96144ff7894458d1900400f15bfaed22c0823d34124fe93b",
+      "file": "white-light/ta-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 176598,
+      "sha256": "57adc697a5f20c7854b1fc4998760889316587d8065d2bf64690ee82b030ab3d",
+      "file": "white-light/ta-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209873,
+      "sha256": "c7dc549aa95b5d03d846d829e148913e6f69e816a91675cede240d9543d0d05b",
+      "file": "white-light/ta-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 157179,
+      "sha256": "c69e17149f43e4e3c779cde1831013d9f9028592828c5745fa66f6dc65575119",
+      "file": "white-light/ta-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199534,
+      "sha256": "262893fa22d3dc9e3fb2d6e845e8493c729c48e63b1a37ce89d74760603aabd0",
+      "file": "white-light/ta-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 201330,
+      "sha256": "20215e82479fc66e94ec47d546a2a55a743294841f0603bb85700405e6619a46",
+      "file": "white-light/ta-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167393,
+      "sha256": "0755503e53d2f37513847d58e7be2fecea6c4cec0845fc9bc5fd4c357367b00a",
+      "file": "white-light/ta-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 48839,
+      "sha256": "fd5e29350fe617a6468464184d328096a10d638a35f5d3db4bbd307af4c8d129",
+      "file": "white-light/bn-BD/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 175268,
+      "sha256": "3efcca7dcf41abe9cc0881874c3d0f117597207c662ea0601f5b88776b1d220b",
+      "file": "white-light/bn-BD/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209099,
+      "sha256": "2a9ea588c27a6b6d0522d673ebecc769d841f7deca5bef2f04fea0029b6bbc3d",
+      "file": "white-light/bn-BD/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 158476,
+      "sha256": "397c435f7be5f28fbc036df956a753c03e49d08e83ec2a9a9a34f258245d7aff",
+      "file": "white-light/bn-BD/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170404,
+      "sha256": "21be9d9600a895aa07843ce0f3df21f5693adaa6f2e43235ad66223827109309",
+      "file": "white-light/bn-BD/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199398,
+      "sha256": "e662566883135de99602c80f91ab7889b5f1034d9ad18b0d51d6547b899aa105",
+      "file": "white-light/bn-BD/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 163612,
+      "sha256": "651aa61fe1638b76cf46192ba8df20faf378888847ecfbc7587180f9d23812e4",
+      "file": "white-light/bn-BD/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 46767,
+      "sha256": "4569901d4017de4a480016fbcc2239b17597af3f078d3377fa80d93aef77e965",
+      "file": "white-light/pa/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169113,
+      "sha256": "7dd647d6e2cd7503bf952ef48e8ed2cbd5b6b4505148ed352d1d94c562d794d9",
+      "file": "white-light/pa/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 201037,
+      "sha256": "ba89291dda57685b74afd3c2c62f260cb898ba040773a0b2387049341a406fff",
+      "file": "white-light/pa/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147748,
+      "sha256": "20ac59a6f3108cd4726aba2ef6ca258fed55d92727fe3cb9375af5e611e92824",
+      "file": "white-light/pa/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167124,
+      "sha256": "6628e47f3d6bd06b43afa3621a3c27257e6220faea36ec98be795652e2f5d805",
+      "file": "white-light/pa/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 192500,
+      "sha256": "47ca1d85200fc1dd5bd6132794c22dd545e9d72ce461262aca9682cc990477a9",
+      "file": "white-light/pa/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156276,
+      "sha256": "579f8153c664606596b260b271b65f17d83b50c29cc7d082578ce3b1c8bd5764",
+      "file": "white-light/pa/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49820,
+      "sha256": "cf2e8aafee784005a51f848e69876509a1240945580a949e6af97f0bdacca976",
+      "file": "white-light/kn-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 188914,
+      "sha256": "bc80c22743a105112f9051ef6e52adb4e4d5389694d993f2780ed7b4505a5f28",
+      "file": "white-light/kn-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 221245,
+      "sha256": "346200fd9e7200ccbdf969158733c153552bcabcbc454106d367bd199aec02a4",
+      "file": "white-light/kn-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 163270,
+      "sha256": "fc080155ed76239a5ff7f7221cfb472bb0fbadd41ebdd08f1f2de237afea3cb2",
+      "file": "white-light/kn-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 196626,
+      "sha256": "96546f81c5949c93dcd6e03ce23b5bac94efb2bf170cb5d6f581f23df5485ed5",
+      "file": "white-light/kn-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 210792,
+      "sha256": "f5f88bc0dd8a7847ae1a6f11f3c5db84497bfccab92eb84455264392caa94317",
+      "file": "white-light/kn-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 166133,
+      "sha256": "694c4fa45b172a9a3291ed1c7b48537b0b7c24c8b393531369b3292596e67b5e",
+      "file": "white-light/kn-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50715,
+      "sha256": "e835bc5e38ab467fd796245e58da7a4ed8d01eb8f649a213b78986b3839ab9dd",
+      "file": "white-light/ml-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 187346,
+      "sha256": "4bf7bbd00c8cc97b85db9f5505d6e5df1f89bfec2e49fbb7fc5f94ec423b3443",
+      "file": "white-light/ml-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 223196,
+      "sha256": "9570a2129c400547d7b18b7c4c994675e17ab303e5dcf52b94191269e8b8d18f",
+      "file": "white-light/ml-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171707,
+      "sha256": "e6a532a4f833fea5d71dbae370106add257899c553f8b7d20c739436a39576d3",
+      "file": "white-light/ml-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202099,
+      "sha256": "d8a94a502a10bd27853271779b3c0f5c23ddfd0ba0d98e8aad8378cee2a007b1",
+      "file": "white-light/ml-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 211432,
+      "sha256": "e209450df3857c22e9c50163b0d8847cc61c6dc4f8ae96bdabe994b0723610c1",
+      "file": "white-light/ml-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 174823,
+      "sha256": "11b73827ae8d8c22d58a7707c2885d4e44413b024f2e8365a62965ba0abd6c73",
+      "file": "white-light/ml-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50195,
+      "sha256": "c32615cd3acdc96fe88d1ae33e8eea924a5df79271f0da095ae17beb35310a8a",
+      "file": "white-light/or/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 186410,
+      "sha256": "8eb1d6a9839c33af02d9e03b18e2ed771b9223dc8dc021ced6db618915a00d8b",
+      "file": "white-light/or/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 216670,
+      "sha256": "893b5a1a636cbef6c9b46fa777286889c16c5828dc13a102112066468558d118",
+      "file": "white-light/or/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170927,
+      "sha256": "0c29fab950300ad78e08d5ff1941be9e5686e8bba2456b2d7d30ba2d09cf2b08",
+      "file": "white-light/or/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 186051,
+      "sha256": "7cec327f7e1af53c154ce02d3ba7cee000f76b848a9eb1069320fa4d47291ad2",
+      "file": "white-light/or/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202746,
+      "sha256": "f0a0b701b14824ee1c2214c812d5a60a975c1340f0edb74a163faae05aaa5c31",
+      "file": "white-light/or/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 163645,
+      "sha256": "949c7ad8a08bb1762446eec184afa7b98d6e2a8b43ea40560dc5d5374c7bad9f",
+      "file": "white-light/or/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50250,
+      "sha256": "ef2cfeca5e611be7baf626e2e7cc2f384f7d10cfe27b1bc97af2bc9b42302422",
+      "file": "white-light/es-ES/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169948,
+      "sha256": "65659d65425a94102189b18ff197753f413bf11934d1738230d54a835a42aee9",
+      "file": "white-light/es-ES/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 207143,
+      "sha256": "2a7e750cfb86a4795fef7c83c347194a8aebe9deccc4d68a74f11b890b82a32e",
+      "file": "white-light/es-ES/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147890,
+      "sha256": "1e4fa6057aa21e13e5309a7970442516fb318ef8862a8b60e2354d70e9f3ee28",
+      "file": "white-light/es-ES/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 181808,
+      "sha256": "124f37f8d004447d6f41ca8354aaec99c61efd757f5d322ba732e57b4b8e3820",
+      "file": "white-light/es-ES/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199121,
+      "sha256": "f250f96b5b779ffd520665db732acdf3faaa2ebb98c0ab5cc64479aa4be28ae9",
+      "file": "white-light/es-ES/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 157866,
+      "sha256": "2ca1f086be677b1bfa97abf0a8ff2e934ee05099507ec5155462401e45f86348",
+      "file": "white-light/es-ES/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 47620,
+      "sha256": "c62530a14e7912c4eb93a04fe712cf4fe703b707c1c8a5303d003534b2bb7937",
+      "file": "white-light/zh-CN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172678,
+      "sha256": "e5405b24b0084b6b5c75319e04f614cb32d0a409240e6d731621a51faa01628d",
+      "file": "white-light/zh-CN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 203731,
+      "sha256": "f7789790ccc24c307558f1e8c03fb289f9b88a53e1ba09262623d5e15e384900",
+      "file": "white-light/zh-CN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 145820,
+      "sha256": "bd152f5100ae7d8d435950296044a69e10eba6e3d8d9cb7541007ed547dfd708",
+      "file": "white-light/zh-CN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 177815,
+      "sha256": "d8bfb3a9a3a11c2d3bc8b0cb41e33cea4d4fb543e8e354afc93f8c598f3001f0",
+      "file": "white-light/zh-CN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198598,
+      "sha256": "37cd9cf507b899f704c7e36144f42efd7b1aa46ab5505083ce8e5acf1f70c8d0",
+      "file": "white-light/zh-CN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 160733,
+      "sha256": "26922a1a2ed4d581cd76691cb9e4298d8635a0c6eea95c409a859470c542c994",
+      "file": "white-light/zh-CN/06-panchang.png"
+    },
+    {
+      "width": 512,
+      "height": 512,
+      "bytes": 39166,
+      "sha256": "50f28f10f3d3ed1b53cb30063f9071311983f518bb70c6679bf54dc11c20ead3",
+      "file": "mono-light/icon-512.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 51910,
+      "sha256": "2fb95cf6280a755f57b5acba6bf4c64a2cfa21f824e6a39ff394bcaad9764460",
+      "file": "mono-light/en-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171742,
+      "sha256": "7aa6afb370ac35603b698099e02cab2b8951bf2e52fa20757336cc3b9c1a21d6",
+      "file": "mono-light/en-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 208201,
+      "sha256": "e50880151aed60aa3f4abf6022f2f4c2fe08cce9416ea58d22932a8fe6e63004",
+      "file": "mono-light/en-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 146588,
+      "sha256": "5b17fd436ee064e1d177816de8b0c25e9a5f6e56c41c9d67481cb8659352516a",
+      "file": "mono-light/en-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 180754,
+      "sha256": "bf101bc912ba1cc6264bd5ca57507e1c4bd75d474d0d13266c14474aa7ae4cc7",
+      "file": "mono-light/en-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200549,
+      "sha256": "df084be9a0a3e536004ff27fa07e18faa45e65345a56d7b0cf808758c541755a",
+      "file": "mono-light/en-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 159682,
+      "sha256": "0640efdcebd77b6c2cc4afd87fd8cfd817dbfc83fae0d98d2d3e323a5cce37b8",
+      "file": "mono-light/en-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49440,
+      "sha256": "50887219c9b5b218c342f622c0458e788d2abd5045e087819ffc4e39bd935800",
+      "file": "mono-light/hi-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170509,
+      "sha256": "0aa2de48b7d940d8b9766ac2fb7c773d474af9c6e51ec3f74f4605fdbd3053d0",
+      "file": "mono-light/hi-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200704,
+      "sha256": "26d1f336f8900d575cbce1b4d9f6132ce31ce2f1dc70c8e86de530d501a892e3",
+      "file": "mono-light/hi-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 149454,
+      "sha256": "28f1d25fc7209e02b0ede48fa1be35521081109efeb7b8cb331ffe065e0b36b0",
+      "file": "mono-light/hi-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168388,
+      "sha256": "3d13f36ee7caf4b9aee42667f6147ebbb96c3fbf063aa1a06eb3fcfba1492611",
+      "file": "mono-light/hi-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 190159,
+      "sha256": "1133b9aae10a54080a52f6073007ab41bf5f37983891a355e535d5b3fa8e954c",
+      "file": "mono-light/hi-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 154615,
+      "sha256": "2b5c0ffc69a6c875618d44ce1c47c20eb9c4f3e6dfdec1cbdd18144ff00f4b37",
+      "file": "mono-light/hi-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 48925,
+      "sha256": "2b2ca560bb8fbb0b9063b9e510ece0f77387f4094972b5dc4bf471e80d9b6ac1",
+      "file": "mono-light/mr-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169516,
+      "sha256": "fa6bc92a2244cb6585aab4284758133a5e7d16724281c7b2cb41acf109b1ead7",
+      "file": "mono-light/mr-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202332,
+      "sha256": "097ead5260a853a298ac29853109bf9a6b0711e21483869d8bc85a59edf8e5b9",
+      "file": "mono-light/mr-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 148538,
+      "sha256": "0276b61c251b33777f618d494bd16dc45bd283fc0d785d037bc4d9ed989d1e5a",
+      "file": "mono-light/mr-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170612,
+      "sha256": "d1095e9ed044814289f60e7612d8e92b8e565cf08f40f09d23cae7d2a1ba4231",
+      "file": "mono-light/mr-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 188101,
+      "sha256": "835b6f72ff574bde75383eccfa51704c5fbc9963e6c39c7cbd933cf98b9f03cf",
+      "file": "mono-light/mr-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156461,
+      "sha256": "d452295a4fc05628e55a8c8c25e057a9dde18ffbc9c0c8bd2898ce8fe7d7492b",
+      "file": "mono-light/mr-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49306,
+      "sha256": "2bb3d01d34bddbd9bbb26cea3565c1b2cd8bb78a64a433b396df9c565595b702",
+      "file": "mono-light/gu/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172794,
+      "sha256": "b13662685befb8f80f35f8588d90c6163083c6ee7cae9f89f3e99489f7a36092",
+      "file": "mono-light/gu/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 204017,
+      "sha256": "1fc6099e6991551ff10b43623c58579b847398d9da226dd8b0e4251ff265cd57",
+      "file": "mono-light/gu/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 148891,
+      "sha256": "c95ed05df909ff2cd304137a73a2a6a120a9289d9b8f72234d1608968b975b2e",
+      "file": "mono-light/gu/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167929,
+      "sha256": "9fea85165f6eca286eff5ce737d73adca176875feea322af2646d4201fbedf6f",
+      "file": "mono-light/gu/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 190509,
+      "sha256": "e125c5487f18c40d7e7256e707ec7b56c1848f33597717145f84f991af931c82",
+      "file": "mono-light/gu/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 158337,
+      "sha256": "20c9d444763f1728ff8c1f7232fb78cb5b463f682bef48b6951b30bd365d792a",
+      "file": "mono-light/gu/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50327,
+      "sha256": "fb8aeb6f9132ad1a730307bfb901ef416974e4d033532fcb5d71b29a6c3db314",
+      "file": "mono-light/ta-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 175078,
+      "sha256": "d6db7885b1b1207f1a6e20cb938c1eeaa3946dd536dc5f746f40a299afd09ade",
+      "file": "mono-light/ta-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209305,
+      "sha256": "3e77c3c90344c86edb4d9a4f427c171448075b0de92441c02fabd85d88445d12",
+      "file": "mono-light/ta-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156532,
+      "sha256": "293d9bc107d09f0064e2e4a28da32bb4602d0ade819295018b625e6d16fb532b",
+      "file": "mono-light/ta-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 197486,
+      "sha256": "51d36299daa3a0f249827969061b28f79b6f0cfe7035312c516b83b749ece5f9",
+      "file": "mono-light/ta-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200541,
+      "sha256": "37bcd6faec4b760ee17dbb1e706d5646e8b4e28bae4d357395db42d9892523fc",
+      "file": "mono-light/ta-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 166240,
+      "sha256": "db77a53d0907164d89f70cd1e86cd7be9ee9ce443ce1d318e124600d0e5e4767",
+      "file": "mono-light/ta-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50856,
+      "sha256": "90952af9e32e99fea223485b18b6304cb4fb820fc0b61a5e9a4d38f3aaa130ce",
+      "file": "mono-light/bn-BD/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 174655,
+      "sha256": "53898bc2f35b5e33cfc2002ca76359dc71ca48e99f22ca73c53321d5f044554f",
+      "file": "mono-light/bn-BD/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209051,
+      "sha256": "b6df25b3bb97346c5c9b40169f9ff0473f936b4240f80a3024f161c8f32f0b5d",
+      "file": "mono-light/bn-BD/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 157734,
+      "sha256": "5424ab2e4d48cd1e20b64a789c6bb1483fc9c6470afacf626c91a02667762fe7",
+      "file": "mono-light/bn-BD/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169044,
+      "sha256": "9c6c69ffd2c6792460b49e0a6475913bfc7f0516fa10e86537406b509ec09381",
+      "file": "mono-light/bn-BD/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198955,
+      "sha256": "51acb460278db5b13fa138dda78f0b22166daeefc5422b24ae2c04d75c78997c",
+      "file": "mono-light/bn-BD/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 162595,
+      "sha256": "85280db0ed39a45e8976b1158d7d49c8f3565b76db40ddbcd3e3e2347c8b6595",
+      "file": "mono-light/bn-BD/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 48952,
+      "sha256": "5a86ded317a228d5a3a3fb5f3d2badbfa0de844896f1e7c756380948207dfad9",
+      "file": "mono-light/pa/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168412,
+      "sha256": "c4391cd1f87588a714040c5b8bf873ef520d91e579a316b17a8c2b5081debdc7",
+      "file": "mono-light/pa/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 201136,
+      "sha256": "7dba05d72ce6e70145c96ecdc9b1de58d623f909c9ffc624ba8ffb764feef15c",
+      "file": "mono-light/pa/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 146991,
+      "sha256": "cfc3541abdce92f570310203288d59b6df4bb58e0eddf0fbee1464f25e9310db",
+      "file": "mono-light/pa/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 165543,
+      "sha256": "4764b69a82d79a55e21cecfc255607c12c8d9a885acb0d96adc4b29b0c9fb247",
+      "file": "mono-light/pa/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 192106,
+      "sha256": "3af113eb6d073d72092966bf5bf44efa8a3271773c00819de0413b51b52f1ed8",
+      "file": "mono-light/pa/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155583,
+      "sha256": "9ad167ab9140f1960b6a409a3456a6bba92b1f40282df06b56afa72867043c61",
+      "file": "mono-light/pa/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 51257,
+      "sha256": "2adb0b26a660df17bac4871cdf271313496ffea0cf62c621f5629f949fda6213",
+      "file": "mono-light/kn-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 186786,
+      "sha256": "01d84c2f6b0960f4060c799b4b70f25f47e8480bbcd5629623bfbc022e5b5854",
+      "file": "mono-light/kn-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 219985,
+      "sha256": "dedb05c8071aed9d59a68b317aaca887c92e3c4f7bdc84f45778f66ab6d7ac17",
+      "file": "mono-light/kn-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 162108,
+      "sha256": "1da24acf6abe047b806e3a6fa70861e1866c11db233c98aaf08b2795601fcadb",
+      "file": "mono-light/kn-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 194439,
+      "sha256": "d5711a8f482e3c46ba427f37a1e9d3e1eb3c7c564970cc0e080bf820e06ada3c",
+      "file": "mono-light/kn-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209593,
+      "sha256": "30ea03cd4b2a9bff12cf19744cc0d0e1e1d630fd9d12d0dbaf26b10d41109c04",
+      "file": "mono-light/kn-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 164726,
+      "sha256": "967d4f7365182a030639f626f5517fd19abab2909c9a2460519d4bedc566ef8e",
+      "file": "mono-light/kn-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 51967,
+      "sha256": "1ff092c83b410db9752fd4a9038f65ae43fdae5fa643d5925e34dc029a7eb2d6",
+      "file": "mono-light/ml-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 185070,
+      "sha256": "db7bf5b395bfbbf1d1af269a2767d7d17c93d75fac9e01b77b0461d43d5fe189",
+      "file": "mono-light/ml-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 221075,
+      "sha256": "a40d155639eb81473642437549a5ee7270d9f74388d386919bf4be4cf590bbf3",
+      "file": "mono-light/ml-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169413,
+      "sha256": "b70dda204b8fcb2952ede9baf4d0a3634e40ad342fc66653b8eed230971e554e",
+      "file": "mono-light/ml-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198892,
+      "sha256": "4e347e17b14bb22cdb861cab72e8fa90b79bd3801f1d012cb969a74619ed814e",
+      "file": "mono-light/ml-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209740,
+      "sha256": "9641307de4a1ed92f80f1a363f4613110433b19e210238b89f8fd70dcf16103e",
+      "file": "mono-light/ml-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172449,
+      "sha256": "f7f1e94cc6cc6e87146c9faa7f475b1f819ea4b43e9d3aa8c9c3d602ddaeca6a",
+      "file": "mono-light/ml-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52089,
+      "sha256": "b50f9f3f99109e36aa7f53ac20a91a0cc950ed39946d141368e00b155037ddd0",
+      "file": "mono-light/or/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 185325,
+      "sha256": "8694d7436f091c06178c7eb184d7ea6847046e17cc2f89236ef4b811327a288a",
+      "file": "mono-light/or/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 215966,
+      "sha256": "c924c4c4bfa063977eec89ddc31a7db7076f652d08f5954a9ef6b9aca322f04e",
+      "file": "mono-light/or/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169586,
+      "sha256": "3c1ea947f8c9990b98629a2302f0fe681e480a32ef02e59aa07eced94553d4ac",
+      "file": "mono-light/or/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 184099,
+      "sha256": "7116cda68ff83794bf09c24bab98d1673a7067a6cfa31d4967d3de7517e8468d",
+      "file": "mono-light/or/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202021,
+      "sha256": "014e4f036b0600ea86c5508eda6f2c84c4ad6b8abb9b129d630b7b48a41f45fc",
+      "file": "mono-light/or/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 162606,
+      "sha256": "0ce526c261b80d0555cb383727d7eecf14497e46d4cc801881c9d913e0448d7c",
+      "file": "mono-light/or/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 51459,
+      "sha256": "c56bc85f0f9b51288408854e7336b187e0e5182c3d9c9c8b796a78e6c53e9417",
+      "file": "mono-light/es-ES/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169239,
+      "sha256": "bc327fe185447130975e538cf8ef2751b517bfcc25ab6fae3b567a6984cda544",
+      "file": "mono-light/es-ES/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 207277,
+      "sha256": "ffecf5ec12aa7b567671da1f80752ccdf36da26c8b29b84bdd54ca45aa3de139",
+      "file": "mono-light/es-ES/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147596,
+      "sha256": "88abda8429e659c352fcf5d0b24d06f151624b68c46287c5f705abad5c1c9449",
+      "file": "mono-light/es-ES/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 180408,
+      "sha256": "4400e9a6d10442ac3bcd92ff07d72ec88a20060fe7e9da356a342538319e8d0f",
+      "file": "mono-light/es-ES/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198198,
+      "sha256": "f7bda2c5c7251e01add3f4cff56a05ff268e087571bed92db1fe0107be12fa94",
+      "file": "mono-light/es-ES/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 157264,
+      "sha256": "3826749242dd0d7ffd67945d832d798db1a6c665e81de615eae3cd2d2de923f8",
+      "file": "mono-light/es-ES/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49873,
+      "sha256": "f5396adf4b9d49dd307864ee38a3c9c237209dce208bf774552824b4c369cf7b",
+      "file": "mono-light/zh-CN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172173,
+      "sha256": "3159d4383a411e4b560394c7153ace2a3b704c437b46c2d9f3746be7b01b258b",
+      "file": "mono-light/zh-CN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 203765,
+      "sha256": "33ffaec5af5c7756e63a4ab3683241287d94985321a8e928fc6cc0a622f1d75a",
+      "file": "mono-light/zh-CN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 145439,
+      "sha256": "e50b7d591d5d15e3d14595f78d723f9aea477d1b6588d564b426e3dab1cc8ec4",
+      "file": "mono-light/zh-CN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 176226,
+      "sha256": "65164bba3338b9601184be95b4c491743c85adaf5c9b8e3a98ea96db2e135ccd",
+      "file": "mono-light/zh-CN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198102,
+      "sha256": "868d2a2aeebf14b0749241c78d433c5cb0d9045686faa36cb66895d7bbb4e395",
+      "file": "mono-light/zh-CN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 159960,
+      "sha256": "ce17dfd9c8f72772d6490359fab6d404d898b3d4fe6ff28f13c89dfed2c40c8c",
+      "file": "mono-light/zh-CN/06-panchang.png"
+    },
+    {
+      "width": 512,
+      "height": 512,
+      "bytes": 39378,
+      "sha256": "cd01a607eb53936bb25e021237e8da0a9a77a55caba60531a2cde1c04d9ed700",
+      "file": "yellow-dark/icon-512.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52982,
+      "sha256": "4e8e174afa859405cb51625ad9c870d1de5b5ce018571d3cde12ca5f2a78b923",
+      "file": "yellow-dark/en-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171459,
+      "sha256": "3417154fe45b0bed8bc0d5aa1579828898efc3ec0bf6ed2e464b5bb0db898e18",
+      "file": "yellow-dark/en-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 207728,
+      "sha256": "742074c6f26b784a04820bdc62ec4b711ddfb1cdbf7a5fb1a432b7b0e105c85e",
+      "file": "yellow-dark/en-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 146138,
+      "sha256": "b4dcd70f9bd22e68b3530e87b244799446e98a124be62a36ebca5e69e89c8408",
+      "file": "yellow-dark/en-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 181125,
+      "sha256": "4c04860c3ea2c129134269a7b5035a0b140be8ba03170653f3578027bacbcf49",
+      "file": "yellow-dark/en-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200041,
+      "sha256": "a9d37a53130ca6c2dfec7f546c1b21a766b90aa7316b38f85f002e3945b27e62",
+      "file": "yellow-dark/en-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 158783,
+      "sha256": "fa3d8d0d2f98d9fc5b25b09d497c83c4fb8abeb83df8a62f6a0e16e560081488",
+      "file": "yellow-dark/en-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49800,
+      "sha256": "5db13680603a63982638dc1440304cf65592c337ebe18aa2edc11a7c3aa04559",
+      "file": "yellow-dark/hi-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169606,
+      "sha256": "f61dbffa006fcf94fe1e73f09b3ca05d6aeff2df262333e53607a3743cf66f75",
+      "file": "yellow-dark/hi-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199305,
+      "sha256": "7c578c9f6fee593e88fc4df0b52a0ac50b05c09d1bf4dd888875ab9b86193cd1",
+      "file": "yellow-dark/hi-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 148647,
+      "sha256": "da4c854dd9f9e307aee90c5d88e5762039003e3504cd8d086b5500d242977304",
+      "file": "yellow-dark/hi-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167976,
+      "sha256": "b07d2e3a3a43c96c0dc6a2b6257dbdbf1781afa932787642d0ca9207f5cb6913",
+      "file": "yellow-dark/hi-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 189052,
+      "sha256": "30197bc3e83aac01160df7ab7317d3e9c49cbcf16ad133d81cb1d9f9f5d0e607",
+      "file": "yellow-dark/hi-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 153103,
+      "sha256": "67889d6214df841e7886cc4e5e74c8a45d9d5e22875a1963987ecb96a7372f51",
+      "file": "yellow-dark/hi-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49178,
+      "sha256": "d5e4a9aef73bbb7f117dcf0f4aab760272fb00a7a838044b9d1759888d3ade5b",
+      "file": "yellow-dark/mr-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168670,
+      "sha256": "04d54fc173deb7efbe47fd07502dfe0680102532c813b87c84d32be90ad7febf",
+      "file": "yellow-dark/mr-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 201253,
+      "sha256": "8d14e621cc80f3f8f6ee4feee0928f50781ac42ea16a322e1c7ed97cac783672",
+      "file": "yellow-dark/mr-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147751,
+      "sha256": "d8cfdf70045c62de8b960f74e3952dcfb1ddec3af0724a331d6c34686f76cb18",
+      "file": "yellow-dark/mr-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170472,
+      "sha256": "283113963f5c3496d144a0324b52f66f5155d98ade8c9aa13af4ecc891b5b77b",
+      "file": "yellow-dark/mr-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 187121,
+      "sha256": "161441f20a92e22f1101dfc38594bc19803a4c1799c85c834f5bf8ccdc22cc02",
+      "file": "yellow-dark/mr-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 154920,
+      "sha256": "8dd3417900e948c6f5d278eb3d5412c3f9083b1d9562e571665c93ff0c4cc278",
+      "file": "yellow-dark/mr-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49715,
+      "sha256": "cc777048096c06d40744fa4cbece5fb3e960a4ad86a9fd7c9c8e137dfbe0ec60",
+      "file": "yellow-dark/gu/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171977,
+      "sha256": "0c8e3db8b8807ecc36e035d7e24105dcf7cc37c8f18ba21c22469e04d91b05b3",
+      "file": "yellow-dark/gu/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 203143,
+      "sha256": "7125261331056f4d9234407cb51e8ff67becfdc96b40718f0099a7b4f36b78c0",
+      "file": "yellow-dark/gu/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 148525,
+      "sha256": "373d854f0c379fcd2861588c212ca276c4e5a06efc7b4df33f35cf636301009d",
+      "file": "yellow-dark/gu/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167983,
+      "sha256": "175cf3474a86ce7ea5592b8dab9595ba1d65628565416704a2b7facc789a81d6",
+      "file": "yellow-dark/gu/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 189884,
+      "sha256": "468df92c61fc8a2f03797ca695601ad77406d51e9ae436629c2e9703d81fc453",
+      "file": "yellow-dark/gu/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156950,
+      "sha256": "0e31d825ee2be6cd3925d143fea4b9cf82f4cc995a9d8245405bd9632484339b",
+      "file": "yellow-dark/gu/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50668,
+      "sha256": "a5812d6be87377c955c413185708acdac7fa5e4346813d1c696e5838bdeab03c",
+      "file": "yellow-dark/ta-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 175406,
+      "sha256": "41b44f8b7f2846aa65b62f8b63dd9d274e00bd8b7cfa3624367aacfa2a124bf7",
+      "file": "yellow-dark/ta-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209435,
+      "sha256": "d6e0f6d77f855a1602c319be2224acba94fa9a35f8e0a6ed3c58dc6c4f52e830",
+      "file": "yellow-dark/ta-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156406,
+      "sha256": "a7c00dbd0e9512bd5cee5244f2074d43bb7f7375677255593bb5ee46a8b34e13",
+      "file": "yellow-dark/ta-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198502,
+      "sha256": "5942ca430f34b6745f510ed931090def6d470aecdcb6b1f0533c6dd657968981",
+      "file": "yellow-dark/ta-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200336,
+      "sha256": "e0d9e3a02ba877e5fa1c05ef3526f75e3c683e531f2f64e8433d5cf194fc11b9",
+      "file": "yellow-dark/ta-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 165430,
+      "sha256": "1634746a502f914863c15d2181b8a1695e669b464383e2ee372607f906d482be",
+      "file": "yellow-dark/ta-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 51359,
+      "sha256": "2fad13bb5f566349cd9c2230d88dd9f2dac11364962ad2823ed3f74e7c9805cb",
+      "file": "yellow-dark/bn-BD/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 173965,
+      "sha256": "f28f0b4e220e07aad57a6d04c672a8727c2bb7f488d069898e1c003b1ef28e77",
+      "file": "yellow-dark/bn-BD/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 208357,
+      "sha256": "89ee478f3bfc55dd8b9ef180d2ab3e42875d11b01b3d362d5de8ad2785875952",
+      "file": "yellow-dark/bn-BD/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 157243,
+      "sha256": "a47c5bc9c3568a2074a6e097dcd0567773186b5da25a2d9d931a3091762af059",
+      "file": "yellow-dark/bn-BD/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168819,
+      "sha256": "f909ab4b144d04095c65c2fa9cd67fbc0e8d30b8afd67490bf4cdc70373dec70",
+      "file": "yellow-dark/bn-BD/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198238,
+      "sha256": "2db60592511c61a45c8d95443446ae7ef548b9c37960c86741438c6054822462",
+      "file": "yellow-dark/bn-BD/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 161293,
+      "sha256": "f08554130c9355bff442117b9599480cfea9ff3843df9071c657a3743d587937",
+      "file": "yellow-dark/bn-BD/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49394,
+      "sha256": "afec3c1b4c70c0d1d536d13ed693d397ce1da9c914a067357cbca4bfb63b97df",
+      "file": "yellow-dark/pa/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167771,
+      "sha256": "5bb2d81a932e17114862c06e03d3f9d63fd8b3b285c34bb04625ed8341725490",
+      "file": "yellow-dark/pa/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200500,
+      "sha256": "f9a9e375fc3704770def8abe33648d6ec38c2006137f462a37fd65d39d726107",
+      "file": "yellow-dark/pa/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 146627,
+      "sha256": "302c8a38b31557f7602c97dded3fd6ce005c5cd6cadc2124ed45f0a3905329e2",
+      "file": "yellow-dark/pa/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 165678,
+      "sha256": "4f275f7763bd9d5f25d2d00f329dd42b8d41999d61515d28aa6031f7ac8c5b7f",
+      "file": "yellow-dark/pa/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 191494,
+      "sha256": "09caa25507c06676e0239f3068a6ac16d4be1556993b44939f3ce2e67e34526f",
+      "file": "yellow-dark/pa/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 154369,
+      "sha256": "027b3275e68611f2a3f9e0ade2cee976e4d724a55c340b21bdfdc68fd34ab5e0",
+      "file": "yellow-dark/pa/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52288,
+      "sha256": "64d8f1d364f0333579a8a919ff19ba79931c701aa76044b2c93ad2827d501460",
+      "file": "yellow-dark/kn-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 187159,
+      "sha256": "672e352547f5eb77fb80360ac3805ea477a6d9df917fbbda4e197282794483c7",
+      "file": "yellow-dark/kn-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 219785,
+      "sha256": "5f99650f92754b4a6383d1d948180c367adb54d0080035ce0e3b408d604765fd",
+      "file": "yellow-dark/kn-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 162381,
+      "sha256": "ce9ee62498ee7569feedfb5c5e51de6b9b40f9964c6acc21c39b3ed041367551",
+      "file": "yellow-dark/kn-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 194896,
+      "sha256": "9f8f3fcb3d18083801a2525cf413c02d01edae90033fbe4778ca573eff5ca509",
+      "file": "yellow-dark/kn-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209738,
+      "sha256": "9547e72c853c36f6cd257f27288b7e9a4c3630b7311a7fcd71f3aa0d9a72da7e",
+      "file": "yellow-dark/kn-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 163449,
+      "sha256": "b5eb31dec95b22cb7c0917a56e252056ce0d417e129d89defb2d210315fcbad5",
+      "file": "yellow-dark/kn-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 53457,
+      "sha256": "a5d04b0168a9538b6e2fe6c6f1abf7264be387009ec95318826703cb342e8797",
+      "file": "yellow-dark/ml-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 185610,
+      "sha256": "b86f9c6368fcefda453ae30a35fe956fed0ace16478f1a1f7d35838a14a62566",
+      "file": "yellow-dark/ml-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 222404,
+      "sha256": "e702b88471551c2e52a2ee515dbcd2115881a603aa90788379d4fcdca81a8883",
+      "file": "yellow-dark/ml-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171035,
+      "sha256": "2cd2f2edf29b633d3aa913f35a05f1839b7007a602d6a8d2b07d62d6ab7c0cca",
+      "file": "yellow-dark/ml-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200862,
+      "sha256": "a9a1856ed86f500b60fcfe502fb7a9bda04d71ea8e3767db6078de7c2e133158",
+      "file": "yellow-dark/ml-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 210774,
+      "sha256": "7a8b12d25f3480af0111d6267f60c8efe62a52c4e4671c269309bfc4ec43d571",
+      "file": "yellow-dark/ml-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 172173,
+      "sha256": "d7a935dbc7d256f18f6e2f3f6042882929924c5f62dbce6e076b9ccc9c593b5d",
+      "file": "yellow-dark/ml-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52703,
+      "sha256": "002c2a3718f5f290538b25b4a23530d58b0664f32fc8df44ace52355dd873161",
+      "file": "yellow-dark/or/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 185409,
+      "sha256": "d7198d657935b5f010fa48c97668510aaad123f7d64ff9dabb5704b17fd46079",
+      "file": "yellow-dark/or/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 216044,
+      "sha256": "f6ee073be470cce9541815484ab02831fc06f128f5a13f14a2ddb005899f5a57",
+      "file": "yellow-dark/or/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170253,
+      "sha256": "c81adcba137ab3ae24f21d0a21bf37409b7af4e6dc999721afc1c7ca39e2dc42",
+      "file": "yellow-dark/or/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 184507,
+      "sha256": "3dab07e5d6be0fdfc1feb2edd1d373312e002c5f2d72862c3bbb9a60ed0e9386",
+      "file": "yellow-dark/or/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 201579,
+      "sha256": "75d2ea84687b84500a491f6db86cb01b0857117b09f1c5205449e55bfd89855d",
+      "file": "yellow-dark/or/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 161352,
+      "sha256": "d5d6a55074f098248c9a6d19e2ac1f3e0fe9b68771fd61e7d2be828445db72fe",
+      "file": "yellow-dark/or/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52720,
+      "sha256": "a890bd1e75c269ede734c9983f55c129328a512ea42ea3aee38cbfc3b6ef88da",
+      "file": "yellow-dark/es-ES/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169054,
+      "sha256": "eb1b5e6708dbdfee00b7c50bb485d5731c3a9d671f11109b845c2623fd650e2d",
+      "file": "yellow-dark/es-ES/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 206769,
+      "sha256": "9609824a047bc2b4d8a64bc5d4eb5ff3b136d80e074b518455f4066ac7f01a88",
+      "file": "yellow-dark/es-ES/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147282,
+      "sha256": "2d1b5d34ee56fa310deaf536624103f55d10b370690ffc8360caf6ee55abfce7",
+      "file": "yellow-dark/es-ES/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 180874,
+      "sha256": "57b8a5719edffd3cc3ea6d388cc3ac20dadc07a820188979c952302ae5552bce",
+      "file": "yellow-dark/es-ES/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198287,
+      "sha256": "e4c498c6910360d081a5cf1776a05485bacf2e7286a6e262afed048696c865bb",
+      "file": "yellow-dark/es-ES/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156000,
+      "sha256": "4b7195e25790871909904e8c3596a8220e652e6ad83841308b244b2e4587bd2a",
+      "file": "yellow-dark/es-ES/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50130,
+      "sha256": "db48b864bcc22bc6f236ec4e50c416447499de276f04a0e0279bdcfe0c065bfb",
+      "file": "yellow-dark/zh-CN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171805,
+      "sha256": "db2e8ba0f8e7dcb2da9fd38be836f5c34fae2511d3a0c240e43dda750055527e",
+      "file": "yellow-dark/zh-CN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 203362,
+      "sha256": "a02fcfd39ca691696b9cc8dc880b02b882afc2e5f9abdbb2f79f0966e1073a41",
+      "file": "yellow-dark/zh-CN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 145033,
+      "sha256": "fd6c71f6d1871db8c272c8fd3c0083101ee6ccf46441b957751f6f4522d42aae",
+      "file": "yellow-dark/zh-CN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 176815,
+      "sha256": "6188b49f3fbd1b376d91a09c61e725c26bb7d498fa0c3bc7c0bbee8a446f7dca",
+      "file": "yellow-dark/zh-CN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 197912,
+      "sha256": "a97e8d983598d2448a33772c6bdda11dd26f91cdbef5bb92dd102f101b9e5111",
+      "file": "yellow-dark/zh-CN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 158796,
+      "sha256": "e7e53232769b50c0fc3146f65041f3986e72554b8abcc8abb7525f7357c8c45c",
+      "file": "yellow-dark/zh-CN/06-panchang.png"
+    },
+    {
+      "width": 512,
+      "height": 512,
+      "bytes": 39339,
+      "sha256": "fe8c24e6503692c8cbe011343de6bdab366021e10eec32b65d56e18661b569c2",
+      "file": "mono-dark/icon-512.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52481,
+      "sha256": "7655b9518052d0bb0efb3d1afbfc7d338aade4cf970e030e68eaa12fcf45b10e",
+      "file": "mono-dark/en-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170405,
+      "sha256": "f1979ee5485dceb35fb0d2c72fd3770d6d99ab5b7799c1d8f8a56f7d079c0117",
+      "file": "mono-dark/en-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 207393,
+      "sha256": "2369122e9b780f8e4bc8d1cd55b9194aa52a46db1b570337f925c8c4b3224467",
+      "file": "mono-dark/en-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 145286,
+      "sha256": "c094c2934fc0d9f1fff9b13f51644925e49c83c427d75dbadb0d0c61c4f231b5",
+      "file": "mono-dark/en-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 179562,
+      "sha256": "8a3b7c1e7055e09b43b7704d842678054b607acd88415941535b0358d0e54559",
+      "file": "mono-dark/en-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199579,
+      "sha256": "ee442dabaeef77cca546a284d08947e73b31d3ad108d0e19d59a2d0ff16f7906",
+      "file": "mono-dark/en-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 158118,
+      "sha256": "c0f8d4fd6d2d32ba1983b335aa47e1e9ba8de25554af5bae00f0fff647e0a1ae",
+      "file": "mono-dark/en-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49584,
+      "sha256": "3847faf813459a6664496e2dc15373937eb96c0a7ab6b38d18e252bacb5d09b4",
+      "file": "mono-dark/hi-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168992,
+      "sha256": "306260761cb9e3086504194425b18c330980b872dcadf239817a7aafa9a731b7",
+      "file": "mono-dark/hi-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199122,
+      "sha256": "10725db8279c55597dfe6a8ec61acac022c4a79c99e668b45e94b33406dd7463",
+      "file": "mono-dark/hi-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147976,
+      "sha256": "0c63cfb57201b0e61d225e9f5cc5a0806dcf75a87b46bdb197655dcfebd0229b",
+      "file": "mono-dark/hi-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 166849,
+      "sha256": "5e5bc674b876abd2d3c6551359260ea6a982f5651b0d35a96d13cb092acf3f63",
+      "file": "mono-dark/hi-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 188767,
+      "sha256": "1743946dc4ab5e6d1b2727b26782139470390f4c18e67bdcb374832b615dfc45",
+      "file": "mono-dark/hi-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 152399,
+      "sha256": "a74dce0d1e445c3174d5d48a267947ff18a3530938c56031f70aa394e444505a",
+      "file": "mono-dark/hi-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 48954,
+      "sha256": "8794f9a2ce56ed17fea12ebfe0ad67d1b90e5e02138545dddcac6d0d18d4ddfb",
+      "file": "mono-dark/mr-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167893,
+      "sha256": "1a9dca9732c161a7e74e10a86ad7e37d4fd28f78e0faff0efbfd697a4852620d",
+      "file": "mono-dark/mr-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200847,
+      "sha256": "36f0b47b58a677ee99c65ba4c018be232bd85e47f660b9e265f0c10b53dfc990",
+      "file": "mono-dark/mr-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147003,
+      "sha256": "a02b7fdba69912fd496d2a9dc61edfdbafd89bf8092822746ad7165471ff6407",
+      "file": "mono-dark/mr-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169182,
+      "sha256": "4e5a194e912eb8bf137ea097bbd5d995ed281f27e0c92362a0a95d8381644b6a",
+      "file": "mono-dark/mr-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 186737,
+      "sha256": "75d42ca2d10df2b59776e78bc7e421a4aa3999d023c90c1be9518d08da96f2d9",
+      "file": "mono-dark/mr-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 154348,
+      "sha256": "ff602124a8bcbde2f2b1eabe662e211e7869e2b052de9faa0eb231572c03b852",
+      "file": "mono-dark/mr-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49518,
+      "sha256": "8894ebd7e88d59fcd6cef43860338e53c81611f101157d32baaca937cbbf4b78",
+      "file": "mono-dark/gu/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171208,
+      "sha256": "041f3a86d234ee7f3cd1578f7421454762d037fd68f781881d322368400f7d25",
+      "file": "mono-dark/gu/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202800,
+      "sha256": "5302a43046862e315e7dfccd5d9ad357fa6fc2b5f1327baedbdc02ba80a7e988",
+      "file": "mono-dark/gu/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 147897,
+      "sha256": "33c77ec703c236c5a9c9df51f0595e7522f9162b9ebf614bb93cec426e4b99fc",
+      "file": "mono-dark/gu/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 166850,
+      "sha256": "0bc582af8f5e6e2fc812f9cd63dca7d98bdb67bac032ca4fc52fd1ae67fc3805",
+      "file": "mono-dark/gu/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 189416,
+      "sha256": "a16d17cbedbc78be3334576769eafbab914107d7131257ad93c679cbe3f0e392",
+      "file": "mono-dark/gu/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156426,
+      "sha256": "5043f29940517531c7dbc784cd9ab4c5ead117faad4d03275b3c2b0afa8002a3",
+      "file": "mono-dark/gu/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50460,
+      "sha256": "85f35a497cae7e7c40e61b88369b30a93c108966e835f82cbd20d841a08ce059",
+      "file": "mono-dark/ta-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 173880,
+      "sha256": "688600f6c7c80d28fb39ff89a72c27480419c91b31a935629f7da073e4a9ac19",
+      "file": "mono-dark/ta-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 208709,
+      "sha256": "ced8313d2520aa056c8596fc5d6f229bc50ddc36520234ec1a72f22eeca897eb",
+      "file": "mono-dark/ta-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155231,
+      "sha256": "067ca2d1a2d317a5b4341edd8f2acb20a1bcce46ba39a877c9a14daeb3d6000f",
+      "file": "mono-dark/ta-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 196509,
+      "sha256": "95473358fdf107524e6044809bdf45b3e45f83ea5ec61a56f8d8f040c6820410",
+      "file": "mono-dark/ta-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199266,
+      "sha256": "cef9bda7d637879b773b1b778ce52635c7293851f82d215965ceab235d440bff",
+      "file": "mono-dark/ta-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 164273,
+      "sha256": "5da211dccf1b93ce6eb51a04723b7ebfbd624203a85726466b7b889dbb940d58",
+      "file": "mono-dark/ta-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 51079,
+      "sha256": "81fef0355b5871c58710518cdf6481d8dc5b599901084734cdbae5931d66f689",
+      "file": "mono-dark/bn-BD/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 173012,
+      "sha256": "02a6ea5d8628bd69fe795095c85726e4a018211c811e62328ff179f9aa3dc567",
+      "file": "mono-dark/bn-BD/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 208117,
+      "sha256": "cd1e3bcdbeadc69182230bbd75e8f50ac4b9681d96b5ce7add863cbb8e49c2ca",
+      "file": "mono-dark/bn-BD/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156183,
+      "sha256": "7b2331f399901f7339c726ef00f5c777dfbd6a8b0800b4233385cca31538c797",
+      "file": "mono-dark/bn-BD/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167716,
+      "sha256": "6f3ea10316f069174430c6242c1449592521b1064bd6a3d4b1a6c453e0be007a",
+      "file": "mono-dark/bn-BD/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 197578,
+      "sha256": "56763e4d89a060a9c3b3773e2a4dd696163d9d3bdfadcc771a84a4851eca2b92",
+      "file": "mono-dark/bn-BD/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 160354,
+      "sha256": "9c2eedc6832bc329034b9ec03ba6ea53e5560ac7756493c95637351b7d5c82ca",
+      "file": "mono-dark/bn-BD/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 49021,
+      "sha256": "d39e50e24542717208f04b76ea7256b6c708e9c6ea785b05a21d3f71fd2afc60",
+      "file": "mono-dark/pa/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 166898,
+      "sha256": "fbd8cea3c0568d4def87135f6c194fc13895e6d5934b8119be615a9065165302",
+      "file": "mono-dark/pa/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200092,
+      "sha256": "c09ae150c8a7e5c1f5528bba12140882898988a9353ebc0fb6e25171e0d2825e",
+      "file": "mono-dark/pa/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 145591,
+      "sha256": "9154a96aee7897c1b6b4d31173016e5e527681c2bacec217855a7dd0f3eb0d70",
+      "file": "mono-dark/pa/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 164252,
+      "sha256": "86607ae4ab9d417aade353d76fab979c9c251ef287c3698cfa33015339dea48b",
+      "file": "mono-dark/pa/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 190992,
+      "sha256": "cbcd635b1e76d37bbb90486acf1aa11ff4433de0a19e72151c66c993a89007d6",
+      "file": "mono-dark/pa/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 153500,
+      "sha256": "30490731acd406952241949e0ce9a16b0978734a02deb8cf7dd68b2336031974",
+      "file": "mono-dark/pa/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 51822,
+      "sha256": "6e9acc708d0d07da9af4888c0085235cbc334560f3be28e37c73ff73bdb98112",
+      "file": "mono-dark/kn-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 185391,
+      "sha256": "f6b0475ebe7a0e12096f23b16eb23ef448759f3a98ada3c6f849c5c71fff1fe6",
+      "file": "mono-dark/kn-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 218909,
+      "sha256": "bbba6bf2d72de268baca2f18e94bc2cc32cab7c6bc995c580a4ee751d7ce0ad3",
+      "file": "mono-dark/kn-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 160759,
+      "sha256": "8df52f77fe99e578572f8cbe1960138d5e9d4331cd4e90452be014e19865772f",
+      "file": "mono-dark/kn-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 192829,
+      "sha256": "9943cfb78d4f602fed3d46f4e74ed183018b61f714bc3eb5c32397555d5ae873",
+      "file": "mono-dark/kn-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 208120,
+      "sha256": "7c033871c4e17648cfc561c6ca7aa4921f4fea77f52dc0d8624eeebd5f55325c",
+      "file": "mono-dark/kn-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 162029,
+      "sha256": "e5063c480509573de975c9b2b836293ebfb2b64426a307237bbdcb1e56911070",
+      "file": "mono-dark/kn-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52653,
+      "sha256": "629aadf7a8aaa1796dc7bc57ede479e0b461a1ed5c1a189731b51629b6f0ba5a",
+      "file": "mono-dark/ml-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 183627,
+      "sha256": "59df4e12bf5d200f7b1d3024dafa8fa90512b0923fce0526aa50583efdb53770",
+      "file": "mono-dark/ml-IN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 220463,
+      "sha256": "182d542e7d0a9cb12b7599a845b22d3bd6768ac48e5ea68cf8397a3270573cc7",
+      "file": "mono-dark/ml-IN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168656,
+      "sha256": "666785a9d5598d5d1ef988b9f859618b5eaa097a5606f4b6ef6f6720449c4153",
+      "file": "mono-dark/ml-IN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198153,
+      "sha256": "ae557c9233816ff9e967a0654d014090d02a4176d72d00602f581ae84f5a2a08",
+      "file": "mono-dark/ml-IN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209202,
+      "sha256": "b207074a686a1a36b0c8c69f32a16abfab64111cdab9586927efc93129cc54ec",
+      "file": "mono-dark/ml-IN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170302,
+      "sha256": "4ed16002dc766c7f91dbdaa0130979745b220f0dc8a7460e4b9c09f1f7bb3c9a",
+      "file": "mono-dark/ml-IN/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52338,
+      "sha256": "3f38b0aa567bd7f5578a04439a5a89cc8145d0a156be1570bee6687841014bb1",
+      "file": "mono-dark/or/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 184165,
+      "sha256": "aadb2393b95a38a5a6995e86fd0cb309962c905adac922c984e4792fad9523ca",
+      "file": "mono-dark/or/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 215381,
+      "sha256": "be81de5fdc2ab8a96fe801c0022bab7c67ae8fda753cc6f06b5d5625fa3d438b",
+      "file": "mono-dark/or/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168460,
+      "sha256": "1fd7f07404c8fb89b44912b0fdd4c04b7635cdf12d636cac502aa338af5bc930",
+      "file": "mono-dark/or/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 183006,
+      "sha256": "be8208c72d8689834bf2b4799537386591e6636579f40d359cd4b18b66e0f647",
+      "file": "mono-dark/or/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200874,
+      "sha256": "e6c47e2fff7a883a41aa759316e2864869f3b837177da2f67151b20df8e5123a",
+      "file": "mono-dark/or/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 160516,
+      "sha256": "8719b2dfbe8e5f0add9924e99629fd9acda0a33bcb7c7aade99f15ac40b09cf5",
+      "file": "mono-dark/or/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 52209,
+      "sha256": "ffb18ff43ee8e2fd489acc486c7ef9335d09bedc2f94c2d193050df685c404b5",
+      "file": "mono-dark/es-ES/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168105,
+      "sha256": "f9167ec4771c6aa2302e87281a4e1fc2ec546897fd82f0bd3420d74e64cf3ce3",
+      "file": "mono-dark/es-ES/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 206423,
+      "sha256": "49d7c2c6a9142f9360abb85fbbc8f5d8812fdebe3e846efcc62a370ee6981717",
+      "file": "mono-dark/es-ES/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 146410,
+      "sha256": "b89cf36851776486958e6cf4cd345fc3c2fe632b0a0e009b332343819bde6be9",
+      "file": "mono-dark/es-ES/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 179471,
+      "sha256": "17d87b7b0a5d92ebe96adaffa96c8f106f4d8731cbb209ec9641f13fc4647203",
+      "file": "mono-dark/es-ES/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 197491,
+      "sha256": "33310d8dbd35e04df1c323d831a536de84393cb30ba1819f7389dad1e6f5040a",
+      "file": "mono-dark/es-ES/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155334,
+      "sha256": "3b9f5c0a57bcf22994762992a0ac8d4e0d0a3381d6cb0f5fee7290165294edb2",
+      "file": "mono-dark/es-ES/06-panchang.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 50014,
+      "sha256": "519c75dcf219c582570a791201aa0b768f3dc7acc4a9be48b4cf748196179005",
+      "file": "mono-dark/zh-CN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170788,
+      "sha256": "18e1921a777e1d259b12d6e0a5280755505828906dbc4a376cdf079dd27010a8",
+      "file": "mono-dark/zh-CN/01-dashboard.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202968,
+      "sha256": "7273c45d2fe66cb415d5e964bcab60a74a116de3c853866bf9227b6026ddc3e8",
+      "file": "mono-dark/zh-CN/02-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 144190,
+      "sha256": "c6149d21b6a3c8fbd6b17322a1597db0b9e806e2fa8cf8c21ba9b7818c1cef2f",
+      "file": "mono-dark/zh-CN/03-chat.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 175261,
+      "sha256": "c1962f0b3e817b1a96d3aaab4dee58a8d5054e715c4b4c7f9e23a968cc595e99",
+      "file": "mono-dark/zh-CN/04-multimatch.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 196964,
+      "sha256": "3d67a3bdcdaaccccc24e9a684fe563a8e842c14dc16142ed63381aef6b1d5f15",
+      "file": "mono-dark/zh-CN/05-numerology.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 157938,
+      "sha256": "bb13aa4555ecc9ee4d6bf9537fec8674b2d4246c70712ed642c3dd7929d60d7a",
+      "file": "mono-dark/zh-CN/06-panchang.png"
     }
   ]
 }
