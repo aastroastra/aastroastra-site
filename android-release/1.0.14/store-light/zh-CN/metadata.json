@@ -1,0 +1,64 @@
+{
+  "code": "zh-CN",
+  "playLocale": "zh-CN",
+  "name": "Chinese",
+  "nativeName": "中文",
+  "theme": "store-light",
+  "title": "AastroAstra: 吠陀占星",
+  "shortDescription": "用你的语言查看命盘、数字命理、合盘配对和每日黄历。",
+  "fullDescription": "用 AastroAstra 探索你的出生命盘、数字命理和每日黄历。\n\n你的出生命盘\n输入出生信息，查看命盘、行星位置、星宿和大运（dasha）信息。若出生时间未知，部分解读为近似结果。\n\n你的数字\n了解你的生日数、命运数、姓名数和洛书方格。比较不同档案，阅读每个结果背后的解释。\n\n合盘配对与黄历\n根据出生信息进行命盘配对，并查看你所在地的每日黄历。\n\nAI 解读与照片解读\n就你的命盘提问，或选择手相或面相解读。照片解读需要你先同意，之后照片和相关信息才会发送给外部 AI 服务商。手掌照片保留在你的设备上，用于历史记录和重试。AastroAstra 不存储面部照片，也不会用它来识别你的身份。你可以在应用内举报 AI 内容。\n\n语言与登录\n界面支持十二种语言：英语、印地语、马拉地语、古吉拉特语、泰米尔语、孟加拉语、旁遮普语、卡纳达语、马拉雅拉姆语、奥里亚语、西班牙语和中文。使用邮件中的验证码或链接登录。\n\n本版本的核心功能免费，但有使用限额。订阅、付费咨询、钱包充值和商城购买暂不可用。\n\nAastroAstra 仅供参考和娱乐。占星不是科学。本应用不提供医疗、法律、财务或心理建议。重要决定请咨询合格的专业人士。\n\n问题或反馈：aastroastra@gmail.com\n删除账户：https://www.aastroastra.com/delete-account.html\n隐私政策：https://www.aastroastra.com/privacy.html\n条款：https://www.aastroastra.com/terms.html",
+  "releaseNotes": "新增七种语言：孟加拉语、旁遮普语、卡纳达语、马拉雅拉姆语、奥里亚语、西班牙语和中文。账户资料在设置中拥有独立页面，与已保存的命盘分开。黄历、设置和通知的版面更清晰。回复可朗读，不可用时使用设备语音。手掌和面部照片保持正向。长按八分点（Ashtakoot）可获得 AI 解释。",
+  "featureTagline": "献给 相信的人。",
+  "screenshots": [
+    {
+      "file": "01-your-cosmic-companion.png",
+      "title": "你的星象 伙伴。",
+      "subtitle": "每天，为你量身定制的占星。",
+      "capture": "english"
+    },
+    {
+      "file": "02-your-kundali.png",
+      "title": "你的命盘。 你的故事。",
+      "subtitle": "探索你的命盘与行星细节。",
+      "capture": "english"
+    },
+    {
+      "file": "03-your-numbers.png",
+      "title": "数字， 映照你。",
+      "subtitle": "发现你的个人数字命理。",
+      "capture": "english"
+    },
+    {
+      "file": "04-multi-match.png",
+      "title": "探索你的 缘分。",
+      "subtitle": "用 Multi-Match 比较配对。",
+      "capture": "english"
+    },
+    {
+      "file": "05-daily-panchang.png",
+      "title": "找到你的 每日节律。",
+      "subtitle": "黄历、日出与吉时。",
+      "capture": "english"
+    },
+    {
+      "file": "06-daily-horoscope.png",
+      "title": "一点启发。 每一天。",
+      "subtitle": "查看你的每日运势。",
+      "capture": "english"
+    },
+    {
+      "file": "07-palm-and-face.png",
+      "title": "更多方式 认识自己。",
+      "subtitle": "传统手相与面相解读。",
+      "capture": "english"
+    },
+    {
+      "file": "08-share-your-report.png",
+      "title": "你的洞见。 随时分享。",
+      "subtitle": "导出英文或印地语报告。",
+      "capture": "english"
+    }
+  ],
+  "localizedCaptures": 0,
+  "themedCaptures": 0
+}

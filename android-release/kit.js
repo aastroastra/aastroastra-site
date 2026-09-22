@@ -17,8 +17,19 @@
     ['fullDescription', 'Full description', 4000, 'full-description.txt', true],
     ['releaseNotes', 'Release notes', 500, 'release-notes.txt', false]
   ];
+  const STYLES = KIT.styles || { flat: THEMES };
+  const styleOf = t => Object.keys(STYLES).find(s => STYLES[s].includes(t)) || 'flat';
+  const isDark = t => /dark$/.test(t);
+  // The header dots name a site theme. In a style with fewer variants (store has
+  // light and dark) the dot maps to that style's light or dark member.
+  const resolve = (style, siteTheme) => {
+    const members = STYLES[style] || [];
+    if (members.includes(siteTheme)) return siteTheme;
+    return members.find(t => isDark(t) === isDark(siteTheme)) || members[0] || KIT.playTheme;
+  };
   let lang = LANGS[0];
   let theme = KIT.playTheme;
+  let style = styleOf(theme);
 
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const png = file => KIT.version + '/' + theme + '/' + lang + '/' + file + revision;
@@ -50,6 +61,16 @@
     e.preventDefault(); show(LANGS[i], theme); document.getElementById('tab-' + LANGS[i]).focus();
   });
 
+  // Style switch
+  const styles = document.getElementById('styles');
+  if (styles && Object.keys(STYLES).length > 1) {
+    styles.innerHTML = Object.keys(STYLES).map(s => `<button type="button" data-style="${esc(s)}" aria-pressed="false">${esc((KIT.styleNames || {})[s] || s)}${s === KIT.liveStyle ? '<span class="live">ON PLAY</span>' : ''}</button>`).join('');
+    styles.addEventListener('click', e => {
+      const b = e.target.closest('[data-style]'); if (!b) return;
+      show(lang, resolve(b.dataset.style, document.documentElement.dataset.theme || theme), b.dataset.style);
+    });
+  } else if (styles) styles.hidden = true;
+
   // Theme: follow the site header. A ?theme= link applies its theme to this page
   // without touching the visitor's stored preference.
   function applyTheme(t) {
@@ -59,7 +80,9 @@
   }
   new MutationObserver(() => {
     const t = document.documentElement.dataset.theme;
-    if (t && t !== theme && KIT.data[t]) show(lang, t);
+    if (!t) return;
+    const next = resolve(style, t);
+    if (next !== theme && KIT.data[next]) show(lang, next, style);
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   function captureTag(s, d) {
@@ -68,13 +91,14 @@
     return '<span class="tag">English screen</span>';
   }
 
-  function show(nextLang, nextTheme) {
+  function show(nextLang, nextTheme, nextStyle) {
     if (!KIT.data[nextTheme]) nextTheme = KIT.playTheme;
     if (!KIT.data[nextTheme][nextLang]) nextLang = LANGS[0];
-    lang = nextLang; theme = nextTheme;
+    lang = nextLang; theme = nextTheme; style = nextStyle || styleOf(nextTheme);
     const d = langOf();
     document.getElementById('status').textContent = '';
-    if (!offline) { const url = new URL(location.href); url.searchParams.set('lang', lang); url.searchParams.set('theme', theme); history.replaceState(null, '', url); }
+    if (!offline) { const url = new URL(location.href); url.searchParams.set('lang', lang); url.searchParams.set('theme', theme); url.searchParams.set('style', style); history.replaceState(null, '', url); }
+    document.querySelectorAll('[data-style]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.style === style)));
     tabs.querySelectorAll('[role=tab]').forEach(t => { const on = t.dataset.lang === lang; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
     const langZip = document.getElementById('language-zip');
     langZip.href = zip('aastroastra-play-store-' + theme + '-' + lang + '.zip');
@@ -83,7 +107,8 @@
     allZip.href = zip('aastroastra-play-store-' + theme + '.zip');
     allZip.textContent = 'All languages · ' + themeName(theme) + ' ↓';
     const n = d.screenshots.length;
-    const captures = d.themedCaptures === n ? 'Every phone shows the app in ' + d.name + ' and ' + themeName(theme) + '.'
+    const captures = style === 'store' ? 'The design on the live Play listing, recreated from the original captures; the app itself is shown in English.'
+      : d.themedCaptures === n ? 'Every phone shows the app in ' + d.name + ' and ' + themeName(theme) + '.'
       : d.localizedCaptures === n ? 'Every phone shows the app in ' + d.name + '; the app itself is captured in its default theme.'
       : (n - d.localizedCaptures) + ' of ' + n + ' phones show the reviewed English capture under a ' + d.name + ' caption.';
     document.getElementById('locale-note').textContent = (d.playLocale
@@ -116,7 +141,7 @@
     document.getElementById('resources').innerHTML = `
       <section class="kit" aria-labelledby="h-feature">
         <div class="section-top"><h2 id="h-feature">Feature graphic</h2><span class="muted">${esc(themeName(theme))}</span></div>
-        <p class="spec">1024 × 500 px · PNG · 24-bit RGB · brand mark in the theme accent, localized tagline</p>
+        <p class="spec">${style === 'store' ? '1024 × 500 px · PNG · 24-bit RGB · rounded headline with highlighted line, one phone' : '1024 × 500 px · PNG · 24-bit RGB · brand mark in the theme accent, localized tagline'}</p>
         <div class="feature">
           <img src="${webp('feature-graphic.png')}" width="768" height="375" alt="AastroAstra feature graphic, ${esc(d.name)}, ${esc(themeName(theme))}">
           <div><h3 lang="${esc(lang.split('-')[0])}">${esc(d.featureTagline)}</h3><p>The first thing a visitor sees at the top of the listing.</p><a class="button" download href="${png('feature-graphic.png')}">Download feature graphic ↓</a></div>
@@ -124,7 +149,7 @@
       </section>
       <section class="kit" aria-labelledby="h-shots">
         <div class="section-top"><h2 id="h-shots">Phone screenshots</h2><span class="muted">${n} frames · carousel order · ${esc(themeName(theme))}</span></div>
-        <p class="spec">1080 × 1920 px · PNG · 24-bit RGB · caption above the phone, status bar cropped</p>
+        <p class="spec">${style === 'store' ? '1080 × 1920 px · PNG · 24-bit RGB · Nunito headline, highlighted second line, angled phone frames' : '1080 × 1920 px · PNG · 24-bit RGB · caption above the phone, status bar cropped'}</p>
         <div class="gallery">${shots}</div>
       </section>
       <section class="kit" aria-labelledby="h-copy">
@@ -155,9 +180,11 @@
 
   const params = new URLSearchParams(location.search);
   const wantedTheme = params.get('theme');
+  const wantedStyle = params.get('style');
   const current = document.documentElement.dataset.theme;
-  const startTheme = wantedTheme && KIT.data[wantedTheme] ? wantedTheme : (KIT.data[current] ? current : KIT.playTheme);
-  if (startTheme !== current) applyTheme(startTheme);
+  let startStyle = wantedStyle && STYLES[wantedStyle] ? wantedStyle : (wantedTheme && KIT.data[wantedTheme] ? styleOf(wantedTheme) : 'flat');
+  let startTheme = wantedTheme && KIT.data[wantedTheme] ? wantedTheme : resolve(startStyle, KIT.data[current] || THEMES.includes(current) ? current : KIT.playTheme);
+  if (startStyle === 'flat' && startTheme !== current && THEMES.includes(startTheme)) applyTheme(startTheme);
   const wantedLang = params.get('lang');
-  show(wantedLang && KIT.data[startTheme][wantedLang] ? wantedLang : LANGS[0], startTheme);
+  show(wantedLang && KIT.data[startTheme][wantedLang] ? wantedLang : LANGS[0], startTheme, startStyle);
 })();

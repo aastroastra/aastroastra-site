@@ -2976,6 +2976,1532 @@
       "bytes": 157938,
       "sha256": "bb13aa4555ecc9ee4d6bf9537fec8674b2d4246c70712ed642c3dd7929d60d7a",
       "file": "mono-dark/zh-CN/06-panchang.png"
+    },
+    {
+      "width": 512,
+      "height": 512,
+      "bytes": 36125,
+      "sha256": "9e3766a3df31a08575e1cdff8dfb67db8d5b0ef35e66f40d20e1222496e0e7c0",
+      "file": "store-light/icon-512.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 65860,
+      "sha256": "1ae8f37a66bf1b619b6c43721fd4ec755f1382ebe04b5361cf436179ed210407",
+      "file": "store-light/en-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 173014,
+      "sha256": "82c39209e80a0453f3a4ae4006676c24b96a9306c80f7adbc94ecf688a1b074d",
+      "file": "store-light/en-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 203886,
+      "sha256": "9a7cb88d96766bdd38e5d3d92646b14fc7fbdbdc41e1296ffac146f1f7aaeef3",
+      "file": "store-light/en-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 191594,
+      "sha256": "24a7fed7948d35fc45038f24255f8a5a97965420e85ecd0dc179351b7e9e6b6c",
+      "file": "store-light/en-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198710,
+      "sha256": "29a7a658fc09dfb1800d5b5b64ee16e8eaba3a7e22674d346d2b30d6a98bd849",
+      "file": "store-light/en-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 251410,
+      "sha256": "e65c6154af10b03f3f38344fd9af3ea7ae9d38573143f155564bb5fe9cd9c6c3",
+      "file": "store-light/en-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 318721,
+      "sha256": "af309298eef5ca48eea01eaafe09296b9cd869908ace51a821210f75e4d1eb5a",
+      "file": "store-light/en-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 182178,
+      "sha256": "2641a5b749e8b5d8203adc01a643b2c0be1321eccf13b0cc4fb5bea3cbf0bdee",
+      "file": "store-light/en-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 133880,
+      "sha256": "4a81e3c029da1e0dd62cd5f88b64dd13c0061b4b4553729f64a51188626acfd6",
+      "file": "store-light/en-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 67136,
+      "sha256": "d710d3fc87d43f047249c9b9f1acac623751dabd9974a5f6cbede5df23227f58",
+      "file": "store-light/hi-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 163042,
+      "sha256": "88d5183329c51db358279ab77988af49b9963b20e0a0d86398903ec9ef69e8d5",
+      "file": "store-light/hi-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 205757,
+      "sha256": "f1b3679427fc61849758416412795b4c92a81ad256d79d8e304da54db884e566",
+      "file": "store-light/hi-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 188173,
+      "sha256": "87e0718f3623e1ad51ab9ea414d07fa0084537fa5044844299884543d30a0d6d",
+      "file": "store-light/hi-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 189394,
+      "sha256": "ccd42133b688796bc6d3f231800b16239f94b9daa6c63bb8d07c00002ec79721",
+      "file": "store-light/hi-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 244262,
+      "sha256": "bb35d4ec1708802fab64c3279aa28eba640fccc52535db5692bd95203897d0ef",
+      "file": "store-light/hi-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 306004,
+      "sha256": "a6203d77f2992fdda4c745508cbd8ef36a075d7eb4cf4b2b4c1fb0a80d60acda",
+      "file": "store-light/hi-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 180513,
+      "sha256": "e1ff4451b7086124aeca90ea3b02e899431b12688d23b393875073900779a79b",
+      "file": "store-light/hi-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 130843,
+      "sha256": "6200fb56ba33ec4093f21ebd62dd4792e216921582aed2d09d41750d5be812fd",
+      "file": "store-light/hi-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 65626,
+      "sha256": "49d2998a942c5e8ecaf710592e6a351a391b4da5b398795a6ccd29b3348bb18f",
+      "file": "store-light/mr-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 162334,
+      "sha256": "83da64269eac272c5c9072026224ce201a24765f9c689270596ca6e950f06a4a",
+      "file": "store-light/mr-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 205736,
+      "sha256": "989c62f34bad17aa68bd444abd9adcac4595a1d6d864f44f0301a449b8e0bfdb",
+      "file": "store-light/mr-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 195428,
+      "sha256": "be13c88af28592f11415bb268bd8f232fcb11ea6515d6d0fc05d97518531c2a2",
+      "file": "store-light/mr-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 193835,
+      "sha256": "d619c2edbac4359b5373f6df5fc1761c6c568c75707ab6d79d247e65bf9efd6e",
+      "file": "store-light/mr-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 239930,
+      "sha256": "04792c82488ab693a20839aab0628d81c6ca13a5ad88b592bb141da3ba162532",
+      "file": "store-light/mr-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 305491,
+      "sha256": "9bca0e8b928fbf62c856d62ccb49fe9633e88dbb193dedca9459ab3643ac7ea2",
+      "file": "store-light/mr-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 175348,
+      "sha256": "921ea7081d01515191b50c09d4e42f8267549e4be64f285d3f3df044b11bb2e1",
+      "file": "store-light/mr-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 131816,
+      "sha256": "59774d5290d0e945b6745cdd0ff7daa3f22a1120bc3a90df9c88a25d595de72e",
+      "file": "store-light/mr-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 64529,
+      "sha256": "48a6db08bf08ded6c4a7e11a0d8f6c7ba4db929bf04d4ddbfb21294c4de4d77f",
+      "file": "store-light/gu/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 162154,
+      "sha256": "eb8679835ca85c59be00fff055f81615f48474a62389ff58669370c313bd7879",
+      "file": "store-light/gu/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 204107,
+      "sha256": "ea6e3ec63a203e49c1f2a5fc499101e6c852c240add9eb311844ed72ec41287d",
+      "file": "store-light/gu/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 191295,
+      "sha256": "2103500c740560dde0108a4609b857e0d5399a6b8e98a35a7e9ef6151d7a5382",
+      "file": "store-light/gu/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 188457,
+      "sha256": "99f2a288ed40b88c8c3955af1313de9a64b32e0d375b022c11b31c80e2751c9f",
+      "file": "store-light/gu/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 245624,
+      "sha256": "0c7648ed52194d40429d8d3f495e2cee88f7cb65e46f2d948c4e1d6f0863458b",
+      "file": "store-light/gu/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 306512,
+      "sha256": "88b73cf052b6bad6aa0e55c1b50822ffda0309ccb66a5cc69303d5d970afd9ce",
+      "file": "store-light/gu/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170987,
+      "sha256": "ab09e9dc2b473a29c296491c14c1053746871875974d06c3cd7a7195361d25d6",
+      "file": "store-light/gu/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 132326,
+      "sha256": "37b3328dc391e9c5dd16952667e723d0b127a58d5763f35b0755db03a791f3a7",
+      "file": "store-light/gu/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 69420,
+      "sha256": "59594ead85e30a0f98496f379bb7038fb8834b1bf204708366e61eb2f7863a22",
+      "file": "store-light/ta-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 173863,
+      "sha256": "8463a8d0b5a27d8ec3eb497d25e8c93dc2e34a2a13dda53637538dd39c6be4cc",
+      "file": "store-light/ta-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 212948,
+      "sha256": "f2bfb82f32f955e8dde58d7d9ac882d4ff6f310d7c27e30c43ca01204c6b4933",
+      "file": "store-light/ta-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 224982,
+      "sha256": "f96ab25e61e60571f6d185a0ca1414fe468ce9e806e0e105812bdcde98d5cf08",
+      "file": "store-light/ta-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 212322,
+      "sha256": "929b4f1f574728de203da7aed14a23b4b918cafdc87520022862cebe4ec1de0a",
+      "file": "store-light/ta-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 258173,
+      "sha256": "ed76e5a630f253b39a357c1add48f41b3614a47b9248ab3694bceb4c38dba9d3",
+      "file": "store-light/ta-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 313959,
+      "sha256": "75027b9a41a178cbf68d7445d2ec997237385aab2222df52f18d0905342d8994",
+      "file": "store-light/ta-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 185683,
+      "sha256": "7a218ff9817fc2c0436b0cbfa340d619d203b45d44a06c22612295ad70ff3acb",
+      "file": "store-light/ta-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 138464,
+      "sha256": "4b17124baeb93319c486925742f6023179274b892564f1b49f5c87438618d65a",
+      "file": "store-light/ta-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 66347,
+      "sha256": "5c400f36ba700c92f69bc5771d46e8c1ab391fc1fda2ab265afce90da6e0bb42",
+      "file": "store-light/bn-BD/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171680,
+      "sha256": "6999a0f498ab192d8d78249633d52985ee4b9419d33c6beeff17d8571c5c25f1",
+      "file": "store-light/bn-BD/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 213331,
+      "sha256": "9002d89218913cbbf5f591aa5715ebb8e5d4ae0e08683b9bd070f66c416f5f15",
+      "file": "store-light/bn-BD/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 207247,
+      "sha256": "5c7b8ad97d5912054fb18ff4bdf1eb8340f332db4f07967da0c6deacfc853621",
+      "file": "store-light/bn-BD/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 200020,
+      "sha256": "426f4b9763d513c2b2b7bd7da67c8ca0b32672384c5bc25b4ef562168042f73b",
+      "file": "store-light/bn-BD/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 249862,
+      "sha256": "f884bd5fe205cb952250339aa88318ea0e87f8b03313978fcbfcbee1d8f89f0e",
+      "file": "store-light/bn-BD/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 308155,
+      "sha256": "ec532e44ce74cf61dde424265a301b0f4871cd9771166cb0b5482cec5074bb29",
+      "file": "store-light/bn-BD/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 181875,
+      "sha256": "1fd6e738a6357dd15442e0da06a3f6f9679425be563df787d1dba15a65cf9c42",
+      "file": "store-light/bn-BD/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 136067,
+      "sha256": "eec11f78e732ac50468b6ab98ac8ca0a41789cdb4a4d42d81624d9fe050ea350",
+      "file": "store-light/bn-BD/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 62653,
+      "sha256": "2a3dc62abbc8b23726ecdba16f0456785451302ebdda51f9cdfb144eda9f4d6c",
+      "file": "store-light/pa/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 156864,
+      "sha256": "677d9c931125f26408bc3f8a4e4b51fdee00768b59a542ab664bf4f6afbb9a46",
+      "file": "store-light/pa/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202924,
+      "sha256": "04ab55691205fed70148b4e2a4b9e332e0fddfe4a98a7610f11c1d3c5fdc9ad9",
+      "file": "store-light/pa/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 187157,
+      "sha256": "43865aa494aabc368ec540d07e55f748b268bca8d44e0eca8e410c75b3c8a4ba",
+      "file": "store-light/pa/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 194247,
+      "sha256": "fdbdde53e58ba223a05940524ccbb7cc20ca7b70626cc9b99b77044a2cce87f3",
+      "file": "store-light/pa/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 241654,
+      "sha256": "f7e6ab47c128e06e8765a2d380561c6ed8121cb1d07c64422053f6355da05fa2",
+      "file": "store-light/pa/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 301606,
+      "sha256": "a0fab0a0890cb4b7c091eacc80d69edb4195d51dcdc2770441da8c25dc205001",
+      "file": "store-light/pa/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170870,
+      "sha256": "04c14ca6ba7ff92ed7ca47059a23506dda0b216d5a8716285423d43fbfd561ad",
+      "file": "store-light/pa/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 128745,
+      "sha256": "011e9c732fd130be0f3952ad01b741d407436588f4f3603e395c3c27151e9fb9",
+      "file": "store-light/pa/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 77874,
+      "sha256": "7eac7704c8ba069b9299a4e20a43598c6ab5c9410deaaee48c2a9e82e55edc7e",
+      "file": "store-light/kn-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 185784,
+      "sha256": "30ebc968fbfe1f7ab5613fbf83b86ddf73d943b7ff734f0e49733838237a4a21",
+      "file": "store-light/kn-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 217362,
+      "sha256": "542ba2e9e170d0ef5e7f14a3f50cac623cd3b3e4e4daba139c1a9aa4901f8ac2",
+      "file": "store-light/kn-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 222242,
+      "sha256": "d2387e83bfc0aaec30c486be9feebcef0c4524005ee4fdf30f2631cbb1b4e542",
+      "file": "store-light/kn-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 224141,
+      "sha256": "793b7f41e61699d90446969b0583ad839b535981348200f8ade1afccc2dc2147",
+      "file": "store-light/kn-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 260675,
+      "sha256": "020289080f57c338419813e2ba56746630ec0a8ef4fda657289147ac720106ec",
+      "file": "store-light/kn-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 326304,
+      "sha256": "46fc1a8f25d8a993f1776daff2ad8da6c04849d516f01ed0f022a8a364e437f0",
+      "file": "store-light/kn-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 204614,
+      "sha256": "166346709c4c9e0b10a8d5761b2d9f08b25a28ca7eb64c394019641ade3df1fe",
+      "file": "store-light/kn-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 152345,
+      "sha256": "9f1889fa62569c3f8c221c3971a8ff4d4bca1cb4c1a93296fe5edd6357f3b51e",
+      "file": "store-light/kn-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 78865,
+      "sha256": "185fde37900a7879a1c5cfdb86af432eb9b5ffdb9df95aabc40aba66ce6e0117",
+      "file": "store-light/ml-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 189656,
+      "sha256": "300f4408be8f19a62c51b2464b08a35ed222d1fd16a96063ab40878bc942f3ad",
+      "file": "store-light/ml-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 227751,
+      "sha256": "1fcf90c0ae3a3999f24d3e3e907eb7c0f7c7df7fd401034b245f00f1c06f28ed",
+      "file": "store-light/ml-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 241399,
+      "sha256": "1468f4acdbbf5e4bc7ec3c36e4ae3eee92a894bb02184f8d1f61bbb851c17955",
+      "file": "store-light/ml-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 221478,
+      "sha256": "d0b900ba89d2a512644dce803d7ab2a28355732eba291b78f697e7f03e5f4936",
+      "file": "store-light/ml-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 268363,
+      "sha256": "d28699fdbbd703e9049715c028a024441673db1851b5fff82c7af5e374a7ddd1",
+      "file": "store-light/ml-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 322433,
+      "sha256": "c745f2407e5c96add67a64a7c05471220310091f27c0cc6a3f7edd2dcecd24f0",
+      "file": "store-light/ml-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 202188,
+      "sha256": "248f5e71426f603cc0b337f4e14002bb6411a219286a61ff60652f3088ce1c43",
+      "file": "store-light/ml-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155152,
+      "sha256": "e1ac4ea3012e537cc9b731cc5d4a14ef3a273138c108874b3ca9e44129a1979f",
+      "file": "store-light/ml-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 75341,
+      "sha256": "5a71ee1587a5f67dfcee97b240454b0a87e65b314eea7fadf671180b16bf66e5",
+      "file": "store-light/or/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 175571,
+      "sha256": "1a1d22f4b0291d20e641861b691ec6c8e916dcdd07fc7e76e287f1ca5d1e7f83",
+      "file": "store-light/or/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 224461,
+      "sha256": "459c8c0fcc2619b9eeec396506fa09787ed9e0595b7ca12d4c4f7dda3e762ff0",
+      "file": "store-light/or/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 222814,
+      "sha256": "76cd4c00eaf9e56588b0964441d16e4d8b6ae14959725b1f8ef2070e0c85c92f",
+      "file": "store-light/or/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 213116,
+      "sha256": "56d7d1377ea8fd2999bea5cdde28c2a978d133148fc9976dc94eb4361d7b06f0",
+      "file": "store-light/or/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 259512,
+      "sha256": "f12b1da504592f1884d675be3ac7b34d9b59ba62de6c140923054f18bc676334",
+      "file": "store-light/or/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 319956,
+      "sha256": "2566a725b6a8c05e2b0e700226c7825301f269ccfbf854b3563907776aed9312",
+      "file": "store-light/or/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 194140,
+      "sha256": "1984d736eb04136cd254f9be1bd0a381e54dd68dee705cd82858abf57912830f",
+      "file": "store-light/or/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 151295,
+      "sha256": "d69f70c61d30fb9471a5a6d6ca86ebc922b2b8be5adcc6741ffb84f68e040001",
+      "file": "store-light/or/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 61780,
+      "sha256": "83b90c39175c4425fdf3f0e334bb817d830211d40145dabd1f13f8d41ddce5a4",
+      "file": "store-light/es-ES/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 178183,
+      "sha256": "8a2a5336e8eddc24218623cb1a726ec5ad733192f2c6032960ed00a5f0d5dca1",
+      "file": "store-light/es-ES/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 198558,
+      "sha256": "49d323969c1263651daa8685ed4f461491e5f5b16c4e4d105ad7562f9d61af6e",
+      "file": "store-light/es-ES/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 191944,
+      "sha256": "b9bf2d1d61ae4fcc47e0d0214897db05705bc7b52475942f0bbd9bdb074ebabf",
+      "file": "store-light/es-ES/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 197099,
+      "sha256": "b358c92e2d25071ecf675c14197803d17d962a7c376d8787d336c78a38f20f04",
+      "file": "store-light/es-ES/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 250318,
+      "sha256": "2299be108730aa2a7de1cc7500f88552f49478877e69eb54fa8f6c23413ac55b",
+      "file": "store-light/es-ES/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 316868,
+      "sha256": "efe1de7108f9254a580725df03742331e9b6416e8bf91b9d84e21a5860fa79d0",
+      "file": "store-light/es-ES/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 183193,
+      "sha256": "75a614cf1d32f0c60fa140224a1aecc4004714bdbbbd3a64128e719760caa8be",
+      "file": "store-light/es-ES/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 128081,
+      "sha256": "4788e28b2032fe652e12d36fa56ba53847a0403cef5357c2012ccac90db5006c",
+      "file": "store-light/es-ES/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 62130,
+      "sha256": "c245607ab3f8d3641babe4938c4c6fb71fad43dd45f1c439faeb0575a5ec26a2",
+      "file": "store-light/zh-CN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167115,
+      "sha256": "b61d6138c70e0036573352f6acd4d5c6d2410af4a7257008bdb15bb16599a19e",
+      "file": "store-light/zh-CN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 204397,
+      "sha256": "25121ae4a22169b85058060fa4348e11c2c9ef2012caf12a8f0d57d168adb26f",
+      "file": "store-light/zh-CN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 183987,
+      "sha256": "da1fc9153ad60f9aeae6998b5492c2d0b1918c8eb4ccbd2620ef3df15fe7fac3",
+      "file": "store-light/zh-CN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 193866,
+      "sha256": "238322d978e84d7d52335d676f0f433bff993f26cf388b1d7fa223781df2ce7b",
+      "file": "store-light/zh-CN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 242877,
+      "sha256": "8092f3758fcf8bfec886b9aed543a406b04a726047778f2354fc27b52120aca0",
+      "file": "store-light/zh-CN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 301119,
+      "sha256": "c28f2c34c80f7fb9840e4b71796499799894aefa22b56036b3bb508f5a64b433",
+      "file": "store-light/zh-CN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171868,
+      "sha256": "b00e53b19b285451a71aa3b00ada1aa0bbdd2e2917681f141dac51164c800281",
+      "file": "store-light/zh-CN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 128142,
+      "sha256": "e73ffed904aae3767c980d36ae8fd92e78dfdc02c0d3e3fec61a13a009bf4de0",
+      "file": "store-light/zh-CN/08-share-your-report.png"
+    },
+    {
+      "width": 512,
+      "height": 512,
+      "bytes": 37046,
+      "sha256": "537613fe60344396192b86b747de181cdaad1a8f628d06150c3fa3b8d477cd53",
+      "file": "store-dark/icon-512.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 65089,
+      "sha256": "7cb3049276c292b421236859b433356cf0644882a9edf423a8056db644564562",
+      "file": "store-dark/en-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167981,
+      "sha256": "1aeb62fe998896905a857cc7b33f5987c0f16826fabc369db48b997d7c583396",
+      "file": "store-dark/en-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 191876,
+      "sha256": "8d5b8f558328561bbc7b78afb27f135232ca1338b25b326a66355a26cfeba880",
+      "file": "store-dark/en-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 195335,
+      "sha256": "5bd4a787950b4d1b27dbc581da9be6874df4862d44b4fd292a68217afbc6644d",
+      "file": "store-dark/en-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 179269,
+      "sha256": "3007a2ff6cb7a029146b1fba6c7e12a8b34af661ca8de3d7933ca4cc55a50d74",
+      "file": "store-dark/en-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 236591,
+      "sha256": "4ea2980516d3df58b65d16bbb6f607be6fdef5b28499f226bfe7e4f65ff245ed",
+      "file": "store-dark/en-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 242258,
+      "sha256": "7a39652c377d3f12a2d00b923995186976e1e4d9183421624816f80940a4db18",
+      "file": "store-dark/en-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 166485,
+      "sha256": "c1935d61c727471b001f07ea6a7ed26f8d72f722c476ef0fb8fd83a776db9eb4",
+      "file": "store-dark/en-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 170022,
+      "sha256": "d4d26af4934dcaad50446f60c5aaf7b8cce2e8cc775e3aee67cabc5b37bfed7e",
+      "file": "store-dark/en-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 65783,
+      "sha256": "1171bb04741e73143277ba66605380512fe4f433f3f850403be4aae856e2397a",
+      "file": "store-dark/hi-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 157037,
+      "sha256": "25b8d856398b343575a4bd6e9b9f53116cea9621abf9752069032c06835944d3",
+      "file": "store-dark/hi-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 193264,
+      "sha256": "5faafed61d3e31eb608a34318e8407b2debddfff6478ad71836c81f98e11cb09",
+      "file": "store-dark/hi-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 191310,
+      "sha256": "5e708102a6887f84ce43438e3732eb53ef8f51067e54e61015f9aef009fbe9a0",
+      "file": "store-dark/hi-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169689,
+      "sha256": "d85fccc2d3446c61e4acf85505f7dede0d979b6008b2636bfe4c1ec578cd8125",
+      "file": "store-dark/hi-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 228403,
+      "sha256": "7f4971c1486b341aa4e4a801072a0a243ffec5cd6ced10334f621b3c14a719fd",
+      "file": "store-dark/hi-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 234893,
+      "sha256": "30784f57fd947aff82f936178f6f95eead50aef74b466e1b95a48eb5cbde4375",
+      "file": "store-dark/hi-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 164990,
+      "sha256": "5f426b585920618ee1d59ddf47579af9d2db15f105580047634276fbbc0a59ce",
+      "file": "store-dark/hi-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167153,
+      "sha256": "c876f0b6f3f15425db10d7d62ee1f78313d3d4db128ed0605c1f035d81dddc3c",
+      "file": "store-dark/hi-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 64473,
+      "sha256": "fa94e81d644c7040dfd1b6171aff9a6007d9f64659b05cc3dde6f20566af704c",
+      "file": "store-dark/mr-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155885,
+      "sha256": "dc489cb1df8436d555c3a856c398879056425009bf35335444b0fdd1302a7b01",
+      "file": "store-dark/mr-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 193404,
+      "sha256": "487e1f1027f1e6e7d55f92fb69057d918023f2e4ea5bac4b6c141fb8b5c45a72",
+      "file": "store-dark/mr-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199097,
+      "sha256": "625cc2c7f930b9de66b47322a060e629287c0a55e82c26b18216209300ac2ced",
+      "file": "store-dark/mr-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 174376,
+      "sha256": "aa6a3c963c7275f84674cd01edcd5401c15aff221bb030a79407c27089187aad",
+      "file": "store-dark/mr-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 223765,
+      "sha256": "a4ca6d2f12989e8289d70b3c78f1f18d9c71f439fdb009214a24291d9d4cc41d",
+      "file": "store-dark/mr-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 234289,
+      "sha256": "8415fb01f5f2e5a1a2b2e936511d2d0e0b492324fdd4e7c5d99d2ca1a87cc0e0",
+      "file": "store-dark/mr-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 158369,
+      "sha256": "c439462e45c51ed477a83e846a177fdfc8d186b777b14b032b7a5cca7cab50ac",
+      "file": "store-dark/mr-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168368,
+      "sha256": "80beadb9ba088abf57d31fbb6d903c2e6c0a34660a89ad6230549ef18e89514f",
+      "file": "store-dark/mr-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 63260,
+      "sha256": "bdf054fa27caa8a2805466c3486b424561431d16a31163e9cba65e0651b033a2",
+      "file": "store-dark/gu/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155643,
+      "sha256": "b0822c58b576ba71f26173d8e9ae7c8d884244deb9524728da6548cd0ebe3fb2",
+      "file": "store-dark/gu/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 191446,
+      "sha256": "562029c7559bea9f8668fb13baaa778ce705f3b01439b450bd32d31ec3ee2adf",
+      "file": "store-dark/gu/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 194777,
+      "sha256": "9a9df9d4fba5265b3199e080f074341799421c44a0acc325ad13907ebe08dd82",
+      "file": "store-dark/gu/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168570,
+      "sha256": "c59e6bf5ee981bd5e591c57041d7df07ccf63cc4a4560e63584e9701962d7a87",
+      "file": "store-dark/gu/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 229972,
+      "sha256": "d4ef239a2daaf9c4f54444df937845d87ba0d859009d7da7e912bc44fbbd0080",
+      "file": "store-dark/gu/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 235400,
+      "sha256": "87f15aebcb8a23aa8a1aa0e855de63ce3613df242ab230306a40ea08084e7895",
+      "file": "store-dark/gu/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 154728,
+      "sha256": "636a2052bfc8b415c92ac3bc698974740be8ad1a2f28eaa00f12042c7eec7738",
+      "file": "store-dark/gu/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169099,
+      "sha256": "68f33bb74199911713d87723da35bf3a5bc7b34fde68d44e35e740d119f43f68",
+      "file": "store-dark/gu/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 68170,
+      "sha256": "15c7108384ca298fb6026c71f5e303eb0e115eaa84fa4d5af8cbdc5f4b8d603e",
+      "file": "store-dark/ta-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 168637,
+      "sha256": "13f103e9fac6264da214b3dc61e6108f987f5c5c24750974c6968d88b88faae8",
+      "file": "store-dark/ta-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199029,
+      "sha256": "12c6e8245e66fabe0cd077b7b080eff36eec7e3d2e203b01f94afb03557bd4db",
+      "file": "store-dark/ta-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 228641,
+      "sha256": "2116de957532d3191bbbbc63c9dd6f65ad4e4fa99614b0fc8f4ae566f9d93e15",
+      "file": "store-dark/ta-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 199375,
+      "sha256": "540489bcb1199618f39752144afd2ce9a98d71c6b371fcbd091bf6687684df9e",
+      "file": "store-dark/ta-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 242941,
+      "sha256": "97cc81deded64cdd534ba6dbd31df441789b65eacc2ef519d368d74830520dd2",
+      "file": "store-dark/ta-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 243669,
+      "sha256": "22e2693fa3e230c36179e79813c5f320a1a279ba9e3c0a6eb16faea79024f43d",
+      "file": "store-dark/ta-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 169840,
+      "sha256": "0fc4b5de89dbbd5fa0d9a9928b7d46a9234082afd535c49d70515543f2b8c804",
+      "file": "store-dark/ta-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 175362,
+      "sha256": "09d73a1e2552d25a76f43daea92e637afab2046ae1ca514f90714d1fbe8dd27f",
+      "file": "store-dark/ta-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 65251,
+      "sha256": "e748e1cf0f2cec8737e72b10c343596be52f7775f326ce3158780154e7d49831",
+      "file": "store-dark/bn-BD/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 166355,
+      "sha256": "8b08d6520f01e8b821910e8529bd72eafdae0fdea4d79cc7261bd8fa56e99d6b",
+      "file": "store-dark/bn-BD/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 201481,
+      "sha256": "86fd898bea3720f2174085f7618e2c97185bab2371903c2e9697ef191b5379ad",
+      "file": "store-dark/bn-BD/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 210951,
+      "sha256": "a1ac047cb42753a06c6731b29e5bf6a49fcbf73cdb0104ee6f4957693df860a6",
+      "file": "store-dark/bn-BD/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 180693,
+      "sha256": "c563ae322af23f3fa3d514d682051cf910c1c91bc01e1f9681f7efedcf98015f",
+      "file": "store-dark/bn-BD/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 234802,
+      "sha256": "ce9331beaa8ec0e0593966a8f326362dddff022eaf5684ae2984e49f7296b779",
+      "file": "store-dark/bn-BD/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 236918,
+      "sha256": "58a5205bdedaf36c2cf3660c904886ac1ddac927215d7e880aa4aa3c9d82a073",
+      "file": "store-dark/bn-BD/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 166228,
+      "sha256": "4cccf11dcea854d0b3a6576572c0718fc5594d8a6b74afe1f65ef681c22aee9b",
+      "file": "store-dark/bn-BD/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171749,
+      "sha256": "aedacdec2be5cf21b9208ece08440e7dd6be6b1290c6ffba0c066b86e14398cf",
+      "file": "store-dark/bn-BD/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 61207,
+      "sha256": "2e669094756f9efd22b83714067d174d85bbca3872f3c11a73f39d69ae126cbb",
+      "file": "store-dark/pa/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 150510,
+      "sha256": "b20b3a4ebc2de5b1d810a17200d9ec04299929864117a57017b61236c9532263",
+      "file": "store-dark/pa/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 190419,
+      "sha256": "2c1e556ac387e70e66d88a28970d793115688c168b33f252bcc0fc528d210671",
+      "file": "store-dark/pa/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 190415,
+      "sha256": "c9c156f7c9f35cf8f7fbd90c373f6379f3d9f6dfd030fbd74825b21f71342281",
+      "file": "store-dark/pa/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 174736,
+      "sha256": "07ae00b6a2ed4692b4d4fed3df725c3e05e34a68188ae6aeac7d34f8f00585e3",
+      "file": "store-dark/pa/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 225758,
+      "sha256": "1e1f3877c4ef460b201c76bc22160a000beff99baf9ea0204116bf5593b75bc5",
+      "file": "store-dark/pa/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 230585,
+      "sha256": "abcb8a001ab691fb8ddbcf4f13352b2a3256079eebc91905546bc4c40f768407",
+      "file": "store-dark/pa/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 154758,
+      "sha256": "bea11be99dc8aaa661e0463418ce44d90c5455ed037e04c1b64f36962c35b1d9",
+      "file": "store-dark/pa/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 165180,
+      "sha256": "b96635ce4cce1dd5f522300a6ae8d90b0f42cda5ef521faefdc0c82e99f9aa28",
+      "file": "store-dark/pa/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 78022,
+      "sha256": "a76f9a1cfcbe384e24c59e1b9d21d4203554c375454b0584e00a67ec72683d38",
+      "file": "store-dark/kn-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 182188,
+      "sha256": "9054ac3a4232ee33404df7103ddc77308e477a7bbb4e324499ca3f33c3dd208a",
+      "file": "store-dark/kn-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 206249,
+      "sha256": "6b3431b17e137c86a25f441b7f2c18263e6a65819829dfd0cf2d78c4396a91d0",
+      "file": "store-dark/kn-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 229120,
+      "sha256": "afca9da1583ffc934d310abd6cac32ea358491893ee1dc1b23488630ae844072",
+      "file": "store-dark/kn-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 212068,
+      "sha256": "e931f7841522607837b1c052215ddca4a2b3a3e0619ed3c00ef46e8ab7a4e6df",
+      "file": "store-dark/kn-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 247901,
+      "sha256": "843178218ce8cd97e7b77c03e54b066db713cc32df751c20f92ab8271794f7b8",
+      "file": "store-dark/kn-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 258103,
+      "sha256": "4f42bbc06f579de32f8a0c4cf023303570646948ec24bb1670c1c712ba802fdb",
+      "file": "store-dark/kn-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 188640,
+      "sha256": "59999c060f96d94952766a8f31208d8b463e58b6aa05142beeba4c89e772e580",
+      "file": "store-dark/kn-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 189911,
+      "sha256": "9c8e7b7fec5f4c8560e5a8bd37dbd59d69f59f9ac67027a77c1a46971b67a142",
+      "file": "store-dark/kn-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 78929,
+      "sha256": "e4c307baa64bf4bab2204867ccc76526e5345a9f829c161661aeb1dd4e35c14a",
+      "file": "store-dark/ml-IN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 186885,
+      "sha256": "bcfbdafdeb511b80aebbfc44fdb62d6e3857127c4d373da38d5fdac6dcbd1bec",
+      "file": "store-dark/ml-IN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 215161,
+      "sha256": "e3e02fd947c1daa362c4a1e6e2ed1d9d4a45cff43388e6750f5baf09f38a4a2a",
+      "file": "store-dark/ml-IN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 247367,
+      "sha256": "54e61f5b06e6c8849e9d4578c70c825f4b451da797bb83fd5a5765e833fe88d0",
+      "file": "store-dark/ml-IN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 209243,
+      "sha256": "d973097bc5184c5086b7efc1f71348182fa3702018e1aad3b0d2bc903521f5ea",
+      "file": "store-dark/ml-IN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 254257,
+      "sha256": "9f40a472e4b5406255de4936a0d071865b10c068f41a71747d0dbde346eceebe",
+      "file": "store-dark/ml-IN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 253980,
+      "sha256": "7267d9febdd62dc9c9f9a5db60e60e00688a642ac547c739608941a63ff7d09e",
+      "file": "store-dark/ml-IN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 184561,
+      "sha256": "2a764cabfe1134ad7c1ce20a3ff5164f9e98003bc08075f95637ef8c62e30e18",
+      "file": "store-dark/ml-IN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 193532,
+      "sha256": "03b49c9da99018ed75c4e50382a10f9f461c3b179ebf98ddbd91dd064044c7ad",
+      "file": "store-dark/ml-IN/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 74464,
+      "sha256": "5b95d21a79166822b834d6a7d4b2ad5b777097a4386b0820ee73025056bf5e07",
+      "file": "store-dark/or/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 171416,
+      "sha256": "09e735546ed0d67cbc8a70a146026b256d68879ffe47d39e0900b7e52b330403",
+      "file": "store-dark/or/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 211239,
+      "sha256": "81453a3990707d02b5f294cf52bc828512a880858ee2058ba836f5a552f09327",
+      "file": "store-dark/or/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 229746,
+      "sha256": "4dda7854ae93d2005626fc2083c3b0fb2a4baeb07ac0fe4a36ca5db2101c3e87",
+      "file": "store-dark/or/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 194869,
+      "sha256": "c7d525713786352b3b4d317cf49b26e8481d96c68febfcefa7cf76f9fdd95259",
+      "file": "store-dark/or/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 245723,
+      "sha256": "524884beb1a31bc536300d7d18b46324a39ff34c5637398047dd989d8fccfdbf",
+      "file": "store-dark/or/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 250860,
+      "sha256": "b70bdf438a19e77789b6195674c8daf1057bd252ba6bc358385485c82a2642c2",
+      "file": "store-dark/or/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 178983,
+      "sha256": "4f5000f9d5c92aa728e75f0dc5ec62b3159c64a68b493dd6f6ea4047462cddd0",
+      "file": "store-dark/or/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 188319,
+      "sha256": "c3274a5796d884622eba7367c377c853e2411ea81c9f4a3d943e42a8bcebe6fd",
+      "file": "store-dark/or/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 60954,
+      "sha256": "3f844619c056a8b29181c8aa07661334c903ff1706e0e034bcb809ea78779da0",
+      "file": "store-dark/es-ES/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 173062,
+      "sha256": "38f579055ee89f544067d03ee02694b09b7b3c4e4f22a7922d09e3afa468618c",
+      "file": "store-dark/es-ES/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 185535,
+      "sha256": "628aab682c7947039a23f83304ea0923eeec550a9b65a024c9e628e7d0bdb659",
+      "file": "store-dark/es-ES/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 196100,
+      "sha256": "cadefdfa673c879032f108fa098cba3ece474c1fbb1455d0c7636d37a2bb70e9",
+      "file": "store-dark/es-ES/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 177499,
+      "sha256": "a29a7e0f1850deec617fdbbaeebc83b8bbcc1fac63358b2dfbb4f06b5b6f0e5d",
+      "file": "store-dark/es-ES/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 235133,
+      "sha256": "f56c5d5227eab5cd0e56a4e7e5a6d2f4f66ef40436c6e34d7ba2710df560d8cd",
+      "file": "store-dark/es-ES/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 239977,
+      "sha256": "bacf51851cc8bef1cfe9d6d10da2f4a2b5aa3eff4dbf6c2007f0e68edbb0bd41",
+      "file": "store-dark/es-ES/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 167053,
+      "sha256": "e178ee695eaf95d43e25ac80c528af1b98439fecc13e60115fbbb2d61d7a36d4",
+      "file": "store-dark/es-ES/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 163509,
+      "sha256": "cf290a192e7bc9428d9c34bc576b64bb6d9b07f55ee75bf6505e05cff2c292c3",
+      "file": "store-dark/es-ES/08-share-your-report.png"
+    },
+    {
+      "width": 1024,
+      "height": 500,
+      "bytes": 60735,
+      "sha256": "8e37802a06a6a0541ac4e7fd0a17e9e771c526f0e3e30ad694f5648a735cf298",
+      "file": "store-dark/zh-CN/feature-graphic.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 161172,
+      "sha256": "f9ff50a8f15e8f67b0d9a5207341d7964c8ed982645907ce43b773fd0f9fdd81",
+      "file": "store-dark/zh-CN/01-your-cosmic-companion.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 191965,
+      "sha256": "ab273af2c374ec98a494c32b7702216fce2d9c443fb870dd7d68af719434fb0a",
+      "file": "store-dark/zh-CN/02-your-kundali.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 186867,
+      "sha256": "397b3117eab26d458268b8691cbbb6f717d5ddce15f74184d881e8f968931957",
+      "file": "store-dark/zh-CN/03-your-numbers.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 174209,
+      "sha256": "bbb7d6fd35ea142fdbe95ea162d173247fe765e06124f64a56ef853d7f330f88",
+      "file": "store-dark/zh-CN/04-multi-match.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 227073,
+      "sha256": "8746ad74cd3fc42ab06e03f3261d999330f21c072ec7b3c552b1ff395c55d776",
+      "file": "store-dark/zh-CN/05-daily-panchang.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 230239,
+      "sha256": "99c362c82d97aa63115cfe9f472c846a71f585936f502858b8836cd2565e523c",
+      "file": "store-dark/zh-CN/06-daily-horoscope.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 155546,
+      "sha256": "3e5708d99b51ae4bb14956a9c766c2ceb0fa4a3e925dc42b0d485441ab322249",
+      "file": "store-dark/zh-CN/07-palm-and-face.png"
+    },
+    {
+      "width": 1080,
+      "height": 1920,
+      "bytes": 164410,
+      "sha256": "f399027ab5b25705f492c8c5f09218d9463c16afe612cef099c7fb64c8c6670c",
+      "file": "store-dark/zh-CN/08-share-your-report.png"
     }
   ]
 }

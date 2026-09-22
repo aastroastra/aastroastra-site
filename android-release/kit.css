@@ -27,6 +27,12 @@ h1 mark{background:var(--accent-soft);color:inherit;padding:0 .18em;border-radiu
 .tabs button{border:0;background:transparent;color:var(--fg2);padding:9px 16px;min-height:40px;border-radius:999px;cursor:pointer;font-weight:500;font-size:14px;white-space:nowrap}
 .tabs button:hover{color:var(--fg)}
 .tabs button[aria-selected="true"]{background:var(--tint);color:var(--on-accent);font-weight:600}
+.styles{display:flex;gap:2px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--soft)}
+.styles button{border:0;background:transparent;color:var(--fg2);padding:9px 16px;min-height:40px;border-radius:999px;cursor:pointer;font-weight:500;font-size:14px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
+.styles button:hover{color:var(--fg)}
+.styles button[aria-pressed="true"]{background:var(--fg);color:var(--bg);font-weight:600}
+.styles .live{font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 7px;border-radius:999px;background:var(--tint);color:var(--on-accent)}
+.styles button[aria-pressed="true"] .live{background:var(--bg);color:var(--fg)}
 .actions{display:flex;gap:10px;flex-wrap:wrap}
 .button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:9px 18px;border:1px solid var(--line);border-radius:12px;font-size:13px;font-weight:600;background:var(--card);color:var(--fg);cursor:pointer}
 .button:hover{background:var(--soft);text-decoration:none}
