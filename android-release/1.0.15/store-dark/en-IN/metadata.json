@@ -1,0 +1,64 @@
+{
+  "code": "en-IN",
+  "playLocale": "en-IN",
+  "name": "English",
+  "nativeName": "English",
+  "theme": "store-dark",
+  "title": "AastroAstra: Vedic Astrology",
+  "shortDescription": "Kundali, numerology, matching and daily panchang in your language.",
+  "fullDescription": "Explore your birth chart, numerology and daily panchang with AastroAstra.\n\nYOUR BIRTH CHART\nEnter your birth details to explore kundali charts, planetary positions, nakshatra and dasha information. An unknown birth time makes some interpretations approximate.\n\nYOUR NUMBERS\nExplore your birth number, destiny number, name number and Lo Shu grid. Compare profiles and read the explanations behind the results.\n\nMATCHING AND PANCHANG\nCompare birth details with kundali matching and explore the daily panchang for your location.\n\nAI EXPLANATIONS AND PHOTO READINGS\nAsk questions about your chart, or choose a palm or face reading. Photo readings require consent before photos and relevant reading details are sent to an external AI provider. Palm photos remain on your device for history and retries. AastroAstra does not store face photos or use them to identify you. You can report AI content inside the app.\n\nLANGUAGES AND ACCESS\nThe interface supports twelve languages: English, Hindi, Marathi, Gujarati, Tamil, Bengali, Punjabi, Kannada, Malayalam, Odia, Spanish and Chinese. Sign in with the code or link in your email.\n\nThis release offers free core features with usage limits. Subscriptions, paid consultations, wallet top-ups and marketplace purchases are not available.\n\nAastroAstra is for guidance and entertainment. Astrology is not a science. The app does not provide medical, legal, financial or psychological advice. Consult a qualified professional for important decisions.\n\nQuestions or feedback: aastroastra@gmail.com\nAccount deletion: https://www.aastroastra.com/delete-account.html\nPrivacy policy: https://www.aastroastra.com/privacy.html\nTerms: https://www.aastroastra.com/terms.html",
+  "releaseNotes": "Seven more languages: Bengali, Punjabi, Kannada, Malayalam, Odia, Spanish and Chinese. Your account profile now has its own page in Settings, separate from saved kundalis. Clearer Panchang, settings and notification layouts. Replies can be read aloud, with the device voice as fallback. Palm and face photos stay upright. Hold an Ashtakoot point for an AI explanation. Buy credit packages through Google Play from the Credits sheet.",
+  "featureTagline": "One who believes.",
+  "screenshots": [
+    {
+      "file": "01-your-cosmic-companion.png",
+      "title": "Your cosmic companion.",
+      "subtitle": "Personalised astrology, every day.",
+      "capture": "english"
+    },
+    {
+      "file": "02-your-kundali.png",
+      "title": "Your chart. Your story.",
+      "subtitle": "Explore your Kundali and planetary details.",
+      "capture": "english"
+    },
+    {
+      "file": "03-your-numbers.png",
+      "title": "Numbers that reflect you.",
+      "subtitle": "Discover your personal numerology.",
+      "capture": "english"
+    },
+    {
+      "file": "04-multi-match.png",
+      "title": "Explore your connections.",
+      "subtitle": "Compare compatibility with Multi-Match.",
+      "capture": "english"
+    },
+    {
+      "file": "05-daily-panchang.png",
+      "title": "Find your daily rhythm.",
+      "subtitle": "Panchang, sunrise and auspicious timings.",
+      "capture": "english"
+    },
+    {
+      "file": "06-daily-horoscope.png",
+      "title": "A little insight. Every day.",
+      "subtitle": "Explore your daily horoscope.",
+      "capture": "english"
+    },
+    {
+      "file": "07-palm-and-face.png",
+      "title": "More ways to explore you.",
+      "subtitle": "Traditional palm and face readings.",
+      "capture": "english"
+    },
+    {
+      "file": "08-share-your-report.png",
+      "title": "Your insights. Ready to share.",
+      "subtitle": "Export reports in English or Hindi.",
+      "capture": "english"
+    }
+  ],
+  "localizedCaptures": 0,
+  "themedCaptures": 0
+}

@@ -1,0 +1,52 @@
+{
+  "code": "zh-CN",
+  "playLocale": "zh-CN",
+  "name": "Chinese",
+  "nativeName": "中文",
+  "theme": "yellow-dark",
+  "title": "AastroAstra: 吠陀占星",
+  "shortDescription": "用你的语言查看命盘、数字命理、合盘配对和每日黄历。",
+  "fullDescription": "用 AastroAstra 探索你的出生命盘、数字命理和每日黄历。\n\n你的出生命盘\n输入出生信息，查看命盘、行星位置、星宿和大运（dasha）信息。若出生时间未知，部分解读为近似结果。\n\n你的数字\n了解你的生日数、命运数、姓名数和洛书方格。比较不同档案，阅读每个结果背后的解释。\n\n合盘配对与黄历\n根据出生信息进行命盘配对，并查看你所在地的每日黄历。\n\nAI 解读与照片解读\n就你的命盘提问，或选择手相或面相解读。照片解读需要你先同意，之后照片和相关信息才会发送给外部 AI 服务商。手掌照片保留在你的设备上，用于历史记录和重试。AastroAstra 不存储面部照片，也不会用它来识别你的身份。你可以在应用内举报 AI 内容。\n\n语言与登录\n界面支持十二种语言：英语、印地语、马拉地语、古吉拉特语、泰米尔语、孟加拉语、旁遮普语、卡纳达语、马拉雅拉姆语、奥里亚语、西班牙语和中文。使用邮件中的验证码或链接登录。\n\n本版本的核心功能免费，但有使用限额。订阅、付费咨询、钱包充值和商城购买暂不可用。\n\nAastroAstra 仅供参考和娱乐。占星不是科学。本应用不提供医疗、法律、财务或心理建议。重要决定请咨询合格的专业人士。\n\n问题或反馈：aastroastra@gmail.com\n删除账户：https://www.aastroastra.com/delete-account.html\n隐私政策：https://www.aastroastra.com/privacy.html\n条款：https://www.aastroastra.com/terms.html",
+  "releaseNotes": "新增七种语言：孟加拉语、旁遮普语、卡纳达语、马拉雅拉姆语、奥里亚语、西班牙语和中文。账户资料在设置中拥有独立页面，与已保存的命盘分开。黄历、设置和通知的版面更清晰。回复可朗读，不可用时使用设备语音。手掌和面部照片保持正向。长按八分点（Ashtakoot）可获得 AI 解释。",
+  "featureTagline": "命盘 • 数字命理 • 黄历",
+  "screenshots": [
+    {
+      "file": "01-dashboard.png",
+      "title": "你的整张命盘，一目了然",
+      "subtitle": "黄历、运势、数字命理和配对，尽在一屏",
+      "capture": "themed"
+    },
+    {
+      "file": "02-kundali.png",
+      "title": "本命盘，规范绘制",
+      "subtitle": "北印度式命盘，真实行星与真实度数",
+      "capture": "themed"
+    },
+    {
+      "file": "03-chat.png",
+      "title": "问你的命盘，而不只是太阳星座",
+      "subtitle": "AastroAI 依据你本人的出生命盘作答",
+      "capture": "themed"
+    },
+    {
+      "file": "04-multimatch.png",
+      "title": "为每一段配对排名，并排比较",
+      "subtitle": "比较已保存与新建的命盘，按你看重的方面加权",
+      "capture": "themed"
+    },
+    {
+      "file": "05-numerology.png",
+      "title": "你的数字，以及背后的方格",
+      "subtitle": "生日数、命运数和洛书方格，免费",
+      "capture": "themed"
+    },
+    {
+      "file": "06-panchang.png",
+      "title": "今天，逐时详解",
+      "subtitle": "为你所在地提供的 tithi、星宿、瑜伽、karana 与吉时",
+      "capture": "themed"
+    }
+  ],
+  "localizedCaptures": 6,
+  "themedCaptures": 6
+}
