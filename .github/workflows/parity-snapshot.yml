@@ -1,0 +1,59 @@
+name: Reusable functionality snapshot
+on:
+  workflow_call:
+    inputs:
+      toolkit_ref:
+        required: true
+        type: string
+    secrets:
+      PARITY_SITE_DEPLOY_KEY:
+        required: false
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: aastroastra/aastroastra-site
+          ref: ${{ inputs.toolkit_ref }}
+          path: .parity-toolkit
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate reviewed functionality and Git evidence
+        env:
+          SOURCE_BRANCH: ${{ github.head_ref || github.ref_name }}
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: python .parity-toolkit/parity-tools/parity.py snapshot --branch "$SOURCE_BRANCH" --run-url "$RUN_URL" --out "$RUNNER_TEMP/parity-snapshot.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: functionality-differences
+          path: ${{ runner.temp }}/parity-snapshot.json
+          retention-days: 90
+      - name: Check site publication credential
+        if: github.event_name == 'push' && !github.event.deleted
+        env:
+          DEPLOY_KEY: ${{ secrets.PARITY_SITE_DEPLOY_KEY }}
+        run: test -n "$DEPLOY_KEY" || { echo '::error::PARITY_SITE_DEPLOY_KEY is missing; snapshot retained as an artifact.'; exit 1; }
+      - uses: actions/checkout@v4
+        if: github.event_name == 'push' && !github.event.deleted
+        with:
+          repository: aastroastra/aastroastra-site
+          ref: differences-data
+          path: .parity-publish
+          ssh-key: ${{ secrets.PARITY_SITE_DEPLOY_KEY }}
+      - name: Publish main evidence or isolated branch preview
+        if: github.event_name == 'push' && !github.event.deleted
+        env:
+          SOURCE_REPO: ${{ github.workspace }}
+        run: |
+          git -C .parity-publish config user.name 'github-actions[bot]'
+          git -C .parity-publish config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python .parity-toolkit/parity-tools/parity.py publish --repo .parity-publish --snapshot "$RUNNER_TEMP/parity-snapshot.json"

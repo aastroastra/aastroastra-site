@@ -12,3 +12,10 @@ _release-data/
 !android-release/index.html
 
 !ownapi/index.html
+
+.parity-seed/
+_parity*/
+_differences-data/
+/differences/data.json
+!differences/index.html
+!diffrecnes/index.html

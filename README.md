@@ -32,3 +32,18 @@ Keep the palette values and theme identifiers in these shared assets aligned wit
 endpoint pricing search and adjustable cost/token calculators. It does not
 implement or enable a replacement calculation API. Plaintext source and the
 password are kept outside this public repository. See `ownapi/README.md`.
+
+## Living functionality comparison
+
+`/differences/` compares 40 reviewed feature contracts across iOS and Android;
+`/differences/data.json` is the same public-safe JSON feed. `/diffrecnes/` redirects
+to the canonical page. It uses the shared five-theme design and distinguishes
+source alignment, known gaps, intentional native differences and pending reviews.
+
+Read [shared parity rules](differences/PARITY_RULES.md) and
+[automation maintenance](parity-tools/README.md). Source manifests live in each
+app at `.parity/features.json`. Push workflows pin this repository's toolkit,
+publish to `differences-data` with a dedicated deploy key, and trigger Pages.
+The existing scheduled site workflow also reconciles both main branches with
+`RELEASE_SOURCE_TOKEN`; failed reconciliation is visible and retains old evidence.
+Commit/feature summaries are public; source links require private-repository access.

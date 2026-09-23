@@ -1,0 +1,43 @@
+import {labels,selectFeatures,counts,github} from './model.mjs';
+const $=id=>document.getElementById(id);
+const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
+const date=x=>x?new Date(x).toLocaleString(undefined,{dateStyle:'medium',timeStyle:'short'}):'Not recorded';
+function link(text,url){const a=el('a',text);if(url){a.href=url;a.target='_blank';a.rel='noopener noreferrer';}return a;}
+function badge(status){return el('span',labels[status]||'Needs review',`badge ${status}`);}
+let data;let busy=false;
+const params=new URLSearchParams(location.search);
+$('search').value=params.get('q')||'';$('status').value=Object.hasOwn(labels,params.get('status'))?params.get('status'):'all';
+function filters(){return {q:$('search').value,area:$('area').value,status:$('status').value};}
+function sourcePanel(p,s){const div=el('article',undefined,'source');div.append(el('h3',p==='ios'?'iOS':'Android'));
+ if(!s){div.append(el('p','Snapshot missing. Comparison requires review.','stale'));return div;}
+ div.append(link(`main · ${s.head.slice(0,8)}`,github(s.repo,'commit',s.head)),el('p',`Source commit: ${date(s.pushed_at)}`),el('p',`Evidence generated: ${date(s.generated_at)}`));
+ const check=data.sync?.[p];div.append(el('p',check?.ok?`Main checked: ${date(check.checked_at)}`:'Main reconciliation not confirmed. See retained snapshot.'));
+ return div;}
+function feature(row){const detail=el('details',undefined,'feature');detail.id=row.id;const summary=el('summary');const title=el('span',undefined,'feature-title');title.append(el('small',row.area),el('strong',row.title));summary.append(title,badge(row.status));detail.append(summary);
+ const body=el('div',undefined,'feature-body');body.append(el('p','SHARED EXPECTATION','eyebrow'),el('p',row.expected,'contract'));
+ const columns=el('div',undefined,'platforms');
+ for(const p of ['ios','android']){const r=row.platforms[p];const col=el('div',undefined,'platform');const heading=el('h3',p==='ios'?'iOS':'Android');heading.append(badge(r?.status||'review'));col.append(heading);
+ if(!r){col.append(el('p','No current record. Add the matching feature ID to this platform.'));columns.append(col);continue;}
+ if(!r.review_current)col.append(el('p','Source changed since review. The notes below are the previous assessment.','stale'));
+ col.append(el('p',r.behavior),el('p','DIFFERENCE / LIMIT','label'),el('p',r.difference),el('p','VALIDATION RECORDED','label'),el('p',r.validation),el('p',`Reviewed ${r.reviewed_on} · ${r.file_count} mapped files`,'caption'));
+ const ev=el('details',undefined,'evidence');ev.dataset.platform=p;ev.append(el('summary','Source files and recent commits'));const files=el('ul');const src=data.platforms[p];
+ for(const path of r.paths){const li=el('li');li.append(link(path,github(src.repo,'blob',`${src.head}/${path}`)));files.append(li);}ev.append(files,el('p','Latest commits touching these files','label'));const changes=el('ul');
+ for(const c of r.commits){const li=el('li');li.append(link(`${c.sha.slice(0,8)} · ${c.title}`,github(src.repo,'commit',c.sha)),el('div',date(c.date),'caption'));changes.append(li);}ev.append(changes);col.append(ev);columns.append(col);}
+ body.append(columns);const next=el('div',undefined,'next');next.append(el('p','NEXT CHECK / ACTION','label'));
+ const steps=[...new Set(Object.values(row.platforms).filter(Boolean).map(r=>r.next))];steps.forEach(t=>next.append(el('p',t)));next.append(link('Link to this feature',`${location.origin}${location.pathname}#${row.id}`));body.append(next);detail.append(body);return detail;}
+function render(){if(!data)return;const open=new Set([...document.querySelectorAll('.feature[open]')].map(d=>d.id));const evidence=new Set([...document.querySelectorAll('.evidence[open]')].map(d=>d.closest('.feature').id+':'+d.dataset.platform));const f=filters();const rows=selectFeatures(data.features,f);$('count').textContent=`${rows.length} of ${data.features.length} features`;$('features').replaceChildren(...rows.map(feature));if(!rows.length)$('features').append(el('p','No features match these filters.','empty'));
+ const qs=new URLSearchParams();for(const[k,v]of Object.entries(f))if(v&&v!=='all')qs.set(k,v);history.replaceState(null,'',`${location.pathname}${qs.size?'?'+qs:''}${location.hash}`);
+ document.querySelectorAll('.feature').forEach(d=>{if(open.has(d.id))d.open=true;d.querySelectorAll('.evidence').forEach(e=>{if(evidence.has(d.id+':'+e.dataset.platform))e.open=true;});});const hash=location.hash.slice(1);const found=rows.some(r=>r.id===hash);if(found)$(hash).open=true;}
+function renderPage(){const c=counts(data.features);$('metrics').replaceChildren(...['all','gap','review','aligned','intentional'].map(s=>{const b=el('button',undefined,'metric');b.type='button';b.dataset.status=s;b.append(el('strong',String(c[s])),el('span',s==='all'?'FEATURES TRACKED':labels[s].toUpperCase()));b.addEventListener('click',()=>{$('status').value=s;render();$('compare-title').scrollIntoView({behavior:'smooth'});});return b;}));
+ const selected=$('area').value;const areas=[...new Set(data.features.map(r=>r.area))].sort();$('area').replaceChildren(new Option('All areas','all'),...areas.map(a=>new Option(a,a)));$('area').value=areas.includes(selected)?selected:areas.includes(params.get('area'))?params.get('area'):'all';
+ $('sources').replaceChildren(...['ios','android'].map(p=>sourcePanel(p,data.platforms[p])));
+ $('updated').textContent=`Page evidence: ${date(data.generated_at)}. Automatically refreshed every minute while open.`;
+ const problems=['ios','android'].filter(p=>!data.platforms[p]||data.sync?.[p]?.ok===false);$('notice').hidden=!problems.length;$('notice').textContent=problems.length?`Evidence needs attention for ${problems.join(' and ')}. The last available snapshot is shown; do not assume it matches current main.`:'';
+ const missing=Object.entries(data.platforms).reduce((n,[,s])=>n+(s.unmapped_paths?.length||0),0);$('coverage').textContent=`${missing} source files are not mapped to a feature. Broad shared infrastructure stays in review; coverage is not a test pass.`;
+ if(missing){const d=el('details');d.append(el('summary','Inspect unmapped files'));for(const[p,s]of Object.entries(data.platforms)){const list=el('ul');for(const path of s.unmapped_paths||[]){const li=el('li');li.append(link(`${p}: ${path}`,github(s.repo,'blob',`${s.head}/${path}`)));list.append(li);}d.append(list);}$('coverage').append(d);}
+ $('history').replaceChildren(...['ios','android'].map(p=>{const block=el('div');block.append(el('h3',p==='ios'?'iOS':'Android'));const list=el('ul');const s=data.platforms[p];for(const c of(s?.commits||[]).slice(0,12)){const li=el('li');li.append(el('time',date(c.date)),link(`${c.sha.slice(0,8)} · ${c.title}`,github(s.repo,'commit',c.sha)));list.append(li);}block.append(list);return block;}));
+ const branches=el('ul');for(const b of data.branches||[]){const li=el('li',`${b.platform} · ${b.branch} · ${date(b.pushed_at)} · `);li.append(link(b.head.slice(0,8),github(`aastroastra/aastroastra-${b.platform}`,'commit',b.head)));branches.append(li);}$('branches').replaceChildren(branches);if(!data.branches?.length)$('branches').append(el('p','No non-main push has been recorded yet.','caption'));render();}
+async function load(){if(busy)return;busy=true;$('refresh').disabled=true;try{const r=await fetch(`data.json?t=${Date.now()}`,{cache:'no-store'});if(!r.ok)throw Error('Could not load snapshots');const next=await r.json();if(next.schema!==1||!Array.isArray(next.features))throw Error('Unsupported snapshot format');data=next;renderPage();}catch(e){$('notice').hidden=false;$('notice').textContent=data?'Refresh failed. Showing the last loaded evidence.':'Evidence could not be loaded. Please refresh; the JSON endpoint may still be deploying.';}finally{busy=false;$('refresh').disabled=false;}}
+for(const id of ['search','area','status'])$(id).addEventListener(id==='search'?'input':'change',render);
+$('reset').addEventListener('click',()=>{$('search').value='';$('area').value='all';$('status').value='all';render();});$('refresh').addEventListener('click',load);
+window.addEventListener('hashchange',()=>{render();const node=document.getElementById(location.hash.slice(1));if(node)node.scrollIntoView();});load();setInterval(()=>{if(!document.hidden)load();},60000);

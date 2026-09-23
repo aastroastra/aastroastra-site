@@ -1,0 +1,285 @@
+{
+  "schema": 1,
+  "features": [
+    {
+      "id": "account",
+      "area": "Settings",
+      "title": "Account identity and profile editor",
+      "expected": "The account identity is separate from the default birth chart. Name, linked contact and avatar are editable without renaming a kundali.",
+      "priority": "P2"
+    },
+    {
+      "id": "settings",
+      "area": "Settings",
+      "title": "Settings sections and destinations",
+      "expected": "Account, App, Help and About expose equivalent user tasks, with unavailable paid services hidden.",
+      "priority": "P2"
+    },
+    {
+      "id": "restore",
+      "area": "Settings",
+      "title": "Restore Purchases entry point",
+      "expected": "A Restore Purchases action must reach an actual store restoration flow with visible outcomes.",
+      "priority": "P2"
+    },
+    {
+      "id": "chat-group",
+      "area": "AstroAI",
+      "title": "One to five people in a conversation",
+      "expected": "Select one to five charts; Done applies the draft, cancelled edits do not alter the active conversation.",
+      "priority": "P2"
+    },
+    {
+      "id": "chat-questions",
+      "area": "AstroAI",
+      "title": "Questions respond to the selection",
+      "expected": "Six single-person starters and six group starters use all selected names; server follow-ups replace initial templates.",
+      "priority": "P2"
+    },
+    {
+      "id": "chat-evidence",
+      "area": "AstroAI",
+      "title": "Evidence, confidence and saved history",
+      "expected": "An evidence row identifies the person whose chart supports it, even after reopening a conversation.",
+      "priority": "P2"
+    },
+    {
+      "id": "chat-speech",
+      "area": "AstroAI",
+      "title": "Read aloud and answer controls",
+      "expected": "Manual Play plus an opt-in automatic reading control; stop correctly on disable, new conversation and exit.",
+      "priority": "P2"
+    },
+    {
+      "id": "chat-layout",
+      "area": "AstroAI",
+      "title": "Conversation layout and accessibility",
+      "expected": "Ordinary-size starter placement and selection summary agree; large text remains readable.",
+      "priority": "P2"
+    },
+    {
+      "id": "auth-otp",
+      "area": "Entry and identity",
+      "title": "Phone and email authentication",
+      "expected": "Phone/email entry, six-digit OTP, returning-user restoration and sign-out must reach the same account.",
+      "priority": "P2"
+    },
+    {
+      "id": "onboarding",
+      "area": "Entry and identity",
+      "title": "Welcome, numerology and birth-data sequence",
+      "expected": "Users provide equivalent required data and see equivalent reveal content before entering the app.",
+      "priority": "P1"
+    },
+    {
+      "id": "social-auth",
+      "area": "Entry and identity",
+      "title": "Google and Apple sign-in reachability",
+      "expected": "Only working, reachable identity providers should be exposed in production.",
+      "priority": "P1"
+    },
+    {
+      "id": "saved-charts",
+      "area": "Entry and identity",
+      "title": "Saved charts and default person",
+      "expected": "Changes to a selected birth chart must reach every reading and survive account restoration.",
+      "priority": "P2"
+    },
+    {
+      "id": "contacts",
+      "area": "Entry and identity",
+      "title": "Add a kundali from a contact",
+      "expected": "Import chosen contact details only after a user action and allow corrections before saving.",
+      "priority": "P2"
+    },
+    {
+      "id": "credits",
+      "area": "Money",
+      "title": "Digital credits and purchase recovery",
+      "expected": "Show the same balance/ledger, validate store purchases on the server and recover pending grants without duplicates.",
+      "priority": "P2"
+    },
+    {
+      "id": "credit-generation",
+      "area": "Money",
+      "title": "Charging for a generated kundali",
+      "expected": "Charge once for a new generation; reopening cached results and failed/cancelled attempts follow the shared wallet contract.",
+      "priority": "P2"
+    },
+    {
+      "id": "remote-flags",
+      "area": "Platform",
+      "title": "Remote feature flags",
+      "expected": "A remote rollout change should produce consistent user-visible features on both apps.",
+      "priority": "P1"
+    },
+    {
+      "id": "push",
+      "area": "Notifications",
+      "title": "Push delivery and tap routing",
+      "expected": "Enabled notifications arrive and open the same destination, with correct account and timezone.",
+      "priority": "P1"
+    },
+    {
+      "id": "notification-prefs",
+      "area": "Notifications",
+      "title": "Notification preferences and quiet hours",
+      "expected": "Engine topics/cadence, quiet hours and timezone stay synchronized with the server.",
+      "priority": "P1"
+    },
+    {
+      "id": "dashboard",
+      "area": "Daily experience",
+      "title": "Dashboard cards and arrangement",
+      "expected": "Users can access the same enabled cards and retain their chosen arrangement.",
+      "priority": "P2"
+    },
+    {
+      "id": "birthday",
+      "area": "Daily experience",
+      "title": "Birthday prompts",
+      "expected": "Today's birthday is computed for the default and saved people, using equivalent date and dismissal rules.",
+      "priority": "P2"
+    },
+    {
+      "id": "horoscope",
+      "area": "Daily experience",
+      "title": "Daily, weekly and monthly horoscope",
+      "expected": "Person selection and period changes show the appropriate reading/facets, with honest unavailable states.",
+      "priority": "P2"
+    },
+    {
+      "id": "kundali",
+      "area": "Charts and calculations",
+      "title": "Kundali and person page",
+      "expected": "Equivalent chart positions, identities and supported sections for the same birth data.",
+      "priority": "P2"
+    },
+    {
+      "id": "panchang",
+      "area": "Charts and calculations",
+      "title": "Panchang and chogadiya",
+      "expected": "Selected place/date drives the same five limbs, auspicious periods and day/night interpretation.",
+      "priority": "P2"
+    },
+    {
+      "id": "kp-lalkitab",
+      "area": "Charts and calculations",
+      "title": "KP system and Lal Kitab",
+      "expected": "Same chosen person, data tables, navigation and explain actions.",
+      "priority": "P2"
+    },
+    {
+      "id": "numerology",
+      "area": "Charts and calculations",
+      "title": "Numerology numbers, grids and interpretation",
+      "expected": "Same birth/name/mobile inputs produce matching numeric facts and equivalent explanations.",
+      "priority": "P2"
+    },
+    {
+      "id": "match",
+      "area": "Relationships",
+      "title": "Two-person compatibility",
+      "expected": "Same two charts yield the same numeric breakdown, explain context and share/export behavior.",
+      "priority": "P2"
+    },
+    {
+      "id": "multi-match",
+      "area": "Relationships",
+      "title": "Multi-Match ranking and verdicts",
+      "expected": "Stable ranking from deterministic numbers; authored verdicts explain rather than calculate.",
+      "priority": "P2"
+    },
+    {
+      "id": "reasoning",
+      "area": "AstroAI",
+      "title": "Deterministic reasoning contract",
+      "expected": "Device computes facts and bands; the server phrases grounded claims, without inventing calculations.",
+      "priority": "P2"
+    },
+    {
+      "id": "explain",
+      "area": "AstroAI",
+      "title": "Explain a section in context",
+      "expected": "Explain requests refer to the actual person/section on screen and use the selected language.",
+      "priority": "P2"
+    },
+    {
+      "id": "palmistry",
+      "area": "Readings",
+      "title": "Palm photo, consent and saved reading",
+      "expected": "Explicit consent before sending a photo, honest progress/failure and recoverable saved results.",
+      "priority": "P2"
+    },
+    {
+      "id": "face-reading",
+      "area": "Readings",
+      "title": "Face photo and reading variants",
+      "expected": "Supported reading variants load from selected images and survive interruption without duplicate requests.",
+      "priority": "P2"
+    },
+    {
+      "id": "prediction-rectification",
+      "area": "Readings",
+      "title": "Prediction and birth-time rectification",
+      "expected": "Same inputs, supported modes and honest result/error states.",
+      "priority": "P2"
+    },
+    {
+      "id": "reports",
+      "area": "Readings",
+      "title": "PDF generation and sharing",
+      "expected": "Equivalent report choices, locale/chart style, progress and readable exported content.",
+      "priority": "P2"
+    },
+    {
+      "id": "localization",
+      "area": "Presentation",
+      "title": "Languages and runtime reading labels",
+      "expected": "All exposed locales translate chrome, reading labels and request locale consistently.",
+      "priority": "P2"
+    },
+    {
+      "id": "themes",
+      "area": "Presentation",
+      "title": "Five themes and accessibility",
+      "expected": "Theme intent, readable contrast and controls remain consistent without forcing identical native widgets.",
+      "priority": "P2"
+    },
+    {
+      "id": "marketplace",
+      "area": "Services",
+      "title": "Remedies, astrologers and bookings",
+      "expected": "Same service availability, booking confirmation, paid-state recovery and order history under the same rollout.",
+      "priority": "P2"
+    },
+    {
+      "id": "calls",
+      "area": "Services",
+      "title": "Consultation calls and recovery",
+      "expected": "Equivalent audio/video choice, permissions, ringing, reconnect/end, ratings and consultation summary.",
+      "priority": "P2"
+    },
+    {
+      "id": "bug-report",
+      "area": "Quality",
+      "title": "Shake-to-report and content reporting",
+      "expected": "A user can file a report, attach evidence and get a visible result independent of QA runs.",
+      "priority": "P2"
+    },
+    {
+      "id": "widgets",
+      "area": "Platform",
+      "title": "Home-screen widgets",
+      "expected": "Supported widgets show fresh data and tap into the matching app destination.",
+      "priority": "P2"
+    },
+    {
+      "id": "infrastructure",
+      "area": "Platform",
+      "title": "Shared data, navigation and recovery",
+      "expected": "Both apps preserve account isolation, API contracts and recoverable loading/error behavior.",
+      "priority": "P2"
+    }
+  ]
+}
