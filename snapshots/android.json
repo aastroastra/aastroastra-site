@@ -1,0 +1,2302 @@
+{
+  "schema": 1,
+  "platform": "android",
+  "repo": "aastroastra/aastroastra-android",
+  "branch": "main",
+  "head": "79f17ed78cc5797d8b559022a0b05824dd056ba2",
+  "pushed_at": "2026-09-23T20:36:40+05:30",
+  "generated_at": "2026-09-23T15:06:44.307905+00:00",
+  "run_url": null,
+  "features": [
+    {
+      "id": "account",
+      "assessment": "aligned",
+      "behavior": "AccountProfileScreen and AccountProfileViewModel separate the account from saved kundalis; profile header/name corrections landed in September.",
+      "difference": "The recent iOS implementation closes the earlier missing account-profile flow. Real account round trips still need paired acceptance.",
+      "next": "Check rename, photo add/remove, sign-out and a second account on both devices.",
+      "validation": "iOS account/profile/photo focused tests passed in the 109-test run for build 190. Android source/history reviewed; no new Android runtime test claimed.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "6fc9b5f2e5c1af7814c8048355ebdb081690dc3e166d4799515d3083fbb07dd8",
+      "file_count": 15,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthEmailLink.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthLinkCoordinator.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthLinkViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthRepository.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthRepositoryImpl.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/DeviceSessionRegistrar.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/LocalUserId.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/ReturningUserRestore.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/SupabaseSession.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/AccountProfileScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/AccountProfileViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/KundaliCatalog.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "9a7e6b0a823be604efaa9f939d01a5d125b8aacc",
+          "date": "2026-09-20T09:14:22+05:30",
+          "title": "feat(credits): expose digital wallet safely"
+        },
+        {
+          "sha": "03106b0d2da5c6b1f1c461b5601cd0ebe10d1912",
+          "date": "2026-09-19T08:52:12+05:30",
+          "title": "Merge feature/android-more-languages: seven new app languages"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "settings",
+      "assessment": "aligned",
+      "behavior": "ProfileScreens groups account and app actions and uses release policy for Wallet/Credits visibility.",
+      "difference": "Core hierarchy is aligned after the iOS follow-up. Native sheet/navigation styling is allowed.",
+      "next": "Walk each destination with credits on and off; preserve account/chart separation.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "d53e257137eaa60410f23bc38c119736ac7dc8c956a98b7893682f66fc7e124a",
+      "file_count": 4,
+      "paths": [
+        "app/build.gradle.kts",
+        "app/src/main/java/com/aastroastra/android/core/config/AppConfig.kt",
+        "app/src/main/java/com/aastroastra/android/core/config/ReleasePolicy.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileScreens.kt"
+      ],
+      "commits": [
+        {
+          "sha": "3a115465bef7b10fd9093ffc4ab0ba0787b2bfad",
+          "date": "2026-09-23T16:06:17+05:30",
+          "title": "chore(android): bump build to 210"
+        },
+        {
+          "sha": "0537d5ea135a67bb3968d2dacc8d8bbcb979c23f",
+          "date": "2026-09-22T15:46:22+05:30",
+          "title": "chore(android): prepare version 1.0.15 build 209"
+        },
+        {
+          "sha": "13ac54c06ba46336fb50efab95baa2aa849ea458",
+          "date": "2026-09-22T15:23:54+05:30",
+          "title": "feat(credits): credit purchases have their own build switch"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "restore",
+      "assessment": "review",
+      "behavior": "Settings emits the Restore Purchases navigation label. A RevenueCat restore implementation exists in MonetizationRepository, but the Settings-to-restore connection needs verification.",
+      "difference": "iOS Settings has a direct restore flow. Android has a restore service, but a label alone does not establish that Settings invokes it.",
+      "next": "Trace and exercise Android Settings restore end to end; perform store-sandbox restoration on both platforms.",
+      "validation": "iOS injected restore outcomes and duplicate-tap tests passed. No real StoreKit or Play restore transaction was performed.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "aad21728394c1ebc3cf36f20ae854e294e405f4e773eea48855cbb25650e6178",
+      "file_count": 9,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/navigation/AppRoute.kt",
+        "app/src/main/java/com/aastroastra/android/core/navigation/NavGraph.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/Billing.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/FreeCoreNotice.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/MonetizationRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/MonetizationScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/MonetizationViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/ProCatalog.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileScreens.kt"
+      ],
+      "commits": [
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "9a7e6b0a823be604efaa9f939d01a5d125b8aacc",
+          "date": "2026-09-20T09:14:22+05:30",
+          "title": "feat(credits): expose digital wallet safely"
+        },
+        {
+          "sha": "03106b0d2da5c6b1f1c461b5601cd0ebe10d1912",
+          "date": "2026-09-19T08:52:12+05:30",
+          "title": "Merge feature/android-more-languages: seven new app languages"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-group",
+      "assessment": "aligned",
+      "behavior": "Multi-person chat landed in 1f255e6. ChatViewModel and person selection prepare per-person context with a five-person cap.",
+      "difference": "The earlier iOS multi-chat gap is closed in source. Full names now replace compact first-name summaries.",
+      "next": "Retain tests for five selections, empty Done, duplicate first names and changed birth details.",
+      "validation": "iOS group selection/thread/stale-stream tests passed. Current Android implementation and group-chat commit inspected.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "f9694f289a04de7180e99b7d7174856e763e34be75e06f954adeee76b8aa0032",
+      "file_count": 16,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/chat/AndroidSpeechPlayback.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatStarterPrompt.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatSubjects.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatTransport.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatTts.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatWireModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/GroundingChipStyle.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/MantraDetailSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/ChooseAddKundali.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartNorthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartSouthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliPickerSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliSummaryGrid.kt"
+      ],
+      "commits": [
+        {
+          "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+          "date": "2026-09-22T07:26:31+05:30",
+          "title": "feat(credits): buy credit packages through Google Play"
+        },
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "41b19ab130f170d250acf8b1d3b73c461f395e3e",
+          "date": "2026-09-20T15:56:11+05:30",
+          "title": "feat(credits): show wallet balance in AI chat"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-questions",
+      "assessment": "aligned",
+      "behavior": "ChatStarterPrompt uses the same single/group choices and context-dependent labels; focused starters landed in d4a8eb4.",
+      "difference": "Initial questions are deterministic templates, not an extra AI generation request. No wording difference was found in the 300-string audit.",
+      "next": "When changing a starter, update both templates and all locales in the same feature work.",
+      "validation": "300 labels/prompts across 12 locales matched after placeholder and Marathi-code normalization; iOS prompt tests passed.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "5a053aa83b81f652cde2c5842103edc532a2ead6ddd6e65285050f5f8245dee2",
+      "file_count": 14,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatStarterPrompt.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatViewModel.kt",
+        "app/src/main/res/values-bn/strings.xml",
+        "app/src/main/res/values-es/strings.xml",
+        "app/src/main/res/values-gu/strings.xml",
+        "app/src/main/res/values-hi/strings.xml",
+        "app/src/main/res/values-kn/strings.xml",
+        "app/src/main/res/values-ml/strings.xml",
+        "app/src/main/res/values-mr/strings.xml",
+        "app/src/main/res/values-or/strings.xml",
+        "app/src/main/res/values-pa/strings.xml",
+        "app/src/main/res/values-ta/strings.xml",
+        "app/src/main/res/values-zh/strings.xml",
+        "app/src/main/res/values/strings.xml"
+      ],
+      "commits": [
+        {
+          "sha": "73d5d3910e71eedb8e3a41cc22fa5125446ec702",
+          "date": "2026-09-20T05:02:45+05:30",
+          "title": "feat(credits): say why the credit service refused, in the user's language"
+        },
+        {
+          "sha": "91c9346e1a67eb646102b1dc7ca5eac684bb615b",
+          "date": "2026-09-20T02:40:26+05:30",
+          "title": "Merge origin/main into feature/android-kundali-credits"
+        },
+        {
+          "sha": "f7597f3b342ca1d1a136cc688bd6765a883bebb5",
+          "date": "2026-09-20T02:39:29+05:30",
+          "title": "feat(credits): digital credits for Kundali generation on Android"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-evidence",
+      "assessment": "aligned",
+      "behavior": "Group claims carry person subjects into the reply/history and grounding sheet; shared claim statements retain per-person identity.",
+      "difference": "iOS previously lost labels and could reuse base claim IDs; the follow-up fixes both without changing calculation rules.",
+      "next": "Keep a two-person same-rule fixture and reopen its stored conversation on both apps.",
+      "validation": "iOS same-base-claim, real chart preparation, history round-trip and backward-compatibility checks passed.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "3ab786ce1374e817f852be3be30e218c1cd36aceb92608f5fc512c7aa3132322",
+      "file_count": 18,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/reasoning/AnswerConfidence.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/Claim.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/ClaimPayload.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/RuleContext.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/RuleRunner.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/rules/JyotishRules.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/AndroidSpeechPlayback.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatStarterPrompt.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatSubjects.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatTransport.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatTts.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatWireModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/GroundingChipStyle.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/MantraDetailSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/GroundingExplainSheet.kt"
+      ],
+      "commits": [
+        {
+          "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+          "date": "2026-09-22T07:26:31+05:30",
+          "title": "feat(credits): buy credit packages through Google Play"
+        },
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "41b19ab130f170d250acf8b1d3b73c461f395e3e",
+          "date": "2026-09-20T15:56:11+05:30",
+          "title": "feat(credits): show wallet balance in AI chat"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-speech",
+      "assessment": "aligned",
+      "behavior": "Read-aloud state and controls exist in ChatScreen; compact answer controls were added with the focused starters.",
+      "difference": "The missing iOS automatic toggle is implemented. Actual audio quality and interruptions are not certified by state tests.",
+      "next": "Compare TTS language, stop, interruption and background transitions on real devices.",
+      "validation": "iOS opt-in/dedup state tests and English/Hindi light/dark captures passed. Live audio was not exercised.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "bb82998834f2513261a549b1dc67fe5aeaf3d3d1060e9ba3dacb5a3708611e3f",
+      "file_count": 14,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/chat/AndroidSpeechPlayback.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatStarterPrompt.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatSubjects.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatTransport.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatTts.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatWireModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/GroundingChipStyle.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/MantraDetailSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainSheetViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+          "date": "2026-09-22T07:26:31+05:30",
+          "title": "feat(credits): buy credit packages through Google Play"
+        },
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "41b19ab130f170d250acf8b1d3b73c461f395e3e",
+          "date": "2026-09-20T15:56:11+05:30",
+          "title": "feat(credits): show wallet balance in AI chat"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-layout",
+      "assessment": "intentional",
+      "behavior": "Starter area is centered and uses paired question rows. Native Compose controls and keyboard behavior remain platform-specific.",
+      "difference": "Ordinary-size intent is aligned. iOS may use one column at accessibility sizes; preserving legibility is intentional.",
+      "next": "Compare equivalent viewport/font scale; test keyboard, five long names and screen-reader order.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "intentional",
+      "review_current": true,
+      "fingerprint": "ec01457428a5a84ac451f4ec8758f66ce666dc3b29ed17d0be5a0a25d312731f",
+      "file_count": 6,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatScreen.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ChatAnswerActions.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ChatFirstUseTip.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ChatGroundingCell.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ChatKundaliSelector.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/ChatStarterQuestions.kt"
+      ],
+      "commits": [
+        {
+          "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+          "date": "2026-09-22T07:26:31+05:30",
+          "title": "feat(credits): buy credit packages through Google Play"
+        },
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "41b19ab130f170d250acf8b1d3b73c461f395e3e",
+          "date": "2026-09-20T15:56:11+05:30",
+          "title": "feat(credits): show wallet balance in AI chat"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "auth-otp",
+      "assessment": "review",
+      "behavior": "Phone/email flows include returning-email-user restoration and OTP autofill fixes (73e49b8).",
+      "difference": "Both have authentication implementations, but delivery, email-link handling and native autofill need a paired test matrix.",
+      "next": "Test fresh/returning phone and email users, resend, expired code, offline, deep link and logout.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "c2fc18e67b208ac8d6acdcd63eb164935f21cc9b4d77c23b633e5f2586d0a2c9",
+      "file_count": 16,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthEmailLink.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthLinkCoordinator.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthLinkViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthRepository.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthRepositoryImpl.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/DeviceSessionRegistrar.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/LocalUserId.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/ReturningUserRestore.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/SupabaseSession.kt",
+        "app/src/main/java/com/aastroastra/android/core/navigation/AppRoute.kt",
+        "app/src/main/java/com/aastroastra/android/core/navigation/NavGraph.kt",
+        "app/src/main/java/com/aastroastra/android/features/auth/AuthScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/auth/AuthViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/EmailEntryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/OTPVerifyScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/PhoneEntryScreen.kt"
+      ],
+      "commits": [
+        {
+          "sha": "9a7e6b0a823be604efaa9f939d01a5d125b8aacc",
+          "date": "2026-09-20T09:14:22+05:30",
+          "title": "feat(credits): expose digital wallet safely"
+        },
+        {
+          "sha": "bd49c1092da78c5bb9045597cbff19d8331b5ea8",
+          "date": "2026-09-19T08:52:04+05:30",
+          "title": "fix(profile): keep the account name, standard header, site build 203"
+        },
+        {
+          "sha": "1ce305850c41f18ea9cbb5972a3ebfa1e3da9ef6",
+          "date": "2026-09-19T05:54:45+05:30",
+          "title": "feat: separate account profile from saved kundalis in Settings"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "onboarding",
+      "assessment": "gap",
+      "behavior": "Dedicated WelcomeScreen and NumerologyInsightsScreen exist alongside TellUsAboutYou and MiniKundali.",
+      "difference": "The screen sequence and numerology presentation differ; the older claim that every onboarding step is identical is not supported.",
+      "next": "Agree one product sequence and compare skip/back/resume paths, gender/Kua input and required birth fields.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "a8821ea114bdd17ba945d53e7265f5a419422bf7319e5815194334dce60701b8",
+      "file_count": 17,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/onboarding/CountryCodes.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/EmailEntryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/FinishScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/GenderScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/LanguageSelectionScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliApiMapper.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliComputer.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/NotificationPermissionScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/NumerologyInsightsScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/OTPVerifyScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/OnboardingScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/OnboardingViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/PhoneEntryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/SplashScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/TellUsAboutYouScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/WelcomeScreen.kt"
+      ],
+      "commits": [
+        {
+          "sha": "73d5d3910e71eedb8e3a41cc22fa5125446ec702",
+          "date": "2026-09-20T05:02:45+05:30",
+          "title": "feat(credits): say why the credit service refused, in the user's language"
+        },
+        {
+          "sha": "f7597f3b342ca1d1a136cc688bd6765a883bebb5",
+          "date": "2026-09-20T02:39:29+05:30",
+          "title": "feat(credits): digital credits for Kundali generation on Android"
+        },
+        {
+          "sha": "73e49b85ee15970926d108ebc4f9167a5eb48326",
+          "date": "2026-09-18T17:52:55+05:30",
+          "title": "fix: restore returning email users and support OTP autofill"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "social-auth",
+      "assessment": "review",
+      "behavior": "Google sign-in exists in AuthRepositoryImpl/AuthScreen. Production navigation reachability and provider configuration require checking.",
+      "difference": "Source capabilities differ; neither a stub nor an unused legacy screen is counted as a shipped provider.",
+      "next": "Audit actual production routes before enabling another provider; verify account linking and platform requirements.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "03d56fa0042b86ef03b84873e65bb6829a83d36b651f7206e5817adb8b9f6781",
+      "file_count": 13,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthEmailLink.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthLinkCoordinator.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthLinkViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthRepository.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthRepositoryImpl.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/DeviceSessionRegistrar.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/LocalUserId.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/ReturningUserRestore.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/SupabaseSession.kt",
+        "app/src/main/java/com/aastroastra/android/core/navigation/AppRoute.kt",
+        "app/src/main/java/com/aastroastra/android/core/navigation/NavGraph.kt",
+        "app/src/main/java/com/aastroastra/android/features/auth/AuthScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/auth/AuthViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "9a7e6b0a823be604efaa9f939d01a5d125b8aacc",
+          "date": "2026-09-20T09:14:22+05:30",
+          "title": "feat(credits): expose digital wallet safely"
+        },
+        {
+          "sha": "bd49c1092da78c5bb9045597cbff19d8331b5ea8",
+          "date": "2026-09-19T08:52:04+05:30",
+          "title": "fix(profile): keep the account name, standard header, site build 203"
+        },
+        {
+          "sha": "1ce305850c41f18ea9cbb5972a3ebfa1e3da9ef6",
+          "date": "2026-09-19T05:54:45+05:30",
+          "title": "feat: separate account profile from saved kundalis in Settings"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "saved-charts",
+      "assessment": "review",
+      "behavior": "Saved profile support and unified chart selection exist; default-person thread fixes are recorded in history.",
+      "difference": "Both have the storage/picker flow. Cross-device restore and all reading entry points remain acceptance items.",
+      "next": "Test edit self, edit other, duplicate chart, delete active selection, switch default and restore on another device.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "4c30a76df029efd25593f0be76c5dbb5ab55c54d702f12180a20dd2b65c39c8c",
+      "file_count": 11,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/profile/AccountProfileScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/AccountProfileViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/KundaliCatalog.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/ChooseAddKundali.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartNorthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartSouthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliPickerSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliSummaryGrid.kt"
+      ],
+      "commits": [
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "9a7e6b0a823be604efaa9f939d01a5d125b8aacc",
+          "date": "2026-09-20T09:14:22+05:30",
+          "title": "feat(credits): expose digital wallet safely"
+        },
+        {
+          "sha": "03106b0d2da5c6b1f1c461b5601cd0ebe10d1912",
+          "date": "2026-09-19T08:52:12+05:30",
+          "title": "Merge feature/android-more-languages: seven new app languages"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "contacts",
+      "assessment": "review",
+      "behavior": "Contact-add capability and its feature flag exist in the add-kundali flow.",
+      "difference": "Both expose contact import; native permission/picker mechanics differ. Missing DOB and multiple phone numbers need acceptance.",
+      "next": "Test denied/cancelled picker, missing birthday, multiple numbers and local/remote saved chart behavior.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "1abca18bf24ea564d60d67ed21f70c7d20ee7363385803cca185a68e1ebef0f0",
+      "file_count": 7,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/flags/FeatureFlags.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/AddKundaliScreen.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/ChooseAddKundali.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartNorthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartSouthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliPickerSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliSummaryGrid.kt"
+      ],
+      "commits": [
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "1f255e6f223d3c7f1e7f6cfe451c2efa373be345",
+          "date": "2026-09-18T02:35:09+05:30",
+          "title": "Unify Kundali selection and add grounded multi-person AstroAI conversations"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "credits",
+      "assessment": "intentional",
+      "behavior": "CreditStore uses RevenueCat/Google Play with its own purchase build switch; native packages landed in 14f2404 and policy switch in 13ac54c.",
+      "difference": "Store sheets, product setup and price tiers are inherently platform-specific. Equivalent balance semantics still require store sandbox validation.",
+      "next": "Verify configured products, pending/cancelled purchase, server delay, relaunch recovery and duplicate webhook handling.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "intentional",
+      "review_current": true,
+      "fingerprint": "7ba909921394c9176a510e97cd253ee7939e4e6efb0bc4ee826a0991db5c39c9",
+      "file_count": 15,
+      "paths": [
+        "app/build.gradle.kts",
+        "app/src/main/java/com/aastroastra/android/core/config/AppConfig.kt",
+        "app/src/main/java/com/aastroastra/android/core/config/ReleasePolicy.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditAccess.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditNotice.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditStore.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditTransport.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditWalletLinks.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/CreditWalletSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/WalletModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/WalletRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/WalletScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/WalletViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "3a115465bef7b10fd9093ffc4ab0ba0787b2bfad",
+          "date": "2026-09-23T16:06:17+05:30",
+          "title": "chore(android): bump build to 210"
+        },
+        {
+          "sha": "0537d5ea135a67bb3968d2dacc8d8bbcb979c23f",
+          "date": "2026-09-22T15:46:22+05:30",
+          "title": "chore(android): prepare version 1.0.15 build 209"
+        },
+        {
+          "sha": "13ac54c06ba46336fb50efab95baa2aa849ea458",
+          "date": "2026-09-22T15:23:54+05:30",
+          "title": "feat(credits): credit purchases have their own build switch"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "credit-generation",
+      "assessment": "review",
+      "behavior": "Kundali credit flow landed in f7597f3 with operation-store regression fixtures.",
+      "difference": "Both implementations exist. Full server-ledger behavior is a shared backend contract, not provable from mobile history alone.",
+      "next": "Compare cold/cache/changed-input/concurrent/retry cases against one ledger fixture before release.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "3909b018847b068d11fc882f37c435d903c151583718aa9eef2b7f6505963e3d",
+      "file_count": 18,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditAccess.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditNotice.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditStore.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditTransport.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditWalletLinks.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/AddKundaliScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/AddKundaliSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/ChartSelector.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/GanaSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliDetailCache.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliDetailScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliGenerator.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/SelectableChart.kt"
+      ],
+      "commits": [
+        {
+          "sha": "13ac54c06ba46336fb50efab95baa2aa849ea458",
+          "date": "2026-09-22T15:23:54+05:30",
+          "title": "feat(credits): credit purchases have their own build switch"
+        },
+        {
+          "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+          "date": "2026-09-22T07:26:31+05:30",
+          "title": "feat(credits): buy credit packages through Google Play"
+        },
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "remote-flags",
+      "assessment": "gap",
+      "behavior": "FeatureFlags resolves Amplitude Experiment variants with defaults when configuration is unavailable.",
+      "difference": "A flag changed remotely can affect Android while iOS remains on its default. This is a confirmed operational parity gap.",
+      "next": "Implement one shared remote flag contract for iOS, with cached defaults and a cross-platform flag matrix test.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "67fc70bdbbbb5b7b0da5e13e928b7083d6875d1776a3d170e9b5b6de29234221",
+      "file_count": 4,
+      "paths": [
+        "app/build.gradle.kts",
+        "app/src/main/java/com/aastroastra/android/core/config/AppConfig.kt",
+        "app/src/main/java/com/aastroastra/android/core/config/ReleasePolicy.kt",
+        "app/src/main/java/com/aastroastra/android/core/flags/FeatureFlags.kt"
+      ],
+      "commits": [
+        {
+          "sha": "3a115465bef7b10fd9093ffc4ab0ba0787b2bfad",
+          "date": "2026-09-23T16:06:17+05:30",
+          "title": "chore(android): bump build to 210"
+        },
+        {
+          "sha": "0537d5ea135a67bb3968d2dacc8d8bbcb979c23f",
+          "date": "2026-09-22T15:46:22+05:30",
+          "title": "chore(android): prepare version 1.0.15 build 209"
+        },
+        {
+          "sha": "13ac54c06ba46336fb50efab95baa2aa849ea458",
+          "date": "2026-09-22T15:23:54+05:30",
+          "title": "feat(credits): credit purchases have their own build switch"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "push",
+      "assessment": "gap",
+      "behavior": "OneSignalManager, NotificationDeepLinks and CallPushExtension provide remote delivery and routing integrations.",
+      "difference": "Local notifications and an inbox are not substitutes for remote push delivery. iOS call/VoIP support does not close ordinary alert parity.",
+      "next": "Choose and wire the iOS push provider, token lifecycle and deep-link routing; test terminated/background/foreground states.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "ad5a7cad5f378b20bf26e9b9a30e9ca5ff44228e4987f481f6c99343a15fce61",
+      "file_count": 10,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/notifications/CallPushExtension.kt",
+        "app/src/main/java/com/aastroastra/android/core/notifications/NotificationDeepLinks.kt",
+        "app/src/main/java/com/aastroastra/android/core/notifications/OneSignalManager.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/DailyReminderWorker.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationChannelHelper.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationHelper.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationScheduler.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationsScreen.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "fe76fedc6b266c4e3d69607462bc480a8a3b9b8b",
+          "date": "2026-09-16T21:35:40+05:30",
+          "title": "fix: support older Android APIs and notification permission changes"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "notification-prefs",
+      "assessment": "gap",
+      "behavior": "NotificationRepository mirrors engine preferences and quiet hours to notification_preferences/OneSignal and syncs timezone.",
+      "difference": "Changing iOS preferences does not follow the Android backend/tag synchronization path. Quiet-hour controls/data also differ.",
+      "next": "Share the preference schema and backend update contract; cover timezone travel, opt-out and reinstall.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "ad5a7cad5f378b20bf26e9b9a30e9ca5ff44228e4987f481f6c99343a15fce61",
+      "file_count": 10,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/notifications/CallPushExtension.kt",
+        "app/src/main/java/com/aastroastra/android/core/notifications/NotificationDeepLinks.kt",
+        "app/src/main/java/com/aastroastra/android/core/notifications/OneSignalManager.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/DailyReminderWorker.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationChannelHelper.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationHelper.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationScheduler.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationsScreen.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "fe76fedc6b266c4e3d69607462bc480a8a3b9b8b",
+          "date": "2026-09-16T21:35:40+05:30",
+          "title": "fix: support older Android APIs and notification permission changes"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "dashboard",
+      "assessment": "review",
+      "behavior": "Home/Dashboard screens expose modular cards and layout controls.",
+      "difference": "Old documents list missing card variants; current source has evolved. Card-by-card visuals/flags need a new paired acceptance pass.",
+      "next": "Compare card availability, compact/full sizes, reorder persistence, empty/loading/failure and tap destinations.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "b7290724be1f2c3714428baa75bf034afbe5dd4185843b5b60188a4be3cdfd99",
+      "file_count": 12,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/dashboard/AddKundaliScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/ComingSoonScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/DailyHoroscopeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/DailyHoroscopeViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/DashboardSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/MainTabsScreen.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/BannerCarousel.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/RotatingCompactBanner.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/SmartBanner.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "569c338b9d5c6290b363fdc854fe3ba238c70d93",
+          "date": "2026-09-18T03:05:52+05:30",
+          "title": "Fix release face detection and persist selected birth coordinates in build 197"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "birthday",
+      "assessment": "review",
+      "behavior": "Birthday prompts are supported through the dashboard and feature flag.",
+      "difference": "The older missing-iOS-birthday note is obsolete. Leap-day/timezone and banner dismissal still need paired verification.",
+      "next": "Test self versus saved person, local midnight, leap day, gift/color lists and dismissal reset.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "4b414c7aaee2aa0886c2e7708f35159f1bba88605f76a5fcd9198da2616bb1c4",
+      "file_count": 10,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/birthday/BirthdayEngine.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/AddKundaliScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/ComingSoonScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/DailyHoroscopeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/DailyHoroscopeViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/DashboardSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/MainTabsScreen.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "569c338b9d5c6290b363fdc854fe3ba238c70d93",
+          "date": "2026-09-18T03:05:52+05:30",
+          "title": "Fix release face detection and persist selected birth coordinates in build 197"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "horoscope",
+      "assessment": "review",
+      "behavior": "DailyHoroscopeViewModel/Screen provide the corresponding period-based reading experience.",
+      "difference": "The old claim that iOS lacks weekly/monthly data is obsolete. Exact endpoint payload/cache/empty behavior is not yet regression-compared.",
+      "next": "Use fixed vendor fixtures for daily facets and weekly/monthly prose; switch person/language/period while loading.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "5e5b14c9128116d96fd56a62389017e85b20bcac91fdf52b23a8a7ad25c39267",
+      "file_count": 2,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/dashboard/DailyHoroscopeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/DailyHoroscopeViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "85276f7314c5c24078a57406b85c65cbe0e642cd",
+          "date": "2026-09-15T03:59:25+05:30",
+          "title": "fix(ui): the back arrow, the keyboard, the CTA label and three faint things"
+        },
+        {
+          "sha": "27d2d939581252a9e012bb7aa7f4b0d92d022ec9",
+          "date": "2026-09-01T12:35:31+05:30",
+          "title": "fix(horoscope): the dashboard was showing invented text, not a horoscope"
+        },
+        {
+          "sha": "fb39e0338e60eb92938908b18d2f13e353793b24",
+          "date": "2026-08-29T05:34:50+05:30",
+          "title": "fix(design): derive the accent label, close every contrast failure, merge the palettes"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kundali",
+      "assessment": "review",
+      "behavior": "Kundali detail and person-page related components provide the same broad reading surface.",
+      "difference": "Presence of screens does not establish equal chart calculations, all tabs or error behavior.",
+      "next": "Replay a shared set of timezones, unknown times and boundary births; compare chart styles, planets, houses and accessible labels.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "3b3b682c0155ab8d093fd9a965e605f62e188526dc1d72e05c5985d97932fa06",
+      "file_count": 27,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/astrology/ActiveChart.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/AstrologyDtos.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/AstrologyRepository.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/ChartContextProvider.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/ChartDigest.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/Chogadiya.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/Gana.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/HoroscopeSummary.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/RunningDasha.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/VedicRashi.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/cache/ProxyCachePolicy.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/transits/TransitFeed.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/AddKundaliSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/ChartSelector.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/GanaSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliDetailCache.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliDetailScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliGenerator.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/SelectableChart.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliApiMapper.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliComputer.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliScreen.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartNorthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartSouthIndian.kt"
+      ],
+      "commits": [
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "9a7e6b0a823be604efaa9f939d01a5d125b8aacc",
+          "date": "2026-09-20T09:14:22+05:30",
+          "title": "feat(credits): expose digital wallet safely"
+        },
+        {
+          "sha": "73d5d3910e71eedb8e3a41cc22fa5125446ec702",
+          "date": "2026-09-20T05:02:45+05:30",
+          "title": "feat(credits): say why the credit service refused, in the user's language"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "panchang",
+      "assessment": "review",
+      "behavior": "PanchangDetailScreen and corresponding calculation/data/localization code are present.",
+      "difference": "Historical iOS localization gaps cannot be carried forward without rechecking. Exact sunrise boundaries and rendered spacing remain review items.",
+      "next": "Compare before/after sunrise, polar/no-sunrise data, selected locations and Hindi/English labels using common fixtures.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "2531c101ebfbbc578bdf963b9cd486632e22a27191940b8591555437163f9494",
+      "file_count": 2,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/localization/PanchangNames.kt",
+        "app/src/main/java/com/aastroastra/android/features/panchang/PanchangDetailScreen.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "85276f7314c5c24078a57406b85c65cbe0e642cd",
+          "date": "2026-09-15T03:59:25+05:30",
+          "title": "fix(ui): the back arrow, the keyboard, the CTA label and three faint things"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kp-lalkitab",
+      "assessment": "review",
+      "behavior": "KpSystem and LalKitab counterparts exist.",
+      "difference": "Deep inline-table and chart-switch behavior needs a paired audit; filenames do not prove column or action parity.",
+      "next": "Compare planets/cusps/significators, chart selection and missing-data states; verify current-person context in explain.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "1505d0219f0c39d32556fd76e082ac0970e429f3554cc1c5c2a8a72e23cfe9b0",
+      "file_count": 5,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/kpsystem/KpSystemScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/kpsystem/KpSystemViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/lalkitab/LalKitabScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/lalkitab/LalKitabSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/lalkitab/LalKitabViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "85276f7314c5c24078a57406b85c65cbe0e642cd",
+          "date": "2026-09-15T03:59:25+05:30",
+          "title": "fix(ui): the back arrow, the keyboard, the CTA label and three faint things"
+        },
+        {
+          "sha": "fb39e0338e60eb92938908b18d2f13e353793b24",
+          "date": "2026-08-29T05:34:50+05:30",
+          "title": "fix(design): derive the accent label, close every contrast failure, merge the palettes"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "numerology",
+      "assessment": "review",
+      "behavior": "Numerology view models, core numerology and associated models/content are implemented.",
+      "difference": "The old four-versus-six-plane note is not treated as current proof. Numeric parity requires shared vectors, especially unknown gender and master numbers.",
+      "next": "Pin cross-platform numeric fixtures and compare Lo Shu counts, Kua fallback, repeated/missing digits, mobile and personal cycles.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "b3b902b99732eeefd869007152149359b2b13075582edb60c050588e74a5697f",
+      "file_count": 9,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/numerology/DriverConductor.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/Gender.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/KuaDirections.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/NumerologyPairContent.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/PersonalCycle.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/models/NumerologyProfile.kt",
+        "app/src/main/java/com/aastroastra/android/features/numerology/NumerologyEngine.kt",
+        "app/src/main/java/com/aastroastra/android/features/numerology/NumerologyScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/numerology/NumerologyViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "85276f7314c5c24078a57406b85c65cbe0e642cd",
+          "date": "2026-09-15T03:59:25+05:30",
+          "title": "fix(ui): the back arrow, the keyboard, the CTA label and three faint things"
+        },
+        {
+          "sha": "a469b2d80cc1bf7021442aca97ea9a86c9971b5a",
+          "date": "2026-09-03T08:58:57+05:30",
+          "title": "fix(numerology): the Lo Shu plane names were English for every reader"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "match",
+      "assessment": "review",
+      "behavior": "MatchScreens/MatchViewModel and report-related components are present.",
+      "difference": "Core feature exists on both. Koota text, chart swapping, unavailable results and exported report contents need fixture comparison.",
+      "next": "Compare numeric breakdown first, then prose/explain and exported PDF. Never let generated prose alter scores.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "f27415741687c12cede3aacba7ce98676094baf1317ed0fe47b1151574491a99",
+      "file_count": 11,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/match/MatchApiParser.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchNumerology.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/AstrologyReportRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ExportReportBar.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/PdfExportSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/PdfReportRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ReportGeneratorSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ReportModels.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "1f255e6f223d3c7f1e7f6cfe451c2efa373be345",
+          "date": "2026-09-18T02:35:09+05:30",
+          "title": "Unify Kundali selection and add grounded multi-person AstroAI conversations"
+        },
+        {
+          "sha": "4b5017c8a527dbb99157370a76b83573a44f7ccd",
+          "date": "2026-09-18T00:33:29+05:30",
+          "title": "test: an Android mini regression that drives the release build end to end"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "multi-match",
+      "assessment": "review",
+      "behavior": "MultiMatchViewModel/Screen implement ranking; 0a414e8 preserved first ranking across unrelated preference writes.",
+      "difference": "The missing-iOS-authored-verdict gap is closed in source. Stable ranking and tie/unavailable handling still need paired fixtures.",
+      "next": "Test ties, incomplete births, reorder, persistence and changing unrelated settings; compare returned numeric rankings.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "b75a3e68bdbc83a2c64cc2398aa46cefad2e53403143059cb2a5b1885a38f900",
+      "file_count": 8,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchEngine.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchMapping.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchVerdict.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchVerdictRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "72aff841522a36e8e549447ec0bfdd15c5973945",
+          "date": "2026-09-22T06:55:18+05:30",
+          "title": "fix(match): selected emphasis chip reads white on the orange tint"
+        },
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "0a414e806d68afa3755bbfcc01fc3bb40e7af5f8",
+          "date": "2026-09-18T04:07:37+05:30",
+          "title": "fix: retain first Multi-Match ranking across unrelated preference writes"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "reasoning",
+      "assessment": "review",
+      "behavior": "Equivalent core reasoning classes expose claims, rules and confidence bands.",
+      "difference": "Architecture is shared; full byte-level claim fixture equivalence was not rerun in this dashboard task.",
+      "next": "Require cross-platform golden vectors for any rule/threshold/version change; keep source citations and unknown-time confidence cap.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "a9a9f92123c2c1954f090fd69ce0c594c97ddda1df173f0511318538bd016de5",
+      "file_count": 6,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/reasoning/AnswerConfidence.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/Claim.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/ClaimPayload.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/RuleContext.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/RuleRunner.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/rules/JyotishRules.kt"
+      ],
+      "commits": [
+        {
+          "sha": "b63d579ed1595b09218df09d4896bab462a4a7dd",
+          "date": "2026-08-29T21:16:17+05:30",
+          "title": "feat(chat): the grounding sheet, Android twin of step 4 (CMP-O42); 0.4.30 (151)"
+        },
+        {
+          "sha": "f26dbaa22a81988bf2ace23091c5d8db5fcd7269",
+          "date": "2026-08-29T20:19:16+05:30",
+          "title": "feat(chat): the grounding cell under an answer, Android twin of step 3 (CMP-M21)"
+        },
+        {
+          "sha": "76de40eea966074459db1e1c880d6c1e229fad70",
+          "date": "2026-08-29T17:25:02+05:30",
+          "title": "feat(chat): derive an answer's grounding band, step 1 of the confidence plan"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "explain",
+      "assessment": "review",
+      "behavior": "ExplainSheetViewModel and explain components pass section/person context.",
+      "difference": "Broad functionality exists. Every call-site and explain-budget path has not been acceptance-compared.",
+      "next": "Test house/planet/koota/number explain while switching people and language; confirm explain and chat budgets.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "de46954284cdcb35af46b46842a68c8de72e9969431a3beb2c210b7d4ba0ae04",
+      "file_count": 3,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainSheetViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+          "date": "2026-09-22T07:26:31+05:30",
+          "title": "feat(credits): buy credit packages through Google Play"
+        },
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "41b19ab130f170d250acf8b1d3b73c461f395e3e",
+          "date": "2026-09-20T15:56:11+05:30",
+          "title": "feat(credits): show wallet balance in AI chat"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "palmistry",
+      "assessment": "review",
+      "behavior": "Palmistry counterpart and consent flow exist.",
+      "difference": "Consent parity is implemented. Camera permissions, upload interruption and per-result discussion/export need device acceptance.",
+      "next": "Test first/returning consent, cancel, permission denied, retry, background/resume and opening saved readings.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "8cf408a0537e8a8d58a212a657f93cbe3ee06048656d8ebd7d981dc8bdbba427",
+      "file_count": 7,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmProcessingConsent.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryListScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryStore.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "8a018f10d6cff879586452422cb91d5071d9162e",
+          "date": "2026-09-16T17:18:49+05:30",
+          "title": "feat: prepare free-core Android release"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "face-reading",
+      "assessment": "review",
+      "behavior": "FaceReading screen/list/view model exist; recent history includes release face-detection fixes.",
+      "difference": "Known QA screenshots mention a second reading type not loading. No new proof here that either platform has identical variant behavior.",
+      "next": "Test every reading type and invalid/no-face image, background recovery and cached reopens; tie fixes to QA bug IDs.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "a6224f2a8155c9c608e92d512119312535a379968970c09e3714ab8e9d3fc4e7",
+      "file_count": 6,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingListScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingStore.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "569c338b9d5c6290b363fdc854fe3ba238c70d93",
+          "date": "2026-09-18T03:05:52+05:30",
+          "title": "Fix release face detection and persist selected birth coordinates in build 197"
+        },
+        {
+          "sha": "8a018f10d6cff879586452422cb91d5071d9162e",
+          "date": "2026-09-16T17:18:49+05:30",
+          "title": "feat: prepare free-core Android release"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "prediction-rectification",
+      "assessment": "review",
+      "behavior": "Prediction and Rectification features exist.",
+      "difference": "Available feature surfaces are confirmed; endpoint contracts, locale behavior and credit gating need paired fixtures.",
+      "next": "Document mode/input/result schemas and run success, unavailable, low-credit and interruption cases on both.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "700a7fbe48d0dc0ab48d81fb8cf136e34a3f0b58be78672cd23babfd84d9191a",
+      "file_count": 8,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/prediction/PredictionModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/prediction/PredictionRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/prediction/PredictionScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/prediction/PredictionViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/rectification/RectificationModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/rectification/RectificationRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/rectification/RectificationScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/rectification/RectificationViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "11c0d6102e4306bbd650aa86ba5b6ff272b3bd2e",
+          "date": "2026-09-17T02:17:48+05:30",
+          "title": "fix: preserve Android birth date and time contracts across locales"
+        },
+        {
+          "sha": "8a018f10d6cff879586452422cb91d5071d9162e",
+          "date": "2026-09-16T17:18:49+05:30",
+          "title": "feat: prepare free-core Android release"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "reports",
+      "assessment": "review",
+      "behavior": "Reports feature and ExportReportBar support report generation routes.",
+      "difference": "The old statement that iOS has no general reports is obsolete. Full report-type and caching parity remains unverified.",
+      "next": "Generate every offered report type in English/Hindi and both chart styles; compare output and reopen behavior.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "605b48569231fb87cd80513438ecacd6990a057294d62cf25d43a63d29353c26",
+      "file_count": 6,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/reports/AstrologyReportRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ExportReportBar.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/PdfExportSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/PdfReportRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ReportGeneratorSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ReportModels.kt"
+      ],
+      "commits": [
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "8a018f10d6cff879586452422cb91d5071d9162e",
+          "date": "2026-09-16T17:18:49+05:30",
+          "title": "feat: prepare free-core Android release"
+        },
+        {
+          "sha": "177cb663937abb46afbb35d2cf12505d3f04d4da",
+          "date": "2026-09-05T07:24:26+05:30",
+          "title": "feat(reports): offer the gemstone report, which works and was hidden"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "localization",
+      "assessment": "review",
+      "behavior": "Android locale resources and runtime localization support 12 app languages.",
+      "difference": "Starter copy is checked across 12 locales, but that audit does not certify every screen or vendor-provided prose.",
+      "next": "Keep localized key/placeholder checks and cross-platform request-locale tests; audit fallback prose separately.",
+      "validation": "Starter prompts have a 300-string comparison. Full-app locale completeness and all reading responses are not certified.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "c668638ea9c6e9587a3a134c2c64b1c6c6e4206270d1ab9d0b2fc952f35dfd59",
+      "file_count": 20,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/localization/AppLocale.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/AstroNames.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/KundaliLore.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/LocalizedLore.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/LuckyLore.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/NumerologyContent.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/PanchangNames.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/SupportedLocale.kt",
+        "app/src/main/res/values-bn/strings.xml",
+        "app/src/main/res/values-es/strings.xml",
+        "app/src/main/res/values-gu/strings.xml",
+        "app/src/main/res/values-hi/strings.xml",
+        "app/src/main/res/values-kn/strings.xml",
+        "app/src/main/res/values-ml/strings.xml",
+        "app/src/main/res/values-mr/strings.xml",
+        "app/src/main/res/values-or/strings.xml",
+        "app/src/main/res/values-pa/strings.xml",
+        "app/src/main/res/values-ta/strings.xml",
+        "app/src/main/res/values-zh/strings.xml",
+        "app/src/main/res/values/strings.xml"
+      ],
+      "commits": [
+        {
+          "sha": "73d5d3910e71eedb8e3a41cc22fa5125446ec702",
+          "date": "2026-09-20T05:02:45+05:30",
+          "title": "feat(credits): say why the credit service refused, in the user's language"
+        },
+        {
+          "sha": "91c9346e1a67eb646102b1dc7ca5eac684bb615b",
+          "date": "2026-09-20T02:40:26+05:30",
+          "title": "Merge origin/main into feature/android-kundali-credits"
+        },
+        {
+          "sha": "f7597f3b342ca1d1a136cc688bd6765a883bebb5",
+          "date": "2026-09-20T02:39:29+05:30",
+          "title": "feat(credits): digital credits for Kundali generation on Android"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "themes",
+      "assessment": "intentional",
+      "behavior": "Theme tokens and AppearanceScreen expose matching palette choices with native Compose controls.",
+      "difference": "Typography, system pickers and accessibility wrapping may intentionally differ. Equivalent information and actions remain required.",
+      "next": "Review all themes at narrow/large-text sizes, disabled controls, screen-reader labels and contrast.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "intentional",
+      "review_current": true,
+      "fingerprint": "2a76ccf7ec9a9f335725b925a463a156abd6072dd3ad925df211b27403c069fc",
+      "file_count": 119,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/theme/AastroColors.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/AastroTheme.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/AastroTokens.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/AastroTypography.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/BrandKit.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/FeatureColors.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/OnAccent.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/ThemeManager.kt",
+        "app/src/main/java/com/aastroastra/android/features/settings/AppearanceScreen.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/AnimatedComponents.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/BackButton.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/BrandMark.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/NumerologyInsightPopup.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/ThemeTogglePill.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/ZodiacIcon.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroBadge.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroButton.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroChip.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroDivider.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroIcon.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroProgressRing.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroSegmentedControl.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroSlider.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroSpinner.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroStarRating.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroTextArea.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroTextField.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AastroToggle.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/AstrologerAvatar.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/ExplainIconButton.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/MarkdownText.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/TypewriterText.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/atoms/UserAvatar.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AastroBottomSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AastroCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AastroConfirmDialog.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AastroTabStrip.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AccountHeaderCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AnswerNote.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AnswerSources.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AstroProseText.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AstrologerCircleRail.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/AttachedButtonPair.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/BookingRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/Carousel.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ChatAnswerActions.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ChatFirstUseTip.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ChatGroundingCell.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ChatKundaliSelector.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/CompactBanner.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ContactPickButton.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/CreditBalanceCapsule.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/CreditLedgerEntryRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/CreditPackageGrid.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/CreditPriceRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/DriverConductorCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ExpandableCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/FeatureBox.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/FreePracticeRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/InfoTile.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/InsightCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/KootaTile.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/LinkedAccountRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/MantraCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/MasterNumberBadge.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/NativeOptionRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/NumberRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/NumerologyPreviewStrip.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/PersonalCycleCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/PlanOptionRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ReadAloudButton.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/RepeatedNumbersCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/RevealCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/ServiceBannerCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/StreamingAnswerBubble.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/molecules/VoicePrefillCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/AastroPromptSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/AastroTopBar.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/BannerCarousel.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/BirthDateField.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/BirthDetailsForm.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/BirthDetailsSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/BirthPlaceField.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/BirthPlaceSelection.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/BirthTimeField.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/ChatStarterQuestions.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/ChooseAddKundali.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/ConsentRow.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/CrossQuad.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/DateOfBirthPicker.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/EmptyStateView.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/FeatureGrid.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/FeaturedRemedyCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/GenderPicker.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/GrahaReasonHero.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/GroundingExplainSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/IntakeTimeline.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartNorthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliChartSouthIndian.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliPickerSheet.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/KundaliSummaryGrid.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/LanguagePicker.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/LoShuDigitMeaning.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/LoShuGridView.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/LocationAutocompleteField.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/MissingDigitChips.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/MobileNumberReadingCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/OTPCodeBoxes.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/OnboardingProgressBar.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/PalmPromoCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/PhoneNumberField.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/PredictionTable.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/RemedyCarouselCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/RotatingCompactBanner.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/ServiceCard.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/SmartBanner.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/StickyCtaBar.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/SunMoonArcGraph.kt",
+        "app/src/main/java/com/aastroastra/android/shared/components/organisms/TimeOfBirthPicker.kt"
+      ],
+      "commits": [
+        {
+          "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+          "date": "2026-09-22T07:26:31+05:30",
+          "title": "feat(credits): buy credit packages through Google Play"
+        },
+        {
+          "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+          "date": "2026-09-20T16:43:56+05:30",
+          "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+        },
+        {
+          "sha": "41b19ab130f170d250acf8b1d3b73c461f395e3e",
+          "date": "2026-09-20T15:56:11+05:30",
+          "title": "feat(credits): show wallet balance in AI chat"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "marketplace",
+      "assessment": "review",
+      "behavior": "Corresponding remedies, astrologer, orders and wallet features exist under ReleasePolicy/AppConfig.",
+      "difference": "A screen existing in source is not proof it is exposed in the current free-core release. Service gates and lifecycle require paired checking.",
+      "next": "Compare role/flag matrix, booking confirmation/cancel, payment state, order details and practitioner availability.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "cc72c44cd5643db8b26ae54157dbb28a959812c02ea97d3324541dc35dbde884",
+      "file_count": 17,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/astrologer/AstrologerConsoleScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/AstrologerProfileScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/AstrologerRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/AstrologerViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/BookingSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/BookingViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/orders/OrdersScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/orders/OrdersViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/AstrologerDirectory.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemediesCatalog.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemediesScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemediesViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyBookings.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyCatalogue.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyProductScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyPurchaseViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyService.kt"
+      ],
+      "commits": [
+        {
+          "sha": "8a018f10d6cff879586452422cb91d5071d9162e",
+          "date": "2026-09-16T17:18:49+05:30",
+          "title": "feat: prepare free-core Android release"
+        },
+        {
+          "sha": "85276f7314c5c24078a57406b85c65cbe0e642cd",
+          "date": "2026-09-15T03:59:25+05:30",
+          "title": "fix(ui): the back arrow, the keyboard, the CTA label and three faint things"
+        },
+        {
+          "sha": "d7df16d17a051dc4835e99dc863b528749e5ddf0",
+          "date": "2026-09-14T18:33:15+05:30",
+          "title": "fix(numerology,wallet): make the cells that carry meaning visible"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "calls",
+      "assessment": "review",
+      "behavior": "Call features and push extension support consultation entry and incoming ringing.",
+      "difference": "OS background execution and incoming-call integrations differ intentionally; end-to-end behavior is not implied by source parity.",
+      "next": "Use two real phones for incoming/background/denied-permission/disconnect/reconnect, billing and post-call summary.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "470658495deabab56a8b27c6122cf290e7d8ba02800400cc595ee4f2210fbb89",
+      "file_count": 7,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/notifications/CallPushExtension.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/AastroConnectionService.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/CallCenter.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/CallDirectoryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/CallGateway.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/CallStartViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/IncomingCallNotifier.kt"
+      ],
+      "commits": [
+        {
+          "sha": "fe76fedc6b266c4e3d69607462bc480a8a3b9b8b",
+          "date": "2026-09-16T21:35:40+05:30",
+          "title": "fix: support older Android APIs and notification permission changes"
+        },
+        {
+          "sha": "b72a4046cf84a439bdb3de69270bcde54c5dfd68",
+          "date": "2026-09-04T09:30:23+05:30",
+          "title": "feat(remedies): catalogue carousel, gradient cards, and real astrologer calls"
+        },
+        {
+          "sha": "fb7a2500a7c2027a38c876eed10d65bb25fd5a9a",
+          "date": "2026-09-04T07:02:54+05:30",
+          "title": "feat(remedies): four services and a Call tab, mirroring iOS"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "bug-report",
+      "assessment": "review",
+      "behavior": "e083b25 lowered shake threshold to usable movement and improved full-height report sheet/keyboard behavior.",
+      "difference": "Both can report bugs, but Android received a recent sensitivity/form fix that needs explicit iOS device comparison.",
+      "next": "Verify shaking, screenshot consent/attachment, keyboard/send, offline failure and report arrival in the common admin list.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "41031e2255a174a5aba5e7cd6cb3f8c971b1f202fdfdc94d139b2213f0519828",
+      "file_count": 7,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/bugreport/BugReportModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/BugReportRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ContentReportHost.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ReportBugSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ScreenshotCapture.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ShakeDetector.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ShakeToReport.kt"
+      ],
+      "commits": [
+        {
+          "sha": "e083b25f0219a08e5a4a769243c492fc78179528",
+          "date": "2026-09-23T16:00:14+05:30",
+          "title": "fix(bugreport): a shake people can actually perform, and a sheet they can send from"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        },
+        {
+          "sha": "8a018f10d6cff879586452422cb91d5071d9162e",
+          "date": "2026-09-16T17:18:49+05:30",
+          "title": "feat: prepare free-core Android release"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "widgets",
+      "assessment": "review",
+      "behavior": "Home-screen widget support needs an explicit Android feature audit before claiming equivalence.",
+      "difference": "Branch work and installed widgets are not the same state. Widget targets/entitlements/timeline behavior need a dedicated review.",
+      "next": "Inventory main targets and branch changes, then decide a shared widget scope and test refresh/deep links.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "0025fb0b98395e7876a1a940ed839051306fbec0b31dcc9936fa2ba5783431d6",
+      "file_count": 5,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/features/home/DashboardSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/MainTabsScreen.kt"
+      ],
+      "commits": [
+        {
+          "sha": "befc83a31f248cdbe7c125cd84417cd382847154",
+          "date": "2026-09-18T06:49:12+05:30",
+          "title": "fix(android): polish reading screens and add Sarvam voice for build 198"
+        },
+        {
+          "sha": "569c338b9d5c6290b363fdc854fe3ba238c70d93",
+          "date": "2026-09-18T03:05:52+05:30",
+          "title": "Fix release face detection and persist selected birth coordinates in build 197"
+        },
+        {
+          "sha": "197e22061383643dd2432d0aa69454959509c595",
+          "date": "2026-09-17T05:44:56+05:30",
+          "title": "feat: Android 1.0.8 (196) email sign-in link and full five-language reading text"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "infrastructure",
+      "assessment": "review",
+      "behavior": "Kotlin core data/network/navigation and app entry orchestrate feature dependencies.",
+      "difference": "Changes to shared infrastructure can affect multiple features even without a screen-file change. This row deliberately stays in review until broader regression evidence exists.",
+      "next": "Run impacted feature suites after shared-layer edits; add a focused row for any new capability and map its sources.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "ec79248ce4ecec4d62e55696476ce38f5cbdc07471a2847746067e27129a7714",
+      "file_count": 270,
+      "paths": [
+        "app/src/main/java/com/aastroastra/android/core/accessibility/ReduceMotion.kt",
+        "app/src/main/java/com/aastroastra/android/core/analytics/AmplitudeAnalytics.kt",
+        "app/src/main/java/com/aastroastra/android/core/analytics/Analytics.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/ActiveChart.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/AstrologyDtos.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/AstrologyRepository.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/ChartContextProvider.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/ChartDigest.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/Chogadiya.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/Gana.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/HoroscopeSummary.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/RunningDasha.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/VedicRashi.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/cache/ProxyCachePolicy.kt",
+        "app/src/main/java/com/aastroastra/android/core/astrology/transits/TransitFeed.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthEmailLink.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthLinkCoordinator.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthLinkViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthRepository.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/AuthRepositoryImpl.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/DeviceSessionRegistrar.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/LocalUserId.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/ReturningUserRestore.kt",
+        "app/src/main/java/com/aastroastra/android/core/auth/SupabaseSession.kt",
+        "app/src/main/java/com/aastroastra/android/core/chat/ChatPractice.kt",
+        "app/src/main/java/com/aastroastra/android/core/common/Constants.kt",
+        "app/src/main/java/com/aastroastra/android/core/common/Extensions.kt",
+        "app/src/main/java/com/aastroastra/android/core/common/Resource.kt",
+        "app/src/main/java/com/aastroastra/android/core/common/UiText.kt",
+        "app/src/main/java/com/aastroastra/android/core/config/AppConfig.kt",
+        "app/src/main/java/com/aastroastra/android/core/config/ReleasePolicy.kt",
+        "app/src/main/java/com/aastroastra/android/core/contacts/ContactPicker.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/AppDatabase.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/dao/ChatMessageDao.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/dao/KundaliDao.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/dao/MatchDao.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/dao/ProxyCacheDao.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/dao/SavedProfileDao.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/dao/UserDao.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/entity/ChatMessageEntity.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/entity/KundaliEntity.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/entity/MatchResultEntity.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/entity/ProxyCacheEntity.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/entity/SavedProfileEntity.kt",
+        "app/src/main/java/com/aastroastra/android/core/database/entity/UserEntity.kt",
+        "app/src/main/java/com/aastroastra/android/core/di/AppModule.kt",
+        "app/src/main/java/com/aastroastra/android/core/di/AuthModule.kt",
+        "app/src/main/java/com/aastroastra/android/core/di/DatabaseModule.kt",
+        "app/src/main/java/com/aastroastra/android/core/di/NetworkModule.kt",
+        "app/src/main/java/com/aastroastra/android/core/facereading/FaceGeometry.kt",
+        "app/src/main/java/com/aastroastra/android/core/facereading/FaceLandmarkDetector.kt",
+        "app/src/main/java/com/aastroastra/android/core/facereading/FaceShapeClassifier.kt",
+        "app/src/main/java/com/aastroastra/android/core/flags/FeatureFlags.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/AppLocale.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/AstroNames.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/KundaliLore.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/LocalizedLore.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/LuckyLore.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/NumerologyContent.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/PanchangNames.kt",
+        "app/src/main/java/com/aastroastra/android/core/localization/SupportedLocale.kt",
+        "app/src/main/java/com/aastroastra/android/core/location/BuiltInCities.kt",
+        "app/src/main/java/com/aastroastra/android/core/location/ResolvedLocation.kt",
+        "app/src/main/java/com/aastroastra/android/core/markdown/MarkdownBlock.kt",
+        "app/src/main/java/com/aastroastra/android/core/markdown/MarkdownParser.kt",
+        "app/src/main/java/com/aastroastra/android/core/media/AvatarImage.kt",
+        "app/src/main/java/com/aastroastra/android/core/media/UprightPhoto.kt",
+        "app/src/main/java/com/aastroastra/android/core/navigation/AppRoute.kt",
+        "app/src/main/java/com/aastroastra/android/core/navigation/NavGraph.kt",
+        "app/src/main/java/com/aastroastra/android/core/network/ConnectivityMonitor.kt",
+        "app/src/main/java/com/aastroastra/android/core/network/SupabaseModule.kt",
+        "app/src/main/java/com/aastroastra/android/core/notifications/CallPushExtension.kt",
+        "app/src/main/java/com/aastroastra/android/core/notifications/NotificationDeepLinks.kt",
+        "app/src/main/java/com/aastroastra/android/core/notifications/OneSignalManager.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/DriverConductor.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/Gender.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/KuaDirections.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/NumerologyPairContent.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/PersonalCycle.kt",
+        "app/src/main/java/com/aastroastra/android/core/numerology/models/NumerologyProfile.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/AnswerConfidence.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/Claim.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/ClaimPayload.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/RuleContext.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/RuleRunner.kt",
+        "app/src/main/java/com/aastroastra/android/core/reasoning/rules/JyotishRules.kt",
+        "app/src/main/java/com/aastroastra/android/core/remedies/GrahaContent.kt",
+        "app/src/main/java/com/aastroastra/android/core/remedies/RemedyReasonEngine.kt",
+        "app/src/main/java/com/aastroastra/android/core/speech/BirthDetailsSpeech.kt",
+        "app/src/main/java/com/aastroastra/android/core/support/SupportContact.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/AastroColors.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/AastroTheme.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/AastroTokens.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/AastroTypography.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/BrandKit.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/FeatureColors.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/OnAccent.kt",
+        "app/src/main/java/com/aastroastra/android/core/theme/ThemeManager.kt",
+        "app/src/main/java/com/aastroastra/android/core/voice/SarvamTtsClient.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/AstrologerConsoleScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/AstrologerProfileScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/AstrologerRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/AstrologerViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/BookingSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/astrologer/BookingViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/auth/AuthScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/auth/AuthViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/banners/BannerModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/banners/BannerRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/birthday/BirthdayEngine.kt",
+        "app/src/main/java/com/aastroastra/android/features/birthdetails/BirthDetailsSheetViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/BugReportModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/BugReportRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ContentReportHost.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ReportBugSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ScreenshotCapture.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ShakeDetector.kt",
+        "app/src/main/java/com/aastroastra/android/features/bugreport/ShakeToReport.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/AastroConnectionService.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/CallCenter.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/CallDirectoryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/CallGateway.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/CallStartViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/call/IncomingCallNotifier.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/AndroidSpeechPlayback.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatStarterPrompt.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatSubjects.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatTransport.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatTts.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/ChatWireModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/GroundingChipStyle.kt",
+        "app/src/main/java/com/aastroastra/android/features/chat/MantraDetailSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditAccess.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditNotice.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditStore.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditTransport.kt",
+        "app/src/main/java/com/aastroastra/android/features/credits/CreditWalletLinks.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/AddKundaliScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/ComingSoonScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/DailyHoroscopeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/dashboard/DailyHoroscopeViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/explain/ExplainSheetViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingListScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingStore.kt",
+        "app/src/main/java/com/aastroastra/android/features/facereading/FaceReadingViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/DashboardSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/HomeViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/home/MainTabsScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/kpsystem/KpSystemScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/kpsystem/KpSystemViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/AddKundaliSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/ChartSelector.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/GanaSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliDetailCache.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliDetailScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliGenerator.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/KundaliViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/kundali/SelectableChart.kt",
+        "app/src/main/java/com/aastroastra/android/features/lalkitab/LalKitabScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/lalkitab/LalKitabSection.kt",
+        "app/src/main/java/com/aastroastra/android/features/lalkitab/LalKitabViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/KootaReadingPanel.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/KootaReadingRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchApiParser.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchNumerology.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MatchViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchEngine.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchMapping.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchVerdict.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchVerdictRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/MultiMatchViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/match/VerdictBand.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/Billing.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/FreeCoreNotice.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/MonetizationRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/MonetizationScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/MonetizationViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/monetization/ProCatalog.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/DailyReminderWorker.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationChannelHelper.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationHelper.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationScheduler.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/notifications/NotificationsScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/numerology/NumerologyEngine.kt",
+        "app/src/main/java/com/aastroastra/android/features/numerology/NumerologyScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/numerology/NumerologyViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/CountryCodes.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/EmailEntryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/FinishScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/GenderScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/LanguageSelectionScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliApiMapper.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliComputer.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/MiniKundaliScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/NotificationPermissionScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/NumerologyInsightsScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/OTPVerifyScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/OnboardingScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/OnboardingViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/PhoneEntryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/SplashScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/TellUsAboutYouScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/onboarding/WelcomeScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/orders/OrdersScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/orders/OrdersViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmProcessingConsent.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryListScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryStore.kt",
+        "app/src/main/java/com/aastroastra/android/features/palmistry/PalmistryViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/panchang/PanchangDetailScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/prediction/PredictionModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/prediction/PredictionRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/prediction/PredictionScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/prediction/PredictionViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/AccountProfileScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/AccountProfileViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/KundaliCatalog.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileScreens.kt",
+        "app/src/main/java/com/aastroastra/android/features/profile/ProfileViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/rectification/RectificationModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/rectification/RectificationRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/rectification/RectificationScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/rectification/RectificationViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/AstrologerDirectory.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemediesCatalog.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemediesScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemediesViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyBookings.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyCatalogue.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyProductScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyPurchaseViewModel.kt",
+        "app/src/main/java/com/aastroastra/android/features/remedies/RemedyService.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/AstrologyReportRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ExportReportBar.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/PdfExportSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/PdfReportRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ReportGeneratorSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/reports/ReportModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/settings/AppearanceScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/vision/VisionTransport.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/CreditWalletSheet.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/WalletModels.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/WalletRepository.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/WalletScreen.kt",
+        "app/src/main/java/com/aastroastra/android/features/wallet/WalletViewModel.kt"
+      ],
+      "commits": [
+        {
+          "sha": "e083b25f0219a08e5a4a769243c492fc78179528",
+          "date": "2026-09-23T16:00:14+05:30",
+          "title": "fix(bugreport): a shake people can actually perform, and a sheet they can send from"
+        },
+        {
+          "sha": "13ac54c06ba46336fb50efab95baa2aa849ea458",
+          "date": "2026-09-22T15:23:54+05:30",
+          "title": "feat(credits): credit purchases have their own build switch"
+        },
+        {
+          "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+          "date": "2026-09-22T07:26:31+05:30",
+          "title": "feat(credits): buy credit packages through Google Play"
+        }
+      ],
+      "reason": ""
+    }
+  ],
+  "unmapped_paths": [
+    "app/src/main/java/com/aastroastra/android/AastroAstraApp.kt",
+    "app/src/main/java/com/aastroastra/android/MainActivity.kt",
+    "app/src/main/java/com/aastroastra/android/shared/models/DataModels.kt",
+    "app/src/main/java/com/aastroastra/android/shared/text/AstroHighlight.kt",
+    "app/src/main/java/com/aastroastra/android/shared/widgets/BottomNavBar.kt",
+    "app/src/main/java/com/aastroastra/android/shared/widgets/CosmicBackground.kt",
+    "app/src/main/java/com/aastroastra/android/shared/widgets/KundaliChart.kt"
+  ],
+  "commits": [
+    {
+      "sha": "79f17ed78cc5797d8b559022a0b05824dd056ba2",
+      "date": "2026-09-23T20:36:40+05:30",
+      "title": "docs: record reviewed Android functionality and shared parity rules"
+    },
+    {
+      "sha": "3a115465bef7b10fd9093ffc4ab0ba0787b2bfad",
+      "date": "2026-09-23T16:06:17+05:30",
+      "title": "chore(android): bump build to 210"
+    },
+    {
+      "sha": "e083b25f0219a08e5a4a769243c492fc78179528",
+      "date": "2026-09-23T16:00:14+05:30",
+      "title": "fix(bugreport): a shake people can actually perform, and a sheet they can send from"
+    },
+    {
+      "sha": "ffcf70c47b2c808b0211528204d720f9df8a684b",
+      "date": "2026-09-22T17:07:19+05:30",
+      "title": "chore(store): recompose every themed frame from the per-theme captures"
+    },
+    {
+      "sha": "6dd35b08095857a130335019d8d0de7d285baeb1",
+      "date": "2026-09-22T16:37:39+05:30",
+      "title": "chore(store): B&W Dark captures for the remaining ten languages"
+    },
+    {
+      "sha": "65eff15b66542e28bc44b740664475cfae3b6aec",
+      "date": "2026-09-22T16:18:59+05:30",
+      "title": "chore(store): app captures per theme and language for the Play kit"
+    },
+    {
+      "sha": "746f305f88aa915c2698c2b0b141e627593c2f34",
+      "date": "2026-09-22T15:55:27+05:30",
+      "title": "fix(store): give the bundle upload a real timeout and resumable chunks"
+    },
+    {
+      "sha": "0537d5ea135a67bb3968d2dacc8d8bbcb979c23f",
+      "date": "2026-09-22T15:46:22+05:30",
+      "title": "chore(android): prepare version 1.0.15 build 209"
+    },
+    {
+      "sha": "dde245b705d62440e403341bc82fea481feab1bf",
+      "date": "2026-09-22T15:25:17+05:30",
+      "title": "feat(store): --bundle-only uploads a build without touching the listing"
+    },
+    {
+      "sha": "13ac54c06ba46336fb50efab95baa2aa849ea458",
+      "date": "2026-09-22T15:23:54+05:30",
+      "title": "feat(credits): credit purchases have their own build switch"
+    },
+    {
+      "sha": "14f24042454e791b01d7f42547cd0d21f6a5ca4b",
+      "date": "2026-09-22T07:26:31+05:30",
+      "title": "feat(credits): buy credit packages through Google Play"
+    },
+    {
+      "sha": "72aff841522a36e8e549447ec0bfdd15c5973945",
+      "date": "2026-09-22T06:55:18+05:30",
+      "title": "fix(match): selected emphasis chip reads white on the orange tint"
+    },
+    {
+      "sha": "ca3512ab15a55aefc6d60e5e817119585b31ff87",
+      "date": "2026-09-22T06:00:41+05:30",
+      "title": "feat(store): the live Play design as a second kit style"
+    },
+    {
+      "sha": "d8a3fc549ff5f564b61b338845b0d2e60ed800bc",
+      "date": "2026-09-22T04:07:54+05:30",
+      "title": "feat(store): compose the Play kit in the five website themes"
+    },
+    {
+      "sha": "ce1ac0f23d397916c79fc0d120ac37aca28e2a7e",
+      "date": "2026-09-22T01:11:59+05:30",
+      "title": "feat(store): Play Store kit in all twelve app languages"
+    },
+    {
+      "sha": "852c0c5612479e71cf9372065662b04306c99c4b",
+      "date": "2026-09-20T17:04:50+05:30",
+      "title": "chore(android): prepare version 1.0.14 build 208"
+    },
+    {
+      "sha": "3db4ef954ffeabae50f0ea0139319f564299f15b",
+      "date": "2026-09-20T16:43:56+05:30",
+      "title": "feat(android): gate credit mode with Amplitude and refine refill grid"
+    },
+    {
+      "sha": "73f8323e6e5986195368279bd0dfa8d56e7701f5",
+      "date": "2026-09-20T15:58:47+05:30",
+      "title": "chore(android): prepare version 1.0.13 build 207"
+    },
+    {
+      "sha": "41b19ab130f170d250acf8b1d3b73c461f395e3e",
+      "date": "2026-09-20T15:56:11+05:30",
+      "title": "feat(credits): show wallet balance in AI chat"
+    },
+    {
+      "sha": "e9cb51aa927419054a4b7c4544f6a9c85dc64d0c",
+      "date": "2026-09-20T14:51:56+05:30",
+      "title": "chore(android): prepare version 1.0.12 build 206"
+    },
+    {
+      "sha": "9a7e6b0a823be604efaa9f939d01a5d125b8aacc",
+      "date": "2026-09-20T09:14:22+05:30",
+      "title": "feat(credits): expose digital wallet safely"
+    },
+    {
+      "sha": "335202b360a435f3b1c4258162b4ac0f3f523df4",
+      "date": "2026-09-20T08:45:30+05:30",
+      "title": "docs(credits): describe native wallet recovery"
+    },
+    {
+      "sha": "73d5d3910e71eedb8e3a41cc22fa5125446ec702",
+      "date": "2026-09-20T05:02:45+05:30",
+      "title": "feat(credits): say why the credit service refused, in the user's language"
+    },
+    {
+      "sha": "f122f0ae9e6e5e29786b40c604a01ce4d9df464f",
+      "date": "2026-09-20T04:46:11+05:30",
+      "title": "chore(android): prepare version 1.0.12 build 205"
+    },
+    {
+      "sha": "14915854bc9880d59418995443f59e3b9f0aba9a",
+      "date": "2026-09-20T02:44:26+05:30",
+      "title": "Merge feature/android-kundali-credits: digital credits for Kundali generation"
+    },
+    {
+      "sha": "963eb5f18be333dfae3954a037cb356226c71a31",
+      "date": "2026-09-20T02:44:24+05:30",
+      "title": "test(credits): stub the operation store in KundaliCreditFlowTest"
+    },
+    {
+      "sha": "cb0c8f945349282603ac819f2650b8125524708e",
+      "date": "2026-09-20T02:40:26+05:30",
+      "title": "feat(l10n): translate the credit wallet into the seven new languages"
+    },
+    {
+      "sha": "91c9346e1a67eb646102b1dc7ca5eac684bb615b",
+      "date": "2026-09-20T02:40:26+05:30",
+      "title": "Merge origin/main into feature/android-kundali-credits"
+    },
+    {
+      "sha": "f7597f3b342ca1d1a136cc688bd6765a883bebb5",
+      "date": "2026-09-20T02:39:29+05:30",
+      "title": "feat(credits): digital credits for Kundali generation on Android"
+    },
+    {
+      "sha": "20aefa10970bd606f5b330bfcb8370a9ac039829",
+      "date": "2026-09-19T08:55:11+05:30",
+      "title": "chore(android): prepare version 1.0.12 build 204"
+    },
+    {
+      "sha": "a32cd93b6ac77e063242103dde1dbd20203d644b",
+      "date": "2026-09-19T08:53:36+05:30",
+      "title": "feat(l10n): translate the My Profile page into the seven new languages"
+    },
+    {
+      "sha": "03106b0d2da5c6b1f1c461b5601cd0ebe10d1912",
+      "date": "2026-09-19T08:52:12+05:30",
+      "title": "Merge feature/android-more-languages: seven new app languages"
+    },
+    {
+      "sha": "93ca727405d60a0e2a9d226b28d92a6c279607e6",
+      "date": "2026-09-19T08:52:12+05:30",
+      "title": "Merge feature/android-profile-page: account profile page, name sync fix, site build 203"
+    },
+    {
+      "sha": "1dca190ab46b195b5e494e935eab3015db40d8a6",
+      "date": "2026-09-19T08:52:04+05:30",
+      "title": "feat(l10n): add Bengali, Punjabi, Kannada, Malayalam, Odia, Spanish, Chinese"
+    },
+    {
+      "sha": "bd49c1092da78c5bb9045597cbff19d8331b5ea8",
+      "date": "2026-09-19T08:52:04+05:30",
+      "title": "fix(profile): keep the account name, standard header, site build 203"
+    }
+  ]
+}

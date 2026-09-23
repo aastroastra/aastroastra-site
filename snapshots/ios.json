@@ -1,0 +1,2319 @@
+{
+  "schema": 1,
+  "platform": "ios",
+  "repo": "aastroastra/aastroastra-ios",
+  "branch": "main",
+  "head": "ba3c989282b757e9700f13101c2481c2444ea86e",
+  "pushed_at": "2026-09-23T20:36:40+05:30",
+  "generated_at": "2026-09-23T15:06:42.702889+00:00",
+  "run_url": null,
+  "features": [
+    {
+      "id": "account",
+      "assessment": "aligned",
+      "behavior": "Account header opens AccountProfileScreen. Display name and avatar belong to the signed-in account; linked contact verification and member-since are displayed.",
+      "difference": "The recent iOS implementation closes the earlier missing account-profile flow. Real account round trips still need paired acceptance.",
+      "next": "Check rename, photo add/remove, sign-out and a second account on both devices.",
+      "validation": "iOS account/profile/photo focused tests passed in the 109-test run for build 190. Android source/history reviewed; no new Android runtime test claimed.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "be8d9382535770fe6d9927b18fa5ac52c964f0943692fd7e4bcf70767cd0dd23",
+      "file_count": 16,
+      "paths": [
+        "Aastroastra/Core/Supabase/AuthState.swift",
+        "Aastroastra/Core/Supabase/DebugBypassAuthClient.swift",
+        "Aastroastra/Core/Supabase/SupabaseAuthCallback.swift",
+        "Aastroastra/Core/Supabase/SupabaseAuthClient.swift",
+        "Aastroastra/Core/Supabase/SupabaseRestClient.swift",
+        "Aastroastra/Core/Supabase/SupabaseStorageClient.swift",
+        "Aastroastra/Features/Profile/AccountPhotoModel.swift",
+        "Aastroastra/Features/Profile/AccountProfileModel.swift",
+        "Aastroastra/Features/Profile/AccountProfileScreen.swift",
+        "Aastroastra/Features/Profile/AppearanceScreen.swift",
+        "Aastroastra/Features/Profile/EditBirthDetailsSheet.swift",
+        "Aastroastra/Features/Profile/ProfileScreen.swift",
+        "Aastroastra/Features/Profile/ProfileViewModel.swift",
+        "Aastroastra/Features/Profile/RestorePurchasesModel.swift",
+        "Aastroastra/Features/Profile/RestorePurchasesScreen.swift",
+        "Aastroastra/Features/Profile/SavedProfilesScreen.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "d8a9b447171d01db6c63c2ade8506b9ac319a64e",
+          "date": "2026-09-23T04:54:03+05:30",
+          "title": "feat(profile): an account photo on iOS"
+        },
+        {
+          "sha": "567026a3e65d5a720a14a24b8be98f903b3f9498",
+          "date": "2026-09-18T18:26:54+05:30",
+          "title": "fix: unify iOS six-digit OTP entry for build 187"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "settings",
+      "assessment": "aligned",
+      "behavior": "Account/App/Help/About, default chart, saved charts, notifications, credits, orders, delete, appearance, language and reporting are wired.",
+      "difference": "Core hierarchy is aligned after the iOS follow-up. Native sheet/navigation styling is allowed.",
+      "next": "Walk each destination with credits on and off; preserve account/chart separation.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "02fcc3b36b9b82ee57fb32272eaa3250a160e4464935c9beb6ee0867c85f5c09",
+      "file_count": 2,
+      "paths": [
+        "Aastroastra/Core/Config/AppConfig.swift",
+        "Aastroastra/Features/Profile/ProfileScreen.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "d8a9b447171d01db6c63c2ade8506b9ac319a64e",
+          "date": "2026-09-23T04:54:03+05:30",
+          "title": "feat(profile): an account photo on iOS"
+        },
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "restore",
+      "assessment": "aligned",
+      "behavior": "Settings now opens RestorePurchasesScreen and calls RevenueCat; duplicate taps, cancellation, empty entitlement, failure and retry are handled.",
+      "difference": "iOS Settings has a direct restore flow. Android has a restore service, but a label alone does not establish that Settings invokes it.",
+      "next": "Trace and exercise Android Settings restore end to end; perform store-sandbox restoration on both platforms.",
+      "validation": "iOS injected restore outcomes and duplicate-tap tests passed. No real StoreKit or Play restore transaction was performed.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "725b813e0297256b813ad4e8f9d1f584c0005743ce42343f77795182bbb4f439",
+      "file_count": 4,
+      "paths": [
+        "Aastroastra/Core/Credits/CreditStore.swift",
+        "Aastroastra/Features/Profile/ProfileScreen.swift",
+        "Aastroastra/Features/Profile/RestorePurchasesModel.swift",
+        "Aastroastra/Features/Profile/RestorePurchasesScreen.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "d8a9b447171d01db6c63c2ade8506b9ac319a64e",
+          "date": "2026-09-23T04:54:03+05:30",
+          "title": "feat(profile): an account photo on iOS"
+        },
+        {
+          "sha": "a148ca47f70545c0e642680fc3b39762d9555847",
+          "date": "2026-09-22T19:38:26+05:30",
+          "title": "feat(credits): buy credit packages on iOS through the App Store"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-group",
+      "assessment": "aligned",
+      "behavior": "ChatGroup and the shared picker support up to five people, full selected names, thread keys derived from birth inputs, and reconciliation after chart edits/deletes.",
+      "difference": "The earlier iOS multi-chat gap is closed in source. Full names now replace compact first-name summaries.",
+      "next": "Retain tests for five selections, empty Done, duplicate first names and changed birth details.",
+      "validation": "iOS group selection/thread/stale-stream tests passed. Current Android implementation and group-chat commit inspected.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "d1a1d677ca59c7623fc413efff6209fdb50c62bcf01fa758ddfb842f8cbaba31",
+      "file_count": 14,
+      "paths": [
+        "Aastroastra/Core/Session/MultiMatchTeaser.swift",
+        "Aastroastra/Core/Session/RecentMatch.swift",
+        "Aastroastra/Core/Session/RecentMatchesStore.swift",
+        "Aastroastra/Core/Session/RecentMultiMatch.swift",
+        "Aastroastra/Core/Session/RecentMultiMatchStore.swift",
+        "Aastroastra/Core/Session/UserSession.swift",
+        "Aastroastra/Features/Chat/ChatGroup.swift",
+        "Aastroastra/Features/Chat/ChatHistoryStore.swift",
+        "Aastroastra/Features/Chat/ChatReadAloudState.swift",
+        "Aastroastra/Features/Chat/ChatScreen.swift",
+        "Aastroastra/Features/Chat/ChatStarterPrompt.swift",
+        "Aastroastra/Features/Chat/ChatTextStyle.swift",
+        "Aastroastra/Features/Chat/ChatViewModel.swift",
+        "Aastroastra/Shared/Components/Organisms/SavedKundaliPicker.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "991a8ce8effc1c1405e4ece5a93c1d816e0a1c5f",
+          "date": "2026-09-23T02:02:50+05:30",
+          "title": "feat(credits): the credit page from anywhere, and the balance in chat"
+        },
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-questions",
+      "assessment": "aligned",
+      "behavior": "ChatStarterPrompt chooses local single/group templates. Labels are short; submitted questions include the people. Dynamic suggestions take precedence after a reply.",
+      "difference": "Initial questions are deterministic templates, not an extra AI generation request. No wording difference was found in the 300-string audit.",
+      "next": "When changing a starter, update both templates and all locales in the same feature work.",
+      "validation": "300 labels/prompts across 12 locales matched after placeholder and Marathi-code normalization; iOS prompt tests passed.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "49a808c652557fbb33d48ca353ad6dd6fb4ffac9470ac72c2683667a10500ef6",
+      "file_count": 3,
+      "paths": [
+        "Aastroastra/Core/Localization/ScreenParityCopy.swift",
+        "Aastroastra/Features/Chat/ChatStarterPrompt.swift",
+        "Aastroastra/Features/Chat/ChatViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        },
+        {
+          "sha": "645b50bee54643d371f36f645a4901a6f2a76ff0",
+          "date": "2026-09-05T04:36:06+05:30",
+          "title": "feat(chat): stream the answer on iOS"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-evidence",
+      "assessment": "aligned",
+      "behavior": "Namespaced claim IDs and claimSubjects persist with confidence in stored messages. Grounding rows prefix the person label. Old saved messages still decode.",
+      "difference": "iOS previously lost labels and could reuse base claim IDs; the follow-up fixes both without changing calculation rules.",
+      "next": "Keep a two-person same-rule fixture and reopen its stored conversation on both apps.",
+      "validation": "iOS same-base-claim, real chart preparation, history round-trip and backward-compatibility checks passed.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "c4aedd20400b1e4cd3a7d22a0a1a1ee3912104ec40f385999e22809525a6487f",
+      "file_count": 15,
+      "paths": [
+        "Aastroastra/Core/Reasoning/AnswerConfidence.swift",
+        "Aastroastra/Core/Reasoning/Claim.swift",
+        "Aastroastra/Core/Reasoning/ClaimPayload.swift",
+        "Aastroastra/Core/Reasoning/ClaimsAssembler.swift",
+        "Aastroastra/Core/Reasoning/RuleContext.swift",
+        "Aastroastra/Core/Reasoning/RuleRunner.swift",
+        "Aastroastra/Core/Reasoning/Rules/JyotishRules.swift",
+        "Aastroastra/Features/Chat/ChatGroup.swift",
+        "Aastroastra/Features/Chat/ChatHistoryStore.swift",
+        "Aastroastra/Features/Chat/ChatReadAloudState.swift",
+        "Aastroastra/Features/Chat/ChatScreen.swift",
+        "Aastroastra/Features/Chat/ChatStarterPrompt.swift",
+        "Aastroastra/Features/Chat/ChatTextStyle.swift",
+        "Aastroastra/Features/Chat/ChatViewModel.swift",
+        "Aastroastra/Shared/Components/Organisms/GroundingExplainSheet.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "991a8ce8effc1c1405e4ece5a93c1d816e0a1c5f",
+          "date": "2026-09-23T02:02:50+05:30",
+          "title": "feat(credits): the credit page from anywhere, and the balance in chat"
+        },
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-speech",
+      "assessment": "aligned",
+      "behavior": "ChatReadAloudControl below the composer auto-reads completed answers when enabled. Manual Play, references, grounding and report actions are available.",
+      "difference": "The missing iOS automatic toggle is implemented. Actual audio quality and interruptions are not certified by state tests.",
+      "next": "Compare TTS language, stop, interruption and background transitions on real devices.",
+      "validation": "iOS opt-in/dedup state tests and English/Hindi light/dark captures passed. Live audio was not exercised.",
+      "reviewed_on": "2026-09-23",
+      "status": "aligned",
+      "review_current": true,
+      "fingerprint": "42e00065c4d7140b1e1c48035bd45050cc3b2fc0ddbdc7d858ec0fb13daf2908",
+      "file_count": 12,
+      "paths": [
+        "Aastroastra/Features/Chat/ChatGroup.swift",
+        "Aastroastra/Features/Chat/ChatHistoryStore.swift",
+        "Aastroastra/Features/Chat/ChatReadAloudState.swift",
+        "Aastroastra/Features/Chat/ChatScreen.swift",
+        "Aastroastra/Features/Chat/ChatStarterPrompt.swift",
+        "Aastroastra/Features/Chat/ChatTextStyle.swift",
+        "Aastroastra/Features/Chat/ChatViewModel.swift",
+        "Aastroastra/Features/Explain/ChatTTS.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatAboutChartButton.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatAnswerActions.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatGroundingCell.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatReadAloudControl.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "991a8ce8effc1c1405e4ece5a93c1d816e0a1c5f",
+          "date": "2026-09-23T02:02:50+05:30",
+          "title": "feat(credits): the credit page from anywhere, and the balance in chat"
+        },
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "chat-layout",
+      "assessment": "intentional",
+      "behavior": "Six starter questions center in the available conversation area. Selected names wrap. Composer and read-aloud controls use the bottom safe-area inset.",
+      "difference": "Ordinary-size intent is aligned. iOS may use one column at accessibility sizes; preserving legibility is intentional.",
+      "next": "Compare equivalent viewport/font scale; test keyboard, five long names and screen-reader order.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "intentional",
+      "review_current": true,
+      "fingerprint": "cfd2ecb59747e05c82336d2f0cd2c3251753c6dad8876677eb4767737daffa93",
+      "file_count": 3,
+      "paths": [
+        "Aastroastra/Features/Chat/ChatScreen.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatReadAloudControl.swift",
+        "Aastroastra/Shared/Components/Organisms/ChatStarterQuestions.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "991a8ce8effc1c1405e4ece5a93c1d816e0a1c5f",
+          "date": "2026-09-23T02:02:50+05:30",
+          "title": "feat(credits): the credit page from anywhere, and the balance in chat"
+        },
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "auth-otp",
+      "assessment": "review",
+      "behavior": "Phone/email OTP screens and Supabase session restoration are wired. Six-digit OTP was corrected in 0f80279 and 567026a.",
+      "difference": "Both have authentication implementations, but delivery, email-link handling and native autofill need a paired test matrix.",
+      "next": "Test fresh/returning phone and email users, resend, expired code, offline, deep link and logout.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "2799108e1a51778d8e07e28d4aa1e9e132d8239607d5ae57464c1c1747e3637e",
+      "file_count": 13,
+      "paths": [
+        "Aastroastra/Core/Supabase/AuthState.swift",
+        "Aastroastra/Core/Supabase/DebugBypassAuthClient.swift",
+        "Aastroastra/Core/Supabase/DeviceSessionRegistrar.swift",
+        "Aastroastra/Core/Supabase/SupabaseAuthCallback.swift",
+        "Aastroastra/Core/Supabase/SupabaseAuthClient.swift",
+        "Aastroastra/Core/Supabase/SupabaseSession.swift",
+        "Aastroastra/Core/Supabase/SupabaseSessionManager.swift",
+        "Aastroastra/Core/Supabase/SupabaseSessionStore.swift",
+        "Aastroastra/Features/Auth/SignInView.swift",
+        "Aastroastra/Features/Auth/SignInViewModel.swift",
+        "Aastroastra/Features/Onboarding/EmailEntryScreen.swift",
+        "Aastroastra/Features/Onboarding/OTPVerifyScreen.swift",
+        "Aastroastra/Features/Onboarding/PhoneEntryScreen.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "567026a3e65d5a720a14a24b8be98f903b3f9498",
+          "date": "2026-09-18T18:26:54+05:30",
+          "title": "fix: unify iOS six-digit OTP entry for build 187"
+        },
+        {
+          "sha": "0f802791bd2d3579fb6236e862848bb11e15fad1",
+          "date": "2026-09-13T15:03:07+05:30",
+          "title": "fix(auth): six-digit OTP on iOS too, or the shipped build locks everyone out"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "onboarding",
+      "assessment": "gap",
+      "behavior": "OnboardingState moves through phone/email, language, numerology input, gender/reveal, astrology input/reveal and notifications. No dedicated Welcome state is listed.",
+      "difference": "The screen sequence and numerology presentation differ; the older claim that every onboarding step is identical is not supported.",
+      "next": "Agree one product sequence and compare skip/back/resume paths, gender/Kua input and required birth fields.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "d799a97f6a020ec877c3f1ea150b1c87a21db4460b96cf206579fb057132e123",
+      "file_count": 15,
+      "paths": [
+        "Aastroastra/Features/Onboarding/AstrologyInputScreen.swift",
+        "Aastroastra/Features/Onboarding/AstrologyRevealScreen.swift",
+        "Aastroastra/Features/Onboarding/EmailEntryScreen.swift",
+        "Aastroastra/Features/Onboarding/FinishScreen.swift",
+        "Aastroastra/Features/Onboarding/GenderScreen.swift",
+        "Aastroastra/Features/Onboarding/LanguageScreen.swift",
+        "Aastroastra/Features/Onboarding/NotificationsScreen.swift",
+        "Aastroastra/Features/Onboarding/NumerologyInputScreen.swift",
+        "Aastroastra/Features/Onboarding/NumerologyRevealScreen.swift",
+        "Aastroastra/Features/Onboarding/OTPVerifyScreen.swift",
+        "Aastroastra/Features/Onboarding/OnboardingError.swift",
+        "Aastroastra/Features/Onboarding/OnboardingState.swift",
+        "Aastroastra/Features/Onboarding/OnboardingViewModel.swift",
+        "Aastroastra/Features/Onboarding/PhoneEntryScreen.swift",
+        "Aastroastra/Features/Onboarding/SplashScreen.swift"
+      ],
+      "commits": [
+        {
+          "sha": "567026a3e65d5a720a14a24b8be98f903b3f9498",
+          "date": "2026-09-18T18:26:54+05:30",
+          "title": "fix: unify iOS six-digit OTP entry for build 187"
+        },
+        {
+          "sha": "0f802791bd2d3579fb6236e862848bb11e15fad1",
+          "date": "2026-09-13T15:03:07+05:30",
+          "title": "fix(auth): six-digit OTP on iOS too, or the shipped build locks everyone out"
+        },
+        {
+          "sha": "0800ebe1a4dc81c14364c67bdf424d777e0b95ea",
+          "date": "2026-09-10T16:20:10+05:30",
+          "title": "The explained chart belongs to the person on screen"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "social-auth",
+      "assessment": "gap",
+      "behavior": "SupabaseManager has TODO Google/Apple methods; the active sign-in view uses phone/email OTP.",
+      "difference": "Source capabilities differ; neither a stub nor an unused legacy screen is counted as a shipped provider.",
+      "next": "Audit actual production routes before enabling another provider; verify account linking and platform requirements.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "f2139d96f5b5a2bcf5b401d21dcede993f7802412bb39bdb14e7b6a02ad4691b",
+      "file_count": 5,
+      "paths": [
+        "Aastroastra/Core/Navigation/AppRouter.swift",
+        "Aastroastra/Core/Navigation/SwipeBackEnabler.swift",
+        "Aastroastra/Core/Network/SupabaseManager.swift",
+        "Aastroastra/Features/Auth/SignInView.swift",
+        "Aastroastra/Features/Auth/SignInViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "567026a3e65d5a720a14a24b8be98f903b3f9498",
+          "date": "2026-09-18T18:26:54+05:30",
+          "title": "fix: unify iOS six-digit OTP entry for build 187"
+        },
+        {
+          "sha": "0f802791bd2d3579fb6236e862848bb11e15fad1",
+          "date": "2026-09-13T15:03:07+05:30",
+          "title": "fix(auth): six-digit OTP on iOS too, or the shipped build locks everyone out"
+        },
+        {
+          "sha": "ccb2fffa5c242734144ca8fd8884379524e1ab6a",
+          "date": "2026-09-11T11:50:10+05:30",
+          "title": "feat(config): gate the Remedies and Call tabs on app_config"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "saved-charts",
+      "assessment": "review",
+      "behavior": "RecentMatchesStore, SavedProfilesSyncer, shared picker and default-chart editing are present. Chat reconciles edited/deleted selections.",
+      "difference": "Both have the storage/picker flow. Cross-device restore and all reading entry points remain acceptance items.",
+      "next": "Test edit self, edit other, duplicate chart, delete active selection, switch default and restore on another device.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "c2e610e3a2b0974fac0beab82c4015690df198eeb55500038ba756854d7d6955",
+      "file_count": 16,
+      "paths": [
+        "Aastroastra/Core/Session/MultiMatchTeaser.swift",
+        "Aastroastra/Core/Session/RecentMatch.swift",
+        "Aastroastra/Core/Session/RecentMatchesStore.swift",
+        "Aastroastra/Core/Session/RecentMultiMatch.swift",
+        "Aastroastra/Core/Session/RecentMultiMatchStore.swift",
+        "Aastroastra/Core/Session/UserSession.swift",
+        "Aastroastra/Core/Supabase/SavedProfilesSyncer.swift",
+        "Aastroastra/Shared/Components/Organisms/ChooseOrAddKundali.swift",
+        "Aastroastra/Shared/Components/Organisms/DefaultKundaliChooser.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartNorthIndian.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartPanel.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartSouthIndian.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliHouseMeaning.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliReferenceData.swift",
+        "Aastroastra/Shared/Components/Organisms/MiniKundaliSections.swift",
+        "Aastroastra/Shared/Components/Organisms/SavedKundaliPicker.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "925c40c203d21907241faae653f4533029c3494d",
+          "date": "2026-09-23T05:12:18+05:30",
+          "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+        },
+        {
+          "sha": "032d45016eefbd6d840d405eb6209407d321aeef",
+          "date": "2026-09-11T11:49:55+05:30",
+          "title": "fix(session): the explained chart belongs to the person on screen"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "contacts",
+      "assessment": "review",
+      "behavior": "Contact import was added in 925c40c using the system contact picker.",
+      "difference": "Both expose contact import; native permission/picker mechanics differ. Missing DOB and multiple phone numbers need acceptance.",
+      "next": "Test denied/cancelled picker, missing birthday, multiple numbers and local/remote saved chart behavior.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "24528d844e3b6595b347c66192bf43e9e7de92f6d847aa76cca0ebe923edb91b",
+      "file_count": 10,
+      "paths": [
+        "Aastroastra/Core/Flags/FeatureFlags.swift",
+        "Aastroastra/Shared/Components/Organisms/ChooseOrAddKundali.swift",
+        "Aastroastra/Shared/Components/Organisms/DefaultKundaliChooser.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartNorthIndian.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartPanel.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartSouthIndian.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliHouseMeaning.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliReferenceData.swift",
+        "Aastroastra/Shared/Components/Organisms/MiniKundaliSections.swift",
+        "Aastroastra/Shared/Components/Organisms/SavedKundaliPicker.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "925c40c203d21907241faae653f4533029c3494d",
+          "date": "2026-09-23T05:12:18+05:30",
+          "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+        },
+        {
+          "sha": "0800ebe1a4dc81c14364c67bdf424d777e0b95ea",
+          "date": "2026-09-10T16:20:10+05:30",
+          "title": "The explained chart belongs to the person on screen"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "credits",
+      "assessment": "intentional",
+      "behavior": "CreditStore, CreditPurchaseModel and wallet use RevenueCat/StoreKit and server sync. Native packages added in a148ca4; chat balance/app-wide sheet in 991a8ce.",
+      "difference": "Store sheets, product setup and price tiers are inherently platform-specific. Equivalent balance semantics still require store sandbox validation.",
+      "next": "Verify configured products, pending/cancelled purchase, server delay, relaunch recovery and duplicate webhook handling.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "intentional",
+      "review_current": true,
+      "fingerprint": "6dba665da67d1d330d9184fdc196a240af991f8a4179166c11510f66b731dbf1",
+      "file_count": 13,
+      "paths": [
+        "Aastroastra/Core/Config/AppConfig.swift",
+        "Aastroastra/Core/Credits/CreditClient.swift",
+        "Aastroastra/Core/Credits/CreditModels.swift",
+        "Aastroastra/Core/Credits/CreditStore.swift",
+        "Aastroastra/Core/Credits/KundaliCreditOperationStore.swift",
+        "Aastroastra/Features/Wallet/CreditPage.swift",
+        "Aastroastra/Features/Wallet/CreditPurchaseModel.swift",
+        "Aastroastra/Features/Wallet/CreditWalletSheet.swift",
+        "Aastroastra/Features/Wallet/TopUpSheet.swift",
+        "Aastroastra/Features/Wallet/WalletModels.swift",
+        "Aastroastra/Features/Wallet/WalletRepository.swift",
+        "Aastroastra/Features/Wallet/WalletScreen.swift",
+        "Aastroastra/Features/Wallet/WalletViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "991a8ce8effc1c1405e4ece5a93c1d816e0a1c5f",
+          "date": "2026-09-23T02:02:50+05:30",
+          "title": "feat(credits): the credit page from anywhere, and the balance in chat"
+        },
+        {
+          "sha": "a148ca47f70545c0e642680fc3b39762d9555847",
+          "date": "2026-09-22T19:38:26+05:30",
+          "title": "feat(credits): buy credit packages on iOS through the App Store"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "credit-generation",
+      "assessment": "review",
+      "behavior": "Digital-credit kundali work landed in 63576a7 and merged in b8b4b50.",
+      "difference": "Both implementations exist. Full server-ledger behavior is a shared backend contract, not provable from mobile history alone.",
+      "next": "Compare cold/cache/changed-input/concurrent/retry cases against one ledger fixture before release.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "fd9dbab6682d171aa2cb319475ce57355f95f1bf3316b02c2addd4d929663078",
+      "file_count": 9,
+      "paths": [
+        "Aastroastra/Core/Credits/CreditClient.swift",
+        "Aastroastra/Core/Credits/CreditModels.swift",
+        "Aastroastra/Core/Credits/CreditStore.swift",
+        "Aastroastra/Core/Credits/KundaliCreditOperationStore.swift",
+        "Aastroastra/Features/Explore/AdHoc/AdHocKundaliResultScreen.swift",
+        "Aastroastra/Features/Explore/AdHoc/AdHocKundaliViewModel.swift",
+        "Aastroastra/Features/Kundali/AddKundaliScreen.swift",
+        "Aastroastra/Features/Kundali/KundaliScreen.swift",
+        "Aastroastra/Features/Kundali/KundaliViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "a148ca47f70545c0e642680fc3b39762d9555847",
+          "date": "2026-09-22T19:38:26+05:30",
+          "title": "feat(credits): buy credit packages on iOS through the App Store"
+        },
+        {
+          "sha": "63576a71c205335bc1b32246c859f95547041421",
+          "date": "2026-09-19T05:33:48+05:30",
+          "title": "feat: digital credits for Kundali generation on iOS"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "remote-flags",
+      "assessment": "gap",
+      "behavior": "FeatureFlags.isEnabled returns compile-time defaults; no Experiment client fetch is present in this flag resolver.",
+      "difference": "A flag changed remotely can affect Android while iOS remains on its default. This is a confirmed operational parity gap.",
+      "next": "Implement one shared remote flag contract for iOS, with cached defaults and a cross-platform flag matrix test.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "a202865bc64fcb6e93284410fdde36cea5b9ef09874a6a62a471bf4644c09372",
+      "file_count": 2,
+      "paths": [
+        "Aastroastra/Core/Config/AppConfig.swift",
+        "Aastroastra/Core/Flags/FeatureFlags.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        },
+        {
+          "sha": "ccb2fffa5c242734144ca8fd8884379524e1ab6a",
+          "date": "2026-09-11T11:50:10+05:30",
+          "title": "feat(config): gate the Remedies and Call tabs on app_config"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "push",
+      "assessment": "gap",
+      "behavior": "Local notification service and inbox exist. The inspected ordinary notification path lacks Android-equivalent OneSignal delivery/binding; VoIP registration is a separate call feature.",
+      "difference": "Local notifications and an inbox are not substitutes for remote push delivery. iOS call/VoIP support does not close ordinary alert parity.",
+      "next": "Choose and wire the iOS push provider, token lifecycle and deep-link routing; test terminated/background/foreground states.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "8588139ee2dbbb66cc1f254c179372af32e581c04dc7744d322605dd58f4d9a0",
+      "file_count": 6,
+      "paths": [
+        "Aastroastra/AastroastraApp.swift",
+        "Aastroastra/Core/Notifications/NotificationService.swift",
+        "Aastroastra/Features/Notifications/NotificationsCenterScreen.swift",
+        "Aastroastra/Features/Notifications/NotificationsInboxViewModel.swift",
+        "Aastroastra/Features/Notifications/NotificationsRepository.swift",
+        "Aastroastra/Features/Notifications/NotificationsSettingsStore.swift"
+      ],
+      "commits": [
+        {
+          "sha": "991a8ce8effc1c1405e4ece5a93c1d816e0a1c5f",
+          "date": "2026-09-23T02:02:50+05:30",
+          "title": "feat(credits): the credit page from anywhere, and the balance in chat"
+        },
+        {
+          "sha": "cf4533a83921300de3e9992852ac8794b49f8b75",
+          "date": "2026-09-08T13:03:59+05:30",
+          "title": "A booking, in full, openable from anywhere"
+        },
+        {
+          "sha": "b0d116350be2efbd0db274c3f062493987d279d6",
+          "date": "2026-08-30T07:32:35+05:30",
+          "title": "feat(auth): email sign-in, and four reasons onboarding never reached the server"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "notification-prefs",
+      "assessment": "gap",
+      "behavior": "NotificationsSettingsStore persists toggles in UserDefaults and explicitly describes them as local-only on iOS.",
+      "difference": "Changing iOS preferences does not follow the Android backend/tag synchronization path. Quiet-hour controls/data also differ.",
+      "next": "Share the preference schema and backend update contract; cover timezone travel, opt-out and reinstall.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "gap",
+      "review_current": true,
+      "fingerprint": "a9438c3d11e4732f1166731324ca44359624196bc2c322009eba66f6a60c1314",
+      "file_count": 5,
+      "paths": [
+        "Aastroastra/Core/Notifications/NotificationService.swift",
+        "Aastroastra/Features/Notifications/NotificationsCenterScreen.swift",
+        "Aastroastra/Features/Notifications/NotificationsInboxViewModel.swift",
+        "Aastroastra/Features/Notifications/NotificationsRepository.swift",
+        "Aastroastra/Features/Notifications/NotificationsSettingsStore.swift"
+      ],
+      "commits": [
+        {
+          "sha": "cf4533a83921300de3e9992852ac8794b49f8b75",
+          "date": "2026-09-08T13:03:59+05:30",
+          "title": "A booking, in full, openable from anywhere"
+        },
+        {
+          "sha": "85ba86a2ae0b3c7d19471818ed61d0a7c887d068",
+          "date": "2026-08-29T11:47:08+05:30",
+          "title": "fix(chat): two SwiftData containers were sharing one store, corrupting the heap"
+        },
+        {
+          "sha": "09be8e65830a825ffdce38d79e04712487a338fb",
+          "date": "2026-08-29T06:32:14+05:30",
+          "title": "feat(a11y): make the type scale answer Larger Text, and give the charts a voice"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "dashboard",
+      "assessment": "review",
+      "behavior": "HomeScreen/HomeViewModel/DashboardLayout render modular content and persistent arrangements.",
+      "difference": "Old documents list missing card variants; current source has evolved. Card-by-card visuals/flags need a new paired acceptance pass.",
+      "next": "Compare card availability, compact/full sizes, reorder persistence, empty/loading/failure and tap destinations.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "a5283d925562c8ed9f4b7ee4de33eb3bfd45f2bd9c11366acb2b6acd512a52d5",
+      "file_count": 8,
+      "paths": [
+        "Aastroastra/Features/Home/DailyHoroscopeScreen.swift",
+        "Aastroastra/Features/Home/DailyHoroscopeViewModel.swift",
+        "Aastroastra/Features/Home/DashboardLayout.swift",
+        "Aastroastra/Features/Home/HomeScreen.swift",
+        "Aastroastra/Features/Home/HomeViewModel.swift",
+        "Aastroastra/Shared/Components/Organisms/BannerCarousel.swift",
+        "Aastroastra/Shared/Components/Organisms/HoroscopeDashboardCard.swift",
+        "Aastroastra/Shared/Components/Organisms/PanchangDashboardCard.swift"
+      ],
+      "commits": [
+        {
+          "sha": "925c40c203d21907241faae653f4533029c3494d",
+          "date": "2026-09-23T05:12:18+05:30",
+          "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+        },
+        {
+          "sha": "22e3299b7d8f8d62b07d5eca97ea2834d7b59f2e",
+          "date": "2026-09-08T17:22:23+05:30",
+          "title": "Calls: wait for the answer, and white labels on every accent fill"
+        },
+        {
+          "sha": "61cf1399d7fffdee08928f8add6c40d2a38ff408",
+          "date": "2026-09-01T09:39:47+05:30",
+          "title": "feat(match): one set of components, and the rankings finally get saved"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "birthday",
+      "assessment": "review",
+      "behavior": "BirthdayEngine and dashboard integration landed in 925c40c.",
+      "difference": "The older missing-iOS-birthday note is obsolete. Leap-day/timezone and banner dismissal still need paired verification.",
+      "next": "Test self versus saved person, local midnight, leap day, gift/color lists and dismissal reset.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "19c2659a4aa2bc1212f528470eef00bfd595678e99092aabd88b5dce5d98ac51",
+      "file_count": 6,
+      "paths": [
+        "Aastroastra/Features/Birthday/BirthdayEngine.swift",
+        "Aastroastra/Features/Home/DailyHoroscopeScreen.swift",
+        "Aastroastra/Features/Home/DailyHoroscopeViewModel.swift",
+        "Aastroastra/Features/Home/DashboardLayout.swift",
+        "Aastroastra/Features/Home/HomeScreen.swift",
+        "Aastroastra/Features/Home/HomeViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "925c40c203d21907241faae653f4533029c3494d",
+          "date": "2026-09-23T05:12:18+05:30",
+          "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+        },
+        {
+          "sha": "22e3299b7d8f8d62b07d5eca97ea2834d7b59f2e",
+          "date": "2026-09-08T17:22:23+05:30",
+          "title": "Calls: wait for the answer, and white labels on every accent fill"
+        },
+        {
+          "sha": "61cf1399d7fffdee08928f8add6c40d2a38ff408",
+          "date": "2026-09-01T09:39:47+05:30",
+          "title": "feat(match): one set of components, and the rankings finally get saved"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "horoscope",
+      "assessment": "review",
+      "behavior": "DailyHoroscopeViewModel now loads daily and weekly/monthly data with per-person cache and facet rendering.",
+      "difference": "The old claim that iOS lacks weekly/monthly data is obsolete. Exact endpoint payload/cache/empty behavior is not yet regression-compared.",
+      "next": "Use fixed vendor fixtures for daily facets and weekly/monthly prose; switch person/language/period while loading.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "70b240f6d0874afba98ac78f4386730108cf88cdae1bf1f57a99b00bd4a5f0b4",
+      "file_count": 4,
+      "paths": [
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/SunSignHoroscopeDTO.swift",
+        "Aastroastra/Core/Astrology/Models/SunSignHoroscope.swift",
+        "Aastroastra/Features/Home/DailyHoroscopeScreen.swift",
+        "Aastroastra/Features/Home/DailyHoroscopeViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "034982433abd8e282856e80741191dc7885e4ea2",
+          "date": "2026-08-31T08:27:30+05:30",
+          "title": "fix: the daily horoscope shows its life areas, and the follow-up field shows its placeholder"
+        },
+        {
+          "sha": "c7eed2f7c99d93eff394e005b160d12670569cb2",
+          "date": "2026-08-29T22:00:37+05:30",
+          "title": "fix(horoscope): today's reading was stuck loading; life areas are tabs now"
+        },
+        {
+          "sha": "85ba86a2ae0b3c7d19471818ed61d0a7c887d068",
+          "date": "2026-08-29T11:47:08+05:30",
+          "title": "fix(chat): two SwiftData containers were sharing one store, corrupting the heap"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kundali",
+      "assessment": "review",
+      "behavior": "Kundali and PersonPage implementations expose birth charts and related reading sections; identity/gana parity changes landed in September.",
+      "difference": "Presence of screens does not establish equal chart calculations, all tabs or error behavior.",
+      "next": "Replay a shared set of timezones, unknown times and boundary births; compare chart styles, planets, houses and accessible labels.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "47cf4072b0a75d7375380656f92b554203b81f88f023db0fe1dbf330c8d80dc7",
+      "file_count": 90,
+      "paths": [
+        "Aastroastra/Core/Astrology/AstrologyAPI/AstrologyAPIConfig.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/AstrologyAPIEndpoint.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/AstrologyAPIProvider.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/AstrologyProvider.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/AshtakootDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/AstroDetailsDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/AyanamshaDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/BhavMadhyaDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/BirthDetailsDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/CurrentVDashaDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/DoshaDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/GhatChakraDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/HoroChartDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/KPDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/MatchReportDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/NumerologyAPIDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PanchangDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PlanetDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PlanetNatureDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PredictionDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/SarvashtakDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/SuggestionDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/SunSignHoroscopeDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/VDashaPeriodDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/VarshaphalDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/Mapper/DTOMappers.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/SupabaseAstrologyProxy.swift",
+        "Aastroastra/Core/Astrology/Builders/MiniKundaliBuilder.swift",
+        "Aastroastra/Core/Astrology/Builders/SignArchetypes.swift",
+        "Aastroastra/Core/Astrology/ChartType.swift",
+        "Aastroastra/Core/Astrology/Chogadiya.swift",
+        "Aastroastra/Core/Astrology/ChogadiyaGuidance.swift",
+        "Aastroastra/Core/Astrology/Errors/AstrologyError.swift",
+        "Aastroastra/Core/Astrology/Errors/ChartFailure.swift",
+        "Aastroastra/Core/Astrology/Gana.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliComputer.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliData.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliFactory.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliLiveAssembler.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliMapper.swift",
+        "Aastroastra/Core/Astrology/Models/AshtakootResult.swift",
+        "Aastroastra/Core/Astrology/Models/AstroDetails.swift",
+        "Aastroastra/Core/Astrology/Models/AstrologyPlanet+Abbreviation.swift",
+        "Aastroastra/Core/Astrology/Models/AstrologyPlanet.swift",
+        "Aastroastra/Core/Astrology/Models/Ayanamsha.swift",
+        "Aastroastra/Core/Astrology/Models/Bhav.swift",
+        "Aastroastra/Core/Astrology/Models/BirthDetails.swift",
+        "Aastroastra/Core/Astrology/Models/BirthInput.swift",
+        "Aastroastra/Core/Astrology/Models/DateRange.swift",
+        "Aastroastra/Core/Astrology/Models/DivisionalChart.swift",
+        "Aastroastra/Core/Astrology/Models/DoshaReport.swift",
+        "Aastroastra/Core/Astrology/Models/GhatChakra.swift",
+        "Aastroastra/Core/Astrology/Models/KPBirthInput.swift",
+        "Aastroastra/Core/Astrology/Models/KPPlanet.swift",
+        "Aastroastra/Core/Astrology/Models/KPSignificators.swift",
+        "Aastroastra/Core/Astrology/Models/MatchInput.swift",
+        "Aastroastra/Core/Astrology/Models/MatchReport.swift",
+        "Aastroastra/Core/Astrology/Models/MiniKundali.swift",
+        "Aastroastra/Core/Astrology/Models/NumerologyAPIInput.swift",
+        "Aastroastra/Core/Astrology/Models/NumerologyTable.swift",
+        "Aastroastra/Core/Astrology/Models/Panchang.swift",
+        "Aastroastra/Core/Astrology/Models/PlanetNature.swift",
+        "Aastroastra/Core/Astrology/Models/Prediction.swift",
+        "Aastroastra/Core/Astrology/Models/Suggestion.swift",
+        "Aastroastra/Core/Astrology/Models/SunSignHoroscope.swift",
+        "Aastroastra/Core/Astrology/Models/TimeOfDay.swift",
+        "Aastroastra/Core/Astrology/Models/Varshaphal.swift",
+        "Aastroastra/Core/Astrology/Models/VimshottariDashaPeriod.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyAPIRepository.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyCache.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyCacheKey.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyRepository+MiniKundali.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyRepository.swift",
+        "Aastroastra/Core/Astrology/Repository/SwiftDataAstrologyCache.swift",
+        "Aastroastra/Core/Astrology/Transits/TransitFeed.swift",
+        "Aastroastra/Features/Kundali/AddKundaliScreen.swift",
+        "Aastroastra/Features/Kundali/KundaliScreen.swift",
+        "Aastroastra/Features/Kundali/KundaliViewModel.swift",
+        "Aastroastra/Features/Onboarding/AstrologyRevealScreen.swift",
+        "Aastroastra/Features/PersonPage/ExportedReport.swift",
+        "Aastroastra/Features/PersonPage/KundaliComparisonScreen.swift",
+        "Aastroastra/Features/PersonPage/PersonPageScreen.swift",
+        "Aastroastra/Features/PersonPage/PersonPageViewModel.swift",
+        "Aastroastra/Features/PersonPage/PersonReadingsSections.swift",
+        "Aastroastra/Shared/Components/Molecules/ChartPickerCapsule.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatAboutChartButton.swift",
+        "Aastroastra/Shared/Components/Organisms/ChartPageSection.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartNorthIndian.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartPanel.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartSouthIndian.swift"
+      ],
+      "commits": [
+        {
+          "sha": "a148ca47f70545c0e642680fc3b39762d9555847",
+          "date": "2026-09-22T19:38:26+05:30",
+          "title": "feat(credits): buy credit packages on iOS through the App Store"
+        },
+        {
+          "sha": "300c3243f527c4b2949ac35712174804c872ea3a",
+          "date": "2026-09-12T16:52:55+05:30",
+          "title": "feat(person page): gana on iOS, mirroring Android"
+        },
+        {
+          "sha": "12e2c464644ed46ebfdabb1ad0169aba2218e10b",
+          "date": "2026-09-12T16:14:51+05:30",
+          "title": "feat(person page): four boxes for the identity facts, matching Android"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "panchang",
+      "assessment": "review",
+      "behavior": "PanchangDetailScreen, models and PanchangNames localization are present.",
+      "difference": "Historical iOS localization gaps cannot be carried forward without rechecking. Exact sunrise boundaries and rendered spacing remain review items.",
+      "next": "Compare before/after sunrise, polar/no-sunrise data, selected locations and Hindi/English labels using common fixtures.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "711bf5c7b6c9e8f7ebd0595ce2eaad6ced9e81a3f45240ebf26746a11f57d516",
+      "file_count": 4,
+      "paths": [
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PanchangDTOs.swift",
+        "Aastroastra/Core/Astrology/Models/Panchang.swift",
+        "Aastroastra/Core/Localization/PanchangNames.swift",
+        "Aastroastra/Features/Panchang/PanchangDetailScreen.swift"
+      ],
+      "commits": [
+        {
+          "sha": "9822c906175b6e3426b021009cb6d05c3f9eafc6",
+          "date": "2026-08-31T09:03:34+05:30",
+          "title": "fix(theme): the gold stays gold, and the label takes the ink"
+        },
+        {
+          "sha": "85ba86a2ae0b3c7d19471818ed61d0a7c887d068",
+          "date": "2026-08-29T11:47:08+05:30",
+          "title": "fix(chat): two SwiftData containers were sharing one store, corrupting the heap"
+        },
+        {
+          "sha": "09be8e65830a825ffdce38d79e04712487a338fb",
+          "date": "2026-08-29T06:32:14+05:30",
+          "title": "feat(a11y): make the type scale answer Larger Text, and give the charts a voice"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kp-lalkitab",
+      "assessment": "review",
+      "behavior": "KpSystem and LalKitab screens/view models exist as separate feature surfaces.",
+      "difference": "Deep inline-table and chart-switch behavior needs a paired audit; filenames do not prove column or action parity.",
+      "next": "Compare planets/cusps/significators, chart selection and missing-data states; verify current-person context in explain.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "ec0810c455568c66737eef8c8dcb09a056c52eae6179357240d6d1dfd9dab3e0",
+      "file_count": 4,
+      "paths": [
+        "Aastroastra/Features/KPSystem/KpSystemScreen.swift",
+        "Aastroastra/Features/KPSystem/KpSystemViewModel.swift",
+        "Aastroastra/Features/LalKitab/LalKitabScreen.swift",
+        "Aastroastra/Features/LalKitab/LalKitabViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "10ae31c31979a95ee3515edf73f1d8fcc433bd3e",
+          "date": "2026-09-01T07:59:17+05:30",
+          "title": "feat(kundali): the new page ships, the switcher goes away, and the em dashes go with it"
+        },
+        {
+          "sha": "a9b14b83c49e0f26880df1a313a9527adfdcf532",
+          "date": "2026-08-29T16:14:34+05:30",
+          "title": "fix(ios): the chat crash, and the two changes that made the app look hung"
+        },
+        {
+          "sha": "85ba86a2ae0b3c7d19471818ed61d0a7c887d068",
+          "date": "2026-08-29T11:47:08+05:30",
+          "title": "fix(chat): two SwiftData containers were sharing one store, corrupting the heap"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "numerology",
+      "assessment": "review",
+      "behavior": "Local numerology engine plus DriverConductor, PersonalCycle, PlaneStrength and repeated/missing-number content are implemented.",
+      "difference": "The old four-versus-six-plane note is not treated as current proof. Numeric parity requires shared vectors, especially unknown gender and master numbers.",
+      "next": "Pin cross-platform numeric fixtures and compare Lo Shu counts, Kua fallback, repeated/missing digits, mobile and personal cycles.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "42bd5e716af8051709ad7b1cbf10b449634b7bb3ce2fd4a1a551dd3eacc95aa5",
+      "file_count": 23,
+      "paths": [
+        "Aastroastra/Core/Localization/NumerologyContent.swift",
+        "Aastroastra/Core/Numerology/Content/RepeatedNumberContent.swift",
+        "Aastroastra/Core/Numerology/Engine/NumerologyEngine.swift",
+        "Aastroastra/Core/Numerology/Engine/NumerologyHelpers.swift",
+        "Aastroastra/Core/Numerology/Models/ComplimentaryNumbers.swift",
+        "Aastroastra/Core/Numerology/Models/DriverConductor.swift",
+        "Aastroastra/Core/Numerology/Models/Gender.swift",
+        "Aastroastra/Core/Numerology/Models/KuaDirections.swift",
+        "Aastroastra/Core/Numerology/Models/LoShuGrid.swift",
+        "Aastroastra/Core/Numerology/Models/MobileNumberReading.swift",
+        "Aastroastra/Core/Numerology/Models/NumerologyInterpretation.swift",
+        "Aastroastra/Core/Numerology/Models/NumerologyProfile.swift",
+        "Aastroastra/Core/Numerology/Models/NumerologyQuestions.swift",
+        "Aastroastra/Core/Numerology/Models/PersonalCycle.swift",
+        "Aastroastra/Core/Numerology/Models/PlaneStrength.swift",
+        "Aastroastra/Core/Numerology/NumerologyLocale.swift",
+        "Aastroastra/Core/Numerology/Repository/LocalNumerologyRepository.swift",
+        "Aastroastra/Core/Numerology/Repository/NumerologyRepository.swift",
+        "Aastroastra/Core/Numerology/Repository/RepeatedMeaningLookup.swift",
+        "Aastroastra/Features/Numerology/FullNumerologyScreen.swift",
+        "Aastroastra/Features/Numerology/NumerologyScreen.swift",
+        "Aastroastra/Features/Numerology/NumerologyTabScreen.swift",
+        "Aastroastra/Features/Numerology/NumerologyTabViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "73a7d5824a4cce34767d0eb1d85c3b5aa99b06a3",
+          "date": "2026-09-05T07:24:15+05:30",
+          "title": "feat(reports): iOS can export a report at all now, starting with numerology"
+        },
+        {
+          "sha": "2b9842b70c52c316c53113eb51df82014925f8b5",
+          "date": "2026-09-03T11:37:44+05:30",
+          "title": "fix: four reported faults, and the one that made a device unfixable"
+        },
+        {
+          "sha": "3570953bc64e5c034436708d0c2aa90293cfcd0e",
+          "date": "2026-09-03T08:25:05+05:30",
+          "title": "feat(numerology): a mobile number you can add, change, and see the reading for"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "match",
+      "assessment": "review",
+      "behavior": "MatchPage/MatchScreen and MatchNumerology are present; report export updated in 4c765be.",
+      "difference": "Core feature exists on both. Koota text, chart swapping, unavailable results and exported report contents need fixture comparison.",
+      "next": "Compare numeric breakdown first, then prose/explain and exported PDF. Never let generated prose alter scores.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "48c9c9388b2ecbcffed4d4d5aa8b0759cc847c9da01a3845c5ac494c5b60c48d",
+      "file_count": 7,
+      "paths": [
+        "Aastroastra/Features/Match/MatchNumerology.swift",
+        "Aastroastra/Features/Match/MatchPageScreen.swift",
+        "Aastroastra/Features/Match/MatchScreen.swift",
+        "Aastroastra/Features/Match/MatchViewModel.swift",
+        "Aastroastra/Features/Reports/AstrologyReportRepository.swift",
+        "Aastroastra/Features/Reports/ReportGeneratorSheet.swift",
+        "Aastroastra/Features/Reports/ReportListScreen.swift"
+      ],
+      "commits": [
+        {
+          "sha": "4c765bef445dad511d502321100e2cbb0aca19c8",
+          "date": "2026-09-23T03:17:31+05:30",
+          "title": "feat(match): export a match report, and verdicts written from the numbers"
+        },
+        {
+          "sha": "73a7d5824a4cce34767d0eb1d85c3b5aa99b06a3",
+          "date": "2026-09-05T07:24:15+05:30",
+          "title": "feat(reports): iOS can export a report at all now, starting with numerology"
+        },
+        {
+          "sha": "34f0974ab6752306431879b4f76b23161c651b17",
+          "date": "2026-09-04T12:14:05+05:30",
+          "title": "fix(match): say WHICH failure it was, and pin the client path with a live test"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "multi-match",
+      "assessment": "review",
+      "behavior": "MultiMatchEngine/ViewModel and model-written MultiMatchVerdictAuthor are implemented; authored verdicts added in 4c765be.",
+      "difference": "The missing-iOS-authored-verdict gap is closed in source. Stable ranking and tie/unavailable handling still need paired fixtures.",
+      "next": "Test ties, incomplete births, reorder, persistence and changing unrelated settings; compare returned numeric rankings.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "79a60e05c369b9ca6fd5ed97fed0ec65591300e2985284ee431dfe7634d3958c",
+      "file_count": 4,
+      "paths": [
+        "Aastroastra/Features/Match/MultiMatchEngine.swift",
+        "Aastroastra/Features/Match/MultiMatchScreen.swift",
+        "Aastroastra/Features/Match/MultiMatchVerdictAuthor.swift",
+        "Aastroastra/Features/Match/MultiMatchViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "4c765bef445dad511d502321100e2cbb0aca19c8",
+          "date": "2026-09-23T03:17:31+05:30",
+          "title": "feat(match): export a match report, and verdicts written from the numbers"
+        },
+        {
+          "sha": "22e3299b7d8f8d62b07d5eca97ea2834d7b59f2e",
+          "date": "2026-09-08T17:22:23+05:30",
+          "title": "Calls: wait for the answer, and white labels on every accent fill"
+        },
+        {
+          "sha": "b1ea62e7cfbe9b500b52eb2ced3637220cc517b3",
+          "date": "2026-09-02T12:12:10+05:30",
+          "title": "fix(numerology,components): Gujarati was never reaching its content, and a fourth flow layout"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "reasoning",
+      "assessment": "review",
+      "behavior": "RuleRunner, JyotishRules, ClaimPayload and AnswerConfidence drive local facts and citations.",
+      "difference": "Architecture is shared; full byte-level claim fixture equivalence was not rerun in this dashboard task.",
+      "next": "Require cross-platform golden vectors for any rule/threshold/version change; keep source citations and unknown-time confidence cap.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "4684210a67115dece1370af63c772ae22fa36d26ebaf18eddd19384997bcac6c",
+      "file_count": 7,
+      "paths": [
+        "Aastroastra/Core/Reasoning/AnswerConfidence.swift",
+        "Aastroastra/Core/Reasoning/Claim.swift",
+        "Aastroastra/Core/Reasoning/ClaimPayload.swift",
+        "Aastroastra/Core/Reasoning/ClaimsAssembler.swift",
+        "Aastroastra/Core/Reasoning/RuleContext.swift",
+        "Aastroastra/Core/Reasoning/RuleRunner.swift",
+        "Aastroastra/Core/Reasoning/Rules/JyotishRules.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        },
+        {
+          "sha": "617309241887dabbf7305da310a6e4eadc899686",
+          "date": "2026-08-29T19:38:49+05:30",
+          "title": "feat(chat): the grounding cell under an answer, step 3 (CMP-M21)"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "explain",
+      "assessment": "review",
+      "behavior": "SectionExplainer/SectionExplainSheet and TTS are present; context fixes are recorded in 032d450 and 0800ebe.",
+      "difference": "Broad functionality exists. Every call-site and explain-budget path has not been acceptance-compared.",
+      "next": "Test house/planet/koota/number explain while switching people and language; confirm explain and chat budgets.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "85861b49596395210e10311445ad44d2dc20731d0c18adf0b7e3cbf2b1695faa",
+      "file_count": 5,
+      "paths": [
+        "Aastroastra/Core/Supabase/AIChatClient.swift",
+        "Aastroastra/Features/Explain/AstroHighlight.swift",
+        "Aastroastra/Features/Explain/ChatTTS.swift",
+        "Aastroastra/Features/Explain/SectionExplainSheet.swift",
+        "Aastroastra/Features/Explain/SectionExplainer.swift"
+      ],
+      "commits": [
+        {
+          "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+          "date": "2026-09-22T18:51:28+05:30",
+          "title": "feat(chat): talk about up to five people at once, as on Android"
+        },
+        {
+          "sha": "b0b05fe23a582ad3d84b4653137083c664398c98",
+          "date": "2026-09-16T04:13:38+05:30",
+          "title": "fix(ios): identify AI requests and stop ambiguous reading retries"
+        },
+        {
+          "sha": "0800ebe1a4dc81c14364c67bdf424d777e0b95ea",
+          "date": "2026-09-10T16:20:10+05:30",
+          "title": "The explained chart belongs to the person on screen"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "palmistry",
+      "assessment": "review",
+      "behavior": "Palmistry supports consent (a46a823), image selection, repository, saved/pending readings and result screens.",
+      "difference": "Consent parity is implemented. Camera permissions, upload interruption and per-result discussion/export need device acceptance.",
+      "next": "Test first/returning consent, cancel, permission denied, retry, background/resume and opening saved readings.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "dd9b5ff8633eebd79e1af04a42e73faffd5f8a694f4a5345f5ab3d19da59dcf6",
+      "file_count": 7,
+      "paths": [
+        "Aastroastra/Features/Palmistry/PalmImagePicker.swift",
+        "Aastroastra/Features/Palmistry/PalmistryListScreen.swift",
+        "Aastroastra/Features/Palmistry/PalmistryModels.swift",
+        "Aastroastra/Features/Palmistry/PalmistryRepository.swift",
+        "Aastroastra/Features/Palmistry/PalmistryScreen.swift",
+        "Aastroastra/Features/Palmistry/PalmistryStore.swift",
+        "Aastroastra/Features/Palmistry/PalmistryViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "a46a8231bb4cad2ee883d1dcb996099b5f2a50df",
+          "date": "2026-09-22T18:57:13+05:30",
+          "title": "feat(palmistry): ask before the first palm photo is sent, as Android does"
+        },
+        {
+          "sha": "b0b05fe23a582ad3d84b4653137083c664398c98",
+          "date": "2026-09-16T04:13:38+05:30",
+          "title": "fix(ios): identify AI requests and stop ambiguous reading retries"
+        },
+        {
+          "sha": "d6fd41af14a6cebaa5ef953ffcae5969cc1364dc",
+          "date": "2026-09-05T18:17:35+05:30",
+          "title": "fix(palmistry): the result photo was making the whole column too wide"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "face-reading",
+      "assessment": "review",
+      "behavior": "FaceReading flow/repository/store and list/detail screens exist.",
+      "difference": "Known QA screenshots mention a second reading type not loading. No new proof here that either platform has identical variant behavior.",
+      "next": "Test every reading type and invalid/no-face image, background recovery and cached reopens; tie fixes to QA bug IDs.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "438586110902a4e4f87432c008fe183d9756c2bf3bcbc738315039dffb892133",
+      "file_count": 8,
+      "paths": [
+        "Aastroastra/Features/FaceReading/FaceImagePicker.swift",
+        "Aastroastra/Features/FaceReading/FaceReadingFlowScreen.swift",
+        "Aastroastra/Features/FaceReading/FaceReadingListScreen.swift",
+        "Aastroastra/Features/FaceReading/FaceReadingModels.swift",
+        "Aastroastra/Features/FaceReading/FaceReadingRepository.swift",
+        "Aastroastra/Features/FaceReading/FaceReadingScreen.swift",
+        "Aastroastra/Features/FaceReading/FaceReadingStore.swift",
+        "Aastroastra/Features/FaceReading/FaceReadingViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "b0b05fe23a582ad3d84b4653137083c664398c98",
+          "date": "2026-09-16T04:13:38+05:30",
+          "title": "fix(ios): identify AI requests and stop ambiguous reading retries"
+        },
+        {
+          "sha": "86e9d935e0919ad5cebaaf961e090af1e1d9fe2a",
+          "date": "2026-09-05T06:50:36+05:30",
+          "title": "perf(readings): upload palm and face at 1024, not 1280"
+        },
+        {
+          "sha": "f4e7c968bbaf597f0205564e1082f8561a170295",
+          "date": "2026-09-05T02:54:19+05:30",
+          "title": "feat(latency): F4, give the face reading wait something to read"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "prediction-rectification",
+      "assessment": "review",
+      "behavior": "Prediction and Rectification screens/view models/repositories exist.",
+      "difference": "Available feature surfaces are confirmed; endpoint contracts, locale behavior and credit gating need paired fixtures.",
+      "next": "Document mode/input/result schemas and run success, unavailable, low-credit and interruption cases on both.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "c4064ecec9f3dfc0ccff5214c429934005d69190d41666443955e1f9e1d0846d",
+      "file_count": 8,
+      "paths": [
+        "Aastroastra/Features/Prediction/PredictionModels.swift",
+        "Aastroastra/Features/Prediction/PredictionRepository.swift",
+        "Aastroastra/Features/Prediction/PredictionScreen.swift",
+        "Aastroastra/Features/Prediction/PredictionViewModel.swift",
+        "Aastroastra/Features/Rectification/RectificationModels.swift",
+        "Aastroastra/Features/Rectification/RectificationRepository.swift",
+        "Aastroastra/Features/Rectification/RectificationScreen.swift",
+        "Aastroastra/Features/Rectification/RectificationViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "09be8e65830a825ffdce38d79e04712487a338fb",
+          "date": "2026-08-29T06:32:14+05:30",
+          "title": "feat(a11y): make the type scale answer Larger Text, and give the charts a voice"
+        },
+        {
+          "sha": "da390fe9b5a249d2112c13f8a13148fabadd9a5a",
+          "date": "2026-08-26T03:21:16+05:30",
+          "title": "chore(ui): remove the logo watermark, per founder feedback"
+        },
+        {
+          "sha": "2aafd308024a157711de07d7c100a0fc1fee9442",
+          "date": "2026-08-25T13:07:35+05:30",
+          "title": "fix(prediction): recover from dead refresh token so predictions load"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "reports",
+      "assessment": "review",
+      "behavior": "AstrologyReportRepository and ReportGeneratorSheet exist. Numerology export arrived in 73a7d58 and match export in 4c765be.",
+      "difference": "The old statement that iOS has no general reports is obsolete. Full report-type and caching parity remains unverified.",
+      "next": "Generate every offered report type in English/Hindi and both chart styles; compare output and reopen behavior.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "cd69bc91561a0f8f703fcd8ad7229a2da9d9350e9f6904f43c873eeecea5eb95",
+      "file_count": 4,
+      "paths": [
+        "Aastroastra/Features/PersonPage/ExportedReport.swift",
+        "Aastroastra/Features/Reports/AstrologyReportRepository.swift",
+        "Aastroastra/Features/Reports/ReportGeneratorSheet.swift",
+        "Aastroastra/Features/Reports/ReportListScreen.swift"
+      ],
+      "commits": [
+        {
+          "sha": "73a7d5824a4cce34767d0eb1d85c3b5aa99b06a3",
+          "date": "2026-09-05T07:24:15+05:30",
+          "title": "feat(reports): iOS can export a report at all now, starting with numerology"
+        },
+        {
+          "sha": "10ae31c31979a95ee3515edf73f1d8fcc433bd3e",
+          "date": "2026-09-01T07:59:17+05:30",
+          "title": "feat(kundali): the new page ships, the switcher goes away, and the em dashes go with it"
+        },
+        {
+          "sha": "a6f1c819ee726bebefb34133cf3f98eb250cc29d",
+          "date": "2026-09-01T07:33:59+05:30",
+          "title": "feat(kundali): outer bodies on every computed chart, the full chart section, and a pinned export"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "localization",
+      "assessment": "review",
+      "behavior": "AastroL10n, AstrologyAPILocale, AstroNames/PanchangNames and parity copy support runtime localization.",
+      "difference": "Starter copy is checked across 12 locales, but that audit does not certify every screen or vendor-provided prose.",
+      "next": "Keep localized key/placeholder checks and cross-platform request-locale tests; audit fallback prose separately.",
+      "validation": "Starter prompts have a 300-string comparison. Full-app locale completeness and all reading responses are not certified.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "b0212f280fb16fe7d443f9c13cbafd8be1f8457467f680dd0851f16a7a3f537e",
+      "file_count": 6,
+      "paths": [
+        "Aastroastra/Core/Localization/AastroL10n.swift",
+        "Aastroastra/Core/Localization/AstroNames.swift",
+        "Aastroastra/Core/Localization/LocalizedDateFormatter.swift",
+        "Aastroastra/Core/Localization/NumerologyContent.swift",
+        "Aastroastra/Core/Localization/PanchangNames.swift",
+        "Aastroastra/Core/Localization/ScreenParityCopy.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "925c40c203d21907241faae653f4533029c3494d",
+          "date": "2026-09-23T05:12:18+05:30",
+          "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+        },
+        {
+          "sha": "d8a9b447171d01db6c63c2ade8506b9ac319a64e",
+          "date": "2026-09-23T04:54:03+05:30",
+          "title": "feat(profile): an account photo on iOS"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "themes",
+      "assessment": "intentional",
+      "behavior": "Theme tokens, shared components and AppearanceScreen support the app palettes and dynamic type.",
+      "difference": "Typography, system pickers and accessibility wrapping may intentionally differ. Equivalent information and actions remain required.",
+      "next": "Review all themes at narrow/large-text sizes, disabled controls, screen-reader labels and contrast.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "intentional",
+      "review_current": true,
+      "fingerprint": "42f5ea90a7078d67468a51f442d27dd114e276927714dc47e97b694fb2eaf922",
+      "file_count": 175,
+      "paths": [
+        "Aastroastra/Core/Theme/AastroColors.swift",
+        "Aastroastra/Core/Theme/AastroTheme.swift",
+        "Aastroastra/Core/Theme/AastroTypography.swift",
+        "Aastroastra/Core/Theme/BrandKit.swift",
+        "Aastroastra/Core/Theme/NumberPalette.swift",
+        "Aastroastra/Core/Theme/ShadowSpec.swift",
+        "Aastroastra/Core/Theme/ThemeManager.swift",
+        "Aastroastra/Core/Theme/ThemePalette.swift",
+        "Aastroastra/Core/Theme/Tokens.swift",
+        "Aastroastra/Core/Theme/View+Tokens.swift",
+        "Aastroastra/Features/Profile/AppearanceScreen.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroBadge.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroButton.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroChip.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroDivider.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroProgressRing.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroSegmentedControl.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroSlider.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroSpinner.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroStarInput.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroStarRating.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroTextArea.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroTextField.swift",
+        "Aastroastra/Shared/Components/Atoms/AastroToggle.swift",
+        "Aastroastra/Shared/Components/Atoms/AstrologerAvatar.swift",
+        "Aastroastra/Shared/Components/Atoms/BackButton.swift",
+        "Aastroastra/Shared/Components/Atoms/BrandGlyph.swift",
+        "Aastroastra/Shared/Components/Atoms/FlowLayout.swift",
+        "Aastroastra/Shared/Components/Atoms/MarkdownText.swift",
+        "Aastroastra/Shared/Components/Atoms/SectionLegend.swift",
+        "Aastroastra/Shared/Components/Atoms/SettingsRowChrome.swift",
+        "Aastroastra/Shared/Components/Atoms/TypewriterText.swift",
+        "Aastroastra/Shared/Components/Atoms/UserAvatar.swift",
+        "Aastroastra/Shared/Components/BirthDateField.swift",
+        "Aastroastra/Shared/Components/BirthTimeField.swift",
+        "Aastroastra/Shared/Components/BrandMark.swift",
+        "Aastroastra/Shared/Components/CityHangHarness.swift",
+        "Aastroastra/Shared/Components/CityPickerViewController.swift",
+        "Aastroastra/Shared/Components/DashboardEmptyState.swift",
+        "Aastroastra/Shared/Components/DictationButton.swift",
+        "Aastroastra/Shared/Components/GenderPicker.swift",
+        "Aastroastra/Shared/Components/GlowCard.swift",
+        "Aastroastra/Shared/Components/InsightNumberCard.swift",
+        "Aastroastra/Shared/Components/LanguagePicker.swift",
+        "Aastroastra/Shared/Components/LoShuGridView.swift",
+        "Aastroastra/Shared/Components/LocationAutocompleteField.swift",
+        "Aastroastra/Shared/Components/Molecules/AastroCard.swift",
+        "Aastroastra/Shared/Components/Molecules/AastroTabStrip.swift",
+        "Aastroastra/Shared/Components/Molecules/AccountHeaderCard.swift",
+        "Aastroastra/Shared/Components/Molecules/AstroProseText.swift",
+        "Aastroastra/Shared/Components/Molecules/AstrologerCircleRail.swift",
+        "Aastroastra/Shared/Components/Molecules/BirthDetailsCapsule.swift",
+        "Aastroastra/Shared/Components/Molecules/BookingRow.swift",
+        "Aastroastra/Shared/Components/Molecules/BottomSheet.swift",
+        "Aastroastra/Shared/Components/Molecules/CalculationTable.swift",
+        "Aastroastra/Shared/Components/Molecules/Carousel.swift",
+        "Aastroastra/Shared/Components/Molecules/ChartPickerCapsule.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatAboutChartButton.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatAnswerActions.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatGroundingCell.swift",
+        "Aastroastra/Shared/Components/Molecules/ChatReadAloudControl.swift",
+        "Aastroastra/Shared/Components/Molecules/CreditBalanceCapsule.swift",
+        "Aastroastra/Shared/Components/Molecules/CreditLedgerEntryRow.swift",
+        "Aastroastra/Shared/Components/Molecules/CreditPackageGrid.swift",
+        "Aastroastra/Shared/Components/Molecules/DataUnavailableView.swift",
+        "Aastroastra/Shared/Components/Molecules/DriverConductorCard.swift",
+        "Aastroastra/Shared/Components/Molecules/ExpandableCard.swift",
+        "Aastroastra/Shared/Components/Molecules/FeatureBox.swift",
+        "Aastroastra/Shared/Components/Molecules/FreePracticeRow.swift",
+        "Aastroastra/Shared/Components/Molecules/InfoTile.swift",
+        "Aastroastra/Shared/Components/Molecules/KootaTile.swift",
+        "Aastroastra/Shared/Components/Molecules/LoadingSkeleton.swift",
+        "Aastroastra/Shared/Components/Molecules/MantraCard.swift",
+        "Aastroastra/Shared/Components/Molecules/MatchRecentRow.swift",
+        "Aastroastra/Shared/Components/Molecules/NativeOptionRow.swift",
+        "Aastroastra/Shared/Components/Molecules/NumberMeaningRow.swift",
+        "Aastroastra/Shared/Components/Molecules/PageDisclosure.swift",
+        "Aastroastra/Shared/Components/Molecules/ReadingWaitView.swift",
+        "Aastroastra/Shared/Components/Molecules/RemedyCategoryRow.swift",
+        "Aastroastra/Shared/Components/Molecules/RemedyProductCard.swift",
+        "Aastroastra/Shared/Components/Molecules/RevealCard.swift",
+        "Aastroastra/Shared/Components/Molecules/RevealTimeline.swift",
+        "Aastroastra/Shared/Components/Molecules/ServiceBannerCard.swift",
+        "Aastroastra/Shared/Components/Molecules/SignFactTile.swift",
+        "Aastroastra/Shared/Components/Molecules/StreamingAnswerBubble.swift",
+        "Aastroastra/Shared/Components/Molecules/SuggestedQuestionRow.swift",
+        "Aastroastra/Shared/Components/Molecules/SuggestedQuestions.swift",
+        "Aastroastra/Shared/Components/Molecules/VoiceLevelMeter.swift",
+        "Aastroastra/Shared/Components/Molecules/VoicePrefillCard.swift",
+        "Aastroastra/Shared/Components/Molecules/WalletEntryRow.swift",
+        "Aastroastra/Shared/Components/Organisms/AastroPromptSheet.swift",
+        "Aastroastra/Shared/Components/Organisms/ActiveDashaBreadcrumb.swift",
+        "Aastroastra/Shared/Components/Organisms/AshtakootScoreDial.swift",
+        "Aastroastra/Shared/Components/Organisms/AssistantThinking.swift",
+        "Aastroastra/Shared/Components/Organisms/AuthForms.swift",
+        "Aastroastra/Shared/Components/Organisms/AyanamshaPicker.swift",
+        "Aastroastra/Shared/Components/Organisms/BannerCarousel.swift",
+        "Aastroastra/Shared/Components/Organisms/BoxedQuad.swift",
+        "Aastroastra/Shared/Components/Organisms/CallComponents.swift",
+        "Aastroastra/Shared/Components/Organisms/ChartPageSection.swift",
+        "Aastroastra/Shared/Components/Organisms/ChatBubble.swift",
+        "Aastroastra/Shared/Components/Organisms/ChatHeader.swift",
+        "Aastroastra/Shared/Components/Organisms/ChatStarterQuestions.swift",
+        "Aastroastra/Shared/Components/Organisms/ChooseOrAddKundali.swift",
+        "Aastroastra/Shared/Components/Organisms/CrashReportSheet.swift",
+        "Aastroastra/Shared/Components/Organisms/CrossQuad.swift",
+        "Aastroastra/Shared/Components/Organisms/DashaTimeline.swift",
+        "Aastroastra/Shared/Components/Organisms/DefaultKundaliChooser.swift",
+        "Aastroastra/Shared/Components/Organisms/Doshas.swift",
+        "Aastroastra/Shared/Components/Organisms/FaceReadingCards.swift",
+        "Aastroastra/Shared/Components/Organisms/FeaturedRemedyCard.swift",
+        "Aastroastra/Shared/Components/Organisms/GhatChakraGrid.swift",
+        "Aastroastra/Shared/Components/Organisms/GrahaReasonHero.swift",
+        "Aastroastra/Shared/Components/Organisms/GroundingExplainSheet.swift",
+        "Aastroastra/Shared/Components/Organisms/HighlightedProse.swift",
+        "Aastroastra/Shared/Components/Organisms/HoroscopeDashboardCard.swift",
+        "Aastroastra/Shared/Components/Organisms/HoroscopeQuoteCard.swift",
+        "Aastroastra/Shared/Components/Organisms/HousePanel.swift",
+        "Aastroastra/Shared/Components/Organisms/IntakeTimeline.swift",
+        "Aastroastra/Shared/Components/Organisms/KPCuspsList.swift",
+        "Aastroastra/Shared/Components/Organisms/KpTable.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartNorthIndian.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartPanel.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliChartSouthIndian.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliHouseMeaning.swift",
+        "Aastroastra/Shared/Components/Organisms/KundaliReferenceData.swift",
+        "Aastroastra/Shared/Components/Organisms/LoShuDigitMeaning.swift",
+        "Aastroastra/Shared/Components/Organisms/LoShuPageGrid.swift",
+        "Aastroastra/Shared/Components/Organisms/LoShuPlaneMatrix.swift",
+        "Aastroastra/Shared/Components/Organisms/LoShuReadingsTimeline.swift",
+        "Aastroastra/Shared/Components/Organisms/MantraDetailSheet.swift",
+        "Aastroastra/Shared/Components/Organisms/MatchSupplements.swift",
+        "Aastroastra/Shared/Components/Organisms/MatchVerdictCard.swift",
+        "Aastroastra/Shared/Components/Organisms/MessageInputBar.swift",
+        "Aastroastra/Shared/Components/Organisms/MiniKundaliSections.swift",
+        "Aastroastra/Shared/Components/Organisms/MissingDigitChips.swift",
+        "Aastroastra/Shared/Components/Organisms/MobileNumberReadingCard.swift",
+        "Aastroastra/Shared/Components/Organisms/MobileNumberSpotlight.swift",
+        "Aastroastra/Shared/Components/Organisms/MonthDotCalendar.swift",
+        "Aastroastra/Shared/Components/Organisms/MultiMatchHeroCard.swift",
+        "Aastroastra/Shared/Components/Organisms/NakshatraStrip.swift",
+        "Aastroastra/Shared/Components/Organisms/Navigation.swift",
+        "Aastroastra/Shared/Components/Organisms/NumberPageSection.swift",
+        "Aastroastra/Shared/Components/Organisms/NumeroAspectsList.swift",
+        "Aastroastra/Shared/Components/Organisms/OnboardingProgressBar.swift",
+        "Aastroastra/Shared/Components/Organisms/Overlays.swift",
+        "Aastroastra/Shared/Components/Organisms/PalmLastReadingCard.swift",
+        "Aastroastra/Shared/Components/Organisms/PalmistryPromoCard.swift",
+        "Aastroastra/Shared/Components/Organisms/PanchangAndDaily.swift",
+        "Aastroastra/Shared/Components/Organisms/PanchangDashboardCard.swift",
+        "Aastroastra/Shared/Components/Organisms/PartnerCard.swift",
+        "Aastroastra/Shared/Components/Organisms/PersonDetailsForm.swift",
+        "Aastroastra/Shared/Components/Organisms/PersonalCycleSection.swift",
+        "Aastroastra/Shared/Components/Organisms/PlaneStrengthBar.swift",
+        "Aastroastra/Shared/Components/Organisms/PlaneStrengthRow.swift",
+        "Aastroastra/Shared/Components/Organisms/PlanetListRow.swift",
+        "Aastroastra/Shared/Components/Organisms/PlanetNatureLegend.swift",
+        "Aastroastra/Shared/Components/Organisms/PlanetWheel.swift",
+        "Aastroastra/Shared/Components/Organisms/PredictionsAndRemedies.swift",
+        "Aastroastra/Shared/Components/Organisms/ProPaywallSheet.swift",
+        "Aastroastra/Shared/Components/Organisms/RectificationComponents.swift",
+        "Aastroastra/Shared/Components/Organisms/RemediesComponents.swift",
+        "Aastroastra/Shared/Components/Organisms/RemedyCarouselCard.swift",
+        "Aastroastra/Shared/Components/Organisms/RemedyCategoryTile.swift",
+        "Aastroastra/Shared/Components/Organisms/SavedKundaliPicker.swift",
+        "Aastroastra/Shared/Components/Organisms/ServiceCard.swift",
+        "Aastroastra/Shared/Components/Organisms/ServiceSpotlight.swift",
+        "Aastroastra/Shared/Components/Organisms/SourceCitationChip.swift",
+        "Aastroastra/Shared/Components/Organisms/States.swift",
+        "Aastroastra/Shared/Components/Organisms/SuggestedForYouRow.swift",
+        "Aastroastra/Shared/Components/Organisms/Suggestions.swift",
+        "Aastroastra/Shared/Components/ShimmerView.swift",
+        "Aastroastra/Shared/Components/ThemeTogglePill.swift",
+        "Aastroastra/Shared/Components/ZodiacIcon.swift",
+        "Aastroastra/Shared/Components/_Preview/PreviewFixtures.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "925c40c203d21907241faae653f4533029c3494d",
+          "date": "2026-09-23T05:12:18+05:30",
+          "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+        },
+        {
+          "sha": "d8a9b447171d01db6c63c2ade8506b9ac319a64e",
+          "date": "2026-09-23T04:54:03+05:30",
+          "title": "feat(profile): an account photo on iOS"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "marketplace",
+      "assessment": "review",
+      "behavior": "Remedies, astrologer profiles/bookings/earnings, orders and wallet service flows exist; paid services are currently release-gated.",
+      "difference": "A screen existing in source is not proof it is exposed in the current free-core release. Service gates and lifecycle require paired checking.",
+      "next": "Compare role/flag matrix, booking confirmation/cancel, payment state, order details and practitioner availability.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "7045d602ea6d2e56f9504dfdde769d9e25629d91ecf6608bc5b7a369242b50e9",
+      "file_count": 28,
+      "paths": [
+        "Aastroastra/Core/Remedies/GrahaContentStore.swift",
+        "Aastroastra/Core/Remedies/RemedyReasonEngine.swift",
+        "Aastroastra/Features/Astrologer/AppointmentDetail.swift",
+        "Aastroastra/Features/Astrologer/AppointmentDetailSheet.swift",
+        "Aastroastra/Features/Astrologer/AstrologerBookings.swift",
+        "Aastroastra/Features/Astrologer/AstrologerConsoleScreen.swift",
+        "Aastroastra/Features/Astrologer/AstrologerEarnings.swift",
+        "Aastroastra/Features/Astrologer/AstrologerPresence.swift",
+        "Aastroastra/Features/Astrologer/AstrologerProfileScreen.swift",
+        "Aastroastra/Features/Astrologer/BookingSheet.swift",
+        "Aastroastra/Features/Astrologer/ConsultationSummary.swift",
+        "Aastroastra/Features/Astrologer/IncomingConsultations.swift",
+        "Aastroastra/Features/Astrologer/WriteSummarySheet.swift",
+        "Aastroastra/Features/Orders/OrdersScreen.swift",
+        "Aastroastra/Features/Remedies/AppointmentStore.swift",
+        "Aastroastra/Features/Remedies/AstrologerDirectory.swift",
+        "Aastroastra/Features/Remedies/ConsultationLauncher.swift",
+        "Aastroastra/Features/Remedies/RemediesCatalog.swift",
+        "Aastroastra/Features/Remedies/RemediesScreen.swift",
+        "Aastroastra/Features/Remedies/RemediesViewModel.swift",
+        "Aastroastra/Features/Remedies/RemedyBookingsStore.swift",
+        "Aastroastra/Features/Remedies/RemedyCatalogue.swift",
+        "Aastroastra/Features/Remedies/RemedyCategoryScreen.swift",
+        "Aastroastra/Features/Remedies/RemedyProductScreen.swift",
+        "Aastroastra/Features/Remedies/RemedyPurchase.swift",
+        "Aastroastra/Features/Remedies/RemedyService.swift",
+        "Aastroastra/Features/Remedies/ServiceBanner.swift",
+        "Aastroastra/Features/Remedies/SuggestedRemedies.swift"
+      ],
+      "commits": [
+        {
+          "sha": "fd15336394a4f6828bd12a95a9267c7e5d791318",
+          "date": "2026-09-09T15:54:46+05:30",
+          "title": "Show the customer what was said, and stop a timing test crying wolf"
+        },
+        {
+          "sha": "547df2dbd89c3cae016382c34d1233b6cb2023cb",
+          "date": "2026-09-09T15:28:41+05:30",
+          "title": "Phase 5: what the astrologer advised, on the store page"
+        },
+        {
+          "sha": "f53de0ecd2320c165084c2e0eaae677e9ffaddd0",
+          "date": "2026-09-09T14:29:09+05:30",
+          "title": "Phase 4: the astrologer writes up the call"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "calls",
+      "assessment": "review",
+      "behavior": "CallEngine/CallCenter, VoIP registrar and consultation screens exist; permission/lifecycle fixes landed across September.",
+      "difference": "OS background execution and incoming-call integrations differ intentionally; end-to-end behavior is not implied by source parity.",
+      "next": "Use two real phones for incoming/background/denied-permission/disconnect/reconnect, billing and post-call summary.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "ff048bf47fc2838092ac0cfd59635ed3434b6f5089a171fe2b0593e38784f0db",
+      "file_count": 10,
+      "paths": [
+        "Aastroastra/Features/Call/CallCenter.swift",
+        "Aastroastra/Features/Call/CallDirectoryScreen.swift",
+        "Aastroastra/Features/Call/CallEngine.swift",
+        "Aastroastra/Features/Call/CallModels.swift",
+        "Aastroastra/Features/Call/CallRepository.swift",
+        "Aastroastra/Features/Call/CallViewModel.swift",
+        "Aastroastra/Features/Call/ConsultationCallScreen.swift",
+        "Aastroastra/Features/Call/LiveSessionScreen.swift",
+        "Aastroastra/Features/Call/RateConsultationSheet.swift",
+        "Aastroastra/Features/Call/VoIPTokenRegistrar.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f53de0ecd2320c165084c2e0eaae677e9ffaddd0",
+          "date": "2026-09-09T14:29:09+05:30",
+          "title": "Phase 4: the astrologer writes up the call"
+        },
+        {
+          "sha": "a7876c1d5ea679fd5d62ba6c659fabe12866e03b",
+          "date": "2026-09-09T14:05:36+05:30",
+          "title": "Phase 4: rate the call that just ended"
+        },
+        {
+          "sha": "58b84c206a5367632fc32c7f9476319554fd9cf9",
+          "date": "2026-09-09T13:23:03+05:30",
+          "title": "Phases 1 and 2: make a bad call legible, and survive the rest of the phone"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "bug-report",
+      "assessment": "review",
+      "behavior": "ShakeToReport, ReportBugSheet and BugReportService exist; Settings/answer content reporting is now wired.",
+      "difference": "Both can report bugs, but Android received a recent sensitivity/form fix that needs explicit iOS device comparison.",
+      "next": "Verify shaking, screenshot consent/attachment, keyboard/send, offline failure and report arrival in the common admin list.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "d35ade007a41645531779556c3586969873314c808b1c734b4ed9710dab59b8e",
+      "file_count": 5,
+      "paths": [
+        "Aastroastra/Features/BugReport/BugReport.swift",
+        "Aastroastra/Features/BugReport/BugReportService.swift",
+        "Aastroastra/Features/BugReport/ContentReportSheet.swift",
+        "Aastroastra/Features/BugReport/ReportBugSheet.swift",
+        "Aastroastra/Features/BugReport/ShakeToReport.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "b0b05fe23a582ad3d84b4653137083c664398c98",
+          "date": "2026-09-16T04:13:38+05:30",
+          "title": "fix(ios): identify AI requests and stop ambiguous reading retries"
+        },
+        {
+          "sha": "2d930c1195951b12a583877a8280c49b5d0d76bc",
+          "date": "2026-09-07T15:30:01+05:30",
+          "title": "feat(bugreport): shake to report a bug, iOS"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "widgets",
+      "assessment": "review",
+      "behavior": "Widget-related commits exist on feature branches; this comparison follows main and does not count unmerged work as shipped.",
+      "difference": "Branch work and installed widgets are not the same state. Widget targets/entitlements/timeline behavior need a dedicated review.",
+      "next": "Inventory main targets and branch changes, then decide a shared widget scope and test refresh/deep links.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "b4a1b3e7c1b42393bba40b3644eb404e0dc4e48d3dbe82eee47fa83da9ebb953",
+      "file_count": 5,
+      "paths": [
+        "Aastroastra/Features/Home/DailyHoroscopeScreen.swift",
+        "Aastroastra/Features/Home/DailyHoroscopeViewModel.swift",
+        "Aastroastra/Features/Home/DashboardLayout.swift",
+        "Aastroastra/Features/Home/HomeScreen.swift",
+        "Aastroastra/Features/Home/HomeViewModel.swift"
+      ],
+      "commits": [
+        {
+          "sha": "925c40c203d21907241faae653f4533029c3494d",
+          "date": "2026-09-23T05:12:18+05:30",
+          "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+        },
+        {
+          "sha": "22e3299b7d8f8d62b07d5eca97ea2834d7b59f2e",
+          "date": "2026-09-08T17:22:23+05:30",
+          "title": "Calls: wait for the answer, and white labels on every accent fill"
+        },
+        {
+          "sha": "61cf1399d7fffdee08928f8add6c40d2a38ff408",
+          "date": "2026-09-01T09:39:47+05:30",
+          "title": "feat(match): one set of components, and the rankings finally get saved"
+        }
+      ],
+      "reason": ""
+    },
+    {
+      "id": "infrastructure",
+      "assessment": "review",
+      "behavior": "Swift core data/session/network/navigation and app entry orchestrate feature dependencies.",
+      "difference": "Changes to shared infrastructure can affect multiple features even without a screen-file change. This row deliberately stays in review until broader regression evidence exists.",
+      "next": "Run impacted feature suites after shared-layer edits; add a focused row for any new capability and map its sources.",
+      "validation": "Source and relevant Git history inspected. A paired physical-device acceptance run has not been recorded for this area.",
+      "reviewed_on": "2026-09-23",
+      "status": "review",
+      "review_current": true,
+      "fingerprint": "16fe04782dd057b0e36b9eb35732aada50f1fa59776e79854ea8784af529c032",
+      "file_count": 218,
+      "paths": [
+        "Aastroastra/AastroastraApp.swift",
+        "Aastroastra/Core/Analytics/AmplitudeAnalytics.swift",
+        "Aastroastra/Core/Analytics/Analytics.swift",
+        "Aastroastra/Core/Analytics/AnalyticsFailureReason+Mapping.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/AstrologyAPIConfig.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/AstrologyAPIEndpoint.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/AstrologyAPIProvider.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/AstrologyProvider.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/AshtakootDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/AstroDetailsDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/AyanamshaDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/BhavMadhyaDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/BirthDetailsDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/CurrentVDashaDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/DoshaDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/GhatChakraDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/HoroChartDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/KPDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/MatchReportDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/NumerologyAPIDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PanchangDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PlanetDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PlanetNatureDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/PredictionDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/SarvashtakDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/SuggestionDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/SunSignHoroscopeDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/VDashaPeriodDTO.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/DTO/VarshaphalDTOs.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/Mapper/DTOMappers.swift",
+        "Aastroastra/Core/Astrology/AstrologyAPI/SupabaseAstrologyProxy.swift",
+        "Aastroastra/Core/Astrology/Builders/MiniKundaliBuilder.swift",
+        "Aastroastra/Core/Astrology/Builders/SignArchetypes.swift",
+        "Aastroastra/Core/Astrology/ChartType.swift",
+        "Aastroastra/Core/Astrology/Chogadiya.swift",
+        "Aastroastra/Core/Astrology/ChogadiyaGuidance.swift",
+        "Aastroastra/Core/Astrology/Errors/AstrologyError.swift",
+        "Aastroastra/Core/Astrology/Errors/ChartFailure.swift",
+        "Aastroastra/Core/Astrology/Gana.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliComputer.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliData.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliFactory.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliLiveAssembler.swift",
+        "Aastroastra/Core/Astrology/MiniKundali/MiniKundaliMapper.swift",
+        "Aastroastra/Core/Astrology/Models/AshtakootResult.swift",
+        "Aastroastra/Core/Astrology/Models/AstroDetails.swift",
+        "Aastroastra/Core/Astrology/Models/AstrologyPlanet+Abbreviation.swift",
+        "Aastroastra/Core/Astrology/Models/AstrologyPlanet.swift",
+        "Aastroastra/Core/Astrology/Models/Ayanamsha.swift",
+        "Aastroastra/Core/Astrology/Models/Bhav.swift",
+        "Aastroastra/Core/Astrology/Models/BirthDetails.swift",
+        "Aastroastra/Core/Astrology/Models/BirthInput.swift",
+        "Aastroastra/Core/Astrology/Models/DateRange.swift",
+        "Aastroastra/Core/Astrology/Models/DivisionalChart.swift",
+        "Aastroastra/Core/Astrology/Models/DoshaReport.swift",
+        "Aastroastra/Core/Astrology/Models/GhatChakra.swift",
+        "Aastroastra/Core/Astrology/Models/KPBirthInput.swift",
+        "Aastroastra/Core/Astrology/Models/KPPlanet.swift",
+        "Aastroastra/Core/Astrology/Models/KPSignificators.swift",
+        "Aastroastra/Core/Astrology/Models/MatchInput.swift",
+        "Aastroastra/Core/Astrology/Models/MatchReport.swift",
+        "Aastroastra/Core/Astrology/Models/MiniKundali.swift",
+        "Aastroastra/Core/Astrology/Models/NumerologyAPIInput.swift",
+        "Aastroastra/Core/Astrology/Models/NumerologyTable.swift",
+        "Aastroastra/Core/Astrology/Models/Panchang.swift",
+        "Aastroastra/Core/Astrology/Models/PlanetNature.swift",
+        "Aastroastra/Core/Astrology/Models/Prediction.swift",
+        "Aastroastra/Core/Astrology/Models/Suggestion.swift",
+        "Aastroastra/Core/Astrology/Models/SunSignHoroscope.swift",
+        "Aastroastra/Core/Astrology/Models/TimeOfDay.swift",
+        "Aastroastra/Core/Astrology/Models/Varshaphal.swift",
+        "Aastroastra/Core/Astrology/Models/VimshottariDashaPeriod.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyAPIRepository.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyCache.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyCacheKey.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyRepository+MiniKundali.swift",
+        "Aastroastra/Core/Astrology/Repository/AstrologyRepository.swift",
+        "Aastroastra/Core/Astrology/Repository/SwiftDataAstrologyCache.swift",
+        "Aastroastra/Core/Astrology/Transits/TransitFeed.swift",
+        "Aastroastra/Core/Banners/BannerModels.swift",
+        "Aastroastra/Core/Banners/BannerRepository.swift",
+        "Aastroastra/Core/Chat/ChatPractice.swift",
+        "Aastroastra/Core/Common/AastroHaptics.swift",
+        "Aastroastra/Core/Common/Constants.swift",
+        "Aastroastra/Core/Common/Extensions.swift",
+        "Aastroastra/Core/Common/Haptics.swift",
+        "Aastroastra/Core/Common/Resource.swift",
+        "Aastroastra/Core/Common/Secrets.swift",
+        "Aastroastra/Core/Common/UIApplication+Keyboard.swift",
+        "Aastroastra/Core/Common/UIApplication+TopMost.swift",
+        "Aastroastra/Core/Common/View+KeyboardToolbar.swift",
+        "Aastroastra/Core/Common/View+ModalScroll.swift",
+        "Aastroastra/Core/Config/AppConfig.swift",
+        "Aastroastra/Core/Contacts/ContactPicker.swift",
+        "Aastroastra/Core/Credits/CreditClient.swift",
+        "Aastroastra/Core/Credits/CreditModels.swift",
+        "Aastroastra/Core/Credits/CreditStore.swift",
+        "Aastroastra/Core/Credits/KundaliCreditOperationStore.swift",
+        "Aastroastra/Core/DI/DependencyContainer.swift",
+        "Aastroastra/Core/Database/SwiftDataModels.swift",
+        "Aastroastra/Core/FaceReading/FaceGeometry.swift",
+        "Aastroastra/Core/FaceReading/FaceLandmarkDetector.swift",
+        "Aastroastra/Core/FaceReading/FaceShapeClassifier.swift",
+        "Aastroastra/Core/Flags/FeatureFlags.swift",
+        "Aastroastra/Core/Localization/AastroL10n.swift",
+        "Aastroastra/Core/Localization/AstroNames.swift",
+        "Aastroastra/Core/Localization/LocalizedDateFormatter.swift",
+        "Aastroastra/Core/Localization/NumerologyContent.swift",
+        "Aastroastra/Core/Localization/PanchangNames.swift",
+        "Aastroastra/Core/Localization/ScreenParityCopy.swift",
+        "Aastroastra/Core/Markdown/MarkdownBlock.swift",
+        "Aastroastra/Core/Markdown/MarkdownParser.swift",
+        "Aastroastra/Core/Media/AvatarEncoder.swift",
+        "Aastroastra/Core/Navigation/AppRouter.swift",
+        "Aastroastra/Core/Navigation/SwipeBackEnabler.swift",
+        "Aastroastra/Core/Network/ConnectivityMonitor.swift",
+        "Aastroastra/Core/Network/HTTPClient.swift",
+        "Aastroastra/Core/Network/HTTPMethod.swift",
+        "Aastroastra/Core/Network/HTTPRequest.swift",
+        "Aastroastra/Core/Network/NetworkError.swift",
+        "Aastroastra/Core/Network/NetworkLogger.swift",
+        "Aastroastra/Core/Network/SupabaseManager.swift",
+        "Aastroastra/Core/Notifications/NotificationService.swift",
+        "Aastroastra/Core/Numerology/Content/RepeatedNumberContent.swift",
+        "Aastroastra/Core/Numerology/Engine/NumerologyEngine.swift",
+        "Aastroastra/Core/Numerology/Engine/NumerologyHelpers.swift",
+        "Aastroastra/Core/Numerology/Models/ComplimentaryNumbers.swift",
+        "Aastroastra/Core/Numerology/Models/DriverConductor.swift",
+        "Aastroastra/Core/Numerology/Models/Gender.swift",
+        "Aastroastra/Core/Numerology/Models/KuaDirections.swift",
+        "Aastroastra/Core/Numerology/Models/LoShuGrid.swift",
+        "Aastroastra/Core/Numerology/Models/MobileNumberReading.swift",
+        "Aastroastra/Core/Numerology/Models/NumerologyInterpretation.swift",
+        "Aastroastra/Core/Numerology/Models/NumerologyProfile.swift",
+        "Aastroastra/Core/Numerology/Models/NumerologyQuestions.swift",
+        "Aastroastra/Core/Numerology/Models/PersonalCycle.swift",
+        "Aastroastra/Core/Numerology/Models/PlaneStrength.swift",
+        "Aastroastra/Core/Numerology/NumerologyLocale.swift",
+        "Aastroastra/Core/Numerology/Repository/LocalNumerologyRepository.swift",
+        "Aastroastra/Core/Numerology/Repository/NumerologyRepository.swift",
+        "Aastroastra/Core/Numerology/Repository/RepeatedMeaningLookup.swift",
+        "Aastroastra/Core/Onboarding/OnboardingFinalizer.swift",
+        "Aastroastra/Core/Onboarding/PartialOnboardingStore.swift",
+        "Aastroastra/Core/Onboarding/ReturningUserRestore.swift",
+        "Aastroastra/Core/Onboarding/SupabaseOnboardingFinalizer.swift",
+        "Aastroastra/Core/Person/ChartDigestProvider.swift",
+        "Aastroastra/Core/Person/PersonDossier.swift",
+        "Aastroastra/Core/Person/SavedKundaliCache.swift",
+        "Aastroastra/Core/Reasoning/AnswerConfidence.swift",
+        "Aastroastra/Core/Reasoning/Claim.swift",
+        "Aastroastra/Core/Reasoning/ClaimPayload.swift",
+        "Aastroastra/Core/Reasoning/ClaimsAssembler.swift",
+        "Aastroastra/Core/Reasoning/RuleContext.swift",
+        "Aastroastra/Core/Reasoning/RuleRunner.swift",
+        "Aastroastra/Core/Reasoning/Rules/JyotishRules.swift",
+        "Aastroastra/Core/Remedies/GrahaContentStore.swift",
+        "Aastroastra/Core/Remedies/RemedyReasonEngine.swift",
+        "Aastroastra/Core/Session/MultiMatchTeaser.swift",
+        "Aastroastra/Core/Session/RecentMatch.swift",
+        "Aastroastra/Core/Session/RecentMatchesStore.swift",
+        "Aastroastra/Core/Session/RecentMultiMatch.swift",
+        "Aastroastra/Core/Session/RecentMultiMatchStore.swift",
+        "Aastroastra/Core/Session/UserSession.swift",
+        "Aastroastra/Core/Speech/BirthDetailsSpeech.swift",
+        "Aastroastra/Core/Speech/VoiceCaptureSession.swift",
+        "Aastroastra/Core/Subscriptions/ProPlan.swift",
+        "Aastroastra/Core/Subscriptions/SubscriptionService.swift",
+        "Aastroastra/Core/Supabase/AIChatClient.swift",
+        "Aastroastra/Core/Supabase/AccountRestore.swift",
+        "Aastroastra/Core/Supabase/AuthState.swift",
+        "Aastroastra/Core/Supabase/DebugBypassAuthClient.swift",
+        "Aastroastra/Core/Supabase/DeviceSessionRegistrar.swift",
+        "Aastroastra/Core/Supabase/KundaliSyncer.swift",
+        "Aastroastra/Core/Supabase/LoginOTP.swift",
+        "Aastroastra/Core/Supabase/NumerologySyncer.swift",
+        "Aastroastra/Core/Supabase/ProfileSyncer.swift",
+        "Aastroastra/Core/Supabase/SavedProfilesSyncer.swift",
+        "Aastroastra/Core/Supabase/SupabaseAuthCallback.swift",
+        "Aastroastra/Core/Supabase/SupabaseAuthClient.swift",
+        "Aastroastra/Core/Supabase/SupabaseEdgeClient.swift",
+        "Aastroastra/Core/Supabase/SupabaseRestClient.swift",
+        "Aastroastra/Core/Supabase/SupabaseSession.swift",
+        "Aastroastra/Core/Supabase/SupabaseSessionManager.swift",
+        "Aastroastra/Core/Supabase/SupabaseSessionStore.swift",
+        "Aastroastra/Core/Supabase/SupabaseStorageClient.swift",
+        "Aastroastra/Core/Supabase/SyncService.swift",
+        "Aastroastra/Core/Supabase/SyncStatusTracker.swift",
+        "Aastroastra/Core/Support/CrashReporter.swift",
+        "Aastroastra/Core/Support/SupportContact.swift",
+        "Aastroastra/Core/Theme/AastroColors.swift",
+        "Aastroastra/Core/Theme/AastroTheme.swift",
+        "Aastroastra/Core/Theme/AastroTypography.swift",
+        "Aastroastra/Core/Theme/BrandKit.swift",
+        "Aastroastra/Core/Theme/NumberPalette.swift",
+        "Aastroastra/Core/Theme/ShadowSpec.swift",
+        "Aastroastra/Core/Theme/ThemeManager.swift",
+        "Aastroastra/Core/Theme/ThemePalette.swift",
+        "Aastroastra/Core/Theme/Tokens.swift",
+        "Aastroastra/Core/Theme/View+Tokens.swift",
+        "Aastroastra/Core/Voice/SarvamTTSClient.swift",
+        "Aastroastra/Features/Explore/AdHoc/AdHocDailyViewModel.swift",
+        "Aastroastra/Features/Explore/AdHoc/AdHocKundaliResultScreen.swift",
+        "Aastroastra/Features/Explore/AdHoc/AdHocKundaliViewModel.swift",
+        "Aastroastra/Features/Explore/AdHoc/AdHocNumerologyResultScreen.swift",
+        "Aastroastra/Features/Explore/AdHoc/AdHocNumerologyViewModel.swift",
+        "Aastroastra/Features/Explore/AdHoc/AstroXNumeroScreen.swift",
+        "Aastroastra/Features/Explore/AdHoc/DailyHoroscopeResultScreen.swift",
+        "Aastroastra/Features/Explore/ExpertComingSoonScreen.swift",
+        "Aastroastra/Features/Explore/ExploreFeature.swift",
+        "Aastroastra/Features/Explore/ExploreFlowView.swift",
+        "Aastroastra/Features/Explore/ExploreGrid.swift",
+        "Aastroastra/Features/Explore/ExploreRoute.swift",
+        "Aastroastra/Features/Explore/PersonDetails.swift",
+        "Aastroastra/Features/Explore/PersonInputScreen.swift",
+        "Aastroastra/Features/Explore/PersonInputViewModel.swift",
+        "Aastroastra/Features/Search/SearchScreen.swift",
+        "Aastroastra/Features/_Internal/AstrologyAPISmokeView.swift",
+        "Aastroastra/Features/_Internal/ThemeToggleBubble.swift"
+      ],
+      "commits": [
+        {
+          "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+          "date": "2026-09-23T20:23:27+05:30",
+          "title": "fix: align Settings and AstroAI behavior with Android"
+        },
+        {
+          "sha": "925c40c203d21907241faae653f4533029c3494d",
+          "date": "2026-09-23T05:12:18+05:30",
+          "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+        },
+        {
+          "sha": "d8a9b447171d01db6c63c2ade8506b9ac319a64e",
+          "date": "2026-09-23T04:54:03+05:30",
+          "title": "feat(profile): an account photo on iOS"
+        }
+      ],
+      "reason": ""
+    }
+  ],
+  "unmapped_paths": [
+    "Aastroastra/ContentView.swift",
+    "Aastroastra/Features/Monetization/PaywallScreen.swift",
+    "Aastroastra/Features/Monetization/SubscriptionScreen.swift",
+    "Aastroastra/Shared/Models/BuiltInCities.swift",
+    "Aastroastra/Shared/Models/DataModels.swift",
+    "Aastroastra/Shared/Models/ResolvedLocation.swift",
+    "Aastroastra/Shared/Modifiers/ShakeDetector.swift",
+    "Aastroastra/Shared/Widgets/BottomTabBar.swift",
+    "Aastroastra/Shared/Widgets/CosmicBackground.swift"
+  ],
+  "commits": [
+    {
+      "sha": "ba3c989282b757e9700f13101c2481c2444ea86e",
+      "date": "2026-09-23T20:36:40+05:30",
+      "title": "docs: record reviewed iOS functionality and shared parity rules"
+    },
+    {
+      "sha": "f0f417415d36746489647a83ec0c71e7a4f0a0f9",
+      "date": "2026-09-23T20:23:27+05:30",
+      "title": "fix: align Settings and AstroAI behavior with Android"
+    },
+    {
+      "sha": "ac383bca003dbaf0f4011d19cb738e2cd13a87a8",
+      "date": "2026-09-23T15:26:39+05:30",
+      "title": "Merge iOS parity work: group chat, credits, palmistry consent, contacts"
+    },
+    {
+      "sha": "491c543fa186a7af4682b937cd8ccc91f1747fc2",
+      "date": "2026-09-23T05:42:58+05:30",
+      "title": "chore(ios): bump build to 188"
+    },
+    {
+      "sha": "925c40c203d21907241faae653f4533029c3494d",
+      "date": "2026-09-23T05:12:18+05:30",
+      "title": "feat(ios): add a kundali from a contact, and today's birthday on the dashboard"
+    },
+    {
+      "sha": "d8a9b447171d01db6c63c2ade8506b9ac319a64e",
+      "date": "2026-09-23T04:54:03+05:30",
+      "title": "feat(profile): an account photo on iOS"
+    },
+    {
+      "sha": "4c765bef445dad511d502321100e2cbb0aca19c8",
+      "date": "2026-09-23T03:17:31+05:30",
+      "title": "feat(match): export a match report, and verdicts written from the numbers"
+    },
+    {
+      "sha": "991a8ce8effc1c1405e4ece5a93c1d816e0a1c5f",
+      "date": "2026-09-23T02:02:50+05:30",
+      "title": "feat(credits): the credit page from anywhere, and the balance in chat"
+    },
+    {
+      "sha": "a148ca47f70545c0e642680fc3b39762d9555847",
+      "date": "2026-09-22T19:38:26+05:30",
+      "title": "feat(credits): buy credit packages on iOS through the App Store"
+    },
+    {
+      "sha": "a46a8231bb4cad2ee883d1dcb996099b5f2a50df",
+      "date": "2026-09-22T18:57:13+05:30",
+      "title": "feat(palmistry): ask before the first palm photo is sent, as Android does"
+    },
+    {
+      "sha": "9b2f2f1e051fe28667dd7f67771f67539d5d66d3",
+      "date": "2026-09-22T18:51:28+05:30",
+      "title": "feat(chat): talk about up to five people at once, as on Android"
+    },
+    {
+      "sha": "b7b0e380110b28159b0d8a94c49e20c60cb38696",
+      "date": "2026-09-20T08:45:39+05:30",
+      "title": "docs(credits): describe native wallet recovery"
+    },
+    {
+      "sha": "b8b4b500c3a902442ae1b4e1c7f1550b93f85786",
+      "date": "2026-09-20T04:53:14+05:30",
+      "title": "Merge feature/ios-kundali-credits: digital credits for Kundali generation"
+    },
+    {
+      "sha": "63576a71c205335bc1b32246c859f95547041421",
+      "date": "2026-09-19T05:33:48+05:30",
+      "title": "feat: digital credits for Kundali generation on iOS"
+    },
+    {
+      "sha": "567026a3e65d5a720a14a24b8be98f903b3f9498",
+      "date": "2026-09-18T18:26:54+05:30",
+      "title": "fix: unify iOS six-digit OTP entry for build 187"
+    },
+    {
+      "sha": "12953c617f0b1335a1840cf2f2ca2c31e0e36e7a",
+      "date": "2026-09-18T04:25:18+05:30",
+      "title": "ci: pin release publisher with sequential metadata upload"
+    },
+    {
+      "sha": "59aef8783b55f5365cc598259332bc98152ffe8d",
+      "date": "2026-09-18T02:47:52+05:30",
+      "title": "Pin release toolkit with retained Play bundle evidence"
+    },
+    {
+      "sha": "f7b300d7faaff8d5a7212f52486c948e307d3041",
+      "date": "2026-09-18T02:33:13+05:30",
+      "title": "Add tag-triggered release validation and public HTML reports"
+    },
+    {
+      "sha": "b0b05fe23a582ad3d84b4653137083c664398c98",
+      "date": "2026-09-16T04:13:38+05:30",
+      "title": "fix(ios): identify AI requests and stop ambiguous reading retries"
+    },
+    {
+      "sha": "7fc90048d561b1339f11ad663c3a5917b4d92750",
+      "date": "2026-09-15T16:08:19+05:30",
+      "title": "test(ui): a harness that captures the site's five screens on a simulator"
+    },
+    {
+      "sha": "8cbbd77f37ff270656363db614cf42f62c347696",
+      "date": "2026-09-13T22:29:36+05:30",
+      "title": "chore(ios): CURRENT_PROJECT_VERSION 186"
+    },
+    {
+      "sha": "0f802791bd2d3579fb6236e862848bb11e15fad1",
+      "date": "2026-09-13T15:03:07+05:30",
+      "title": "fix(auth): six-digit OTP on iOS too, or the shipped build locks everyone out"
+    },
+    {
+      "sha": "f6a8bc6fe4baee666b160e66c41c3b753f94bc8e",
+      "date": "2026-09-12T17:28:27+05:30",
+      "title": "docs(store): 6.9 inch screenshots, colour-led"
+    },
+    {
+      "sha": "300c3243f527c4b2949ac35712174804c872ea3a",
+      "date": "2026-09-12T16:52:55+05:30",
+      "title": "feat(person page): gana on iOS, mirroring Android"
+    },
+    {
+      "sha": "12e2c464644ed46ebfdabb1ad0169aba2218e10b",
+      "date": "2026-09-12T16:14:51+05:30",
+      "title": "feat(person page): four boxes for the identity facts, matching Android"
+    },
+    {
+      "sha": "9628f94d481071e09798b6e4a5a70ea9eb97b2f9",
+      "date": "2026-09-11T12:06:54+05:30",
+      "title": "docs(store): App Store listing copy and the marketing icon"
+    },
+    {
+      "sha": "ccb2fffa5c242734144ca8fd8884379524e1ab6a",
+      "date": "2026-09-11T11:50:10+05:30",
+      "title": "feat(config): gate the Remedies and Call tabs on app_config"
+    },
+    {
+      "sha": "032d45016eefbd6d840d405eb6209407d321aeef",
+      "date": "2026-09-11T11:49:55+05:30",
+      "title": "fix(session): the explained chart belongs to the person on screen"
+    },
+    {
+      "sha": "0800ebe1a4dc81c14364c67bdf424d777e0b95ea",
+      "date": "2026-09-10T16:20:10+05:30",
+      "title": "The explained chart belongs to the person on screen"
+    },
+    {
+      "sha": "38882d02ecc08b9a23c5f5f0070d3aa0356f51b3",
+      "date": "2026-09-09T17:15:18+05:30",
+      "title": "chore: bump iOS to build 183"
+    },
+    {
+      "sha": "c407cdbd4adf59a58b3542fefd943c5059f8335a",
+      "date": "2026-09-09T16:25:45+05:30",
+      "title": "publish-ios: stop deleting the live build before uploading the new one"
+    },
+    {
+      "sha": "fd15336394a4f6828bd12a95a9267c7e5d791318",
+      "date": "2026-09-09T15:54:46+05:30",
+      "title": "Show the customer what was said, and stop a timing test crying wolf"
+    },
+    {
+      "sha": "547df2dbd89c3cae016382c34d1233b6cb2023cb",
+      "date": "2026-09-09T15:28:41+05:30",
+      "title": "Phase 5: what the astrologer advised, on the store page"
+    },
+    {
+      "sha": "f53de0ecd2320c165084c2e0eaae677e9ffaddd0",
+      "date": "2026-09-09T14:29:09+05:30",
+      "title": "Phase 4: the astrologer writes up the call"
+    },
+    {
+      "sha": "a7876c1d5ea679fd5d62ba6c659fabe12866e03b",
+      "date": "2026-09-09T14:05:36+05:30",
+      "title": "Phase 4: rate the call that just ended"
+    }
+  ]
+}
