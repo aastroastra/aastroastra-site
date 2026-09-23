@@ -38,19 +38,19 @@ jobs:
           path: ${{ runner.temp }}/parity-snapshot.json
           retention-days: 90
       - name: Check site publication credential
-        if: github.event_name == 'push' && !github.event.deleted
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !github.event.deleted
         env:
           DEPLOY_KEY: ${{ secrets.PARITY_SITE_DEPLOY_KEY }}
         run: test -n "$DEPLOY_KEY" || { echo '::error::PARITY_SITE_DEPLOY_KEY is missing; snapshot retained as an artifact.'; exit 1; }
       - uses: actions/checkout@v4
-        if: github.event_name == 'push' && !github.event.deleted
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !github.event.deleted
         with:
           repository: aastroastra/aastroastra-site
           ref: differences-data
           path: .parity-publish
           ssh-key: ${{ secrets.PARITY_SITE_DEPLOY_KEY }}
       - name: Publish main evidence or isolated branch preview
-        if: github.event_name == 'push' && !github.event.deleted
+        if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !github.event.deleted
         env:
           SOURCE_REPO: ${{ github.workspace }}
         run: |
