@@ -42,8 +42,10 @@ source alignment, known gaps, intentional native differences and pending reviews
 
 Read [shared parity rules](differences/PARITY_RULES.md) and
 [automation maintenance](parity-tools/README.md). Source manifests live in each
-app at `.parity/features.json`. Push workflows pin this repository's toolkit,
-publish to `differences-data` with a dedicated deploy key, and trigger Pages.
+app at `.parity/features.json`. Signed GitHub push hooks record every branch push
+through the existing backend; the page reads this feed every minute and marks
+affected areas stale. Manual source workflows can also publish full snapshots
+to `differences-data` when private Actions runners are available.
 The existing scheduled site workflow also reconciles both main branches with
 `RELEASE_SOURCE_TOKEN`; failed reconciliation is visible and retains old evidence.
 Commit/feature summaries are public; source links require private-repository access.

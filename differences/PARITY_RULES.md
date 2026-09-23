@@ -26,13 +26,14 @@ Machine-readable endpoint: https://www.aastroastra.com/differences/data.json
 
 ## Push and release workflow
 
-- Every branch push in either app generates evidence and publishes a sanitized snapshot. `main` updates the main comparison; other branches only update the branch-preview feed. Pull requests validate and retain an artifact without publishing or accessing the deployment key.
-- Source workflows pin an immutable site-toolkit commit. Update both callers together when the schema/toolkit changes.
-- Site publication uses a dedicated write deploy key limited to the site repository. Never embed a token/key in JSON, HTML, source, logs or commit messages. No source code bodies or personal data are published.
-- `differences-data` is automation-owned. Concurrent pushes retry; an older source job cannot replace a newer source head. Failed publication fails the check and retains the artifact.
-- Pages deploys after snapshot pushes. A 15-minute scheduled main reconciliation is the fallback if an event is missed. This is eventual publication, not a synchronous guarantee at `git push` return.
-- Do not treat a green snapshot workflow as a green app regression suite. Run the targeted feature tests and applicable cross-platform fixtures separately before pushing.
-- Before release, review all known gaps and stale features, record accepted intentional differences, and verify the exact published binaries on real devices.
+- Every branch push is delivered through a signed GitHub webhook to the existing `parity-push` backend. Only repository, branch, commit IDs/titles, date and changed paths are retained; author data, commit bodies and source code are discarded. HMAC-SHA256 verification is required before any write.
+- The page reads the live push feed every minute. New main changes invalidate affected reviewed areas; incomplete history, a new unmapped source file or a changed manifest is conservatively marked for review. Other branches remain separate previews.
+- The public site workflow rebuilds full main source snapshots every 15 minutes and on site/data-branch pushes. It uses the existing read credential. This independent path works when private-repository Actions are blocked by billing.
+- The app's manual Functionality differences workflow can additionally generate/publish a complete snapshot when private runners are available. It pins an immutable public toolkit commit and uses a dedicated site-only SSH deploy key. It does not run automatically while private Actions cannot start.
+- `differences-data` preserves optional full snapshots and their Git history. Concurrent publication retries; an older job cannot replace a newer source head. Failed reconciliations retain prior evidence and show a warning.
+- GitHub webhook delivery failures are visible in repository Settings > Webhooks; redeliver failed events there. Scheduled main reconciliation still recovers source truth. Rotate `PARITY_PUSH_WEBHOOK_SECRET` in Supabase and both hook configurations together. Never put secrets in a manifest, page or log.
+- This is eventual publication: live push metadata appears after delivery/page refresh; full reviewed notes follow the next site rebuild. The page shows both compared source and latest received push.
+- Run targeted app regression tests separately. Neither a push hook nor the snapshot generator certifies app behavior. Before release, review gaps/stale areas and verify the exact published binaries on real devices.
 
 ## Invariants
 

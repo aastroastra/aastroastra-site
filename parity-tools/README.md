@@ -31,10 +31,11 @@ key lives only in `PARITY_SITE_DEPLOY_KEY` in the two app repositories. It can w
 the site, not the app repositories or unrelated repositories. Rotate by replacing
 the site deploy key and both source secrets. No personal access token is replicated.
 `RELEASE_SOURCE_TOKEN` already in the site is used read-only for scheduled source
-reconciliation. Fork PRs never access publishing credentials.
+reconciliation. Pull requests do not receive publishing credentials.
 
-Source push workflows call `.github/workflows/parity-snapshot.yml` pinned to a
-commit. Snapshot generation occurs on every branch push and PR. Only pushes publish.
+Manual source workflows call `.github/workflows/parity-snapshot.yml` pinned to a
+commit. The optional manual workflow generates complete snapshots. Automatic push updates
+use the signed webhook described below while private Actions are unavailable.
 Main snapshots live at `snapshots/ios.json` and `snapshots/android.json` on the
 `differences-data` branch; preview snapshots use hashed branch filenames. That
 branch's Git history retains old snapshots beyond the 90-day Actions artifacts.
@@ -56,3 +57,27 @@ A schema/catalog change requires both platform manifests and pinned workflow ref
 updated together. Validate both locally before pushing; temporarily stale/missing
 records must show review status, never false alignment. Deploying this site does not
 publish mobile apps. See `/release/` for released build evidence.
+
+## Active push path after private Actions billing failure
+
+Private app Actions currently refuse to start because of GitHub account billing.
+The active every-push path is therefore the signed `parity-push` webhook in the
+backend. Hooks on both app repositories POST each branch push there. Sanitized
+immutable records live under the existing public site bucket's
+`differences-pushes/` prefix, keyed by push time and payload hash. Replays reuse
+the key. GET on the function exposes the last 100 records; older records remain
+in Storage. No GitHub personal token is held by this function.
+
+The page overlays changed-file freshness immediately and shows the last main
+snapshot alongside the latest received push. Unknown/truncated commit chains
+mark all areas for review. Main reconciliation on the public site continues every
+15 minutes. Manual source snapshot workflows remain available once runners can
+start, and the original deploy-key infrastructure is retained for that path.
+
+The webhook code/tests live in `aastroastra-backend/supabase/functions/parity-push/`
+and `tests/parity_push_test.ts`. Its only additional secret is
+`PARITY_PUSH_WEBHOOK_SECRET`, also configured in the two GitHub hook settings.
+Update that secret and both hooks together when rotating. Delivery errors need
+GitHub redelivery; scheduled source reconciliation is an independent fallback.
+The live JSON endpoint is
+`https://gttszlununmqivrqevwv.supabase.co/functions/v1/parity-push`.
