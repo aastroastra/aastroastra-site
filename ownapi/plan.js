@@ -70,7 +70,7 @@ function initReport() {
   const tokenForm = report.querySelector('#token-form');
   const tokenUpdate = () => {
     const output = report.querySelector('#token-results');
-    try { const r = tokenBudget(values(tokenForm)); output.textContent = `Estimated assistant API cost: $${r.usd.toLocaleString('en-US', { maximumFractionDigits: 2 })} / ${money(r.inr)}. Assumed rates only; excludes human review, tools, tax and infrastructure.`; }
+    try { const r = tokenBudget(values(tokenForm)); output.textContent = `Estimated API equivalent: $${r.usd.toLocaleString('en-US', { maximumFractionDigits: 2 })} / ${money(r.inr)}. Editable pricing assumptions; excludes tools, tax, cache-write/long-context premiums and people. This is not a Codex top-up quote.`; }
     catch (e) { output.textContent = e.message; }
   };
   listen(tokenForm, 'input', tokenUpdate); listen(tokenForm, 'submit', e => e.preventDefault()); tokenUpdate();
