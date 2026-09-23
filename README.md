@@ -1,3 +1,14 @@
+## Company document access, 24 September 2026
+
+The document pages described historically below now use a shared server-side login. `/internal/` opens the company hub; `/legal/`, `/credits/`, `/ownapi/`, `/release/` and `/differences/` redirect to their gated counterparts at `https://aastroastra-company.vercel.app`. GitHub Pages cannot enforce authentication, so the existing Vercel team hosts the document service separately. Direct content, assets and JSON routes on that service require its secure session cookie. Plaintext new legal guidance, store setup and passwords are never stored in this public repository. Runtime source and maintenance are in `AstroAstra/company-docs/`.
+
+Public app downloads, customer policies, account deletion, status and store marketing assets remain public. Historical public-safe release/parity JSON and report feeds remain available to automation and the protected hub, as do iOS OTA manifests. Existing public Git history cannot be retroactively protected. Internal entry links are removed from public navigation and sitemap; robots excludes these paths and entry pages declare noindex. The encrypted investor deck retains its previous access until its original key is available for migration.
+
+The credits guide now documents Apple consumable IAP, Google Play consumable one-time products and RevenueCat offering `credits`, using store IDs `credits_100`, `credits_500`, `credits_1000`. iOS Google Play wording was corrected in app source; this does not publish a new iOS binary or activate store products.
+
+
+## Historical implementation notes
+
 # AastroAstra: landing site
 
 Static marketing site with five light and dark themes. Hosted on GitHub Pages.
