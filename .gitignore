@@ -10,3 +10,5 @@ _release-data/
 !release/reports/**/index.html
 !deck/index.html
 !android-release/index.html
+
+!ownapi/index.html

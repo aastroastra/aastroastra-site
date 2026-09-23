@@ -27,3 +27,8 @@ The static Pages build includes the entire `credits` directory. The footer links
 `/deck/` serves the private investor presentation. Its body is committed only as an AES-256-GCM encrypted payload, and the passcode is never stored in the repository. The browser derives a key with PBKDF2-SHA-256 and keeps the exported session key only in `sessionStorage` until the viewer locks the deck or closes the tab. `deck/README.md` records the content, source and maintenance contract. Market facts are dated and sourced; revenue scenarios are explicitly labeled as management assumptions rather than traction or forecasts.
 
 Keep the palette values and theme identifiers in these shared assets aligned with `index.html`. The homepage does not load these assets. Theme switching preserves release filters and the current simulated wallet operation. The Pages build copies both assets with the rest of the static site.
+
+`/ownapi/` serves a private, encrypted API-replacement plan with shared themes,
+endpoint pricing search and adjustable cost/token calculators. It does not
+implement or enable a replacement calculation API. Plaintext source and the
+password are kept outside this public repository. See `ownapi/README.md`.

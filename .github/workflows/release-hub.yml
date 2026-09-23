@@ -37,7 +37,7 @@ jobs:
         run: |
           python -m unittest discover -s release-tools -p 'test_*.py'
           python -m unittest discover -s . -p 'test_publish_storage.py'
-          node --test test_auth_link.mjs
+          node --test test_auth_link.mjs ownapi/test_ownapi.mjs
       - name: Restore permanent report history
         run: |
           if git show-ref --verify --quiet refs/remotes/origin/release-data; then
