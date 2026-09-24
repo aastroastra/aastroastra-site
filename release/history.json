@@ -1,6 +1,78 @@
 [
   {
     "schema": 1,
+    "id": "ios:published:193",
+    "platform": "ios",
+    "repo": "aastroastra/aastroastra-ios",
+    "sha": "70cd0f640426ad96a0785c1472afa06db3807ebf",
+    "tag": null,
+    "version": "1.0.0",
+    "build": "193",
+    "date": "2026-09-24",
+    "kind": "published-build",
+    "status": "not_recorded",
+    "deployment": "website",
+    "changes": [
+      {
+        "sha": "bdb7f6d",
+        "subject": "Native credit checkout: verified store prices, account binding, single purchase guard and server-confirmed grants."
+      }
+    ],
+    "checks": [],
+    "downloads": [
+      {
+        "kind": "ipa",
+        "name": "Aastroastra.ipa",
+        "sha256": "77a8f80b5a0b93574886f1089f09bb793d292ae84f5aa39574419fadc03363a7",
+        "size": 27685548,
+        "url": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/builds/ios/193/Aastroastra-77a8f80b5a0b.ipa"
+      }
+    ],
+    "note": "Credit checkout fixes published for beta testing. Store configuration and real purchase acceptance remain pending. Registered beta devices only; this is not a TestFlight submission.",
+    "validation_summary": "14 focused credit tests passed on the same implementation before the build-number change. New signed release archive/export passed; public artifact bytes verified against the local SHA-256. Full device regression and real purchases were not rerun.",
+    "unit_tests": {
+      "passed": 14,
+      "total": 14
+    }
+  },
+  {
+    "schema": 1,
+    "id": "android:published:213",
+    "platform": "android",
+    "repo": "aastroastra/aastroastra-android",
+    "sha": "a31f5eede0d3f94bc006b7d04f418b09677a6b18",
+    "tag": null,
+    "version": "1.0.17",
+    "build": "213",
+    "date": "2026-09-24",
+    "kind": "published-build",
+    "status": "not_recorded",
+    "deployment": "website",
+    "changes": [
+      {
+        "sha": "cbc0582",
+        "subject": "Native credit checkout: verified store prices, account binding, single purchase guard and server-confirmed grants."
+      }
+    ],
+    "checks": [],
+    "downloads": [
+      {
+        "kind": "apk",
+        "name": "app-release.apk",
+        "sha256": "78d96ef09a59925384d27ef9ae88fbd2fcabd9a6d8641f92fffab07695676047",
+        "size": 23108473,
+        "url": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-213-78d96ef09a599253.apk"
+      }
+    ],
+    "note": "Credit checkout fixes published for beta testing. Store configuration and real purchase acceptance remain pending. Signed APK uses the same signing certificate as website build 212.",
+    "validation_summary": "24 focused credit tests passed on the same implementation before the build-number change. New signed release build and vital lint passed; public artifact bytes verified against the local SHA-256. Full device regression and real purchases were not rerun.",
+    "unit_tests": {
+      "passed": 24,
+      "total": 24
+    }
+  },
+{
+    "schema": 1,
     "id": "android:published:208",
     "platform": "android",
     "repo": "aastroastra/aastroastra-android",
