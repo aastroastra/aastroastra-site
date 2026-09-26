@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 <title>Privacy Policy · AastroAstra</title>
 <link rel="icon" type="image/png" href="favicon.png" />
-<meta name="description" content="How AastroAstra collects, uses and protects your birth and account details." />
+<meta name="description" content="How AastroAstra collects, uses and protects your birth and account details, and how app analytics work." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://www.aastroastra.com/privacy.html" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@700&display=swap" rel="stylesheet" />
@@ -47,7 +47,7 @@
       <div class="themes" id="themes"></div>
     </div>
     <h1>Privacy Policy</h1>
-    <div class="updated">Last updated: 25 July 2026</div>
+    <div class="updated">Last updated: 27 September 2026</div>
 
     <p class="lead">AastroAstra turns your birth details into a personal astrological picture: your kundali, numerology, panchang timings, and notifications timed to your chart. To do that, we handle some personal information. This page explains exactly what we collect, why, and the control you have over it. Plain language, no surprises.</p>
 
@@ -57,7 +57,8 @@
       <li><b>Approximate location</b>: when you allow it, we use your latitude and longitude to compute accurate planetary positions and panchang for where you are. You can decline; charts then use your entered birth place instead.</li>
       <li><b>Account details</b>: a phone number or email if you sign in, so your saved profiles follow you across sessions and devices.</li>
       <li><b>Photos you choose to take or upload</b>: a photograph of your palm or your face, only when you start a palm or face reading and only after you agree to it on screen. See <a href="#photos">Palm and face readings</a> below, which sets out exactly what happens to the photo.</li>
-      <li><b>Basic app &amp; device data</b>: app version, device model, and crash diagnostics that keep the app stable. This is not used to identify you personally.</li>
+      <li><b>Basic app &amp; device data</b>: app version, device model, and crash diagnostics that keep the app stable.</li>
+      <li><b>How you use the app</b>: which screens you open and which features you use, linked to an internal account ID rather than your name. You can switch this off. See <a href="#analytics">Analytics and feature settings</a> below.</li>
     </ul>
 
     <h2>How we use it</h2>
@@ -66,6 +67,7 @@
       <li>To compute panchang, muhurta, and the timing behind your personalised notifications.</li>
       <li>To write notifications and readings tailored to your chart. Your birth details are sent to our AI provider only to generate that text, they are not used to train third-party models.</li>
       <li>To sync your saved profiles and keep the app working reliably.</li>
+      <li>To understand which features are used and where the app fails, so we can improve it, and to decide which features to switch on for your app.</li>
     </ul>
 
     <h2 id="photos">Palm and face readings</h2>
@@ -87,10 +89,23 @@
       <li>We do not share your details with anyone except the trusted providers below, and only to run the service.</li>
       <li>We do not use your photo, or anything measured from it, to identify you or to match you with another person.</li>
       <li>We do not let our providers train their models on your data.</li>
+      <li>We do not use analytics for advertising, we do not track you across other companies' apps or websites, and we do not sell analytics data.</li>
     </ul>
 
     <h2>Who processes your data</h2>
-    <p>We rely on a small set of vetted providers to run AastroAstra: Supabase, which stores your profiles and reports securely; astrological computation services for chart maths; and AI providers, currently Anthropic and Groq, which write your readings and notifications and which read the photo when you request a palm or face reading. They process data only on our instructions, only to deliver the feature you asked for, and they do not train their models on it.</p>
+    <p>We rely on a small set of vetted providers to run AastroAstra: Supabase, which stores your profiles and reports securely; astrological computation services for chart maths; and AI providers, currently Anthropic and Groq, which write your readings and notifications and which read the photo when you request a palm or face reading; and Amplitude, which records app usage for analytics and serves our feature settings (see <a href="#analytics">Analytics and feature settings</a>). They process data only on our instructions, only to deliver the feature you asked for, and they do not train their models on it.</p>
+
+    <h2 id="analytics">Analytics and feature settings</h2>
+    <p>We use Amplitude to learn how the app is used and to switch features on or off remotely. Here is exactly what that involves.</p>
+    <ul>
+      <li><b>What is collected</b>: app interactions, such as the screens you open, the features you use, and whether a feature worked or failed; your app version; your device model and operating system version; and your approximate country, worked out from your connection. These are linked to an internal account ID, a random code we create for your account, and to a random ID created when the app is installed. Neither is your phone number or email.</li>
+      <li><b>What is never collected</b>: your birth details, your name or the names of people you add, your phone number, your email address, the content of your chats or readings, your photos, and your precise location.</li>
+      <li><b>Why</b>: to improve the app, to find and fix problems, and to decide which features to show. For feature settings, the app sends Amplitude your internal account ID and the install ID so it can tell the app which features to turn on for you.</li>
+      <li><b>Who processes it</b>: Amplitude, Inc., based in the United States. This means the data is transferred to and stored outside India. Amplitude processes it only on our instructions, and does not use it for advertising or sell it.</li>
+      <li><b>How long we keep it</b>: we keep analytics data for up to 12 months, after which it is deleted.</li>
+      <li><b>How to turn it off</b>: go to <b>Settings &rarr; Share usage analytics</b> in the app and switch it off. It is on by default. Once it is off, the app stops sending usage events. Feature settings are still fetched, because the app needs them to work, but nothing about how you use the app is recorded.</li>
+      <li><b>Deleting your account</b>: when you <a href="./delete-account.html">delete your account</a>, the analytics tied to your internal account ID are deleted or permanently unlinked from you.</li>
+    </ul>
 
     <h2>Where it is kept, and for how long</h2>
     <p>Photographs used for a palm or face reading are not retained at all: they are discarded as soon as the reading is produced. Your profiles are stored securely with our cloud provider and kept while your account is active. Generated reports are cached so you do not wait for them twice; they refresh when you update your birth details. You can remove a saved profile from within the app at any time, and you can ask us to delete your account data entirely.</p>
@@ -101,6 +116,7 @@
       <li>Delete any palm or face reading, and the measurements taken from it, from the reading itself.</li>
       <li>Turn location permission on or off in your device settings at any time.</li>
       <li>Turn notifications off from your device or the app.</li>
+      <li>Turn usage analytics off in the app under <b>Settings &rarr; Share usage analytics</b>.</li>
       <li>Email us to access or delete the data tied to your account. See <a href="./delete-account.html">Delete your account</a> for exactly what is removed and what is kept.</li>
     </ul>
 
