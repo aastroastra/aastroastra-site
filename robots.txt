@@ -9,5 +9,6 @@ Disallow: /deck/
 Disallow: /release/
 Disallow: /differences/
 Disallow: /diffrecnes/
+Disallow: /r/
 
 Sitemap: https://www.aastroastra.com/sitemap.xml

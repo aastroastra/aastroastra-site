@@ -1,0 +1,22 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [
+          "495XWEJ924.com.celerstudio.astroastra"
+        ],
+        "appID": "495XWEJ924.com.celerstudio.astroastra",
+        "components": [
+          {
+            "/": "/r/*",
+            "comment": "Referral invite links: https://www.aastroastra.com/r/<CODE>"
+          }
+        ],
+        "paths": [
+          "/r/*"
+        ]
+      }
+    ]
+  }
+}

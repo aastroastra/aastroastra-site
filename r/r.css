@@ -1,0 +1,34 @@
+/* /r/<CODE> referral landing page. Palette and type come from /site-theme.css. */
+html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{line-height:1.6}
+.r-main{max-width:620px;margin:0 auto;padding:56px 24px 72px}
+.r-eyebrow{margin:0 0 10px;font:600 12px/1.4 var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.r-main h1{margin:0 0 12px;font-size:clamp(30px,6vw,44px);line-height:1.15;letter-spacing:-.02em}
+.r-lead{margin:0 0 28px;font-size:18px;color:var(--fg2)}
+.r-card{border:1px solid var(--line);border-radius:18px;background:var(--soft);padding:20px 22px;margin:0 0 24px}
+.r-warn{background:var(--status-bad-bg)}
+.r-warn p{margin:0}
+.r-label{margin:0 0 8px;font-size:13px;font-weight:600;color:var(--fg2)}
+.r-code-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.r-code{font:700 clamp(30px,8vw,42px)/1.1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.14em;color:var(--fg);word-break:break-all}
+.r-status{min-height:1.4em;margin:8px 0 0;font-size:13px;color:var(--status-good)}
+.r-actions{display:flex;flex-direction:column;gap:12px;margin:0 0 24px}
+.r-btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 22px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--fg);font:600 16px/1.2 var(--font-body);text-decoration:none;cursor:pointer;text-align:center}
+.r-btn:hover{border-color:var(--tint);text-decoration:none}
+.r-btn:focus-visible,.r-lang button:focus-visible{outline:2px solid var(--tint);outline-offset:3px}
+.r-btn-primary{background:var(--btn-bg);color:var(--btn-fg);border-color:var(--btn-bg)}
+.r-btn-ghost{min-height:42px;padding:8px 18px;font-size:14px}
+.r-notes{margin:0 0 24px;padding-left:20px;color:var(--fg2);font-size:15px}
+.r-notes li{margin:0 0 8px}
+.r-notes a{color:var(--fg)}
+.r-small{font-size:13px;color:var(--muted)}
+.r-fine{margin:0;font-size:12px;color:var(--muted)}
+.r-lang{display:flex;gap:4px;border:1px solid var(--line);border-radius:999px;padding:4px}
+.r-lang button{border:1.5px solid transparent;background:transparent;color:var(--fg2);border-radius:999px;min-width:40px;height:32px;padding:0 10px;font:600 13px var(--font-body);cursor:pointer}
+.r-lang button[aria-pressed="true"]{border-color:var(--tint);color:var(--fg)}
+[hidden]{display:none!important}
+@media(max-width:580px){
+  .r-main{padding:36px 16px 56px}
+  .r-lead{font-size:16px}
+  .site-controls{width:auto}
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" data-theme="yellow-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#FFFFFF">
+  <title>You're invited · AastroAstra</title>
+  <meta name="description" content="Your friend invited you to AastroAstra. Get free credits when you join.">
+  <meta property="og:title" content="You're invited to AastroAstra">
+  <meta property="og:description" content="Get free credits when you join with your friend's invite code.">
+  <meta property="og:image" content="https://www.aastroastra.com/og-image.jpg">
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site-theme.css">
+  <link rel="stylesheet" href="/r/r.css">
+  <script src="/site-theme.js"></script>
+  <script src="/r/r.js" defer></script>
+</head>
+<body>
+  <div class="site-frame">
+    <header class="site-header">
+      <a class="site-brand" href="/"><span class="site-mark" aria-hidden="true"></span>AastroAstra</a>
+      <div class="site-controls">
+        <div class="r-lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="hi" aria-pressed="false">हिं</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="r-main">
+      <p class="r-eyebrow" data-t="eyebrow">Invitation</p>
+      <h1 data-t="title">Your friend invited you to AastroAstra</h1>
+      <p class="r-lead" data-t="lead">Get free credits when you join with this invite code.</p>
+
+      <section class="r-card" id="code-card" hidden>
+        <p class="r-label" data-t="codeLabel">Your invite code</p>
+        <div class="r-code-row">
+          <output class="r-code" id="code" aria-live="polite"></output>
+          <button type="button" class="r-btn r-btn-ghost" id="copy" data-t="copy">Copy</button>
+        </div>
+        <p class="r-status" id="copy-status" role="status"></p>
+      </section>
+
+      <section class="r-card r-warn" id="invalid" hidden>
+        <p class="r-label" data-t="invalidTitle">This invite link looks incomplete</p>
+        <p data-t="invalidBody">Ask your friend to send the full link again. You can still install the app below.</p>
+      </section>
+
+      <div class="r-actions">
+        <a class="r-btn r-btn-primary" id="open-app" href="/" data-t="openApp">Open in app</a>
+        <a class="r-btn" id="play" href="https://play.google.com/store/apps/details?id=com.avdstudiox.android" rel="noopener" data-t="play">Get it on Google Play</a>
+        <a class="r-btn" id="ios" href="https://testflight.apple.com/join/HZXJ4Dav" rel="noopener" data-t="ios">Get it on iPhone (TestFlight)</a>
+      </div>
+
+      <ul class="r-notes">
+        <li id="note-android" data-t="noteAndroid">Installing from Google Play brings your code along. If the app asks, paste the code above.</li>
+        <li id="note-ios" data-t="noteIos">On iPhone: after installing, open the app — it will offer to paste your code.</li>
+        <li class="r-small"><span data-t="tfNeed">New to TestFlight?</span> <a href="https://apps.apple.com/app/testflight/id899247664" rel="noopener" data-t="tfGet">Install TestFlight first</a></li>
+      </ul>
+
+      <p class="r-fine" data-t="fine">Credits are for use in the app only. They have no cash value and cannot be transferred. The invite bonus is for new accounts, for a limited time after sign-up.</p>
+      <noscript><p class="r-fine">Enable JavaScript to see your invite code, or open the app and enter the code from the link your friend sent.</p></noscript>
+    </main>
+  </div>
+</body>
+</html>

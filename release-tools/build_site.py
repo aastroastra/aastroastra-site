@@ -8,13 +8,17 @@ import shutil
 from sync_releases import atomic_json
 from core import release_order
 
+PUBLIC_DOT_DIRS={'.well-known'}
+
 def build(root,data,out):
     root,data,out=map(Path,(root,data,out))
     out.mkdir(parents=True,exist_ok=True)
     # Keep the entire current site; omit development and credential directories.
     ignored={'.git','.github','.DS_Store','__pycache__','node_modules','release-tools','parity-tools','_differences-data','.release-output','.venv','venv','_site','_release-data'}
     for path in root.iterdir():
-        if path.name in ignored or path.name.startswith('.') or path.resolve() in (out.resolve(),data.resolve()):continue
+        # Dot entries stay private, except /.well-known (App Links assetlinks.json
+        # and the extensionless apple-app-site-association for Universal Links).
+        if path.name in ignored or (path.name.startswith('.') and path.name not in PUBLIC_DOT_DIRS) or path.resolve() in (out.resolve(),data.resolve()):continue
         if path.is_dir():shutil.copytree(path,out/path.name,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__','.DS_Store','node_modules'))
         elif path.suffix.lower() in ('.html','.css','.js','.mjs','.png','.jpg','.jpeg','.svg','.webp','.ico','.txt','.xml','.json','.zip','.pdf','.woff','.woff2','.mp4') or path.name=='CNAME':shutil.copy2(path,out/path.name)
     rows=json.loads((root/'release/history.json').read_text()) if (root/'release/history.json').exists() else []

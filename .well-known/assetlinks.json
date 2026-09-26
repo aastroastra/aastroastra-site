@@ -3,6 +3,9 @@
   "target": {
     "namespace": "android_app",
     "package_name": "com.avdstudiox.android",
-    "sha256_cert_fingerprints": ["A1:CC:19:EE:D6:25:6C:74:E2:54:7F:A3:96:BC:1C:13:7F:16:1D:4F:03:60:0D:68:7E:27:38:6B:96:CF:6D:93"]
+    "sha256_cert_fingerprints": [
+      "B7:C0:43:4B:CF:5C:EE:AD:2C:F8:89:5A:17:50:89:17:C5:20:94:FC:6D:89:33:C7:62:D4:E1:FA:0A:72:5C:24",
+      "A1:CC:19:EE:D6:25:6C:74:E2:54:7F:A3:96:BC:1C:13:7F:16:1D:4F:03:60:0D:68:7E:27:38:6B:96:CF:6D:93"
+    ]
   }
 }]

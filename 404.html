@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="yellow-light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Page not found · AastroAstra</title>
+  <script>
+    // GitHub Pages serves this file for every missing path. Referral invite links
+    // (/r/<CODE>) have no file of their own, so hand them to the invite page as
+    // /r/?c=<CODE> before anything renders. Keep in sync with /r/r.js.
+    (function () {
+      var m = /^\/r\/([A-Za-z0-9]{1,32})\/?$/.exec(location.pathname);
+      if (m) {
+        location.replace('/r/?c=' + encodeURIComponent(m[1].toUpperCase()) +
+          (location.search ? '&' + location.search.slice(1) : '') + location.hash);
+      }
+    })();
+  </script>
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="/site-theme.css">
+  <script src="/site-theme.js"></script>
+  <style>
+    html,body{margin:0;background:var(--bg);color:var(--fg)}
+    main{max-width:620px;margin:0 auto;padding:56px 24px}
+    h1{margin:0 0 12px;font-size:clamp(30px,6vw,40px);line-height:1.15}
+    p{color:var(--fg2);line-height:1.6}
+    a.home{color:var(--fg)}
+  </style>
+</head>
+<body>
+  <div class="site-frame">
+    <header class="site-header">
+      <a class="site-brand" href="/"><span class="site-mark" aria-hidden="true"></span>AastroAstra</a>
+    </header>
+    <main>
+      <h1>Page not found</h1>
+      <p>This page does not exist or has moved.</p>
+      <p><a class="home" href="/">Go to the AastroAstra home page</a></p>
+    </main>
+  </div>
+</body>
+</html>

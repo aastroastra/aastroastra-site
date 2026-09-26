@@ -60,3 +60,27 @@ to `differences-data` when private Actions runners are available.
 The existing scheduled site workflow also reconciles both main branches with
 `RELEASE_SOURCE_TOKEN`; failed reconciliation is visible and retains old evidence.
 Commit/feature summaries are public; source links require private-repository access.
+
+## Referral invite links (`/r/<CODE>`) and app links
+
+- `https://www.aastroastra.com/r/<CODE>` has no file of its own (Pages is
+  static). `/404.html` matches `/r/<CODE>` and `location.replace`s to
+  `/r/?c=<CODE>` (query string and hash kept), which serves `r/index.html`.
+  `r/r.js` reads the code from `?c=`, `?code=`, the `/r/<CODE>` path or the
+  hash, upper-cases it and checks `^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{6,8}$`.
+  In the apps the same URL is caught first by App Links / Universal Links.
+- The page never shows credit amounts (admin-controlled). Google Play button:
+  `details?id=com.avdstudiox.android&referrer=utm_source%3Dreferral%26referral_code%3D<CODE>`
+  (Install Referrer). "Open in app": Android `intent://www.aastroastra.com/r/<CODE>`
+  with the Play URL as fallback; iOS `aastroastra://r/<CODE>` (a Universal
+  Link tapped on its own domain stays in Safari). The iOS store button copies
+  the code so the app can offer to paste it. `/r/` is `noindex` and disallowed
+  in `robots.txt`.
+- `.well-known/` is published because `release-tools/build_site.py` allows
+  that one dot directory (other dot entries stay private). It holds
+  `assetlinks.json` (Play App Signing key + upload key) and the extensionless
+  `apple-app-site-association` (served by Pages as `application/octet-stream`;
+  Apple's CDN accepts it when it is a 200 over HTTPS without redirects). The
+  apex `aastroastra.com` 301s to `www`, so the apps must associate
+  `www.aastroastra.com`. After deploy, check
+  `https://app-site-association.cdn-apple.com/a/v1/www.aastroastra.com`.
