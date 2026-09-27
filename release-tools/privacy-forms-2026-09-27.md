@@ -115,3 +115,19 @@ After all types are set up: click **Publish** at the top of the App Privacy page
 - **DPDP**: the existing privacy page has no explicit DPDP Act section (no Data Fiduciary, Grievance Officer or consent-manager wording), so there was nothing to keep consistent with. The new section describes consent withdrawal (the toggle) and the cross-border transfer in plain language only. A proper DPDP notice (grievance officer contact, Board complaint right, legal basis) should be reviewed by counsel.
 - **Other processors not named on the policy**: OneSignal (push notifications) and RevenueCat (purchases) are in the apps but not in the "Who processes your data" list. Not changed here; worth adding.
 - **iOS privacy manifest**: the app target has no PrivacyInfo.xcprivacy of its own (only the SDKs' manifests). The app uses UserDefaults (a required-reason API) and now collects Product Interaction / User ID / Device ID; Apple expects the app's own manifest to declare these. Check before the next App Store upload.
+
+## C. Firebase / Google Ads measurement (added 27 Sep 2026, ships with Android 229 / iOS 216)
+
+What changes: Google Analytics for Firebase is added only to measure our own Google Ads campaigns. Events: first_open (automatic), sign_up (method), kundali_generated (first), purchase (pack, INR value), plus Firebase's automatic session/app-update events. User ID = internal account ID. Android reads the advertising ID (AD_ID permission) for ad attribution; iOS uses FirebaseAnalyticsWithoutAdIdSupport (no IDFA, no ATT prompt) + SKAdNetwork. Ad personalisation signals are off. The in-app "Share usage analytics" switch turns Firebase off too.
+
+### Google Play Data safety (edit the same form as section A)
+- Device or other IDs: keep ticked. Purposes add **Advertising or marketing** (ad attribution) next to App functionality and Analytics. Collected: yes. Shared: **No** (Google acts as our service provider for Firebase/Google Ads measurement; per Google's Firebase data-disclosure guidance this is "collected", not "shared"). Required: yes.
+- App activity > App interactions: purposes add **Advertising or marketing**. Optional (user can switch off).
+- Financial info > Purchase history (already declared): purposes add **Analytics** and **Advertising or marketing** (purchase value is sent for campaign measurement).
+- Also in App content: **Advertising ID** declaration: answer **Yes, the app uses an advertising ID**, purpose **Analytics** and **Advertising or marketing** (measurement only). This is a separate App content item, must match the AD_ID permission in the manifest.
+- Save, then Publishing overview > Send changes for review (together with Android 229).
+
+### App Store Connect > App Privacy (iOS)
+- Add or confirm: **Purchase History** (Analytics, App Functionality; linked; not tracking), **Product Interaction** (Analytics; linked; not tracking), **User ID** (Analytics, App Functionality; linked; not tracking), **Device ID**: NOT collected by Firebase on iOS (no IDFA); keep whatever Amplitude's random install ID required (Analytics; linked; not tracking).
+- "Used to track you": **No** for everything (no IDFA, no ATT).
+- Needed before the next App Store submission (not TestFlight).

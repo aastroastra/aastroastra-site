@@ -89,11 +89,11 @@
       <li>We do not share your details with anyone except the trusted providers below, and only to run the service.</li>
       <li>We do not use your photo, or anything measured from it, to identify you or to match you with another person.</li>
       <li>We do not let our providers train their models on your data.</li>
-      <li>We do not use analytics for advertising, we do not track you across other companies' apps or websites, and we do not sell analytics data.</li>
+      <li>We do not show ads inside the app, we do not sell your data, and we do not use your data to target you with other companies' ads. The only advertising use is measuring our own ads: see <a href="#ad-measurement">Measuring our ads</a>.</li>
     </ul>
 
     <h2>Who processes your data</h2>
-    <p>We rely on a small set of vetted providers to run AastroAstra: Supabase, which stores your profiles and reports securely; astrological computation services for chart maths; and AI providers, currently Anthropic and Groq, which write your readings and notifications and which read the photo when you request a palm or face reading; Amplitude, which records app usage for analytics and serves our feature settings (see <a href="#analytics">Analytics and feature settings</a>); OneSignal, which delivers the notifications you choose to receive; and RevenueCat, which confirms credit purchases made through Google Play or the App Store. They process data only on our instructions, only to deliver the feature you asked for, and they do not train their models on it.</p>
+    <p>We rely on a small set of vetted providers to run AastroAstra: Supabase, which stores your profiles and reports securely; astrological computation services for chart maths; and AI providers, currently Anthropic and Groq, which write your readings and notifications and which read the photo when you request a palm or face reading; Amplitude, which records app usage for analytics and serves our feature settings (see <a href="#analytics">Analytics and feature settings</a>); Google (Firebase and Google Ads), which measures our own advertising (see <a href="#ad-measurement">Measuring our ads</a>); OneSignal, which delivers the notifications you choose to receive; and RevenueCat, which confirms credit purchases made through Google Play or the App Store. They process data only on our instructions, only to deliver the feature you asked for, and they do not train their models on it.</p>
 
     <h2 id="analytics">Analytics and feature settings</h2>
     <p>We use Amplitude to learn how the app is used and to switch features on or off remotely. Here is exactly what that involves.</p>
@@ -105,6 +105,16 @@
       <li><b>How long we keep it</b>: we keep analytics data only for as long as it is useful for the purposes above, and it is never linked back to you after your account is deleted.</li>
       <li><b>How to turn it off</b>: go to <b>Settings &rarr; Share usage analytics</b> in the app and switch it off. It is on by default. Once it is off, the app stops sending usage events. Feature settings are still fetched, because the app needs them to work, but nothing about how you use the app is recorded.</li>
       <li><b>Deleting your account</b>: when you <a href="./delete-account.html">delete your account</a>, the analytics tied to your internal account ID are permanently unlinked from you: the ID no longer points to any account, so the data can no longer be connected to you.</li>
+    </ul>
+
+    <h2 id="ad-measurement">Measuring our ads</h2>
+    <p>We advertise AastroAstra on Google. To learn which of our ads bring people who actually use the app, the app uses Google Analytics for Firebase.</p>
+    <ul>
+      <li><b>What is sent</b>: that the app was opened for the first time, that you signed up (and whether by phone, Google or email), that you made your first Kundali, and that you bought credits (the pack and its price). These events carry your internal account ID. Firebase also records basic app usage such as sessions and app updates.</li>
+      <li><b>Advertising ID</b>: on Android, Firebase reads your device's advertising ID so Google Ads can tell which ad led to an install. On iPhone the app does not read the advertising ID and never asks to track you; Apple's privacy-preserving ad measurement is used instead.</li>
+      <li><b>What is never sent</b>: your birth details, names, phone number, email address, chats, readings, photos or precise location.</li>
+      <li><b>Who processes it</b>: Google LLC, in the United States and other countries, under Google's terms for Firebase and Google Ads. We turn off ad personalisation signals, so this data is used to measure our campaigns, not to build advertising profiles of you.</li>
+      <li><b>How to turn it off</b>: <b>Settings &rarr; Share usage analytics</b> turns off both Amplitude and Firebase on your device. On Android you can also reset or delete your advertising ID in your phone's Google settings.</li>
     </ul>
 
     <h2>Where it is kept, and for how long</h2>
