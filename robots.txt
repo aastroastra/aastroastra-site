@@ -12,9 +12,10 @@ Disallow: /differences/
 Disallow: /diffrecnes/
 Disallow: /r/
 
-Sitemap: https://www.aastroastra.com/sitemap.xml
 Disallow: /hub/
 Disallow: /builds/
 Disallow: /authenticity/
 Disallow: /ads-hindi/
 Disallow: /opendesign/
+
+Sitemap: https://www.aastroastra.com/sitemap.xml
