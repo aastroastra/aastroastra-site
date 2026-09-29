@@ -1211,25 +1211,27 @@
     }
     var CAD = { transit:{en:'Transit',hi:'गोचर'}, weekly:{en:'Weekly',hi:'साप्ताहिक'}, monthly:{en:'Monthly',hi:'मासिक'} };
 
+    // Example alerts: reflective wording only. No imperatives about life
+    // decisions, no health, money or relationship outcomes, nothing that "will" happen.
     var NOTIFS = [
-      { cad:'transit', en:{t:'Career', b:'Moon in your 10th at 4:12 PM. Pitch now.', ai:'Aim for 4:20 to 4:40 PM. Lead with the outcome, keep it under two minutes.'},
-        hi:{t:'करियर', b:'शाम 4:12 बजे दशम भाव में चंद्र। अभी विचार रखें।', ai:'4:20 से 4:40 का समय लें। पहले परिणाम बताएँ, दो मिनट में बात रखें।'} },
-      { cad:'weekly', en:{t:'Health', b:'Mars trines your Ascendant. Energy peaks Wed & Thu.', ai:'Do your hardest workout Wednesday. Keep Sunday light and sleep early.'},
-        hi:{t:'स्वास्थ्य', b:'मंगल का त्रिकोण। बुध व गुरुवार ऊर्जा चरम पर।', ai:'सबसे कठिन कसरत बुधवार को करें। रविवार हल्का रखें, जल्दी सोएँ।'} },
-      { cad:'monthly', en:{t:'Love', b:'Venus lights your 7th. The 14th to 18th favour love.', ai:'Plan the real talk on the 16th. Pick a calm evening, not a busy day.'},
-        hi:{t:'प्रेम', b:'सप्तम में शुक्र। 14 से 18 प्रेम को शुभ।', ai:'16 को दिल की बात रखें। व्यस्त दिन नहीं, शांत शाम चुनें।'} },
-      { cad:'transit', en:{t:'Health', b:'Saturn squares your Moon tonight. Rest by 9 PM.', ai:'Wind down by 8:30. Skip screens, hydrate, and sleep by 10.'},
-        hi:{t:'स्वास्थ्य', b:'आज रात शनि की दृष्टि। 9 बजे तक आराम करें।', ai:'8:30 तक शांत हो जाएँ। स्क्रीन छोड़ें, पानी पिएँ, 10 बजे सोएँ।'} },
-      { cad:'weekly', en:{t:'Career', b:'Jupiter aspects your 2nd. Money talks land Thursday.', ai:'Raise the number Thursday morning. Make one clear ask, not three.'},
-        hi:{t:'करियर', b:'गुरु की दृष्टि द्वितीय पर। गुरुवार धन की बात बनेगी।', ai:'गुरुवार सुबह बात रखें। एक साफ़ माँग रखें, तीन नहीं।'} },
-      { cad:'monthly', en:{t:'Career', b:'Your Sun dasha turns active. Recognition after the 21st.', ai:'Say yes to visibility after the 21st. Volunteer to present.'},
-        hi:{t:'करियर', b:'सूर्य दशा सक्रिय। 21 के बाद पहचान बढ़ेगी।', ai:'21 के बाद सामने आएँ। प्रस्तुति देने के लिए हाँ कहें।'} },
-      { cad:'transit', en:{t:'Love', b:'Moon meets Venus at 9 PM. A warm window for love.', ai:'Keep tonight light and warm. A short call beats a long text.'},
-        hi:{t:'प्रेम', b:'रात 9 बजे चंद्र और शुक्र। प्रेम का सुंदर समय।', ai:'आज रात हल्का और गर्म रखें। लंबे संदेश से छोटी कॉल बेहतर।'} },
-      { cad:'weekly', en:{t:'Love', b:'Mercury softens your words. Clear the air on the 12th.', ai:'Clear the misunderstanding on the 12th. Listen first, then speak.'},
-        hi:{t:'प्रेम', b:'बुध वाणी मीठी करेगा। 12 को बात सुलझाएँ।', ai:'12 को ग़लतफ़हमी सुलझाएँ। पहले सुनें, फिर कहें।'} },
-      { cad:'monthly', en:{t:'Health', b:'Sade Sati eases. Vitality returns after the 9th.', ai:'Rebuild your routine after the 9th. Start with sleep and water.'},
-        hi:{t:'स्वास्थ्य', b:'साढ़े साती नरम। 9 के बाद ऊर्जा लौटेगी।', ai:'9 के बाद दिनचर्या बनाएँ। नींद और पानी से शुरू करें।'} },
+      { cad:'transit', en:{t:'Career', b:'Moon in your 10th at 4:12 PM. Traditionally a visible hour.', ai:'Traditional reading links this hour with being seen. A good time to reflect on what you want to share.'},
+        hi:{t:'करियर', b:'शाम 4:12 बजे दशम भाव में चंद्र। परंपरा में यह दिखने का समय माना जाता है।', ai:'परंपरागत रूप से यह समय सामने आने से जुड़ा है। आप क्या कहना चाहते हैं, इस पर सोचने का अच्छा समय।'} },
+      { cad:'weekly', en:{t:'Balance', b:'Mars trines your Ascendant. Read as an active week.', ai:'Traditional reading sees mid-week as lively. A good time to notice your own pace and plan gently.'},
+        hi:{t:'संतुलन', b:'मंगल का लग्न से त्रिकोण। सक्रिय सप्ताह माना जाता है।', ai:'परंपरा में सप्ताह का मध्य सक्रिय माना जाता है। अपनी गति पर ध्यान देने और सहज योजना बनाने का अच्छा समय।'} },
+      { cad:'monthly', en:{t:'Love', b:'Venus lights your 7th. The 14th to 18th are read as warm days.', ai:'Traditional reading sees these days as gentle for conversation. A good time to reflect on what matters to you both.'},
+        hi:{t:'प्रेम', b:'सप्तम में शुक्र। 14 से 18 तारीख़ सौम्य दिन माने जाते हैं।', ai:'परंपरा में ये दिन बातचीत के लिए सौम्य माने जाते हैं। आप दोनों के लिए क्या अहम है, इस पर सोचने का अच्छा समय।'} },
+      { cad:'transit', en:{t:'Balance', b:'Saturn squares your Moon tonight. Read as a quiet evening.', ai:'Traditional reading links this transit with reflection. A good evening to slow down and take stock.'},
+        hi:{t:'संतुलन', b:'आज रात शनि की चंद्र पर दृष्टि। शांत शाम मानी जाती है।', ai:'परंपरा में यह गोचर आत्मचिंतन से जुड़ा है। धीमे होकर विचार करने की अच्छी शाम।'} },
+      { cad:'weekly', en:{t:'Career', b:'Jupiter aspects your 2nd. Traditionally a thoughtful week.', ai:'Traditional reading sees Thursday as a considered day. A good time to weigh your priorities carefully.'},
+        hi:{t:'करियर', b:'गुरु की दृष्टि द्वितीय पर। परंपरा में सोच-विचार का सप्ताह।', ai:'परंपरा में गुरुवार सोच-समझकर चलने का दिन माना जाता है। अपनी प्राथमिकताएँ ध्यान से तौलने का अच्छा समय।'} },
+      { cad:'monthly', en:{t:'Career', b:'Your Sun dasha turns active. Read as a visible phase.', ai:'Traditional reading links a Sun period with visibility. A good time to reflect on how you like to show your work.'},
+        hi:{t:'करियर', b:'सूर्य दशा सक्रिय। दिखने का दौर माना जाता है।', ai:'परंपरा में सूर्य की दशा पहचान से जुड़ी है। आप अपना काम कैसे सामने रखना चाहते हैं, इस पर सोचने का अच्छा समय।'} },
+      { cad:'transit', en:{t:'Love', b:'Moon meets Venus at 9 PM. Traditionally a warm hour.', ai:'Traditional reading sees this hour as gentle. A good time to think about how you like to stay in touch.'},
+        hi:{t:'प्रेम', b:'रात 9 बजे चंद्र और शुक्र। परंपरा में सौम्य समय।', ai:'परंपरा में यह समय कोमल माना जाता है। आप कैसे जुड़े रहना पसंद करते हैं, इस पर सोचने का अच्छा समय।'} },
+      { cad:'weekly', en:{t:'Love', b:'Mercury softens speech. The 12th is read as a calm day.', ai:'Traditional reading links Mercury with words. A good time to reflect on what you would like to say.'},
+        hi:{t:'प्रेम', b:'बुध वाणी से जुड़ा है। 12 तारीख़ शांत दिन मानी जाती है।', ai:'परंपरा में बुध वाणी से जुड़ा है। आप क्या कहना चाहेंगे, इस पर सोचने का अच्छा समय।'} },
+      { cad:'monthly', en:{t:'Balance', b:'Sade Sati eases. Read as a lighter phase after the 9th.', ai:'Traditional reading sees this as a lighter phase. A good time to reflect on the routines you value.'},
+        hi:{t:'संतुलन', b:'साढ़े साती नरम। 9 के बाद हल्का दौर माना जाता है।', ai:'परंपरा में यह हल्का दौर माना जाता है। आपको प्रिय दिनचर्या पर सोचने का अच्छा समय।'} },
     ];
 
     // SF-style monochrome line icons (inherit currentColor). Replaces emojis in the mock.
@@ -1299,11 +1301,11 @@
       panch:{en:'TODAY’S PANCHANG',hi:'आज का पंचांग'},
       horo:{en:'TODAY’S HOROSCOPE',hi:'आज का राशिफल'},
       wk:{en:'Monday',hi:'सोमवार'},
-      horoBody:{en:'The stars favour you today. Focus on what matters and speak your mind after noon.',hi:'आज सितारे आपके पक्ष में हैं। जो ज़रूरी है उस पर ध्यान दें, दोपहर बाद मन की बात कहें।'},
+      horoBody:{en:'Traditional reading sees today as a steady day. The afternoon is a good time to reflect on what matters to you.',hi:'परंपरागत पठन में आज स्थिर दिन माना जाता है। दोपहर बाद, आपके लिए क्या अहम है, इस पर सोचने का अच्छा समय।'},
       single:{en:'Single Kundali',hi:'एकल कुंडली'}, match:{en:'Match Making',hi:'मिलान'},
       multi:{en:'Multi-Match',hi:'मल्टी-मैच'}, multiS:{en:'Compare against your best possible matches',hi:'अपने सर्वोत्तम संभावित मैच से तुलना करें'},
       numHead:{en:'YOUR NUMEROLOGY',hi:'आपका अंक ज्योतिष'},
-      numLine:{en:'Driver 1, the pioneer and natural leader. Today favours bold, first moves.',hi:'मूलांक 1, अग्रणी और स्वाभाविक नेता। आज साहसिक पहल शुभ।'},
+      numLine:{en:'Driver 1 is traditionally linked with the pioneer and leader. A good day to reflect on new beginnings.',hi:'मूलांक 1 परंपरा में अग्रणी और नेतृत्व से जुड़ा है। नई शुरुआत पर विचार करने का अच्छा दिन।'},
       explore:{en:'EXPLORE MORE',hi:'और देखें'},
       lal:{en:'Lal Kitab',hi:'लाल किताब'}, lalS:{en:'Remedies',hi:'उपाय'},
       kp:{en:'KP System',hi:'केपी पद्धति'}, kpS:{en:'Cusps & sub-lords',hi:'कस्प व उपस्वामी'},
@@ -1318,16 +1320,16 @@
       talk:{en:'Talking about You · Aries · Kritika',hi:'विषय: आप · मेष · कृत्तिका'},
       change:{en:'Change ▾',hi:'बदलें ▾'},
       placeholder:{en:'Ask about your chart…',hi:'अपनी कुंडली पूछें…'},
-      hello:{en:'Namaste ✦ I can read your chart, dasha, career, marriage timing, doshas. What’s on your mind?',hi:'नमस्ते ✦ मैं आपकी कुंडली पढ़ सकता हूँ, दशा, करियर, विवाह समय, दोष। क्या पूछना है?'},
-      chips:[ {en:'My Dasha period?',hi:'मेरी दशा?'}, {en:'Lucky career fields?',hi:'शुभ करियर?'}, {en:'Marriage timing?',hi:'विवाह समय?'}, {en:'Manglik status?',hi:'मांगलिक?'} ],
+      hello:{en:'Namaste ✦ I can explain what your chart, dasha, career houses and doshas traditionally indicate. What would you like to explore?',hi:'नमस्ते ✦ मैं बता सकता हूँ कि परंपरा में आपकी कुंडली, दशा, कार्य भाव और दोष क्या दर्शाते हैं। क्या जानना चाहेंगे?'},
+      chips:[ {en:'My Dasha period?',hi:'मेरी दशा?'}, {en:'My career houses?',hi:'मेरे कार्य भाव?'}, {en:'My 7th house?',hi:'मेरा सप्तम भाव?'}, {en:'Manglik status?',hi:'मांगलिक?'} ],
     };
     var REPLIES = [
-      { k:['dasha','दशा'], en:'You are in your **Jupiter Mahadasha** until 2028, it favours learning, teaching and long journeys. The **Saturn antardasha** from March asks for patience: build slowly and it holds.', hi:'आप **गुरु महादशा** में हैं (2028 तक), शिक्षा, अध्यापन व यात्रा शुभ। मार्च से **शनि अंतरदशा** धैर्य मांगती है।' },
-      { k:['career','job','work','करियर','नौकरी'], en:'With a strong **10th-house Sun**, leadership and public-facing work suit you, administration, law, or your own venture. A visible break comes after the 21st.', hi:'बलवान **दशम भाव सूर्य** से नेतृत्व व जनसंपर्क कार्य शुभ, प्रशासन, विधि या स्वयं का उद्यम। 21 के बाद पहचान।' },
-      { k:['marriage','married','wife','husband','विवाह','शादी'], en:'**Venus in the 7th** with Jupiter’s aspect points to marriage between **late 2026 and 2027**. The 14th–18th of favourable months are the warmest windows.', hi:'**सप्तम में शुक्र** व गुरु की दृष्टि विवाह **2026 अंत से 2027** दर्शाती है। शुभ मासों की 14–18 सर्वोत्तम।' },
-      { k:['manglik','mangal','मांगलिक','मंगल'], en:'A mild **Manglik yoga** from Mars in the 12th, it softens after 28 and is cancelled when matched with a Manglik partner. Nothing to worry about.', hi:'द्वादश मंगल से हल्का **मांगलिक योग**, 28 के बाद घटता है, मांगलिक साथी से रद्द। चिंता नहीं।' },
+      { k:['dasha','दशा'], en:'You are in your **Jupiter Mahadasha** until 2028. Traditionally it is linked with learning, teaching and long journeys. The **Saturn antardasha** from March is read as a period for patience and steady effort.', hi:'आप **गुरु महादशा** में हैं (2028 तक)। परंपरा में यह शिक्षा, अध्यापन और यात्रा से जुड़ी है। मार्च से **शनि अंतरदशा** धैर्य और स्थिर प्रयास का समय मानी जाती है।' },
+      { k:['career','job','work','करियर','नौकरी'], en:'A strong **10th-house Sun** is traditionally linked with leadership and public-facing work, such as administration, law or running your own venture. The days after the 21st are read as a more visible phase.', hi:'बलवान **दशम भाव सूर्य** परंपरा में नेतृत्व और जनसंपर्क कार्य से जुड़ा है, जैसे प्रशासन, विधि या स्वयं का उद्यम। 21 के बाद का समय अधिक दिखने वाला दौर माना जाता है।' },
+      { k:['marriage','married','wife','husband','7th','सप्तम','विवाह','शादी'], en:'**Venus in the 7th** with Jupiter’s aspect is traditionally read as supportive for partnership themes, with **late 2026 to 2027** highlighted in the dasha. It is a reading for reflection, not a prediction of events.', hi:'**सप्तम में शुक्र** और गुरु की दृष्टि परंपरा में साझेदारी के विषयों के लिए सहायक मानी जाती है, दशा में **2026 अंत से 2027** उभरता है। यह चिंतन के लिए पठन है, घटनाओं की भविष्यवाणी नहीं।' },
+      { k:['manglik','mangal','मांगलिक','मंगल'], en:'A mild **Manglik yoga** from Mars in the 12th. Tradition reads it as easing after 28, and it is treated as cancelled in a match with another Manglik chart.', hi:'द्वादश मंगल से हल्का **मांगलिक योग**। परंपरा में यह 28 के बाद नरम माना जाता है, और दूसरी मांगलिक कुंडली से मिलान में रद्द माना जाता है।' },
     ];
-    var FALLBACK = { en:'Your chart shows a resilient, curious nature. Ask me about your **dasha**, **career**, **marriage timing** or **doshas** for a specific reading.', hi:'आपकी कुंडली दृढ़ व जिज्ञासु स्वभाव दिखाती है। **दशा**, **करियर**, **विवाह समय** या **दोष** पूछें।' };
+    var FALLBACK = { en:'Traditionally your chart is read as resilient and curious. You can ask about your **dasha**, **career houses**, **7th house** or **doshas** for a specific reading.', hi:'परंपरा में आपकी कुंडली दृढ़ और जिज्ञासु स्वभाव दर्शाती मानी जाती है। आप **दशा**, **कार्य भाव**, **सप्तम भाव** या **दोष** के बारे में पूछ सकते हैं।' };
     function pickReply(text, lang){ var q=(text||'').toLowerCase(); for(var i=0;i<REPLIES.length;i++){ for(var j=0;j<REPLIES[i].k.length;j++){ if(q.indexOf(REPLIES[i].k[j])>=0) return REPLIES[i][lang]; } } return FALLBACK[lang]; }
     function rich(t){ var parts=t.split('**'); return parts.map(function(p,i){ return i%2? h('b',{key:i},p):p; }); }
 
@@ -1382,7 +1384,7 @@
         h('div',{className:'fsub'}, T(FLOW.match.sub)),
         people.map(function(p,i){ return h('div',{key:i,className:'mrow'}, h('span',{className:'av'}, ic('person',16)), h('div',null, h('div',{className:'nm'},p[0]), h('div',{className:'sub2'},p[1]))); }),
         h('div',{className:'fresult',style:{gridTemplateColumns:'1fr'}}, h('div',{className:'fres'}, h('div',{className:'rl'}, lang==='hi'?'अष्टकूट गुण':'Ashtakoot Guna'), h('div',{className:'rv',style:{fontSize:'20px'}}, '28 / 36'))),
-        h('div',{className:'mrow'}, h('div',null, h('div',{className:'nm'}, lang==='hi'?'निष्कर्ष':'Verdict'), h('div',{className:'sub2'}, lang==='hi'?'उत्तम मिलान · मांगलिक रद्द':'Excellent match · Manglik cancelled')), h('div',{className:'score'}, '✓')),
+        h('div',{className:'mrow'}, h('div',null, h('div',{className:'nm'}, lang==='hi'?'निष्कर्ष':'Verdict'), h('div',{className:'sub2'}, lang==='hi'?'उच्च गुण अंक · मांगलिक रद्द':'High guna score · Manglik cancelled')), h('div',{className:'score'}, '✓')),
         h('button',{className:'vbtn', onClick:props.onDone}, lang==='hi'?'पूरी रिपोर्ट देखें':'See full report')
       );
     }
@@ -1569,7 +1571,7 @@
         h('div',{className:'loshu'}, grid.map(function(n,i){ var c=present[n]; return h('div',{key:i,className:'lc'+(c?'':' empty')}, h('b',null, n), h('small',null, c?('×'+c):', ')); })),
         h('div',{className:'pglabel'}, lang==='hi'?'आपके अंक':'YOUR NUMBERS'),
         h('div',{className:'numrow4'}, nums.map(function(x,i){ return h('div',{key:i,className:'nb4'}, h('div',{className:'n'},x[0]), h('div',{className:'nl'}, TL(x[1],lang))); })),
-        h('div',{className:'card'}, h('div',{className:'numline'}, lang==='hi'?'मूलांक 1, अग्रणी और स्वाभाविक नेता। नामांक 5 संचार और गति देता है। आज साहसिक पहल शुभ।':'Driver 1, the pioneer and natural leader. Name number 5 adds communication and momentum. Bold first moves are favoured today.'))
+        h('div',{className:'card'}, h('div',{className:'numline'}, lang==='hi'?'मूलांक 1 परंपरा में अग्रणी और नेतृत्व से जुड़ा है। नामांक 5 संचार और गति से जुड़ा माना जाता है। आज नई शुरुआत पर विचार करने का अच्छा दिन।':'Driver 1 is traditionally linked with the pioneer and leader. Name number 5 is read as communication and momentum. A good day to reflect on new beginnings.'))
       ));
     }
     function PredictScreen(lang){
@@ -1586,7 +1588,7 @@
           cats.map(function(c,i){ return h('div',{key:i,className:'crow'}, h('span',{className:'cl'}, TL(c[0],lang)), h('span',{className:'cs'}, starRow(c[1]))); })
         ),
         h('div',{className:'pglabel'}, lang==='hi'?'आज का सार':'TODAY’S READ'),
-        h('div',{className:'card'}, h('div',{className:'hbody'}, lang==='hi'?'शाम 4:20 बजे चंद्र दशम भाव में, करियर हेतु प्रबल समय। शुक्र सप्तम को प्रकाशित करता है, प्रेम शुभ। स्वास्थ्य में रात जल्दी विश्राम करें।':'The Moon enters your 10th at 4:20 PM, a strong window for career moves. Venus lights your 7th, so love is favoured. For health, wind down early tonight.'))
+        h('div',{className:'card'}, h('div',{className:'hbody'}, lang==='hi'?'शाम 4:20 बजे चंद्र दशम भाव में, परंपरा में इसे कार्य से जुड़ा समय माना जाता है। शुक्र सप्तम में है, जिसे संबंधों के लिए सौम्य पढ़ा जाता है। शांत शाम में आत्मचिंतन का अच्छा समय।':'The Moon enters your 10th at 4:20 PM, traditionally read as a time linked with work. Venus lights your 7th, which is read as gentle for relationships. A quiet evening suits reflection.'))
       ));
     }
     function MatchScreen(lang){
@@ -1603,7 +1605,7 @@
             ),
             h('div',{className:'num'}, h('b',null,'28'), h('small',null,'/ 36'))
           ),
-          h('div',{className:'rt'}, h('b',null, lang==='hi'?'उत्तम मिलान':'Excellent match'), h('div',null, lang==='hi'?'28 गुण मेल · विवाह हेतु शुभ':'28 gunas matched · favourable for marriage'))
+          h('div',{className:'rt'}, h('b',null, lang==='hi'?'उच्च गुण अंक':'High guna score'), h('div',null, lang==='hi'?'28 गुण मेल · परंपरागत अष्टकूट अंक':'28 gunas matched · traditional Ashtakoot score'))
         ),
         h('div',{className:'koota'}, K.map(function(k,i){ var bad=(k[1]/k[2])<0.5; return h('div',{key:i,className:'kr'+(bad?' bad':'')}, h('span',{className:'kn'}, TL(k[0],lang)), h('span',{className:'kv'}, k[1]+' / '+k[2])); })),
         h('div',{className:'chiprow'},
@@ -1613,11 +1615,11 @@
       ));
     }
     function LalScreen(lang){
-      var rows=[ ['Su',{en:'Sun in the 10th',hi:'दशम में सूर्य'},{en:'Strong, honour through work',hi:'बलवान, कर्म से मान'}],
+      var rows=[ ['Su',{en:'Sun in the 10th',hi:'दशम में सूर्य'},{en:'Traditionally linked with work and standing',hi:'परंपरा में कर्म और मान से जुड़ा'}],
                  ['Sa',{en:'Saturn in the 8th',hi:'अष्टम में शनि'},{en:'Debt of the self · remedy below',hi:'स्वयं का ऋण · उपाय नीचे'}],
-                 ['Ma',{en:'Mars in the 12th',hi:'द्वादश में मंगल'},{en:'Mild Manglik · softens after 28',hi:'हल्का मांगलिक · 28 बाद शांत'}] ];
-      var rem=[ [{en:'Offer water to the Sun at dawn',hi:'भोर में सूर्य को जल दें'},{en:'Daily · builds the 10th',hi:'रोज़ · दशम बल'}],
-                [{en:'Feed dogs on Saturdays',hi:'शनिवार कुत्तों को भोजन'},{en:'Weekly · eases Saturn',hi:'साप्ताहिक · शनि शांति'}] ];
+                 ['Ma',{en:'Mars in the 12th',hi:'द्वादश में मंगल'},{en:'Mild Manglik · traditionally read as easing after 28',hi:'हल्का मांगलिक · परंपरा में 28 बाद नरम माना जाता है'}] ];
+      var rem=[ [{en:'Offering water to the Sun at dawn',hi:'भोर में सूर्य को जल अर्पण'},{en:'Daily · traditional Sun remedy',hi:'रोज़ · पारंपरिक सूर्य उपाय'}],
+                [{en:'Feeding dogs on Saturdays',hi:'शनिवार कुत्तों को भोजन'},{en:'Weekly · traditional Saturn remedy',hi:'साप्ताहिक · पारंपरिक शनि उपाय'}] ];
       return Mock(h('div',{className:'pg'},
         PgHead(lang==='hi'?'लाल किताब':'Lal Kitab', lang==='hi'?'ऋण व सरल उपाय':'Debts & simple remedies'),
         h('div',{className:'pglabel'}, lang==='hi'?'ग्रह ऋण':'PLANETARY DEBTS'),
@@ -1708,7 +1710,7 @@
             h('circle',{cx:39,cy:39,r:30,fill:'none',stroke:'var(--d-line)',strokeWidth:7}),
             h('circle',{cx:39,cy:39,r:30,fill:'none',stroke:'var(--d-gold)',strokeWidth:7,strokeLinecap:'round',strokeDasharray:circ,strokeDashoffset:circ*(1-28/36),transform:'rotate(-90 39 39)'})
           ), h('div',{className:'n'}, h('b',null,'28'), h('small',null,'/ 36'))),
-          h('div',{className:'rt'}, h('b',null, lang==='hi'?'उत्तम मिलान':'Excellent match'), h('div',null, lang==='hi'?'28 गुण · मांगलिक रद्द':'28 gunas · Manglik cancelled'))
+          h('div',{className:'rt'}, h('b',null, lang==='hi'?'उच्च गुण अंक':'High guna score'), h('div',null, lang==='hi'?'28 गुण · मांगलिक रद्द':'28 gunas · Manglik cancelled'))
         )
       );
     }
@@ -1726,7 +1728,7 @@
     function EnginesBand(props){
       var lang=props.lang, T=function(o){ return TL(o,lang); };
       var icons=['sparkle','heart','sun'];
-      var DESC=[ {en:'Push alerts fired at the exact minute a transit touches your chart, with one clear thing to do.',hi:'गोचर आपकी कुंडली को छूते ही सही क्षण पर सूचना, एक स्पष्ट सुझाव सहित।'},
+      var DESC=[ {en:'Push alerts at the exact minute a transit touches your chart, with a short reflective note.',hi:'गोचर आपकी कुंडली को छूते ही सही क्षण पर सूचना, एक छोटे चिंतन-नोट सहित।'},
                  {en:'Rank a whole pool of prospects by real Ashtakoot compatibility and re-weight by what matters.',hi:'पूरे समूह को अष्टकूट मिलान पर क्रमबद्ध करें और प्राथमिकता अनुसार भार बदलें।'},
                  {en:'Readable transit maths for today, this week and this month, Career, Health, Love, Finance.',hi:'आज, सप्ताह व माह हेतु सरल गोचर फल, करियर, स्वास्थ्य, प्रेम, धन।'} ];
       return h('div',{className:'engines-band'},
@@ -1765,11 +1767,11 @@
         desc:{en:'Your planetary debts in the Lal Kitab tradition, each paired with a practical, low-cost remedy you can actually do, no expensive rituals.',hi:'लाल किताब परंपरा में आपके ग्रह ऋण, हर एक के साथ व्यावहारिक व सरल उपाय, महंगे अनुष्ठान नहीं।'},
         bullets:[ {en:'Planet-in-house debts',hi:'भाव अनुसार ग्रह ऋण'}, {en:'Everyday, low-cost remedies',hi:'रोज़मर्रा, सस्ते उपाय'}, {en:'Hindi & English',hi:'हिन्दी व अंग्रेज़ी'} ], render:LalScreen },
       { key:'panchang', tag:{en:'Panchang',hi:'पंचांग'}, title:{en:'The day, timed to the minute',hi:'दिन, मिनट तक सटीक'},
-        desc:{en:'A full daily panchang for your city, tithi, nakshatra, yoga, karana, sunrise and sunset, plus Rahu Kaal and the auspicious windows to act in.',hi:'आपके शहर हेतु पूर्ण दैनिक पंचांग, तिथि, नक्षत्र, योग, करण, सूर्योदय-सूर्यास्त, राहु काल व शुभ मुहूर्त।'},
+        desc:{en:'A full daily panchang for your city, tithi, nakshatra, yoga, karana, sunrise and sunset, plus Rahu Kaal and the windows tradition marks as auspicious.',hi:'आपके शहर हेतु पूर्ण दैनिक पंचांग, तिथि, नक्षत्र, योग, करण, सूर्योदय-सूर्यास्त, राहु काल व शुभ मुहूर्त।'},
         bullets:[ {en:'Location-accurate sunrise & sunset',hi:'स्थान अनुसार सूर्योदय-अस्त'}, {en:'Rahu Kaal, Gulika, Abhijit',hi:'राहु काल, गुलिक, अभिजित'}, {en:'Tithi, nakshatra, yoga, karana',hi:'तिथि, नक्षत्र, योग, करण'} ], render:PanchangScreen, rev:true },
       { key:'notif', tag:{en:'Notification Engine',hi:'नोटिफिकेशन इंजन'}, tm:true, title:{en:'The sky texts you first',hi:'आकाश पहले संदेश भेजता है'},
-        desc:{en:'Instead of a generic daily push, AastroAstra scans your exact transits and alerts you at the moment that matters, with one clear thing to do about it.',hi:'सामान्य दैनिक सूचना के बजाय, AastroAstra आपके सटीक गोचर स्कैन करता है और सही क्षण पर सचेत करता है, एक स्पष्ट सुझाव सहित।'},
-        bullets:[ {en:'Transit, weekly & monthly alerts',hi:'गोचर, साप्ताहिक व मासिक'}, {en:'Timed to your chart, not the clock',hi:'आपकी कुंडली अनुसार, घड़ी नहीं'}, {en:'Actionable AI guidance',hi:'क्रियात्मक AI मार्गदर्शन'} ], render:NotifScreen },
+        desc:{en:'Instead of a generic daily push, AastroAstra scans your exact transits and alerts you when one touches your chart, with a short note on what the tradition reads in it.',hi:'सामान्य दैनिक सूचना के बजाय, AastroAstra आपके सटीक गोचर स्कैन करता है और गोचर के कुंडली छूने पर सूचना देता है, साथ में परंपरा इसे कैसे पढ़ती है, इसका छोटा नोट।'},
+        bullets:[ {en:'Transit, weekly & monthly alerts',hi:'गोचर, साप्ताहिक व मासिक'}, {en:'Timed to your chart, not the clock',hi:'आपकी कुंडली अनुसार, घड़ी नहीं'}, {en:'Reflective AI notes',hi:'चिंतनशील AI नोट'} ], render:NotifScreen },
     ];
     // Per-feature resting lean, alternating sides + varied pitch/roll so the
     // scroll feels choreographed, not uniform. Index-matched to FEATURES.
@@ -1893,8 +1895,8 @@
         vs:{en:'One of three bands, never a percentage. The rules behind it are cited and reviewed.',
             hi:'तीन में से एक श्रेणी, प्रतिशत कभी नहीं। इसके पीछे के नियम ग्रंथ से जुड़े और समीक्षित हैं।'},
         saylab:{en:'Only now does the AI speak', hi:'अब जाकर AI बोलता है'},
-        say:{en:'“A window where your role or workplace can change. Strongest through 2026.”',
-             hi:'“ऐसा समय जब भूमिका या कार्यस्थल बदल सकता है, 2026 में सबसे प्रबल।”'},
+        say:{en:'“Traditionally read as a window where your role or workplace can change, most marked through 2026.”',
+             hi:'“परंपरा में इसे ऐसा समय माना जाता है जब भूमिका या कार्यस्थल बदल सकता है, 2026 में सबसे स्पष्ट।”'},
         themTitle:{en:'A chatbot with a chart pasted in', hi:'चार्ट चिपकाया हुआ चैटबॉट'},
         themBig:{en:'Invents the astrology, in words, every time.', hi:'हर बार ज्योतिष शब्दों में गढ़ता है।'},
         themSm:{en:'Ask it why, and it writes a new reason.', hi:'“क्यों?” पूछिए, और वह नया कारण गढ़ देता है।'},
@@ -2378,22 +2380,22 @@
               ['चेहरा','अनुपात और तत्व','#5B8FD9',false]]
         },
         hub:{en:'one person', hi:'एक व्यक्ति'},
-        ask:{en:'“Should I take the offer?”', hi:'“क्या मुझे यह प्रस्ताव लेना चाहिए?”'},
+        ask:{en:'“What does my chart say about this offer?”', hi:'“इस प्रस्ताव के बारे में मेरी कुंडली क्या कहती है?”'},
         lines:{
-          en:[['Kundali',GOLD,'Your <b>10th lord is exalted</b>, and the dasha opens a role-change window through 2026.'],
+          en:[['Kundali',GOLD,'Your <b>10th lord is exalted</b>, and the dasha is read as a role-change window through 2026.'],
               ['Palm',ROSE,'A <b>deep fate line</b> from the base: work you choose, not work that happens to you.'],
-              ['Numbers',PURPLE,'<b>Bhagyank 8</b> favours structure and long arcs over quick moves.'],
+              ['Numbers',PURPLE,'<b>Bhagyank 8</b> is traditionally linked with structure and long arcs rather than quick moves.'],
               ['Face','#5B8FD9','A <b>broad forehead</b> over a firm jaw: the tradition reads decisiveness, not caution.']],
-          hi:[['कुंडली',GOLD,'आपका <b>दशमेश उच्च का</b> है, और दशा 2026 तक भूमिका बदलने का समय खोलती है।'],
+          hi:[['कुंडली',GOLD,'आपका <b>दशमेश उच्च का</b> है, और दशा 2026 तक भूमिका बदलने का समय मानी जाती है।'],
               ['हथेली',ROSE,'आधार से उठती <b>गहरी भाग्य रेखा</b>: वह काम जो आप चुनते हैं, जो हो जाता है वह नहीं।'],
-              ['अंक',PURPLE,'<b>भाग्यांक 8</b> जल्दबाज़ी से नहीं, ढाँचे और लंबी राह से बनता है।'],
+              ['अंक',PURPLE,'<b>भाग्यांक 8</b> परंपरा में जल्दबाज़ी से नहीं, ढाँचे और लंबी राह से जुड़ा माना जाता है।'],
               ['चेहरा','#5B8FD9','<b>चौड़ा ललाट</b> और दृढ़ जबड़ा: परंपरा इसे निर्णय-क्षमता पढ़ती है, संकोच नहीं।']]
         },
         outK:{en:'The answer', hi:'उत्तर'},
-        outV:{en:'“Take it, and negotiate the start date past March.”',
-              hi:'“ले लीजिए, और शुरुआत की तारीख़ मार्च के बाद तय कीजिए।”'},
-        foot:{en:'All four agreed, so the app said so plainly. When they disagree, it says that instead.',
-              hi:'चारों स्रोत सहमत थे, इसलिए ऐप ने सीधे कहा। असहमत होने पर वह यही बात कहता है।'}
+        outV:{en:'“Traditional reading suggests a supportive time for a role change. A good time to weigh the offer carefully.”',
+              hi:'“परंपरागत पठन भूमिका बदलने के लिए सहायक समय बताता है। प्रस्ताव को ध्यान से तौलने का अच्छा समय।”'},
+        foot:{en:'All four readings pointed the same way, so the app said so plainly. When they disagree, it says that instead. The decision stays yours.',
+              hi:'चारों पठन एक ही दिशा में थे, इसलिए ऐप ने सीधे कहा। असहमत होने पर वह यही बात कहता है। निर्णय आपका ही रहता है।'}
       };
 
       // Four stems curving into one. Drawn, not decorated: the convergence IS
@@ -2489,8 +2491,8 @@
       { k:'horoscope', tag:{en:'Horoscope',hi:'राशिफल'}, imgs:['22-horoscope-daily','21-prediction-weekly'],
         cap:[{en:'Daily horoscope',hi:'दैनिक राशिफल'},{en:'Weekly prediction',hi:'साप्ताहिक भविष्यफल'}],
         t:{en:'Daily, weekly and monthly horoscope',hi:'दैनिक, साप्ताहिक और मासिक राशिफल'},
-        d:{en:'A horoscope for your Moon sign every day, plus weekly and monthly outlooks for career, love and money.',
-           hi:'हर दिन आपकी चंद्र राशि का राशिफल, साथ में करियर, प्रेम और धन पर साप्ताहिक और मासिक दृष्टि।'} },
+        d:{en:'A horoscope for your Moon sign every day, plus weekly and monthly outlooks on career, relationships and finances, for reflection.',
+           hi:'हर दिन आपकी चंद्र राशि का राशिफल, साथ में करियर, संबंध और वित्त पर साप्ताहिक और मासिक दृष्टि, चिंतन के लिए।'} },
       { k:'panchang', tag:{en:'Panchang',hi:'पंचांग'}, imgs:['23-panchang','01-home'],
         cap:[{en:"Today's Panchang",hi:'आज का पंचांग'},{en:'Home',hi:'होम'}],
         t:{en:"Today's Panchang for where you are",hi:'आपके स्थान का आज का पंचांग'},
@@ -2592,9 +2594,9 @@
     }
 
     /* Public store links only. Android is live on Google Play (production);
-       the iPhone app is a public beta on Apple TestFlight. Tester builds
-       (open/internal testing, the direct APK and the iOS OTA) live on /beta/,
-       which is not linked from this page. */
+       the iPhone app is a public beta on Apple TestFlight. Tester channels
+       (Play open/internal testing, TestFlight public/internal) live on /beta/,
+       which is not linked from this page. No APK or IPA is hosted publicly. */
     var PLAY_STORE = 'https://play.google.com/store/apps/details?id=com.avdstudiox.android';
     var TESTFLIGHT = 'https://testflight.apple.com/join/HZXJ4Dav';
 
