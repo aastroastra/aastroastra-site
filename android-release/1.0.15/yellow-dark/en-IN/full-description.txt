@@ -19,7 +19,7 @@ This release offers free core features with usage limits. Subscriptions, paid co
 
 AastroAstra is for guidance and entertainment. Astrology is not a science. The app does not provide medical, legal, financial or psychological advice. Consult a qualified professional for important decisions.
 
-Questions or feedback: aastroastra@gmail.com
+Questions or feedback: hello@aastroastra.com
 Account deletion: https://www.aastroastra.com/delete-account.html
 Privacy policy: https://www.aastroastra.com/privacy.html
 Terms: https://www.aastroastra.com/terms.html

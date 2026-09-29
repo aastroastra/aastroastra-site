@@ -53,7 +53,7 @@
 <!-- Structured data: helps Google rich results and LLM/AI answer engines understand the app. -->
 <script type="application/ld+json">
 { "@context": "https://schema.org", "@graph": [
-    { "@type": "Organization", "@id": "https://www.aastroastra.com/#org", "name": "AastroAstra", "url": "https://www.aastroastra.com/", "logo": "https://www.aastroastra.com/logo-mark.png", "email": "aastroastra@gmail.com", "legalName": "AVD Studiox Private Limited", "address": { "@type": "PostalAddress", "streetAddress": "1503 A Asher Titan, Valabh, Baug Lane, Ghatkopar East", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "postalCode": "400077", "addressCountry": "IN" }, "description": "AastroAstra builds a personalised Vedic astrology app with Kundali, numerology, matchmaking and an AI astrologer."
+    { "@type": "Organization", "@id": "https://www.aastroastra.com/#org", "name": "AastroAstra", "url": "https://www.aastroastra.com/", "logo": "https://www.aastroastra.com/logo-mark.png", "email": "hello@aastroastra.com", "contactPoint": { "@type": "ContactPoint", "contactType": "customer support", "email": "hello@aastroastra.com", "availableLanguage": ["en", "hi"] }, "legalName": "AVD Studiox Private Limited", "address": { "@type": "PostalAddress", "streetAddress": "1503 A Asher Titan, Valabh, Baug Lane, Ghatkopar East", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "postalCode": "400077", "addressCountry": "IN" }, "description": "AastroAstra builds a personalised Vedic astrology app with Kundali, numerology, matchmaking and an AI astrologer."
     },
     { "@type": "WebSite", "@id": "https://www.aastroastra.com/#website", "url": "https://www.aastroastra.com/", "name": "AastroAstra", "publisher": { "@id": "https://www.aastroastra.com/#org" }, "inLanguage": ["en", "hi"]
     },
@@ -2850,7 +2850,7 @@
               h('a', { href:'./pricing/' }, COPY.pricing[lang]),
               h('a', { href:'./refund-policy.html' }, COPY.refunds[lang]),
               h('a', { href:'./delete-account.html' }, COPY.deleteAcct[lang]),
-              h('a', { href:'mailto:aastroastra@gmail.com' }, COPY.contact[lang]),
+              h('a', { href:'mailto:hello@aastroastra.com' }, COPY.contact[lang]),
               h('a', { href:'./status.html' }, COPY.status[lang]),
             ),
             // Mobile: full branded footer.
@@ -2878,7 +2878,7 @@
                   ),
                   h('div', { className:'fcol' },
                     h('b', null, lang==='hi'?'संपर्क':'Contact'),
-                    h('a', { href:'mailto:aastroastra@gmail.com' }, 'aastroastra@gmail.com'),
+                    h('a', { href:'mailto:hello@aastroastra.com' }, 'hello@aastroastra.com'),
                     h('span', { className:'fc-addr' }, 'AVD Studiox Private Limited, Ghatkopar East, Mumbai 400077')
                   )
                 )
@@ -2900,7 +2900,7 @@
               h('div', { className:'fw-sub' }, lang==='hi'?'विश्वास करने वाले के लिए':'For the one who believes')
             ),
             h('div', { className:'foot-legal' },
-              h('span', { className:'foot-pub' }, COPY.publisher[lang] + ' ', h('a', { href:'mailto:aastroastra@gmail.com' }, 'aastroastra@gmail.com')),
+              h('span', { className:'foot-pub' }, COPY.publisher[lang] + ' ', h('a', { href:'mailto:hello@aastroastra.com' }, 'hello@aastroastra.com')),
               h('span', null, '© ' + (new Date().getFullYear()) + ' AastroAstra™. ' + (lang==='hi'?'सर्वाधिकार सुरक्षित।':'All rights reserved.')),
               h('span', null, lang==='hi'?'AastroAstra™ व AA चिन्ह AastroAstra के ट्रेडमार्क हैं।':'AastroAstra™ and the AA mark are trademarks of AastroAstra.')
             )
