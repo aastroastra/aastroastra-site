@@ -1,8 +1,8 @@
 /* Homepage palette, type and navigation for Releases and Credits.
    Palette values and aa-theme identifiers match index.html. */
-  [data-theme="yellow-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8676; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:55,55,55; --pa:#F5B93A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
-  [data-theme="white-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECECEC; --fg:#1A1A1A; --fg2:#565043; --muted:#8C8C8C; --tint:#F0632E; --on-accent:#FFFFFF; --cosmos:55,55,55; --pa:#FB8C3A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
-  [data-theme="mono-light"]   { --bg:#FFFFFF; --card:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#8A8A8A; --tint:#0A0A0A; --on-accent:#FFFFFF; --cosmos:40,40,40;   --pa:#EDEDED; --btn-bg:#0A0A0A; --btn-fg:#FFFFFF; }
+  [data-theme="yellow-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECE6D8; --fg:#1A1A1A; --fg2:#565043; --muted:#6E6859; --tint:#E0A015; --on-accent:#1A1A1A; --cosmos:55,55,55; --pa:#F5B93A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
+  [data-theme="white-light"] { --bg:#FFFFFF; --card:#FFFFFF; --line:#ECECEC; --fg:#1A1A1A; --fg2:#565043; --muted:#6B6B6B; --tint:#F0632E; --on-accent:#FFFFFF; --cosmos:55,55,55; --pa:#FB8C3A; --btn-bg:#0B0B0C; --btn-fg:#FFFFFF; }
+  [data-theme="mono-light"]   { --bg:#FFFFFF; --card:#FFFFFF; --line:#E6E6E6; --fg:#0A0A0A; --fg2:#4A4A4A; --muted:#6B6B6B; --tint:#0A0A0A; --on-accent:#FFFFFF; --cosmos:40,40,40;   --pa:#EDEDED; --btn-bg:#0A0A0A; --btn-fg:#FFFFFF; }
   [data-theme="yellow-dark"]  { --bg:#0B0B0C; --card:#151515; --line:#242424; --fg:#F4F4F4; --fg2:#BDBDBD; --muted:#7C7C7C; --tint:#F5B93A; --on-accent:#0B0B0C; --cosmos:225,225,225; --pa:#F5B93A; --btn-bg:#FAFAFA; --btn-fg:#0B0B0C; }
   [data-theme="mono-dark"]    { --bg:#0A0A0A; --card:#141414; --line:#262626; --fg:#FAFAFA; --fg2:#C8C8C8; --muted:#7A7A7A; --tint:#FAFAFA; --on-accent:#0A0A0A; --cosmos:235,235,235; --pa:#EDEDED; --btn-bg:#FAFAFA; --btn-fg:#0A0A0A; }
   /* Tint fill: yellow->orange gradient for the yellow themes, solid for mono */
