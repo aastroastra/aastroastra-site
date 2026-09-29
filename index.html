@@ -135,21 +135,6 @@
   .tp-menu button[aria-pressed="true"] { background:var(--card); border:1px solid var(--line); }
 
 
-  /* Hero status pill. Quiet by default: it should reassure, not compete with
-     the headline it sits above. */
-  .status-pill{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;
-    font-size:12.5px;font-weight:600;letter-spacing:.01em;text-decoration:none;
-    color:var(--muted);border:1px solid var(--line);border-radius:999px;
-    padding:5px 12px 5px 10px;margin-bottom:18px;background:var(--card);
-    transition:border-color .15s,color .15s}
-  .status-pill:hover{color:var(--fg);border-color:var(--muted)}
-  .status-pill .sp-dot{width:7px;height:7px;border-radius:50%;background:#8C8676;flex:0 0 auto}
-  .status-pill.up .sp-dot{background:#177245}
-  .status-pill.degraded .sp-dot{background:#B8860B}
-  .status-pill.degraded{color:#9A6206;border-color:#EBD9A8}
-  .status-pill.down .sp-dot{background:#C2410C}
-  .status-pill.down{color:#9A3412;border-color:#EBCFC0}
-  @media (max-width:760px){ .status-pill{align-self:center} }
   .hero { display:grid; grid-template-columns:1fr 0.9fr; min-height:calc(100vh - 67px); }
   .hero > div { padding:30px; min-height:0; }
   .hero .left { border-right:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; }
@@ -2464,59 +2449,6 @@
       );
     }
 
-    /*
-     * A live status pill in the hero.
-     *
-     * A plain "Status" link tells a visitor nothing until they click it, which
-     * they will not. This shows the state, so a green dot reassures without a
-     * click and an amber one earns the click. It fails quiet: if the status
-     * service cannot be reached the pill simply never appears, because a broken
-     * status indicator is worse than none on a landing page.
-     */
-    function StatusPill(props) {
-      var st = useState(null), data = st[0], setData = st[1];
-      useEffect(function () {
-        var alive = true;
-        fetch('https://gttszlununmqivrqevwv.supabase.co/functions/v1/status', { cache:'no-store' })
-          .then(function (r) { return r.json(); })
-          .then(function (d) { if (alive && d && d.overall) setData(d); })
-          .catch(function () { /* stay hidden */ });
-        return function () { alive = false; };
-      }, []);
-      if (!data) return null;
-
-      var hi = props.lang === 'hi';
-      var state = data.overall;
-
-      // Name the thing that is actually wrong.
-      //
-      // The first version said "We have a problem", which is alarming on a page
-      // whose job is to get someone to download an app, and tells them nothing:
-      // they cannot judge whether it affects them. One unavailable service, named,
-      // is calmer AND more useful than a vague apology. `off` never counts: a
-      // feature that has not launched is not an outage.
-      var hit = (data.services || []).filter(function (x) { return x.state === state; });
-      var names = hit.map(function (x) { return x.label; });
-      var msg;
-      if (state === 'up') {
-        msg = hi ? 'सभी सेवाएँ सामान्य' : 'All systems normal';
-      } else if (names.length === 1) {
-        msg = state === 'degraded'
-          ? (hi ? names[0] + ' धीमा है'      : names[0] + ' is slow')
-          : (hi ? names[0] + ' अभी बंद है'   : names[0] + ' is unavailable');
-      } else if (names.length > 1) {
-        msg = state === 'degraded'
-          ? (hi ? names.length + ' सेवाएँ धीमी' : names.length + ' services are slow')
-          : (hi ? names.length + ' सेवाएँ बंद'  : names.length + ' services unavailable');
-      } else {
-        msg = hi ? 'स्थिति' : 'Status';
-      }
-
-      return h('a', { className:'status-pill ' + state, href:'./status.html',
-                      title: hi ? 'पूरी स्थिति देखें' : 'See full status' },
-        h('span', { className:'sp-dot' }), msg);
-    }
-
     /* ── Real screens ────────────────────────────────────────────────────────
        Every image is an unedited capture of the Android release build
        1.0.17 (238), White · Light theme, app language Hindi, taken on
@@ -2772,7 +2704,6 @@
 
           h('section', { className:'hero' },
             h('div', { className:'left' },
-              h(StatusPill, { lang:lang }),
               h('h1', null, 'One who', h('br'), 'believes'),
               h('div', { className:'dl-label' }, COPY.dl[lang]),
               h(StoreRow, { lang:lang, where:'hero' }),
