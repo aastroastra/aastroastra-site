@@ -1021,8 +1021,8 @@
   .stats-asof { margin-top:6px; font-size:11px; color:var(--muted); }
   html[lang="hi"] .dl-label, html[lang="hi"] .stats .l, html[lang="hi"] .plat-eyebrow, html[lang="hi"] .store-badge .txt small { letter-spacing:.02em; }
   .play-badge { display:inline-flex; align-items:center; line-height:0; }
-  .play-badge img { height:72px; width:auto; display:block; margin:-5px -4px; }
-  .store-badge.tf { min-width:0; height:56px; padding:0 18px; border-radius:10px; border-color:#A6A6A6; }
+  .play-badge img { height:56px; width:auto; display:block; margin:0; }  /* padding trimmed from the PNG, so height = the visible button, same as TestFlight */
+  .store-badge.tf { min-width:188px; justify-content:center; height:56px; padding:0 20px; border-radius:9px; border-color:#A6A6A6; box-sizing:border-box; }
   .topnav { display:flex; gap:16px; margin-right:6px; }
   .topnav a { font-size:13px; font-weight:600; color:var(--fg2); text-decoration:none; }
   .topnav a:hover { color:var(--tint); }
@@ -1032,7 +1032,7 @@
 
   .foot-pub a { color:inherit; }
   .fc-addr { display:block; font-size:12px; color:var(--muted); margin-top:6px; line-height:1.5; }
-  @media (max-width:640px){ .play-badge img { height:62px; } .store-badge.tf { height:52px; } .hero-note { text-align:center; } .stats-asof { text-align:center; } }
+  @media (max-width:640px){ .play-badge img { height:50px; } .store-badge.tf { height:50px; min-width:168px; } .hero-note { text-align:center; } .stats-asof { text-align:center; } }
   @media (max-width:560px){ .topnav { gap:12px; } }
   /* The direct-APK line under the badges. Deliberately quiet: the store is the
      route we want people on, and this is the one that still works in the hour
@@ -2611,7 +2611,7 @@
       return h('div', { className:'store-row' },
         h('a', { className:'play-badge', href:PLAY_STORE, target:'_blank', rel:'noopener',
                  onClick:function(){ storeClick('android','play-'+where); } },
-          h('img', { src:'./img/play-badge-'+(lang==='hi'?'hi':'en')+'.png', width:646, height:250,
+          h('img', { src:'./img/play-badge-'+(lang==='hi'?'hi':'en')+'.png', width:(lang==='hi'?646:564), height:(lang==='hi'?192:168),
                      alt:(lang==='hi'?'इसे Google Play पर पाएं':'Get it on Google Play') })),
         h('a', { className:'store-badge tf', href:TESTFLIGHT, target:'_blank', rel:'noopener',
                  onClick:function(){ storeClick('ios','testflight-'+where); },
