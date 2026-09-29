@@ -150,6 +150,29 @@
   .engine.e0 { top:13%; left:0; }
   .engine.e1 { top:47%; right:0; }
   .engine.e2 { bottom:11%; left:2%; }
+  /* Hero slideshow: the phone cycles through the core features and the
+     floating boxes swap with the screen they describe. */
+  .engine.swap { animation:engIn .4s cubic-bezier(.2,.7,.2,1) both; }
+  .engine.swap.e1 { animation-delay:.08s; }
+  .engine.swap.e2 { animation-delay:.16s; }
+  .engines.out .engine { opacity:0; transform:translateY(-6px) scale(.98); transition:opacity .2s ease, transform .2s ease; }
+  @keyframes engIn { from { opacity:0; transform:translateY(8px) scale(.97); } to { opacity:1; transform:none; } }
+  .phone.real .screen { position:relative; }
+  .phone.real .screen img.hs { position:absolute; inset:0; opacity:0; transition:opacity .5s ease; }
+  .phone.real .screen img.hs.on { opacity:1; }
+  .hero-dots { position:absolute; left:50%; bottom:1.2%; transform:translateX(-50%); display:flex; gap:2px; z-index:3; }
+  .hero-dots button { width:22px; height:22px; padding:0; border:none; background:transparent; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; border-radius:999px; }
+  .hero-dots button i { display:block; width:7px; height:7px; border-radius:999px; background:var(--muted); opacity:.45; transition:width .25s ease, opacity .25s ease, background .25s ease; }
+  .hero-dots button[aria-current="true"] i { width:20px; opacity:1; background:var(--tint); }
+  .hero-dots button:focus-visible { outline:2px solid var(--tint); outline-offset:1px; }
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  @media (max-width:560px) {
+    .engine { max-width:128px; padding:7px 9px; border-radius:10px; }
+    .engine .en { font-size:10.5px; }
+    .engine .ed { font-size:9.5px; }
+    .engine.e0 { left:8px; } .engine.e1 { right:8px; } .engine.e2 { left:8px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .engine.swap { animation:none; } .engines.out .engine { transition:none; } .phone.real .screen img.hs { transition:none; } .hero-dots button i { transition:none; } }
 
   h1 { font-family:'Noto Serif',Georgia,serif; font-weight:700; letter-spacing:-0.03em; font-size:clamp(46px,7vw,104px); line-height:0.98; color:var(--tint); }
   /* Yellow theme: warm yellow->orange->gold gradient title (emotica.me palette) */
@@ -1333,21 +1356,56 @@
     function pickReply(text, lang){ var q=(text||'').toLowerCase(); for(var i=0;i<REPLIES.length;i++){ for(var j=0;j<REPLIES[i].k.length;j++){ if(q.indexOf(REPLIES[i].k[j])>=0) return REPLIES[i][lang]; } } return FALLBACK[lang]; }
     function rich(t){ var parts=t.split('**'); return parts.map(function(p,i){ return i%2? h('b',{key:i},p):p; }); }
 
-    // The three AastroAstra engines, branded around the phone
+    // The three AastroAstra engines (used by the engines band)
     var ENGINES = [
       { n:{en:'Notification Engine',hi:'नोटिफिकेशन इंजन'}, d:{en:'Alerts timed to your exact transits',hi:'आपके गोचर के अनुसार सूचनाएँ'} },
       { n:{en:'Multi-Match Engine',hi:'मल्टी-मैच इंजन'}, d:{en:'Compare against your best matches',hi:'सर्वोत्तम मैच से तुलना'} },
       { n:{en:'Prediction Engine',hi:'प्रेडिक्शन इंजन'}, d:{en:'Transit, weekly & monthly reads',hi:'गोचर, साप्ताहिक व मासिक फल'} },
     ];
+    // Hero slideshow: a real screenshot per core feature (build 238,
+    // White-Light, Hindi) with 2-3 floating boxes describing that screen.
+    // ™ only on the three Engines. Guidance tone, no guarantees.
+    var HERO = [
+      { k:'home', img:'01-home', name:{en:'Home with Multi-Match',hi:'होम और मल्टी-मैच'},
+        c:[ { n:{en:'Multi-Match Engine',hi:'मल्टी-मैच इंजन'}, d:{en:'Compare against your best matches',hi:'सर्वोत्तम मैच से तुलना'}, tm:1 },
+            { n:{en:'Notification Engine',hi:'नोटिफिकेशन इंजन'}, d:{en:'Alerts timed to your exact transits',hi:'आपके गोचर के अनुसार सूचनाएँ'}, tm:1 } ] },
+      { k:'kundali', img:'13-kundali-chart', name:{en:'Kundali chart',hi:'कुंडली चार्ट'},
+        c:[ { n:{en:'Kundali',hi:'कुंडली'}, d:{en:'Your chart, dasha and yogas',hi:'आपका चार्ट, दशा और योग'} },
+            { n:{en:'Lal Kitab & KP',hi:'लाल किताब और KP'}, d:{en:'More systems, same birth details',hi:'और पद्धतियाँ, वही जन्म विवरण'} } ] },
+      { k:'milan', img:'09-match-score', name:{en:'Kundali Milan',hi:'कुंडली मिलान'},
+        c:[ { n:{en:'Kundali Milan',hi:'कुंडली मिलान'}, d:{en:'36 guna, koota by koota',hi:'36 गुण, हर कूट'} },
+            { n:{en:'Multi-Match Engine',hi:'मल्टी-मैच इंजन'}, d:{en:'Compare against your best matches',hi:'सर्वोत्तम मैच से तुलना'}, tm:1 } ] },
+      { k:'ai', img:'15-chat-answer', name:{en:'AastroAI chat',hi:'AastroAI चैट'},
+        c:[ { n:{en:'AastroAI',hi:'AastroAI'}, d:{en:'Ask about your own chart',hi:'अपनी कुंडली से पूछें'} },
+            { n:{en:'Hindi & English',hi:'हिन्दी और अंग्रेज़ी'}, d:{en:'Answers read from your Kundali',hi:'उत्तर आपकी कुंडली पढ़कर'} } ] },
+      { k:'face', img:'16-face-hero', name:{en:'Face Reading',hi:'चेहरा पठन'},
+        c:[ { n:{en:'Face Reading',hi:'चेहरा पठन'}, d:{en:'Traditional reading from one photo',hi:'एक फ़ोटो से पारंपरिक पठन'} },
+            { n:{en:'Samudrika Shastra',hi:'सामुद्रिक शास्त्र'}, d:{en:'Face shape and element, explained',hi:'चेहरे का आकार और तत्व, समझाया गया'} } ] },
+      { k:'palm', img:'20-palm-takeaways', name:{en:'Palm Reading',hi:'हस्तरेखा'},
+        c:[ { n:{en:'Palm Reading',hi:'हस्तरेखा'}, d:{en:'Lines and mounts, read with your kundali',hi:'रेखाएँ और पर्वत, कुंडली के साथ'} },
+            { n:{en:'Key takeaways',hi:'मुख्य बातें'}, d:{en:'Love, career and wealth, in brief',hi:'प्रेम, करियर और धन, संक्षेप में'} } ] },
+      { k:'predict', img:'22-horoscope-daily', name:{en:'Daily prediction',hi:'दैनिक भविष्यवाणी'},
+        c:[ { n:{en:'Prediction Engine',hi:'प्रेडिक्शन इंजन'}, d:{en:'Transit, weekly & monthly reads',hi:'गोचर, साप्ताहिक और मासिक'}, tm:1 },
+            { n:{en:'Notification Engine',hi:'नोटिफिकेशन इंजन'}, d:{en:'Alerts timed to your exact transits',hi:'आपके गोचर के अनुसार सूचनाएँ'}, tm:1 } ] },
+    ];
+    // Boxes are decorative duplicates of the screen's alt text, so hidden
+    // from screen readers; the slide name is announced by HeroRight.
     function Engines(props){
       var lang=props.lang, T=function(o){ return o[lang]||o.en; };
-      return h('div', { className:'engines' },
+      var S=HERO[props.i];
+      return h('div', { className:'engines'+(props.out?' out':''), 'aria-hidden':'true' },
         h('div', { className:'eng-cap' }, lang==='hi'?'AastroAstra इंजन':'AastroAstra Engines'),
-        ENGINES.map(function(e,i){ return h('div',{ key:i, className:'engine e'+i },
-          h('div',{ className:'en' }, h('span',{className:'dot'}), T(e.n), h('sup',{className:'tm'},'™')),
-          h('div',{ className:'ed' }, T(e.d))
-        ); })
-      );
+        S.c.map(function(e,j){ return h('div',{ key:S.k+j, className:'engine swap e'+j },
+          h('div',{ className:'en' }, h('span',{className:'dot'}), T(e.n), e.tm ? h('sup',{className:'tm'},'™') : null),
+          h('div',{ className:'ed' }, T(e.d))); }));
+    }
+    function HeroDots(props){
+      var hi=props.lang==='hi';
+      return h('div', { className:'hero-dots', role:'group', 'aria-label': hi?'ऐप स्क्रीन चुनें':'Choose an app screen' },
+        HERO.map(function(x,i){ var nm=x.name[props.lang]||x.name.en;
+          return h('button',{ key:x.k, type:'button', 'aria-current': i===props.i ? 'true' : 'false',
+            'aria-label': (hi?'स्क्रीन ':'Screen ')+(i+1)+(hi?' / ':' of ')+HERO.length+': '+nm,
+            onClick:function(){ props.pick(i); } }, h('i')); }));
     }
     var FLOW = {
       kundali:{ title:{en:'Single Kundali',hi:'एकल कुंडली'}, sub:{en:'Speak your birth details, AastroAI fills the rest',hi:'अपनी जन्म जानकारी बोलें, AastroAI बाकी भरेगा'} },
@@ -2643,13 +2701,60 @@
         asof ? h('div', { className:'stats-asof' }, (hi ? 'स्थिति ' : 'As of ') + asof) : null);
     }
 
-    /* The hero phone: a real screenshot of the Home screen, not a mock-up. */
+    /* The hero phone: real screenshots, one per core feature, cross-faded.
+       Only the current and next screens get a src, so the rest stay unloaded
+       until the slideshow reaches them. */
     function RealPhone(props){
-      var hi = props.lang === 'hi';
+      var hi = props.lang === 'hi', seen = props.seen;
       return h('div', { className:'phone real' },
         h('div', { className:'screen' },
-          h('img', { src:'./shots/app/01-home.webp', width:540, height:1200, decoding:'async',
-                     alt: hi ? 'AastroAstra ऐप की होम स्क्रीन (असली स्क्रीनशॉट)' : 'AastroAstra app Home screen (real screenshot, Hindi)' })));
+          HERO.map(function(x, i){
+            if (!seen[i]) return null;
+            var on = i===props.i;
+            return h('img', { key:x.k, className:'hs'+(on?' on':''), src:'./shots/app/'+x.img+'.webp', width:540, height:1200,
+                              decoding:'async', loading: i===0 ? 'eager' : 'lazy', 'aria-hidden': on ? null : 'true',
+                              alt: on ? ((hi ? 'AastroAstra ऐप स्क्रीन: ' : 'AastroAstra app screen: ') + (x.name[props.lang]||x.name.en) + (hi ? ' (असली स्क्रीनशॉट)' : ' (real screenshot, Hindi)')) : '' });
+          })));
+    }
+
+    /* Hero slideshow state: advances every 4 s, pauses on hover or focus and
+       while the tab is hidden, never auto-plays for prefers-reduced-motion.
+       Dots and swipe change it by hand; only a manual change is announced. */
+    function HeroRight(props){
+      var N=HERO.length;
+      var st=useState(0), i=st[0], setI=st[1];
+      var os=useState(false), out=os[0], setOut=os[1];
+      var ps=useState(false), paused=ps[0], setPaused=ps[1];
+      var ss=useState(function(){ var o={}; o[0]=1; o[1]=1; return o; }), seen=ss[0], setSeen=ss[1];
+      var ls=useState(''), live=ls[0], setLive=ls[1];
+      var tmr=useRef(null), touch=useRef(null), cur=useRef(0);
+      var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+      function go(n, manual){
+        n=((n%N)+N)%N; if (n===cur.current) return;
+        cur.current=n;
+        setSeen(function(o){ var c=Object.assign({},o); c[n]=1; c[(n+1)%N]=1; return c; });
+        clearTimeout(tmr.current);
+        if (manual) { var x=HERO[n]; setLive((x.name[props.lang]||x.name.en)+' ('+(n+1)+'/'+N+')'); }
+        if (reduce) { setI(n); return; }
+        setOut(true);
+        tmr.current=setTimeout(function(){ setI(n); setOut(false); }, 200);
+      }
+      useEffect(function(){
+        if (reduce || paused) return;
+        var t=setInterval(function(){ if(!document.hidden) go(cur.current+1, false); }, 4000);
+        return function(){ clearInterval(t); };
+      }, [paused, props.lang]);
+      useEffect(function(){ return function(){ clearTimeout(tmr.current); }; }, []);
+      return h('div', { className:'right',
+          onMouseEnter:function(){ setPaused(true); }, onMouseLeave:function(){ setPaused(false); },
+          onFocus:function(){ setPaused(true); }, onBlur:function(){ setPaused(false); },
+          onTouchStart:function(e){ var t=e.touches[0]; touch.current={ x:t.clientX, y:t.clientY }; },
+          onTouchEnd:function(e){ var s0=touch.current; touch.current=null; if(!s0) return; var t=e.changedTouches[0];
+            var dx=t.clientX-s0.x, dy=t.clientY-s0.y;
+            if (Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)*1.3) go(cur.current+(dx<0?1:-1), true); } },
+        h(RealPhone, { lang:props.lang, i:i, seen:seen }), h(Engines, { lang:props.lang, i:i, out:out }),
+        h(HeroDots, { lang:props.lang, i:i, pick:function(n){ go(n, true); } }),
+        h('div', { className:'sr-only', 'aria-live':'polite', 'aria-atomic':'true' }, live));
     }
 
     function App(){
@@ -2714,7 +2819,7 @@
                 h('a', { href:'./pricing/' }, lang==='hi' ? 'कीमतें देखें' : 'see pricing'), '.'),
               h(Counts, { s:stats, lang:lang })
             ),
-            h('div', { className:'right' }, h(RealPhone, { lang:lang }), h(Engines, { lang:lang }))
+            h(HeroRight, { lang:lang })
           ),
           h(AastroAI, { lang:lang }),
           h(EngineShowcase, { lang:lang }),
