@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
-"""Publish a verified Android download without deleting live storage objects."""
+"""Share an Android build privately with the team.
+
+Public APK/IPA publishing stopped on 29 Sep 2026 (Google Ads readiness).
+Builds reach people only through Google Play testing tracks and TestFlight.
+For a quick team check, `publish.sh --private` uploads the APK to the PRIVATE
+`builds-internal` bucket and prints a signed link that expires after 7 days.
+Nothing is written to the public `site` bucket.
+
+BASE, PUBLIC and credentials() are also used by update-stats.py.
+"""
 import hashlib
 import json
 import os
@@ -10,6 +19,8 @@ import urllib.request
 
 BASE = "https://gttszlununmqivrqevwv.supabase.co"
 PUBLIC = BASE + "/storage/v1/object/public/site/"
+PRIVATE_BUCKET = "builds-internal"
+SIGNED_SECONDS = 7 * 24 * 60 * 60
 
 
 def credentials():
@@ -28,66 +39,58 @@ def credentials():
     raise RuntimeError("Set SUPABASE_SERVICE_ROLE_KEY for the existing site project; credentials were not printed.")
 
 
-def publish(apk, metadata, key, opener=urllib.request.urlopen):
-    payload = Path(apk).read_bytes()
-    version = json.loads(Path(metadata).read_text())
-    code = int(version["versionCode"])
-    if code <= 0 or not payload:
-        raise ValueError("APK bytes and a positive version code are required")
+def share_private(artifact, prefix, key, opener=urllib.request.urlopen, content_type="application/vnd.android.package-archive"):
+    """Upload to the private bucket and return (object name, 7-day signed URL)."""
+    payload = Path(artifact).read_bytes()
+    if not payload:
+        raise ValueError("Artifact bytes are required")
     digest = hashlib.sha256(payload).hexdigest()
-    name = f"aastroastra-{code}-{digest[:16]}.apk"
+    suffix = Path(artifact).suffix or ".bin"
+    name = f"{prefix}-{digest[:16]}{suffix}"
     headers = {"apikey": key, "Authorization": "Bearer " + key}
 
-    request = urllib.request.Request(BASE + "/storage/v1/bucket/site", headers=headers)
+    request = urllib.request.Request(BASE + "/storage/v1/bucket/" + PRIVATE_BUCKET, headers=headers)
     with opener(request, timeout=30) as response:
         bucket = json.load(response)
+    # Never fall back to a public bucket: that is exactly what this replaces.
+    if bucket.get("public") is not False:
+        raise RuntimeError(f"Bucket {PRIVATE_BUCKET} is not private; nothing was uploaded")
     limit = bucket.get("file_size_limit")
-    if bucket.get("public") is not True:
-        raise RuntimeError("The site bucket is not public; nothing was uploaded")
-    if not isinstance(limit, int) or limit <= 0:
-        raise RuntimeError("Cannot verify the site bucket size limit; nothing was uploaded")
-    if len(payload) > limit:
-        raise RuntimeError(f"APK is {len(payload)} bytes; bucket limit is {limit}; nothing was uploaded")
+    if isinstance(limit, int) and limit > 0 and len(payload) > limit:
+        raise RuntimeError(f"Artifact is {len(payload)} bytes; bucket limit is {limit}; nothing was uploaded")
 
-    def upload(object_name, data, content_type, cache):
-        request = urllib.request.Request(
-            BASE + "/storage/v1/object/site/" + object_name, data=data, method="POST",
-            headers={**headers, "Content-Type": content_type,
-                     "Cache-Control": cache, "x-upsert": "true"},
-        )
-        with opener(request, timeout=240) as response:
-            response.read()
+    request = urllib.request.Request(
+        BASE + f"/storage/v1/object/{PRIVATE_BUCKET}/{name}", data=payload, method="POST",
+        headers={**headers, "Content-Type": content_type, "x-upsert": "true"},
+    )
+    with opener(request, timeout=240) as response:
+        response.read()
 
-    def verify(object_name, expected):
-        # No credentials on public downloads. A fresh query avoids cached copies.
-        token = hashlib.sha256(expected).hexdigest()
-        request = urllib.request.Request(PUBLIC + object_name + "?verify=" + token)
-        with opener(request, timeout=240) as response:
-            actual = response.read()
-        if hashlib.sha256(actual).digest() != hashlib.sha256(expected).digest():
-            raise RuntimeError(f"Public download verification failed: {object_name}")
-
-    content_type = "application/vnd.android.package-archive"
-    upload(name, payload, content_type, "max-age=31536000, immutable")
-    verify(name, payload)
-    # Keep the historical stable URL working, without a delete-before-upload gap.
-    upload("aastroastra-latest.apk", payload, content_type, "no-cache")
-    verify("aastroastra-latest.apk", payload)
-    # The site points directly to immutable, verified bytes, avoiding CDN staleness.
-    version.update(apk=PUBLIC + name, sha256=digest)
-    encoded = (json.dumps(version, indent=2) + "\n").encode()
-    upload("version.json", encoded, "application/json", "no-cache")
-    verify("version.json", encoded)
-    Path(metadata).write_bytes(encoded)
-    print(f"Verified build {code}: {len(payload)} bytes, SHA-256 {digest}")
-    print("Download: " + version["apk"])
-    return version
+    request = urllib.request.Request(
+        BASE + f"/storage/v1/object/sign/{PRIVATE_BUCKET}/{name}",
+        data=json.dumps({"expiresIn": SIGNED_SECONDS}).encode(), method="POST",
+        headers={**headers, "Content-Type": "application/json"},
+    )
+    with opener(request, timeout=30) as response:
+        signed = json.load(response)
+    path = signed.get("signedURL") or signed.get("signedUrl")
+    if not path:
+        raise RuntimeError("Storage did not return a signed URL")
+    url = path if path.startswith("http") else BASE + "/storage/v1" + path
+    return name, url, digest
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 4 or sys.argv[1] != "--private":
+        print("Public APK publishing is disabled (29 Sep 2026). Use Play internal/open testing.", file=sys.stderr)
+        print("Usage: publish-storage.py --private <artifact> <object-prefix>", file=sys.stderr)
+        sys.exit(2)
     try:
-        publish(sys.argv[1], sys.argv[2], credentials())
+        name, url, digest = share_private(sys.argv[2], sys.argv[3], credentials())
+        print(f"Private upload: {PRIVATE_BUCKET}/{name} (SHA-256 {digest})")
+        print("Team link (expires in 7 days, do not post publicly):")
+        print(url)
     except Exception as error:
         # Exceptions here contain status/path details, never request headers.
-        print(f"Publication failed: {error}", file=sys.stderr)
+        print(f"Private upload failed: {error}", file=sys.stderr)
         sys.exit(1)

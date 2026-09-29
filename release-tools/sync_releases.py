@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Mirror verified release evidence and installers from the source repositories."""
+"""Mirror verified release evidence (never installers) from the source repositories."""
 import argparse
 import copy
 import datetime as dt
 import json
 import os
 from pathlib import Path
-import plistlib
 import shutil
 import tempfile
 import urllib.error
@@ -22,30 +21,13 @@ def atomic_json(path,data):
     temporary=path.with_suffix('.tmp');temporary.write_text(json.dumps(data,indent=2)+'\n');temporary.replace(path)
 
 def public_downloads(client,data,files):
-    if not data['downloads']:return []
-    tag='mirror-'+slug(data['id'])
-    try: release=client.json(f'repos/{SITE_REPO}/releases/tags/{quote(tag,safe="")}')
-    except urllib.error.HTTPError as error:
-        if error.code!=404:raise
-        description=('Retained existing public download; its original regression result was not recorded.' if data.get('kind')=='published-build' else 'Verified release downloads.')
-        release=client.json(f'repos/{SITE_REPO}/releases','POST',{'tag_name':tag,'target_commitish':'main',
-            'name':f"{data['platform'].title()} {data.get('version') or data['tag']} ({data.get('build') or data['sha'][:8]})",
-            'body':f"{description} Source: {data['repo']} at {data['sha']}.\n\nHistory and HTML regression evidence: {PUBLIC_SITE}/release/",'make_latest':'false'})
-    assets={a['name']:a for a in client.pages(f'repos/{SITE_REPO}/releases/{release["id"]}/assets')}
-    downloads=[]
-    for item in data['downloads']:
-        name=f"aastroastra-{data['platform']}-{slug(data['tag'])}-{item['sha256'][:16]}.{item['kind']}"
-        asset=assets.get(name)
-        if asset is None:asset=client.upload(release,files[item['name']],name)
-        if asset['size']!=item['size']:raise ValueError('Mirrored installer size mismatch')
-        if asset.get('digest') and asset['digest']!='sha256:'+item['sha256']:raise ValueError('Mirrored installer checksum mismatch')
-        if not asset.get('digest'):
-            with tempfile.TemporaryDirectory() as tmp:
-                verified=Path(tmp)/'installer';client.download(SITE_REPO,asset,verified)
-                if sha256(verified)!=item['sha256']:raise ValueError('Mirrored installer checksum mismatch')
-        # Uploaded names include the full source digest prefix and are never overwritten.
-        downloads.append({**item,'url':asset['browser_download_url']})
-    return downloads
+    """Installer metadata only. Public APK/IPA hosting stopped on 29 Sep 2026.
+
+    Builds reach people only through Google Play testing tracks and TestFlight,
+    so nothing is uploaded to the public site repository and no URL is kept.
+    The hash and size stay in the record as evidence of what was validated.
+    """
+    return [{k:v for k,v in item.items() if k!='url'} for item in data['downloads']]
 
 def process(source,public,repo,release,existing,destination):
     assets={a['name']:a for a in release.get('assets',[])}
@@ -87,14 +69,6 @@ def process(source,public,repo,release,existing,destination):
             data['distribution']={'play':receipt}
             data['receipt_sha256']=receipt_hash
             shutil.copy2(tmp/'play-submission.json',tmp/'report/play-submission.json')
-        if data['platform']=='ios' and data['downloads']:
-            ipa=next(d for d in data['downloads'] if d['kind']=='ipa')
-            profile=data['ios_distribution']
-            plist={'items':[{'assets':[{'kind':'software-package','url':ipa['url']}],
-                'metadata':{'bundle-identifier':profile['bundle_id'],'bundle-version':data['version'], 'kind':'software','title':'AastroAstra'}}]}
-            (tmp/'report/manifest.plist').write_bytes(plistlib.dumps(plist))
-            manifest_url=f'{PUBLIC_SITE}/release/reports/{slug(data["id"])}/manifest.plist'
-            data['install_url']='itms-services://?action=download-manifest&url='+quote(manifest_url,safe='')
         data.update(report_url=f'/release/reports/{slug(data["id"])}/',manifest_sha256=signature,
             source_release=release['html_url'],published_at=release['published_at'])
         # Only replace an existing report after the complete new record was validated.

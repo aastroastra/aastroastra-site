@@ -2,36 +2,24 @@
 const names={android:'Android',ios:'iOS',backend:'Backend',admin:'Admin',web:'Web',site:'Website'};
 const state={rows:[],platform:'all',search:'',history:true,limit:30};
 function el(tag,text,className){const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;}
-function safeURL(value,install=false){
-  try{const url=new URL(value,location.origin);if(url.protocol==='https:'||url.origin===location.origin&&url.protocol===location.protocol)return url.href;
-    if(install&&url.protocol==='itms-services:'&&url.searchParams.get('action')==='download-manifest'){
-      const manifest=new URL(url.searchParams.get('url'));if(manifest.protocol==='https:')return url.href;
-    }
-  }catch(_){}return null;
+function safeURL(value){
+  try{const url=new URL(value,location.origin);if(url.protocol==='https:'||url.origin===location.origin&&url.protocol===location.protocol)return url.href;}catch(_){}return null;
 }
-function link(text,url,className,install=false){const a=el('a',text,className);const href=safeURL(url,install);if(href){a.href=href;a.rel='noopener';}return a;}
+function link(text,url,className){const a=el('a',text,className);const href=safeURL(url);if(href){a.href=href;a.rel='noopener';}return a;}
 function formatDate(value,options){const d=new Date(value);return Number.isNaN(d.getTime())?'Date not recorded':new Intl.DateTimeFormat('en',{timeZone:'UTC',...options}).format(d);}
 function label(row){return row.kind==='source-history'?'Source history':row.status==='passed'?'Checks passed':row.status==='failed'?'Checks failed':row.status==='incomplete'?'Checks incomplete':row.kind==='published-build'?'Published download':'Checks not recorded';}
+// No public APK/IPA or OTA installs (29 Sep 2026): builds ship through Google Play testing and TestFlight only.
+const CHANNELS={android:['Google Play open testing ↗','https://play.google.com/apps/testing/com.avdstudiox.android'],ios:['TestFlight public beta ↗','https://testflight.apple.com/join/HZXJ4Dav']};
 function downloadLinks(row,buttons){
-  if(row.install_url)buttons.append(link('Install on iPhone ↗',row.install_url,'button primary',true));
-  for(const d of row.downloads||[]){if(!d.url)continue;buttons.append(link(d.kind==='apk'?'Download APK ↓':d.kind==='ipa'?'Download IPA ↓':'Download',d.url,'button'+(d.kind==='apk'?' primary':'')));}
-  if(row.testflight)buttons.append(link('TestFlight ↗',row.testflight,'button'));
+  const channel=CHANNELS[row.platform];if(channel&&row.kind!=='source-history')buttons.append(link(channel[0],channel[1],'button'));
 }
 function latest(){
   const target=document.querySelector('#downloads');target.replaceChildren();
   for(const platform of ['android','ios']){
-    const row=state.rows.find(r=>r.platform===platform&&r.kind!=='source-history'&&(r.status==='passed'||r.kind==='published-build')&&(r.downloads||[]).some(d=>d.url));
     const card=el('article',undefined,'download-card');const top=el('div',undefined,'card-top');
     top.append(el('span',platform==='android'?'A':'i','platform-icon'),el('span',names[platform],'platform-name'));card.append(top);
-    if(row){
-      top.append(el('span',label(row),'badge '+row.status));const title=el('h3','v'+row.version);title.append(el('small','Build '+row.build));card.append(title);
-      card.append(el('p','Published '+formatDate(row.published_at||row.date,{dateStyle:'medium'})+(platform==='ios'?' · Direct install requires a registered device.':'')));
-      if(row.status!=='passed')card.append(el('p',row.validation_summary||'A regression result for these exact published bytes is not recorded.'));
-      else card.append(el('p','Release checks passed. Open the report for scope and results.'));
-      const buttons=el('div',undefined,'buttons');downloadLinks(row,buttons);card.append(buttons);
-      if(row.report_url)card.append(link(row.report_label||'View regression report →',row.report_url,'muted'));
-    }else{card.append(el('h3','No retained installer'),el('p','The next validated release will appear here.'));}
-    target.append(card);
+    card.append(el('p',platform==='android'?'Test builds are shared only through Google Play testing tracks.':'Test builds are shared only through TestFlight.'));
+    const buttons=el('div',undefined,'buttons');downloadLinks({platform},buttons);card.append(buttons);target.append(card);
   }
 }
 function changeList(items,repo){const list=el('ul',undefined,'changes');for(const c of items){const li=el('li',c.subject);if(c.sha&&repo)li.append(link(c.sha.slice(0,7),'https://github.com/'+repo+'/commit/'+c.sha,'commit'));list.append(li);}return list;}

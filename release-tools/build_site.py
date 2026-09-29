@@ -9,6 +9,14 @@ from sync_releases import atomic_json
 from core import release_order
 
 PUBLIC_DOT_DIRS={'.well-known'}
+# No public APK/IPA or OTA manifests on the website (29 Sep 2026): builds ship
+# only through Google Play testing tracks and TestFlight.
+INSTALLER_FILES=('*.apk','*.ipa','*.aab','manifest.plist','manifest-*.plist')
+
+def public_entry(row):
+    row=dict(row);row.pop('install_url',None)
+    row['downloads']=[{k:v for k,v in d.items() if k!='url'} for d in row.get('downloads') or []]
+    return row
 
 def build(root,data,out):
     root,data,out=map(Path,(root,data,out))
@@ -19,16 +27,16 @@ def build(root,data,out):
         # Dot entries stay private, except /.well-known (App Links assetlinks.json
         # and the extensionless apple-app-site-association for Universal Links).
         if path.name in ignored or (path.name.startswith('.') and path.name not in PUBLIC_DOT_DIRS) or path.resolve() in (out.resolve(),data.resolve()):continue
-        if path.is_dir():shutil.copytree(path,out/path.name,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__','.DS_Store','node_modules'))
+        if path.is_dir():shutil.copytree(path,out/path.name,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__','.DS_Store','node_modules',*INSTALLER_FILES))
         elif path.suffix.lower() in ('.html','.css','.js','.mjs','.png','.jpg','.jpeg','.svg','.webp','.ico','.txt','.xml','.json','.zip','.pdf','.woff','.woff2','.mp4') or path.name=='CNAME':shutil.copy2(path,out/path.name)
     rows=json.loads((root/'release/history.json').read_text()) if (root/'release/history.json').exists() else []
     records=json.loads((data/'records.json').read_text()) if (data/'records.json').exists() else []
     entries={r['id']:r for r in rows}
     entries.update({r['id']:r for r in records})
-    entries=sorted(entries.values(),key=release_order,reverse=True)
+    entries=sorted((public_entry(r) for r in entries.values()),key=release_order,reverse=True)
     status=json.loads((data/'sync.json').read_text()) if (data/'sync.json').exists() else {}
     atomic_json(out/'release/releases.json',{'schema':1,'updated':dt.datetime.now(dt.timezone.utc).isoformat(),'sync':status,'releases':entries})
-    if (data/'reports').exists():shutil.copytree(data/'reports',out/'release/reports',dirs_exist_ok=True)
+    if (data/'reports').exists():shutil.copytree(data/'reports',out/'release/reports',dirs_exist_ok=True,ignore=shutil.ignore_patterns(*INSTALLER_FILES))
     (out/'.nojekyll').touch()
     print(f'Built website with {len(entries)} release and source-history records')
 

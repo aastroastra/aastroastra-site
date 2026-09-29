@@ -13,7 +13,9 @@ The workflow retains:
 
 - `release.json`, including the source SHA, build, checks and artifact hashes.
 - `release-report.zip`, a permanent HTML report on the source GitHub Release.
-- Validated signed APK/IPA downloads, only when required checks pass.
+- Installer hashes and sizes only. Since 29 Sep 2026 no APK/IPA is mirrored to
+  the public site and no OTA manifest is written; builds ship through Google Play
+  testing tracks and TestFlight.
 - Private Actions logs, Android mapping/AAB and Xcode results for 90 days.
 
 Passing Android releases also retain `aastroastra.aab` on the private source
@@ -94,8 +96,8 @@ blocked workflow has run.
 
 `backfill_history.py <workspace>` imports mobile version changes and daily
 source history for services/web. Those entries are explicitly labeled source
-history, never deployed releases. `import_published.py` retains the existing
-public app downloads with hashes and reads iOS versions from the IPA itself.
+history, never deployed releases. `import_published.py` is disabled since 29 Sep 2026 (no public app downloads
+remain to import).
 Historical downloads without exact-source test evidence stay unverified.
 
 ```sh

@@ -24,8 +24,7 @@
         "kind": "ipa",
         "name": "Aastroastra.ipa",
         "sha256": "77a8f80b5a0b93574886f1089f09bb793d292ae84f5aa39574419fadc03363a7",
-        "size": 27685548,
-        "url": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/builds/ios/193/Aastroastra-77a8f80b5a0b.ipa"
+        "size": 27685548
       }
     ],
     "note": "Credit checkout fixes published for beta testing. Store configuration and real purchase acceptance remain pending. Registered beta devices only; this is not a TestFlight submission.",
@@ -60,8 +59,7 @@
         "kind": "apk",
         "name": "app-release.apk",
         "sha256": "78d96ef09a59925384d27ef9ae88fbd2fcabd9a6d8641f92fffab07695676047",
-        "size": 23108473,
-        "url": "https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-213-78d96ef09a599253.apk"
+        "size": 23108473
       }
     ],
     "note": "Credit checkout fixes published for beta testing. Store configuration and real purchase acceptance remain pending. Signed APK uses the same signing certificate as website build 212.",
@@ -71,7 +69,7 @@
       "total": 24
     }
   },
-{
+  {
     "schema": 1,
     "id": "android:published:208",
     "platform": "android",
@@ -85,9 +83,18 @@
     "status": "not_recorded",
     "deployment": "website",
     "changes": [
-      {"sha": "3db4ef9", "subject": "Amplitude credit mode switch: hide credit UI and skip new credit requests when off."},
-      {"sha": "3db4ef9", "subject": "Hide the daily quota badge in credit mode; restore it in subscription mode."},
-      {"sha": "3db4ef9", "subject": "Responsive refill preview grid: 100, 500 and 1,000 credits."}
+      {
+        "sha": "3db4ef9",
+        "subject": "Amplitude credit mode switch: hide credit UI and skip new credit requests when off."
+      },
+      {
+        "sha": "3db4ef9",
+        "subject": "Hide the daily quota badge in credit mode; restore it in subscription mode."
+      },
+      {
+        "sha": "3db4ef9",
+        "subject": "Responsive refill preview grid: 100, 500 and 1,000 credits."
+      }
     ],
     "checks": [],
     "downloads": [
@@ -95,8 +102,7 @@
         "kind": "apk",
         "name": "aastroastra.apk",
         "sha256": "2d359c03a674329fa19bda8fb9ba345ca9a6fe15d36e0b0de62ca1aaa405f700",
-        "size": 22967814,
-        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-android-published-208-7b5308fd9b/aastroastra-android-published-208-824b2546d7-2d359c03a674329f.apk"
+        "size": 22967814
       }
     ],
     "note": "Credit mode flag and refill grid shipped. No Amplitude deployment key in this build; credit mode remains the default. Purchases and deductions remain off.",
@@ -104,7 +110,10 @@
     "report_url": "/release/reports/android-build-208-credits/",
     "report_label": "Build notes & checks",
     "validation_summary": "17 focused unit tests and local build checks passed. Full installed-app regression was not rerun.",
-    "unit_tests": {"passed": 17, "total": 17}
+    "unit_tests": {
+      "passed": 17,
+      "total": 17
+    }
   },
   {
     "schema": 1,
@@ -126,8 +135,7 @@
         "kind": "apk",
         "name": "aastroastra.apk",
         "sha256": "d5d27d9cb65920f0968ba422b5a7aba6da617d28f19385de57f265100f79b294",
-        "size": 22953162,
-        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-android-published-207-6bcfe4b636/aastroastra-android-published-207-73f39298cc-d5d27d9cb65920f0.apk"
+        "size": 22953162
       }
     ],
     "note": "Imported from the existing public download. The original source SHA and regression result for these exact bytes were not recorded."
@@ -152,8 +160,7 @@
         "kind": "apk",
         "name": "aastroastra.apk",
         "sha256": "9ea6da401bb5d33b1e9044f71a92c496c6a562d9fb608c1421969617e0d2a36d",
-        "size": 22939350,
-        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-android-published-206-06620ad755/aastroastra-android-published-206-86ba064646-9ea6da401bb5d33b.apk"
+        "size": 22939350
       }
     ],
     "note": "Imported from the existing public download. The original source SHA and regression result for these exact bytes were not recorded."
@@ -178,13 +185,11 @@
         "kind": "ipa",
         "name": "aastroastra.ipa",
         "sha256": "b058f28f8c2ed4431093fb738b55cea9669f99315ce9db4bb00fc9e53b436170",
-        "size": 22797946,
-        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-ios-published-187-2edf951228/aastroastra-ios-published-187-7bddf34d38-b058f28f8c2ed443.ipa"
+        "size": 22797946
       }
     ],
     "note": "Imported from the existing public download. The original source SHA and regression result for these exact bytes were not recorded.",
-    "testflight": "https://testflight.apple.com/join/HZXJ4Dav",
-    "install_url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fwww.aastroastra.com%2Frelease%2Freports%2Fios-published-187-2edf951228%2Fmanifest.plist"
+    "testflight": "https://testflight.apple.com/join/HZXJ4Dav"
   },
   {
     "schema": 1,
@@ -332,8 +337,7 @@
         "kind": "apk",
         "name": "aastroastra.apk",
         "sha256": "ef49e4b45a7c157d90fba7db35c0a467979dfed075d7d39c44932581be6ebe28",
-        "size": 22106398,
-        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-android-published-196-dc209d1683/aastroastra-android-published-196-c4b161d0de-ef49e4b45a7c157d.apk"
+        "size": 22106398
       }
     ],
     "note": "Imported from the existing public download. The original source SHA and regression result for these exact bytes were not recorded."
@@ -958,13 +962,11 @@
         "kind": "ipa",
         "name": "aastroastra.ipa",
         "sha256": "3eda8ae25c6f243b11db1a0b491aacef696199c2129fe36dd2d546b90081fd7f",
-        "size": 22801436,
-        "url": "https://github.com/aastroastra/aastroastra-site/releases/download/mirror-ios-published-186-9c8da12de5/aastroastra-ios-published-186-83c4d3c88a-3eda8ae25c6f243b.ipa"
+        "size": 22801436
       }
     ],
     "note": "Imported from the existing public download. The original source SHA and regression result for these exact bytes were not recorded.",
-    "testflight": "https://testflight.apple.com/join/HZXJ4Dav",
-    "install_url": "itms-services://?action=download-manifest&url=https%3A%2F%2Fwww.aastroastra.com%2Frelease%2Freports%2Fios-published-186-9c8da12de5%2Fmanifest.plist"
+    "testflight": "https://testflight.apple.com/join/HZXJ4Dav"
   },
   {
     "schema": 1,

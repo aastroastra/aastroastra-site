@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Testers · AastroAstra</title>
-<meta name="description" content="Beta and internal test builds of AastroAstra for testers." />
+<meta name="description" content="How to test AastroAstra early through Google Play testing and Apple TestFlight." />
 <meta name="robots" content="noindex, nofollow, noarchive" />
 <meta name="theme-color" content="#FFFFFF" />
 <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
@@ -28,13 +28,6 @@
 .opt .meta { font-size:13px; color:var(--muted); margin:10px 0 0; }
 .tag { display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; border:1px solid var(--line); border-radius:999px; padding:3px 9px; color:var(--fg2); margin-left:6px; vertical-align:middle; }
 .plat { font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); font-weight:700; margin:40px 0 0; }
-details.builds { margin-top:40px; border:1px solid var(--line); border-radius:14px; padding:4px 16px; }
-details.builds summary { cursor:pointer; font-weight:700; padding:12px 0; color:var(--fg); }
-.buildtable { width:100%; table-layout:fixed; border-collapse:collapse; font-size:13px; margin:4px 0 14px; }
-.buildtable th, .buildtable td { text-align:left; padding:9px 6px; border-bottom:1px solid var(--line); overflow-wrap:anywhere; vertical-align:top; }
-.buildtable th { font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
-.buildtable td { color:var(--fg); }
-.buildtable td a { font-weight:600; }
 </style>
 </head>
 <body>
@@ -43,7 +36,7 @@ details.builds summary { cursor:pointer; font-weight:700; padding:12px 0; color:
 <main class="page">
 <p class="eyebrow"><span lang="en">For testers</span><span lang="hi">टेस्टर्स के लिए</span></p>
 <h1><span lang="en">Test the next version</span><span lang="hi">अगला संस्करण टेस्ट करें</span></h1>
-<p class="lead"><span lang="en">Pick the one option that fits you. Most people only need the Google Play app or the public TestFlight beta.</span><span lang="hi">अपने लिए एक विकल्प चुनें। ज़्यादातर लोगों को सिर्फ़ Google Play ऐप या सार्वजनिक TestFlight बीटा चाहिए।</span></p>
+<p class="lead"><span lang="en">We share test versions only through Google Play and Apple TestFlight. Pick the option that fits you; most people only need Google Play open testing or the public TestFlight beta.</span><span lang="hi">हम टेस्ट संस्करण सिर्फ़ Google Play और Apple TestFlight से देते हैं। अपने लिए एक विकल्प चुनें; ज़्यादातर लोगों को सिर्फ़ Google Play ओपन टेस्टिंग या सार्वजनिक TestFlight बीटा चाहिए।</span></p>
 
 <p class="plat">Android</p>
 <div class="opt">
@@ -54,14 +47,8 @@ details.builds summary { cursor:pointer; font-weight:700; padding:12px 0; color:
 </div>
 <div class="opt">
  <h3><span lang="en">Google Play: Internal testing</span><span lang="hi">Google Play: इंटरनल टेस्टिंग</span><span class="tag"><span lang="en">Team only</span><span lang="hi">सिर्फ़ टीम</span></span></h3>
- <p class="who"><span lang="en">For the AastroAstra team and invited reviewers. Your Google account must be added to the internal testers list first.</span><span lang="hi">AastroAstra टीम और आमंत्रित समीक्षकों के लिए। पहले आपका Google खाता इंटरनल टेस्टर सूची में जोड़ा जाना चाहिए।</span></p>
+ <p class="who"><span lang="en">For the AastroAstra team and invited reviewers. Your Google account must be added to the internal testers list first. Ask the team and we will send you the opt-in link.</span><span lang="hi">AastroAstra टीम और आमंत्रित समीक्षकों के लिए। पहले आपका Google खाता इंटरनल टेस्टर सूची में जोड़ा जाना चाहिए। टीम से पूछें, हम आपको जुड़ने का लिंक भेज देंगे।</span></p>
  <div class="act"><a class="btn secondary" href="mailto:aastroastra@gmail.com?subject=Internal%20testing%20invite"><span lang="en">Ask the team for an invite</span><span lang="hi">टीम से आमंत्रण माँगें</span></a></div>
-</div>
-<div class="opt">
- <h3><span lang="en">Direct APK</span><span lang="hi">सीधा APK</span><span class="tag"><span lang="en">Team only</span><span lang="hi">सिर्फ़ टीम</span></span></h3>
- <p class="who"><span lang="en">For quick checks by the team. Installs outside Google Play, so Android will ask you to allow installs from your browser, and it does not update by itself.</span><span lang="hi">टीम की जल्दी जाँच के लिए। यह Google Play के बाहर इंस्टॉल होता है, इसलिए एंड्रॉइड ब्राउज़र से इंस्टॉल की अनुमति माँगेगा, और यह अपने आप अपडेट नहीं होता।</span></p>
- <div class="act"><a class="btn secondary" id="apk-link" href="https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-latest.apk"><span lang="en">Download APK</span><span lang="hi">APK डाउनलोड करें</span></a></div>
- <p class="meta" id="apk-meta"></p>
 </div>
 
 <p class="plat">iPhone</p>
@@ -76,49 +63,8 @@ details.builds summary { cursor:pointer; font-weight:700; padding:12px 0; color:
  <p class="who"><span lang="en">For the team. Invites are sent by email from App Store Connect, so there is no public link. Accept the email on your iPhone and install from TestFlight.</span><span lang="hi">टीम के लिए। आमंत्रण App Store Connect से ईमेल पर आते हैं, इसलिए कोई सार्वजनिक लिंक नहीं। आईफ़ोन पर ईमेल स्वीकार करें और TestFlight से इंस्टॉल करें।</span></p>
  <div class="act"><a class="btn secondary" href="mailto:aastroastra@gmail.com?subject=TestFlight%20internal%20invite"><span lang="en">Ask the team for an invite</span><span lang="hi">टीम से आमंत्रण माँगें</span></a></div>
 </div>
-<div class="opt">
- <h3><span lang="en">Direct install</span><span lang="hi">सीधा इंस्टॉल</span><span class="tag"><span lang="en">Registered devices only</span><span lang="hi">सिर्फ़ पंजीकृत डिवाइस</span></span></h3>
- <p class="who"><span lang="en">Only works on iPhones already registered to our developer account. Open this on the iPhone in Safari. On first launch, trust the developer in Settings, General, VPN &amp; Device Management.</span><span lang="hi">सिर्फ़ उन आईफ़ोन पर चलता है जो पहले से हमारे डेवलपर खाते में पंजीकृत हैं। आईफ़ोन पर Safari में खोलें। पहली बार खोलते समय Settings, General, VPN &amp; Device Management में डेवलपर को Trust करें।</span></p>
- <div class="act"><a class="btn secondary" id="ota-link" href="https://testflight.apple.com/join/HZXJ4Dav"><span lang="en">Install on a registered iPhone</span><span lang="hi">पंजीकृत आईफ़ोन पर इंस्टॉल करें</span></a></div>
- <p class="meta" id="ota-meta"></p>
-</div>
-
-<details class="builds"><summary><span lang="en">Latest builds</span><span lang="hi">नवीनतम बिल्ड</span></summary>
-<table class="buildtable"><thead><tr><th><span lang="en">Platform</span><span lang="hi">प्लेटफ़ॉर्म</span></th><th><span lang="en">Version</span><span lang="hi">संस्करण</span></th><th><span lang="en">Size</span><span lang="hi">आकार</span></th><th><span lang="en">Updated</span><span lang="hi">अपडेट</span></th><th><span lang="en">Direct link</span><span lang="hi">सीधा लिंक</span></th></tr></thead>
-<tbody>
-<tr><td><b>Android</b></td><td id="a-ver">-</td><td id="a-size">-</td><td id="a-upd">-</td><td><a id="a-link" href="https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/aastroastra-latest.apk">APK</a></td></tr>
-<tr><td><b>iOS</b></td><td id="i-ver">-</td><td id="i-size">-</td><td id="i-upd">-</td><td><span id="i-ota"></span><a href="https://testflight.apple.com/join/HZXJ4Dav" target="_blank" rel="noopener">TestFlight</a></td></tr>
-</tbody></table></details>
 <p class="disclaimer"><span lang="en">Test builds can have bugs and may reset data. Please report problems from the app (shake the phone) or by email to aastroastra@gmail.com.</span><span lang="hi">टेस्ट बिल्ड में गड़बड़ियाँ हो सकती हैं और डेटा रीसेट हो सकता है। समस्या ऐप से (फ़ोन हिलाकर) या aastroastra@gmail.com पर ईमेल से बताएँ।</span></p>
 </main>
-<script>
-/* version.json and version-ios.json are written by publish.sh and
-   aastroastra-ios/publish-ios.sh to the Supabase site bucket. Only this page reads them. */
-(function(){
-  var SUPA='https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/';
-  function set(id,v){ var e=document.getElementById(id); if(e&&v) e.textContent=v; }
-  function track(platform,channel){ try{ fetch('https://gttszlununmqivrqevwv.supabase.co/rest/v1/download_events',{method:'POST',keepalive:true,headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({platform:platform,channel:channel})}).catch(function(){}); }catch(e){} }
-  var ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd0dHN6bHVudW5tcWl2cnFldnd2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMyMzEwMjQsImV4cCI6MjA4ODgwNzAyNH0.owDFA7ZPpDYoTmcIwYxxfn1w-qRUnKrM5pX17IAIzQQ';
-  ['apk-link','a-link'].forEach(function(id){ var e=document.getElementById(id); if(e) e.addEventListener('click',function(){ track('android','apk-beta'); }); });
-  fetch(SUPA+'version.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(v){
-    if(!v) return;
-    var ver=v.version+(v.versionCode?' ('+v.versionCode+')':'');
-    set('a-ver',ver); set('a-size',v.sizeMb?v.sizeMb+' MB':''); set('a-upd',v.updated||v.date);
-    set('apk-meta',ver+' · '+(v.sizeMb||'?')+' MB · '+(v.updated||v.date||''));
-    if(v.apk){ ['apk-link','a-link'].forEach(function(id){ var e=document.getElementById(id); if(e) e.href=v.apk; }); }
-  }).catch(function(){});
-  fetch(SUPA+'version-ios.json?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(v){
-    if(!v) return;
-    var ver=v.version+(v.build?' ('+v.build+')':'');
-    set('i-ver',ver); set('i-size',v.sizeMb?v.sizeMb+' MB':''); set('i-upd',v.updated||v.date);
-    set('ota-meta',ver+' · '+(v.sizeMb||'?')+' MB · '+(v.updated||v.date||''));
-    if(v.install){
-      var o=document.getElementById('ota-link'); if(o){ o.href=v.install; o.addEventListener('click',function(){ track('ios','ota-beta'); }); }
-      var s=document.getElementById('i-ota'); if(s){ var a=document.createElement('a'); a.href=v.install; a.textContent='OTA'; s.appendChild(a); s.appendChild(document.createTextNode(' · ')); }
-    }
-  }).catch(function(){});
-})();
-</script>
 <footer class="site-footer"><div class="in">
 <nav aria-label="Footer"><a href="/"><span lang="en">Home</span><span lang="hi">होम</span></a><a href="/privacy.html"><span lang="en">Privacy Policy</span><span lang="hi">गोपनीयता नीति</span></a><a href="/terms.html"><span lang="en">Terms of Use</span><span lang="hi">उपयोग की शर्तें</span></a><a href="/refund-policy.html"><span lang="en">Refund policy</span><span lang="hi">रिफ़ंड नीति</span></a><a href="/delete-account.html"><span lang="en">Delete account</span><span lang="hi">खाता हटाएँ</span></a><a href="mailto:aastroastra@gmail.com"><span lang="en">Contact</span><span lang="hi">संपर्क</span></a></nav>
 <p>AastroAstra is published by AVD Studiox Private Limited, 1503 A Asher Titan, Valabh, Baug Lane, Ghatkopar East, Mumbai, Maharashtra 400077, India. Support: <a href="mailto:aastroastra@gmail.com">aastroastra@gmail.com</a></p>
