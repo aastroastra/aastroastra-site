@@ -17,13 +17,22 @@
 <link rel="icon" type="image/png" href="/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" /></noscript>
 <link rel="stylesheet" href="/site-theme.css" />
 <link rel="stylesheet" href="/pages.css" />
-<script src="/site-theme.js"></script>
-<script src="/pages.js"></script>
+<script>
+/* Theme and language before first paint; site-theme.js and pages.js (deferred) take over. */
+(function(){var d=document.documentElement,t,l,q;
+try{t=localStorage.getItem('aa-theme');}catch(e){}
+if(!/^(yellow|white|mono)-light$|^(yellow|mono)-dark$/.test(t||''))t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'yellow-dark':d.getAttribute('data-theme');
+d.setAttribute('data-theme',t);
+try{q=new URLSearchParams(location.search).get('lang');}catch(e){}
+if(q!=='hi'&&q!=='en'){try{q=localStorage.getItem('aa-lang');}catch(e){}}
+l=q==='hi'?'hi':'en';d.setAttribute('data-lang',l);d.lang=l;})();
+</script>
+<script src="/site-theme.js" defer></script>
+<script src="/pages.js" defer></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is AastroAstra free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, it is free to install and your first Kundali is free. Horoscope, Panchang, numerology and Kundali Milan between Kundalis you have saved do not use credits. A new Kundali for another person, AI chat replies and palm or face readings use credits."}}, {"@type": "Question", "name": "How much do credits cost?", "acceptedAnswer": {"@type": "Answer", "text": "In India, 100 credits cost ₹100, 500 credits ₹500 and 1,000 credits ₹1,000, bought inside the app through Google Play or the App Store."}}, {"@type": "Question", "name": "Do credits expire?", "acceptedAnswer": {"@type": "Answer", "text": "No. Credits stay on your AastroAstra account until you use them."}}, {"@type": "Question", "name": "Can I get a refund?", "acceptedAnswer": {"@type": "Answer", "text": "Purchases are handled by Google Play or Apple, so refunds follow their policies. You can also email hello@aastroastra.com with your order number. See www.aastroastra.com/refund-policy.html."}}]}</script>
 </head>
 <body>
