@@ -1,0 +1,49 @@
+/* Shared layout for the public content pages (/pricing/, /beta/, /refund-policy.html).
+   Palette, fonts and header come from site-theme.css; this adds the reading
+   column, cards, tables and the English / Hindi switch. */
+html[data-lang="en"] [lang="hi"]:not(html), html[data-lang="hi"] [lang="en"]:not(html) { display:none !important; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); }
+a { color:var(--tint); }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.page { max-width:820px; margin:0 auto; padding:48px 24px 72px; }
+.page .eyebrow { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); font-weight:700; margin:0; }
+.page h1 { font-size:clamp(34px,6vw,54px); line-height:1.04; letter-spacing:-.03em; margin:12px 0 0; }
+.page .lead { font-size:17px; line-height:1.65; color:var(--fg2); margin:18px 0 0; max-width:62ch; }
+.page h2 { font-size:clamp(22px,3.2vw,28px); margin:48px 0 0; color:var(--fg); }
+.page h3 { font-size:16px; margin:0; color:var(--fg); }
+.page p, .page li { font-size:15.5px; line-height:1.68; color:var(--fg2); }
+.page ul { padding-left:20px; }
+.page b, .page strong { color:var(--fg); }
+.lang-seg { display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; gap:2px; }
+.lang-seg button { border:none; background:transparent; color:var(--fg2); font:600 12px var(--font-body); padding:6px 11px; border-radius:999px; cursor:pointer; }
+.lang-seg button[aria-pressed="true"] { background:var(--tint-grad); color:var(--on-accent); }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:20px; }
+.card { border:1px solid var(--line); border-radius:16px; padding:20px; background:var(--card); }
+.card .big { font-family:var(--font-heading); font-size:30px; font-weight:700; color:var(--fg); line-height:1.1; }
+.card .big small { font-family:var(--font-body); font-size:13px; color:var(--muted); font-weight:600; margin-left:4px; }
+.card p { margin:8px 0 0; font-size:14px; }
+.price-table { width:100%; border-collapse:collapse; margin-top:18px; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+.price-table th, .price-table td { text-align:left; padding:13px 14px; border-bottom:1px solid var(--line); font-size:15px; vertical-align:top; }
+.price-table th { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); background:var(--card); }
+.price-table td { color:var(--fg); }
+.price-table td.num { white-space:nowrap; font-weight:700; }
+.price-table td small { display:block; color:var(--muted); font-size:12.5px; margin-top:3px; font-weight:400; }
+.price-table tr:last-child td { border-bottom:none; }
+.note { margin-top:16px; padding:14px 16px; border:1px solid var(--line); border-radius:12px; font-size:14px !important; background:var(--card); }
+.disclaimer { margin-top:48px; padding-top:20px; border-top:1px solid var(--line); font-size:13px !important; color:var(--muted) !important; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:52px; padding:12px 20px; border-radius:12px; background:var(--btn-bg); color:var(--btn-fg); font:700 15px var(--font-body); text-decoration:none; border:none; cursor:pointer; }
+.btn:hover { filter:brightness(1.08); }
+.btn.secondary { background:transparent; color:var(--fg); border:1px solid var(--line); }
+.play-badge img { height:70px; width:auto; display:block; margin:-6px -5px; }
+.site-footer { border-top:1px solid var(--line); padding:26px 24px 34px; font-size:13px; color:var(--muted); }
+.site-footer .in { max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+.site-footer nav { display:flex; flex-wrap:wrap; gap:8px 18px; }
+.site-footer a { color:var(--fg2); text-decoration:none; }
+.site-footer a:hover { color:var(--tint); }
+.site-footer p { margin:0; line-height:1.6; }
+@media (max-width:560px) {
+  .page { padding:32px 16px 56px; }
+  .price-table th, .price-table td { padding:11px 10px; font-size:14px; }
+}
+html[data-lang="hi"] .page .eyebrow, html[data-lang="hi"] .plat, html[data-lang="hi"] .price-table th { letter-spacing:.02em; }
