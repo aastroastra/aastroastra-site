@@ -98,7 +98,7 @@
 <!-- Fonts load without blocking first paint (display=swap; system font until they arrive). -->
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" media="print" onload="this.media='all'" />
-<noscript><style>#splash{display:none}</style><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" /></noscript>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" /></noscript>
 <script>
   /* Language before first paint: ?lang=hi|en wins, then the saved choice.
      Preloads the first hero screenshot in that language. */
@@ -106,7 +106,7 @@
     var l; try{ l=new URLSearchParams(location.search).get('lang'); }catch(e){}
     if(l!=='hi' && l!=='en'){ try{ l=localStorage.getItem('aa-lang'); }catch(e){} }
     l = l==='hi' ? 'hi' : 'en';
-    window.AA_LANG=l; document.documentElement.lang=l;
+    window.AA_LANG=l; document.documentElement.lang=l; document.documentElement.classList.add('js');
     var k=document.createElement('link'); k.rel='preload'; k.as='image'; k.setAttribute('fetchpriority','high');
     k.href=l==='hi' ? 'shots/app/01-home.webp' : 'shots/app/en/01-home.webp';
     document.head.appendChild(k);
@@ -522,6 +522,7 @@
     .phone .screen { border-radius:30px; }
   }
   /* Intro splash: logo + typewriter wordmark, then the logo flies into the nav */
+  html:not(.js) #splash { display:none; }
   #splash { position:fixed; inset:0; z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; background:#FFFFFF; transition:opacity .5s ease; }
   #splash .slogo { width:94px; height:94px; display:inline-block; background:var(--tint-grad); -webkit-mask:url(logo-mark.png) center/contain no-repeat; mask:url(logo-mark.png) center/contain no-repeat; animation:splashIn 1s cubic-bezier(.2.7.2,1) both; will-change:transform; }
   #splash .stype { font-family:'Noto Serif',Georgia,serif; font-size:27px; font-weight:700; letter-spacing:-.02em; color:#1A1A1A; min-height:34px; display:flex; align-items:center; border-right:2px solid currentColor; animation:caret .9s step-end infinite; }
