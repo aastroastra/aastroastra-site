@@ -1,4 +1,4 @@
-# AastroAstra Press Kit
+# AstroAshva Press Kit
 
 Everything you need for press coverage, store listings, and partnership materials.
 
@@ -8,15 +8,15 @@ presskit/
   brand-guidelines.md              # full brand + design system
   press-kit.md                     # app info & features
   logos/
-    aastroastra-logo-full.png      # monogram + wordmark + tagline
-    aastroastra-logo-mark.png      # monogram only
+    astroashva-logo-full.png      # monogram + wordmark + tagline
+    astroashva-logo-mark.png      # monogram only
   icons/
-    aastroastra-icon-1024x1024.png # store icon
-    aastroastra-icon-512x512.png
-    aastroastra-icon-256x256.png
-    aastroastra-icon-180x180.png
-    aastroastra-icon-120x120.png
-    aastroastra-icon-64x64.png
+    astroashva-icon-1024x1024.png # store icon
+    astroashva-icon-512x512.png
+    astroashva-icon-256x256.png
+    astroashva-icon-180x180.png
+    astroashva-icon-120x120.png
+    astroashva-icon-64x64.png
 ```
 
 ---
@@ -39,12 +39,12 @@ presskit/
 
 | | |
 |---|---|
-| **App Name** | AastroAstra |
+| **App Name** | AstroAshva |
 | **Tagline** | One who believes. |
 | **Platforms** | Android (live beta), iOS (in development) |
 | **Languages** | English, हिन्दी |
-| **Website** | https://aastroastra.github.io/aastroastra-site/ |
+| **Website** | https://www.astroashva.com/ |
 
 ## Contact
 
-For press inquiries, high-resolution assets, or partnerships: **hello@aastroastra.com**
+For press inquiries, high-resolution assets, or partnerships: **hello@astroashva.com**

@@ -1,6 +1,6 @@
 /* /r/<CODE> referral landing page.
  *
- * GitHub Pages is static, so https://www.aastroastra.com/r/PRYA7K3M has no file
+ * GitHub Pages is static, so https://www.astroashva.com/r/PRYA7K3M has no file
  * of its own. The site's /404.html sees the /r/<CODE> path and replaces it with
  * /r/?c=PRYA7K3M, which serves this page. This script also reads the code from
  * the path itself (/r/PRYA7K3M), ?code= and #PRYA7K3M, so the page works
@@ -14,7 +14,7 @@
 
   var CODE_RE = /^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{6,8}$/;
   var PACKAGE = 'com.avdstudiox.android';
-  var SITE = 'https://www.aastroastra.com';
+  var SITE = 'https://www.astroashva.com';
   var IOS_STORE = 'https://testflight.apple.com/join/HZXJ4Dav';
 
   function normalize(raw) {
@@ -55,6 +55,7 @@
   // Android: an explicit intent for the https invite link, so the app opens even
   // before App Links verification, and Play (with the referrer) otherwise.
   function androidIntentUrl(code) {
+    // Old host on purpose: every build (old and new) lists www.aastroastra.com.
     return 'intent://www.aastroastra.com/r/' + code +
       '#Intent;scheme=https;package=' + PACKAGE +
       ';S.browser_fallback_url=' + encodeURIComponent(playUrl(code)) + ';end';
@@ -74,7 +75,7 @@
   var STRINGS = {
     en: {
       eyebrow: 'Invitation',
-      title: 'Your friend invited you to AastroAstra',
+      title: 'Your friend invited you to AstroAshva',
       lead: 'Get free credits when you join with this invite code.',
       codeLabel: 'Your invite code',
       copy: 'Copy',
@@ -90,11 +91,11 @@
       tfNeed: 'New to TestFlight?',
       tfGet: 'Install TestFlight first',
       fine: 'Credits are for use in the app only. They have no cash value and cannot be transferred. The invite bonus is for new accounts, for a limited time after sign-up.',
-      docTitle: "You're invited · AastroAstra"
+      docTitle: "You're invited · AstroAshva"
     },
     hi: {
       eyebrow: 'आमंत्रण',
-      title: 'आपके मित्र ने आपको AastroAstra पर आमंत्रित किया है',
+      title: 'आपके मित्र ने आपको एस्ट्रोअश्व पर आमंत्रित किया है',
       lead: 'इस आमंत्रण कोड के साथ जुड़ें और मुफ़्त क्रेडिट पाएँ।',
       codeLabel: 'आपका आमंत्रण कोड',
       copy: 'कॉपी करें',
@@ -110,7 +111,7 @@
       tfNeed: 'TestFlight नया है?',
       tfGet: 'पहले TestFlight इंस्टॉल करें',
       fine: 'क्रेडिट केवल ऐप में उपयोग के लिए हैं। इनका कोई नकद मूल्य नहीं है और इन्हें ट्रांसफ़र नहीं किया जा सकता। आमंत्रण बोनस नए खातों के लिए है, साइन-अप के बाद सीमित समय तक।',
-      docTitle: 'आपको आमंत्रण · AastroAstra'
+      docTitle: 'आपको आमंत्रण · एस्ट्रोअश्व'
     }
   };
 

@@ -83,7 +83,7 @@
     '<div class="aa-appbar-in">' +
       '<button type="button" class="aa-appbar-x">&times;</button>' +
       '<span class="aa-appbar-icon" aria-hidden="true"><i></i></span>' +
-      '<span class="aa-appbar-txt"><b>AastroAstra</b><span></span></span>' +
+      '<span class="aa-appbar-txt"><b>AstroAshva</b><span></span></span>' +
       '<a class="aa-appbar-cta" target="_blank" rel="noopener"><small></small><strong></strong></a>' +
     '</div>';
   var cta = bar.querySelector('.aa-appbar-cta');

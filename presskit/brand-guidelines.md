@@ -1,19 +1,19 @@
-# AastroAstra Brand Guidelines
+# AstroAshva Brand Guidelines
 
 **Version 1.0** · July 2026
-**Prepared by** The AastroAstra Team
+**Prepared by** The AstroAshva Team
 
 ---
 
 ## 1. Brand Identity
 
-AastroAstra is a personal Vedic astrology companion. It turns a person's birth details into a living picture of their sky — kundali, numerology, panchang timings, and notifications written for their exact chart by an AI trained on classical texts. The identity is **warm, precise, and quietly cosmic** — traditional wisdom presented with a clean, modern hand.
+AstroAshva is a personal Vedic astrology companion. It turns a person's birth details into a living picture of their sky: kundali, numerology, panchang timings, and notifications written for their exact chart by an AI trained on classical texts. The identity is **warm, precise, and quietly cosmic**: traditional wisdom presented with a clean, modern hand.
 
 ### Brand Essence
-- **Warm** — gold light, never cold or clinical
-- **Cosmic** — the math of the heavens, made personal
-- **Precise** — real charts, real calculations, no vagueness
-- **Believer-first** — *"for the one who believes"*
+- **Warm**: gold light, never cold or clinical
+- **Cosmic**: the math of the heavens, made personal
+- **Precise**: real charts, real calculations, no vagueness
+- **Believer-first**: *"for the one who believes"*
 
 ### Tagline
 > **One who believes.**
@@ -24,10 +24,10 @@ Supporting line (logo lockup): *One Place · Every Ritual · Every Solution.*
 
 ## 2. Logo & App Icon
 
-The **AA monogram** is the primary brand mark — two interlocking golden A's, crowned by a sparkle and grounded by a lotus. It reads as "AastroAstra," as a temple silhouette, and as a star, all at once.
+The **AA monogram** is the primary brand mark: two interlocking golden A's, crowned by a sparkle and grounded by a lotus. It reads as "AstroAshva," as a temple silhouette, and as a star, all at once.
 
-- **Mark**: `logos/aastroastra-logo-mark.png` — the monogram alone (app icon, avatars, favicons)
-- **Full logo**: `logos/aastroastra-logo-full.png` — monogram + "ASTRO ASTRA" wordmark + tagline (headers, print, decks)
+- **Mark**: `logos/astroashva-logo-mark.png`: the monogram alone (app icon, avatars, favicons)
+- **Full logo**: `logos/astroashva-logo-full.png`: monogram + "ASTRO ASHVA" wordmark + tagline (headers, print, decks)
 - **Clear space**: keep a minimum margin equal to the height of one "A" around the mark
 - **Do not** stretch, rotate, recolour arbitrarily, add shadows, or place the gold mark on a busy background
 
@@ -41,7 +41,7 @@ The mark is gold by default. On monochrome (B&W) surfaces it is rendered pure:
 
 ## 3. Colour System
 
-AastroAstra's colour system has three layers: **brand accent**, **theme surfaces**, and **planetary accents**.
+AstroAshva's colour system has three layers: **brand accent**, **theme surfaces**, and **planetary accents**.
 
 ### 3.0 Contrast rules
 
@@ -52,14 +52,14 @@ platforms, asserted by a test on each side:
 |------|-----|-----|
 | Body and placeholder text on its surface | **4.5:1** | WCAG AA; "large" starts at 18.7pt bold, and the tiles label at 14 |
 | The label on an accent fill | **4.5:1** | derived from the fill's luminance, never chosen by hand |
-| A field or interactive border | **3.0:1** | WCAG 1.4.11 — a boundary a person aims at is a UI component |
+| A field or interactive border | **3.0:1** | WCAG 1.4.11: a boundary a person aims at is a UI component |
 | A decorative card outline | **2.0:1** | has to be seen; does not have to shout |
 
 **Gold on a white card is 2.28:1.** It works as a fill behind dark ink and it does
 not work as an outline, an icon, or a selected-state marker carrying meaning on its
 own. Plan accordingly on the light themes.
 
-### 3.1 Brand Accent — Gold
+### 3.1 Brand Accent: Gold
 
 The signature accent is **Gold**, most expressive as a **yellow → orange gradient** used on headings, primary actions, and the active state of controls.
 
@@ -67,16 +67,16 @@ The signature accent is **Gold**, most expressive as a **yellow → orange gradi
 |-------|-----|-------|
 | **Gold** (light) | `#E0A015` | primary accent on white surfaces |
 | **Gold** (dark) | `#F5B93A` | primary accent on dark surfaces |
-| **Gradient — from** | `#FACC15` | yellow |
-| **Gradient — via** | `#FB923C` | orange |
-| **Gradient — to** | `#EAB308` | deep gold |
+| **Gradient: from** | `#FACC15` | yellow |
+| **Gradient: via** | `#FB923C` | orange |
+| **Gradient: to** | `#EAB308` | deep gold |
 
 **Signature gradient:** `linear-gradient(100deg, #FACC15 0%, #FB923C 55%, #EAB308 100%)`
 Use it for the display title, primary CTA fills, and the selected state of pills/toggles.
 
 ### 3.2 Theme Surfaces
 
-AastroAstra ships **four themes** — a **Yellow** and a **Black & White** identity, each in **Light** and **Dark**. Yellow · Light is the default and canonical brand presentation.
+AstroAshva ships **four themes**: a **Yellow** and a **Black & White** identity, each in **Light** and **Dark**. Yellow · Light is the default and canonical brand presentation.
 
 | Theme | Background | Surface | Border | Primary Text | Muted Text | Accent |
 |-------|-----------|---------|--------|--------------|-----------|--------|
@@ -131,13 +131,13 @@ Each graha has a fixed accent, used in charts, planet rows, and dasha timelines:
 > **⚠️ Unresolved as of 29 August 2026.** The table below describes the marketing
 > site and this press kit. Neither app uses it. iOS renders SF Rounded throughout;
 > Android renders Playfair Display for display type, Poppins for labels and Nunito
-> for body. Three type systems exist and no two agree — a decision is needed on
+> for body. Three type systems exist and no two agree: a decision is needed on
 > which one is the brand, after which the other two follow. Until then, treat this
 > section as aspirational rather than descriptive.
 
 | Role | Font | Notes |
 |------|------|-------|
-| **Display / Headings** | **Noto Serif** (700) | the title voice — "One who believes" |
+| **Display / Headings** | **Noto Serif** (700) | the title voice: "One who believes" |
 | **Body / UI** | **Inter** (400–700) | everything functional |
 | **Devanagari** | Noto Serif / Noto Sans Devanagari | full Hindi support |
 
@@ -156,7 +156,7 @@ Each graha has a fixed accent, used in charts, planet rows, and dasha timelines:
 ## 5. Visual Language
 
 ### 5.1 The Cosmos
-The signature backdrop is a **locked orbital system** — faint concentric orbit rings with a soft sun and slowly drifting planets. It sits at very low alpha (very light grey on light themes, light grey on dark) and is theme-matched. Planets **highlight on hover**. It never competes with content.
+The signature backdrop is a **locked orbital system**: faint concentric orbit rings with a soft sun and slowly drifting planets. It sits at very low alpha (very light grey on light themes, light grey on dark) and is theme-matched. Planets **highlight on hover**. It never competes with content.
 
 ### 5.2 Gradient discipline
 The yellow→orange gradient is reserved for **the display title, primary CTAs, and selected control states**. Body surfaces stay flat. Never gradient large background areas.
@@ -200,10 +200,10 @@ Readings are interpretive guidance, never a substitute for professional advice.
 
 ## 8. Platforms
 
-- **Android** — live beta (Kotlin, Jetpack Compose)
-- **iOS** — in development
+- **Android**: live beta (Kotlin, Jetpack Compose)
+- **iOS**: in development
 - Brand colours, gradient, and typography are identical across platforms; four themes everywhere.
 
 ---
 
-*This document is the source of truth for AastroAstra's visual design. When in doubt, reference **Yellow · Light** with the gold gradient as the canonical brand presentation.*
+*This document is the source of truth for AstroAshva's visual design. When in doubt, reference **Yellow · Light** with the gold gradient as the canonical brand presentation.*

@@ -26,7 +26,7 @@ The credits guide now documents Apple consumable IAP, Google Play consumable one
 
 ## Historical implementation notes
 
-# AastroAstra: landing site
+# AstroAshva: landing site
 
 Static marketing site with five light and dark themes. Hosted on GitHub Pages.
 (Superseded 29 Sep 2026: no public APK. See the top of this file.)
@@ -77,7 +77,7 @@ Commit/feature summaries are public; source links require private-repository acc
 
 ## Referral invite links (`/r/<CODE>`) and app links
 
-- `https://www.aastroastra.com/r/<CODE>` has no file of its own (Pages is
+- `https://www.astroashva.com/r/<CODE>` has no file of its own (Pages is
   static). `/404.html` matches `/r/<CODE>` and `location.replace`s to
   `/r/?c=<CODE>` (query string and hash kept), which serves `r/index.html`.
   `r/r.js` reads the code from `?c=`, `?code=`, the `/r/<CODE>` path or the
@@ -86,7 +86,7 @@ Commit/feature summaries are public; source links require private-repository acc
 - The page never shows credit amounts (admin-controlled). Google Play button:
   `details?id=com.avdstudiox.android&referrer=utm_source%3Dreferral%26referral_code%3D<CODE>`
   (Install Referrer). "Open in app": Android `intent://www.aastroastra.com/r/<CODE>`
-  with the Play URL as fallback; iOS `aastroastra://r/<CODE>` (a Universal
+  (the old host on purpose: every build lists it) with the Play URL as fallback; iOS `aastroastra://r/<CODE>` (a Universal
   Link tapped on its own domain stays in Safari). The iOS store button copies
   the code so the app can offer to paste it. `/r/` is `noindex` and disallowed
   in `robots.txt`.
@@ -95,6 +95,8 @@ Commit/feature summaries are public; source links require private-repository acc
   `assetlinks.json` (Play App Signing key + upload key) and the extensionless
   `apple-app-site-association` (served by Pages as `application/octet-stream`;
   Apple's CDN accepts it when it is a 200 over HTTPS without redirects). The
-  apex `aastroastra.com` 301s to `www`, so the apps must associate
-  `www.aastroastra.com`. After deploy, check
-  `https://app-site-association.cdn-apple.com/a/v1/www.aastroastra.com`.
+  apex `astroashva.com` 301s to `www`, so the apps must associate
+  `www.astroashva.com` (new builds). Old builds associate
+  `www.aastroastra.com`, which the separate `aastroastra-legacy` Pages repo
+  keeps serving with identical `.well-known` files. After deploy, check
+  `https://app-site-association.cdn-apple.com/a/v1/www.astroashva.com`.
