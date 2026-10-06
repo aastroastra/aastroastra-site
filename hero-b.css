@@ -1,0 +1,203 @@
+/* Hero variant B, "Navagraha orbit". Loaded only for ?hero=b (see index.html).
+   The current hero is hidden while this one shows. Motion is transform and
+   opacity only, driven by hero-b.js, and stops for prefers-reduced-motion. */
+
+html.hero-b-on .hero { display:none !important; }
+html.hero-b-on .hb { display:grid; }
+
+.hb {
+  /* Graha colours: the apps' planet palette (Android AastroColors), with the
+     pale ones deepened on light themes so a glyph keeps 3:1 on its chip. */
+  --g-su:#E35F00; --g-mo:#5E6D82; --g-ma:#DC2626; --g-me:#16A34A; --g-ju:#B7791F;
+  --g-ve:#B9614F; --g-sa:#6D5FA0; --g-ra:#5F6676; --g-ke:#5D738C;
+  --chip-bg:#FFFFFF; --chip-ring:color-mix(in srgb,var(--fg) 10%,transparent);
+  --orbit:color-mix(in srgb,var(--fg) 13%,transparent);
+  --ring-ink:color-mix(in srgb,var(--fg) 30%,transparent);
+  --dust:var(--fg);
+  --glow:color-mix(in srgb,var(--tint) 22%,transparent);
+  position:relative; max-width:var(--maxw); margin:0 auto;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.08fr); align-items:center;
+  gap:clamp(12px,3vw,48px); padding:clamp(8px,3vh,40px) var(--gutter) clamp(24px,5vh,64px);
+  min-height:min(calc(100svh - 72px), 900px); overflow-x:clip;
+}
+[data-theme$="dark"] .hb {
+  --g-su:#FF7A1A; --g-mo:#BFC9D6; --g-ma:#EF5350; --g-me:#66BB6A; --g-ju:#FFB74D;
+  --g-ve:#E39D8F; --g-sa:#9A8FC9; --g-ra:#8C94A2; --g-ke:#A3B1C2;
+  --chip-bg:#121214; --chip-ring:rgba(255,255,255,.10);
+  --orbit:rgba(255,255,255,.12);
+  --glow:color-mix(in srgb,var(--tint) 20%,transparent);
+}
+/* B&W stays black and white, with the grahas in ink. */
+[data-theme^="mono"] .hb {
+  --g-su:var(--fg); --g-mo:var(--fg); --g-ma:var(--fg); --g-me:var(--fg); --g-ju:var(--fg);
+  --g-ve:var(--fg); --g-sa:var(--fg); --g-ra:var(--fg); --g-ke:var(--fg);
+  --glow:color-mix(in srgb,var(--fg) 9%,transparent);
+}
+
+/* ---------- Left: the words, the badges ---------- */
+.hb-copy { position:relative; z-index:3; display:flex; flex-direction:column; align-items:flex-start; text-align:left; }
+.hb-word, [data-theme] h1.hb-word {
+  font-family:'Noto Serif',Georgia,serif; font-weight:700; text-transform:uppercase; white-space:nowrap;
+  line-height:1; letter-spacing:-.012em; font-size:clamp(40px,4.6vw,76px);
+  margin-left:-.04em;
+  /* Ink in every theme; a light sweep passes across it once on load. */
+  color:var(--fg); -webkit-text-fill-color:transparent;
+  background:linear-gradient(105deg,var(--fg) 0 42%,var(--sweep,var(--tint)) 50%,var(--fg) 58% 100%);
+  background-size:260% 100%; background-position:100% 0;
+  -webkit-background-clip:text; background-clip:text;
+}
+[data-theme$="dark"] .hb-word { --sweep:#FFE7A8; }
+[data-theme^="mono"] .hb-word { --sweep:color-mix(in srgb,var(--fg) 35%,var(--bg)); }
+.hb-tag { margin-top:clamp(10px,1.3vw,18px); font-family:var(--font-heading); font-weight:600; font-size:clamp(20px,2vw,30px); color:var(--fg2); letter-spacing:-.01em; }
+.hb-sub { margin-top:clamp(12px,2vh,20px); max-width:33ch; font-size:clamp(16px,1.45vw,20px); line-height:1.5; color:var(--muted); text-wrap:pretty; }
+html[data-lang="hi"] .hb-tag { letter-spacing:0; }
+html[data-lang="hi"] .hb-sub { max-width:34ch; line-height:1.6; }
+.hb-stores { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:clamp(20px,3.4vh,34px); }
+.hb-note { margin-top:12px; font-size:13px; color:var(--muted); }
+.hb-note a { color:var(--fg); text-underline-offset:3px; }
+
+/* ---------- Right: the sky ---------- */
+.hb-stage {
+  --W:min(660px, 46vw, calc(100svh - 150px));
+  position:relative; z-index:1; width:var(--W); height:var(--W); justify-self:center;
+  perspective:1100px; touch-action:manipulation; -webkit-tap-highlight-color:transparent;
+}
+.hb-tilt { position:absolute; inset:0; transform-style:preserve-3d; will-change:transform; }
+.hb-dust, .hb-ring, .hb-orbits, .hb-glow, .hb-layer { position:absolute; inset:0; width:100%; height:100%; }
+.hb-dust, .hb-ring, .hb-orbits, .hb-glow { pointer-events:none; }
+.hb-dust { overflow:visible; }
+.hb-dust circle { fill:var(--dust); }
+.hb-dust .tw1 { animation:hb-tw 5.5s ease-in-out infinite; }
+.hb-dust .tw2 { animation:hb-tw 7.5s ease-in-out -3s infinite; }
+@keyframes hb-tw { 0%,100% { opacity:.25; } 50% { opacity:1; } }
+.hb-glow { border-radius:50%; background:radial-gradient(closest-side,var(--glow),transparent 72%); transform:scale(.8); }
+.hb-ring { overflow:visible; animation:hb-spin 240s linear infinite; }
+.hb-ring .rc { fill:none; stroke:var(--ring-ink); stroke-width:.22; }
+.hb-ring .rc.thin { stroke-width:.12; }
+.hb-ring .tick { stroke:var(--ring-ink); stroke-width:.2; }
+.hb-ring .div { stroke:var(--ring-ink); stroke-width:.14; }
+.hb-ring text { fill:var(--fg2); opacity:.55; font:6px/1 'Noto Sans Symbols 2','Segoe UI Symbol','Apple Symbols',sans-serif; text-anchor:middle; dominant-baseline:central; }
+.hb-ring .glyph path { fill:none; stroke:var(--fg2); stroke-width:.55; stroke-linecap:round; stroke-linejoin:round; opacity:.6; }
+@keyframes hb-spin { to { transform:rotate(360deg); } }
+.hb-orbits { overflow:visible; }
+.hb-orbits ellipse, .hb-orbits path { fill:none; stroke:var(--orbit); stroke-width:1; vector-effect:non-scaling-stroke; transition:stroke .3s; }
+.hb-orbits .nodes { stroke-dasharray:2 5; }
+.hb-orbits .hot { stroke:color-mix(in srgb,var(--c) 60%,transparent); }
+.hb-front { z-index:3; }
+.hb-front ellipse, .hb-front path { opacity:.6; }
+
+/* Phone in the middle; screens crossfade. */
+.hb-layer { z-index:2; display:flex; align-items:center; justify-content:center; pointer-events:none; }
+.hb-phone {
+  --pw:calc(var(--W) * .34);
+  position:relative; width:var(--pw); padding:calc(var(--pw) * .032); border-radius:calc(var(--pw) * .16);
+  background:#0B0B0C; pointer-events:auto;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08) inset, 0 40px 80px -28px rgba(0,0,0,.45), 0 0 0 1px var(--line);
+  transition:opacity .6s var(--ease);
+}
+[data-theme$="dark"] .hb-phone { box-shadow:0 0 0 1px #3a3a3a, 0 40px 90px -30px rgba(0,0,0,.8), 0 0 60px -10px var(--glow); }
+.hb-screen { position:relative; aspect-ratio:540/1110; border-radius:calc(var(--pw) * .13); overflow:hidden; background:var(--bg); isolation:isolate; }
+.hb-screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; opacity:0; transition:opacity 1s ease; }
+.hb-screen img.on { opacity:1; }
+
+/* The nine grahas. Each is a button so it can be focused and tapped. */
+.hb-grahas { pointer-events:none; }
+.hb-g {
+  --s:clamp(28px, calc(var(--W) * .062), 40px);
+  position:absolute; left:0; top:0; width:var(--s); height:var(--s); margin:calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  border-radius:50%; border:none; padding:0; cursor:pointer; pointer-events:auto;
+  background:color-mix(in srgb,var(--c) 11%,var(--chip-bg)); color:var(--c);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 30%,var(--chip-ring)), 0 6px 16px -8px rgba(0,0,0,.35);
+  display:grid; place-items:center; will-change:transform,opacity;
+}
+.hb-g svg { width:62%; height:62%; fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; overflow:visible; }
+.hb-g svg .f { fill:currentColor; stroke:none; }
+.hb-g::after { content:''; position:absolute; inset:-5px; border-radius:50%; box-shadow:0 0 0 1.5px var(--c); opacity:0; transform:scale(.85); transition:opacity .25s, transform .25s var(--ease); }
+.hb-g:hover::after, .hb-g.on::after, .hb-g:focus-visible::after { opacity:.7; transform:scale(1); }
+.hb-g:focus-visible { outline:none; }
+[data-theme$="dark"] .hb-g {
+  background:color-mix(in srgb,var(--c) 16%,var(--chip-bg));
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--c) 45%,transparent), 0 0 18px -2px color-mix(in srgb,var(--c) 55%,transparent);
+}
+[data-theme="mono-dark"] .hb-g { box-shadow:0 0 0 1px rgba(255,255,255,.4), 0 0 16px -4px rgba(255,255,255,.45); }
+.hb-trail { position:absolute; left:0; top:0; width:5px; height:5px; margin:-2.5px 0 0 -2.5px; border-radius:50%; background:var(--c); pointer-events:none; will-change:transform,opacity; }
+[data-theme$="dark"] .hb-trail { box-shadow:0 0 6px var(--c); }
+
+/* The chart moment: the grahas settle into a North Indian chart. */
+.hb-chart {
+  --cw:calc(var(--W) * .62);
+  position:absolute; left:50%; top:50%; width:var(--cw); height:var(--cw); margin:calc(var(--cw) / -2) 0 0 calc(var(--cw) / -2);
+  z-index:3; opacity:0; pointer-events:none; transform:scale(.94);
+  will-change:opacity,transform;
+}
+.hb-chart::before { content:''; position:absolute; inset:-6%; border-radius:22px; background:color-mix(in srgb,var(--bg) 82%,transparent); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); box-shadow:0 0 0 1px var(--line), 0 30px 60px -30px rgba(0,0,0,.35); }
+.hb-chart svg { position:relative; width:100%; height:100%; overflow:visible; }
+.hb-chart rect, .hb-chart path { fill:none; stroke:var(--tint); stroke-width:.7; vector-effect:non-scaling-stroke; stroke-linejoin:round; }
+[data-theme$="light"] .hb-chart rect, [data-theme$="light"] .hb-chart path { stroke:color-mix(in srgb,var(--tint) 80%,var(--fg)); }
+.hb-chart path { stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.3s var(--ease); }
+.hb-chart.draw path { stroke-dashoffset:0; }
+.hb-cap {
+  position:absolute; left:50%; top:calc(100% + 7%); transform:translateX(-50%); width:max-content; max-width:calc(var(--W) * .9);
+  text-align:center; font-family:var(--font-heading); font-weight:600; font-size:clamp(13px, calc(var(--W) * .027), 17px); color:var(--fg);
+}
+
+/* Tooltip */
+.hb-tip {
+  position:absolute; left:0; top:0; z-index:6; width:max-content; max-width:min(250px, 72vw);
+  padding:10px 13px 11px; border-radius:14px; background:var(--card); color:var(--fg);
+  box-shadow:0 0 0 1px var(--line), 0 18px 40px -18px rgba(0,0,0,.4);
+  font-size:13.5px; line-height:1.4; pointer-events:none;
+  opacity:0; transition:opacity .18s ease;
+}
+.hb-tip.show { opacity:1; }
+.hb-tip b { display:flex; align-items:center; gap:7px; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--c); margin-bottom:3px; }
+html[data-lang="hi"] .hb-tip b { letter-spacing:.02em; text-transform:none; font-size:13px; }
+.hb-tip b i { font-style:normal; color:var(--muted); font-weight:500; letter-spacing:.02em; }
+[data-theme$="dark"] .hb-tip { box-shadow:0 0 0 1px #2c2c2c, 0 18px 40px -16px rgba(0,0,0,.8); }
+
+/* ---------- Entrance: words first, then the ring, grahas, phone ---------- */
+@media (prefers-reduced-motion:no-preference) {
+  .hb.pre .hb-copy > * { opacity:0; transform:translateY(14px); }
+  .hb.go .hb-copy > * { animation:hb-up .9s var(--ease) both; }
+  .hb.go .hb-copy > :nth-child(2) { animation-delay:.08s; }
+  .hb.go .hb-copy > :nth-child(3) { animation-delay:.16s; }
+  .hb.go .hb-copy > :nth-child(4) { animation-delay:.26s; }
+  .hb.go .hb-copy > :nth-child(5) { animation-delay:.34s; }
+  .hb.go .hb-word { animation:hb-up .9s var(--ease) both, hb-sweep 2.2s cubic-bezier(.45,0,.25,1) .55s both; }
+  .hb.pre .hb-ring, .hb.pre .hb-glow, .hb.pre .hb-orbits, .hb.pre .hb-phone, .hb.pre .hb-dust { opacity:0; }
+  .hb.go .hb-dust { animation:hb-fade 2s ease .2s both; }
+  .hb.go .hb-glow { animation:hb-fade 1.6s ease .3s both; }
+  .hb.go .hb-ring { animation:hb-ring-in 1.8s var(--ease) .15s both, hb-spin 240s linear 1.95s infinite; }
+  .hb.go .hb-orbits { animation:hb-fade 1.2s ease .7s both; }
+  .hb.go .hb-phone { animation:hb-phone-in 1.1s var(--ease) 1.25s both; }
+}
+@keyframes hb-up { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+@keyframes hb-fade { from { opacity:0; } to { opacity:1; } }
+@keyframes hb-ring-in { from { opacity:0; transform:rotate(-40deg) scale(.9); } to { opacity:1; transform:none; } }
+@keyframes hb-phone-in { from { opacity:0; transform:translateY(26px) scale(.95); } to { opacity:1; transform:none; } }
+@keyframes hb-sweep { from { background-position:100% 0; } to { background-position:0 0; } }
+
+/* Off screen or hidden tab: CSS motion stops too. */
+.hb.paused *, .hb.paused { animation-play-state:paused !important; }
+@media (prefers-reduced-motion:reduce) {
+  .hb-ring, .hb-dust circle { animation:none !important; }
+  .hb-screen img { transition:none; }
+}
+
+/* ---------- Narrow screens: words and badges first, the sky below ---------- */
+@media (max-width:980px) and (min-width:769px) {
+  .hb-word, [data-theme] h1.hb-word { font-size:clamp(40px,6.2vw,70px); }
+}
+@media (max-width:768px) {
+  .hb { grid-template-columns:minmax(0,1fr); min-height:0; padding-top:clamp(18px,4vh,40px); gap:clamp(4px,2vh,20px); }
+  .hb-copy { align-items:center; text-align:center; }
+  .hb-word, [data-theme] h1.hb-word { font-size:clamp(34px,10.6vw,72px); margin-left:0; }
+  .hb-sub { max-width:32ch; }
+  .hb-stores { justify-content:center; }
+  .hb-stage { --W:min(calc(100vw - 2 * var(--gutter)), 460px); margin-top:4px; }
+  .hb-tip { font-size:13px; }
+}
+@media (max-width:380px) {
+  .hb .play-badge img { height:50px; }
+  .hb .store-badge { height:50px; min-width:0; padding:0 14px; }
+}

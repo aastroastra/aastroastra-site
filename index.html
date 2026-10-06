@@ -133,6 +133,50 @@
 </header>
 
 <main>
+<!-- Hero variant B ("Navagraha orbit"): preview with ?hero=b, back with ?hero=a.
+     Default visitors never load hero-b.css or hero-b.js and see the hero below. -->
+<script>
+  (function(){
+    var v=null, d=document.documentElement;
+    try{ v=new URLSearchParams(location.search).get('hero'); }catch(e){}
+    try{ if(v==='b') localStorage.setItem('heroVariant','b'); else if(v==='a') localStorage.removeItem('heroVariant'); else v=localStorage.getItem('heroVariant'); }catch(e){}
+    if(v!=='b') return;
+    d.classList.add('hero-b-on');
+    var c=document.createElement('link'); c.rel='stylesheet'; c.href='/hero-b.css?v=1'; c.setAttribute('blocking','render'); document.head.appendChild(c);
+    var s=document.createElement('script'); s.src='/hero-b.js?v=1'; s.defer=true; document.head.appendChild(s);
+  })();
+</script>
+<section class="hb" id="hero-b" aria-labelledby="hb-title" hidden>
+  <div class="hb-copy">
+    <h1 class="hb-word" id="hb-title"><span aria-hidden="true">ASTROASHVA</span><span class="sr-only">AstroAshva</span></h1>
+    <p class="hb-tag"><span lang="en">One who believes</span><span lang="hi">विश्वास करने वाले के लिए</span></p>
+    <p class="hb-sub"><span lang="en">Your real kundali, computed and explained. Ask why, and it shows its working.</span><span lang="hi">आपकी असली कुंडली, गणना से बनी और समझाई हुई। “क्यों?” पूछिए, और यह अपना पूरा हिसाब दिखाती है।</span></p>
+    <div class="hb-stores">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.avdstudiox.android" target="_blank" rel="noopener" data-store="android" data-channel="play-hero-b"><img lang="en" src="./img/play-badge-en-v2.png" width="564" height="168" alt="Get it on Google Play" loading="lazy"><img lang="hi" src="./img/play-badge-hi-v2.png" width="646" height="192" alt="इसे Google Play पर पाएं" loading="lazy"></a>
+      <a class="store-badge" href="https://testflight.apple.com/join/HZXJ4Dav" target="_blank" rel="noopener" data-store="ios" data-channel="testflight-hero-b" title="iPhone beta on Apple TestFlight"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.6"></rect><path d="M10.5 18.5h3"></path></svg><span><small><span lang="en">iPhone beta</span><span lang="hi">आईफ़ोन बीटा</span></small><b>TestFlight</b></span></a>
+    </div>
+    <p class="hb-note"><span lang="en">Free to install, first Kundali free. Some features use credits: <a href="./pricing/">see pricing</a>.</span><span lang="hi">इंस्टॉल करना मुफ़्त, पहली कुंडली मुफ़्त। कुछ फ़ीचर क्रेडिट से चलते हैं: <a href="./pricing/">कीमतें देखें</a>।</span></p>
+  </div>
+  <div class="hb-stage" data-hb-stage>
+    <div class="hb-tilt" data-hb-tilt>
+      <svg class="hb-dust" data-hb-dust aria-hidden="true"></svg>
+      <div class="hb-glow" aria-hidden="true"></div>
+      <svg class="hb-ring" data-hb-ring viewBox="-100 -100 200 200" aria-hidden="true"></svg>
+      <svg class="hb-orbits hb-back" data-hb-back aria-hidden="true"></svg>
+      <div class="hb-layer" data-hb-layer>
+        <div class="hb-phone" data-hb-phone><div class="hb-screen" data-hb-screen role="img" aria-label="Real AstroAshva app screens"></div></div>
+      </div>
+      <svg class="hb-orbits hb-front" data-hb-front aria-hidden="true"></svg>
+      <div class="hb-chart" data-hb-chart aria-hidden="true">
+        <svg viewBox="0 0 100 100"><rect x="1" y="1" width="98" height="98" rx="2"/><path d="M1 1L99 99M99 1L1 99M50 1L99 50L50 99L1 50Z" pathLength="1"/></svg>
+        <p class="hb-cap"><span lang="en">Your kundali is the sky at the moment you were born</span><span lang="hi">आपकी कुंडली, आपके जन्म के पल का आकाश है</span></p>
+      </div>
+      <div class="hb-grahas" data-hb-grahas role="list" aria-label="The nine grahas"></div>
+      <div class="hb-tip" data-hb-tip role="tooltip" id="hb-tip" hidden></div>
+    </div>
+  </div>
+</section>
+
 <!-- 1. Hero -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-top">
