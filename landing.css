@@ -115,7 +115,7 @@ html[data-lang="hi"] .tagline { letter-spacing:0; }
 .hero-note a, .dl-note a { color:var(--fg); text-underline-offset:3px; }
 
 /* ---------- 2. Scroll story ---------- */
-.story { position:relative; height:400vh; margin-top:clamp(64px,9vw,120px); }
+.story { position:relative; height:600vh; margin-top:clamp(64px,9vw,120px); }
 .story-pin { position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; }
 .mantra { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-evenly; pointer-events:none; padding:3vh 0; }
 .m-row {
@@ -127,7 +127,6 @@ html[data-lang="hi"] .tagline { letter-spacing:0; }
 [data-theme="yellow-light"] .m-row { color:color-mix(in srgb,var(--tint) 16%,transparent); }
 [data-theme="white-light"] .m-row { color:color-mix(in srgb,var(--tint) 12%,transparent); }
 .m-row span { padding-right:.6em; }
-.story-eyebrow { position:relative; z-index:2; margin-bottom:18px; }
 .phone {
   --pw:min(clamp(214px,21vw,292px), calc((100svh - 230px) * 540 / 1110));
   position:relative; z-index:2; width:var(--pw); padding:9px; border-radius:calc(var(--pw) * .16);
@@ -136,14 +135,18 @@ html[data-lang="hi"] .tagline { letter-spacing:0; }
 .phone .screen { position:relative; aspect-ratio:540/1110; border-radius:calc(var(--pw) * .13); overflow:hidden; background:#fff; isolation:isolate; }
 .phone .screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; will-change:transform,opacity; }
 .story .phone { --pw:min(clamp(200px,20vw,300px), calc((100svh - 250px) * 540 / 1110)); }
-/* Two phones, staggered for depth. Inside each, the screens sit side by side
-   on a reel that slides sideways, so two screenshots never stack. */
+/* Two phones, staggered for depth. Inside each, the screens are stacked and
+   the current one fades out before the next fades in, so a phone never shows
+   two screens at once. */
 .duo { position:relative; z-index:2; display:flex; align-items:flex-start; justify-content:center; gap:clamp(22px,4vw,64px); }
 .pw { display:flex; flex-direction:column; align-items:center; }
 .pw.a { transform:translate3d(0,-18px,0); }
 .pw.b { transform:translate3d(0,26px,0); }
-.story .screen .reel { position:absolute; inset:0; display:flex; will-change:transform; }
-.story .screen .sl { position:relative; flex:none; width:100%; height:100%; overflow:hidden; }
+.story .screen .reel { position:absolute; inset:0; }
+.story .screen .sl { position:absolute; inset:0; overflow:hidden; opacity:0; will-change:opacity; }
+.story .screen .sl:first-child { opacity:1; }
+.story .phone .screen { background:#FBF7EE; }
+[data-theme$="dark"] .story .phone .screen { background:#0B0B0C; }
 /* Hide each capture's own status bar; the frame draws exactly one. */
 .story .screen .sl img { position:absolute; left:0; top:-5.4%; width:100%; height:105.4%; object-fit:cover; object-position:top; }
 .sbar { position:absolute; z-index:2; top:0; left:0; right:0; height:5.4%; display:flex; align-items:center; justify-content:space-between; padding:0 9% 0 10%;
@@ -163,7 +166,7 @@ html[data-lang="hi"] .tagline { letter-spacing:0; }
 .story-bar b::after { content:""; position:absolute; inset:0; background:var(--tint); transform:scaleY(var(--f,0)); transform-origin:top; }
 .story-static { display:none; }
 @media (max-width:760px) {
-  .story { height:330vh; }
+  .story { height:480vh; }
   .story .phone { --pw:min(41vw, calc((100svh - 300px) * 540 / 1110)); padding:6px; }
   .duo { gap:14px; }
   .pw.a { transform:translate3d(0,-12px,0); }

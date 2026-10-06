@@ -49,7 +49,7 @@
      visitor never downloads the English set first. */
   // Dark themes show dark captures where one exists (Yellow Dark: yd,
   // B&W Dark: md). Screens without a dark capture keep the light one.
-  var DARK = { '01-dashboard': 1, '12-kundali-hero': 1, '13-kundali-chart': 1, '05-multimatch-results': 1, '23-panchang': 1 };
+  var DARK = {'01-dashboard': 1, '12-kundali-hero': 1, '13-kundali-chart': 1, '09-match-score': 1, '10-match-koota': 1, '05-multimatch-results': 1, '07n-numerology': 1, '15-chat-answer': 1, '22-horoscope-daily': 1, '20-palm-takeaways': 1, '16-face-hero': 1, '23-panchang': 1, '30-pdf-report': 1};
   function variant() {
     var t = root.getAttribute('data-theme') || '';
     return t === 'yellow-dark' ? 'yd' : t === 'mono-dark' ? 'md' : '';
@@ -171,7 +171,7 @@
   if (story && !reduce) {
     var rows = Array.prototype.slice.call(story.querySelectorAll('.m-row'));
     var phones = Array.prototype.slice.call(story.querySelectorAll('.pw')).map(function (pw) {
-      return { reel: pw.querySelector('.reel'), caps: Array.prototype.slice.call(pw.querySelectorAll('.cap')), on: 0 };
+      return { slides: Array.prototype.slice.call(pw.querySelectorAll('.sl')), caps: Array.prototype.slice.call(pw.querySelectorAll('.cap')), on: 0 };
     });
     var bars = Array.prototype.slice.call(story.querySelectorAll('.story-bar b'));
     var N = phones.length ? phones[0].caps.length : 1, rowW = [], vw = 0, vh = 0, queued = false;
@@ -180,12 +180,12 @@
       rowW = rows.map(function (r) { return r.scrollWidth; });
       frame();
     };
-    // Each step holds still for most of its scroll, then both reels slide one
-    // screen sideways; the second phone follows a beat later.
+    // Each step holds still for most of its scroll, then the next screen
+    // fades in as the current one fades out; the second phone follows a beat later.
     var stepAt = function (u, lag) {
       var base = Math.min(Math.floor(u), N - 1), frac = u - base;
       if (base >= N - 1) return N - 1;
-      return base + ease((frac - 0.32 - lag) / 0.36);
+      return base + ease((frac - 0.4 - lag) / 0.18);
     };
     var frame = function () {
       queued = false;
@@ -201,10 +201,19 @@
         row.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)';
       });
       var u = clamp(p * N - 0.5, 0, N - 1);
+      // Captions change together, on the second phone's beat, so the left
+      // caption is never a step ahead of the right one.
+      var capNow = Math.round(stepAt(u, (phones.length - 1) * 0.08));
       phones.forEach(function (ph, k) {
         var f = stepAt(u, k * 0.08);
-        ph.reel.style.transform = 'translate3d(' + (-f * 100).toFixed(3) + '%,0,0)';
-        var now = Math.round(f);
+        var cur = Math.floor(f), mix = f - cur;
+        ph.slides.forEach(function (sl, i) {
+          // Out, then in: the current screen fades away before the next one
+          // appears, so two screens never overlap.
+          var o = i === cur ? clamp(1 - 2 * mix, 0, 1) : i === cur + 1 ? clamp(2 * mix - 1, 0, 1) : 0;
+          sl.style.opacity = o.toFixed(3);
+        });
+        var now = capNow;
         if (now !== ph.on) { ph.caps[ph.on].classList.remove('on'); ph.caps[now].classList.add('on'); ph.on = now; }
       });
       bars.forEach(function (b, k) { b.style.setProperty('--f', clamp(p * N - k, 0, 1).toFixed(3)); });
