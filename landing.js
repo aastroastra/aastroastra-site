@@ -170,19 +170,77 @@
     size();
   }
 
-  /* ---------- AshvaAI steps: the sticky phone follows the step in view ---------- */
-  var aiSteps = Array.prototype.slice.call(document.querySelectorAll('.ai-step'));
-  var aiShots = Array.prototype.slice.call(document.querySelectorAll('.ai-phone .screen img'));
-  if (aiSteps.length && 'IntersectionObserver' in window) {
-    var aio = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var k = +e.target.getAttribute('data-ai');
-        aiSteps.forEach(function (s, i) { s.classList.toggle('on', i === k); });
-        aiShots.forEach(function (s, i) { s.classList.toggle('on', i === k); });
+  /* ---------- AshvaAI illustration: plays once when it comes into view ---------- */
+  var demo = document.querySelector('[data-demo]');
+  if (demo) {
+    var stage = demo.querySelector('.stage');
+    var flows = demo.querySelector('.flows');
+    var stepLis = Array.prototype.slice.call(demo.querySelectorAll('.demo-steps li'));
+    var timers = [];
+    var setStep = function (n) {
+      for (var k = 1; k <= 5; k++) demo.classList.toggle('s' + k, k <= n);
+      var cur = Math.min(n, 4);
+      stepLis.forEach(function (li) {
+        var st = +li.getAttribute('data-st');
+        li.classList.toggle('on', st <= cur);
+        li.classList.toggle('cur', st === cur);
       });
-    }, { rootMargin: '-42% 0px -42% 0px' });
-    aiSteps.forEach(function (s) { aio.observe(s); });
+    };
+    // Position inside the stage, ignoring transforms (the cards animate in).
+    var box = function (el) {
+      var x = 0, y = 0, e = el;
+      while (e && e !== stage) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
+      return { x: x, y: y, w: el.offsetWidth, h: el.offsetHeight };
+    };
+    var draw = function () {
+      var W = stage.clientWidth, H = stage.clientHeight;
+      flows.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      var people = demo.querySelectorAll('.person'), charts = demo.querySelectorAll('.kc');
+      var node = box(demo.querySelector('.node')), ca = box(demo.querySelector('.ca'));
+      var across = box(charts[0]).x > box(people[0]).x + box(people[0]).w - 4;
+      var d = [];
+      var link = function (a, b, cls) {
+        var p, q, c;
+        if (across) {
+          p = [a.x + a.w, a.y + a.h / 2]; q = [b.x, b.y + b.h / 2]; c = (q[0] - p[0]) / 2;
+          d.push('<path class="' + cls + '" pathLength="1" d="M' + p[0] + ' ' + p[1] + 'C' + (p[0] + c) + ' ' + p[1] + ' ' + (q[0] - c) + ' ' + q[1] + ' ' + q[0] + ' ' + q[1] + '"/>');
+        } else {
+          p = [a.x + a.w / 2, a.y + a.h]; q = [b.x + b.w / 2, b.y]; c = (q[1] - p[1]) / 2;
+          d.push('<path class="' + cls + '" pathLength="1" d="M' + p[0] + ' ' + p[1] + 'C' + p[0] + ' ' + (p[1] + c) + ' ' + q[0] + ' ' + (q[1] - c) + ' ' + q[0] + ' ' + q[1] + '"/>');
+        }
+      };
+      for (var i = 0; i < people.length; i++) {
+        var pc = box(people[i]), kc = box(charts[i].querySelector('.kcg'));
+        link(pc, kc, 'f1');
+        var kw = box(charts[i]);
+        link(kw, node, 'f2');
+        link(kw, node, 'pulse');
+      }
+      link(node, ca, 'f3');
+      flows.innerHTML = d.join('');
+    };
+    var play = function () {
+      timers.forEach(clearTimeout); timers = [];
+      demo.classList.remove('done');
+      setStep(0);
+      [[200, 1], [1700, 2], [3700, 3], [5600, 4], [6500, 5]].forEach(function (t) {
+        timers.push(setTimeout(function () { setStep(t[1]); }, t[0]));
+      });
+      timers.push(setTimeout(function () { demo.classList.add('done'); }, 8600));
+    };
+    draw();
+    if (window.ResizeObserver) new ResizeObserver(draw).observe(stage); else window.addEventListener('resize', draw);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.addEventListener('click', function () { requestAnimationFrame(draw); }); });
+    demo.querySelector('[data-replay]').addEventListener('click', play);
+    if (reduce || !('IntersectionObserver' in window)) {
+      setStep(5); demo.classList.add('done');
+    } else {
+      var dio = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { dio.disconnect(); play(); }
+      }, { threshold: 0.3 });
+      dio.observe(stage);
+    }
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -223,21 +281,41 @@
     }).catch(function () {});
   }
 
-  /* ---------- Install counts (stats.json), shown only once Android installs exist ---------- */
+  /* ---------- Install counts (stats.json, written by update-stats.py) ----------
+     Real numbers only: Android = Play Console "Total User Installs",
+     iPhone = TestFlight testers with the beta installed. The hero line shows
+     the total only when BOTH are known, so a missing source never shrinks it. */
   var statsEl = document.querySelector('[data-stats]');
+  var heroStat = document.querySelector('[data-dl-stat]');
   function human(n) { return n < 1000 ? String(n) : (Math.round(n / 100) / 10) + 'k'; }
-  if (statsEl && window.fetch) {
+  function floorNice(n) {
+    if (n < 100) return String(n);
+    var p = Math.pow(10, String(n).length - 2);
+    return human(Math.floor(n / p) * p) + '+';
+  }
+  function bi(parent, en, hi) {
+    var e = document.createElement('span'); e.lang = 'en'; e.textContent = en;
+    var h = document.createElement('span'); h.lang = 'hi'; h.textContent = hi;
+    parent.appendChild(e); parent.appendChild(h);
+  }
+  if ((statsEl || heroStat) && window.fetch) {
     fetch(SUPA + 'stats.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (s) {
-      if (!s || s.android_installs == null) return;
-      var items = [[s.android_installs, 'Android installs', 'एंड्रॉइड इंस्टॉल']];
-      if (s.ios_installs != null) items.push([s.ios_installs, 'iPhone installs', 'आईफ़ोन इंस्टॉल']);
+      if (!s) return;
+      var a = s.android_installs, i = s.ios_installs;
+      if (heroStat && typeof a === 'number' && typeof i === 'number' && a + i > 0) {
+        var b = document.createElement('b'); b.textContent = floorNice(a + i);
+        heroStat.appendChild(b); heroStat.appendChild(document.createTextNode(' '));
+        bi(heroStat, 'downloads on Android and iOS', 'डाउनलोड, एंड्रॉइड और iOS पर');
+        heroStat.hidden = false;
+      }
+      if (!statsEl || a == null) return;
+      var items = [[a, 'Android installs', 'एंड्रॉइड इंस्टॉल']];
+      if (i != null) items.push([i, 'iPhone installs', 'आईफ़ोन इंस्टॉल']);
       items.forEach(function (x) {
         var d = document.createElement('div');
         var nEl = document.createElement('div'); nEl.className = 'n'; nEl.textContent = human(+x[0]);
         var l = document.createElement('div'); l.className = 'l';
-        var en = document.createElement('span'); en.lang = 'en'; en.textContent = x[1];
-        var hi = document.createElement('span'); hi.lang = 'hi'; hi.textContent = x[2];
-        l.appendChild(en); l.appendChild(hi); d.appendChild(nEl); d.appendChild(l); statsEl.appendChild(d);
+        bi(l, x[1], x[2]); d.appendChild(nEl); d.appendChild(l); statsEl.appendChild(d);
       });
       statsEl.hidden = false;
     }).catch(function () {});
