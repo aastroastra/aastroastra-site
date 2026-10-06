@@ -1,8 +1,8 @@
 # Shared iOS and Android functionality rules
 
 Canonical rules: https://github.com/aastroastra/aastroastra-site/blob/main/differences/PARITY_RULES.md
-Live comparison: https://www.astroashva.com/differences/
-Machine-readable endpoint: https://www.astroashva.com/differences/data.json
+Live comparison: https://www.aastroastra.com/differences/
+Machine-readable endpoint: https://www.aastroastra.com/differences/data.json
 
 ## One feature contract
 

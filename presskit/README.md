@@ -43,8 +43,8 @@ presskit/
 | **Tagline** | One who believes. |
 | **Platforms** | Android (live beta), iOS (in development) |
 | **Languages** | English, हिन्दी |
-| **Website** | https://www.astroashva.com/ |
+| **Website** | https://www.aastroastra.com/ |
 
 ## Contact
 
-For press inquiries, high-resolution assets, or partnerships: **hello@astroashva.com**
+For press inquiries, high-resolution assets, or partnerships: **hello@aastroastra.com**

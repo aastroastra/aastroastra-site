@@ -1,6 +1,6 @@
 /* /r/<CODE> referral landing page.
  *
- * GitHub Pages is static, so https://www.astroashva.com/r/PRYA7K3M has no file
+ * GitHub Pages is static, so https://www.aastroastra.com/r/PRYA7K3M has no file
  * of its own. The site's /404.html sees the /r/<CODE> path and replaces it with
  * /r/?c=PRYA7K3M, which serves this page. This script also reads the code from
  * the path itself (/r/PRYA7K3M), ?code= and #PRYA7K3M, so the page works
@@ -14,7 +14,7 @@
 
   var CODE_RE = /^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{6,8}$/;
   var PACKAGE = 'com.avdstudiox.android';
-  var SITE = 'https://www.astroashva.com';
+  var SITE = 'https://www.aastroastra.com';
   var IOS_STORE = 'https://testflight.apple.com/join/HZXJ4Dav';
 
   function normalize(raw) {

@@ -18,4 +18,4 @@ Disallow: /ads-hindi/
 Disallow: /opendesign/
 Disallow: /pdf-reports/
 
-Sitemap: https://www.astroashva.com/sitemap.xml
+Sitemap: https://www.aastroastra.com/sitemap.xml

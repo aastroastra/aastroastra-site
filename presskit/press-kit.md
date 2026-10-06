@@ -14,7 +14,7 @@ Everything needed for press coverage, store listings, and partnership materials.
 | **Platforms** | Android (live beta) · iOS (in development) |
 | **Languages** | English, हिन्दी (Hindi) |
 | **Pricing** | Free beta |
-| **Website** | https://www.astroashva.com/ |
+| **Website** | https://www.aastroastra.com/ |
 
 ---
 
@@ -86,4 +86,4 @@ presskit/
 
 ## Contact
 
-For press, high-resolution assets, or partnership requests: **hello@astroashva.com**
+For press, high-resolution assets, or partnership requests: **hello@aastroastra.com**

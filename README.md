@@ -77,7 +77,7 @@ Commit/feature summaries are public; source links require private-repository acc
 
 ## Referral invite links (`/r/<CODE>`) and app links
 
-- `https://www.astroashva.com/r/<CODE>` has no file of its own (Pages is
+- `https://www.aastroastra.com/r/<CODE>` has no file of its own (Pages is
   static). `/404.html` matches `/r/<CODE>` and `location.replace`s to
   `/r/?c=<CODE>` (query string and hash kept), which serves `r/index.html`.
   `r/r.js` reads the code from `?c=`, `?code=`, the `/r/<CODE>` path or the
@@ -96,7 +96,7 @@ Commit/feature summaries are public; source links require private-repository acc
   `apple-app-site-association` (served by Pages as `application/octet-stream`;
   Apple's CDN accepts it when it is a 200 over HTTPS without redirects). The
   apex `astroashva.com` 301s to `www`, so the apps must associate
-  `www.astroashva.com` (new builds). Old builds associate
+  `www.aastroastra.com` (new builds). Old builds associate
   `www.aastroastra.com`, which the separate `aastroastra-legacy` Pages repo
   keeps serving with identical `.well-known` files. After deploy, check
-  `https://app-site-association.cdn-apple.com/a/v1/www.astroashva.com`.
+  `https://app-site-association.cdn-apple.com/a/v1/www.aastroastra.com`.
