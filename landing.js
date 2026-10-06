@@ -58,13 +58,14 @@
     var v = variant();
     document.querySelectorAll('img[data-shot]').forEach(function (img) {
       var name = img.getAttribute('data-shot');
-      // data-dev="ios": the iPhone captures, in the same language as the page.
-      var ios = img.getAttribute('data-dev') === 'ios';
-      var base = 'shots/landing/' + lang + (ios ? '-ios' : '') + '/' + (v && (ios || DARK[name]) ? v + '/' : '') + name;
+      // data-dev ("and" or "ios"): the scroll story's own Android and iPhone
+      // captures, in the page language; every theme has its own set there.
+      var dev = img.getAttribute('data-dev');
+      var base = 'shots/landing/' + lang + (dev ? '-' + dev : '') + '/' + (v && (dev || DARK[name]) ? v + '/' : '') + name;
       if (img.getAttribute('data-base') === base) return;
       img.setAttribute('data-base', base);
       var sl = img.parentNode;
-      if (sl.classList.contains('sl')) sl.classList.toggle('dk', !!(v && (ios || DARK[name])));
+      if (sl.classList.contains('sl')) sl.classList.toggle('dk', !!(v && (dev || DARK[name])));
       var small = img.closest('.card-shot, .side-phone, .story-static');
       if (!img.hasAttribute('data-eager') && !img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
       img.setAttribute('decoding', 'async');
