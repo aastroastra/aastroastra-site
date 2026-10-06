@@ -1,4 +1,4 @@
-# AstroAshwa Press Kit
+# AstroAshva Press Kit
 
 Everything needed for press coverage, store listings, and partnership materials.
 
@@ -8,7 +8,7 @@ Everything needed for press coverage, store listings, and partnership materials.
 
 | | |
 |---|---|
-| **App Name** | AstroAshwa |
+| **App Name** | AstroAshva |
 | **Tagline** | One who believes. |
 | **Category** | Astrology · Lifestyle |
 | **Platforms** | Android (live beta) · iOS (in development) |
@@ -18,9 +18,9 @@ Everything needed for press coverage, store listings, and partnership materials.
 
 ---
 
-## What is AstroAshwa?
+## What is AstroAshva?
 
-AstroAshwa is a personal Vedic astrology companion. It turns your birth details (name, date, time and place) into a complete, living picture of your sky, and sends notifications timed to your exact chart, written by an AI trained on classical Vedic texts.
+AstroAshva is a personal Vedic astrology companion. It turns your birth details (name, date, time and place) into a complete, living picture of your sky, and sends notifications timed to your exact chart, written by an AI trained on classical Vedic texts.
 
 It is built for **the one who believes**: precise calculations, traditional methods, and a warm, modern interface, in English and Hindi.
 
@@ -34,7 +34,7 @@ It is built for **the one who believes**: precise calculations, traditional meth
 - **Lal Kitab**: Red Book remedies and debts.
 - **Panchang**: daily tithi, nakshatra, yoga, karana, muhurta and chogadiya.
 - **Match-making**: full Ashtakoot compatibility with per-person Manglik analysis.
-- **AshwaAI chat**: ask about your chart; answers grounded in classical sources.
+- **AshvaAI chat**: ask about your chart; answers grounded in classical sources.
 - **Personalised notifications**: career, health and love alerts timed to your transits, in simple Hindi and English.
 - **Four themes**: Yellow and Black & White, each in Light and Dark.
 - **Bilingual**: full English and Hindi throughout.
@@ -61,15 +61,15 @@ presskit/
   brand-guidelines.md            # full design system
   press-kit.md                   # this file
   logos/
-    astroashwa-logo-full.png    # monogram + wordmark + tagline
-    astroashwa-logo-mark.png    # monogram only
+    astroashva-logo-full.png    # monogram + wordmark + tagline
+    astroashva-logo-mark.png    # monogram only
   icons/
-    astroashwa-icon-1024x1024.png
-    astroashwa-icon-512x512.png
-    astroashwa-icon-256x256.png
-    astroashwa-icon-180x180.png
-    astroashwa-icon-120x120.png
-    astroashwa-icon-64x64.png
+    astroashva-icon-1024x1024.png
+    astroashva-icon-512x512.png
+    astroashva-icon-256x256.png
+    astroashva-icon-180x180.png
+    astroashva-icon-120x120.png
+    astroashva-icon-64x64.png
 ```
 
 ---
@@ -77,7 +77,7 @@ presskit/
 ## Boilerplate
 
 **Short**
-> AstroAshwa is a personal Vedic astrology companion that turns your birth details into a living chart and sends notifications timed to your exact sky, in English and Hindi.
+> AstroAshva is a personal Vedic astrology companion that turns your birth details into a living chart and sends notifications timed to your exact sky, in English and Hindi.
 
 **One-liner**
 > Personalised Vedic astrology, for the one who believes.

@@ -75,7 +75,7 @@
   var STRINGS = {
     en: {
       eyebrow: 'Invitation',
-      title: 'Your friend invited you to AstroAshwa',
+      title: 'Your friend invited you to AstroAshva',
       lead: 'Get free credits when you join with this invite code.',
       codeLabel: 'Your invite code',
       copy: 'Copy',
@@ -91,7 +91,7 @@
       tfNeed: 'New to TestFlight?',
       tfGet: 'Install TestFlight first',
       fine: 'Credits are for use in the app only. They have no cash value and cannot be transferred. The invite bonus is for new accounts, for a limited time after sign-up.',
-      docTitle: "You're invited · AstroAshwa"
+      docTitle: "You're invited · AstroAshva"
     },
     hi: {
       eyebrow: 'आमंत्रण',

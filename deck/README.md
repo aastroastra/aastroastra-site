@@ -1,4 +1,4 @@
-# AstroAshwa investor deck
+# AstroAshva investor deck
 
 ## Delivery plan
 
@@ -12,7 +12,7 @@ difference, credit/call/remedy/report revenue engines, bottom-up earning
 scenarios, go-to-market, 18-month milestones, use of funds, team and ask.
 
 Market facts are dated and linked to sources. Competitor revenue is explicitly
-identified as category validation, not AstroAshwa traction. Financial outputs
+identified as category validation, not AstroAshva traction. Financial outputs
 are labeled management scenarios with visible assumptions, not forecasts. The
 deck does not invent users, revenue or retention.
 
