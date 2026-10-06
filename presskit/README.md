@@ -1,4 +1,4 @@
-# AstroAshva Press Kit
+# AstroAshwa Press Kit
 
 Everything you need for press coverage, store listings, and partnership materials.
 
@@ -8,15 +8,15 @@ presskit/
   brand-guidelines.md              # full brand + design system
   press-kit.md                     # app info & features
   logos/
-    astroashva-logo-full.png      # monogram + wordmark + tagline
-    astroashva-logo-mark.png      # monogram only
+    astroashwa-logo-full.png      # monogram + wordmark + tagline
+    astroashwa-logo-mark.png      # monogram only
   icons/
-    astroashva-icon-1024x1024.png # store icon
-    astroashva-icon-512x512.png
-    astroashva-icon-256x256.png
-    astroashva-icon-180x180.png
-    astroashva-icon-120x120.png
-    astroashva-icon-64x64.png
+    astroashwa-icon-1024x1024.png # store icon
+    astroashwa-icon-512x512.png
+    astroashwa-icon-256x256.png
+    astroashwa-icon-180x180.png
+    astroashwa-icon-120x120.png
+    astroashwa-icon-64x64.png
 ```
 
 ---
@@ -39,7 +39,7 @@ presskit/
 
 | | |
 |---|---|
-| **App Name** | AstroAshva |
+| **App Name** | AstroAshwa |
 | **Tagline** | One who believes. |
 | **Platforms** | Android (live beta), iOS (in development) |
 | **Languages** | English, हिन्दी |

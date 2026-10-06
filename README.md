@@ -26,7 +26,7 @@ The credits guide now documents Apple consumable IAP, Google Play consumable one
 
 ## Historical implementation notes
 
-# AstroAshva: landing site
+# AstroAshwa: landing site
 
 Static marketing site with five light and dark themes. Hosted on GitHub Pages.
 (Superseded 29 Sep 2026: no public APK. See the top of this file.)
@@ -95,7 +95,7 @@ Commit/feature summaries are public; source links require private-repository acc
   `assetlinks.json` (Play App Signing key + upload key) and the extensionless
   `apple-app-site-association` (served by Pages as `application/octet-stream`;
   Apple's CDN accepts it when it is a 200 over HTTPS without redirects). The
-  apex `astroashva.com` 301s to `www`, so the apps must associate
+  apex `astroashwa.com` 301s to `www`, so the apps must associate
   `www.aastroastra.com` (new builds). Old builds associate
   `www.aastroastra.com`, which the separate `aastroastra-legacy` Pages repo
   keeps serving with identical `.well-known` files. After deploy, check

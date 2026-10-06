@@ -1,13 +1,13 @@
-# AstroAshva Brand Guidelines
+# AstroAshwa Brand Guidelines
 
 **Version 1.0** · July 2026
-**Prepared by** The AstroAshva Team
+**Prepared by** The AstroAshwa Team
 
 ---
 
 ## 1. Brand Identity
 
-AstroAshva is a personal Vedic astrology companion. It turns a person's birth details into a living picture of their sky: kundali, numerology, panchang timings, and notifications written for their exact chart by an AI trained on classical texts. The identity is **warm, precise, and quietly cosmic**: traditional wisdom presented with a clean, modern hand.
+AstroAshwa is a personal Vedic astrology companion. It turns a person's birth details into a living picture of their sky: kundali, numerology, panchang timings, and notifications written for their exact chart by an AI trained on classical texts. The identity is **warm, precise, and quietly cosmic**: traditional wisdom presented with a clean, modern hand.
 
 ### Brand Essence
 - **Warm**: gold light, never cold or clinical
@@ -24,10 +24,10 @@ Supporting line (logo lockup): *One Place · Every Ritual · Every Solution.*
 
 ## 2. Logo & App Icon
 
-The **AA monogram** is the primary brand mark: two interlocking golden A's, crowned by a sparkle and grounded by a lotus. It reads as "AstroAshva," as a temple silhouette, and as a star, all at once.
+The **AA monogram** is the primary brand mark: two interlocking golden A's, crowned by a sparkle and grounded by a lotus. It reads as "AstroAshwa," as a temple silhouette, and as a star, all at once.
 
-- **Mark**: `logos/astroashva-logo-mark.png`: the monogram alone (app icon, avatars, favicons)
-- **Full logo**: `logos/astroashva-logo-full.png`: monogram + "ASTRO ASHVA" wordmark + tagline (headers, print, decks)
+- **Mark**: `logos/astroashwa-logo-mark.png`: the monogram alone (app icon, avatars, favicons)
+- **Full logo**: `logos/astroashwa-logo-full.png`: monogram + "ASTRO ASHWA" wordmark + tagline (headers, print, decks)
 - **Clear space**: keep a minimum margin equal to the height of one "A" around the mark
 - **Do not** stretch, rotate, recolour arbitrarily, add shadows, or place the gold mark on a busy background
 
@@ -41,7 +41,7 @@ The mark is gold by default. On monochrome (B&W) surfaces it is rendered pure:
 
 ## 3. Colour System
 
-AstroAshva's colour system has three layers: **brand accent**, **theme surfaces**, and **planetary accents**.
+AstroAshwa's colour system has three layers: **brand accent**, **theme surfaces**, and **planetary accents**.
 
 ### 3.0 Contrast rules
 
@@ -76,7 +76,7 @@ Use it for the display title, primary CTA fills, and the selected state of pills
 
 ### 3.2 Theme Surfaces
 
-AstroAshva ships **four themes**: a **Yellow** and a **Black & White** identity, each in **Light** and **Dark**. Yellow · Light is the default and canonical brand presentation.
+AstroAshwa ships **four themes**: a **Yellow** and a **Black & White** identity, each in **Light** and **Dark**. Yellow · Light is the default and canonical brand presentation.
 
 | Theme | Background | Surface | Border | Primary Text | Muted Text | Accent |
 |-------|-----------|---------|--------|--------------|-----------|--------|
@@ -206,4 +206,4 @@ Readings are interpretive guidance, never a substitute for professional advice.
 
 ---
 
-*This document is the source of truth for AstroAshva's visual design. When in doubt, reference **Yellow · Light** with the gold gradient as the canonical brand presentation.*
+*This document is the source of truth for AstroAshwa's visual design. When in doubt, reference **Yellow · Light** with the gold gradient as the canonical brand presentation.*
