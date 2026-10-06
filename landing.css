@@ -239,16 +239,16 @@ html[data-lang="hi"] .demo-steps b { line-height:1.35; letter-spacing:0; }
 
 .kc { display:flex; align-items:center; gap:12px; align-self:flex-start; opacity:0; transform:scale(.9); transition:opacity .5s var(--ease), transform .7s var(--ease); transition-delay:calc(var(--i) * .25s); }
 .kcg { display:block; flex:none; line-height:0; }
-.kc svg { width:86px; height:86px; flex:none; background:var(--card); border-radius:10px; }
-.kc svg path { fill:none; stroke:var(--fg2); stroke-width:1.6; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.2s var(--ease); transition-delay:calc(var(--i) * .25s + .1s); }
-.kc svg circle { fill:var(--tint); opacity:0; transform:scale(.2); transform-box:fill-box; transform-origin:center; transition:opacity .4s, transform .5s var(--ease); transition-delay:calc(var(--i) * .25s + 1s); }
+.kcg svg { width:86px; height:86px; flex:none; background:var(--card); border-radius:10px; }
+.kcg svg path { fill:none; stroke:var(--fg2); stroke-width:1.6; stroke-linejoin:round; stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.2s var(--ease); transition-delay:calc(var(--i) * .25s + .1s); }
+.kcg svg circle { fill:var(--tint); opacity:0; transform:scale(.2); transform-box:fill-box; transform-origin:center; transition:opacity .4s, transform .5s var(--ease); transition-delay:calc(var(--i) * .25s + 1s); }
 .kc .facts { display:flex; flex-direction:column; gap:6px; align-items:flex-start; }
 .fact { font-size:12.5px; font-weight:600; padding:5px 10px; border-radius:999px; background:color-mix(in srgb,var(--tint) 14%,var(--card)); color:var(--fg); white-space:nowrap;
   opacity:0; transform:translate3d(0,6px,0); transition:opacity .4s var(--ease), transform .5s var(--ease); transition-delay:calc(var(--i) * .25s + .8s); }
 .fact + .fact { transition-delay:calc(var(--i) * .25s + 1s); }
 .ai-demo.s2 .kc { opacity:1; transform:none; }
-.ai-demo.s2 .kc svg path { stroke-dashoffset:0; }
-.ai-demo.s2 .kc svg circle { opacity:1; transform:none; }
+.ai-demo.s2 .kcg svg path { stroke-dashoffset:0; }
+.ai-demo.s2 .kcg svg circle { opacity:1; transform:none; }
 .ai-demo.s2 .fact { opacity:1; transform:none; }
 
 .stage .core { align-items:center; justify-content:center; gap:18px; }
@@ -298,7 +298,7 @@ html[data-lang="hi"] .demo-steps b { line-height:1.35; letter-spacing:0; }
   .stage .people, .stage .charts { flex-direction:row; justify-content:space-around; gap:8px; }
   .person { flex-direction:column; gap:6px; padding:10px 8px; border-radius:18px; text-align:center; align-self:auto; width:31%; transform:translate3d(0,-14px,0) scale(.92); }
   .kc { flex-direction:column; width:31%; gap:8px; }
-  .kc svg { width:min(76px,20vw); height:min(76px,20vw); }
+  .kcg svg { width:min(76px,20vw); height:min(76px,20vw); }
   .kc .facts { align-items:center; }
   .fact { font-size:11px; padding:4px 8px; white-space:normal; text-align:center; }
   .stage .core { flex-direction:row; justify-content:center; gap:16px; }
@@ -310,6 +310,26 @@ html[data-lang="hi"] .demo-steps b { line-height:1.35; letter-spacing:0; }
 @media (max-width:420px) {
   .demo-steps small { font-size:13px; }
   .demo-steps li { padding:14px 14px 16px; }
+}
+
+.kc { flex-wrap:wrap; }
+/* The four datasets AshvaAI reads per person; lit only where that person has it. */
+.ds { flex-basis:100%; display:flex; gap:5px; }
+.dsc { display:inline-flex; align-items:center; gap:4px; font-size:11px; font-weight:600; padding:3px 7px 3px 5px; border-radius:999px; border:1px dashed var(--line); color:var(--muted); background:var(--card);
+  opacity:0; transform:translate3d(0,6px,0); transition:opacity .4s var(--ease), transform .5s var(--ease), background .4s, color .4s; transition-delay:calc(var(--i) * .25s + 1.1s + var(--j) * .1s); }
+.dsc svg { width:13px; height:13px; fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+.dsc:not(.on) { opacity:0; }
+.dsc.on { border-style:solid; border-color:color-mix(in srgb,var(--tint) 50%,var(--line)); color:var(--fg); }
+.ai-demo.s2 .dsc { opacity:.45; transform:none; }
+.ai-demo.s2 .dsc.on { opacity:1; }
+.ai-demo.s3 .dsc.on { background:color-mix(in srgb,var(--tint) 16%,var(--card)); animation:dsflow 2.4s var(--ease) calc(var(--j) * .15s) 2; }
+@keyframes dsflow { 0%,100% { transform:none; } 40% { transform:translate3d(4px,0,0) scale(1.06); } }
+@media (max-width:980px) {
+  .kc { flex-wrap:nowrap; }
+  .ds { flex-basis:auto; display:grid; grid-template-columns:repeat(2,auto); justify-content:center; gap:3px; }
+  .dsc { padding:2px; gap:0; }
+  .dsc svg { width:12px; height:12px; }
+  .dsl { display:none; }
 }
 
 /* ---------- 4. Everything in one app ---------- */
