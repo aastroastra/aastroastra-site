@@ -101,6 +101,7 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Serif:wght@600;700&family=Noto+Serif+Devanagari:wght@600;700&family=Noto+Sans+Devanagari:wght@500;600;700&family=Tiro+Devanagari+Sanskrit&display=swap" /></noscript>
 <link rel="stylesheet" href="/site-theme.css" />
 <link rel="stylesheet" href="/landing.css" />
+<link rel="stylesheet" href="/mm-section.css" />
 <script>
   /* Theme and language before first paint: ?lang=hi|en wins, then the saved
      choice. site-theme.js and landing.js take over once loaded. */
@@ -374,6 +375,42 @@
   </div>
 </section>
 
+<!-- 3c. Multi-match explainer (mm-section.css / mm-section.js) -->
+<section class="sec mm" id="multimatch" data-mm>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow" data-reveal>Multi-match</p>
+      <h2 class="h2" data-reveal><span lang="en">Many Kundalis. <span class="grad">Ranked for what matters to you.</span></span><span lang="hi">कई कुंडलियाँ। <span class="grad">आपके लिए जो मायने रखता है, उसी से क्रम।</span></span></h2>
+      <p class="lead" data-reveal><span lang="en">Pick what matters most. Each choice is scored from its kootas, and those kootas count extra in the ranking.</span><span lang="hi">चुनिए कि सबसे ज़्यादा क्या मायने रखता है। हर विकल्प का स्कोर उसके कूटों से बनता है, और रैंकिंग में वे कूट ज़्यादा गिने जाते हैं।</span></p>
+    </div>
+    <div class="mm-grid">
+      <div class="mm-left">
+        <div class="mm-you">
+          <span class="mm-av mm-av-you" aria-hidden="true">R</span>
+          <div><p class="mm-you-name"><span lang="en">Rahul</span><span lang="hi">राहुल</span></p><p class="mm-you-sub"><span lang="en">Your Kundali, matched against three saved ones</span><span lang="hi">आपकी कुंडली, तीन सहेजी कुंडलियों से मिलान</span></p></div>
+        </div>
+        <p class="mm-ask" id="mm-ask"><span lang="en">What matters most?</span><span lang="hi">सबसे ज़्यादा क्या मायने रखता है?</span></p>
+        <div class="mm-types" role="group" aria-labelledby="mm-ask">
+          <button type="button" class="mm-type" data-mm-type="guna" aria-pressed="true"><b><span lang="en">Overall guna</span><span lang="hi">कुल गुण</span></b><small><span lang="en">All 8 kootas</span><span lang="hi">सभी 8 कूट</span></small></button>
+          <button type="button" class="mm-type" data-mm-type="love" aria-pressed="false"><b><span lang="en">Love</span><span lang="hi">प्रेम</span></b><small><span lang="en">Bhakoot + Graha Maitri</span><span lang="hi">भकूट + ग्रह मैत्री</span></small></button>
+          <button type="button" class="mm-type" data-mm-type="physical" aria-pressed="false"><b><span lang="en">Physical</span><span lang="hi">शारीरिक</span></b><small><span lang="en">Yoni</span><span lang="hi">योनि</span></small></button>
+          <button type="button" class="mm-type" data-mm-type="friendship" aria-pressed="false"><b><span lang="en">Friendship</span><span lang="hi">मित्रता</span></b><small><span lang="en">Graha Maitri + Gana</span><span lang="hi">ग्रह मैत्री + गण</span></small></button>
+          <button type="button" class="mm-type" data-mm-type="temperament" aria-pressed="false"><b><span lang="en">Temperament</span><span lang="hi">स्वभाव</span></b><small><span lang="en">Gana</span><span lang="hi">गण</span></small></button>
+          <button type="button" class="mm-type" data-mm-type="destiny" aria-pressed="false"><b><span lang="en">Destiny</span><span lang="hi">भाग्य</span></b><small><span lang="en">Tara</span><span lang="hi">तारा</span></small></button>
+        </div>
+        <p class="mm-more"><span lang="en">Also in the app: Health (Nadi), Family &amp; wealth (Bhakoot), Attraction (Vashya), Values (Varna). Pick one or more.</span><span lang="hi">ऐप में और भी: स्वास्थ्य (नाड़ी), परिवार और धन (भकूट), आकर्षण (वश्य), मूल्य (वर्ण)। एक या अधिक चुनें।</span></p>
+      </div>
+      <div class="mm-right">
+        <p class="mm-for" data-mm-for aria-live="polite"><span lang="en">Ranked for: Overall guna</span><span lang="hi">कुल गुण के लिए रैंक</span></p>
+        <ol class="mm-list" data-mm-list aria-label="Ranking"></ol>
+        <noscript><p class="mm-more">Neha, Anita and Priya, ranked by Match score for the type you pick.</p></noscript>
+        <p class="mm-rule"><span lang="en">The kootas behind your pick count 2.5x in the Match score; ties go to whoever scores higher on them. The guna out of 36 never changes, only the order.</span><span lang="hi">आपके चुने विकल्प के कूट मैच स्कोर में 2.5 गुना गिने जाते हैं; बराबरी पर वही आगे जो उन कूटों पर ज़्यादा पाए। 36 में से गुण नहीं बदलते, सिर्फ़ क्रम बदलता है।</span></p>
+      </div>
+    </div>
+    <p class="mm-note" data-reveal><span lang="en">Multi-match ranks many saved Kundalis against yours. For the full koota-by-koota report on one pair, open Kundali Matching. Names and scores here are an example.</span><span lang="hi">मल्टी-मैच आपकी कुंडली से कई सहेजी कुंडलियों को क्रम देता है। किसी एक जोड़ी की पूरी कूट-दर-कूट रिपोर्ट के लिए कुंडली मिलान खोलें। यहाँ के नाम और अंक उदाहरण हैं।</span></p>
+  </div>
+</section>
+
 <!-- 4. Everything in one app -->
 <section class="sec features" id="features">
   <div class="wrap">
@@ -516,5 +553,6 @@
 </footer>
 
 <script src="/landing.js"></script>
+<script src="/mm-section.js"></script>
 </body>
 </html>
