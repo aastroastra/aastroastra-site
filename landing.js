@@ -122,14 +122,22 @@
   var story = document.querySelector('[data-story]');
   if (story && !reduce) {
     var rows = Array.prototype.slice.call(story.querySelectorAll('.m-row'));
-    var shots = Array.prototype.slice.call(story.querySelectorAll('.phone .screen img'));
-    var caps = Array.prototype.slice.call(story.querySelectorAll('.cap'));
+    var phones = Array.prototype.slice.call(story.querySelectorAll('.pw')).map(function (pw) {
+      return { reel: pw.querySelector('.reel'), caps: Array.prototype.slice.call(pw.querySelectorAll('.cap')), on: 0 };
+    });
     var bars = Array.prototype.slice.call(story.querySelectorAll('.story-bar b'));
-    var N = shots.length, rowW = [], vw = 0, vh = 0, active = 0, queued = false;
+    var N = phones.length ? phones[0].caps.length : 1, rowW = [], vw = 0, vh = 0, queued = false;
     var size = function () {
       vw = window.innerWidth; vh = window.innerHeight;
       rowW = rows.map(function (r) { return r.scrollWidth; });
       frame();
+    };
+    // Each step holds still for most of its scroll, then both reels slide one
+    // screen sideways; the second phone follows a beat later.
+    var stepAt = function (u, lag) {
+      var base = Math.min(Math.floor(u), N - 1), frac = u - base;
+      if (base >= N - 1) return N - 1;
+      return base + ease((frac - 0.32 - lag) / 0.36);
     };
     var frame = function () {
       queued = false;
@@ -138,29 +146,19 @@
       var total = Math.max(1, r.height - vh);
       var raw = -r.top / total;
       var p = clamp(raw, 0, 1);
-      // Mantra: rows slide in alternate directions, a little past the pin on both ends.
       rows.forEach(function (row, i) {
         var dir = +row.getAttribute('data-dir');
         var base = -(rowW[i] - vw) / 2;
         var x = base + dir * (raw - 0.5) * vw * 0.55 + (i % 2 ? 0.08 : -0.08) * vw;
         row.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)';
       });
-      // Screens: each one slides up over the last, which settles back.
-      var f = p * (N - 1), t = [];
-      for (var i = 0; i < N; i++) t[i] = i === 0 ? 1 : ease((f - (i - 0.72)) / 0.44);
-      var now = 0;
-      for (var j = 0; j < N; j++) {
-        var next = j + 1 < N ? t[j + 1] : 0;
-        shots[j].style.transform = 'translate3d(0,' + ((1 - t[j]) * 100).toFixed(2) + '%,0) scale(' + (1 - 0.07 * next).toFixed(4) + ')';
-        // Opaque at all times so nothing shows through; two screens back is hidden.
-        shots[j].style.visibility = j + 2 < N && t[j + 2] >= 1 ? 'hidden' : 'visible';
-        if (t[j] > 0.5) now = j;
-      }
-      if (now !== active) {
-        caps[active].classList.remove('on');
-        caps[now].classList.add('on');
-        active = now;
-      }
+      var u = clamp(p * N - 0.5, 0, N - 1);
+      phones.forEach(function (ph, k) {
+        var f = stepAt(u, k * 0.08);
+        ph.reel.style.transform = 'translate3d(' + (-f * 100).toFixed(3) + '%,0,0)';
+        var now = Math.round(f);
+        if (now !== ph.on) { ph.caps[ph.on].classList.remove('on'); ph.caps[now].classList.add('on'); ph.on = now; }
+      });
       bars.forEach(function (b, k) { b.style.setProperty('--f', clamp(p * N - k, 0, 1).toFixed(3)); });
     };
     var onScroll = function () { if (!queued) { queued = true; requestAnimationFrame(frame); } };

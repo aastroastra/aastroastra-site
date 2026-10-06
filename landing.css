@@ -63,7 +63,8 @@ html[data-lang="hi"] .h2 { letter-spacing:0; line-height:1.18; }
 
 /* ---------- 1. Hero ---------- */
 .hero { text-align:center; }
-.hero-top { display:flex; flex-direction:column; align-items:center; padding:clamp(18px,5vh,64px) 0 0; }
+.hero-top { display:flex; flex-direction:column; align-items:center; padding:clamp(34px,13vh,150px) 0 0; }
+@media (max-width:760px) { .hero-top { padding-top:clamp(26px,6vh,56px); } }
 /* The name is plain ink in every theme (black on light, white on dark).
    site-theme.css paints every h1 with the tint gradient, so undo that here. */
 .wordmark, [data-theme] h1.wordmark {
@@ -76,7 +77,7 @@ html[data-lang="hi"] .h2 { letter-spacing:0; line-height:1.18; }
 .tagline { margin-top:clamp(8px,1.2vw,16px); font-family:var(--font-heading); font-weight:600; font-size:clamp(19px,2.2vw,30px); color:var(--fg2); letter-spacing:-.01em; }
 html[data-lang="hi"] .tagline { letter-spacing:0; }
 
-.marquee { position:relative; margin-top:clamp(22px,4vh,44px); }
+.marquee { position:relative; margin-top:clamp(18px,3vh,36px); }
 .marquee-scroll {
   overflow-x:auto; overflow-y:hidden; scrollbar-width:none; cursor:grab; touch-action:pan-x pan-y; overscroll-behavior-x:contain;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);
@@ -84,17 +85,20 @@ html[data-lang="hi"] .tagline { letter-spacing:0; }
 }
 .marquee-scroll::-webkit-scrollbar { display:none; }
 .marquee-scroll.dragging { cursor:grabbing; }
-.marquee-track { display:flex; gap:clamp(10px,1.3vw,18px); width:max-content; padding:6px clamp(10px,1.3vw,18px) 18px 0; }
+.marquee-track { display:flex; gap:clamp(10px,1.3vw,18px); width:max-content; padding:4px clamp(10px,1.3vw,18px) 0 0; }
 .card-shot {
-  /* About half the viewport tall at most: the name and badges lead. */
-  --h:clamp(230px, 44vh, 440px);
-  --w:calc(var(--h) * 540 / 1110);
-  flex:none; width:var(--w); aspect-ratio:540/1110; overflow:hidden; background:#fff;
-  border-radius:var(--w) var(--w) 26px 26px; border:1px solid var(--line);
-  box-shadow:0 18px 40px -26px rgba(0,0,0,.35); user-select:none; -webkit-user-select:none;
+  /* Top half of each screen only, sized from the viewport height so the whole
+     row fits in the first screen under the name and badges. */
+  --h:clamp(150px, calc(100svh - 610px), 330px);
+  --w:calc(var(--h) * 1080 / 1110);
+  flex:none; width:var(--w); height:var(--h); overflow:hidden; background:#fff;
+  border-radius:var(--w) var(--w) 0 0; border:1px solid var(--line); border-bottom:none;
+  user-select:none; -webkit-user-select:none;
+  -webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 70%,transparent 100%);
 }
-.card-shot:nth-child(3n+2) { border-radius:26px; }
-.card-shot:nth-child(3n) { border-radius:26px 26px var(--w) var(--w); }
+.card-shot:nth-child(2n) { border-radius:28px 28px 0 0; }
+@media (max-width:760px) { .card-shot { --h:clamp(170px, 35svh, 300px); } }
 .card-shot img { width:100%; height:100%; object-fit:cover; object-position:top; pointer-events:none; -webkit-user-drag:none; }
 
 .hero-sub { margin:clamp(12px,2vh,22px) auto 0; padding:0 var(--gutter); max-width:640px; font-size:clamp(16px,1.6vw,19px); color:var(--muted); }
@@ -132,24 +136,42 @@ html[data-lang="hi"] .tagline { letter-spacing:0; }
 }
 .phone .screen { position:relative; aspect-ratio:540/1110; border-radius:calc(var(--pw) * .13); overflow:hidden; background:#fff; isolation:isolate; }
 .phone .screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; will-change:transform,opacity; }
-.story .screen img { transform:translate3d(0,100%,0); }
-.story .screen img:first-child { transform:none; }
-.captions { position:relative; z-index:2; margin-top:22px; height:76px; width:min(92vw,460px); }
+.story .phone { --pw:min(clamp(200px,20vw,300px), calc((100svh - 250px) * 540 / 1110)); }
+/* Two phones, staggered for depth. Inside each, the screens sit side by side
+   on a reel that slides sideways, so two screenshots never stack. */
+.duo { position:relative; z-index:2; display:flex; align-items:flex-start; justify-content:center; gap:clamp(22px,4vw,64px); }
+.pw { display:flex; flex-direction:column; align-items:center; }
+.pw.a { transform:translate3d(0,-18px,0); }
+.pw.b { transform:translate3d(0,26px,0); }
+.story .screen .reel { position:absolute; inset:0; display:flex; will-change:transform; }
+.story .screen .sl { position:relative; flex:none; width:100%; height:100%; overflow:hidden; }
+/* Hide each capture's own status bar; the frame draws exactly one. */
+.story .screen .sl img { position:absolute; left:0; top:-5.4%; width:100%; height:105.4%; object-fit:cover; object-position:top; }
+.sbar { position:absolute; z-index:2; top:0; left:0; right:0; height:5.4%; display:flex; align-items:center; justify-content:space-between; padding:0 9% 0 10%;
+  font:600 calc(var(--pw) * .043) var(--font-body); color:#1A1A1A; background:linear-gradient(#fff 55%,rgba(255,255,255,0)); }
+.sbar svg { height:44%; width:auto; fill:#1A1A1A; }
+.pcaps { position:relative; margin-top:18px; height:74px; width:min(42vw,300px); }
 .cap { position:absolute; left:0; right:0; top:0; display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; opacity:0; transform:translateY(10px); transition:opacity .45s var(--ease), transform .45s var(--ease); }
 .cap.on { opacity:1; transform:none; }
-.chip { display:inline-flex; align-items:center; gap:10px; padding:7px 14px 7px 8px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-weight:700; font-size:15px; box-shadow:0 10px 30px -18px rgba(0,0,0,.35); }
+.chip { display:inline-flex; align-items:center; gap:10px; padding:7px 14px 7px 8px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-weight:700; font-size:15px; box-shadow:0 10px 30px -18px rgba(0,0,0,.35); white-space:nowrap; }
 .chip i { font-style:normal; font-size:11px; font-weight:700; letter-spacing:.06em; padding:3px 8px; border-radius:999px; background:var(--tint-grad); color:var(--on-accent); }
-.cap p { font-size:14px; color:var(--fg2); max-width:400px; }
+.cap p { font-size:14px; color:var(--fg2); max-width:300px; }
 .story-bar { position:absolute; z-index:2; right:clamp(14px,3vw,40px); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:8px; }
-.story-bar b { display:block; width:4px; height:28px; border-radius:4px; background:var(--line); overflow:hidden; position:relative; }
+.story-bar b { display:block; width:4px; height:34px; border-radius:4px; background:var(--line); overflow:hidden; position:relative; }
 .story-bar b::after { content:""; position:absolute; inset:0; background:var(--tint); transform:scaleY(var(--f,0)); transform-origin:top; }
 .story-static { display:none; }
 @media (max-width:760px) {
-  .story { height:310vh; }
-  .story .phone { --pw:min(56vw, calc((100svh - 250px) * 540 / 1110)); }
+  .story { height:330vh; }
+  .story .phone { --pw:min(41vw, calc((100svh - 300px) * 540 / 1110)); padding:6px; }
+  .duo { gap:14px; }
+  .pw.a { transform:translate3d(0,-12px,0); }
+  .pw.b { transform:translate3d(0,18px,0); }
   .m-row { font-size:clamp(44px,14vw,96px); }
   .story-bar { display:none; }
-  .captions { height:84px; }
+  .pcaps { width:44vw; height:46px; margin-top:12px; }
+  .cap p { display:none; }
+  .chip { font-size:13px; padding:5px 10px 5px 6px; gap:6px; }
+  .chip i { font-size:10px; padding:2px 6px; }
 }
 
 /* ---------- 3. Why different ---------- */
@@ -420,8 +442,8 @@ footer { max-width:var(--maxw); margin:0 auto; }
   html.js [data-reveal] { opacity:1; transform:none; transition:none; }
   .story { height:auto; padding:60px 0; }
   .story-pin { position:relative; height:auto; overflow:visible; }
-  .story-pin > .phone, .captions, .story-bar, .mantra { display:none; }
-  .story-static { display:grid; grid-template-columns:repeat(4,minmax(0,220px)); justify-content:center; gap:16px; padding:0 var(--gutter); width:100%; }
+  .story-pin > .duo, .story-bar, .mantra { display:none; }
+  .story-static { display:grid; grid-template-columns:repeat(6,minmax(0,190px)); justify-content:center; gap:16px; padding:0 var(--gutter); width:100%; }
   .story-static figure { text-align:center; }
   .story-static img { border-radius:22px; border:6px solid #0B0B0C; aspect-ratio:540/1110; object-fit:cover; object-position:top; width:100%; height:auto; }
   .story-static figcaption { margin-top:10px; font-weight:700; }
@@ -430,5 +452,5 @@ footer { max-width:var(--maxw); margin:0 auto; }
   body { transition:none; }
 }
 @media (prefers-reduced-motion:reduce) and (max-width:760px) {
-  .story-static { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .story-static { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
