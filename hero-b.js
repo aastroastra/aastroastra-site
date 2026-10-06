@@ -76,8 +76,11 @@
       svg: '<path d="M6.4 5.2h6.2M9.5 2.4V19M9.5 12.6c0-3.6 6.6-4 6.6 0 0 3-3 4-3 6.5 0 2 2.1 2.6 3.9 1.2"/>',
       ten: 'Sade Sati and your 10th house of work', thi: 'साढ़े साती और कर्म का दशम भाव' }
   ];
-  // North Indian chart: centre of each house, as a share of the chart square.
-  var HOUSE = [null, [.5, .25], [.25, .1], [.1, .25], [.25, .5], [.1, .75], [.25, .9], [.5, .75], [.75, .9], [.9, .75], [.75, .5], [.9, .25], [.75, .1]];
+  // North Indian chart (outer square, both diagonals, inner diamond on the side
+  // midpoints): the centroid of each of the 12 houses, as a share of the square.
+  // Kendras are diamonds centred a quarter in; the rest are triangles.
+  var T = 1 / 12;
+  var HOUSE = [null, [.5, .25], [.25, T], [T, .25], [.25, .5], [T, .75], [.25, 1 - T], [.5, .75], [.75, 1 - T], [1 - T, .75], [.75, .5], [1 - T, .25], [.75, T]];
   var B = .33, TRAILS = 6, TSTEP = .055;
   var byId = {};
   // Starting angles, chosen so the nine are spread out and clear of the phone

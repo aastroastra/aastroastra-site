@@ -132,9 +132,10 @@ html[data-lang="hi"] .hb-sub { max-width:34ch; line-height:1.6; }
 }
 .hb-chart::before { content:''; position:absolute; inset:-6%; border-radius:22px; background:color-mix(in srgb,var(--bg) 82%,transparent); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); box-shadow:0 0 0 1px var(--line), 0 30px 60px -30px rgba(0,0,0,.35); }
 .hb-chart svg { position:relative; width:100%; height:100%; overflow:visible; }
-.hb-chart rect, .hb-chart path { fill:none; stroke:var(--tint); stroke-width:.7; vector-effect:non-scaling-stroke; stroke-linejoin:round; }
+/* Stroke in chart units (no non-scaling-stroke: it breaks pathLength dashes). */
+.hb-chart rect, .hb-chart path { fill:none; stroke-linecap:round; stroke:var(--tint); stroke-width:.32; stroke-linejoin:round; }
 [data-theme$="light"] .hb-chart rect, [data-theme$="light"] .hb-chart path { stroke:color-mix(in srgb,var(--tint) 80%,var(--fg)); }
-.hb-chart path { stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1.3s var(--ease); }
+.hb-chart path { stroke-dasharray:1; stroke-dashoffset:1; transition:stroke-dashoffset 1s var(--ease); }
 .hb-chart.draw path { stroke-dashoffset:0; }
 .hb-cap {
   position:absolute; left:50%; top:calc(100% + 7%); transform:translateX(-50%); width:max-content; max-width:calc(var(--W) * .9);
