@@ -143,8 +143,8 @@
     if(v==='c'){
       d.classList.add('hero-c-on');
       var st=document.createElement('style'); st.textContent='html.hero-c-on main>.hero{display:none}'; document.head.appendChild(st);
-      var cc=document.createElement('link'); cc.rel='stylesheet'; cc.href='/hero-c.css?v=1'; cc.setAttribute('blocking','render'); document.head.appendChild(cc);
-      var cs=document.createElement('script'); cs.src='/hero-c.js?v=1'; cs.defer=true; document.head.appendChild(cs);
+      var cc=document.createElement('link'); cc.rel='stylesheet'; cc.href='/hero-c.css?v=3'; cc.setAttribute('blocking','render'); document.head.appendChild(cc);
+      var cs=document.createElement('script'); cs.src='/hero-c.js?v=3'; cs.defer=true; document.head.appendChild(cs);
       return;
     }
     if(v!=='b') return;
