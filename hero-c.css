@@ -107,10 +107,8 @@ html[data-lang="hi"] .hc-eyebrow { font-size:14px; letter-spacing:.04em; padding
 [data-theme$="dark"] .hc-word { --sweep:#FFE7A8; }
 [data-theme^="mono"] .hc-word { --sweep:color-mix(in srgb,var(--fg) 35%,var(--bg)); }
 .hc-tag { margin-top:16px; font-family:var(--font-heading); font-weight:600; font-size:clamp(20px,1.9vw,28px); line-height:1.25; color:var(--fg2); letter-spacing:-.005em; }
-.hc-sub { margin-top:16px; max-width:34ch; font-size:clamp(16px,1.25vw,18px); line-height:1.55; color:var(--muted); text-wrap:balance; }
 html[data-lang="hi"] .hc-tag { letter-spacing:0; }
-html[data-lang="hi"] .hc-sub { max-width:36ch; line-height:1.65; }
-.hc-stores { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; align-items:center; margin-top:32px; }
+.hc-stores { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; align-items:center; margin-top:40px; }
 .hc-stores a { border-radius:12px; }
 .hc-stores a:focus-visible { outline:2px solid var(--fg); outline-offset:4px; }
 .hc-note { margin-top:16px; font-size:13px; line-height:16px; color:var(--muted); }
@@ -126,7 +124,6 @@ html[data-lang="hi"] .hc-sub { max-width:36ch; line-height:1.65; }
   .hc-copy > :nth-child(3) { animation-delay:0.6s; }
   .hc-copy > :nth-child(4) { animation-delay:0.68s; }
   .hc-copy > :nth-child(5) { animation-delay:0.76s; }
-  .hc-copy > :nth-child(6) { animation-delay:0.84s; }
   /* House words wait for the chart to start drawing (hero-c.js adds .go). */
   html.js .hc-stage:not(.go) .hc-h { opacity:0; }
   .hc-stage.go .hc-h { animation:hc-in .8s var(--e) both; animation-delay:calc(1.5s + var(--n) * .07s); }
@@ -145,45 +142,18 @@ html[data-lang="hi"] .hc-sub { max-width:36ch; line-height:1.65; }
   .hc-h svg { width:18px; height:18px; }
 }
 @media (max-width:768px) {
-  .hc { width:auto; height:auto; padding:24px var(--gutter) 24px; display:flex; flex-direction:column; }
-  /* The words alone fill the first screen, centred; the chart waits below. */
-  .hc { padding-top:0; --hc-nav:72px; }
+  /* Phones and tablets: the words only, centred, no chart. The block is a
+     little shorter than the screen so the next section follows on. */
+  .hc { --hc-nav:72px; width:auto; height:auto; padding:0 var(--gutter); }
   .hc-copy { position:relative; left:auto; top:auto; transform:none; width:auto; justify-content:center;
-    min-height:calc(100vh - var(--hc-nav, 64px)); min-height:calc(100svh - var(--hc-nav, 64px)); padding:16px 0 56px; }
+    min-height:calc((100vh - var(--hc-nav)) * .8); min-height:calc((100svh - var(--hc-nav)) * .8); padding:32px 0 40px; }
   .hc-copy::before { display:none; }
+  .hc-stage, .hc-cap { display:none; }
   .hc-word, [data-theme] h1.hc-word { margin-top:16px; font-size:clamp(36px,11vw,72px); }
   .hc-tag { margin-top:8px; }
-  .hc-sub { max-width:30ch; }
-  .hc-stores { margin-top:24px; gap:12px; }
-  .hc-stage { position:relative; inset:auto; width:min(100%,480px); aspect-ratio:1; margin:64px auto 0; }
-  .hc-h { flex-direction:row; flex-wrap:wrap; justify-content:center; align-items:center; column-gap:6px; row-gap:6px; padding:4px; width:max-content; }
-  .hc-h b { flex-basis:100%; text-align:center; }
-  .hc-h svg { width:16px; height:16px; }
-  .hc-h i { font-size:11px; }
-  .hc-h[data-h="12"] .sep { display:none; }
-  .hc-h[data-h="12"] .w { display:block; }
-  .hc-h[data-h="12"] { --y:.072; row-gap:4px; }
-  .hc-h[data-h="12"] b { line-height:1.4; }
-  .hc-h b { font-size:9px; letter-spacing:.06em; padding-left:.06em; }
-  html[data-lang="hi"] .hc-h b { font-size:11px; }
-  .hc-h[data-h="1"]  { --y:.25; }
-  .hc-h[data-h="2"]  { --y:.09; }
-  .hc-h[data-h="4"]  { --x:.25; }
-  .hc-h[data-h="7"]  { --y:.75; }
-  .hc-h[data-h="10"] { --x:.75; }
-  .hc-h[data-h="3"], .hc-h[data-h="11"] { --y:.218; }
-  .hc-h[data-h="5"], .hc-h[data-h="9"] { --y:.718; }
-  .hc-h[data-h="3"], .hc-h[data-h="5"] { --x:.125; }
-  .hc-h[data-h="9"], .hc-h[data-h="11"] { --x:.875; }
-  .hc-h[data-h="6"], .hc-h[data-h="8"] { --y:.91; }
-  /* Benefit line sits under the chart, space reserved so nothing shifts. */
-  .hc-cap { position:relative; left:auto !important; top:auto !important; margin:16px auto 0; max-width:none; width:100%; min-height:62px; border:0; padding:0 8px; opacity:1; }
-  .hc-cap:empty::before { content:attr(data-hint); color:var(--muted); }
+  .hc-stores { margin-top:32px; gap:12px; }
 }
 @media (max-width:580px) { .hc { --hc-nav:62px; } }
-@media (max-width:400px) {
-  .hc-h b { font-size:8.5px; letter-spacing:.03em; padding-left:.03em; }
-}
 @media (max-width:380px) {
   .hc .play-badge img { height:50px; }
   .hc .store-badge { height:50px; min-width:0; padding:0 14px; }
