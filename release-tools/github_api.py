@@ -21,7 +21,7 @@ class GitHub:
     def request(self, path, method='GET', data=None, accept='application/vnd.github+json', content_type=None):
         url=path if path.startswith('https://') else 'https://api.github.com/'+path.lstrip('/')
         if urllib.parse.urlsplit(url).netloc not in ('api.github.com','uploads.github.com'): raise ValueError('Unexpected GitHub host')
-        headers={'Accept':accept,'X-GitHub-Api-Version':'2022-11-28','User-Agent':'AastroAstra-release-hub', 'Authorization':'Bearer '+self.token}
+        headers={'Accept':accept,'X-GitHub-Api-Version':'2022-11-28','User-Agent':'AstroAshva-release-hub', 'Authorization':'Bearer '+self.token}
         if isinstance(data,(dict,list)): data=json.dumps(data).encode(); content_type='application/json'
         if content_type: headers['Content-Type']=content_type
         return self.opener.open(urllib.request.Request(url,data=data,headers=headers,method=method),timeout=240)
