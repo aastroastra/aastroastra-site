@@ -1,4 +1,4 @@
-/* Hero variant C, "The page is a kundali". Loaded only for ?hero=c (see index.html).
+/* Hero C, "The page is a kundali", the default hero (see index.html).
    Draws the North Indian chart at the stage's pixel size so every hairline is
    crisp and the geometry is exact: outer square, both full diagonals, and the
    inner diamond through the side midpoints, making twelve houses. The chart
@@ -9,8 +9,7 @@
   'use strict';
   var root = document.documentElement;
   var hc = document.getElementById('hero-c');
-  if (!hc || !root.classList.contains('hero-c-on')) return;
-  hc.hidden = false;
+  if (!hc || root.classList.contains('hero-a-on') || root.classList.contains('hero-b-on')) return;
 
   var NS = 'http://www.w3.org/2000/svg';
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -149,7 +148,6 @@
   function place(lab) {
     var box = hc.getBoundingClientRect(), r = lab.getBoundingClientRect();
     var cw = cap.offsetWidth, ch = cap.offsetHeight, g = 8;
-    var cr = copy.getBoundingClientRect();
     var mx = r.left + r.width / 2 - box.left, my = r.top + r.height / 2 - box.top;
     var tries = [
       [mx - cw / 2, r.bottom - box.top + 2],
@@ -161,13 +159,20 @@
     var sl = sr0.left - box.left + 4, st = sr0.top - box.top + 4, sr = sr0.right - box.left - 4, sb = sr0.bottom - box.top - 4;
     function rel(q, pad) { return { l: q.left - box.left - pad, t: q.top - box.top - pad, r: q.right - box.left + pad, b: q.bottom - box.top + pad }; }
     // Keep clear of the words and of every other house label.
-    var avoid = [rel(cr, 0)];
+    var avoid = [];
+    // The inked extent of each line of words, not the full-width box.
+    Array.prototype.forEach.call(copy.children, function (n) {
+      var rg = document.createRange(); rg.selectNodeContents(n);
+      avoid.push(rel(rg.getBoundingClientRect(), 4));
+    });
     for (var k in labels) if (labels[k] !== lab) avoid.push(rel(labels[k].getBoundingClientRect(), 4));
     // First candidate that is clear wins; otherwise the one that overlaps least.
     function ov(x, y, c) { return Math.max(0, Math.min(x + cw, c.r) - Math.max(x, c.l)) * Math.max(0, Math.min(y + ch, c.b) - Math.max(y, c.t)); }
     var pick = null, best = Infinity;
     for (var i = 0; i < tries.length; i++) {
-      var x = tries[i][0], y = tries[i][1];
+      // Slide sideways to stay inside the chart before judging a spot.
+      var x = Math.max(sl, Math.min(sr - cw, tries[i][0])), y = tries[i][1];
+      tries[i][0] = x;
       var out = cw * ch - ov(x, y, { l: sl, t: st, r: sr, b: sb });
       var cost = out * 2;
       avoid.forEach(function (c) { cost += ov(x, y, c); });

@@ -1,12 +1,14 @@
-/* Hero variant C, "The page is a kundali". Loaded only for ?hero=c (see index.html).
+/* Hero C, "The page is a kundali", the default hero (see index.html).
    The hero is a North Indian chart in hairlines: outer square, both diagonals
    and the inner diamond make the twelve houses. The words sit in the centre on
    a soft paper veil; each house holds one feature. One accent, used once: the
    Lagna (house 1) outline. Motion: the chart draws itself once, then the words
    arrive. Nothing loops. */
 
-html.hero-c-on main > .hero { display:none !important; }
-html.hero-c-on .hc { display:block; }
+/* C is the default hero; the head script marks ?hero=a or ?hero=b, and only
+   then does C step aside. Without JS, C shows (lines need JS, words do not). */
+html:not(.hero-a-on):not(.hero-b-on) main > .hero { display:none !important; }
+html.hero-a-on .hc, html.hero-b-on .hc { display:none !important; }
 
 .hc {
   --ink-line:color-mix(in srgb,var(--fg) 20%,var(--bg));
@@ -78,7 +80,8 @@ html[data-lang="hi"] .hc-cap small { font-size:12px; letter-spacing:.02em; }
 .hc-copy {
   position:absolute; left:50%; top:calc(50% - 12px); transform:translate(-50%,-50%); z-index:3;
   display:flex; flex-direction:column; align-items:center; text-align:center;
-  width:max-content; max-width:100%;
+  /* A fixed box, so the web fonts arriving late cannot move the veil. */
+  width:min(100%, 760px);
 }
 /* Paper veil: the chart's lines fade out behind the words. */
 .hc-copy::before {
@@ -131,7 +134,7 @@ html[data-lang="hi"] .hc-sub { max-width:36ch; line-height:1.65; }
   .hc-h svg { width:18px; height:18px; }
 }
 @media (max-width:768px) {
-  html.hero-c-on .hc { width:auto; height:auto; padding:24px var(--gutter) 24px; display:flex; flex-direction:column; }
+  .hc { width:auto; height:auto; padding:24px var(--gutter) 24px; display:flex; flex-direction:column; }
   .hc-copy { position:relative; left:auto; top:auto; transform:none; width:auto; }
   .hc-copy::before { display:none; }
   .hc-word, [data-theme] h1.hc-word { margin-top:16px; font-size:clamp(36px,11vw,72px); }

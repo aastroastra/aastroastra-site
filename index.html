@@ -113,11 +113,20 @@
     try{ q=new URLSearchParams(location.search).get('lang'); }catch(e){}
     if(q!=='hi'&&q!=='en'){ try{ q=localStorage.getItem('aa-lang'); }catch(e){} }
     l=q==='hi'?'hi':'en'; d.setAttribute('data-lang',l); d.lang=l; window.AA_LANG=l;
-    var k=document.createElement('link'); k.rel='preload'; k.as='image'; k.setAttribute('fetchpriority','high');
-    k.href='shots/landing/'+l+'/12-kundali-hero-360.webp'; document.head.appendChild(k);
+    /* Hero: C (the kundali) by default; ?hero=a or ?hero=b shows an alternate.
+       Only the URL decides; a choice saved by an earlier preview is cleared. */
+    var h=null; try{ h=new URLSearchParams(location.search).get('hero'); }catch(e){}
+    try{ localStorage.removeItem('heroVariant'); }catch(e){}
+    h=(h==='a'||h==='b')?h:'c'; d.classList.add('hero-'+h+'-on');
+    if(h==='a'){
+      var k=document.createElement('link'); k.rel='preload'; k.as='image'; k.setAttribute('fetchpriority','high');
+      k.href='shots/landing/'+l+'/12-kundali-hero-360.webp'; document.head.appendChild(k);
+    }
   })();
 </script>
 <script src="/site-theme.js" defer></script>
+<link rel="stylesheet" href="/hero-c.css?v=4" />
+<script src="/hero-c.js?v=4" defer></script>
 </head>
 <body>
 <script src="/app-bar.js"></script>
@@ -133,20 +142,12 @@
 </header>
 
 <main>
-<!-- Hero variant B ("Navagraha orbit"): preview with ?hero=b, back with ?hero=a.
-     Default visitors never load hero-b.css or hero-b.js and see the hero below. -->
+<!-- Hero variant B ("Navagraha orbit"): shown only for ?hero=b.
+     Other visitors never load hero-b.css or hero-b.js. -->
 <script>
   (function(){
     var v=null, d=document.documentElement;
     try{ v=new URLSearchParams(location.search).get('hero'); }catch(e){}
-    try{ if(v==='b'||v==='c') localStorage.setItem('heroVariant',v); else if(v==='a') localStorage.removeItem('heroVariant'); else v=localStorage.getItem('heroVariant'); }catch(e){}
-    if(v==='c'){
-      d.classList.add('hero-c-on');
-      var st=document.createElement('style'); st.textContent='html.hero-c-on main>.hero{display:none}'; document.head.appendChild(st);
-      var cc=document.createElement('link'); cc.rel='stylesheet'; cc.href='/hero-c.css?v=3'; cc.setAttribute('blocking','render'); document.head.appendChild(cc);
-      var cs=document.createElement('script'); cs.src='/hero-c.js?v=3'; cs.defer=true; document.head.appendChild(cs);
-      return;
-    }
     if(v!=='b') return;
     d.classList.add('hero-b-on');
     var c=document.createElement('link'); c.rel='stylesheet'; c.href='/hero-b.css?v=1'; c.setAttribute('blocking','render'); document.head.appendChild(c);
@@ -184,16 +185,16 @@
   </div>
 </section>
 
-<!-- Hero variant C ("The page is a kundali"): preview with ?hero=c, back with ?hero=a.
-     Default visitors never load hero-c.css or hero-c.js and see the hero below. -->
-<section class="hc" id="hero-c" aria-labelledby="hc-title" hidden>
+<!-- Hero C ("The page is a kundali"), the default hero. ?hero=a shows the
+     wordmark and screenshot hero below, ?hero=b the Navagraha orbit. -->
+<section class="hc" id="hero-c" aria-labelledby="hc-title">
   <div class="hc-copy">
     <p class="hc-eyebrow"><span lang="en">Vedic astrology, computed</span><span lang="hi">वैदिक ज्योतिष, गणना से</span></p>
     <h1 class="hc-word" id="hc-title"><span aria-hidden="true">ASTROASHVA</span><span class="sr-only">AstroAshva</span></h1>
     <p class="hc-tag"><span lang="en">One who believes</span><span lang="hi">विश्वास करने वाले के लिए</span></p>
     <p class="hc-sub"><span lang="en">Your real kundali, computed and explained. Ask why, and it shows its working.</span><span lang="hi">आपकी असली कुंडली, गणना से बनी और समझाई हुई। “क्यों?” पूछिए, और यह अपना पूरा हिसाब दिखाती है।</span></p>
     <div class="hc-stores">
-      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.avdstudiox.android" target="_blank" rel="noopener" data-store="android" data-channel="play-hero-c"><img lang="en" src="./img/play-badge-en-v2.png" width="564" height="168" alt="Get it on Google Play" loading="lazy"><img lang="hi" src="./img/play-badge-hi-v2.png" width="646" height="192" alt="इसे Google Play पर पाएं" loading="lazy"></a>
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.avdstudiox.android" target="_blank" rel="noopener" data-store="android" data-channel="play-hero-c"><img lang="en" src="./img/play-badge-en-v2.png" width="564" height="168" alt="Get it on Google Play"><img lang="hi" src="./img/play-badge-hi-v2.png" width="646" height="192" alt="इसे Google Play पर पाएं" loading="lazy"></a>
       <a class="store-badge" href="https://testflight.apple.com/join/HZXJ4Dav" target="_blank" rel="noopener" data-store="ios" data-channel="testflight-hero-c" title="iPhone beta on Apple TestFlight"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.6"></rect><path d="M10.5 18.5h3"></path></svg><span><small><span lang="en">iPhone beta</span><span lang="hi">आईफ़ोन बीटा</span></small><b>TestFlight</b></span></a>
     </div>
     <p class="hc-note"><span lang="en">Free to install, first Kundali free. Some features use credits: <a href="./pricing/">see pricing</a>.</span><span lang="hi">इंस्टॉल करना मुफ़्त, पहली कुंडली मुफ़्त। कुछ फ़ीचर क्रेडिट से चलते हैं: <a href="./pricing/">कीमतें देखें</a>।</span></p>
@@ -218,7 +219,7 @@
   <p class="hc-cap" data-hc-cap aria-live="polite" data-hint=""></p>
 </section>
 
-<!-- 1. Hero -->
+<!-- 1. Hero A (alternate, ?hero=a) -->
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-top">
   <h1 class="wordmark" id="hero-title"><span aria-hidden="true">ASTROASHVA</span><span class="sr-only">AstroAshva</span></h1>
