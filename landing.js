@@ -4,6 +4,13 @@
 (function () {
   'use strict';
   var root = document.documentElement;
+  // Hero A's screenshot row exists only for ?hero=a (C is the default, B has
+  // its own). Removed before any image source is set, so other visitors
+  // download none of it and the hidden row is never built.
+  if (root.classList.contains('hero-b-on') || root.classList.contains('hero-c-on')) {
+    var heroA = document.querySelector('main > .hero .marquee');
+    if (heroA) heroA.parentNode.removeChild(heroA);
+  }
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var REST = 'https://gttszlununmqivrqevwv.supabase.co/rest/v1';
   var SUPA = 'https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/';
