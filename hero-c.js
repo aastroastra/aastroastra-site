@@ -203,6 +203,20 @@
   new MutationObserver(function () { setHint(); var a = active, p = pinned; if (a) { show(a); pinned = p; } })
     .observe(root, { attributes: true, attributeFilter: ['data-lang'] });
 
+  /* The gold sheen crosses the wordmark again on hover (fine pointers only). */
+  var word = hc.querySelector('.hc-word'), sweeping = true;
+  if (word && !reduce) {
+    word.addEventListener('animationend', function (e) { if (e.animationName === 'hc-sweep') sweeping = false; });
+    word.addEventListener('pointerenter', function (e) {
+      if (e.pointerType !== 'mouse' || sweeping) return;
+      if (!word.animate) return;
+      sweeping = true;
+      word.animate([{ backgroundPosition: '100% 0' }, { backgroundPosition: '0 0' }],
+        { duration: 1300, easing: 'cubic-bezier(.45,0,.25,1)' })
+        .finished.then(function () { sweeping = false; }, function () { sweeping = false; });
+    });
+  }
+
   /* ---------- Entrance and pausing ---------- */
   var visible = true;
   function setRunning() {

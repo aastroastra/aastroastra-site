@@ -95,10 +95,17 @@ html[data-lang="hi"] .hc-eyebrow { font-size:14px; letter-spacing:.04em; padding
   margin-top:24px;
   font-family:'Noto Serif',Georgia,serif; font-weight:700; text-transform:uppercase; white-space:nowrap;
   font-size:clamp(56px,6.4vw,96px); line-height:1; letter-spacing:-.005em;
-  /* Plain ink in every theme; site-theme.css paints h1 with the tint gradient. */
-  color:var(--fg); background:none; -webkit-text-fill-color:currentColor;
+  /* Ink in every theme. A narrow gold sheen (hero B's sweep) crosses it once
+     on load and again on hover; at rest only the ink part of the gradient
+     shows. site-theme.css paints h1 with the tint gradient; this replaces it. */
+  color:var(--fg); -webkit-text-fill-color:transparent;
+  background:linear-gradient(105deg,var(--fg) 0 46.5%,var(--sweep,var(--tint)) 50%,var(--fg) 53.5% 100%);
+  background-size:260% 100%; background-position:100% 0;
+  -webkit-background-clip:text; background-clip:text;
   margin-right:-.005em;
 }
+[data-theme$="dark"] .hc-word { --sweep:#FFE7A8; }
+[data-theme^="mono"] .hc-word { --sweep:color-mix(in srgb,var(--fg) 35%,var(--bg)); }
 .hc-tag { margin-top:16px; font-family:var(--font-heading); font-weight:600; font-size:clamp(20px,1.9vw,28px); line-height:1.25; color:var(--fg2); letter-spacing:-.005em; }
 .hc-sub { margin-top:16px; max-width:34ch; font-size:clamp(16px,1.25vw,18px); line-height:1.55; color:var(--muted); text-wrap:balance; }
 html[data-lang="hi"] .hc-tag { letter-spacing:0; }
@@ -115,6 +122,7 @@ html[data-lang="hi"] .hc-sub { max-width:36ch; line-height:1.65; }
     .hc-copy > * { animation:hc-up 1s var(--e) both; }
   .hc-copy > :nth-child(1) { animation-delay:0.4s; }
   .hc-copy > :nth-child(2) { animation-delay:0.48s; }
+  .hc-copy > .hc-word { animation:hc-up 1s var(--e) .48s both, hc-sweep 1.6s cubic-bezier(.45,0,.25,1) 1.1s both; }
   .hc-copy > :nth-child(3) { animation-delay:0.6s; }
   .hc-copy > :nth-child(4) { animation-delay:0.68s; }
   .hc-copy > :nth-child(5) { animation-delay:0.76s; }
@@ -123,6 +131,7 @@ html[data-lang="hi"] .hc-sub { max-width:36ch; line-height:1.65; }
   .hc.paused, .hc.paused * { animation-play-state:paused !important; }
 }
 @keyframes hc-up { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+@keyframes hc-sweep { from { background-position:100% 0; } to { background-position:0 0; } }
 @keyframes hc-in { from { opacity:0; } to { opacity:1; } }
 .hc-h[data-h="1"] { --n:0; } .hc-h[data-h="2"] { --n:1; } .hc-h[data-h="3"] { --n:2; } .hc-h[data-h="4"] { --n:3; }
 .hc-h[data-h="5"] { --n:4; } .hc-h[data-h="6"] { --n:5; } .hc-h[data-h="7"] { --n:6; } .hc-h[data-h="8"] { --n:7; }
