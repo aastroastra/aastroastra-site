@@ -139,7 +139,14 @@
   (function(){
     var v=null, d=document.documentElement;
     try{ v=new URLSearchParams(location.search).get('hero'); }catch(e){}
-    try{ if(v==='b') localStorage.setItem('heroVariant','b'); else if(v==='a') localStorage.removeItem('heroVariant'); else v=localStorage.getItem('heroVariant'); }catch(e){}
+    try{ if(v==='b'||v==='c') localStorage.setItem('heroVariant',v); else if(v==='a') localStorage.removeItem('heroVariant'); else v=localStorage.getItem('heroVariant'); }catch(e){}
+    if(v==='c'){
+      d.classList.add('hero-c-on');
+      var st=document.createElement('style'); st.textContent='html.hero-c-on main>.hero{display:none}'; document.head.appendChild(st);
+      var cc=document.createElement('link'); cc.rel='stylesheet'; cc.href='/hero-c.css?v=1'; cc.setAttribute('blocking','render'); document.head.appendChild(cc);
+      var cs=document.createElement('script'); cs.src='/hero-c.js?v=1'; cs.defer=true; document.head.appendChild(cs);
+      return;
+    }
     if(v!=='b') return;
     d.classList.add('hero-b-on');
     var c=document.createElement('link'); c.rel='stylesheet'; c.href='/hero-b.css?v=1'; c.setAttribute('blocking','render'); document.head.appendChild(c);
@@ -175,6 +182,40 @@
       <div class="hb-tip" data-hb-tip role="tooltip" id="hb-tip" hidden></div>
     </div>
   </div>
+</section>
+
+<!-- Hero variant C ("The page is a kundali"): preview with ?hero=c, back with ?hero=a.
+     Default visitors never load hero-c.css or hero-c.js and see the hero below. -->
+<section class="hc" id="hero-c" aria-labelledby="hc-title" hidden>
+  <div class="hc-copy">
+    <p class="hc-eyebrow"><span lang="en">Vedic astrology, computed</span><span lang="hi">वैदिक ज्योतिष, गणना से</span></p>
+    <h1 class="hc-word" id="hc-title"><span aria-hidden="true">ASTROASHVA</span><span class="sr-only">AstroAshva</span></h1>
+    <p class="hc-tag"><span lang="en">One who believes</span><span lang="hi">विश्वास करने वाले के लिए</span></p>
+    <p class="hc-sub"><span lang="en">Your real kundali, computed and explained. Ask why, and it shows its working.</span><span lang="hi">आपकी असली कुंडली, गणना से बनी और समझाई हुई। “क्यों?” पूछिए, और यह अपना पूरा हिसाब दिखाती है।</span></p>
+    <div class="hc-stores">
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.avdstudiox.android" target="_blank" rel="noopener" data-store="android" data-channel="play-hero-c"><img lang="en" src="./img/play-badge-en-v2.png" width="564" height="168" alt="Get it on Google Play" loading="lazy"><img lang="hi" src="./img/play-badge-hi-v2.png" width="646" height="192" alt="इसे Google Play पर पाएं" loading="lazy"></a>
+      <a class="store-badge" href="https://testflight.apple.com/join/HZXJ4Dav" target="_blank" rel="noopener" data-store="ios" data-channel="testflight-hero-c" title="iPhone beta on Apple TestFlight"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.6"></rect><path d="M10.5 18.5h3"></path></svg><span><small><span lang="en">iPhone beta</span><span lang="hi">आईफ़ोन बीटा</span></small><b>TestFlight</b></span></a>
+    </div>
+    <p class="hc-note"><span lang="en">Free to install, first Kundali free. Some features use credits: <a href="./pricing/">see pricing</a>.</span><span lang="hi">इंस्टॉल करना मुफ़्त, पहली कुंडली मुफ़्त। कुछ फ़ीचर क्रेडिट से चलते हैं: <a href="./pricing/">कीमतें देखें</a>।</span></p>
+  </div>
+  <div class="hc-stage" data-hc-stage>
+    <svg class="hc-lines" data-hc-lines aria-hidden="true" focusable="false"></svg>
+    <div class="hc-houses" data-hc-houses role="list" aria-label="What AstroAshva does, house by house">
+      <button type="button" class="hc-h" data-h="1" role="listitem"><i>1</i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16"/><path d="M4 4l16 16M20 4L4 20M12 4l8 8-8 8-8-8z"/></svg><b><span lang="en">Kundali</span><span lang="hi">कुंडली</span></b></button>
+      <button type="button" class="hc-h" data-h="2" role="listitem"><i>2</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c-3.9 0-6.5 3-6.5 7.3 0 4.8 3 9.7 6.5 9.7s6.5-4.9 6.5-9.7c0-4.3-2.6-7.3-6.5-7.3z"/><path d="M9.3 10.6h.01M14.7 10.6h.01M9.8 15.4c1.3.9 3.1.9 4.4 0"/></svg><b><span lang="en">Face</span><span lang="hi">चेहरा</span></b></button>
+      <button type="button" class="hc-h" data-h="3" role="listitem"><i>3</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 13V6.5a1.4 1.4 0 0 1 2.8 0V11M9.8 11V4.8a1.4 1.4 0 0 1 2.8 0V11M12.6 11V5.6a1.4 1.4 0 0 1 2.8 0V11.5M15.4 11.5V8a1.4 1.4 0 0 1 2.8 0v6.2c0 4-2.6 6.8-6.3 6.8-2.6 0-4.1-1.3-5.3-3.3L4.4 14.6a1.4 1.4 0 0 1 2.3-1.6L7 13.4"/></svg><b><span lang="en">Palm</span><span lang="hi">हस्तरेखा</span></b></button>
+      <button type="button" class="hc-h" data-h="4" role="listitem"><i>4</i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="1.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/><circle cx="12" cy="15" r="1.8"/></svg><b><span lang="en">Panchang</span><span lang="hi">पंचांग</span></b></button>
+      <button type="button" class="hc-h" data-h="5" role="listitem"><i>5</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12.5c0 3.9-3.6 7-8 7-1.2 0-2.3-.2-3.3-.6L4 20l1.3-3.6C4.5 15.3 4 14 4 12.5c0-3.9 3.6-7 8-7s8 3.1 8 7z"/><path d="M12 9.5v6M9 12.5h6"/></svg><b>AshvaAI</b></button>
+      <button type="button" class="hc-h" data-h="6" role="listitem"><i>6</i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16"/><path d="M9.33 4v16M14.67 4v16M4 9.33h16M4 14.67h16"/></svg><b><span lang="en">Numerology</span><span lang="hi">अंक ज्योतिष</span></b></button>
+      <button type="button" class="hc-h" data-h="7" role="listitem"><i>7</i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></svg><b><span lang="en">Matching</span><span lang="hi">मिलान</span></b></button>
+      <button type="button" class="hc-h" data-h="8" role="listitem"><i>8</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h11.5a2 2 0 0 1 2 2V20H7a2 2 0 0 1-2-2z"/><path d="M5 18a2 2 0 0 1 2-2h11.5M9 8.5h6"/></svg><b><span lang="en">Lal Kitab</span><span lang="hi">लाल किताब</span></b></button>
+      <button type="button" class="hc-h" data-h="9" role="listitem"><i>9</i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.6"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8"/></svg><b><span lang="en">Horoscope</span><span lang="hi">राशिफल</span></b></button>
+      <button type="button" class="hc-h" data-h="10" role="listitem"><i>10</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14 3.5V8.5h5M9 12.5h7M9 16h7"/></svg><b><span lang="en">Reports</span><span lang="hi">रिपोर्ट</span></b></button>
+      <button type="button" class="hc-h" data-h="11" role="listitem"><i>11</i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V13M12 20V5M19 20V9.5"/></svg><b><span lang="en">Multi-match</span><span lang="hi">मल्टी-मैच</span></b></button>
+      <button type="button" class="hc-h hc-empty" data-h="12" role="listitem"><i>12</i></button>
+    </div>
+  </div>
+  <p class="hc-cap" data-hc-cap aria-live="polite" data-hint=""></p>
 </section>
 
 <!-- 1. Hero -->
