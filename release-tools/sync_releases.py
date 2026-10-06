@@ -14,7 +14,7 @@ from core import REPOS, extract_report, sha256, slug, validate_manifest, release
 from github_api import GitHub
 
 SITE_REPO=REPOS['site']
-PUBLIC_SITE='https://www.aastroastra.com'
+PUBLIC_SITE='https://www.astroashva.com'
 
 def atomic_json(path,data):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)

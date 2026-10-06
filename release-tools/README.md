@@ -1,6 +1,6 @@
 # Release history
 
-`https://www.aastroastra.com/release/` is the public release archive for Android,
+`https://www.astroashva.com/release/` is the public release archive for Android,
 iOS, backend, admin, web and the website. It has no password gate.
 
 Each source repository has a `release.yml` caller triggered by `v*` and

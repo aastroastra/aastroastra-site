@@ -14,7 +14,7 @@ Everything needed for press coverage, store listings, and partnership materials.
 | **Platforms** | Android (live beta) · iOS (in development) |
 | **Languages** | English, हिन्दी (Hindi) |
 | **Pricing** | Free beta |
-| **Website** | https://www.aastroastra.com/ |
+| **Website** | https://www.astroashva.com/ |
 
 ---
 
