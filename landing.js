@@ -58,11 +58,13 @@
     var v = variant();
     document.querySelectorAll('img[data-shot]').forEach(function (img) {
       var name = img.getAttribute('data-shot');
-      var base = 'shots/landing/' + lang + '/' + (v && DARK[name] ? v + '/' : '') + name;
+      // data-dev="ios": the iPhone captures, in the same language as the page.
+      var ios = img.getAttribute('data-dev') === 'ios';
+      var base = 'shots/landing/' + lang + (ios ? '-ios' : '') + '/' + (v && (ios || DARK[name]) ? v + '/' : '') + name;
       if (img.getAttribute('data-base') === base) return;
       img.setAttribute('data-base', base);
       var sl = img.parentNode;
-      if (sl.classList.contains('sl')) sl.classList.toggle('dk', !!(v && DARK[name]));
+      if (sl.classList.contains('sl')) sl.classList.toggle('dk', !!(v && (ios || DARK[name])));
       var small = img.closest('.card-shot, .side-phone, .story-static');
       if (!img.hasAttribute('data-eager') && !img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
       img.setAttribute('decoding', 'async');
@@ -171,17 +173,19 @@
   if (story && !reduce) {
     var rows = Array.prototype.slice.call(story.querySelectorAll('.m-row'));
     var phones = Array.prototype.slice.call(story.querySelectorAll('.pw')).map(function (pw) {
-      return { slides: Array.prototype.slice.call(pw.querySelectorAll('.sl')), caps: Array.prototype.slice.call(pw.querySelectorAll('.cap')), on: 0 };
+      return { slides: Array.prototype.slice.call(pw.querySelectorAll('.sl')) };
     });
+    // One caption per step, shared by both phones (the same feature on each).
+    var caps = Array.prototype.slice.call(story.querySelectorAll('.pcaps .cap')), capOn = 0;
     var bars = Array.prototype.slice.call(story.querySelectorAll('.story-bar b'));
-    var N = phones.length ? phones[0].caps.length : 1, rowW = [], vw = 0, vh = 0, queued = false;
+    var N = caps.length || 1, rowW = [], vw = 0, vh = 0, queued = false;
     var size = function () {
       vw = window.innerWidth; vh = window.innerHeight;
       rowW = rows.map(function (r) { return r.scrollWidth; });
       frame();
     };
     // Each step holds still for most of its scroll, then the next screen
-    // fades in as the current one fades out; the second phone follows a beat later.
+    // fades in as the current one fades out; the iPhone follows a beat later.
     var stepAt = function (u, lag) {
       var base = Math.min(Math.floor(u), N - 1), frac = u - base;
       if (base >= N - 1) return N - 1;
@@ -201,9 +205,10 @@
         row.style.transform = 'translate3d(' + x.toFixed(1) + 'px,0,0)';
       });
       var u = clamp(p * N - 0.5, 0, N - 1);
-      // Captions change together, on the second phone's beat, so the left
-      // caption is never a step ahead of the right one.
+      // The caption changes on the second phone's beat, so it never names a
+      // feature the iPhone is not showing yet.
       var capNow = Math.round(stepAt(u, (phones.length - 1) * 0.08));
+      if (capNow !== capOn && caps[capNow]) { caps[capOn].classList.remove('on'); caps[capNow].classList.add('on'); capOn = capNow; }
       phones.forEach(function (ph, k) {
         var f = stepAt(u, k * 0.08);
         var cur = Math.floor(f), mix = f - cur;
@@ -213,8 +218,6 @@
           var o = i === cur ? clamp(1 - 2 * mix, 0, 1) : i === cur + 1 ? clamp(2 * mix - 1, 0, 1) : 0;
           sl.style.opacity = o.toFixed(3);
         });
-        var now = capNow;
-        if (now !== ph.on) { ph.caps[ph.on].classList.remove('on'); ph.caps[now].classList.add('on'); ph.on = now; }
       });
       bars.forEach(function (b, k) { b.style.setProperty('--f', clamp(p * N - k, 0, 1).toFixed(3)); });
     };

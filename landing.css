@@ -134,47 +134,62 @@ html[data-lang="hi"] .tagline { letter-spacing:0; }
 }
 .phone .screen { position:relative; aspect-ratio:540/1110; border-radius:calc(var(--pw) * .13); overflow:hidden; background:#fff; isolation:isolate; }
 .phone .screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; will-change:transform,opacity; }
-.story .phone { --pw:min(clamp(200px,20vw,300px), calc((100svh - 250px) * 540 / 1110)); }
-/* Two phones, staggered for depth. Inside each, the screens are stacked and
-   the current one fades out before the next fades in, so a phone never shows
-   two screens at once. */
+.story .phone { --pw:min(clamp(196px,19vw,292px), calc((100svh - 300px) * 1206 / 2622)); }
+/* Two phones, staggered for depth, showing the same feature: an Android phone
+   (punch-hole camera, slim bezel, squarer corners) and an iPhone (Dynamic
+   Island, rounder corners). Inside each, the screens are stacked and the
+   current one fades out before the next fades in, so a phone never shows two
+   screens at once. */
+.story .phone.and { padding:6px; border-radius:calc(var(--pw) * .1); }
+.story .phone.and .screen { border-radius:calc(var(--pw) * .075); }
+.story .phone.and .screen::after { content:""; position:absolute; z-index:3; top:calc(var(--pw) * .03); left:50%; width:calc(var(--pw) * .045); aspect-ratio:1; margin-left:calc(var(--pw) * -.0225); border-radius:50%; background:#0B0B0C; box-shadow:0 0 0 1.5px rgba(255,255,255,.06); }
+.story .phone.ios { padding:8px; border-radius:calc(var(--pw) * .19); background:#111113; box-shadow:0 0 0 1.5px #4a4a4e inset, 0 0 0 1px rgba(255,255,255,.1) inset, 0 40px 80px -30px rgba(0,0,0,.55), 0 0 0 1px var(--line); }
+.story .phone.ios .screen { aspect-ratio:1206/2622; border-radius:calc(var(--pw) * .16); }
+.story .phone.ios .screen::after { content:""; position:absolute; z-index:3; top:1.3%; left:50%; width:31%; aspect-ratio:125/37; transform:translateX(-50%); border-radius:999px; background:#000; }
 .duo { position:relative; z-index:2; display:flex; align-items:flex-start; justify-content:center; gap:clamp(22px,4vw,64px); }
 .pw { display:flex; flex-direction:column; align-items:center; }
-.pw.a { transform:translate3d(0,-18px,0); }
-.pw.b { transform:translate3d(0,26px,0); }
+.pw.a { transform:translate3d(0,-14px,0); }
+.pw.b { transform:translate3d(0,0,0); }
 .story .screen .reel { position:absolute; inset:0; }
 .story .screen .sl { position:absolute; inset:0; overflow:hidden; opacity:0; will-change:opacity; }
 .story .screen .sl:first-child { opacity:1; }
 .story .phone .screen { background:#FBF7EE; }
 [data-theme$="dark"] .story .phone .screen { background:#0B0B0C; }
-/* Hide each capture's own status bar; the frame draws exactly one. */
+/* Android: hide the capture's own status bar; the frame draws one. The iPhone
+   captures keep their real iOS status bar (9:30, set on the simulator). */
 .story .screen .sl img { position:absolute; left:0; top:-5.4%; width:100%; height:105.4%; object-fit:cover; object-position:top; }
 .sbar { position:absolute; z-index:2; top:0; left:0; right:0; height:5.4%; display:flex; align-items:center; justify-content:space-between; padding:0 9% 0 10%;
   font:600 calc(var(--pw) * .043) var(--font-body); color:#1A1A1A; background:linear-gradient(#fff 55%,rgba(255,255,255,0)); }
 .sbar svg { height:44%; width:auto; fill:#1A1A1A; }
 .sl.dk .sbar { color:#F4F4F4; background:linear-gradient(#0B0B0C 55%,rgba(11,11,12,0)); }
 .sl.dk .sbar svg { fill:#F4F4F4; }
-.sl .sbar { font-size:calc(var(--pw) * .043); }
-.pcaps { position:relative; margin-top:18px; height:74px; width:min(42vw,300px); }
+.sl .sbar { font-size:calc(var(--pw) * .043); padding:0 7% 0 8%; }
+.story .phone.ios .sl img { top:0; height:100%; }
+.dev { margin-top:12px; font-size:12px; font-weight:600; letter-spacing:.04em; color:var(--fg2); }
+.pcaps { position:relative; z-index:2; margin-top:20px; height:74px; width:min(90vw,460px); }
 .cap { position:absolute; left:0; right:0; top:0; display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; opacity:0; transform:translateY(10px); transition:opacity .45s var(--ease), transform .45s var(--ease); }
 .cap.on { opacity:1; transform:none; }
 .chip { display:inline-flex; align-items:center; gap:10px; padding:7px 14px 7px 8px; border-radius:999px; background:var(--card); border:1px solid var(--line); font-weight:700; font-size:15px; box-shadow:0 10px 30px -18px rgba(0,0,0,.35); white-space:nowrap; }
 .chip i { font-style:normal; font-size:11px; font-weight:700; letter-spacing:.06em; padding:3px 8px; border-radius:999px; background:var(--tint-grad); color:var(--on-accent); }
-.cap p { font-size:14px; color:var(--fg2); max-width:300px; }
+.cap p { font-size:15px; color:var(--fg2); max-width:440px; }
 .story-bar { position:absolute; z-index:2; right:clamp(14px,3vw,40px); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:8px; }
 .story-bar b { display:block; width:4px; height:34px; border-radius:4px; background:var(--line); overflow:hidden; position:relative; }
 .story-bar b::after { content:""; position:absolute; inset:0; background:var(--tint); transform:scaleY(var(--f,0)); transform-origin:top; }
 .story-static { display:none; }
 @media (max-width:760px) {
   .story { height:480vh; }
-  .story .phone { --pw:min(41vw, calc((100svh - 300px) * 540 / 1110)); padding:6px; }
+  .story .phone { --pw:min(40vw, calc((100svh - 330px) * 1206 / 2622)); }
+  .story .phone.and { padding:4px; }
+  .story .phone.ios { padding:5px; }
+  .dev { margin-top:8px; font-size:11px; }
   .duo { gap:14px; }
-  .pw.a { transform:translate3d(0,-12px,0); }
-  .pw.b { transform:translate3d(0,18px,0); }
+  .pw.a { transform:translate3d(0,-10px,0); }
+  .pw.b { transform:translate3d(0,0,0); }
   .m-row { font-size:clamp(44px,14vw,96px); }
   .story-bar { display:none; }
-  .pcaps { width:44vw; height:46px; margin-top:12px; }
-  .cap p { display:none; }
+  .pcaps { width:calc(100vw - 32px); height:68px; margin-top:10px; }
+  .cap { gap:5px; }
+  .cap p { font-size:13px; }
   .chip { font-size:13px; padding:5px 10px 5px 6px; gap:6px; }
   .chip i { font-size:10px; padding:2px 6px; }
 }
@@ -468,14 +483,16 @@ footer { max-width:var(--maxw); margin:0 auto; }
   .story { height:auto; padding:60px 0; }
   .story-pin { position:relative; height:auto; overflow:visible; }
   .story-pin > .duo, .story-bar, .mantra { display:none; }
-  .story-static { display:grid; grid-template-columns:repeat(6,minmax(0,190px)); justify-content:center; gap:16px; padding:0 var(--gutter); width:100%; }
+  .story-static { display:grid; grid-template-columns:repeat(3,minmax(0,300px)); justify-content:center; gap:28px 20px; padding:0 var(--gutter); width:100%; }
   .story-static figure { text-align:center; }
-  .story-static img { border-radius:22px; border:6px solid #0B0B0C; aspect-ratio:540/1110; object-fit:cover; object-position:top; width:100%; height:auto; }
+  .story-static .pair { display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:start; }
+  .story-static img { border-radius:18px; border:5px solid #0B0B0C; aspect-ratio:540/1110; object-fit:cover; object-position:top; width:100%; height:auto; }
+  .story-static img[data-dev="ios"] { border-radius:24px; aspect-ratio:1206/2622; }
   .story-static figcaption { margin-top:10px; font-weight:700; }
   .ai-demo *, .ai-demo *::before, .ai-demo *::after { transition:none !important; animation:none !important; }
   .cap, .feat .peek > div, .btn, .play-badge, .store-badge { transition:none; }
   body { transition:none; }
 }
 @media (prefers-reduced-motion:reduce) and (max-width:760px) {
-  .story-static { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .story-static { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 12px; }
 }
