@@ -31,6 +31,8 @@ img { display:block; max-width:100%; }
 a { color:inherit; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 html[data-lang="en"] [lang="hi"]:not(html), html[data-lang="hi"] [lang="en"]:not(html) { display:none !important; }
+/* The language switch itself always shows both choices. */
+html[data-lang="en"] .lang-seg button[lang="hi"] { display:inline-block !important; }
 html[data-lang="hi"] .eyebrow, html[data-lang="hi"] .vs .who, html[data-lang="hi"] .chip i { letter-spacing:.03em; }
 [data-theme$="dark"] .phone, [data-theme$="dark"] .side-phone { box-shadow:0 0 0 1px #3a3a3a, 0 40px 80px -30px rgba(0,0,0,.7); }
 [data-theme$="dark"] .feat .peek > div { border-color:#2a2a2a; }
@@ -58,7 +60,15 @@ html[data-lang="hi"] .h2 { letter-spacing:0; line-height:1.18; }
 @media (max-width:580px) {
   .site-header { flex-wrap:nowrap; align-items:center; padding:12px 16px; gap:10px; }
   .site-controls { width:auto; gap:10px; flex-wrap:nowrap; }
-  .site-theme-select { padding:6px 24px 6px 10px; min-height:34px; max-width:128px; }
+  .site-controls { gap:8px; }
+  .site-nav a { font-size:12px; }
+  .lang-seg button { padding:6px 9px; }
+  .lang-seg, .site-themes { flex:none; }
+}
+@media (max-width:380px) {
+  .site-header { padding:12px 12px; gap:6px; }
+  .site-controls { gap:6px; }
+  .lang-seg button { padding:6px 7px; }
 }
 
 /* ---------- 1. Hero ---------- */
@@ -447,6 +457,7 @@ footer { border-top:1px solid var(--line); }
 .foot-word { padding:clamp(26px,5vw,64px) clamp(16px,4vw,40px) clamp(10px,2vw,18px); max-width:var(--maxw); margin:0 auto; }
 .foot-word svg { display:block; width:100%; height:auto; overflow:visible; }
 .foot-word text { font-family:'Noto Serif',Georgia,serif; font-weight:700; fill:var(--fg); letter-spacing:-.012em; }
+[data-theme="white-light"] .foot-word text { fill:var(--tint); }
 .foot-word .fw-sub { text-align:center; margin-top:clamp(6px,1.2vw,14px); font-size:clamp(10px,1.05vw,13px); letter-spacing:.34em; text-transform:uppercase; color:var(--muted); }
 html[data-lang="hi"] .foot-word .fw-sub { letter-spacing:.06em; }
 .foot-legal { border-top:1px solid var(--line); padding:15px clamp(16px,4vw,30px); display:flex; flex-wrap:wrap; gap:6px 18px; justify-content:center; text-align:center; font-size:11.5px; color:var(--muted); }

@@ -217,6 +217,42 @@
     });
   }
 
+  /* ---------- Install counts under the badges ----------
+     stats.json (update-stats.py): Android = Play Console total when known,
+     else the public Play listing bucket ("5+"); iPhone = TestFlight installs.
+     Only real numbers; a missing one is left out. The line's height is
+     reserved in CSS, so filling it shifts nothing. */
+  var stat = hc.querySelector('[data-hc-stat]');
+  if (stat && window.fetch) {
+    fetch('https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/stats.json?t=' + Date.now(), { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; }).then(function (st) {
+        if (!st) return;
+        var a = typeof st.android_installs === 'number' ? String(st.android_installs) : (st.android_listing || null);
+        var i = typeof st.ios_installs === 'number' && st.ios_installs > 0 ? String(st.ios_installs) : null;
+        var en = [], hiL = [];
+        if (a) { en.push('<b>' + a + '</b> on Android'); hiL.push('एंड्रॉइड पर <b>' + a + '</b>'); }
+        if (i) { en.push('<b>' + i + '</b> on iPhone'); hiL.push('आईफ़ोन पर <b>' + i + '</b>'); }
+        if (!en.length) return;
+        stat.innerHTML = '<span lang="en">' + en.join(' \u00b7 ') + '</span><span lang="hi">' + hiL.join(' \u00b7 ') + '</span>';
+      }).catch(function () {});
+  }
+
+  /* ---------- Scroll cue (phones): to the next section, gone once scrolling ---------- */
+  var cue = hc.querySelector('[data-hc-cue]');
+  if (cue) {
+    var setCueLabel = function () { cue.setAttribute('aria-label', hi() ? 'और जानने के लिए नीचे स्क्रॉल करें' : 'Scroll to learn more'); };
+    setCueLabel();
+    new MutationObserver(setCueLabel).observe(root, { attributes: true, attributeFilter: ['data-lang'] });
+    cue.addEventListener('click', function () {
+      var n = hc.nextElementSibling;
+      while (n && (n.offsetParent === null || n.offsetHeight === 0)) n = n.nextElementSibling;
+      if (n) n.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+    var onScroll = function () { cue.classList.toggle('gone', window.scrollY > 24); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
   /* ---------- Entrance and pausing ----------
      The chart draws when it is on screen: at once on desktop, on scroll on
      phones, where the words fill the first screen. The house words follow. */

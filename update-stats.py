@@ -11,6 +11,8 @@ as null and the page leaves it out; nothing is estimated.
                     (e.g. pubsite_prod_rev_0123456789) and the Play service
                     account granted "View app information and download bulk
                     reports". Without it this stays null.
+  android_listing   The public Google Play listing's download bucket (e.g. "5+"),
+                    exactly as Play shows it; used when the exact count is unknown.
   registered_users  Accounts signed in with a phone or email (never guests),
                     from the public `public_stats` RPC. Includes team accounts.
 
@@ -97,6 +99,18 @@ def android_installs():
     return int(rows[-1]["Total User Installs"]), names[-1]
 
 
+def android_listing():
+    import re
+    url = f"https://play.google.com/store/apps/details?id={PACKAGE}&hl=en&gl=US"
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0", "Accept-Language": "en"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        html = r.read().decode("utf-8", "replace")
+    m = re.search(r'>([0-9][0-9.,]*[KMB]?\+)</div><div[^>]*>Downloads<', html)
+    if not m:
+        raise ValueError("downloads bucket not found on the listing")
+    return m.group(1)
+
+
 def registered_users():
     req = urllib.request.Request(BASE + "/rest/v1/rpc/public_stats", data=b"{}", method="POST",
                                  headers={"apikey": ANON, "Authorization": "Bearer " + ANON,
@@ -107,7 +121,7 @@ def registered_users():
 
 def main():
     dry = "--dry-run" in sys.argv
-    out = {"android_installs": None, "ios_installs": None, "registered_users": None,
+    out = {"android_installs": None, "android_listing": None, "ios_installs": None, "registered_users": None,
            "updated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
            "source": {}}
     try:
@@ -121,6 +135,11 @@ def main():
         out["source"]["android_installs"] = ("Google Play Console statistics export: " + note) if n is not None else f"unavailable ({note})"
     except Exception as e:
         out["source"]["android_installs"] = f"unavailable ({type(e).__name__})"
+    try:
+        out["android_listing"] = android_listing()
+        out["source"]["android_listing"] = "Public Google Play listing, downloads bucket"
+    except Exception as e:
+        out["source"]["android_listing"] = f"unavailable ({type(e).__name__})"
     try:
         out["registered_users"] = registered_users()
         out["source"]["registered_users"] = "public_stats(): non-guest accounts, includes team accounts"

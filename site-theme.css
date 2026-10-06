@@ -52,10 +52,11 @@ h2 { font-family:var(--font-heading); font-weight:700; letter-spacing:-.02em; }
 @media(max-width:760px) {
   .site-header { padding:16px 20px; gap:12px; }
   .site-controls { gap:14px; }
-  .site-themes { display:none; }
-  .site-theme-mobile { display:block; }
 }
 @media(max-width:580px) {
+  /* Phones keep the five theme dots (32px touch targets), tighter. */
+  .site-themes { gap:0; padding:2px; }
+  .site-themes button { width:32px; height:32px; }
   .site-header { align-items:flex-start; }
   .site-controls { width:100%; justify-content:space-between; }
   .site-nav { gap:16px; }

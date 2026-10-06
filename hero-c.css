@@ -98,19 +98,26 @@ html[data-lang="hi"] .hc-eyebrow { font-size:14px; letter-spacing:.04em; padding
   /* Ink in every theme. A narrow gold sheen (hero B's sweep) crosses it once
      on load and again on hover; at rest only the ink part of the gradient
      shows. site-theme.css paints h1 with the tint gradient; this replaces it. */
-  color:var(--fg); -webkit-text-fill-color:transparent;
-  background:linear-gradient(105deg,var(--fg) 0 46.5%,var(--sweep,var(--tint)) 50%,var(--fg) 53.5% 100%);
+  color:var(--hc-ink,var(--fg)); -webkit-text-fill-color:transparent;
+  background:linear-gradient(105deg,var(--hc-ink,var(--fg)) 0 46.5%,var(--sweep,var(--tint)) 50%,var(--hc-ink,var(--fg)) 53.5% 100%);
   background-size:260% 100%; background-position:100% 0;
   -webkit-background-clip:text; background-clip:text;
   margin-right:-.005em;
 }
 [data-theme$="dark"] .hc-word { --sweep:#FFE7A8; }
+/* White·Light: the wordmark is the theme's orange (3.3:1, large text), with a gold sweep. */
+[data-theme="white-light"] .hc-word { --hc-ink:var(--tint); --sweep:#F5B93A; }
 [data-theme^="mono"] .hc-word { --sweep:color-mix(in srgb,var(--fg) 35%,var(--bg)); }
 .hc-tag { margin-top:16px; font-family:var(--font-heading); font-weight:600; font-size:clamp(20px,1.9vw,28px); line-height:1.25; color:var(--fg2); letter-spacing:-.005em; }
 html[data-lang="hi"] .hc-tag { letter-spacing:0; }
 .hc-stores { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; align-items:center; margin-top:40px; }
 .hc-stores a { border-radius:12px; }
 .hc-stores a:focus-visible { outline:2px solid var(--fg); outline-offset:4px; }
+.hc-stat { margin-top:16px; min-height:16px; font-size:13px; line-height:16px; color:var(--muted); font-variant-numeric:tabular-nums; }
+.hc-stat b { color:var(--fg2); font-weight:600; }
+.hc-stat + .hc-note { margin-top:8px; }
+/* Scroll cue: phones only (see the 768px block). */
+.hc-cue { display:none; }
 .hc-note { margin-top:16px; font-size:13px; line-height:16px; color:var(--muted); }
 .hc-note a { color:var(--fg); text-underline-offset:3px; }
 .hc-note a:focus-visible { outline:2px solid var(--fg); outline-offset:2px; border-radius:2px; }
@@ -124,6 +131,9 @@ html[data-lang="hi"] .hc-tag { letter-spacing:0; }
   .hc-copy > :nth-child(3) { animation-delay:0.6s; }
   .hc-copy > :nth-child(4) { animation-delay:0.68s; }
   .hc-copy > :nth-child(5) { animation-delay:0.76s; }
+  .hc-copy > :nth-child(6) { animation-delay:0.84s; }
+  .hc-copy > .hc-cue { animation:hc-in .8s ease 1.4s both, hc-bob 2.4s ease-in-out 2.2s infinite; }
+  .hc-copy > .hc-cue.gone { animation:none; }
   /* House words wait for the chart to start drawing (hero-c.js adds .go). */
   html.js .hc-stage:not(.go) .hc-h { opacity:0; }
   .hc-stage.go .hc-h { animation:hc-in .8s var(--e) both; animation-delay:calc(1.5s + var(--n) * .07s); }
@@ -131,6 +141,7 @@ html[data-lang="hi"] .hc-tag { letter-spacing:0; }
 }
 @keyframes hc-up { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
 @keyframes hc-sweep { from { background-position:100% 0; } to { background-position:0 0; } }
+@keyframes hc-bob { 0%,100% { transform:translateY(0); opacity:1; } 50% { transform:translateY(6px); opacity:.55; } }
 @keyframes hc-in { from { opacity:0; } to { opacity:1; } }
 .hc-h[data-h="1"] { --n:0; } .hc-h[data-h="2"] { --n:1; } .hc-h[data-h="3"] { --n:2; } .hc-h[data-h="4"] { --n:3; }
 .hc-h[data-h="5"] { --n:4; } .hc-h[data-h="6"] { --n:5; } .hc-h[data-h="7"] { --n:6; } .hc-h[data-h="8"] { --n:7; }
@@ -149,6 +160,15 @@ html[data-lang="hi"] .hc-tag { letter-spacing:0; }
     min-height:calc((100vh - var(--hc-nav)) * .8); min-height:calc((100svh - var(--hc-nav)) * .8); padding:32px 0 40px; }
   .hc-copy::before { display:none; }
   .hc-stage, .hc-cap { display:none; }
+  .hc-copy { padding-bottom:88px; }
+  .hc-cue {
+    display:grid; place-items:center; position:absolute; left:50%; bottom:16px; width:44px; height:44px; margin-left:-22px;
+    border:0; border-radius:50%; background:none; color:var(--fg2); cursor:pointer; -webkit-tap-highlight-color:transparent;
+    transition:opacity .3s ease;
+  }
+  .hc-cue svg { width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .hc-cue:focus-visible { outline:2px solid var(--fg); outline-offset:2px; }
+  .hc-cue.gone { opacity:0; pointer-events:none; }
   .hc-word, [data-theme] h1.hc-word { margin-top:16px; font-size:clamp(36px,11vw,72px); }
   .hc-tag { margin-top:8px; }
   .hc-stores { margin-top:32px; gap:12px; }
