@@ -168,7 +168,7 @@ html[data-lang="hi"] .hc-tag { letter-spacing:0; }
      little shorter than the screen so the next section follows on. */
   .hc { --hc-nav:72px; width:auto; height:auto; padding:0 var(--gutter); }
   .hc-copy { position:relative; left:auto; top:auto; transform:none; width:auto; justify-content:center;
-    min-height:calc((100vh - var(--hc-nav)) * .8); min-height:calc((100svh - var(--hc-nav)) * .8); padding:32px 0 40px; }
+    min-height:calc(100vh - var(--hc-nav)); min-height:calc(100svh - var(--hc-nav)); padding:80px 0; }
   .hc-copy::before { display:none; }
   .hc-stage, .hc-cap { display:none; }
   .hc { position:relative; }
@@ -187,7 +187,6 @@ html[data-lang="hi"] .hc-tag { letter-spacing:0; }
   .hc-sky .gl path, .hc-sky .gl circle { fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
   .hc-sky .gl .f { fill:currentColor; stroke:none; }
   .hc-sky .su { color:var(--tint); }
-  .hc-copy { padding-bottom:88px; }
   .hc-cue {
     display:grid; place-items:center; position:absolute; left:50%; bottom:16px; width:44px; height:44px; margin-left:-22px;
     border:0; border-radius:50%; background:none; color:var(--fg2); cursor:pointer; -webkit-tap-highlight-color:transparent;

@@ -86,4 +86,4 @@ presskit/
 
 ## Contact
 
-For press, high-resolution assets, or partnership requests: **hello@aastroastra.com**
+For press, high-resolution assets, or partnership requests: **hello@astroashva.com**
