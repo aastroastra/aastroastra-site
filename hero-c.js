@@ -34,7 +34,7 @@
     9:  ['Fortune', 'भाग्य', 'Daily, weekly and monthly horoscope for your sign.', 'आपकी राशि का दैनिक, साप्ताहिक और मासिक राशिफल।'],
     10: ['Karma', 'कर्म', 'Kundali, matching and numerology reports as PDFs to keep and share.', 'कुंडली, मिलान और अंक ज्योतिष रिपोर्ट, PDF में रखने और भेजने के लिए।'],
     11: ['Gains', 'लाभ', 'Rank several kundalis against yours in one go.', 'कई कुंडलियों को एक साथ अपनी कुंडली से मिलाकर क्रम में देखें।'],
-    12: ['Release', 'व्यय', '', '']
+    12: ['Moksha', 'मोक्ष', 'Pooja booking and astrologer calls, in preparation.', 'पूजा बुकिंग और ज्योतिषी से कॉल, तैयारी में।']
   };
   function hi() { return root.getAttribute('data-lang') === 'hi'; }
   function setHint() { cap.setAttribute('data-hint', hi() ? 'किसी भाव को छुएं' : 'Tap a house'); }
