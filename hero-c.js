@@ -253,6 +253,68 @@
     onScroll();
   }
 
+  /* ---------- Phones: hero B's sky, faint, behind the words ----------
+     The zodiac ring (12 rashis, 27 nakshatra ticks) and the nine grahas on
+     their orbits, with hero B's glyphs, periods and start angles. Drawn once,
+     only on phones; CSS turns it (paused with the hero, still for reduced
+     motion). Decorative: aria-hidden, no pointer events. */
+  var sky = hc.querySelector('[data-hc-sky]');
+  var SKY = [ // [id, orbit share, period s, start rad, dir, glyph] from hero-b.js
+    ['mo', .41, 15, 2.86, 1, '<path class="f" d="M8.2 3a9.2 9.2 0 0 1 0 18a12 12 0 0 0 0-18z"/>'],
+    ['me', .5, 21, 3.07, 1, '<circle cx="12" cy="12" r="4.3"/><path d="M7.8 3a4.2 4.2 0 0 0 8.4 0M12 16.3V22M9 19.2h6"/>'],
+    ['ve', .58, 26, 5.99, 1, '<circle cx="12" cy="8.6" r="5.4"/><path d="M12 14v8M8.6 18.3h6.8"/>'],
+    ['su', .65, 31, 0.51, 1, '<circle cx="12" cy="12" r="8.2"/><circle class="f" cx="12" cy="12" r="2.3"/>'],
+    ['ma', .71, 37, 3.41, 1, '<circle cx="10" cy="14" r="5.6"/><path d="M14 10l5.6-5.6M14.6 4.4h5v5"/>'],
+    ['ju', .77, 48, 2.81, 1, '<path d="M5.4 8.2C5.4 4.4 11.2 4 11.2 8.2c0 3.4-3.6 5.6-6.2 8H19M15.6 3.6V21"/>'],
+    ['ra', .83, 56, 5.98, -1, '<path d="M7.6 16.6C3.4 12.6 5 4.6 12 4.6s8.6 8 4.4 12"/><circle cx="7" cy="18.8" r="2.2"/><circle cx="17" cy="18.8" r="2.2"/>'],
+    ['ke', .83, 56, 5.98 + Math.PI, -1, '<path d="M7.6 7.4C3.4 11.4 5 19.4 12 19.4s8.6-8 4.4-12"/><circle cx="7" cy="5.2" r="2.2"/><circle cx="17" cy="5.2" r="2.2"/>'],
+    ['sa', .9, 66, 0.21, 1, '<path d="M6.4 5.2h6.2M9.5 2.4V19M9.5 12.6c0-3.6 6.6-4 6.6 0 0 3-3 4-3 6.5 0 2 2.1 2.6 3.9 1.2"/>']
+  ];
+  function drawSky() {
+    if (!sky || sky.firstChild) return;
+    var f = document.createElement('link');
+    f.rel = 'stylesheet';
+    f.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols&display=swap&text=' + encodeURIComponent('\u2648\u2649\u264a\u264b\u264c\u264d\u264e\u264f\u2650\u2651\u2652\u2653');
+    document.head.appendChild(f);
+    var svg = el('svg', { viewBox: '-100 -100 200 200', focusable: 'false' }, sky);
+    var ring = el('g', { 'class': 'ring' }, svg);
+    el('circle', { r: 97, 'class': 'rc' }, ring);
+    el('circle', { r: 88, 'class': 'rc' }, ring);
+    el('circle', { r: 84.6, 'class': 'rc' }, ring);
+    for (var i = 0; i < 12; i++) {
+      var a = i * 30;
+      el('line', { x1: 0, y1: -88, x2: 0, y2: -97, 'class': 'div', transform: 'rotate(' + a + ')' }, ring);
+      el('text', { x: 0, y: -92.5, transform: 'rotate(' + (a + 15) + ')' }, ring).textContent = String.fromCharCode(0x2648 + i) + '\ufe0e';
+    }
+    for (var n = 0; n < 27; n++) {
+      el('line', { x1: 0, y1: -84.6, x2: 0, y2: n % 9 === 0 ? -80.6 : -82.4, 'class': 'tick', transform: 'rotate(' + (n * 360 / 27) + ')' }, ring);
+    }
+    var R = 80;
+    SKY.forEach(function (g) {
+      var r = g[1] * R;
+      if (g[0] !== 'ke') el('circle', { r: r, 'class': 'orb' }, svg);
+      // Start where hero B starts: a negative delay of start / (2 pi) of a period.
+      var spin = el('g', { 'class': 'spin' + (g[4] < 0 ? ' rev' : '') }, svg);
+      var frac = g[3] / (Math.PI * 2);
+      if (g[4] < 0) frac = 1 - frac;
+      spin.style.setProperty('--p', g[2] + 's');
+      spin.style.setProperty('--d', (-frac * g[2]).toFixed(2) + 's');
+      spin.setAttribute('transform', reduce ? 'rotate(' + (g[3] * 180 / Math.PI) + ')' : '');
+      var at = el('g', { transform: 'translate(' + r.toFixed(2) + ' 0)' }, spin);
+      var up = el('g', { 'class': 'up', transform: reduce ? 'rotate(' + (-g[3] * 180 / Math.PI) + ')' : '' }, at);
+      up.style.setProperty('--p', g[2] + 's');
+      up.style.setProperty('--d', (-frac * g[2]).toFixed(2) + 's');
+      var gl = el('g', { 'class': 'gl ' + g[0], transform: 'translate(-6 -6) scale(.5)' }, up);
+      gl.innerHTML = g[5];
+    });
+  }
+  var phone = window.matchMedia ? matchMedia('(max-width: 768px)') : null;
+  if (sky && phone) {
+    if (phone.matches) drawSky();
+    var onPhone = function () { if (phone.matches) drawSky(); };
+    if (phone.addEventListener) phone.addEventListener('change', onPhone); else if (phone.addListener) phone.addListener(onPhone);
+  }
+
   /* ---------- Entrance and pausing ----------
      The chart draws when it is on screen: at once on desktop, on scroll on
      phones, where the words fill the first screen. The house words follow. */

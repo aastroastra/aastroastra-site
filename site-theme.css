@@ -43,7 +43,8 @@ body { font-family:var(--font-body); letter-spacing:-.01em; -webkit-font-smoothi
 [data-site-theme="yellow-dark"] .site-chip,[data-site-theme="mono-dark"] .site-chip { background:#000; }
 [data-site-theme="yellow-dark"] i { background:#F5B93A; }
 [data-site-theme="mono-dark"] i { background:#fff; }
-.site-theme-mobile { display:none; }
+/* The theme dots show at every width; the old select is never shown. */
+.site-theme-mobile { display:none !important; }
 .site-theme-select { width:auto; min-height:38px; margin:0; padding:7px 28px 7px 12px; border:1px solid var(--line); border-radius:999px; background:var(--bg); color:var(--fg); font:600 12px var(--font-body); }
 .site-header :focus-visible { outline:2px solid var(--tint); outline-offset:4px; }
 h1 { font-family:var(--font-heading); font-weight:700; color:var(--tint); }

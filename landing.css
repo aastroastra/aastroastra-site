@@ -65,6 +65,10 @@ html[data-lang="hi"] .h2 { letter-spacing:0; line-height:1.18; }
   .lang-seg button { padding:6px 9px; }
   .lang-seg, .site-themes { flex:none; }
 }
+@media (max-width:340px) {
+  .site-themes button { width:28px; height:28px; }
+  .site-brand .site-mark { width:28px; height:28px; }
+}
 @media (max-width:380px) {
   .site-header { padding:12px 12px; gap:6px; }
   .site-controls { gap:6px; }

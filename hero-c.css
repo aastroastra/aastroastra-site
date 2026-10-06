@@ -141,6 +141,15 @@ html[data-lang="hi"] .hc-tag { letter-spacing:0; }
 }
 @keyframes hc-up { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
 @keyframes hc-sweep { from { background-position:100% 0; } to { background-position:0 0; } }
+@media (prefers-reduced-motion:no-preference) and (max-width:768px) {
+  .hc-sky .ring { animation:hc-spin 240s linear infinite; }
+  .hc-sky .spin { animation:hc-spin var(--p) linear infinite; animation-delay:var(--d); }
+  .hc-sky .spin.rev { animation-direction:reverse; }
+  .hc-sky .up { animation:hc-spin var(--p) linear infinite reverse; animation-delay:var(--d); transform-box:fill-box; transform-origin:center; }
+  .hc-sky .spin.rev .up { animation-direction:normal; }
+}
+.hc-sky .ring, .hc-sky .spin { transform-box:view-box; transform-origin:0 0; }
+@keyframes hc-spin { to { transform:rotate(360deg); } }
 @keyframes hc-bob { 0%,100% { transform:translateY(0); opacity:1; } 50% { transform:translateY(6px); opacity:.55; } }
 @keyframes hc-in { from { opacity:0; } to { opacity:1; } }
 .hc-h[data-h="1"] { --n:0; } .hc-h[data-h="2"] { --n:1; } .hc-h[data-h="3"] { --n:2; } .hc-h[data-h="4"] { --n:3; }
@@ -152,6 +161,8 @@ html[data-lang="hi"] .hc-tag { letter-spacing:0; }
   .hc-h b { font-size:10px; letter-spacing:.12em; }
   .hc-h svg { width:18px; height:18px; }
 }
+/* Phones: hero B's sky (zodiac ring, nine grahas) faint behind the words. */
+.hc-sky { display:none; }
 @media (max-width:768px) {
   /* Phones and tablets: the words only, centred, no chart. The block is a
      little shorter than the screen so the next section follows on. */
@@ -160,6 +171,22 @@ html[data-lang="hi"] .hc-tag { letter-spacing:0; }
     min-height:calc((100vh - var(--hc-nav)) * .8); min-height:calc((100svh - var(--hc-nav)) * .8); padding:32px 0 40px; }
   .hc-copy::before { display:none; }
   .hc-stage, .hc-cap { display:none; }
+  .hc { position:relative; }
+  .hc-copy { z-index:1; }
+  .hc-sky {
+    display:block; position:absolute; left:50%; top:50%; z-index:0; pointer-events:none;
+    width:min(calc(100vw - 8px), 560px); aspect-ratio:1; transform:translate(-50%,-50%);
+    opacity:.14; color:var(--fg);
+  }
+  [data-theme$="dark"] .hc-sky { opacity:.2; filter:drop-shadow(0 0 3px color-mix(in srgb,var(--tint) 45%,transparent)); }
+  .hc-sky svg { width:100%; height:100%; overflow:visible; }
+  .hc-sky .rc, .hc-sky .orb { fill:none; stroke:currentColor; stroke-width:.25; }
+  .hc-sky .orb { stroke-width:.18; stroke-dasharray:.6 1.6; }
+  .hc-sky .div, .hc-sky .tick { stroke:currentColor; stroke-width:.25; }
+  .hc-sky text { fill:currentColor; font:6px/1 'Noto Sans Symbols','Noto Sans Symbols 2','Segoe UI Symbol','Apple Symbols',sans-serif; text-anchor:middle; dominant-baseline:central; }
+  .hc-sky .gl path, .hc-sky .gl circle { fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; }
+  .hc-sky .gl .f { fill:currentColor; stroke:none; }
+  .hc-sky .su { color:var(--tint); }
   .hc-copy { padding-bottom:88px; }
   .hc-cue {
     display:grid; place-items:center; position:absolute; left:50%; bottom:16px; width:44px; height:44px; margin-left:-22px;
