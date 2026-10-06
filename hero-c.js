@@ -217,19 +217,28 @@
     });
   }
 
-  /* ---------- Entrance and pausing ---------- */
-  var visible = true;
+  /* ---------- Entrance and pausing ----------
+     The chart draws when it is on screen: at once on desktop, on scroll on
+     phones, where the words fill the first screen. The house words follow. */
+  var visible = true, stageSeen = true;
   function setRunning() {
     var run = visible && !document.hidden;
     hc.classList.toggle('paused', !run);
     anims.forEach(function (a) { if (a.playState === 'running' && !run) a.pause(); else if (a.playState === 'paused' && run) a.play(); });
-    if (run) draw();
+    if (run && stageSeen) { draw(); stage.classList.add('go'); }
   }
   if (!reduce) {
     if ('IntersectionObserver' in window) {
+      stageSeen = false;
       new IntersectionObserver(function (es) { visible = es[0].isIntersecting; setRunning(); }).observe(hc);
+      var so = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { stageSeen = true; so.disconnect(); setRunning(); }
+      }, { threshold: .25 });
+      so.observe(stage);
     }
     document.addEventListener('visibilitychange', setRunning);
     requestAnimationFrame(function () { requestAnimationFrame(setRunning); });
+  } else {
+    stage.classList.add('go');
   }
 })();
