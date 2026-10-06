@@ -13,7 +13,7 @@ from sync_releases import process
 from build_site import build
 
 def record():
-    return {'schema':1,'id':'android:v1.0.9','platform':'android','repo':'aastroastra/astroashva-android',
+    return {'schema':1,'id':'android:v1.0.9','platform':'android','repo':'astroashva/astroashva-android',
         'sha':'a'*40,'tag':'v1.0.9','version':'1.0.9','build':'197','date':'2026-09-18T00:00:00Z',
         'status':'passed','kind':'tag','checks':[{'name':'End-to-end','status':'passed','required':True}],
         'changes':[{'sha':'b'*40,'subject':'<script>alert("x")</script>'}], 'downloads':[]}
@@ -47,7 +47,7 @@ class ManifestTests(unittest.TestCase):
 
     def test_mismatched_source_and_failed_evidence_cannot_pass(self):
         data=record();validate_manifest(data,sha='a'*40)
-        for key,value in [('sha','b'*40),('repo','aastroastra/astroashva-ios'),('tag','v2')]:
+        for key,value in [('sha','b'*40),('repo','astroashva/astroashva-ios'),('tag','v2')]:
             with self.assertRaises(ValueError):validate_manifest(data,**{key:value})
         data['checks'][0]['status']='failed'
         with self.assertRaises(ValueError):validate_manifest(data)
@@ -55,10 +55,12 @@ class ManifestTests(unittest.TestCase):
         with self.assertRaises(ValueError):validate_manifest(data)
 
     def test_manifests_from_before_the_repo_rename_still_validate(self):
-        data=record();data['repo']='aastroastra/aastroastra-android'
-        validate_manifest(data,repo='aastroastra/astroashva-android',sha='a'*40)
-        validate_manifest(record(),repo='aastroastra/aastroastra-android',sha='a'*40)
-        with self.assertRaises(ValueError):validate_manifest(data,repo='aastroastra/aastroastra-ios')
+        for old in ('aastroastra/aastroastra-android','aastroastra/astroashva-android'):
+            data=record();data['repo']=old
+            validate_manifest(data,repo='astroashva/astroashva-android',sha='a'*40)
+            validate_manifest(record(),repo=old,sha='a'*40)
+            with self.assertRaises(ValueError):validate_manifest(data,repo='aastroastra/aastroastra-ios')
+            with self.assertRaises(ValueError):validate_manifest(data,repo='astroashva/astroashva-ios')
 
     def test_only_optional_checks_cannot_establish_a_pass(self):
         data=record();data['checks'][0]['required']=False

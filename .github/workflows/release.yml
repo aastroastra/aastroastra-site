@@ -19,7 +19,7 @@ concurrency:
 
 jobs:
   release:
-    uses: aastroastra/astroashva-site/.github/workflows/project-release.yml@bff31f5704e44198b4a0a8bc9efc581d0bad64fa
+    uses: astroashva/astroashva-site/.github/workflows/project-release.yml@bff31f5704e44198b4a0a8bc9efc581d0bad64fa
     with:
       platform: site
       tag: ${{ inputs.tag || github.ref_name }}

@@ -11,10 +11,11 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 PLATFORMS = {"android": "Android", "ios": "iOS", "backend": "Backend", "admin": "Admin", "web": "Web", "site": "Website"}
-REPOS = {p: "aastroastra/astroashva-" + p for p in PLATFORMS}
-# Repositories were renamed on 6 Oct 2026. Older release manifests keep the old
-# names; GitHub redirects them, so accept both instead of rewriting history.
-LEGACY_REPOS = {p: {"aastroastra/aastroastra-" + p} for p in PLATFORMS}
+REPOS = {p: "astroashva/astroashva-" + p for p in PLATFORMS}
+# Repositories were renamed to astroashva-* and the owner to astroashva on
+# 6 Oct 2026. Older release manifests keep the old names; GitHub redirects
+# them, so accept every earlier form instead of rewriting history.
+LEGACY_REPOS = {p: {"aastroastra/aastroastra-" + p, "aastroastra/astroashva-" + p} for p in PLATFORMS}
 LEGACY_REPOS["site"].add("aastroastra/aastroashva-site")
 
 def canonical_repo(name):
