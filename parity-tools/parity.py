@@ -11,7 +11,7 @@ import re
 import subprocess
 
 STATES = {'aligned', 'gap', 'intentional', 'review'}
-REPOS = {p: f'aastroastra/aastroastra-{p}' for p in ('ios', 'android')}
+REPOS = {p: f'aastroastra/astroashva-{p}' for p in ('ios', 'android')}
 ROOT = Path(__file__).resolve().parent.parent
 
 def git(repo, *args):

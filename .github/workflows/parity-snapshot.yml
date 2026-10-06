@@ -20,7 +20,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/checkout@v4
         with:
-          repository: aastroastra/aastroastra-site
+          repository: aastroastra/astroashva-site
           ref: ${{ inputs.toolkit_ref }}
           path: .parity-toolkit
           persist-credentials: false
@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@v4
         if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !github.event.deleted
         with:
-          repository: aastroastra/aastroastra-site
+          repository: aastroastra/astroashva-site
           ref: differences-data
           path: .parity-publish
           ssh-key: ${{ secrets.PARITY_SITE_DEPLOY_KEY }}

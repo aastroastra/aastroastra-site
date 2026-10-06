@@ -74,7 +74,7 @@ jobs:
       - uses: actions/checkout@v4
         continue-on-error: true
         with:
-          repository: aastroastra/aastroastra-ios
+          repository: aastroastra/astroashva-ios
           ref: main
           fetch-depth: 0
           token: ${{ secrets.RELEASE_SOURCE_TOKEN }}
@@ -83,7 +83,7 @@ jobs:
       - uses: actions/checkout@v4
         continue-on-error: true
         with:
-          repository: aastroastra/aastroastra-android
+          repository: aastroastra/astroashva-android
           ref: main
           fetch-depth: 0
           token: ${{ secrets.RELEASE_SOURCE_TOKEN }}

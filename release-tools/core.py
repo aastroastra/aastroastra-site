@@ -11,7 +11,16 @@ import xml.etree.ElementTree as ET
 import zipfile
 
 PLATFORMS = {"android": "Android", "ios": "iOS", "backend": "Backend", "admin": "Admin", "web": "Web", "site": "Website"}
-REPOS = {p: "aastroastra/aastroastra-" + p for p in PLATFORMS}
+REPOS = {p: "aastroastra/astroashva-" + p for p in PLATFORMS}
+# Repositories were renamed on 6 Oct 2026. Older release manifests keep the old
+# names; GitHub redirects them, so accept both instead of rewriting history.
+LEGACY_REPOS = {p: {"aastroastra/aastroastra-" + p} for p in PLATFORMS}
+LEGACY_REPOS["site"].add("aastroastra/aastroashva-site")
+
+def canonical_repo(name):
+    for platform, legacy in LEGACY_REPOS.items():
+        if name in legacy: return REPOS[platform]
+    return name
 
 def release_order(record):
     date=dt.datetime.fromisoformat((record.get('published_at') or record['date']).replace('Z','+00:00'))
@@ -76,10 +85,11 @@ def junit_counts(paths):
 
 def validate_manifest(data, repo=None, tag=None, sha=None):
     if data.get("schema") != 1 or data.get("platform") not in PLATFORMS: raise ValueError("Unsupported manifest")
-    if data.get("repo") != REPOS[data["platform"]]: raise ValueError("Repository/platform mismatch")
+    if canonical_repo(data.get("repo")) != REPOS[data["platform"]]: raise ValueError("Repository/platform mismatch")
     if data.get('id') != data['platform']+':'+data.get('tag',''):raise ValueError('Release identity mismatch')
     for key, expected in (("repo", repo), ("tag", tag), ("sha", sha)):
-        if expected is not None and data.get(key) != expected: raise ValueError(f"Release {key} mismatch")
+        actual = canonical_repo(data.get(key)) if key == "repo" else data.get(key)
+        if expected is not None and actual != (canonical_repo(expected) if key == "repo" else expected): raise ValueError(f"Release {key} mismatch")
     if not re.fullmatch(r"[a-f0-9]{40}", data.get("sha", "")): raise ValueError("Invalid source SHA")
     if data.get("status") not in ("passed", "failed", "incomplete"): raise ValueError("Release is not finalized")
     if data["status"] == "passed" and (not any(c.get("required",True) for c in data.get("checks",[])) or any(c.get("status") != "passed" for c in data["checks"] if c.get("required", True))):
