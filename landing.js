@@ -40,9 +40,22 @@
   /* ---------- Real app screenshots, per language ----------
      Images carry data-shot="name"; the source is picked here so a Hindi
      visitor never downloads the English set first. */
+  // Dark themes show dark captures where one exists (Yellow Dark: yd,
+  // B&W Dark: md). Screens without a dark capture keep the light one.
+  var DARK = { '01-dashboard': 1, '12-kundali-hero': 1, '13-kundali-chart': 1, '05-multimatch-results': 1, '23-panchang': 1 };
+  function variant() {
+    var t = root.getAttribute('data-theme') || '';
+    return t === 'yellow-dark' ? 'yd' : t === 'mono-dark' ? 'md' : '';
+  }
   function setShots() {
+    var v = variant();
     document.querySelectorAll('img[data-shot]').forEach(function (img) {
-      var base = 'shots/landing/' + lang + '/' + img.getAttribute('data-shot');
+      var name = img.getAttribute('data-shot');
+      var base = 'shots/landing/' + lang + '/' + (v && DARK[name] ? v + '/' : '') + name;
+      if (img.getAttribute('data-base') === base) return;
+      img.setAttribute('data-base', base);
+      var sl = img.parentNode;
+      if (sl.classList.contains('sl')) sl.classList.toggle('dk', !!(v && DARK[name]));
       var small = img.closest('.card-shot, .side-phone, .story-static');
       if (!img.hasAttribute('data-eager') && !img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
       img.setAttribute('decoding', 'async');
@@ -56,21 +69,44 @@
   var mq = document.querySelector('[data-marquee]');
   if (mq) {
     var track = mq.firstElementChild;
-    Array.prototype.slice.call(track.children).forEach(function (card) {
-      var c = card.cloneNode(true);
-      c.setAttribute('aria-hidden', 'true');
-      c.querySelectorAll('img').forEach(function (i) { i.alt = ''; i.removeAttribute('data-eager'); });
-      track.appendChild(c);
-    });
+    // The cards in the HTML are the source set. Cards marked data-only show
+    // in light or dark themes only. The track repeats the visible set until
+    // each half is wider than the screen, so the drift can wrap seamlessly.
+    var source = Array.prototype.slice.call(track.children);
+    source.forEach(function (c) { track.removeChild(c); });
+    var build = function () {
+      var dark = !!variant();
+      var set = source.filter(function (c) { var o = c.getAttribute('data-only'); return !o || (o === 'dark') === dark; });
+      track.innerHTML = '';
+      var add = function (hidden) {
+        set.forEach(function (card) {
+          var c = card.cloneNode(true);
+          if (hidden) { c.setAttribute('aria-hidden', 'true'); c.querySelectorAll('img').forEach(function (i) { i.alt = ''; i.removeAttribute('data-eager'); }); }
+          track.appendChild(c);
+        });
+      };
+      add(false);
+      var setW = Math.max(1, track.scrollWidth), copies = Math.max(1, Math.ceil((window.innerWidth + 40) / setW));
+      for (var k = 1; k < copies * 2; k++) add(true);
+      setShots();
+      half = track.scrollWidth / 2;
+    };
     var half = 0, pos = 0, last = 0, holdUntil = 0, hover = false, running = false, visible = true;
     var measure = function () { half = track.scrollWidth / 2; };
+    build();
+    var lastW = window.innerWidth, lastDark = !!variant();
+    var rebuild = function () {
+      if (window.innerWidth === lastW && !!variant() === lastDark) { measure(); return; }
+      lastW = window.innerWidth; lastDark = !!variant();
+      build(); pos = Math.min(pos, half - 1); mq.scrollLeft = pos;
+    };
     var wrap = function () {
       if (!half) return;
       if (mq.scrollLeft >= half) { mq.scrollLeft -= half; pos -= half; }
       else if (mq.scrollLeft <= 0 && drag) { mq.scrollLeft += half; pos += half; drag.s += half; }
     };
-    measure();
-    window.addEventListener('resize', measure);
+    window.addEventListener('resize', rebuild);
+    window.mqRebuild = rebuild;
     window.addEventListener('load', measure);
     mq.addEventListener('scroll', function () {
       // Only a hand-made scroll moves the drift position; our own writes round to whole pixels.
@@ -117,6 +153,11 @@
   }
 
   setLang(lang, false);
+  // Theme toggles (site-theme.js) swap light and dark captures in place.
+  if (window.MutationObserver) {
+    new MutationObserver(function () { setShots(); if (window.mqRebuild) window.mqRebuild(); })
+      .observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  }
 
   /* ---------- Scroll story: phone pinned, screen changes, mantra drifts ---------- */
   var story = document.querySelector('[data-story]');
