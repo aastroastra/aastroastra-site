@@ -473,6 +473,10 @@ html[data-lang="hi"] .foot-word .fw-sub { letter-spacing:.06em; }
 .foot-legal { border-top:1px solid var(--line); padding:15px clamp(16px,4vw,30px); display:flex; flex-wrap:wrap; gap:6px 18px; justify-content:center; text-align:center; font-size:11.5px; color:var(--muted); }
 .foot-legal a { color:inherit; text-decoration:none; }
 footer { max-width:var(--maxw); margin:0 auto; }
+/* Order: the big ASTROASHVA, the legal line, then the links at the very
+   bottom (the grid on wide screens, the columns on phones). */
+.foot-simple, .foot-big { border-top:1px solid var(--line); }
+.foot-word text { letter-spacing:.01em; }
 @media (max-width:900px) {
   .foot-simple { display:none; }
   .foot-big { display:block; }

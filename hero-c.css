@@ -26,16 +26,13 @@ html.hero-a-on .hc, html.hero-b-on .hc { display:none !important; }
 
 /* ---------- The chart ---------- */
 .hc-stage { position:absolute; left:0; right:0; top:24px; bottom:32px; -webkit-tap-highlight-color:transparent; }
-/* Desktop: a centred, nearly square chart (about 1.3 : 1), so the twelve
-   houses read as a kundali rather than a banner. */
-@media (min-width:769px) {
-  .hc-stage { --sw:min(100%, calc((var(--hc-h) - 56px) * 1.3)); left:50%; right:auto; width:var(--sw); margin-left:calc(var(--sw) * -.5); }
-}
 .hc-lines { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
 .hc-lines .hl { fill:none; stroke:var(--ink-line); stroke-width:1; stroke-linecap:square; }
 .hc-lines .lagna { fill:none; stroke:var(--lagna); stroke-width:1.25; stroke-linejoin:miter; }
-/* The four lines that arrive from the corners of the screen (hero-c.js). */
-.hc-lines .edge { fill:none; stroke:var(--thread,var(--tint)); stroke-width:1; stroke-linecap:round; opacity:.8; }
+/* The four lines from the corners of the screen to the chart's corners
+   (hero-c.js): they arrive with the intro, then stay as a faint hairline. */
+.hc-lines .edge { fill:none; stroke:var(--thread,var(--tint)); stroke-width:1; stroke-linecap:round; opacity:.16; pointer-events:none; }
+[data-theme$="dark"] .hc-lines .edge { opacity:.2; }
 .hc-lines .hit { fill:transparent; stroke:none; transition:fill .18s ease; cursor:pointer; }
 .hc-lines .hit.on { fill:var(--wash); }
 
@@ -102,7 +99,7 @@ html[data-lang="hi"] .hc-eyebrow { font-size:14px; letter-spacing:.04em; padding
 .hc-word, [data-theme] h1.hc-word {
   margin-top:24px;
   font-family:'Noto Serif',Georgia,serif; font-weight:700; text-transform:uppercase; white-space:nowrap;
-  font-size:clamp(52px,5.2vw,84px); line-height:1; letter-spacing:-.005em;
+  font-size:clamp(56px,6.4vw,96px); line-height:1; letter-spacing:-.005em;
   /* Ink in every theme. A narrow gold sheen (hero B's sweep) crosses it once
      on load and again on hover; at rest only the ink part of the gradient
      shows. site-theme.css paints h1 with the tint gradient; this replaces it. */
