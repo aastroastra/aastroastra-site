@@ -122,15 +122,22 @@
       line(railL, ey - 240);
       sweep(ex, ey);
     } else {
-      // Phones and tablets: one straight rail at the left edge.
-      var x = Math.max(6, Math.round(cl / 2));
-      var y0 = heroBox.y + heroBox.h - 8;
+      // Phones and tablets: one straight rail at the left edge. On phones it
+      // is the spine at 18px (the sections keep a 44px gutter for it) and it
+      // starts below the scroll story, never across the phones.
+      var phone = W <= 760;
+      var x = phone ? 18 : Math.max(6, Math.round(cl / 2));
+      var storyEl = main.querySelector('.story');
+      var y0 = phone && storyEl && shown(storyEl) ? box(storyEl).y + box(storyEl).h + 12 : heroBox.y + heroBox.h - 8;
       cur = [x, y0]; d = 'M' + x + ' ' + y0.toFixed(1);
       line(x, ey - 160);
       sweep(ex, ey);
       steps.forEach(function (li) {
         var b = box(li);
-        stopList.push({ piece: 0, along: clamp(b.y + 34 - y0, 0, ey - 160 - y0), on: li, kind: 'step' });
+        // On phones the step's number is a node on the rail: light it as the
+        // line reaches the node's centre.
+        var n = phone && li.querySelector('.n'), ny = n ? box(n).y + n.offsetHeight / 2 : b.y + 34;
+        stopList.push({ piece: 0, along: clamp(ny - y0, 0, ey - 160 - y0), on: li, kind: 'step' });
       });
       slots.forEach(function (li, i) {
         var b = box(li);

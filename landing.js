@@ -173,11 +173,44 @@
   var story = document.querySelector('[data-story]');
   // Phones get the static grid instead (landing.css): one pinned scene per
   // page there, and that one is AshvaAI.
-  var phoneMq = window.matchMedia ? matchMedia('(max-width: 760px)') : { matches: false };
+  /* Vector device frames: drawn once into every [data-frame] (the story's
+     three phones and its reduced-motion grid). The screen is real HTML on
+     top of the frame; the camera (Pixel punch-hole, iPhone Dynamic Island)
+     sits above the screen. No fake status bar: every capture has its own. */
+  var FR = {
+    pixel: { w: 108.4, h: 213.96, o: 12.5, i: 11.6, btn: [['r', 52, 12], ['r', 70, 26]],
+      top: '<circle class="dv-cam" cx="54.2" cy="9.9" r="1.9"/><circle class="dv-lens" cx="54.2" cy="9.9" r=".75"/>' },
+    ios: { w: 107.6, h: 225, o: 17.6, i: 16.7, btn: [['l', 40, 8], ['l', 55, 14], ['l', 72, 14], ['r', 58, 24], ['r', 112, 12]],
+      top: '<rect class="dv-cam" x="38.3" y="6.3" width="31" height="9" rx="4.5"/><circle class="dv-lens" cx="64" cy="10.8" r="1.5"/>' }
+  };
+  if (!document.getElementById('dv-metal')) {
+    var defs = document.createElement('div');
+    defs.innerHTML = '<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs>' +
+      '<linearGradient id="dv-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--dev-metal-a)"/>' +
+      '<stop offset=".45" style="stop-color:var(--dev-metal-b)"/><stop offset=".72" style="stop-color:var(--dev-metal-c)"/>' +
+      '<stop offset="1" style="stop-color:var(--dev-metal-b)"/></linearGradient></defs></svg>';
+    document.body.appendChild(defs.firstChild);
+  }
+  document.querySelectorAll('[data-frame]').forEach(function (d) {
+    var f = FR[d.getAttribute('data-frame')], inn = d.querySelector('.dev-in');
+    if (!f || !inn || inn.querySelector('.dev-frame')) return;
+    var vb = '0 0 ' + f.w + ' ' + f.h;
+    var btn = f.btn.map(function (b) {
+      return '<rect class="dv-btn" x="' + (b[0] === 'r' ? f.w - .3 : -1.1) + '" y="' + b[1] + '" width="1.4" height="' + b[2] + '" rx=".6"/>';
+    }).join('');
+    inn.insertAdjacentHTML('afterbegin', '<svg class="dev-frame" viewBox="' + vb + '" aria-hidden="true" focusable="false">' + btn +
+      '<rect class="dv-edge" width="' + f.w + '" height="' + f.h + '" rx="' + f.o + '"/>' +
+      '<rect class="dv-body" x=".9" y=".9" width="' + (f.w - 1.8) + '" height="' + (f.h - 1.8) + '" rx="' + f.i + '"/></svg>');
+    inn.insertAdjacentHTML('beforeend', '<svg class="dev-top" viewBox="' + vb + '" aria-hidden="true" focusable="false">' + f.top + '</svg>');
+  });
+
   if (story && !reduce) {
     var rows = Array.prototype.slice.call(story.querySelectorAll('.m-row'));
-    var phones = Array.prototype.slice.call(story.querySelectorAll('.pw')).map(function (pw) {
-      return { slides: Array.prototype.slice.call(pw.querySelectorAll('.sl')) };
+    // The iPhone in the centre leads; the Pixels follow a beat apart.
+    var LAG = { c: 0, l: 0.06, r: 0.12 };
+    var phones = Array.prototype.slice.call(story.querySelectorAll('.trio .device')).map(function (pw) {
+      var k = pw.classList.contains('l') ? 'l' : pw.classList.contains('r') ? 'r' : 'c';
+      return { lag: LAG[k], slides: Array.prototype.slice.call(pw.querySelectorAll('.sl')) };
     });
     // One caption per step, shared by both phones (the same feature on each).
     var caps = Array.prototype.slice.call(story.querySelectorAll('.pcaps .cap')), capOn = 0;
@@ -197,7 +230,6 @@
     };
     var frame = function () {
       queued = false;
-      if (phoneMq.matches) return;
       var r = story.getBoundingClientRect();
       if (r.bottom < -50 || r.top > vh + 50) return;
       var total = Math.max(1, r.height - vh);
@@ -212,10 +244,10 @@
       var u = clamp(p * N - 0.5, 0, N - 1);
       // The caption changes on the second phone's beat, so it never names a
       // feature the iPhone is not showing yet.
-      var capNow = Math.round(stepAt(u, (phones.length - 1) * 0.08));
+      var capNow = Math.round(stepAt(u, 0));
       if (capNow !== capOn && caps[capNow]) { caps[capOn].classList.remove('on'); caps[capNow].classList.add('on'); capOn = capNow; }
-      phones.forEach(function (ph, k) {
-        var f = stepAt(u, k * 0.08);
+      phones.forEach(function (ph) {
+        var f = stepAt(u, ph.lag);
         var cur = Math.floor(f), mix = f - cur;
         ph.slides.forEach(function (sl, i) {
           // Out, then in: the current screen fades away before the next one

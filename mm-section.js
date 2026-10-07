@@ -89,6 +89,8 @@
   var list = sec.querySelector('[data-mm-list]');
   var chips = Array.prototype.slice.call(sec.querySelectorAll('[data-mm-type]'));
   var rankedFor = sec.querySelector('[data-mm-for]');
+  var selSub = sec.querySelector('[data-mm-sub]');
+  var typesRow = sec.querySelector('.mm-types');
   var rows = {};
   PEOPLE.forEach(function (c) {
     var li = document.createElement('li');
@@ -119,10 +121,22 @@
       li.querySelector('.mm-why').innerHTML = '<span class="mm-k mm-' + d.b + '">' + bi(kn[0], kn[1]) + ' ' + fmt(d.p) + '/' + d.m +
         ' · ' + bi(BAND[d.b][0], BAND[d.b][1]) + '</span> ' + bi(read[0], read[1]);
       li.classList.toggle('top', !reversed && i === 0);
+      li.style.setProperty('--pct', String(Math.max(0, Math.min(100, r.v)) / 100));
       list.appendChild(li);   // DOM order follows the rank, for screen readers too
     });
     rankedFor.innerHTML = bi('Ranked for: ' + tn[0], tn[1] + ' के लिए रैंक');
     chips.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mm-type') === type)); });
+    // Phones: the selected pill's koota line, shown once under the row.
+    var on = sec.querySelector('[data-mm-type="' + type + '"]'), small = on && on.querySelector('small');
+    if (selSub && small) {
+      selSub.classList.remove('show'); void selSub.offsetWidth;
+      selSub.innerHTML = small.innerHTML; selSub.classList.add('show');
+    }
+    // Keep the chosen pill in view inside its row (the row scrolls, not the page).
+    if (on && typesRow && typesRow.scrollWidth > typesRow.clientWidth + 2) {
+      var left = on.offsetLeft - (typesRow.clientWidth - on.offsetWidth) / 2;
+      typesRow.scrollTo({ left: Math.max(0, left), behavior: reduce ? 'auto' : 'smooth' });
+    }
     if (!animate || reduce) return;
     // FLIP: rows slide from where they were to their new place.
     PEOPLE.forEach(function (c) {

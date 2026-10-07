@@ -64,28 +64,60 @@ html.ai-scrolly .replay { display:none; }
 .ai-demo.scrolly .src:not(.on) { opacity:0; }
 .ai-demo.scrolly .src.on { opacity:1; }
 .ai-demo .ln.on, .ai-demo .src.on { opacity:1; transform:none; }
+
+/* ---------- Story: three devices with vector frames ----------
+   Centre: iPhone (largest, raised). Sides: Pixels. Each shows a different
+   screen of the feature. Frames are SVG (landing.js), screens are real HTML
+   inside them, with no fake status bar over the capture. */
+.device { position:relative; display:flex; flex-direction:column; align-items:center; }
+.dev-in { position:relative; width:var(--dw,240px); box-shadow:var(--dev-shadow); }
+.device.pixel .dev-in { aspect-ratio:108.4/213.96; border-radius:11.5% / 5.84%; }
+.device.ios .dev-in { aspect-ratio:107.6/225; border-radius:16.4% / 7.84%; }
+.dev-frame, .dev-top { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+.dev-frame { z-index:1; }
+.dev-top { z-index:3; }
+.dv-edge, .dv-btn { fill:url(#dv-metal); }
+.dv-body { fill:var(--dev-body); }
+.dv-cam { fill:var(--dev-glass); stroke:var(--dev-metal-b); stroke-width:.25; }
+.dv-lens { fill:var(--dev-lens); }
+.dev-screen { position:absolute; z-index:2; overflow:hidden; background:var(--bg); isolation:isolate; }
+.device.pixel .dev-screen { left:3.875%; top:1.963%; width:92.25%; height:96.07%; border-radius:8.3% / 4.04%; }
+.device.ios .dev-screen { left:3.532%; top:1.689%; width:92.94%; height:96.62%; border-radius:12.8% / 5.89%; }
+.dev-screen .reel, .dev-screen .sl { position:absolute; inset:0; }
+.dev-screen img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; }
+.story .dev-screen .sl { opacity:0; will-change:opacity; }
+.story .dev-screen .sl:first-child { opacity:1; }
+.dev-name { margin-top:14px; font-size:12px; font-weight:600; letter-spacing:.04em; color:var(--fg2); }
+.trio { position:relative; z-index:2; display:flex; align-items:center; justify-content:center; gap:clamp(18px,3vw,56px);
+  --cw:min(clamp(220px,19vw,320px), calc((100svh - 250px) * 107.6 / 225)); }
+.trio .device.c { --dw:var(--cw); z-index:3; transform:translate3d(0,-18px,0); }
+.trio .device.l, .trio .device.r { --dw:calc(var(--cw) * .88); z-index:2; }
 @media (max-width:760px) {
-  html.ai-scrolly .ai-scroll { height:250vh; }
-  /* Four compact step markers instead of four cards, so the scene fits. */
-  .ai-demo.scrolly .demo-steps { grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
-  .ai-demo.scrolly .demo-steps li { padding:8px 6px 10px; border-radius:14px; text-align:center; }
-  .ai-demo.scrolly .demo-steps .n { width:26px; height:26px; font-size:13px; margin:0 auto; }
-  .ai-demo.scrolly .demo-steps b { margin-top:6px; font-size:12.5px; line-height:1.2; letter-spacing:0; }
-  .ai-demo.scrolly .demo-steps small { display:none; }
-  .ai-demo.scrolly .stage { gap:18px; padding:18px 14px; }
+  /* The iPhone centred and large; the Pixels peek out behind it. */
+  .trio { display:grid; place-items:center; --cw:min(58vw, calc((100svh - 250px) * 107.6 / 225)); }
+  .trio .device { grid-area:1 / 1; }
+  .trio .device.c { transform:none; }
+  .trio .device.l { transform:translate3d(-64%,3%,0) scale(.8); z-index:1; }
+  .trio .device.r { transform:translate3d(64%,3%,0) scale(.8); z-index:1; }
+  .trio .device.l .dev-name, .trio .device.r .dev-name { visibility:hidden; }
+  .dev-name { margin-top:10px; font-size:11px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .story-pin > .trio, .story .pcaps { display:none; }
+  .story-static { grid-template-columns:repeat(3,minmax(0,230px)); gap:40px 28px; }
+  .story-static .device { --dw:min(200px,36vw); margin:0 auto; }
+  .story-static .dev-screen img { border:0; border-radius:0; aspect-ratio:auto; height:100%; }
+  .story-static figcaption { margin-top:14px; }
+}
+@media (prefers-reduced-motion:reduce) and (max-width:760px) {
+  .story-static { grid-template-columns:repeat(2,minmax(0,1fr)); gap:28px 16px; }
 }
 
-/* ---------- Phone story: not pinned, the static grid (one pinned scene on phones) ---------- */
+/* ---------- Phones: the rail is a spine at x = 18px; the sections it passes
+   keep a 44px left gutter so nothing ever sits on it. ---------- */
 @media (max-width:760px) {
-  .story { height:auto; padding:48px 0 8px; }
-  .story-pin { position:relative; height:auto; overflow:visible; display:block; }
-  .story-pin > .duo, .story-bar, .mantra, .pcaps { display:none; }
-  .story-static { display:grid; grid-template-columns:minmax(0,340px); justify-content:center; gap:36px; padding:0 var(--gutter); width:100%; }
-  .story-static figure { text-align:center; }
-  .story-static .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:start; }
-  .story-static img { border-radius:18px; border:5px solid #0B0B0C; aspect-ratio:540/1110; object-fit:cover; object-position:top; width:100%; height:auto; }
-  .story-static img[data-dev="ios"] { border-radius:24px; aspect-ratio:1206/2622; }
-  .story-static figcaption { margin-top:12px; font-weight:700; }
+  html.thread-on #why .wrap, html.thread-on #ashvaai .wrap, html.thread-on #multimatch .wrap,
+  html.thread-on #features .wrap, html.thread-on #download .wrap { padding-left:44px; padding-right:16px; }
 }
 
 /* ---------- Features: a tile opens its screenshot ---------- */
@@ -115,4 +147,149 @@ html.ai-scrolly .replay { display:none; }
 @media (prefers-reduced-motion:reduce) {
   .thread-end::before, .thread-end .site-mark, html.thread-on .steps li, html.thread-on .steps li .n, .mm-row { transition:none; }
   .mm-waiting .mm-row { opacity:1; }
+}
+
+/* ---------- Why, on phones: open, no boxes; the rail is the spine ---------- */
+@media (max-width:760px) {
+  /* The comparison: the chatbot line struck through, then AshvaAI in full. */
+  #why .vs { display:block; max-width:none; margin-top:8px; }
+  #why .vs > div { border:0; border-radius:0; padding:0; background:none; }
+  #why .vs .them .big { color:var(--muted); }
+  #why .vs .them .big > span { background-image:linear-gradient(currentColor,currentColor); background-repeat:no-repeat; background-position:0 58%;
+    background-size:0% 2px; -webkit-box-decoration-break:clone; box-decoration-break:clone;
+    transition:background-size var(--m-slow) var(--m-ease) .35s; }
+  #why .vs .them.in .big > span, html:not(.js) #why .vs .them .big > span { background-size:100% 2px; }
+  #why .vs .us { position:relative; margin-top:22px; padding-top:22px; border-top:1px solid var(--line); }
+  #why .vs .us::before { content:"vs"; position:absolute; left:0; top:0; transform:translateY(-50%); padding-right:10px; background:var(--bg);
+    font:600 13px/1 var(--font-heading); font-style:italic; color:var(--muted); }
+  #why .vs .us .big { color:var(--fg); }
+  #why .vs .us .big::after { content:""; display:block; width:48px; height:3px; margin-top:12px; border-radius:2px; background:var(--thread);
+    transform:scaleX(0); transform-origin:left; transition:transform var(--m-med) var(--m-ease) .5s; }
+  #why .vs .us.in .big::after { transform:none; }
+  /* The question as the user's chat bubble. */
+  #why .q { text-align:right; margin-top:56px; }
+  #why .q .txt { display:inline-block; text-align:left; margin-top:10px; padding:14px 18px; border-radius:20px 20px 4px 20px;
+    background:var(--tint-grad); color:var(--on-accent); font-size:22px; line-height:1.3; max-width:92%; }
+  [data-theme="white-light"] #why .q .txt { color:#fff; }
+  /* Steps 1 to 4: numbered nodes on the rail, words to their right. */
+  html.thread-on #why .steps { margin-top:40px; gap:0; }
+  html.thread-on #why .steps li { border:0; border-radius:0; background:none; box-shadow:none; padding:4px 0 26px; }
+  html.thread-on #why .steps li + li { border-top:1px solid color-mix(in srgb,var(--line) 70%,transparent); padding-top:22px; }
+  html.thread-on #why .steps li .n { position:absolute; left:-41px; top:0; width:30px; height:30px; border-radius:50%; display:grid; place-items:center;
+    font:700 14px/1 var(--font-body); background:var(--bg); border:1.5px solid var(--line); color:var(--muted);
+    -webkit-text-fill-color:currentColor; opacity:1; transform:scale(.9); transform-origin:center; }
+  html.thread-on #why .steps li + li .n { top:18px; }
+  html.thread-on #why .steps li.lit { border-color:color-mix(in srgb,var(--line) 70%,transparent); box-shadow:none; }
+  html.thread-on #why .steps li.lit .n { background:var(--thread); border-color:var(--thread); color:var(--on-accent); transform:none; }
+  [data-theme="white-light"] #why .steps li.lit .n { color:#fff; }
+  html.thread-on #why .steps h3 { margin-top:2px; }
+  /* The answer as AshvaAI's reply: a bubble, not a full-width slab. */
+  #why .says { display:block; max-width:92%; margin:28px 0 0; padding:18px 20px; border-radius:20px 20px 20px 4px;
+    background:var(--card); color:var(--fg); border:1px solid color-mix(in srgb,var(--thread) 45%,var(--line)); }
+  #why .says .eyebrow { color:var(--muted); opacity:1; }
+  #why .says blockquote { margin-top:10px; font-size:19px; line-height:1.4; }
+}
+
+/* ---------- AshvaAI, on phones: open and staged, never scaled down ---------- */
+@media (max-width:760px) {
+  /* Steps: a slim strip of four segments, and only the current title. */
+  .ai-demo .demo-steps { display:flex; gap:6px; position:relative; margin:0 0 4px; padding-bottom:40px; }
+  .ai-demo .demo-steps li { flex:1; position:static; border:0; border-radius:0; padding:0; background:none; opacity:1; text-align:left; }
+  .ai-demo .demo-steps .n { width:100%; height:4px; margin:0; border:0; border-radius:2px; background:var(--line); font-size:0; color:transparent; }
+  .ai-demo .demo-steps li.on .n { background:var(--thread); }
+  .ai-demo .demo-steps b { position:absolute; left:0; right:0; top:14px; margin:0; font-size:21px; line-height:1.2; opacity:0;
+    transition:opacity var(--m-med) var(--m-ease), transform var(--m-med) var(--m-ease); transform:translate3d(0,6px,0); }
+  .ai-demo .demo-steps li.cur b, .ai-demo .demo-steps:not(:has(.cur)) li:first-child b { opacity:1; transform:none; }
+  .ai-demo .demo-steps small { display:none; }
+  /* The stage: no outer box; people and charts side by side, then the rest. */
+  .ai-demo .stage { display:grid; grid-template-columns:104px minmax(0,1fr); gap:24px 10px; border:0; border-radius:0; padding:0; min-height:0; background:none; overflow:visible; }
+  .ai-demo .flows { display:none; }
+  .ai-demo .stage .people, .ai-demo .stage .charts { flex-direction:column; justify-content:flex-start; gap:0; align-self:start; }
+  .ai-demo .stage .people { grid-column:1; }
+  .ai-demo .stage .charts { grid-column:2; }
+  .ai-demo .person, .ai-demo .kc { height:142px; width:auto; align-self:stretch; }
+  .ai-demo .person { flex-direction:column; align-items:flex-start; justify-content:flex-start; gap:6px; padding:0; border:0; border-radius:0; background:none; box-shadow:none; text-align:left; }
+  .ai-demo .person .av { width:40px; height:40px; font-size:17px; }
+  .ai-demo .person .pn b { font-size:17px; }
+  .ai-demo .person .pn small { font-size:13px; }
+  .ai-demo .kc { flex-direction:row; flex-wrap:wrap; align-items:flex-start; align-content:flex-start; gap:8px 10px; }
+  .ai-demo .kcg svg { width:66px; height:66px; }
+  .ai-demo .kc .facts { align-items:flex-start; gap:6px; }
+  .ai-demo .fact { font-size:13px; padding:4px 10px; white-space:nowrap; text-align:left; }
+  .ai-demo .ds { flex-basis:100%; display:flex; flex-wrap:wrap; gap:5px; }
+  .ai-demo .dsc { font-size:13px; padding:3px 9px 3px 7px; gap:5px; }
+  .ai-demo .dsc svg { width:14px; height:14px; }
+  .ai-demo .dsl { display:inline; }
+  .ai-demo .stage .core { grid-column:1 / -1; flex-direction:column; align-items:center; justify-content:center; gap:16px; }
+  .ai-demo .node { width:96px; height:96px; }
+  .ai-demo .rules { align-items:center; gap:10px; }
+  .ai-demo .rule { font-size:13px; white-space:normal; text-align:center; }
+  .ai-demo .stage .chat { grid-column:1 / -1; gap:14px; }
+  .ai-demo .cq { font-size:16px; max-width:88%; }
+  .ai-demo .ca { min-height:0; padding:14px 16px 16px; }
+  .ai-demo .ln { font-size:15px; line-height:1.5; }
+  .ai-demo .chip-s, .ai-demo .lang-s { font-size:13px; }
+
+  /* Played by the scroll: three stages inside the pin, the thread between them. */
+  html.ai-scrolly .ai-scroll { height:280vh; }
+  html.ai-scrolly .ai-fit { position:absolute; inset:0; width:auto; transform:none; }
+  .ai-demo.scrolly { height:100%; display:flex; flex-direction:column; justify-content:center; padding:12px 0; }
+  .ai-demo.scrolly .stage { flex:none; height:min(560px, calc(100svh - 120px)); position:relative; display:block; margin-top:6px; }
+  .ai-demo.scrolly .stage .people { position:absolute; left:0; top:0; width:104px; }
+  .ai-demo.scrolly .stage .charts { position:absolute; left:114px; right:0; top:0; }
+  .ai-demo.scrolly .stage .people, .ai-demo.scrolly .stage .charts { transition:opacity var(--m-med) var(--m-ease), transform var(--m-med) var(--m-ease); }
+  .ai-demo.scrolly.s3 .stage .people, .ai-demo.scrolly.s3 .stage .charts { opacity:0; transform:translate3d(0,-32px,0); pointer-events:none; }
+  .ai-demo.scrolly .stage .core { position:absolute; inset:0; opacity:0; transform:translate3d(0,32px,0); transition:opacity var(--m-med) var(--m-ease), transform var(--m-med) var(--m-ease); }
+  .ai-demo.scrolly.s3 .stage .core { opacity:1; transform:none; }
+  .ai-demo.scrolly.s4 .stage .core { opacity:0; transform:translate3d(0,-32px,0); }
+  .ai-demo.scrolly .stage .chat { position:absolute; left:0; right:0; top:0; padding-top:40px; opacity:0; transform:translate3d(0,32px,0); transition:opacity var(--m-med) var(--m-ease), transform var(--m-med) var(--m-ease); }
+  .ai-demo.scrolly.s4 .stage .chat { opacity:1; transform:none; }
+  /* The gold line carried from stage to stage. */
+  .ai-demo.scrolly .stage .core::before, .ai-demo.scrolly .stage .chat::before { content:""; position:absolute; left:50%; top:0; width:1.5px; margin-left:-.75px; background:var(--thread);
+    transform:scaleY(0); transform-origin:top; transition:transform var(--m-slow) var(--m-ease) .15s; }
+  .ai-demo.scrolly .stage .core::before { height:calc(50% - 150px); }
+  .ai-demo.scrolly .stage .chat::before { height:32px; left:auto; right:24px; }
+  .ai-demo.scrolly.s3 .stage .core::before, .ai-demo.scrolly.s4 .stage .chat::before { transform:none; }
+}
+
+/* ---------- Multi-match, on phones: pills and an open leaderboard ---------- */
+.mm-sel-sub { display:none; }
+@media (max-width:760px) {
+  .mm-grid { grid-template-columns:minmax(0,1fr); }
+  .mm-left, .mm-right { min-width:0; }
+  .mm-you { padding:0; border:0; border-radius:0; background:none; gap:12px; }
+  .mm-you .mm-av { width:44px; height:44px; font-size:18px; }
+  .mm-ask { margin-top:26px; }
+  /* What matters: one scrollable row of slim pills. */
+  .mm-types { display:flex; grid-template-columns:none; gap:8px; margin:14px -16px 0 0; padding:2px 16px 4px 0; overflow-x:auto; overscroll-behavior-x:contain;
+    scroll-snap-type:x proximity; scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 28px),transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0,#000 10px,#000 calc(100% - 28px),transparent 100%); }
+  .mm-types::-webkit-scrollbar { display:none; }
+  .mm-type { flex:none; min-height:40px; padding:8px 16px; border-radius:999px; border-width:1px; scroll-snap-align:start; }
+  .mm-type b { font-size:15px; white-space:nowrap; }
+  .mm-type small { display:none; }
+  .mm-type:hover { transform:none; }
+  .mm-sel-sub { display:block; margin-top:10px; min-height:20px; font-size:14px; font-weight:600; color:var(--fg2); opacity:0; transform:translate3d(0,4px,0);
+    transition:opacity var(--m-med) var(--m-ease), transform var(--m-med) var(--m-ease); }
+  .mm-sel-sub.show { opacity:1; transform:none; }
+  .mm-more { font-size:12.5px; }
+  /* The ranking: an open leaderboard, hairlines between rows. */
+  .mm-list { gap:0; margin-top:8px; }
+  .mm-row { grid-template-columns:auto minmax(0,1fr) auto; gap:12px; min-height:0; padding:18px 0 22px; border:0; border-radius:0; background:none; box-shadow:none;
+    border-bottom:1px solid var(--line); }
+  .mm-row::after { content:""; position:absolute; left:0; right:0; bottom:-1px; height:2px; background:var(--thread); transform:scaleX(var(--pct,0)); transform-origin:left;
+    opacity:.75; transition:transform var(--m-slow) var(--m-ease); }
+  .mm-row.top { border-color:var(--line); box-shadow:none; }
+  .mm-row.top::before { content:""; position:absolute; left:-12px; top:22px; bottom:26px; width:3px; border-radius:2px; background:var(--thread); }
+  .mm-rank { font-size:34px; }
+  .mm-name { font-size:21px; }
+  .mm-sub { font-size:13.5px; }
+  .mm-why { font-size:14px; -webkit-line-clamp:2; }
+  .mm-k { font-size:13px; }
+  .mm-pct b { font-size:40px; }
+  .mm-waiting .mm-row::after { transform:scaleX(0); }
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce) {
+  .mm-row::after, .mm-sel-sub { transition:none; }
 }
