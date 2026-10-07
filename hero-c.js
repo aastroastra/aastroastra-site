@@ -217,16 +217,37 @@
     });
   }
 
-  /* ---------- People count under the badges ----------
-     stats.json (update-stats.py): users_display = real accounts (never guests,
-     team and test accounts removed), rounded down to a friendly bucket
-     ("90+"). Null below 10 or when unknown, and the line stays empty. Its
-     height is reserved in CSS, so filling it shifts nothing. */
+  /* ---------- Downloads under the badges ----------
+     stats.json (backend site-stats, daily 02:30 UTC; update-stats.py by hand):
+     downloads_total / _android / _ios = unique GA4 users since launch, shown
+     rounded down ("550+"; below 10 hidden). Without download numbers it falls
+     back to users_display ("80+ people use AstroAshva"); with neither the line
+     stays empty. Its height is reserved in CSS, so filling it shifts nothing. */
   var stat = hc.querySelector('[data-hc-stat]');
+  var bucket = function (n) {
+    if (typeof n !== 'number' || !isFinite(n) || n < 10) return null;
+    n = Math.floor(n);
+    if (n < 100) return Math.floor(n / 10) * 10 + '+';
+    if (n < 1000) return Math.floor(n / 50) * 50 + '+';
+    var h = Math.floor(n / 100) * 100;
+    return (h % 1000 === 0 ? h / 1000 : (h / 1000).toFixed(1)) + 'k+';
+  };
+  var ok = function (v) { return typeof v === 'string' && /^[0-9][0-9.]*k?\+$/.test(v) ? v : null; };
   if (stat && window.fetch) {
     fetch('https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/stats.json?t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; }).then(function (st) {
-        var u = st && typeof st.users_display === 'string' && /^[0-9][0-9.]*k?\+$/.test(st.users_display) ? st.users_display : null;
+        if (!st) return;
+        var d = ok(st.downloads_display) || bucket(st.downloads_total);
+        if (d) {
+          var a = ok(st.downloads_android_display) || bucket(st.downloads_android);
+          var i = ok(st.downloads_ios_display) || bucket(st.downloads_ios);
+          var en = '<b>' + d + '</b> downloads', hiTxt = '<b>' + d + '</b> \u0921\u093e\u0909\u0928\u0932\u094b\u0921';
+          if (a) { en += ' \u00b7 Android <b>' + a + '</b>'; hiTxt += ' \u00b7 \u090f\u0902\u0921\u094d\u0930\u0949\u092f\u0921 <b>' + a + '</b>'; }
+          if (i) { en += ' \u00b7 iPhone <b>' + i + '</b>'; hiTxt += ' \u00b7 \u0906\u0908\u092b\u093c\u094b\u0928 <b>' + i + '</b>'; }
+          stat.innerHTML = '<span lang="en">' + en + '</span><span lang="hi">' + hiTxt + '</span>';
+          return;
+        }
+        var u = ok(st.users_display);
         if (!u) return;
         stat.innerHTML = '<span lang="en"><b>' + u + '</b> people use AstroAshva</span>' +
           '<span lang="hi"><b>' + u + '</b> \u0932\u094b\u0917 AstroAshva \u0907\u0938\u094d\u0924\u0947\u092e\u093e\u0932 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902</span>';
