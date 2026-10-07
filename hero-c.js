@@ -75,11 +75,20 @@
     // The frame from the Lagna point both ways, the diagonals, the diamond.
     var lines = [
       // [class, path, delay ms, duration ms]
-      ['hl', P([q.tm, q.tr, q.br, q.bm]), '0,1800'], ['hl', P([q.tm, q.tl, q.bl, q.bm]), '0,1800'],
-      ['hl', P([q.tl, q.br]), '150,1700'], ['hl', P([q.tr, q.bl]), '150,1700'],
-      ['hl', P([q.tm, q.rm, q.bm]), '300,1600'], ['hl', P([q.tm, q.lm, q.bm]), '300,1600'],
-      ['lagna', P([q.ul, q.tm, q.ur]), '1650,1000']
+      ['hl', P([q.tm, q.tr, q.br, q.bm]), '550,1800'], ['hl', P([q.tm, q.tl, q.bl, q.bm]), '550,1800'],
+      ['hl', P([q.tl, q.br]), '700,1700'], ['hl', P([q.tr, q.bl]), '700,1700'],
+      ['hl', P([q.tm, q.rm, q.bm]), '850,1600'], ['hl', P([q.tm, q.lm, q.bm]), '850,1600'],
+      ['lagna', P([q.ul, q.tm, q.ur]), '2200,1000']
     ];
+    // Before the first draw only: four lines slide in from the corners of the
+    // screen and lock onto the chart's corners, then fade once the frame holds.
+    if (!drawn) {
+      var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+      var x0 = -r.left, x1 = vw - r.left, y0 = -r.top, y1 = Math.max(vh - r.top, B + 40);
+      [[[x0, y0], q.tl], [[x1, y0], q.tr], [[x1, y1], q.br], [[x0, y1], q.bl]].forEach(function (e) {
+        lines.push(['edge', P([e[0], e[1]]), '0,900']);
+      });
+    }
     lines.forEach(function (d) {
       var p = el('path', { 'class': d[0], d: d[1], 'data-t': d[2] }, svg);
       var len = Math.ceil(p.getTotalLength()) + 2;
@@ -102,6 +111,12 @@
       if (p.animate) {
         anims.push(p.animate([{ strokeDashoffset: p._len }, { strokeDashoffset: 0 }],
           { delay: +t[0], duration: +t[1], easing: 'cubic-bezier(.45,0,.15,1)', fill: 'backwards' }));
+        if (p.classList.contains('edge')) {
+          anims.push(p.animate([{ opacity: 1 }, { opacity: 0 }],
+            { delay: 1500, duration: 700, easing: 'ease-out', fill: 'forwards' }));
+        }
+      } else if (p.classList.contains('edge')) {
+        p.style.opacity = '0';
       }
     });
   }

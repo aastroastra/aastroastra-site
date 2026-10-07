@@ -171,6 +171,9 @@
 
   /* ---------- Scroll story: phone pinned, screen changes, mantra drifts ---------- */
   var story = document.querySelector('[data-story]');
+  // Phones get the static grid instead (landing.css): one pinned scene per
+  // page there, and that one is AshvaAI.
+  var phoneMq = window.matchMedia ? matchMedia('(max-width: 760px)') : { matches: false };
   if (story && !reduce) {
     var rows = Array.prototype.slice.call(story.querySelectorAll('.m-row'));
     var phones = Array.prototype.slice.call(story.querySelectorAll('.pw')).map(function (pw) {
@@ -194,6 +197,7 @@
     };
     var frame = function () {
       queued = false;
+      if (phoneMq.matches) return;
       var r = story.getBoundingClientRect();
       if (r.bottom < -50 || r.top > vh + 50) return;
       var total = Math.max(1, r.height - vh);
@@ -292,14 +296,86 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
     document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.addEventListener('click', function () { requestAnimationFrame(draw); }); });
     demo.querySelector('[data-replay]').addEventListener('click', play);
-    if (reduce || !('IntersectionObserver' in window)) {
+    var aiScroll = document.querySelector('[data-ai-scroll]');
+    var fit = aiScroll && aiScroll.querySelector('[data-ai-fit]');
+    if (reduce || !aiScroll || !fit) {
       setStep(5); demo.classList.add('done');
+      demo.querySelectorAll('.ln, .rule, .src').forEach(function (n) { n.classList.add('on'); });
     } else {
-      var dio = new IntersectionObserver(function (es) {
-        if (es[0].isIntersecting) { dio.disconnect(); play(); }
-      }, { threshold: 0.3 });
-      dio.observe(stage);
+      /* The signature scene: pinned, and the scroll plays it. Each beat is a
+         share of the pinned scroll, so scrolling back plays it backwards. */
+      demo.classList.add('scrolly');
+      root.classList.add('ai-scrolly');
+      var lns = Array.prototype.slice.call(demo.querySelectorAll('.ln'));
+      var rls = Array.prototype.slice.call(demo.querySelectorAll('.rule'));
+      var srcEl = demo.querySelector('.src');
+      var STEP = [0.03, 0.2, 0.42, 0.62, 0.7];          // s1..s5
+      var RULE = [0.46, 0.51, 0.56], LINE = [0.72, 0.79, 0.86], SRC = 0.92;
+      var aiQueued = false, curStep = -1;
+      // Scale the scene to fit the screen (transform only, so layout and the
+      // flow lines inside it are untouched).
+      var fitIt = function () {
+        fit.style.setProperty('--fit', '1');
+        var h = fit.offsetHeight, room = window.innerHeight - 24;
+        fit.style.setProperty('--fit', Math.min(1, room / Math.max(1, h)).toFixed(3));
+      };
+      var aiFrame = function () {
+        aiQueued = false;
+        var r = aiScroll.getBoundingClientRect(), vh = window.innerHeight;
+        if (r.bottom < -vh || r.top > vh * 2) return;
+        var p = clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
+        var n = 0;
+        STEP.forEach(function (t, i) { if (p >= t) n = i + 1; });
+        if (n !== curStep) { curStep = n; setStep(n); demo.classList.toggle('done', n >= 5); }
+        rls.forEach(function (el, i) { el.classList.toggle('on', p >= RULE[i]); });
+        lns.forEach(function (el, i) { el.classList.toggle('on', p >= LINE[i]); });
+        if (srcEl) srcEl.classList.toggle('on', p >= SRC);
+      };
+      var aiScrollFn = function () { if (!aiQueued) { aiQueued = true; requestAnimationFrame(aiFrame); } };
+      window.addEventListener('scroll', aiScrollFn, { passive: true });
+      window.addEventListener('resize', function () { fitIt(); aiScrollFn(); });
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitIt(); draw(); });
+      document.querySelectorAll('[data-set-lang]').forEach(function (b) { b.addEventListener('click', function () { requestAnimationFrame(function () { fitIt(); draw(); }); }); });
+      fitIt(); aiFrame();
     }
+  }
+
+  /* ---------- Features: a tile opens its screenshot large ---------- */
+  var feats = Array.prototype.slice.call(document.querySelectorAll('.feat')).filter(function (f) { return f.querySelector('.peek img'); });
+  var dlg = document.createElement('dialog');
+  if (feats.length && typeof dlg.showModal === 'function') {
+    dlg.className = 'shot-dlg';
+    dlg.innerHTML = '<button type="button" class="shot-x"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>' +
+      '<figure><div class="shot-frame"><img alt="" width="540" height="1110"></div><figcaption></figcaption></figure>';
+    document.body.appendChild(dlg);
+    var dImg = dlg.querySelector('img'), dCap = dlg.querySelector('figcaption'), dX = dlg.querySelector('.shot-x');
+    var opener = null;
+    var close = function () { if (dlg.open) dlg.close(); };
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+    dX.addEventListener('click', close);
+    dlg.addEventListener('close', function () { root.classList.remove('dlg-open'); if (opener) opener.focus(); });
+    var open = function (f) {
+      var img = f.querySelector('.peek img'), base = img.getAttribute('data-base');
+      dImg.src = base ? base + '-540.webp' : img.currentSrc || img.src;
+      dImg.alt = img.alt || '';
+      var h = f.querySelector('h3'), t = f.querySelector('p');
+      dCap.innerHTML = '<b>' + (h ? h.innerHTML : '') + '</b>' + (t ? '<span class="shot-sub">' + t.innerHTML + '</span>' : '');
+      dX.setAttribute('aria-label', lang === 'hi' ? 'बंद करें' : 'Close');
+      opener = f;
+      root.classList.add('dlg-open');
+      dlg.showModal();
+    };
+    feats.forEach(function (f) {
+      f.classList.add('opens');
+      f.setAttribute('tabindex', '0');
+      f.setAttribute('role', 'button');
+      f.setAttribute('aria-haspopup', 'dialog');
+      // Its name is its own heading and line, in the page language.
+      f.addEventListener('click', function () { open(f); });
+      f.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(f); }
+      });
+    });
   }
 
   /* ---------- Reveal on scroll ---------- */

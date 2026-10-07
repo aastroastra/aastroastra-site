@@ -1,0 +1,118 @@
+/* The thread and the scroll scenes (thread.js, landing.js).
+   Colours come from the theme: --thread is the tint (ink in B&W themes).
+   Motion uses the tokens in landing.css (--m-ease, --m-fast/med/slow,
+   --m-stagger): transform, opacity and stroke-dashoffset only. */
+
+/* ---------- The line ---------- */
+main { position:relative; }
+main > section { position:relative; z-index:1; }
+.thread { position:absolute; left:0; top:0; width:100%; height:0; z-index:0; pointer-events:none; overflow:visible; display:none; }
+html.thread-on .thread { display:block; }
+.thread-path { fill:none; stroke:var(--thread); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.thread-probe { fill:none; stroke:none; }
+.thread-tip { fill:var(--thread); opacity:0; transition:opacity var(--m-fast) var(--m-ease); }
+.thread-tip.on { opacity:1; }
+[data-theme$="dark"] .thread-tip { filter:drop-shadow(0 0 5px var(--thread)); }
+
+/* Where it ends: the AA mark at Download, lit when the line arrives. */
+.thread-end { position:relative; z-index:2; display:grid; place-items:center; width:56px; height:56px; margin:0 auto 28px; border-radius:50%; background:var(--bg); }
+html:not(.thread-on) .thread-end { display:none; }
+.thread-end::before { content:""; position:absolute; inset:0; border-radius:50%; border:1.5px solid var(--thread); opacity:0; transform:scale(.6);
+  transition:opacity var(--m-med) var(--m-ease), transform var(--m-med) var(--m-ease); }
+.thread-end .site-mark { width:30px; height:30px; opacity:.22; transform:scale(.82);
+  transition:opacity var(--m-med) var(--m-ease), transform var(--m-slow) var(--m-ease); }
+.thread-end.closed::before { opacity:1; transform:none; }
+.thread-end.closed .site-mark { opacity:1; transform:none; }
+@media (prefers-reduced-motion:no-preference) {
+  .thread-end::after { content:""; position:absolute; inset:0; border-radius:50%; border:1.5px solid var(--thread); opacity:0; pointer-events:none; }
+  .thread-end.closed::after { animation:thread-ring var(--m-slow) var(--m-ease) both; }
+}
+@keyframes thread-ring { 0% { opacity:.8; transform:scale(1); } 100% { opacity:0; transform:scale(1.9); } }
+
+/* ---------- Why: the steps light as the line passes ---------- */
+html.thread-on .steps li { transition:border-color var(--m-med) var(--m-ease), box-shadow var(--m-med) var(--m-ease); }
+html.thread-on .steps li .n { display:inline-block; opacity:.28; transform:scale(.86); transform-origin:left bottom;
+  transition:opacity var(--m-med) var(--m-ease), transform var(--m-med) var(--m-ease); }
+html.thread-on .steps li.lit { border-color:color-mix(in srgb,var(--thread) 55%,var(--line)); box-shadow:0 18px 40px -30px color-mix(in srgb,var(--thread) 70%,transparent); }
+html.thread-on .steps li.lit .n { opacity:1; transform:none; }
+
+/* ---------- Multi-match: the ranking line passes each place ---------- */
+.mm-row.lit .mm-rank { color:var(--thread); }
+[data-theme^="mono"] .mm-row.lit .mm-rank { color:var(--fg); }
+.mm-waiting .mm-row { opacity:.55; }
+.mm-row { transition:transform .6s var(--m-ease), border-color .4s, box-shadow .4s, opacity var(--m-med) var(--m-ease); }
+
+/* ---------- AshvaAI: the pinned, scroll-played scene ---------- */
+.ai-scroll { position:relative; }
+html.ai-scrolly .ai-scroll { height:330vh; }
+html.ai-scrolly .ai-pin { position:sticky; top:0; height:100vh; height:100svh; }
+html.ai-scrolly .ai-fit { position:absolute; left:50%; top:50%; width:100%; transform:translate(-50%,-50%) scale(var(--fit,1)); transform-origin:center; }
+html.ai-scrolly .replay { display:none; }
+/* The flows become the thread. */
+.ai-demo.scrolly .flows path:not(.pulse) { stroke:color-mix(in srgb,var(--thread) 80%,var(--line)); }
+/* The question waits for step 4, then the answer, one person at a time. */
+.ai-demo.scrolly .cq { transition-delay:0s; }
+.ai-demo.scrolly .cq, .ai-demo.scrolly.s1:not(.s4) .cq { opacity:0; transform:translate3d(0,10px,0); }
+.ai-demo.scrolly.s4 .cq { opacity:1; transform:none; }
+.ai-demo.scrolly .ca { transition-delay:.18s; }
+.ai-demo.scrolly .rule { transition-delay:0s; }
+.ai-demo.scrolly.s3 .rule:not(.on) { opacity:0; transform:translate3d(0,8px,0) scale(.9); }
+.ai-demo.scrolly .ln { transition-delay:0s; }
+.ai-demo.scrolly .ln:not(.on) { opacity:0; transform:translate3d(0,8px,0); }
+.ai-demo.scrolly .ln.on { opacity:1; transform:none; }
+.ai-demo.scrolly .src { transition:opacity var(--m-med) var(--m-ease); }
+.ai-demo.scrolly .src:not(.on) { opacity:0; }
+.ai-demo.scrolly .src.on { opacity:1; }
+.ai-demo .ln.on, .ai-demo .src.on { opacity:1; transform:none; }
+@media (max-width:760px) {
+  html.ai-scrolly .ai-scroll { height:250vh; }
+  /* Four compact step markers instead of four cards, so the scene fits. */
+  .ai-demo.scrolly .demo-steps { grid-template-columns:repeat(4,1fr); gap:6px; margin-bottom:10px; }
+  .ai-demo.scrolly .demo-steps li { padding:8px 6px 10px; border-radius:14px; text-align:center; }
+  .ai-demo.scrolly .demo-steps .n { width:26px; height:26px; font-size:13px; margin:0 auto; }
+  .ai-demo.scrolly .demo-steps b { margin-top:6px; font-size:12.5px; line-height:1.2; letter-spacing:0; }
+  .ai-demo.scrolly .demo-steps small { display:none; }
+  .ai-demo.scrolly .stage { gap:18px; padding:18px 14px; }
+}
+
+/* ---------- Phone story: not pinned, the static grid (one pinned scene on phones) ---------- */
+@media (max-width:760px) {
+  .story { height:auto; padding:48px 0 8px; }
+  .story-pin { position:relative; height:auto; overflow:visible; display:block; }
+  .story-pin > .duo, .story-bar, .mantra, .pcaps { display:none; }
+  .story-static { display:grid; grid-template-columns:minmax(0,340px); justify-content:center; gap:36px; padding:0 var(--gutter); width:100%; }
+  .story-static figure { text-align:center; }
+  .story-static .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; align-items:start; }
+  .story-static img { border-radius:18px; border:5px solid #0B0B0C; aspect-ratio:540/1110; object-fit:cover; object-position:top; width:100%; height:auto; }
+  .story-static img[data-dev="ios"] { border-radius:24px; aspect-ratio:1206/2622; }
+  .story-static figcaption { margin-top:12px; font-weight:700; }
+}
+
+/* ---------- Features: a tile opens its screenshot ---------- */
+.feat.opens { cursor:zoom-in; }
+.feat.opens:focus-visible { outline:2px solid var(--thread); outline-offset:3px; }
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .feat.opens .peek > div { transition:transform var(--m-med) var(--m-ease), box-shadow var(--m-med) var(--m-ease); }
+  .feat.opens:hover .peek > div { transform:translateY(-22px) scale(1.035); box-shadow:0 28px 50px -30px rgba(0,0,0,.55); }
+}
+.shot-dlg { margin:auto; padding:0; border:0; background:transparent; color:var(--fg); max-width:min(92vw,440px); max-height:94vh; overflow:visible; }
+.shot-dlg::backdrop { background:color-mix(in srgb,var(--bg) 70%,transparent); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+.shot-dlg figure { display:flex; flex-direction:column; align-items:center; gap:14px; }
+.shot-dlg .shot-frame { width:min(78vw,340px,calc((94vh - 140px) * 540 / 1110)); aspect-ratio:540/1110; overflow:hidden; border:9px solid #0B0B0C; border-radius:40px; background:#fff; box-shadow:0 40px 90px -30px rgba(0,0,0,.6); }
+.shot-dlg .shot-frame img { width:100%; height:100%; object-fit:cover; object-position:top; }
+.shot-dlg figcaption { text-align:center; max-width:340px; }
+.shot-dlg figcaption b { display:block; font-family:var(--font-heading); font-size:22px; line-height:1.2; }
+.shot-dlg .shot-sub { display:block; margin-top:4px; font-size:14.5px; line-height:1.45; color:var(--fg2); }
+.shot-x { position:absolute; top:-6px; right:-6px; z-index:2; width:44px; height:44px; border-radius:50%; border:1px solid var(--line); background:var(--card); color:var(--fg); display:grid; place-items:center; cursor:pointer; }
+.shot-x svg { width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+.shot-x:focus-visible { outline:2px solid var(--thread); outline-offset:2px; }
+@media (prefers-reduced-motion:no-preference) {
+  .shot-dlg[open] figure { animation:shot-in var(--m-med) var(--m-ease) both; }
+}
+@keyframes shot-in { from { opacity:0; transform:translate3d(0,24px,0) scale(.96); } to { opacity:1; transform:none; } }
+
+/* ---------- Reduced motion: drawn, lit, still ---------- */
+@media (prefers-reduced-motion:reduce) {
+  .thread-end::before, .thread-end .site-mark, html.thread-on .steps li, html.thread-on .steps li .n, .mm-row { transition:none; }
+  .mm-waiting .mm-row { opacity:1; }
+}

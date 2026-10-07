@@ -8,7 +8,13 @@
   --gutter:clamp(16px,4vw,40px);
   --maxw:1240px;
   --radius:28px;
-  --ease:cubic-bezier(.16,1,.3,1);
+  /* Motion system: one curve, three speeds, one stagger, used by every scene. */
+  --m-ease:cubic-bezier(.2,.7,.1,1);
+  --m-fast:.24s; --m-med:.6s; --m-slow:1.2s;
+  --m-stagger:.07s;
+  --ease:var(--m-ease);
+  /* The thread's colour: the theme tint (gold, orange), ink in the B&W themes. */
+  --thread:var(--tint);
   /* Meaning tones (AastroTone), used for feature icons only. */
   --t-saffron:#E4551F; --t-rose:#D6304F; --t-purple:#7C3AED; --t-teal:#0D9488;
   --t-blue:#2563EB; --t-gold:#B7791F; --t-green:#15803D; --t-indigo:#4F46E5;
