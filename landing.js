@@ -47,25 +47,69 @@
   /* ---------- Real app screenshots, per language ----------
      Images carry data-shot="name"; the source is picked here so a Hindi
      visitor never downloads the English set first. */
-  // Dark themes show dark captures where one exists (Yellow Dark: yd,
-  // B&W Dark: md). Screens without a dark capture keep the light one.
+  /* Which capture each image shows: only captures of the site theme's family.
+     What exists (shots/landing/<lang>...):
+       <lang>/          Yellow·Light, every screen (Android size)
+       <lang>/yd, /md   Yellow·Dark, B&W·Dark, for the screens in DARK
+       <lang>-and/      White·Light Android for the screens in WL; /yd, /md dark
+       <lang>-ios/      White·Light iPhone for the story six; /yd, /md dark
+     Families: Yellow (Yellow·Light, Yellow·Dark), White (White·Light),
+     B&W (B&W·Dark; there is no B&W·Light set, so B&W·Light uses B&W·Dark).
+     The story's side phones take the lightest capture of the family. A
+     screen with no capture in the family borrows the same feature's covered
+     screen (SUB) where the image allows it (data-sub); otherwise it is hidden
+     rather than shown in another theme. */
   var DARK = {'01-dashboard': 1, '12-kundali-hero': 1, '13-kundali-chart': 1, '09-match-score': 1, '10-match-koota': 1, '05-multimatch-results': 1, '07n-numerology': 1, '15-chat-answer': 1, '22-horoscope-daily': 1, '20-palm-takeaways': 1, '16-face-hero': 1, '23-panchang': 1, '30-pdf-report': 1};
+  var WL = {'05-multimatch-results': 1, '07n-numerology': 1, '09-match-score': 1, '12-kundali-hero': 1, '15-chat-answer': 1, '20-palm-takeaways': 1};
+  var IOS = WL;   // the iPhone set has the same six screens
+  var SUB = {'14-chat-empty': '15-chat-answer', '18-palm-start': '20-palm-takeaways', '21-prediction-weekly': '12-kundali-hero',
+    '13-kundali-chart': '12-kundali-hero', '10-match-koota': '09-match-score', '07-multimatch-types-detail': '05-multimatch-results',
+    '01-dashboard': '05-multimatch-results', '22-horoscope-daily': '12-kundali-hero'};
   function variant() {
     var t = root.getAttribute('data-theme') || '';
     return t === 'yellow-dark' ? 'yd' : t === 'mono-dark' ? 'md' : '';
   }
+  // The capture families to try, in order, for an image in this theme.
+  function familyFor(img) {
+    var t = root.getAttribute('data-theme') || 'yellow-light';
+    var side = img.hasAttribute('data-light');
+    if (t === 'white-light') return ['wl'];
+    if (t.indexOf('mono') === 0) return ['md'];
+    if (t === 'yellow-dark' && !side) return ['yd', 'yl'];
+    return ['yl'];
+  }
+  // The folder for one screen in one family, or null when it was never captured.
+  function capture(name, ios, fam) {
+    if (fam === 'yl') return lang + '/' + name;                 // Android size; the iPhone frame crops it a little
+    if (fam === 'wl') return ios ? (IOS[name] ? lang + '-ios/' + name : null) : (WL[name] ? lang + '-and/' + name : null);
+    if (ios) return IOS[name] ? lang + '-ios/' + fam + '/' + name : null;
+    if (DARK[name]) return lang + '/' + fam + '/' + name;
+    return WL[name] ? lang + '-and/' + fam + '/' + name : null;
+  }
+  function shotBase(img) {
+    var name = img.getAttribute('data-shot'), ios = img.getAttribute('data-dev') === 'ios';
+    var fams = familyFor(img), names = [name];
+    if (img.hasAttribute('data-sub') && SUB[name]) names.push(SUB[name]);
+    for (var i = 0; i < names.length; i++) for (var k = 0; k < fams.length; k++) {
+      var f = capture(names[i], ios, fams[k]);
+      if (f) return f;
+    }
+    return null;
+  }
   function setShots() {
-    var v = variant();
     document.querySelectorAll('img[data-shot]').forEach(function (img) {
-      var name = img.getAttribute('data-shot');
-      // data-dev ("and" or "ios"): the scroll story's own Android and iPhone
-      // captures, in the page language; every theme has its own set there.
-      var dev = img.getAttribute('data-dev');
-      var base = 'shots/landing/' + lang + (dev ? '-' + dev : '') + '/' + (v && (dev || DARK[name]) ? v + '/' : '') + name;
+      var rel = shotBase(img);
+      // No capture in this theme's family: hide the phone, never show another theme.
+      var holder = img.closest('.sl') || img.closest('.feat-dev, .side-phone, figure, .peek') || img.parentNode;
+      holder.classList.toggle('shot-missing', !rel);
+      var f = img.closest('.feat');
+      if (f && img.closest('.feat-dev')) f.classList.toggle('no-shot', !rel);
+      if (!rel) { img.removeAttribute('srcset'); img.removeAttribute('src'); img.setAttribute('data-base', ''); return; }
+      var base = 'shots/landing/' + rel;
       if (img.getAttribute('data-base') === base) return;
       img.setAttribute('data-base', base);
       var sl = img.parentNode;
-      if (sl.classList.contains('sl')) sl.classList.toggle('dk', !!(v && (dev || DARK[name])));
+      if (sl.classList.contains('sl')) sl.classList.toggle('dk', base.indexOf('/yd/') > 0 || base.indexOf('/md/') > 0);
       var small = img.closest('.card-shot, .side-phone, .story-static');
       if (!img.hasAttribute('data-eager') && !img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
       img.setAttribute('decoding', 'async');
@@ -183,6 +227,15 @@
     ios: { w: 107.6, h: 225, o: 17.6, i: 16.7, btn: [['l', 40, 8], ['l', 55, 14], ['l', 72, 14], ['r', 58, 24], ['r', 112, 12]],
       top: '<rect class="dv-cam" x="38.3" y="6.3" width="31" height="9" rx="4.5"/><circle class="dv-lens" cx="64" cy="10.8" r="1.5"/>' }
   };
+  // Features on phones: each tile's screenshot also in the iPhone frame
+  // (shown instead of the desktop peek below 760px; landing.css / thread.css).
+  document.querySelectorAll('.feat .peek img[data-shot]').forEach(function (im) {
+    var f = im.closest('.feat');
+    if (f.querySelector('.feat-dev')) return;
+    f.insertAdjacentHTML('beforeend', '<div class="device ios feat-dev" data-frame="ios" aria-hidden="true"><div class="dev-in"><div class="dev-screen">' +
+      '<img data-shot="' + im.getAttribute('data-shot') + '" loading="lazy" width="540" height="1110" alt=""></div></div></div>');
+  });
+  setShots();
   if (!document.getElementById('dv-metal')) {
     var defs = document.createElement('div');
     defs.innerHTML = '<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs>' +
@@ -387,7 +440,8 @@
     dX.addEventListener('click', close);
     dlg.addEventListener('close', function () { root.classList.remove('dlg-open'); if (opener) opener.focus(); });
     var open = function (f) {
-      var img = f.querySelector('.peek img'), base = img.getAttribute('data-base');
+      if (f.classList.contains('no-shot')) return;
+      var img = f.querySelector('.feat-dev img') || f.querySelector('.peek img'), base = img.getAttribute('data-base');
       dImg.src = base ? base + '-540.webp' : img.currentSrc || img.src;
       dImg.alt = img.alt || '';
       var h = f.querySelector('h3'), t = f.querySelector('p');
@@ -502,6 +556,15 @@
     } catch (err) {}
     try { if (window.gtag) gtag('event', 'store_click', { platform: platform, channel: channel }); } catch (err) {}
   });
+
+  /* The footer heart beats once when it comes into view. */
+  var heartP = document.querySelector('[data-heart]');
+  if (heartP && !reduce && 'IntersectionObserver' in window) {
+    var hio = new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting) { hio.disconnect(); heartP.classList.add('beat'); }
+    }, { threshold: 1 });
+    hio.observe(heartP);
+  }
 
   var y = document.querySelector('[data-year]');
   if (y) y.textContent = String(new Date().getFullYear());

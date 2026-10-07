@@ -124,6 +124,28 @@
   }
   var anims = [];
 
+  /* ---------- Equal space above and below the chart (desktop) ----------
+     The hero runs from the header to the bottom of the first screen, and the
+     chart sits in it with the same gap above (from the header's bottom) as
+     below (to the screen's bottom), whatever sits between header and hero. */
+  var header = document.querySelector('.site-header');
+  function fitHero() {
+    if (narrow.matches || !header) { hc.style.height = ''; stage.style.top = ''; stage.style.bottom = ''; return; }
+    var y = window.scrollY || window.pageYOffset || 0;
+    var hb = header.getBoundingClientRect().bottom + y, ht = hc.getBoundingClientRect().top + y;
+    var vh = window.innerHeight, extra = Math.max(0, ht - hb);
+    var g = Math.round(Math.min(44, Math.max(20, vh * 0.032)));
+    var h = Math.max(560, vh - ht);
+    // Below the minimum height the chart still keeps equal gaps inside it.
+    hc.style.height = h + 'px';
+    stage.style.top = g + 'px';
+    stage.style.bottom = (vh - ht >= 560 ? g + extra : g) + 'px';
+  }
+  var narrow = window.matchMedia ? matchMedia('(max-width: 768px)') : { matches: false };
+  fitHero();
+  window.addEventListener('resize', fitHero);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHero);
+
   var lastW = 0, lastH = 0;
   build();
   if ('ResizeObserver' in window) {
@@ -139,7 +161,6 @@
 
   /* ---------- One line per house ---------- */
   var active = null, pinned = null;
-  var narrow = window.matchMedia ? matchMedia('(max-width: 768px)') : { matches: false };
   function show(h) {
     h = String(h);
     var d = H[h];

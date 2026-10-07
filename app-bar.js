@@ -24,6 +24,8 @@
     (nav.platform === 'MacIntel' && nav.maxTouchPoints > 1);
   var isIPad = /iPad/.test(ua) || (nav.platform === 'MacIntel' && nav.maxTouchPoints > 1);
   var isAndroid = !isIOS && ((uad && uad.platform === 'Android') || /Android/i.test(ua));
+  // The home page's Download section shows the visitor's own platform first.
+  document.documentElement.classList.add(isIOS ? 'plat-ios' : isAndroid ? 'plat-android' : 'plat-other');
   if (!isIOS && !isAndroid) return;
 
   try {
