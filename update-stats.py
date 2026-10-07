@@ -22,6 +22,12 @@ as null and the page leaves it out; nothing is estimated.
                     config). Read through the Supabase Management API.
   users_display     `users` rounded down to a friendly bucket ("90+", "1.2k+"),
                     or null below 10 so the page hides the line.
+  downloads_*       Google Analytics 4 property 556099065 (Firebase-linked):
+                    totalUsers since 2020-01-01, all platforms (downloads_total)
+                    and by platform (downloads_android, downloads_ios), each with
+                    a *_display bucket. The home page hero line uses these. The
+                    backend edge function site-stats writes the same fields
+                    daily at 02:30 UTC; this script keeps them on a manual run.
 
 Credentials stay on this Mac (never in this public repo):
   ~/secrets/aastroastra/asc.env + ~/Documents/AstroAstra/keys/AuthKey_<id>.p8
@@ -119,6 +125,31 @@ def android_listing():
     return m.group(1)
 
 
+GA_PROPERTY = "556099065"
+
+
+def ga_downloads():
+    """(total, android, ios) unique users from GA4, via the Play service account."""
+    from google.oauth2 import service_account
+    from google.auth.transport.requests import AuthorizedSession
+    creds = service_account.Credentials.from_service_account_file(
+        str(HOME / "secrets/aastroastra/play-publisher.json"),
+        scopes=["https://www.googleapis.com/auth/analytics.readonly"])
+    s = AuthorizedSession(creds)
+    url = f"https://analyticsdata.googleapis.com/v1beta/properties/{GA_PROPERTY}:runReport"
+    base = {"dateRanges": [{"startDate": "2020-01-01", "endDate": "today"}], "metrics": [{"name": "totalUsers"}]}
+    r = s.post(url, json=base, timeout=30)
+    r.raise_for_status()
+    total = sum(int(row["metricValues"][0]["value"]) for row in r.json().get("rows", []))
+    r = s.post(url, json={**base, "dimensions": [{"name": "platform"}]}, timeout=30)
+    r.raise_for_status()
+    by = {}
+    for row in r.json().get("rows", []):
+        k = row["dimensionValues"][0]["value"].lower()
+        by[k] = by.get(k, 0) + int(row["metricValues"][0]["value"])
+    return total, by.get("android", 0), by.get("ios", 0)
+
+
 def registered_users():
     req = urllib.request.Request(BASE + "/rest/v1/rpc/public_stats", data=b"{}", method="POST",
                                  headers={"apikey": ANON, "Authorization": "Bearer " + ANON,
@@ -200,7 +231,9 @@ def users_bucket(n):
 def main():
     dry = "--dry-run" in sys.argv
     out = {"android_installs": None, "android_listing": None, "ios_installs": None, "registered_users": None,
-           "users": None, "users_display": None, "updated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
+           "users": None, "users_display": None,
+           "downloads_total": None, "downloads_android": None, "downloads_ios": None, "downloads_display": None,
+           "downloads_android_display": None, "downloads_ios_display": None, "updated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
            "source": {}}
     try:
         out["ios_installs"] = ios_installs()
@@ -231,6 +264,16 @@ def main():
                                   "(team emails, test/demo/qa emails, test OTP phones)")
     except Exception as e:
         out["source"]["users"] = f"unavailable ({type(e).__name__})"
+
+    try:
+        total, android, ios = ga_downloads()
+        out.update(downloads_total=total, downloads_android=android, downloads_ios=ios,
+                   downloads_display=users_bucket(total), downloads_android_display=users_bucket(android),
+                   downloads_ios_display=users_bucket(ios))
+        out["source"]["downloads"] = ("Google Analytics 4 property 556099065: totalUsers since 2020-01-01 "
+                                      "(all platforms, and by platform)")
+    except Exception as e:
+        out["source"]["downloads"] = f"unavailable ({type(e).__name__})"
 
     body = (json.dumps(out, indent=2) + "\n").encode()
     print(body.decode())
