@@ -217,23 +217,19 @@
     });
   }
 
-  /* ---------- Install counts under the badges ----------
-     stats.json (update-stats.py): Android = Play Console total when known,
-     else the public Play listing bucket ("5+"); iPhone = TestFlight installs.
-     Only real numbers; a missing one is left out. The line's height is
-     reserved in CSS, so filling it shifts nothing. */
+  /* ---------- People count under the badges ----------
+     stats.json (update-stats.py): users_display = real accounts (never guests,
+     team and test accounts removed), rounded down to a friendly bucket
+     ("90+"). Null below 10 or when unknown, and the line stays empty. Its
+     height is reserved in CSS, so filling it shifts nothing. */
   var stat = hc.querySelector('[data-hc-stat]');
   if (stat && window.fetch) {
     fetch('https://gttszlununmqivrqevwv.supabase.co/storage/v1/object/public/site/stats.json?t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; }).then(function (st) {
-        if (!st) return;
-        var a = typeof st.android_installs === 'number' ? String(st.android_installs) : (st.android_listing || null);
-        var i = typeof st.ios_installs === 'number' && st.ios_installs > 0 ? String(st.ios_installs) : null;
-        var en = [], hiL = [];
-        if (a) { en.push('<b>' + a + '</b> on Android'); hiL.push('एंड्रॉइड पर <b>' + a + '</b>'); }
-        if (i) { en.push('<b>' + i + '</b> on iPhone'); hiL.push('आईफ़ोन पर <b>' + i + '</b>'); }
-        if (!en.length) return;
-        stat.innerHTML = '<span lang="en">' + en.join(' \u00b7 ') + '</span><span lang="hi">' + hiL.join(' \u00b7 ') + '</span>';
+        var u = st && typeof st.users_display === 'string' && /^[0-9][0-9.]*k?\+$/.test(st.users_display) ? st.users_display : null;
+        if (!u) return;
+        stat.innerHTML = '<span lang="en"><b>' + u + '</b> people use AstroAshva</span>' +
+          '<span lang="hi"><b>' + u + '</b> \u0932\u094b\u0917 AstroAshva \u0907\u0938\u094d\u0924\u0947\u092e\u093e\u0932 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902</span>';
       }).catch(function () {});
   }
 

@@ -15,11 +15,19 @@ as null and the page leaves it out; nothing is estimated.
                     exactly as Play shows it; used when the exact count is unknown.
   registered_users  Accounts signed in with a phone or email (never guests),
                     from the public `public_stats` RPC. Includes team accounts.
+  users             The home page line ("90+ people use AstroAshva"): the same
+                    non-guest accounts minus team and test accounts (team email
+                    addresses, emails with test/demo/qa in the local part, and
+                    the phones configured as test OTP numbers in the live auth
+                    config). Read through the Supabase Management API.
+  users_display     `users` rounded down to a friendly bucket ("90+", "1.2k+"),
+                    or null below 10 so the page hides the line.
 
 Credentials stay on this Mac (never in this public repo):
   ~/secrets/aastroastra/asc.env + ~/Documents/AstroAstra/keys/AuthKey_<id>.p8
   ~/secrets/aastroastra/play-publisher.json
   SUPABASE_SERVICE_ROLE_KEY, or the Supabase CLI login (same as publish.sh).
+  SUPABASE_ACCESS_TOKEN, or the Supabase CLI login in the macOS keychain (users).
 
 Run:  SSL_CERT_FILE=$(python3 -m certifi) python3 update-stats.py [--dry-run]
 """
@@ -119,10 +127,80 @@ def registered_users():
         return int(json.load(r)["people"])
 
 
+PROJECT_REF = "gttszlununmqivrqevwv"
+TEAM_EMAILS = ("aastroastra@gmail.com",)
+TEAM_DOMAINS = ("astroashva.com", "aastroastra.com")
+
+
+def management_token():
+    tok = os.environ.get("SUPABASE_ACCESS_TOKEN")
+    if tok:
+        return tok
+    import base64
+    import subprocess
+    raw = subprocess.run(["security", "find-generic-password", "-s", "Supabase CLI", "-w"],
+                         capture_output=True, text=True, check=True).stdout.strip()
+    if raw.startswith("go-keyring-base64:"):
+        raw = base64.b64decode(raw[len("go-keyring-base64:"):]).decode()
+    return raw
+
+
+def management(path, token, body=None):
+    req = urllib.request.Request(f"https://api.supabase.com/v1/projects/{PROJECT_REF}/{path}",
+                                 data=None if body is None else json.dumps(body).encode(),
+                                 method="GET" if body is None else "POST",
+                                 headers={"Authorization": "Bearer " + token, "Content-Type": "application/json",
+                                          "User-Agent": "astroashva-update-stats"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return json.load(r)
+
+
+def users_sql(test_phones):
+    domains = ", ".join("'%" + "@" + d + "'" for d in TEAM_DOMAINS)
+    emails = ", ".join("'" + e + "'" for e in TEAM_EMAILS)
+    phones = ", ".join("'" + p + "'" for p in test_phones) or "''"
+    return f"""
+select count(*) as raw,
+       count(*) filter (where not (
+             lower(coalesce(email, '')) in ({emails})
+          or lower(coalesce(email, '')) like any (array[{domains}])
+          or split_part(lower(coalesce(email, '')), '@', 1) ~ '(test|demo|qa)'
+          or regexp_replace(coalesce(phone, ''), '[^0-9]', '', 'g') in ({phones})
+       )) as real
+  from auth.users
+ where is_anonymous is not true"""
+
+
+def real_users():
+    """(raw non-guest accounts, accounts after removing team and test ones)."""
+    import re
+    token = management_token()
+    cfg = management("config/auth", token)
+    phones = set()
+    for pair in (cfg.get("sms_test_otp") or "").split(","):
+        digits = re.sub(r"[^0-9]", "", pair.split("=")[0])
+        if digits:
+            phones.add(digits)
+    row = management("database/query", token, {"query": users_sql(sorted(phones))})[0]
+    return int(row["raw"]), int(row["real"])
+
+
+def users_bucket(n):
+    """Round down to a friendly bucket; None below 10 (the page hides the line)."""
+    if n is None or n < 10:
+        return None
+    if n < 100:
+        return f"{n // 10 * 10}+"
+    if n < 1000:
+        return f"{n // 50 * 50}+"
+    h = n // 100 * 100
+    return (f"{h // 1000}k+" if h % 1000 == 0 else f"{h / 1000:.1f}k+")
+
+
 def main():
     dry = "--dry-run" in sys.argv
     out = {"android_installs": None, "android_listing": None, "ios_installs": None, "registered_users": None,
-           "updated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
+           "users": None, "users_display": None, "updated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
            "source": {}}
     try:
         out["ios_installs"] = ios_installs()
@@ -145,6 +223,14 @@ def main():
         out["source"]["registered_users"] = "public_stats(): non-guest accounts, includes team accounts"
     except Exception as e:
         out["source"]["registered_users"] = f"unavailable ({type(e).__name__})"
+    try:
+        raw, real = real_users()
+        out["users"] = real
+        out["users_display"] = users_bucket(real)
+        out["source"]["users"] = (f"auth.users non-guest accounts ({raw}) minus team and test accounts "
+                                  "(team emails, test/demo/qa emails, test OTP phones)")
+    except Exception as e:
+        out["source"]["users"] = f"unavailable ({type(e).__name__})"
 
     body = (json.dumps(out, indent=2) + "\n").encode()
     print(body.decode())
