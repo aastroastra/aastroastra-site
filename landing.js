@@ -66,8 +66,7 @@
   var NUM2 = {'07c-core-numbers': 1, '07d-driver-conductor': 1};
   var DARK = {'01-dashboard': 1, '12-kundali-hero': 1, '13-kundali-chart': 1, '09-match-score': 1, '10-match-koota': 1, '05-multimatch-results': 1, '07n-numerology': 1, '15-chat-answer': 1, '22-horoscope-daily': 1, '20-palm-takeaways': 1, '16-face-hero': 1, '23-panchang': 1, '30-pdf-report': 1};
   var WL = plus(plus(STORY, NUM2), {'16-face-hero': 1, '22-horoscope-daily': 1, '23-panchang': 1});
-  var ML = WL;                          // B&W·Light Android: the same set, but Face is English only
-  var ML_EN = {'16-face-hero': 1};
+  var ML = WL;                          // B&W·Light Android: the same set
   var IOS = plus(STORY, NUM2);          // White·Light iPhone
   var ML_IOS = IOS;                     // B&W·Light iPhone
   var IOS_YL = NUM2;                    // Yellow·Light iPhone (the rest use the Android Yellow·Light set)
@@ -92,7 +91,7 @@
   function capture(name, ios, fam) {
     if (fam === 'yl') return ios && IOS_YL[name] ? lang + '-ios/yl/' + name : lang + '/' + name;   // else Android size; the iPhone frame crops it a little
     if (fam === 'wl') return ios ? (IOS[name] ? lang + '-ios/' + name : null) : (WL[name] ? lang + '-and/' + name : null);
-    if (fam === 'ml') return ios ? (ML_IOS[name] ? lang + '-ios/ml/' + name : null) : ((ML[name] && !(lang !== 'en' && ML_EN[name])) ? lang + '-and/ml/' + name : null);
+    if (fam === 'ml') return ios ? (ML_IOS[name] ? lang + '-ios/ml/' + name : null) : (ML[name] ? lang + '-and/ml/' + name : null);
     if (ios) return STORY[name] ? lang + '-ios/' + fam + '/' + name : null;
     return DARK[name] ? lang + '/' + fam + '/' + name : null;
   }
