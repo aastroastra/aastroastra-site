@@ -62,6 +62,8 @@
   var DARK = {'01-dashboard': 1, '12-kundali-hero': 1, '13-kundali-chart': 1, '09-match-score': 1, '10-match-koota': 1, '05-multimatch-results': 1, '07n-numerology': 1, '15-chat-answer': 1, '22-horoscope-daily': 1, '20-palm-takeaways': 1, '16-face-hero': 1, '23-panchang': 1, '30-pdf-report': 1};
   var WL = {'05-multimatch-results': 1, '07n-numerology': 1, '09-match-score': 1, '12-kundali-hero': 1, '15-chat-answer': 1, '20-palm-takeaways': 1};
   var IOS = WL;   // the iPhone set has the same six screens
+  // White·Light Android captures that exist in Hindi only (from the Hindi ad kit).
+  var WL_HI = {'16-face-hero': 1, '22-horoscope-daily': 1, '23-panchang': 1};
   var SUB = {'14-chat-empty': '15-chat-answer', '18-palm-start': '20-palm-takeaways', '21-prediction-weekly': '12-kundali-hero',
     '13-kundali-chart': '12-kundali-hero', '10-match-koota': '09-match-score', '07-multimatch-types-detail': '05-multimatch-results',
     '01-dashboard': '05-multimatch-results', '22-horoscope-daily': '12-kundali-hero'};
@@ -81,7 +83,7 @@
   // The folder for one screen in one family, or null when it was never captured.
   function capture(name, ios, fam) {
     if (fam === 'yl') return lang + '/' + name;                 // Android size; the iPhone frame crops it a little
-    if (fam === 'wl') return ios ? (IOS[name] ? lang + '-ios/' + name : null) : (WL[name] ? lang + '-and/' + name : null);
+    if (fam === 'wl') return ios ? (IOS[name] ? lang + '-ios/' + name : null) : ((WL[name] || (lang === 'hi' && WL_HI[name])) ? lang + '-and/' + name : null);
     if (ios) return IOS[name] ? lang + '-ios/' + fam + '/' + name : null;
     if (DARK[name]) return lang + '/' + fam + '/' + name;
     return WL[name] ? lang + '-and/' + fam + '/' + name : null;
