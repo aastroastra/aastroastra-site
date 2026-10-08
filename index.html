@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="yellow-light">
+<html lang="en" data-theme="white-light">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -110,7 +110,7 @@
     var d=document.documentElement, t, l, q;
     d.classList.add('js');
     try{ t=localStorage.getItem('aa-theme'); }catch(e){}
-    if(!/^(yellow|white|mono)-light$|^(yellow|mono)-dark$/.test(t||'')) t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'yellow-dark':'yellow-light';
+    if(!/^(yellow|white|mono)-light$|^(yellow|mono)-dark$/.test(t||'')) t='white-light';
     d.setAttribute('data-theme',t);
     try{ q=new URLSearchParams(location.search).get('lang'); }catch(e){}
     if(q!=='hi'&&q!=='en'){ try{ q=localStorage.getItem('aa-lang'); }catch(e){} }

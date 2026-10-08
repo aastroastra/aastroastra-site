@@ -12,8 +12,9 @@
   // A page may name its own light default in <html data-theme>; the kit page
   // opens in White · Light. Every page still shares one stored preference.
   const preset = document.documentElement.dataset.theme;
-  const fallback = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches
-    ? 'yellow-dark' : (valid(preset) ? preset : 'yellow-light');
+  // First visit opens in White · Light (orange and white), the brand look,
+  // whatever the device's dark setting; a saved choice still wins.
+  const fallback = () => (valid(preset) ? preset : 'white-light');
   let theme;
   try { theme = localStorage.getItem('aa-theme'); } catch (_) { /* Storage is optional. */ }
   function apply(value, persist = false) {

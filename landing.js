@@ -73,7 +73,7 @@
   }
   // The capture families to try, in order, for an image in this theme.
   function familyFor(img) {
-    var t = root.getAttribute('data-theme') || 'yellow-light';
+    var t = root.getAttribute('data-theme') || 'white-light';
     var side = img.hasAttribute('data-light');
     if (t === 'white-light') return ['wl'];
     if (t.indexOf('mono') === 0) return ['md'];
