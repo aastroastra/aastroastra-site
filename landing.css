@@ -8,7 +8,13 @@
   --gutter:clamp(16px,4vw,40px);
   --maxw:1240px;
   --radius:28px;
-  --ease:cubic-bezier(.16,1,.3,1);
+  /* Motion system: one curve, three speeds, one stagger, used by every scene. */
+  --m-ease:cubic-bezier(.2,.7,.1,1);
+  --m-fast:.24s; --m-med:.6s; --m-slow:1.2s;
+  --m-stagger:.07s;
+  --ease:var(--m-ease);
+  /* The thread's colour: the theme tint (gold, orange), ink in the B&W themes. */
+  --thread:var(--tint);
   /* Meaning tones (AastroTone), used for feature icons only. */
   --t-saffron:#E4551F; --t-rose:#D6304F; --t-purple:#7C3AED; --t-teal:#0D9488;
   --t-blue:#2563EB; --t-gold:#B7791F; --t-green:#15803D; --t-indigo:#4F46E5;
@@ -467,6 +473,10 @@ html[data-lang="hi"] .foot-word .fw-sub { letter-spacing:.06em; }
 .foot-legal { border-top:1px solid var(--line); padding:15px clamp(16px,4vw,30px); display:flex; flex-wrap:wrap; gap:6px 18px; justify-content:center; text-align:center; font-size:11.5px; color:var(--muted); }
 .foot-legal a { color:inherit; text-decoration:none; }
 footer { max-width:var(--maxw); margin:0 auto; }
+/* Order: the big ASTROASHVA, the legal line, then the links at the very
+   bottom (the grid on wide screens, the columns on phones). */
+.foot-simple, .foot-big { border-top:1px solid var(--line); }
+.foot-word text { letter-spacing:.01em; }
 @media (max-width:900px) {
   .foot-simple { display:none; }
   .foot-big { display:block; }

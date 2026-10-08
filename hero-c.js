@@ -75,11 +75,21 @@
     // The frame from the Lagna point both ways, the diagonals, the diamond.
     var lines = [
       // [class, path, delay ms, duration ms]
-      ['hl', P([q.tm, q.tr, q.br, q.bm]), '0,1800'], ['hl', P([q.tm, q.tl, q.bl, q.bm]), '0,1800'],
-      ['hl', P([q.tl, q.br]), '150,1700'], ['hl', P([q.tr, q.bl]), '150,1700'],
-      ['hl', P([q.tm, q.rm, q.bm]), '300,1600'], ['hl', P([q.tm, q.lm, q.bm]), '300,1600'],
-      ['lagna', P([q.ul, q.tm, q.ur]), '1650,1000']
+      ['hl', P([q.tm, q.tr, q.br, q.bm]), '550,1800'], ['hl', P([q.tm, q.tl, q.bl, q.bm]), '550,1800'],
+      ['hl', P([q.tl, q.br]), '700,1700'], ['hl', P([q.tr, q.bl]), '700,1700'],
+      ['hl', P([q.tm, q.rm, q.bm]), '850,1600'], ['hl', P([q.tm, q.lm, q.bm]), '850,1600'],
+      ['lagna', P([q.ul, q.tm, q.ur]), '2200,1000']
     ];
+    // Four lines from the corners of the screen (as it stands at the top of
+    // the page) to the chart's corners. They slide in with the intro, then
+    // stay as a faint hairline; rebuilt with the chart on every resize. They
+    // end exactly at the screen's edges, so they never widen the page.
+    var vw = document.documentElement.clientWidth, vh = window.innerHeight;
+    var pageTop = r.top + (window.scrollY || window.pageYOffset || 0);
+    var x0 = -r.left, x1 = vw - r.left, y0 = -pageTop, y1 = Math.max(vh - pageTop, B + 40);
+    [[[x0, y0], q.tl], [[x1, y0], q.tr], [[x1, y1], q.br], [[x0, y1], q.bl]].forEach(function (e) {
+      lines.push(['edge', P([e[0], e[1]]), '0,900']);
+    });
     lines.forEach(function (d) {
       var p = el('path', { 'class': d[0], d: d[1], 'data-t': d[2] }, svg);
       var len = Math.ceil(p.getTotalLength()) + 2;
@@ -102,10 +112,39 @@
       if (p.animate) {
         anims.push(p.animate([{ strokeDashoffset: p._len }, { strokeDashoffset: 0 }],
           { delay: +t[0], duration: +t[1], easing: 'cubic-bezier(.45,0,.15,1)', fill: 'backwards' }));
+        if (p.classList.contains('edge')) {
+          // Bright while it arrives, then it settles to the faint resting
+          // opacity set in hero-c.css.
+          var rest = getComputedStyle(p).opacity;
+          anims.push(p.animate([{ opacity: .8 }, { opacity: .8, offset: .6 }, { opacity: rest }],
+            { duration: 2200, easing: 'ease-out', fill: 'backwards' }));
+        }
       }
     });
   }
   var anims = [];
+
+  /* ---------- Equal space above and below the chart (desktop) ----------
+     The hero runs from the header to the bottom of the first screen, and the
+     chart sits in it with the same gap above (from the header's bottom) as
+     below (to the screen's bottom), whatever sits between header and hero. */
+  var header = document.querySelector('.site-header');
+  function fitHero() {
+    if (narrow.matches || !header) { hc.style.height = ''; stage.style.top = ''; stage.style.bottom = ''; return; }
+    var y = window.scrollY || window.pageYOffset || 0;
+    var hb = header.getBoundingClientRect().bottom + y, ht = hc.getBoundingClientRect().top + y;
+    var vh = window.innerHeight, extra = Math.max(0, ht - hb);
+    var g = Math.round(Math.min(44, Math.max(20, vh * 0.032)));
+    var h = Math.max(560, vh - ht);
+    // Below the minimum height the chart still keeps equal gaps inside it.
+    hc.style.height = h + 'px';
+    stage.style.top = g + 'px';
+    stage.style.bottom = (vh - ht >= 560 ? g + extra : g) + 'px';
+  }
+  var narrow = window.matchMedia ? matchMedia('(max-width: 768px)') : { matches: false };
+  fitHero();
+  window.addEventListener('resize', fitHero);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHero);
 
   var lastW = 0, lastH = 0;
   build();
@@ -122,7 +161,6 @@
 
   /* ---------- One line per house ---------- */
   var active = null, pinned = null;
-  var narrow = window.matchMedia ? matchMedia('(max-width: 768px)') : { matches: false };
   function show(h) {
     h = String(h);
     var d = H[h];
@@ -153,7 +191,9 @@
       [mx - cw / 2, r.bottom - box.top + 2],
       [r.right - box.left + g, my - ch / 2],
       [r.left - box.left - g - cw, my - ch / 2],
-      [mx - cw / 2, r.top - box.top - ch - 2]
+      [mx - cw / 2, r.top - box.top - ch - 2],
+      [r.right - box.left + g, r.top - box.top],
+      [r.left - box.left - g - cw, r.top - box.top]
     ];
     var sr0 = stage.getBoundingClientRect();
     var sl = sr0.left - box.left + 4, st = sr0.top - box.top + 4, sr = sr0.right - box.left - 4, sb = sr0.bottom - box.top - 4;
@@ -163,7 +203,8 @@
     // The inked extent of each line of words, not the full-width box.
     Array.prototype.forEach.call(copy.children, function (n) {
       var rg = document.createRange(); rg.selectNodeContents(n);
-      avoid.push(rel(rg.getBoundingClientRect(), 4));
+      var q = rel(rg.getBoundingClientRect(), 10); q.words = true;
+      avoid.push(q);
     });
     for (var k in labels) if (labels[k] !== lab) avoid.push(rel(labels[k].getBoundingClientRect(), 4));
     // First candidate that is clear wins; otherwise the one that overlaps least.
@@ -175,7 +216,9 @@
       tries[i][0] = x;
       var out = cw * ch - ov(x, y, { l: sl, t: st, r: sr, b: sb });
       var cost = out * 2;
-      avoid.forEach(function (c) { cost += ov(x, y, c); });
+      // Covering the eyebrow, wordmark, badges or note is far worse than
+      // covering another house's label.
+      avoid.forEach(function (c) { cost += ov(x, y, c) * (c.words ? 60 : 1); });
       if (cost < best - .5) { best = cost; pick = tries[i]; }
       if (cost === 0) break;
     }

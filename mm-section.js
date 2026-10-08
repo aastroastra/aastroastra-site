@@ -89,6 +89,8 @@
   var list = sec.querySelector('[data-mm-list]');
   var chips = Array.prototype.slice.call(sec.querySelectorAll('[data-mm-type]'));
   var rankedFor = sec.querySelector('[data-mm-for]');
+  var selSub = sec.querySelector('[data-mm-sub]');
+  var typesRow = sec.querySelector('.mm-types');
   var rows = {};
   PEOPLE.forEach(function (c) {
     var li = document.createElement('li');
@@ -101,26 +103,40 @@
     list.appendChild(li);
   });
 
-  function render(type, animate) {
+  function render(type, animate, reversed) {
     var first = {};
     if (animate) PEOPLE.forEach(function (c) { first[c.id] = rows[c.id].getBoundingClientRect().top; });
     var ranked = PEOPLE.map(function (c) { return { c: c, v: score(c, type), f: focus(c, type) }; })
       .sort(function (a, b) { return b.v - a.v || b.f - a.f; });
+    // Before the thread reaches the list: lowest first, unranked, waiting.
+    if (reversed) ranked.reverse();
     var tn = TYPES[type].n;
     ranked.forEach(function (r, i) {
       var li = rows[r.c.id], d = driver(r.c, type), read = (READ[d.key] || {})[d.b] || ['', ''];
-      li.querySelector('.mm-rank').textContent = String(i + 1);
+      li.querySelector('.mm-rank').textContent = reversed ? '' : String(i + 1);
       li.querySelector('.mm-pct b').textContent = String(r.v);
       li.querySelector('.mm-sub').innerHTML = bi(r.v + '% for ' + tn[0] + ' · ' + fmt(guna(r.c)) + '/36 guna',
         tn[1] + ' के लिए ' + r.v + '% · ' + fmt(guna(r.c)) + '/36 गुण');
       var kn = d.key === 'guna' ? ['Guna', 'गुण'] : KOOTA[d.key];
       li.querySelector('.mm-why').innerHTML = '<span class="mm-k mm-' + d.b + '">' + bi(kn[0], kn[1]) + ' ' + fmt(d.p) + '/' + d.m +
         ' · ' + bi(BAND[d.b][0], BAND[d.b][1]) + '</span> ' + bi(read[0], read[1]);
-      li.classList.toggle('top', i === 0);
+      li.classList.toggle('top', !reversed && i === 0);
+      li.style.setProperty('--pct', String(Math.max(0, Math.min(100, r.v)) / 100));
       list.appendChild(li);   // DOM order follows the rank, for screen readers too
     });
     rankedFor.innerHTML = bi('Ranked for: ' + tn[0], tn[1] + ' के लिए रैंक');
     chips.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mm-type') === type)); });
+    // Phones: the selected pill's koota line, shown once under the row.
+    var on = sec.querySelector('[data-mm-type="' + type + '"]'), small = on && on.querySelector('small');
+    if (selSub && small) {
+      selSub.classList.remove('show'); void selSub.offsetWidth;
+      selSub.innerHTML = small.innerHTML; selSub.classList.add('show');
+    }
+    // Keep the chosen pill in view inside its row (the row scrolls, not the page).
+    if (on && typesRow && typesRow.scrollWidth > typesRow.clientWidth + 2) {
+      var left = on.offsetLeft - (typesRow.clientWidth - on.offsetWidth) / 2;
+      typesRow.scrollTo({ left: Math.max(0, left), behavior: reduce ? 'auto' : 'smooth' });
+    }
     if (!animate || reduce) return;
     // FLIP: rows slide from where they were to their new place.
     PEOPLE.forEach(function (c) {
@@ -134,8 +150,28 @@
     });
     list.classList.remove('flash'); void list.offsetWidth; list.classList.add('flash');
   }
+  var waiting = false;
   chips.forEach(function (b) {
-    b.addEventListener('click', function () { render(b.getAttribute('data-mm-type'), true); });
+    b.addEventListener('click', function () { waiting = false; sec.classList.remove('mm-waiting'); render(b.getAttribute('data-mm-type'), true); });
   });
-  render('guna', false);
+  /* The rows start unranked and sort themselves when the thread reaches the
+     list (thread.js sends aa:mm-sort), or when the list is well in view. */
+  function sortNow() {
+    if (!waiting) return;
+    waiting = false;
+    sec.classList.remove('mm-waiting');
+    render('guna', true);
+  }
+  if (!reduce && 'IntersectionObserver' in window) {
+    waiting = true;
+    sec.classList.add('mm-waiting');
+    render('guna', false, true);
+    document.addEventListener('aa:mm-sort', sortNow);
+    var mio = new IntersectionObserver(function (es) {
+      if (es[0].intersectionRatio >= 0.9) { mio.disconnect(); setTimeout(sortNow, 400); }
+    }, { threshold: [0.9] });
+    mio.observe(list);
+  } else {
+    render('guna', false);
+  }
 })();
