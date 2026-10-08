@@ -51,22 +51,30 @@
      What exists (shots/landing/<lang>...):
        <lang>/          Yellow·Light, every screen (Android size)
        <lang>/yd, /md   Yellow·Dark, B&W·Dark, for the screens in DARK
-       <lang>-and/      White·Light Android for the screens in WL; /yd, /md dark
-       <lang>-ios/      White·Light iPhone for the story six; /yd, /md dark
+       <lang>-and/      White·Light Android for the screens in WL
+       <lang>-and/ml    B&W·Light Android for the screens in ML
+       <lang>-ios/      White·Light iPhone for the screens in IOS; /yd, /md dark
+                        (the story six), /ml B&W·Light (ML_IOS), /yl Yellow·Light (IOS_YL)
      Families: Yellow (Yellow·Light, Yellow·Dark), White (White·Light),
-     B&W (B&W·Dark; there is no B&W·Light set, so B&W·Light uses B&W·Dark).
+     B&W (B&W·Light first, then B&W·Dark where no light capture exists).
      The story's side phones take the lightest capture of the family. A
      screen with no capture in the family borrows the same feature's covered
      screen (SUB) where the image allows it (data-sub); otherwise it is hidden
      rather than shown in another theme. */
+  var STORY = {'05-multimatch-results': 1, '07n-numerology': 1, '09-match-score': 1, '12-kundali-hero': 1, '15-chat-answer': 1, '20-palm-takeaways': 1};
+  function plus(base, more) { var o = {}, k; for (k in base) o[k] = 1; for (k in more) o[k] = 1; return o; }
+  var NUM2 = {'07c-core-numbers': 1, '07d-driver-conductor': 1};
   var DARK = {'01-dashboard': 1, '12-kundali-hero': 1, '13-kundali-chart': 1, '09-match-score': 1, '10-match-koota': 1, '05-multimatch-results': 1, '07n-numerology': 1, '15-chat-answer': 1, '22-horoscope-daily': 1, '20-palm-takeaways': 1, '16-face-hero': 1, '23-panchang': 1, '30-pdf-report': 1};
-  var WL = {'05-multimatch-results': 1, '07n-numerology': 1, '09-match-score': 1, '12-kundali-hero': 1, '15-chat-answer': 1, '20-palm-takeaways': 1};
-  var IOS = WL;   // the iPhone set has the same six screens
-  // White·Light Android captures that exist in Hindi only (from the Hindi ad kit).
-  var WL_HI = {'16-face-hero': 1, '22-horoscope-daily': 1, '23-panchang': 1};
+  var WL = plus(plus(STORY, NUM2), {'16-face-hero': 1, '22-horoscope-daily': 1, '23-panchang': 1});
+  var ML = WL;                          // B&W·Light Android: the same set, but Face is English only
+  var ML_EN = {'16-face-hero': 1};
+  var IOS = plus(STORY, NUM2);          // White·Light iPhone
+  var ML_IOS = IOS;                     // B&W·Light iPhone
+  var IOS_YL = NUM2;                    // Yellow·Light iPhone (the rest use the Android Yellow·Light set)
   var SUB = {'14-chat-empty': '15-chat-answer', '18-palm-start': '20-palm-takeaways', '21-prediction-weekly': '12-kundali-hero',
     '13-kundali-chart': '12-kundali-hero', '10-match-koota': '09-match-score', '07-multimatch-types-detail': '05-multimatch-results',
-    '01-dashboard': '05-multimatch-results', '22-horoscope-daily': '12-kundali-hero'};
+    '01-dashboard': '05-multimatch-results', '22-horoscope-daily': '12-kundali-hero',
+    '07c-core-numbers': '07n-numerology', '07d-driver-conductor': '07n-numerology'};
   function variant() {
     var t = root.getAttribute('data-theme') || '';
     return t === 'yellow-dark' ? 'yd' : t === 'mono-dark' ? 'md' : '';
@@ -76,17 +84,17 @@
     var t = root.getAttribute('data-theme') || 'white-light';
     var side = img.hasAttribute('data-light');
     if (t === 'white-light') return ['wl'];
-    if (t.indexOf('mono') === 0) return ['md'];
+    if (t.indexOf('mono') === 0) return side ? ['ml'] : t === 'mono-light' ? ['ml', 'md'] : ['md'];
     if (t === 'yellow-dark' && !side) return ['yd', 'yl'];
     return ['yl'];
   }
   // The folder for one screen in one family, or null when it was never captured.
   function capture(name, ios, fam) {
-    if (fam === 'yl') return lang + '/' + name;                 // Android size; the iPhone frame crops it a little
-    if (fam === 'wl') return ios ? (IOS[name] ? lang + '-ios/' + name : null) : ((WL[name] || (lang === 'hi' && WL_HI[name])) ? lang + '-and/' + name : null);
-    if (ios) return IOS[name] ? lang + '-ios/' + fam + '/' + name : null;
-    if (DARK[name]) return lang + '/' + fam + '/' + name;
-    return WL[name] ? lang + '-and/' + fam + '/' + name : null;
+    if (fam === 'yl') return ios && IOS_YL[name] ? lang + '-ios/yl/' + name : lang + '/' + name;   // else Android size; the iPhone frame crops it a little
+    if (fam === 'wl') return ios ? (IOS[name] ? lang + '-ios/' + name : null) : (WL[name] ? lang + '-and/' + name : null);
+    if (fam === 'ml') return ios ? (ML_IOS[name] ? lang + '-ios/ml/' + name : null) : ((ML[name] && !(lang !== 'en' && ML_EN[name])) ? lang + '-and/ml/' + name : null);
+    if (ios) return STORY[name] ? lang + '-ios/' + fam + '/' + name : null;
+    return DARK[name] ? lang + '/' + fam + '/' + name : null;
   }
   function shotBase(img) {
     var name = img.getAttribute('data-shot'), ios = img.getAttribute('data-dev') === 'ios';
